@@ -1,0 +1,13 @@
+{
+  "brand": {
+    "name": "ControlTower"
+  },
+  "links": {
+    "methodology_url": "https://neomundi.org/methodology",
+    "controltower_home": "https://controltowerai.io/",
+    "full_weather_url": "./index.html"
+  },
+  "partners": {
+    "infomaniak_logo": "./assets/partners/infomaniak-logo.png"
+  }
+}

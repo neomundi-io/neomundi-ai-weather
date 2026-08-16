@@ -1,0 +1,41 @@
+{
+  "weather.clear": "CLEAR",
+  "weather.variable": "VARIABLE",
+  "weather.disrupted": "DISRUPTED",
+
+  "interpretation.clear": "STABLE",
+  "interpretation.variable": "FLUCTUATING",
+  "interpretation.disrupted": "HIGH VARIABILITY",
+
+  "ui.title": "AI Weather — Daily Observation Wall",
+  "ui.subtitle": "Daily observation of how a fixed panel of AI systems behaves under the same questions.",
+  "ui.methodology": "Methodology →",
+  "ui.systems_observed": "systems observed",
+  "ui.runtime_observations": "runtime observations",
+  "ui.protocol_suffix": "protocol",
+  "ui.footer_note": "Each panel shows observed runtime behavioral conditions under the same fixed sentinel protocol. The displayed signal is an observation, not a performance or quality score.",
+  "ui.powered_by": "Powered by NeoMundi · Runtime AI Metrology",
+  "ui.demo_flag": "Demonstration data — not a live measurement",
+  "ui.wall_heading": "Observed panel",
+  "ui.close": "Close",
+  "ui.score_label": "Synthetic score",
+  "ui.regime_label": "Regime distribution",
+  "ui.protocol_label": "Protocol",
+  "ui.previous_label": "Previous observation",
+  "ui.no_prior": "No prior campaign data",
+  "ui.infrastructure_partner": "Infrastructure partner",
+  "ui.unknown_system": "Unknown system",
+  "ui.unknown_system_hint": "No system matches this provider or system identifier.",
+
+  "ui.core_title": "AI Weather — Core Panel",
+  "ui.core_subtitle": "Daily observation of 8 major AI providers under the same questions.",
+  "ui.providers_observed": "providers observed",
+  "ui.neomundi_measurement": "NeoMundi measurement",
+  "ui.view_full_wall_12": "View full 12-system observation wall →",
+  "ui.view_full_ai_weather": "View full AI Weather →",
+
+  "regime.normal": "Normal",
+  "regime.variation": "Variation",
+  "regime.factual_alert": "Factual alert",
+  "regime.incomplete": "Incomplete"
+}

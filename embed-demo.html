@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoMundi AI Weather — Integration Gallery</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 40px 20px 80px;
+      font-family: "Segoe UI", "Inter", Arial, Helvetica, sans-serif;
+      background: #f7fafc;
+      color: #1c2733;
+    }
+
+    .page { max-width: 980px; margin: 0 auto; }
+
+    h1 { font-size: 26px; margin: 0 0 6px; }
+    .lede { color: #5b6b7a; font-size: 14px; margin-bottom: 40px; max-width: 640px; }
+
+    section { margin-bottom: 56px; }
+
+    h2 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8b97a3;
+      margin: 0 0 6px;
+    }
+
+    h3 { font-size: 19px; margin: 0 0 12px; }
+
+    .desc { font-size: 13.5px; color: #5b6b7a; margin-bottom: 18px; max-width: 640px; line-height: 1.6; }
+
+    .frame-block {
+      background: #ffffff;
+      border: 1px solid #e1e8ef;
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .frame-block.dark { background: #10151b; border-color: #2a333d; }
+    .frame-block.transparent-host {
+      background: repeating-linear-gradient(45deg, #eef2f6, #eef2f6 10px, #e3e9ee 10px, #e3e9ee 20px);
+    }
+
+    .frame-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #8b97a3;
+      margin-bottom: 10px;
+    }
+
+    .frame-block.dark .frame-label { color: #7d8b99; }
+
+    iframe { border: none; display: block; width: 100%; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+
+    pre {
+      background: #10151b;
+      color: #e8eaed;
+      border-radius: 10px;
+      padding: 16px 18px;
+      font-size: 12.5px;
+      overflow-x: auto;
+      line-height: 1.6;
+      margin: 0 0 14px;
+    }
+
+    code { font-family: "SFMono-Regular", Consolas, monospace; }
+
+    .params-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .params-table th, .params-table td {
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid #e1e8ef;
+    }
+
+    .params-table th { color: #8b97a3; font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <h1>NeoMundi AI Weather — Integration Gallery</h1>
+    <div class="lede">
+      Une seule source de mesure quotidienne, plusieurs formats intégrables.
+      Toutes les vues ci-dessous lisent le même <code>weather.json</code> —
+      les données affichées sont des données de démonstration.
+    </div>
+
+    <!-- 1. Full Observation Wall -->
+    <section>
+      <h2>Section 1</h2>
+      <h3>Full Observation Wall</h3>
+      <div class="desc">La page complète, 12 systèmes, détail au clic.</div>
+      <div class="frame-block">
+        <div class="frame-label">index.html</div>
+        <iframe src="./index.html" height="620" loading="lazy" title="NeoMundi AI Weather — Full Wall"></iframe>
+      </div>
+    </section>
+
+    <!-- 1bis. Core 8 Provider Panel -->
+    <section>
+      <h2>Section 1bis</h2>
+      <h3>Core 8 Provider Panel</h3>
+      <div class="desc">
+        Vitrine compacte destinée à controltowerai.io — 8 grands providers mondiaux
+        (OpenAI, Anthropic, Google, xAI, Mistral, DeepSeek, Qwen, Moonshot/Kimi),
+        sélectionnés depuis le même <code>weather.json</code> via
+        <code>config/panels.json</code>. Aucune mesure dupliquée. Modèles désidentifiés
+        (label public uniquement, jamais l'identifiant interne).
+      </div>
+      <div class="frame-block">
+        <div class="frame-label">core-panel.html</div>
+        <iframe src="./core-panel.html" height="520" loading="lazy" title="NeoMundi AI Weather — Core Panel"></iframe>
+      </div>
+      <pre><code>&lt;iframe
+  src="core-panel.html?theme=light&amp;lang=en"
+  width="100%"
+  height="520"
+  loading="lazy"
+  title="NeoMundi AI Weather — Core Provider Panel"&gt;
+&lt;/iframe&gt;</code></pre>
+    </section>
+
+    <!-- 2. Horizontal Status Bar -->
+    <section>
+      <h2>Section 2 — Core 8 Integrations</h2>
+      <h3>Horizontal Topbar</h3>
+      <div class="desc">
+        Les mêmes 8 providers que le Core Panel, lus depuis <code>config/panels.json → core</code>.
+        Maximum signal, minimum interface : couleur + provider, aucun autre wording.
+        Scroll horizontal fluide sur mobile.
+      </div>
+
+      <div class="frame-block">
+        <div class="frame-label">Light background</div>
+        <iframe src="./topbar.html" height="64" loading="lazy" title="AI Weather by ControlTowerAI"></iframe>
+      </div>
+
+      <div class="frame-block dark">
+        <div class="frame-label">Dark background</div>
+        <iframe src="./topbar.html?theme=dark" height="64" loading="lazy" title="AI Weather by ControlTowerAI"></iframe>
+      </div>
+
+      <pre><code>&lt;iframe
+  src="topbar.html?theme=light&amp;lang=en"
+  width="100%"
+  height="80"
+  loading="lazy"
+  title="AI Weather by ControlTowerAI"&gt;
+&lt;/iframe&gt;</code></pre>
+    </section>
+
+    <!-- 3. Vertical Status Panel -->
+    <section>
+      <h2>Section 3 — Core 8 Integrations</h2>
+      <h3>Vertical Sidebar</h3>
+      <div class="desc">
+        Mêmes 8 providers, empilés verticalement. Largeur 280–320px, hauteur flexible.
+        Aucun sous-titre, aucune métrique — juste "AI Weather · by ControlTowerAI" en tête
+        et une attribution NeoMundi discrète en pied.
+      </div>
+      <div class="frame-block" style="max-width:320px;">
+        <div class="frame-label">sidebar.html</div>
+        <iframe src="./sidebar.html" height="360" loading="lazy" title="AI Weather by ControlTowerAI"></iframe>
+      </div>
+
+      <pre><code>&lt;iframe
+  src="sidebar.html?theme=light&amp;lang=en"
+  width="300"
+  height="520"
+  loading="lazy"
+  title="AI Weather by ControlTowerAI"&gt;
+&lt;/iframe&gt;</code></pre>
+    </section>
+
+    <!-- 4. Individual Provider Widget -->
+    <section>
+      <h2>Section 4</h2>
+      <h3>Individual Provider Widget</h3>
+      <div class="desc">Un seul composant générique, sélection dynamique via <code>?system=</code>.</div>
+      <div class="grid">
+        <div class="frame-block">
+          <div class="frame-label">?system=infomaniak-euria</div>
+          <iframe src="./provider-widget.html?system=infomaniak-euria" height="110" loading="lazy" title="NeoMundi AI Weather — Infomaniak Euria"></iframe>
+        </div>
+        <div class="frame-block">
+          <div class="frame-label">?system=openai</div>
+          <iframe src="./provider-widget.html?system=openai" height="110" loading="lazy" title="NeoMundi AI Weather — OpenAI"></iframe>
+        </div>
+        <div class="frame-block">
+          <div class="frame-label">?system=deepseek</div>
+          <iframe src="./provider-widget.html?system=deepseek" height="110" loading="lazy" title="NeoMundi AI Weather — DeepSeek"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Themes -->
+    <section>
+      <h2>Section 5</h2>
+      <h3>Themes</h3>
+      <div class="desc">Même widget, cinq thèmes. Les couleurs de condition ne changent jamais entre thèmes.</div>
+      <div class="grid-3">
+        <div class="frame-block">
+          <div class="frame-label">theme=light</div>
+          <iframe src="./provider-widget.html?system=infomaniak-euria&theme=light" height="110" loading="lazy" title="Theme light"></iframe>
+        </div>
+        <div class="frame-block dark">
+          <div class="frame-label">theme=dark</div>
+          <iframe src="./provider-widget.html?system=infomaniak-euria&theme=dark" height="110" loading="lazy" title="Theme dark"></iframe>
+        </div>
+        <div class="frame-block" style="background:#eef2f5;">
+          <div class="frame-label">theme=slate</div>
+          <iframe src="./provider-widget.html?system=infomaniak-euria&theme=slate" height="110" loading="lazy" title="Theme slate"></iframe>
+        </div>
+        <div class="frame-block" style="background:#fbf7f0;">
+          <div class="frame-label">theme=warm</div>
+          <iframe src="./provider-widget.html?system=infomaniak-euria&theme=warm" height="110" loading="lazy" title="Theme warm"></iframe>
+        </div>
+        <div class="frame-block transparent-host">
+          <div class="frame-label">theme=transparent</div>
+          <iframe src="./provider-widget.html?system=infomaniak-euria&theme=transparent" height="110" loading="lazy" title="Theme transparent"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Languages -->
+    <section>
+      <h2>Section 6</h2>
+      <h3>Languages</h3>
+      <div class="desc">Même mur, trois langues — démontre l'architecture i18n (le vocabulaire d'interprétation est traduit, jamais la donnée mesurée).</div>
+      <div class="grid">
+        <div class="frame-block">
+          <div class="frame-label">lang=en</div>
+          <iframe src="./index.html?lang=en" height="280" loading="lazy" title="AI Weather EN"></iframe>
+        </div>
+        <div class="frame-block">
+          <div class="frame-label">lang=fr</div>
+          <iframe src="./index.html?lang=fr" height="280" loading="lazy" title="AI Weather FR"></iframe>
+        </div>
+        <div class="frame-block">
+          <div class="frame-label">lang=de</div>
+          <iframe src="./index.html?lang=de" height="280" loading="lazy" title="AI Weather DE"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Embed code -->
+    <section>
+      <h2>Section 7</h2>
+      <h3>Embed code</h3>
+      <div class="desc">Intégration recommandée : iframe. Aucune dépendance JS côté hôte.</div>
+
+      <div class="frame-label" style="margin-bottom:8px;">Provider widget</div>
+      <pre><code>&lt;iframe
+  src="provider-widget.html?system=infomaniak-euria&amp;theme=light&amp;lang=en"
+  width="300"
+  height="120"
+  loading="lazy"
+  title="NeoMundi AI Weather — Infomaniak Euria"&gt;
+&lt;/iframe&gt;</code></pre>
+
+      <div class="frame-label" style="margin-bottom:8px;">Horizontal bar</div>
+      <pre><code>&lt;iframe
+  src="topbar.html?theme=transparent&amp;lang=en"
+  width="100%"
+  height="80"
+  loading="lazy"
+  title="NeoMundi AI Weather"&gt;
+&lt;/iframe&gt;</code></pre>
+
+      <div class="frame-label" style="margin-bottom:8px;">Sidebar</div>
+      <pre><code>&lt;iframe
+  src="sidebar.html?theme=light&amp;lang=en"
+  width="300"
+  height="520"
+  loading="lazy"
+  title="NeoMundi AI Weather"&gt;
+&lt;/iframe&gt;</code></pre>
+
+      <div class="frame-label" style="margin-bottom:8px;">Query parameters</div>
+      <table class="params-table">
+        <tr><th>Parameter</th><th>Applies to</th><th>Values</th></tr>
+        <tr><td><code>system</code></td><td>provider-widget</td><td>stable system id, e.g. <code>infomaniak-euria</code></td></tr>
+        <tr><td><code>provider</code></td><td>provider-widget</td><td>provider name, case-insensitive (fallback if no system id)</td></tr>
+        <tr><td><code>theme</code></td><td>all widgets</td><td>light · dark · slate · warm · transparent</td></tr>
+        <tr><td><code>lang</code></td><td>all widgets + wall</td><td>en · fr · de · es · it</td></tr>
+      </table>
+    </section>
+
+  </div>
+
+</body>
+</html>

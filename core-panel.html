@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#eaf4fb">
+  <link rel="stylesheet" href="./styles/themes.css">
+  <link rel="apple-touch-icon" href="./icons-192.png">
+
+  <title>NeoMundi AI Weather — Core Panel</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --sky-top: #dceefa;
+      --sky-mid: #edf7fc;
+      --sky-bottom: #ffffff;
+      --ink: #1c2733;
+      --ink-dim: #5b6b7a;
+      --ink-faint: #8b97a3;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 45%, var(--sky-bottom) 100%) no-repeat;
+      background-size: 100% 520px;
+      background-color: var(--sky-bottom);
+      color: var(--ink);
+      font-family: "Segoe UI", "Inter", Arial, Helvetica, sans-serif;
+    }
+
+    [data-theme="dark"] html, [data-theme="dark"] body { background: var(--nm-bg); color: var(--nm-text); }
+    [data-theme="slate"] body, [data-theme="warm"] body, [data-theme="transparent"] body {
+      background: var(--nm-bg); color: var(--nm-text);
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: calc(20px + env(safe-area-inset-top)) 16px 48px;
+    }
+
+    /* ---------- Compact header ---------- */
+
+    header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .logo { flex: none; width: 32px; height: 32px; }
+    .logo img { width: 100%; height: 100%; display: block; }
+
+    .header-text { flex: 1; min-width: 220px; }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 3px 0;
+      line-height: 1.25;
+    }
+
+    .header-subtitle {
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: var(--ink-dim);
+      max-width: 480px;
+      margin-bottom: 4px;
+    }
+
+    .header-date { font-size: 12px; color: var(--ink-faint); margin-bottom: 6px; }
+
+    .view-full-link {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #378ADD;
+      text-decoration: none;
+    }
+
+    .view-full-link:hover { text-decoration: underline; }
+
+    /* ---------- Panel grid ---------- */
+
+    .panel-heading {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin: 18px 0 10px;
+    }
+
+    .panel-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 300px) {
+      .panel-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 700px) {
+      .panel-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .card {
+      display: block;
+      background: var(--nm-card-bg, #ffffff);
+      border: 1px solid #d6e2eb;
+      border-left: 4px solid var(--ink-faint);
+      border-radius: 14px;
+      padding: 13px 12px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 3px 10px rgba(45, 75, 95, 0.05);
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+    }
+
+    .card:hover { box-shadow: 0 5px 14px rgba(45, 75, 95, 0.08); transform: translateY(-1px); }
+
+    .card.is-clear     { border-left-color: var(--nm-clear); }
+    .card.is-variable  { border-left-color: var(--nm-variable); }
+    .card.is-disrupted { border-left-color: var(--nm-disrupted); }
+
+    .card-top { display: flex; align-items: center; gap: 7px; margin-bottom: 6px; }
+
+    .card-top .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+
+    .card-provider {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .card-public-label {
+      font-size: 11.5px;
+      color: var(--ink-faint);
+      font-family: "SFMono-Regular", Consolas, monospace;
+    }
+
+    /* ---------- Footer ---------- */
+
+    footer {
+      margin-top: 30px;
+      padding-top: 16px;
+      border-top: 1px solid #d6e2eb;
+    }
+
+    .footer-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-dim);
+      margin-bottom: 10px;
+    }
+
+    .footer-note {
+      font-size: 11.5px;
+      line-height: 1.55;
+      color: var(--ink-faint);
+      max-width: 620px;
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 600;
+      color: #378ADD;
+      text-decoration: none;
+      margin-right: 16px;
+    }
+
+    .footer-links a:hover { text-decoration: underline; }
+
+    .state-msg { color: var(--ink-dim); font-size: 13px; }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header>
+      <div class="logo"><img src="./assets/logo-controltower.png" alt="ControlTower logo"></div>
+      <div class="header-text">
+        <h1 id="title">AI Weather — Core Panel</h1>
+        <div class="header-subtitle" id="subtitle"></div>
+        <div class="header-date" id="header-date">—</div>
+        <a class="view-full-link" id="view-full-link-header" href="./index.html">View full 12-system observation wall →</a>
+      </div>
+    </header>
+
+    <div class="panel-heading" id="panel-heading">Observed panel</div>
+
+    <div class="panel-grid" id="panel-grid">
+      <div class="state-msg">Loading panel…</div>
+    </div>
+
+    <footer>
+      <div class="footer-stats" id="footer-stats"></div>
+      <div class="footer-note" id="footer-note"></div>
+      <div class="footer-links">
+        <a id="methodology-link" href="#" target="_blank" rel="noopener">Methodology →</a>
+        <a id="view-full-link-footer" href="./index.html">View full AI Weather →</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="./scripts/themes.js"></script>
+  <script src="./scripts/i18n.js"></script>
+  <script src="./scripts/weather-data.js"></script>
+  <script>
+    NMThemes.init();
+
+    Promise.all([
+      NMi18n.init(),
+      fetch("./config/wording.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
+      NMData.load(),
+      NMData.loadPanels()
+    ])
+      .then(([lang, config, data, panelsConfig]) => {
+        const lang2 = lang;
+        const coreIds = (panelsConfig.panels && panelsConfig.panels.core) || [];
+        const systems = NMData.getPanelSystems(data, coreIds);
+
+        document.getElementById("title").textContent = NMi18n.t("ui.core_title");
+        document.getElementById("subtitle").textContent = NMi18n.t("ui.core_subtitle");
+        document.getElementById("header-date").textContent = new Date().toLocaleDateString(undefined, {
+          weekday: "long", year: "numeric", month: "long", day: "numeric"
+        });
+        document.getElementById("view-full-link-header").textContent = NMi18n.t("ui.view_full_wall_12");
+        document.getElementById("view-full-link-header").href = `./index.html?lang=${encodeURIComponent(lang2)}`;
+        document.getElementById("panel-heading").textContent = NMi18n.t("ui.wall_heading");
+
+        const grid = document.getElementById("panel-grid");
+        grid.innerHTML = "";
+
+        if (systems.length === 0) {
+          grid.innerHTML = '<div class="state-msg">No systems configured for this panel yet.</div>';
+        } else {
+          systems.forEach(system => {
+            const identity = NMData.getPublicIdentity(system);
+
+            const card = document.createElement("a");
+            card.className = `card is-${system.condition}`;
+            card.href = `./index.html?system=${encodeURIComponent(system.id)}&lang=${encodeURIComponent(lang2)}`;
+            card.setAttribute("aria-label", identity.provider);
+
+            card.innerHTML = `
+              <div class="card-top">
+                <span class="dot nm-condition-${system.condition}"></span>
+                <span class="card-provider">${identity.provider}</span>
+              </div>
+              ${identity.label ? `<div class="card-public-label">${identity.label}</div>` : ""}
+            `;
+
+            grid.appendChild(card);
+          });
+        }
+
+        const totalObservations = systems.reduce((sum, s) => sum + (s.observations || 0), 0);
+        const protocol = data.protocol || {};
+
+        document.getElementById("footer-stats").innerHTML = `
+          <span>${systems.length} ${NMi18n.t("ui.providers_observed")}</span>
+          <span>${totalObservations} ${NMi18n.t("ui.runtime_observations")}</span>
+          <span>${protocol.id || "—"} ${protocol.version || ""} ${NMi18n.t("ui.protocol_suffix")}</span>
+        `;
+
+        document.getElementById("footer-note").textContent = NMi18n.t("ui.footer_note");
+
+        const methLink = document.getElementById("methodology-link");
+        methLink.textContent = NMi18n.t("ui.methodology");
+        methLink.href = (config.links && config.links.methodology_url) || "#";
+
+        const fullLink = document.getElementById("view-full-link-footer");
+        fullLink.textContent = NMi18n.t("ui.view_full_ai_weather");
+        fullLink.href = `./index.html?lang=${encodeURIComponent(lang2)}`;
+      })
+      .catch(() => {
+        document.getElementById("panel-grid").innerHTML =
+          '<div class="state-msg">AI Weather data currently unavailable.</div>';
+      });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "weather.clear": "SERENO",
+  "weather.variable": "VARIABILE",
+  "weather.disrupted": "PERTURBATO",
+
+  "interpretation.clear": "STABILE",
+  "interpretation.variable": "FLUTTUANTE",
+  "interpretation.disrupted": "ALTA VARIABILITÀ",
+
+  "ui.title": "AI Weather — Muro di osservazione giornaliero",
+  "ui.subtitle": "Osservazione giornaliera di come si comporta un pannello fisso di sistemi IA di fronte alle stesse domande.",
+  "ui.methodology": "Metodologia →",
+  "ui.systems_observed": "sistemi osservati",
+  "ui.runtime_observations": "osservazioni runtime",
+  "ui.protocol_suffix": "protocollo",
+  "ui.footer_note": "Ogni pannello mostra condizioni comportamentali runtime osservate secondo lo stesso protocollo sentinella fisso. Il segnale mostrato è un'osservazione, non un punteggio di prestazione o qualità.",
+  "ui.powered_by": "Powered by NeoMundi · Runtime AI Metrology",
+  "ui.demo_flag": "Dati dimostrativi — non una misurazione live",
+  "ui.wall_heading": "Pannello osservato",
+  "ui.close": "Chiudi",
+  "ui.score_label": "Punteggio sintetico",
+  "ui.regime_label": "Distribuzione dei regimi",
+  "ui.protocol_label": "Protocollo",
+  "ui.previous_label": "Osservazione precedente",
+  "ui.no_prior": "Nessuna campagna precedente",
+  "ui.infrastructure_partner": "Partner infrastrutturale",
+  "ui.unknown_system": "Sistema sconosciuto",
+  "ui.unknown_system_hint": "Nessun sistema corrisponde a questo provider o identificatore.",
+  "ui.view_full_wall_12": "Vedi il muro completo a 12 sistemi →",
+  "ui.view_full_ai_weather": "Vedi AI Weather completo →",
+
+  "ui.core_title": "AI Weather — Pannello principale",
+  "ui.core_subtitle": "Osservazione giornaliera di 8 grandi provider IA di fronte alle stesse domande.",
+  "ui.providers_observed": "provider osservati",
+  "ui.neomundi_measurement": "Misurazione NeoMundi",
+
+  "regime.normal": "Normale",
+  "regime.variation": "Variazione",
+  "regime.factual_alert": "Allerta fattuale",
+  "regime.incomplete": "Incompleto"
+}

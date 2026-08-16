@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoMundi AI Weather — Global Widget</title>
+
+  <link rel="stylesheet" href="./styles/themes.css">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      font-family: "Segoe UI", "Inter", Arial, Helvetica, sans-serif;
+      background: transparent;
+      color: var(--nm-text);
+    }
+
+    .widget {
+      width: 100%;
+      max-width: 380px;
+      min-width: 220px;
+      margin: 0 auto;
+      padding: 18px;
+      border: 1px solid var(--nm-border);
+      border-radius: 16px;
+      background: var(--nm-card-bg);
+      box-shadow: 0 1px 2px rgba(28, 39, 51, 0.04);
+    }
+
+    .brand {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--nm-muted);
+      margin-bottom: 6px;
+    }
+
+    .title { font-size: 17px; font-weight: 700; margin-bottom: 16px; }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .status .dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+
+    .reading { font-size: 13.5px; color: var(--nm-muted); margin-bottom: 14px; }
+
+    .scope {
+      padding-top: 12px;
+      border-top: 1px solid var(--nm-border);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--nm-muted);
+    }
+
+    .footer { margin-top: 10px; font-size: 10px; color: var(--nm-muted); }
+    .loading, .error { font-size: 13px; color: var(--nm-muted); }
+  </style>
+</head>
+
+<body>
+
+  <section class="widget">
+    <div class="brand" id="brand">NeoMundi</div>
+    <div class="title">AI Weather</div>
+    <div id="weather"><div class="loading">Loading measurement…</div></div>
+  </section>
+
+  <script src="./scripts/themes.js"></script>
+  <script src="./scripts/i18n.js"></script>
+  <script src="./scripts/weather-data.js"></script>
+  <script>
+    NMThemes.init();
+
+    Promise.all([
+      NMi18n.init(),
+      NMData.load(),
+      fetch("./config/wording.json").then(r => r.ok ? r.json() : {}).catch(() => ({}))
+    ])
+      .then(([lang, data, config]) => {
+        const key = data.global_condition || "unknown";
+        const label = NMi18n.t(`weather.${key}`);
+        const reading = NMi18n.t(`interpretation.${key}`);
+        const summary = data.panel_summary || {};
+
+        document.getElementById("brand").textContent = (config.brand && config.brand.name) || "NeoMundi";
+
+        document.getElementById("weather").innerHTML = `
+          <div class="status">
+            <span class="dot nm-condition-${key}" style="background:var(--nm-${key}, var(--nm-muted))"></span>
+            <span>${label === `weather.${key}` ? key.toUpperCase() : label}</span>
+          </div>
+          <div class="reading">${reading === `interpretation.${key}` ? "" : reading}</div>
+          <div class="scope">
+            ${summary.systems_count ?? "—"} ${NMi18n.t("ui.systems_observed")} ·
+            ${summary.total_observations ?? "—"} ${NMi18n.t("ui.runtime_observations")}
+          </div>
+          <div class="footer">${NMi18n.t("ui.powered_by")}</div>
+        `;
+      })
+      .catch(() => {
+        document.getElementById("weather").innerHTML =
+          '<div class="error">AI Weather currently unavailable.</div>';
+      });
+  </script>
+
+</body>
+</html>

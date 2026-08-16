@@ -1,0 +1,41 @@
+{
+  "weather.clear": "DESPEJADO",
+  "weather.variable": "VARIABLE",
+  "weather.disrupted": "PERTURBADO",
+
+  "interpretation.clear": "ESTABLE",
+  "interpretation.variable": "FLUCTUANTE",
+  "interpretation.disrupted": "ALTA VARIABILIDAD",
+
+  "ui.title": "AI Weather — Muro de observación diario",
+  "ui.subtitle": "Observación diaria de cómo se comporta un panel fijo de sistemas de IA ante las mismas preguntas.",
+  "ui.methodology": "Metodología →",
+  "ui.systems_observed": "sistemas observados",
+  "ui.runtime_observations": "observaciones en tiempo de ejecución",
+  "ui.protocol_suffix": "protocolo",
+  "ui.footer_note": "Cada panel muestra condiciones de comportamiento en tiempo de ejecución observadas bajo el mismo protocolo centinela fijo. La señal mostrada es una observación, no una puntuación de rendimiento o calidad.",
+  "ui.powered_by": "Desarrollado por NeoMundi · Metrología de IA en tiempo de ejecución",
+  "ui.demo_flag": "Datos de demostración — no es una medición en vivo",
+  "ui.wall_heading": "Panel observado",
+  "ui.close": "Cerrar",
+  "ui.score_label": "Puntuación sintética",
+  "ui.regime_label": "Distribución de regímenes",
+  "ui.protocol_label": "Protocolo",
+  "ui.previous_label": "Observación anterior",
+  "ui.no_prior": "Sin campaña previa",
+  "ui.infrastructure_partner": "Socio de infraestructura",
+  "ui.unknown_system": "Sistema desconocido",
+  "ui.unknown_system_hint": "Ningún sistema coincide con este proveedor o identificador.",
+  "ui.view_full_wall_12": "Ver el muro completo de 12 sistemas →",
+  "ui.view_full_ai_weather": "Ver AI Weather completo →",
+
+  "ui.core_title": "AI Weather — Panel principal",
+  "ui.core_subtitle": "Observación diaria de 8 grandes proveedores de IA ante las mismas preguntas.",
+  "ui.providers_observed": "proveedores observados",
+  "ui.neomundi_measurement": "Medición NeoMundi",
+
+  "regime.normal": "Normal",
+  "regime.variation": "Variación",
+  "regime.factual_alert": "Alerta factual",
+  "regime.incomplete": "Incompleto"
+}

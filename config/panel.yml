@@ -1,0 +1,54 @@
+# NeoMundi AI Weather — Observation Panel Configuration
+#
+# This file declares which AI systems are part of the daily observation panel.
+# It is the single editable source for the panel. Nothing here is hardcoded
+# in index.html or widget.html — the dashboard only ever reads weather.json,
+# which is generated from this configuration plus daily measurement runs.
+#
+# To update the panel: edit this file, then regenerate weather.json.
+# No dashboard code needs to change.
+#
+# System ids here match weather.json's systems[].id exactly, and are what
+# config/panels.json references to build the "core" (8 providers) and
+# "full" (12 systems) public views from this single dataset.
+#
+# Fields:
+#   id             stable system id — must match weather.json systems[].id
+#   provider       public provider display name
+#   model_id       internal/technical identifier used by the launcher to query the system
+#   display_name   internal admin label
+#   public_label   shown instead of model_id on desidentified public views
+#                  (e.g. Core Panel). Set to null if the model is shown
+#                  publicly (see infomaniak-euria below).
+#   enabled        set to false to exclude a system from the next observation run
+#                  without deleting its configuration
+#
+# NOTE: the 8 core-panel entries are provisionally identified by real
+# provider names (per the Core Panel product requirement) but their
+# model_id is still a PLACEHOLDER — replace with the real observed model
+# identifier before going live. The 3 "Provider J/K/L" entries are fully
+# generic demo placeholders.
+
+panel:
+  - { id: "openai",           provider: "OpenAI",           model_id: "openai-model-placeholder",    display_name: "OpenAI",           public_label: "SYSTEM-01", enabled: true }
+  - { id: "infomaniak-euria", provider: "Infomaniak",        model_id: "euria",                        display_name: "Infomaniak Euria", public_label: null,       enabled: true }
+  - { id: "anthropic",        provider: "Anthropic",         model_id: "anthropic-model-placeholder", display_name: "Anthropic",        public_label: "SYSTEM-02", enabled: true }
+  - { id: "google",           provider: "Google",            model_id: "google-model-placeholder",    display_name: "Google",           public_label: "SYSTEM-03", enabled: true }
+  - { id: "xai",              provider: "xAI",               model_id: "xai-model-placeholder",       display_name: "xAI",              public_label: "SYSTEM-04", enabled: true }
+  - { id: "mistral",          provider: "Mistral",           model_id: "mistral-model-placeholder",   display_name: "Mistral",          public_label: "SYSTEM-05", enabled: true }
+  - { id: "deepseek",         provider: "DeepSeek",          model_id: "deepseek-model-placeholder",  display_name: "DeepSeek",         public_label: "SYSTEM-06", enabled: true }
+  - { id: "qwen",             provider: "Qwen",              model_id: "qwen-model-placeholder",      display_name: "Qwen",             public_label: "SYSTEM-07", enabled: true }
+  - { id: "moonshot",         provider: "Moonshot / Kimi",   model_id: "moonshot-model-placeholder",  display_name: "Moonshot / Kimi",  public_label: "SYSTEM-08", enabled: true }
+  - { id: "system-j",         provider: "Provider J",        model_id: "system-j-placeholder",        display_name: "System J",         public_label: null,       enabled: true }
+  - { id: "system-k",         provider: "Provider K",        model_id: "system-k-placeholder",        display_name: "System K",         public_label: null,       enabled: true }
+  - { id: "system-l",         provider: "Provider L",        model_id: "system-l-placeholder",        display_name: "System L",         public_label: null,       enabled: true }
+
+# Protocol parameters used by the (future) launcher when it runs the daily
+# observation campaign. Kept alongside the panel so both evolve together.
+protocol:
+  id: "WEATHER-SENTINEL"
+  version: "0.1"
+  prompt_set:
+    - "sentinel-v1"
+  iterations: 30
+  temperature: null

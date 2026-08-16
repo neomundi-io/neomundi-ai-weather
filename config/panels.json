@@ -1,0 +1,28 @@
+{
+  "panels": {
+    "core": [
+      "openai",
+      "anthropic",
+      "google",
+      "xai",
+      "mistral",
+      "deepseek",
+      "qwen",
+      "moonshot"
+    ],
+    "full": [
+      "openai",
+      "infomaniak-euria",
+      "anthropic",
+      "google",
+      "xai",
+      "mistral",
+      "deepseek",
+      "qwen",
+      "moonshot",
+      "system-j",
+      "system-k",
+      "system-l"
+    ]
+  }
+}

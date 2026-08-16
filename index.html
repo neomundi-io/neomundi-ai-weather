@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#eaf4fb">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="AI Weather">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icons-192.png">
+  <link rel="stylesheet" href="./styles/themes.css">
+
+  <title>NeoMundi AI Weather — Observation Wall</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --sky-top: #dceefa;
+      --sky-mid: #edf7fc;
+      --sky-bottom: #ffffff;
+      --card-bg: #ffffff;
+      --card-border: #d6e2eb;
+      --ink: #1c2733;
+      --ink-dim: #5b6b7a;
+      --ink-faint: #8b97a3;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 45%, var(--sky-bottom) 100%) no-repeat;
+      background-size: 100% 640px;
+      background-color: var(--sky-bottom);
+      color: var(--ink);
+      font-family: "Segoe UI", "Inter", Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: calc(24px + env(safe-area-inset-top)) 18px 64px;
+    }
+
+    /* ---------- Header ---------- */
+
+    header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      flex: none;
+      width: 40px;
+      height: 40px;
+    }
+
+    .logo img { width: 100%; height: 100%; display: block; }
+
+    .header-text { flex: 1; min-width: 220px; }
+
+    .header-brand {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #9aa7b2;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-size: 25px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 5px 0;
+      line-height: 1.28;
+    }
+
+    .header-date {
+      font-size: 13px;
+      color: var(--ink-dim);
+      margin-bottom: 8px;
+    }
+
+    .header-subtitle {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--ink-dim);
+      max-width: 520px;
+    }
+
+    .methodology-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #378ADD;
+      text-decoration: none;
+    }
+
+    .methodology-link:hover { text-decoration: underline; }
+
+    /* ---------- Language selector ---------- */
+
+    .lang-select {
+      flex: none;
+      position: relative;
+    }
+
+    .lang-button {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-dim);
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    .lang-button:hover { border-color: var(--ink-faint); color: var(--ink); }
+
+    .lang-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      right: 0;
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(28, 39, 51, 0.1);
+      min-width: 130px;
+      overflow: hidden;
+      z-index: 20;
+    }
+
+    .lang-menu.open { display: block; }
+
+    .lang-option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 9px 12px;
+      font-size: 13px;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .lang-option:hover { background: #f3f8fc; }
+    .lang-option.active { font-weight: 700; }
+
+    .demo-flag {
+      display: inline-block;
+      margin: 12px 0 20px;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #7a5200;
+      background: #fdf0da;
+      border: 1px solid #f0dcb0;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* ---------- Wall ---------- */
+
+    .wall-heading {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin: 0 0 12px;
+    }
+
+    .wall {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 340px) {
+      .wall { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 560px) {
+      .wall { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 860px) {
+      .wall { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--ink-faint);
+      border-radius: 16px;
+      padding: 16px 14px;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(45, 75, 95, 0.06);
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+      width: 100%;
+    }
+
+    .card:hover, .card:focus-visible {
+      box-shadow: 0 6px 18px rgba(45, 75, 95, 0.09);
+      transform: translateY(-1px);
+    }
+
+    .card:focus-visible {
+      outline: 2px solid #378ADD;
+      outline-offset: 2px;
+    }
+
+    .card.is-clear     { border-left-color: var(--nm-clear); }
+    .card.is-variable  { border-left-color: var(--nm-variable); }
+    .card.is-disrupted { border-left-color: var(--nm-disrupted); }
+
+    .card-condition {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 3px;
+    }
+
+    .card-condition .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex: none;
+    }
+
+    .is-clear .card-condition     { color: var(--nm-clear-ink); }
+    .is-variable .card-condition  { color: var(--nm-variable-ink); }
+    .is-disrupted .card-condition { color: var(--nm-disrupted-ink); }
+
+    .is-clear .dot     { background: var(--nm-clear); }
+    .is-variable .dot  { background: var(--nm-variable); }
+    .is-disrupted .dot { background: var(--nm-disrupted); }
+
+    .card.deep-linked {
+      outline: 2px solid #378ADD;
+      outline-offset: 2px;
+    }
+
+    .card-reading {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .card-provider {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 2px;
+    }
+
+    .card-model {
+      font-size: 12.5px;
+      color: var(--ink-dim);
+    }
+
+    /* ---------- Detail (modal / sheet) ---------- */
+
+    .detail-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(28, 39, 51, 0.35);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .detail-overlay.open { display: flex; }
+
+    .detail-sheet {
+      background: #ffffff;
+      border-radius: 20px;
+      max-width: 460px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 22px 22px calc(22px + env(safe-area-inset-bottom));
+      box-shadow: 0 12px 40px rgba(28, 39, 51, 0.18);
+    }
+
+    @media (max-width: 520px) {
+      .detail-overlay { padding: 0; align-items: flex-end; }
+      .detail-sheet {
+        max-width: none;
+        max-height: 92vh;
+        border-radius: 20px 20px 0 0;
+      }
+    }
+
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .detail-condition {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .detail-condition .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      flex: none;
+    }
+
+    .detail-condition.is-clear     { color: var(--nm-clear-ink); }
+    .detail-condition.is-variable  { color: var(--nm-variable-ink); }
+    .detail-condition.is-disrupted { color: var(--nm-disrupted-ink); }
+
+    .detail-condition.is-clear .dot     { background: var(--nm-clear); }
+    .detail-condition.is-variable .dot  { background: var(--nm-variable); }
+    .detail-condition.is-disrupted .dot { background: var(--nm-disrupted); }
+
+    .detail-close {
+      background: none;
+      border: 1px solid var(--card-border);
+      color: var(--ink-dim);
+      border-radius: 10px;
+      padding: 7px 13px;
+      font-size: 12.5px;
+      min-height: 36px;
+      cursor: pointer;
+    }
+
+    .detail-close:hover { border-color: var(--ink-faint); color: var(--ink); }
+
+    .detail-reading {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 4px 0 2px;
+    }
+
+    .detail-provider {
+      font-size: 13px;
+      color: var(--ink-dim);
+      margin-bottom: 18px;
+    }
+
+    .detail-score {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      background: #f6f9fc;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+    }
+
+    .detail-score-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .detail-score-value {
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .detail-block { margin-bottom: 18px; }
+
+    .detail-block-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 8px;
+    }
+
+    .regime-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 13px;
+      padding: 6px 0;
+      border-bottom: 1px solid #eef2f6;
+      color: var(--ink-dim);
+    }
+
+    .regime-row span:last-child { color: var(--ink); font-weight: 700; }
+
+    .detail-meta-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 5px 0;
+      color: var(--ink-dim);
+    }
+
+    .detail-meta-row span:last-child {
+      color: var(--ink);
+      font-family: "SFMono-Regular", Consolas, monospace;
+    }
+
+    /* ---------- Footer ---------- */
+
+    footer {
+      margin-top: 44px;
+      padding-top: 20px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .footer-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-dim);
+      margin-bottom: 12px;
+    }
+
+    .footer-note {
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--ink-faint);
+      max-width: 640px;
+      margin-bottom: 10px;
+    }
+
+    footer .methodology-link { margin-top: 0; margin-right: 16px; }
+
+    .footer-powered {
+      font-size: 11.5px;
+      color: var(--ink-faint);
+      margin-top: 6px;
+    }
+
+    .footer-partner {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .footer-partner.visible { display: flex; }
+
+    .footer-partner-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .footer-partner img { height: 18px; width: auto; display: block; }
+
+    .state-msg { color: var(--ink-dim); font-size: 14px; }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header>
+      <div class="logo"><img src="./assets/logo-controltower.png" alt="ControlTower logo"></div>
+      <div class="header-text">
+        <div class="header-brand" id="brand-label">NeoMundi</div>
+        <h1 id="title">AI Weather — Daily Observation Wall</h1>
+        <div class="header-date" id="header-date">—</div>
+        <div class="header-subtitle" id="subtitle"></div>
+        <a class="methodology-link" id="methodology-link" href="#" target="_blank" rel="noopener">Methodology →</a>
+      </div>
+      <div class="lang-select">
+        <button class="lang-button" id="lang-button" type="button" aria-haspopup="true" aria-expanded="false">EN ▾</button>
+        <div class="lang-menu" id="lang-menu"></div>
+      </div>
+    </header>
+
+    <div id="demo-flag-holder"></div>
+
+    <div class="wall-heading" id="wall-heading">Observed panel</div>
+
+    <div class="wall" id="wall">
+      <div class="state-msg">Loading panel…</div>
+    </div>
+
+    <footer>
+      <div class="footer-stats" id="footer-stats"></div>
+      <div class="footer-note" id="footer-note"></div>
+      <a class="methodology-link" id="footer-methodology-link" href="#" target="_blank" rel="noopener">Methodology →</a>
+      <div class="footer-powered" id="footer-powered"></div>
+      <div class="footer-partner" id="footer-partner">
+        <span class="footer-partner-label" id="footer-partner-label">Infrastructure partner</span>
+        <img id="footer-partner-logo" alt="Infomaniak">
+      </div>
+    </footer>
+
+  </main>
+
+  <div class="detail-overlay" id="detail-overlay">
+    <div class="detail-sheet" id="detail-sheet"></div>
+  </div>
+
+  <script src="./scripts/themes.js"></script>
+  <script src="./scripts/i18n.js"></script>
+  <script src="./scripts/weather-data.js"></script>
+  <script>
+    let CONFIG = null;
+    let DATA = null;
+    let PANEL_SYSTEMS = null;
+
+    function pct(v) {
+      if (v === null || v === undefined) return "—";
+      return Math.round(v * 100) + "%";
+    }
+
+    function fmtDate(iso) {
+      if (!iso) return "—";
+      try {
+        return new Date(iso).toLocaleString(undefined, {
+          month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"
+        });
+      } catch (e) { return iso; }
+    }
+
+    function fmtToday() {
+      return new Date().toLocaleDateString(undefined, {
+        weekday: "long", year: "numeric", month: "long", day: "numeric"
+      });
+    }
+
+    function conditionMeta(key) {
+      const label = NMi18n.t(`weather.${key}`);
+      const reading = NMi18n.t(`interpretation.${key}`);
+      return {
+        label: label === `weather.${key}` ? (key || "").toUpperCase() : label,
+        reading: reading === `interpretation.${key}` ? "—" : reading
+      };
+    }
+
+    function renderHeader() {
+      document.getElementById("title").textContent = NMi18n.t("ui.title");
+      document.getElementById("header-date").textContent = fmtToday();
+      document.getElementById("subtitle").textContent = NMi18n.t("ui.subtitle");
+      document.getElementById("brand-label").textContent = (CONFIG.brand && CONFIG.brand.name) || "NeoMundi";
+
+      const link = document.getElementById("methodology-link");
+      link.textContent = NMi18n.t("ui.methodology");
+      link.href = (CONFIG.links && CONFIG.links.methodology_url) || "#";
+
+      if (DATA.demo) {
+        document.getElementById("demo-flag-holder").innerHTML =
+          `<div class="demo-flag">${NMi18n.t("ui.demo_flag")}</div>`;
+      }
+
+      document.getElementById("wall-heading").textContent = NMi18n.t("ui.wall_heading");
+    }
+
+    function renderFooter() {
+      const summary = DATA.panel_summary || {};
+      const protocol = DATA.protocol || {};
+
+      document.getElementById("footer-stats").innerHTML = `
+        <span>${summary.systems_count ?? "—"} ${NMi18n.t("ui.systems_observed")}</span>
+        <span>${summary.total_observations ?? "—"} ${NMi18n.t("ui.runtime_observations")}</span>
+        <span>${protocol.id || "—"} ${protocol.version || ""} ${NMi18n.t("ui.protocol_suffix")}</span>
+      `;
+
+      document.getElementById("footer-note").textContent = NMi18n.t("ui.footer_note");
+
+      const link = document.getElementById("footer-methodology-link");
+      link.textContent = NMi18n.t("ui.methodology");
+      link.href = (CONFIG.links && CONFIG.links.methodology_url) || "#";
+
+      document.getElementById("footer-powered").textContent = NMi18n.t("ui.powered_by");
+      document.getElementById("footer-partner-label").textContent = NMi18n.t("ui.infrastructure_partner");
+
+      // Only show the partner credit if the logo file actually exists locally.
+      // No fabricated or remotely-fetched logo — see assets/partners/README.md.
+      const partnerPath = (CONFIG.partners && CONFIG.partners.infomaniak_logo) || null;
+      if (partnerPath) {
+        const probe = new Image();
+        probe.onload = () => {
+          document.getElementById("footer-partner-logo").src = partnerPath;
+          document.getElementById("footer-partner").classList.add("visible");
+        };
+        probe.onerror = () => {};
+        probe.src = partnerPath;
+      }
+    }
+
+    function renderCard(system) {
+      const meta = conditionMeta(system.condition);
+
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = `card is-${system.condition}`;
+      card.dataset.systemId = system.id;
+      card.setAttribute("aria-label", `Open detail for ${system.display_name}`);
+
+      card.innerHTML = `
+        <div class="card-condition">
+          <span class="dot"></span>
+          ${meta.label}
+        </div>
+        <div class="card-reading">${meta.reading}</div>
+        <div class="card-provider">${system.provider || ""}</div>
+        <div class="card-model">${system.model || system.display_name}</div>
+      `;
+
+      card.addEventListener("click", () => openDetail(system));
+      return card;
+    }
+
+    function renderWall() {
+      const wall = document.getElementById("wall");
+      wall.innerHTML = "";
+      const systems = PANEL_SYSTEMS || [];
+
+      if (systems.length === 0) {
+        wall.innerHTML = '<div class="state-msg">No systems in the observed panel yet.</div>';
+        return;
+      }
+
+      systems.forEach(system => wall.appendChild(renderCard(system)));
+    }
+
+    function openDetail(system) {
+      const meta = conditionMeta(system.condition);
+      const d = system.detail || {};
+      const dist = d.regime_distribution || {};
+
+      const distRows = Object.keys(dist).map(key => `
+        <div class="regime-row">
+          <span>${NMi18n.t(`regime.${key}`)}</span>
+          <span>${dist[key]}</span>
+        </div>
+      `).join("");
+
+      const prevMeta = d.previous_condition ? conditionMeta(d.previous_condition) : null;
+
+      document.getElementById("detail-sheet").innerHTML = `
+        <div class="detail-header">
+          <div class="detail-condition is-${system.condition}">
+            <span class="dot"></span>
+            ${meta.label}
+          </div>
+          <button class="detail-close" id="detail-close-btn">${NMi18n.t("ui.close")}</button>
+        </div>
+        <div class="detail-reading">${meta.reading}</div>
+        <div class="detail-provider">${system.provider || ""} · ${system.model || ""}</div>
+
+        <div class="detail-score">
+          <span class="detail-score-label">${NMi18n.t("ui.score_label")}</span>
+          <span class="detail-score-value">${system.score ?? "—"}</span>
+        </div>
+
+        <div class="detail-block">
+          <div class="detail-block-label">${NMi18n.t("ui.regime_label")}</div>
+          ${distRows || '<div class="state-msg">No distribution data.</div>'}
+        </div>
+
+        <div class="detail-block">
+          <div class="detail-block-label">${NMi18n.t("ui.protocol_label")}</div>
+          <div class="detail-meta-row"><span>Prompt set</span><span>${d.prompt_set || "—"}</span></div>
+          <div class="detail-meta-row"><span>Observations</span><span>${system.observations ?? "—"}</span></div>
+          <div class="detail-meta-row"><span>Fully scored</span><span>${system.fully_scored ?? "—"}</span></div>
+          <div class="detail-meta-row"><span>Coverage</span><span>${pct(system.coverage)}</span></div>
+          <div class="detail-meta-row"><span>Last observed</span><span>${fmtDate(system.last_observed_at)}</span></div>
+        </div>
+
+        <div class="detail-block" style="margin-bottom:0;">
+          <div class="detail-block-label">${NMi18n.t("ui.previous_label")}</div>
+          <div class="detail-meta-row">
+            <span>${prevMeta ? prevMeta.label : NMi18n.t("ui.no_prior")}</span>
+          </div>
+        </div>
+      `;
+
+      document.getElementById("detail-close-btn").addEventListener("click", closeDetail);
+      document.getElementById("detail-overlay").classList.add("open");
+    }
+
+    function closeDetail() {
+      document.getElementById("detail-overlay").classList.remove("open");
+    }
+
+    document.getElementById("detail-overlay").addEventListener("click", (e) => {
+      if (e.target.id === "detail-overlay") closeDetail();
+    });
+
+    // ---------- Language selector ----------
+
+    function renderLangMenu() {
+      const langConfig = NMi18n.getLanguagesConfig();
+      const menu = document.getElementById("lang-menu");
+      const current = NMi18n.lang();
+
+      menu.innerHTML = (langConfig.available || []).map(l => `
+        <button class="lang-option ${l.code === current ? "active" : ""}" data-lang="${l.code}" type="button">
+          ${l.label}
+        </button>
+      `).join("");
+
+      document.getElementById("lang-button").textContent = `${current.toUpperCase()} ▾`;
+
+      menu.querySelectorAll(".lang-option").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const params = new URLSearchParams(window.location.search);
+          params.set("lang", btn.dataset.lang);
+          window.location.search = params.toString();
+        });
+      });
+    }
+
+    document.getElementById("lang-button").addEventListener("click", () => {
+      const menu = document.getElementById("lang-menu");
+      const button = document.getElementById("lang-button");
+      const willOpen = !menu.classList.contains("open");
+      menu.classList.toggle("open", willOpen);
+      button.setAttribute("aria-expanded", String(willOpen));
+    });
+
+    document.addEventListener("click", (e) => {
+      const wrap = document.querySelector(".lang-select");
+      if (wrap && !wrap.contains(e.target)) {
+        document.getElementById("lang-menu").classList.remove("open");
+      }
+    });
+
+    // ---------- Deep link (?system=) ----------
+
+    function applyDeepLink(systems) {
+      const targetId = NMData.getQueryParam("system");
+      if (!targetId) return;
+
+      const system = systems.find(s => s.id === targetId);
+      if (!system) return;
+
+      const card = document.querySelector(`.card[data-system-id="${CSS.escape(targetId)}"]`);
+      if (card) {
+        card.classList.add("deep-linked");
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      openDetail(system);
+    }
+
+    // ---------- Boot ----------
+
+    NMThemes.init();
+
+    Promise.all([
+      NMi18n.init(),
+      fetch("./config/wording.json").then(r => { if (!r.ok) throw new Error("config unavailable"); return r.json(); }),
+      NMData.load(),
+      NMData.loadPanels()
+    ])
+      .then(([lang, config, data, panelsConfig]) => {
+        CONFIG = config;
+        DATA = data;
+
+        const fullIds = (panelsConfig.panels && panelsConfig.panels.full) || (data.systems || []).map(s => s.id);
+        PANEL_SYSTEMS = NMData.getPanelSystems(data, fullIds);
+
+        renderHeader();
+        renderWall();
+        renderFooter();
+        renderLangMenu();
+        applyDeepLink(PANEL_SYSTEMS);
+      })
+      .catch(() => {
+        document.getElementById("wall").innerHTML =
+          '<div class="state-msg">AI Weather data currently unavailable.</div>';
+      });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+      });
+    }
+  </script>
+
+</body>
+</html>

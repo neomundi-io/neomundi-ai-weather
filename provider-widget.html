@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoMundi AI Weather — Provider Widget</title>
+
+  <link rel="stylesheet" href="./styles/themes.css">
+  <link rel="stylesheet" href="./styles/base.css">
+
+  <style>
+    html, body { width: 100%; height: 100%; }
+
+    .widget {
+      width: 100%;
+      height: 100%;
+      min-height: 90px;
+      box-sizing: border-box;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--nm-card-bg);
+      border: 1px solid var(--nm-border);
+      border-radius: 12px;
+    }
+
+    a.widget-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .provider {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .model {
+      font-size: 13px;
+      color: var(--nm-muted);
+      margin-left: 17px;
+      margin-top: 2px;
+    }
+
+    .mark {
+      align-self: flex-end;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--nm-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="widget" id="widget">
+    <div class="nm-state-msg">Loading…</div>
+  </div>
+
+  <script src="./scripts/themes.js"></script>
+  <script src="./scripts/i18n.js"></script>
+  <script src="./scripts/weather-data.js"></script>
+  <script>
+    NMThemes.init();
+
+    Promise.all([NMi18n.init(), NMData.load()])
+      .then(([lang, data]) => {
+        const system = NMData.resolveSystemFromQuery(data);
+        const widget = document.getElementById("widget");
+
+        if (!system) {
+          widget.innerHTML = `
+            <div>
+              <div class="provider">${NMi18n.t("ui.unknown_system")}</div>
+              <div class="model">${NMi18n.t("ui.unknown_system_hint")}</div>
+            </div>
+            <div class="mark">NeoMundi</div>
+          `;
+          return;
+        }
+
+        const deepLink = `./index.html?system=${encodeURIComponent(system.id)}&lang=${encodeURIComponent(lang)}`;
+
+        widget.outerHTML = `
+          <a class="widget-link" href="${deepLink}" target="_blank" rel="noopener" aria-label="${system.provider} — ${system.model}">
+            <div class="widget" id="widget">
+              <div class="row">
+                <span class="nm-dot nm-condition-${system.condition}" style="width:12px;height:12px;"></span>
+                <span class="provider">${system.provider || ""}</span>
+              </div>
+              <div class="model">${system.model || system.display_name || ""}</div>
+              <div class="mark">NeoMundi</div>
+            </div>
+          </a>
+        `;
+      })
+      .catch(() => {
+        document.getElementById("widget").innerHTML =
+          '<div class="nm-state-msg">AI Weather data unavailable.</div>';
+      });
+  </script>
+
+</body>
+</html>

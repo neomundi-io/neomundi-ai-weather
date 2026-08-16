@@ -1,0 +1,65 @@
+/*
+ * NeoMundi AI Weather — themes.
+ *
+ * Condition colors carry metrological meaning and must never vary between
+ * themes or partners: CLEAR = green, VARIABLE = orange, DISRUPTED = red,
+ * always. Only surface colors (background / text / border / muted /
+ * card background) change per theme.
+ */
+
+:root {
+  /* Condition colors — constant across every theme. */
+  --nm-clear: #2fc67d;
+  --nm-clear-ink: #1c8f56;
+  --nm-variable: #f28a36;
+  --nm-variable-ink: #b5601f;
+  --nm-disrupted: #ef4d4d;
+  --nm-disrupted-ink: #a3312c;
+
+  /* Default theme: light */
+  --nm-bg: #ffffff;
+  --nm-card-bg: #ffffff;
+  --nm-text: #172033;
+  --nm-muted: #6b7a89;
+  --nm-border: #dce5ec;
+}
+
+[data-theme="light"] {
+  --nm-bg: #ffffff;
+  --nm-card-bg: #ffffff;
+  --nm-text: #172033;
+  --nm-muted: #6b7a89;
+  --nm-border: #dce5ec;
+}
+
+[data-theme="dark"] {
+  --nm-bg: #10151b;
+  --nm-card-bg: #171d24;
+  --nm-text: #eef2f6;
+  --nm-muted: #8b97a3;
+  --nm-border: #2a333d;
+}
+
+[data-theme="slate"] {
+  --nm-bg: #eef2f5;
+  --nm-card-bg: #ffffff;
+  --nm-text: #1f2937;
+  --nm-muted: #64748b;
+  --nm-border: #d7dee5;
+}
+
+[data-theme="warm"] {
+  --nm-bg: #fbf7f0;
+  --nm-card-bg: #fffdf8;
+  --nm-text: #2b2418;
+  --nm-muted: #8a7d63;
+  --nm-border: #e8ddc9;
+}
+
+[data-theme="transparent"] {
+  --nm-bg: transparent;
+  --nm-card-bg: transparent;
+  --nm-text: #172033;
+  --nm-muted: #6b7a89;
+  --nm-border: rgba(23, 32, 51, 0.15);
+}

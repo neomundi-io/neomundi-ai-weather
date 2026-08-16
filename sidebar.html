@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Weather by ControlTowerAI</title>
+
+  <link rel="stylesheet" href="./styles/themes.css">
+  <link rel="stylesheet" href="./styles/base.css">
+
+  <style>
+    html, body { width: 100%; }
+
+    .sidebar {
+      width: 100%;
+      max-width: 320px;
+      min-width: 240px;
+      box-sizing: border-box;
+      padding: 16px;
+      background: var(--nm-card-bg);
+      border: 1px solid var(--nm-border);
+      border-radius: 14px;
+    }
+
+    .brand {
+      display: block;
+      text-decoration: none;
+      color: var(--nm-text);
+      margin-bottom: 14px;
+    }
+
+    .brand:hover { opacity: 0.85; }
+
+    .brand-line1 { font-size: 15px; font-weight: 700; line-height: 1.25; }
+    .brand-line2 { font-size: 12px; font-weight: 600; color: var(--nm-muted); }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 0;
+      text-decoration: none;
+      color: var(--nm-text);
+    }
+
+    .item:hover .label { text-decoration: underline; }
+
+    .item .dot { width: 9px; height: 9px; }
+
+    .label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .attribution {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid var(--nm-border);
+      font-size: 10px;
+      color: var(--nm-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar" id="sidebar">
+    <div class="nm-state-msg">Loading…</div>
+  </div>
+
+  <script src="./scripts/themes.js"></script>
+  <script src="./scripts/i18n.js"></script>
+  <script src="./scripts/weather-data.js"></script>
+  <script>
+    NMThemes.init();
+
+    Promise.all([
+      NMi18n.init(),
+      fetch("./config/wording.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
+      NMData.load(),
+      NMData.loadPanels()
+    ])
+      .then(([lang, config, data, panelsConfig]) => {
+        const coreIds = (panelsConfig.panels && panelsConfig.panels.core) || [];
+        const systems = NMData.getPanelSystems(data, coreIds);
+        const links = config.links || {};
+        const homeUrl = links.controltower_home || "#";
+        const fullUrl = links.full_weather_url || "./index.html";
+
+        const items = systems.map(system => {
+          const identity = NMData.getPublicIdentity(system);
+          const href = `${fullUrl}?system=${encodeURIComponent(system.id)}&lang=${encodeURIComponent(lang)}`;
+          return `
+            <a class="item" href="${href}" target="_blank" rel="noopener" aria-label="${identity.provider}">
+              <span class="nm-dot dot nm-condition-${system.condition}"></span>
+              <span class="label">${identity.provider}</span>
+            </a>
+          `;
+        }).join("");
+
+        document.getElementById("sidebar").innerHTML = `
+          <a class="brand" href="${homeUrl}" target="_blank" rel="noopener">
+            <div class="brand-line1">AI Weather</div>
+            <div class="brand-line2">by ControlTowerAI</div>
+          </a>
+          ${items}
+          <div class="attribution">${NMi18n.t("ui.neomundi_measurement")}</div>
+        `;
+      })
+      .catch(() => {
+        document.getElementById("sidebar").innerHTML =
+          '<div class="nm-state-msg">AI Weather data unavailable.</div>';
+      });
+  </script>
+
+</body>
+</html>

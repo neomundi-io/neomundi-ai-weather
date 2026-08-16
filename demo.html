@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#eaf4fb">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="AI Weather">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icons-192.png">
+
+  <title>NeoMundi AI Weather — Demo (standalone)</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --sky-top: #dceefa;
+      --sky-mid: #edf7fc;
+      --sky-bottom: #ffffff;
+      --card-bg: #ffffff;
+      --card-border: #d6e2eb;
+      --ink: #1c2733;
+      --ink-dim: #5b6b7a;
+      --ink-faint: #8b97a3;
+
+      --clear: #34c77b;
+      --clear-ink: #1c8f56;
+      --variable: #e0853a;
+      --variable-ink: #b5601f;
+      --disrupted: #e0473f;
+      --disrupted-ink: #a3312c;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 45%, var(--sky-bottom) 100%) no-repeat;
+      background-size: 100% 640px;
+      background-color: var(--sky-bottom);
+      color: var(--ink);
+      font-family: "Segoe UI", "Inter", Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: calc(24px + env(safe-area-inset-top)) 18px 64px;
+    }
+
+    /* ---------- Header ---------- */
+
+    header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      flex: none;
+      width: 40px;
+      height: 40px;
+    }
+
+    .logo img { width: 100%; height: 100%; display: block; }
+
+    .header-text { flex: 1; min-width: 220px; }
+
+    .header-brand {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #9aa7b2;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-size: 25px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 5px 0;
+      line-height: 1.28;
+    }
+
+    .header-date {
+      font-size: 13px;
+      color: var(--ink-dim);
+      margin-bottom: 8px;
+    }
+
+    .header-subtitle {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--ink-dim);
+      max-width: 520px;
+    }
+
+    .methodology-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #378ADD;
+      text-decoration: none;
+    }
+
+    .methodology-link:hover { text-decoration: underline; }
+
+    .demo-flag {
+      display: inline-block;
+      margin: 0 0 20px;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #7a5200;
+      background: #fdf0da;
+      border: 1px solid #f0dcb0;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* ---------- Wall ---------- */
+
+    .wall-heading {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin: 0 0 12px;
+    }
+
+    .wall {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 340px) {
+      .wall { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 560px) {
+      .wall { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 860px) {
+      .wall { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--ink-faint);
+      border-radius: 16px;
+      padding: 16px 14px;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(45, 75, 95, 0.06);
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+      width: 100%;
+    }
+
+    .card:hover, .card:focus-visible {
+      box-shadow: 0 6px 18px rgba(45, 75, 95, 0.09);
+      transform: translateY(-1px);
+    }
+
+    .card:focus-visible {
+      outline: 2px solid #378ADD;
+      outline-offset: 2px;
+    }
+
+    .card.is-clear     { border-left-color: var(--clear); }
+    .card.is-variable  { border-left-color: var(--variable); }
+    .card.is-disrupted { border-left-color: var(--disrupted); }
+
+    .card-condition {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 3px;
+    }
+
+    .card-condition .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex: none;
+    }
+
+    .is-clear .card-condition     { color: var(--clear-ink); }
+    .is-variable .card-condition  { color: var(--variable-ink); }
+    .is-disrupted .card-condition { color: var(--disrupted-ink); }
+
+    .is-clear .dot     { background: var(--clear); }
+    .is-variable .dot  { background: var(--variable); }
+    .is-disrupted .dot { background: var(--disrupted); }
+
+    .card-reading {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .card-provider {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 2px;
+    }
+
+    .card-model {
+      font-size: 12.5px;
+      color: var(--ink-dim);
+    }
+
+    /* ---------- Detail (modal / sheet) ---------- */
+
+    .detail-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(28, 39, 51, 0.35);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .detail-overlay.open { display: flex; }
+
+    .detail-sheet {
+      background: #ffffff;
+      border-radius: 20px;
+      max-width: 460px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 22px 22px calc(22px + env(safe-area-inset-bottom));
+      box-shadow: 0 12px 40px rgba(28, 39, 51, 0.18);
+    }
+
+    @media (max-width: 520px) {
+      .detail-overlay { padding: 0; align-items: flex-end; }
+      .detail-sheet {
+        max-width: none;
+        max-height: 92vh;
+        border-radius: 20px 20px 0 0;
+      }
+    }
+
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .detail-condition {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .detail-condition .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      flex: none;
+    }
+
+    .detail-close {
+      background: none;
+      border: 1px solid var(--card-border);
+      color: var(--ink-dim);
+      border-radius: 10px;
+      padding: 7px 13px;
+      font-size: 12.5px;
+      min-height: 36px;
+      cursor: pointer;
+    }
+
+    .detail-close:hover { border-color: var(--ink-faint); color: var(--ink); }
+
+    .detail-reading {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 4px 0 2px;
+    }
+
+    .detail-provider {
+      font-size: 13px;
+      color: var(--ink-dim);
+      margin-bottom: 18px;
+    }
+
+    .detail-score {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      background: #f6f9fc;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+    }
+
+    .detail-score-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .detail-score-value {
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .detail-block { margin-bottom: 18px; }
+
+    .detail-block-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 8px;
+    }
+
+    .regime-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 13px;
+      padding: 6px 0;
+      border-bottom: 1px solid #eef2f6;
+      color: var(--ink-dim);
+    }
+
+    .regime-row span:last-child { color: var(--ink); font-weight: 700; }
+
+    .detail-meta-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 5px 0;
+      color: var(--ink-dim);
+    }
+
+    .detail-meta-row span:last-child {
+      color: var(--ink);
+      font-family: "SFMono-Regular", Consolas, monospace;
+    }
+
+    /* ---------- Footer ---------- */
+
+    footer {
+      margin-top: 44px;
+      padding-top: 20px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .footer-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-dim);
+      margin-bottom: 12px;
+    }
+
+    .footer-note {
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--ink-faint);
+      max-width: 640px;
+      margin-bottom: 10px;
+    }
+
+    footer .methodology-link { margin-top: 0; margin-right: 16px; }
+
+    .footer-powered {
+      font-size: 11.5px;
+      color: var(--ink-faint);
+      margin-top: 6px;
+    }
+
+    .state-msg { color: var(--ink-dim); font-size: 14px; }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header>
+      <div class="logo"><img src="./assets/logo-controltower.png" alt="ControlTower logo"></div>
+      <div class="header-text">
+        <div class="header-brand" id="brand-label">NeoMundi</div>
+        <h1 id="title">AI Weather — Daily Observation Wall</h1>
+        <div class="header-date" id="header-date">—</div>
+        <div class="header-subtitle" id="subtitle"></div>
+        <a class="methodology-link" id="methodology-link" href="#" target="_blank" rel="noopener">Methodology →</a>
+      </div>
+    </header>
+
+    <div id="demo-flag-holder"></div>
+
+    <div class="wall-heading" id="wall-heading">Observed panel</div>
+
+    <div class="wall" id="wall">
+      <div class="state-msg">Loading panel…</div>
+    </div>
+
+    <footer>
+      <div class="footer-stats" id="footer-stats"></div>
+      <div class="footer-note" id="footer-note"></div>
+      <a class="methodology-link" id="footer-methodology-link" href="#" target="_blank" rel="noopener">Methodology →</a>
+      <div class="footer-powered" id="footer-powered"></div>
+    </footer>
+
+  </main>
+
+  <div class="detail-overlay" id="detail-overlay">
+    <div class="detail-sheet" id="detail-sheet"></div>
+  </div>
+
+  <script>
+    let WORDING = null;
+    let DATA = null;
+
+    function pct(v) {
+      if (v === null || v === undefined) return "—";
+      return Math.round(v * 100) + "%";
+    }
+
+    function fmtDate(iso) {
+      if (!iso) return "—";
+      try {
+        return new Date(iso).toLocaleString(undefined, {
+          month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"
+        });
+      } catch (e) { return iso; }
+    }
+
+    function fmtToday() {
+      return new Date().toLocaleDateString(undefined, {
+        weekday: "long", year: "numeric", month: "long", day: "numeric"
+      });
+    }
+
+    function conditionMeta(key) {
+      const c = (WORDING.conditions && WORDING.conditions[key]) || null;
+      return c || { label: key ? key.toUpperCase() : "UNKNOWN", reading: "—", detail_desc: "" };
+    }
+
+    function renderHeader() {
+      document.getElementById("title").textContent = WORDING.header.title;
+      document.getElementById("header-date").textContent = fmtToday();
+      document.getElementById("subtitle").textContent = WORDING.header.subtitle;
+      document.getElementById("brand-label").textContent = WORDING.brand.name;
+
+      const link = document.getElementById("methodology-link");
+      link.textContent = WORDING.header.methodology_label;
+      link.href = WORDING.header.methodology_url;
+
+      if (DATA.demo) {
+        document.getElementById("demo-flag-holder").innerHTML =
+          `<div class="demo-flag">Demonstration data — not a live measurement</div>`;
+      }
+
+      document.getElementById("wall-heading").textContent = WORDING.wall.heading;
+    }
+
+    function renderFooter() {
+      const summary = DATA.panel_summary || {};
+      const protocol = DATA.protocol || {};
+
+      document.getElementById("footer-stats").innerHTML = `
+        <span>${summary.systems_count ?? "—"} systems observed</span>
+        <span>${summary.total_observations ?? "—"} runtime observations</span>
+        <span>${protocol.id || "—"} ${protocol.version || ""} protocol</span>
+      `;
+
+      document.getElementById("footer-note").textContent = WORDING.footer.note;
+
+      const link = document.getElementById("footer-methodology-link");
+      link.textContent = WORDING.footer.methodology_label;
+      link.href = WORDING.footer.methodology_url;
+
+      document.getElementById("footer-powered").textContent = WORDING.brand.powered_by;
+    }
+
+    function renderCard(system) {
+      const meta = conditionMeta(system.condition);
+
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = `card is-${system.condition}`;
+      card.setAttribute("aria-label", `Open detail for ${system.display_name}`);
+
+      card.innerHTML = `
+        <div class="card-condition">
+          <span class="dot"></span>
+          ${meta.label}
+        </div>
+        <div class="card-reading">${meta.reading}</div>
+        <div class="card-provider">${system.provider || ""}</div>
+        <div class="card-model">${system.model || system.display_name}</div>
+      `;
+
+      card.addEventListener("click", () => openDetail(system));
+      return card;
+    }
+
+    function renderWall() {
+      const wall = document.getElementById("wall");
+      wall.innerHTML = "";
+      const systems = Array.isArray(DATA.systems) ? DATA.systems : [];
+
+      if (systems.length === 0) {
+        wall.innerHTML = '<div class="state-msg">No systems in the observed panel yet.</div>';
+        return;
+      }
+
+      systems.forEach(system => wall.appendChild(renderCard(system)));
+    }
+
+    function openDetail(system) {
+      const meta = conditionMeta(system.condition);
+      const d = system.detail || {};
+      const dist = d.regime_distribution || {};
+      const dLabels = WORDING.detail.regime_keys || {};
+
+      const distRows = Object.keys(dist).map(key => `
+        <div class="regime-row">
+          <span>${dLabels[key] || key}</span>
+          <span>${dist[key]}</span>
+        </div>
+      `).join("");
+
+      const prevMeta = d.previous_condition ? conditionMeta(d.previous_condition) : null;
+
+      document.getElementById("detail-sheet").innerHTML = `
+        <div class="detail-header">
+          <div class="detail-condition is-${system.condition}">
+            <span class="dot"></span>
+            ${meta.label}
+          </div>
+          <button class="detail-close" id="detail-close-btn">${WORDING.detail.close_label}</button>
+        </div>
+        <div class="detail-reading">${meta.reading}</div>
+        <div class="detail-provider">${system.provider || ""} · ${system.model || ""}</div>
+
+        <div class="detail-score">
+          <span class="detail-score-label">${WORDING.detail.score_label}</span>
+          <span class="detail-score-value">${system.score ?? "—"}</span>
+        </div>
+
+        <div class="detail-block">
+          <div class="detail-block-label">${WORDING.detail.regime_label}</div>
+          ${distRows || '<div class="state-msg">No distribution data.</div>'}
+        </div>
+
+        <div class="detail-block">
+          <div class="detail-block-label">${WORDING.detail.protocol_label}</div>
+          <div class="detail-meta-row"><span>Prompt set</span><span>${d.prompt_set || "—"}</span></div>
+          <div class="detail-meta-row"><span>Observations</span><span>${system.observations ?? "—"}</span></div>
+          <div class="detail-meta-row"><span>Fully scored</span><span>${system.fully_scored ?? "—"}</span></div>
+          <div class="detail-meta-row"><span>Coverage</span><span>${pct(system.coverage)}</span></div>
+          <div class="detail-meta-row"><span>Last observed</span><span>${fmtDate(system.last_observed_at)}</span></div>
+        </div>
+
+        <div class="detail-block" style="margin-bottom:0;">
+          <div class="detail-block-label">${WORDING.detail.previous_label}</div>
+          <div class="detail-meta-row">
+            <span>${prevMeta ? prevMeta.label : "No prior campaign data"}</span>
+          </div>
+        </div>
+      `;
+
+      document.getElementById("detail-close-btn").addEventListener("click", closeDetail);
+      document.getElementById("detail-overlay").classList.add("open");
+    }
+
+    function closeDetail() {
+      document.getElementById("detail-overlay").classList.remove("open");
+    }
+
+    document.getElementById("detail-overlay").addEventListener("click", (e) => {
+      if (e.target.id === "detail-overlay") closeDetail();
+    });
+
+    // Standalone demo build: data inlined so the page works when opened
+    // directly (file://) without a local server. The live site (index.html)
+    // fetches config/wording.json and weather.json instead.
+    WORDING = {"brand":{"name":"ControlTower","powered_by":"Powered by NeoMundi \u00b7 Runtime AI Metrology"},"header":{"title":"AI Weather \u2014 Daily Observation Wall","subtitle":"Daily observation of how a fixed panel of AI systems behaves under the same questions.","methodology_label":"Methodology \u2192","methodology_url":"https://neomundi.org/methodology"},"conditions":{"clear":{"label":"CLEAR","reading":"STABLE","detail_desc":"Observed behavioral conditions are stable."},"variable":{"label":"VARIABLE","reading":"FLUCTUATING","detail_desc":"Observable behavioral variation is present."},"disrupted":{"label":"DISRUPTED","reading":"HIGH VARIABILITY","detail_desc":"Significant behavioral disruption has been detected."}},"wall":{"heading":"Observed panel"},"detail":{"score_label":"Synthetic score","regime_label":"Regime distribution","protocol_label":"Protocol","previous_label":"Previous observation","close_label":"Close","regime_keys":{"normal":"Normal","variation":"Variation","factual_alert":"Factual alert","incomplete":"Incomplete"}},"footer":{"note":"Each panel shows observed runtime behavioral conditions under the same fixed sentinel protocol. The displayed signal is an observation, not a performance or quality score.","methodology_label":"Methodology \u2192","methodology_url":"https://neomundi.org/methodology"}}
+;
+    DATA = {"demo":true,"generated_at":"2026-08-16T08:00:00+02:00","protocol":{"id":"WEATHER-SENTINEL","version":"0.1","prompt_set":["sentinel-v1"],"iterations":30,"temperature":null},"global_condition":"variable","panel_summary":{"systems_count":12,"total_observations":360,"last_measurement_at":"2026-08-16T08:00:00+02:00"},"systems":[{"id":"system-a","display_name":"System A","provider":"Provider A","model":"system-a-placeholder","condition":"clear","score":90,"observations":30,"fully_scored":30,"coverage":1.0,"metrics":{"normal":0.9,"variation":0.07,"factual_alert":0.02,"incomplete":0.01},"last_observed_at":"2026-08-16T08:00:00+02:00","detail":{"regime_distribution":{"normal":27,"variation":2,"factual_alert":1,"incomplete":0},"prompt_set":"sentinel-v1","previous_condition":"clear"}},{"id":"system-b","display_name":"System B","provider":"Provider B","model":"system-b-placeholder","condition":"variable","score":74,"observations":30,"fully_scored":29,"coverage":0.97,"metrics":{"normal":0.72,"variation":0.2,"factual_alert":0.05,"incomplete":0.03},"last_observed_at":"2026-08-16T08:00:00+02:00","detail":{"regime_distribution":{"normal":21,"variation":6,"factual_alert":1,"incomplete":1},"prompt_set":"sentinel-v1","previous_condition":"clear"}},{"id":"system-c","display_name":"System C","provider":"Provider C","model":"system-c-placeholder","condition":"clear","score":92,"observations":30,"fully_scored":30,"coverage":1.0,"metrics":{"normal":0.93,"variation":0.05,"factual_alert":0.01,"incomplete":0.01},"last_observed_at":"2026-08-16T08:00:00+02:00","detail":{"regime_distribution":{"normal":28,"variation":1,"factual_alert":1,"incomplete":0},"prompt_set":"sentinel-v1","previous_condition":"clear"}},{"id":"system-d","display_name":"System D","provider":"Provider D","model":"system-d-placeholder","condition":"disrupted","score":42,"observations":30,"fully_scored":26,"coverage":0.87,"metrics":{"normal":0.55,"variation":0.27,"factual_alert":0.12,"incomplete":0.06},"last_observed_at":"2026-08-16T08:00:00+02:00","detail":{"regime_distribution":{"normal":16,"variation":8,"factual_alert":4,"incomplete":2},"prompt_set":"sentinel-v1","previous_condition":"variable"}},{"id":"system-e","display_name":"System E","provider":"Provider E","model":"system-e-placeholder","condition":"variable","score":78,"observations":30,"fully_scored":30,"coverage":1.0,"metrics":{"normal":0.78,"variation":0.15,"factual_alert":0.04,"incomplete":0.03},"last_observed_at":"2026-08-16T08:00:00+02:00","detail":{"regime_distribution":{"normal":23,"variation":5,"factual_alert":1,"incomplete":1},"prompt_set":"sentinel-v1","previous_condition":"variable"}},{"id":"system-f","display_name":"System F","provider":"Provider F","model":"system-f-placeholder","condition":"clear","score":91,"observations":30,"fully_scored":30,"coverage":1.0,"metrics":{"normal":0.91,"variation":0.06,"factual_alert":0.02,"incomplete":0.01},"last_observed_at":"2026-08-16T08:00:00+02:00","detail":{"regime_distribution":{"normal":27,"variation":2,"factual_alert":1,"incomplete":0},"prompt_set":"sentinel-v1","previous_condition":"clear"}},{"id":"system-g","display_name":"System G","provider":"Provider G","model":"system-g-placeholder","condition":"disrupted","score":35,"observations":30,"fully_scored":22,"coverage":0.73,"metrics":{"normal":0.38,"variation":0.29,"factual_alert":0.21,"incomplete":0.12},"last_observed_at":"2026-08-16T08:00:00+02:00","detail":{"regime_distribution":{"normal":11,"variation":9,"factual_alert":6,"incomplete":4},"prompt_set":"sentinel-v1","previous_condition":"disrupted"}},{"id":"system-h","display_name":"System H","provider":"Provider H","model":"system-h-placeholder","condition":"clear","score":89,"observations":30,"fully_scored":30,"coverage":1.0,"metrics":{"normal":0.89,"variation":0.08,"factual_alert":0.02,"incomplete":0.01},"last_observed_at":"2026-08-16T08:00:00+02:00","detail":{"regime_distribution":{"normal":27,"variation":2,"factual_alert":1,"incomplete":0},"prompt_set":"sentinel-v1","previous_condition":"clear"}},{"id":"system-i","display_name":"System I","provider":"Provider I","model":"system-i-placeholder","condition":"clear","score":87,"observations":30,"fully_scored":30,"coverage":1.0,"metrics":{"normal":0.87,"variation":0.09,"factual_alert":0.03,"incomplete":0.01},"last_observed_at":"2026-08-16T08:00:00+02:00","detail":{"regime_distribution":{"normal":26,"variation":3,"factual_alert":1,"incomplete":0},"prompt_set":"sentinel-v1","previous_condition":"clear"}},{"id":"system-j","display_name":"System J","provider":"Provider J","model":"system-j-placeholder","condition":"variable","score":70,"observations":30,"fully_scored":28,"coverage":0.93,"metrics":{"normal":0.68,"variation":0.22,"factual_alert":0.06,"incomplete":0.04},"last_observed_at":"2026-08-16T08:00:00+02:00","detail":{"regime_distribution":{"normal":20,"variation":6,"factual_alert":2,"incomplete":2},"prompt_set":"sentinel-v1","previous_condition":"clear"}},{"id":"system-k","display_name":"System K","provider":"Provider K","model":"system-k-placeholder","condition":"clear","score":93,"observations":30,"fully_scored":30,"coverage":1.0,"metrics":{"normal":0.94,"variation":0.04,"factual_alert":0.01,"incomplete":0.01},"last_observed_at":"2026-08-16T08:00:00+02:00","detail":{"regime_distribution":{"normal":28,"variation":1,"factual_alert":1,"incomplete":0},"prompt_set":"sentinel-v1","previous_condition":"clear"}},{"id":"system-l","display_name":"System L","provider":"Provider L","model":"system-l-placeholder","condition":"disrupted","score":48,"observations":30,"fully_scored":24,"coverage":0.8,"metrics":{"normal":0.45,"variation":0.28,"factual_alert":0.17,"incomplete":0.1},"last_observed_at":"2026-08-16T08:00:00+02:00","detail":{"regime_distribution":{"normal":13,"variation":9,"factual_alert":5,"incomplete":3},"prompt_set":"sentinel-v1","previous_condition":"variable"}}]}
+;
+    renderHeader();
+    renderWall();
+    renderFooter();
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+      });
+    }
+  </script>
+
+</body>
+</html>
