@@ -10,9 +10,17 @@ lightweight embeddable widgets — all reading the same data.
 which one is "best", or judge whether individual responses are true or
 false. Every view shows an *observed condition*, not a competitive score.
 
-For micro-widgets specifically: **color is the signal. Provider and model
-are the identity. Everything else belongs to the detail** (the full wall,
-one click away).
+For micro-widgets specifically: **color is the signal. The model is the
+identity.** Everything else belongs to the detail (the full wall, one
+click away).
+
+> **2026-08-17 policy change, documented here for traceability:** the
+> public identity shown across every format is now the **model's public
+> brand name** (e.g. "ChatGPT", "Claude", "Gemini"), not the provider
+> company name (e.g. "OpenAI", "Anthropic", "Google"). This reverses the
+> previous desidentification design, where the Core Panel, Topbar and
+> Sidebar showed the provider and hid the model. See
+> [Public identity](#public-identity) below for the current rule.
 
 ---
 
@@ -40,7 +48,7 @@ links` — never hardcoded per component:
 ```
 
 `topbar.html` and `sidebar.html` link their brand mark to
-`controltower_home`; each provider links to `full_weather_url` deep-linked
+`controltower_home`; each system links to `full_weather_url` deep-linked
 to that system. Changing `controltowerai.io` later means editing one
 value in this one file.
 
@@ -53,8 +61,8 @@ value in this one file.
 ├── index.html              Full Observation Wall (12 systems, click for detail)
 ├── core-panel.html          Core Panel — 8 major global providers (compact, controltowerai.io)
 ├── widget.html              Compact global-condition widget
-├── topbar.html               Horizontal Topbar — Core 8 providers only
-├── sidebar.html               Vertical Sidebar — Core 8 providers only
+├── topbar.html               Horizontal Topbar — Core 8 systems only
+├── sidebar.html               Vertical Sidebar — Core 8 systems only
 ├── provider-widget.html        Single-system widget (generic, ?system=)
 ├── embed-demo.html              Integration Gallery — every format, theme, language
 ├── demo.html                     Standalone snapshot (data inlined, works via file://)
@@ -65,7 +73,9 @@ value in this one file.
 │       └── README.md                 where to drop partner logos (e.g. Infomaniak)
 │
 ├── config/
-│   ├── panel.yml            observed panel definition (source for weather.json)
+│   ├── panel.yml            observed panel definition (source for weather.json) —
+│   │                          also carries model_display (public brand name) and
+│   │                          runner_provider (API-key routing, see AI_WEATHER_RUNNER)
 │   ├── panels.json           panel VIEW definitions: which system ids belong to
 │   │                           "core" (8 providers) vs "full" (12 systems) — one
 │   │                           dataset, multiple public views, no duplication
@@ -80,29 +90,34 @@ value in this one file.
 │   └── base.css            shared styles for topbar/sidebar/provider-widget
 │
 ├── scripts/
-│   ├── weather-data.js     shared data access (fetch weather.json once, resolve ?system=)
-│   ├── i18n.js               language loader, detection, fallback
-│   ├── themes.js              theme loader (?theme= → data-theme attribute)
-│   └── launcher/README.md      placeholder docs for the future daily measurement launcher
+│   └── weather-data.js     shared data access (fetch weather.json once, resolve
+│                              ?system=, expose the public-identity boundary — see
+│                              scripts/i18n.js and scripts/themes.js for the other two)
 │
 ├── data/
 │   ├── current.json      mirrors weather.json
-│   └── history/             dated snapshots
+│   └── history/             dated snapshots (data/history/<YYYY-MM-DD>.json)
 │
-├── weather.json         current measurement — the single source of truth
+├── weather.json                    current measurement — the single source of truth
+│                                     (generated, never edited by hand)
+├── aggregate_and_publish_weather.ps1  reads AI_WEATHER_RUNNER's daily results,
+│                                        writes weather.json / data/current.json /
+│                                        data/history, commits and pushes — see
+│                                        QUICKSTART.md and METHODOLOGY_THRESHOLDS.md
 ├── manifest.json / service-worker.js / icons-*.png    PWA (installable wall)
 └── README.md            this file
 ```
-
-This is a minimal migration from the previous single-page structure —
-nothing that already worked was reorganized without reason.
 
 ---
 
 ## Architecture
 
 ```text
-              measurement pipeline (future launcher)
+        AI_WEATHER_RUNNER (daily measurement, PowerShell)
+                            │
+                            ▼
+        aggregate_and_publish_weather.ps1
+        (applies METHODOLOGY_THRESHOLDS.md, reads config/panel.yml)
                             │
                             ▼
                      weather.json
@@ -114,21 +129,25 @@ nothing that already worked was reorganized without reason.
    index.html   topbar.html    sidebar.html   provider-widget.html
    Full Wall    Horizontal      Vertical         Single system
                    Bar           Panel
+                            │
+                    core-panel.html
+                     Core Panel (8)
 
-  All four read weather.json through scripts/weather-data.js.
-  All four translate through scripts/i18n.js + i18n/*.json.
-  All four theme through scripts/themes.js + styles/themes.css.
+  All formats read weather.json through scripts/weather-data.js.
+  All formats translate through scripts/i18n.js + i18n/*.json.
+  All formats theme through scripts/themes.js + styles/themes.css.
 ```
 
 **Separation of responsibilities**, strictly:
 
 | Layer | Lives in | Changes when |
 |---|---|---|
-| Measurement data | `weather.json` | daily, by the launcher |
-| Interpretation vocabulary | `weather.json` condition ids (`clear`/`variable`/`disrupted`) | rarely, a scientific/threshold decision |
+| Measurement data | `weather.json` | daily, by `aggregate_and_publish_weather.ps1` |
+| Interpretation vocabulary | `weather.json` condition ids (`clear`/`variable`/`disrupted`) | rarely, a scientific/threshold decision — see `METHODOLOGY_THRESHOLDS.md` |
+| Public identity (model brand names) | `config/panel.yml` → `model_display` | a system's model changes, or a new system is added |
 | Translations | `i18n/*.json` | a new language is added, or wording is refined |
 | Themes | `styles/themes.css` | a new partner surface is needed |
-| Presentation format | `index.html` / `topbar.html` / `sidebar.html` / `provider-widget.html` | a new integration format is needed |
+| Presentation format | `index.html` / `core-panel.html` / `topbar.html` / `sidebar.html` / `provider-widget.html` | a new integration format is needed |
 
 None of these layers can break another. `weather.json` never contains
 rendered text — only stable ids like `"condition": "clear"`.
@@ -140,88 +159,87 @@ rendered text — only stable ids like `"condition": "clear"`.
 ### Full Observation Wall — `index.html`
 
 The complete page. 12 systems, minimal cards (condition + simple reading
-+ provider + model, no score), click for full metrology detail. Includes
-the language selector. Installable as a PWA.
++ model, no score), click for full metrology detail. Includes the
+language selector. Installable as a PWA.
 
 ### Global Widget — `widget.html`
 
 Compact card showing only the aggregate global condition — for a simple
-"how's AI behaving today" badge.
+"how's AI behaving today" badge. No per-system identity at all.
 
 ```html
-<iframe src="widget.html?theme=light&lang=en" width="380" height="220" loading="lazy" title="NeoMundi AI Weather"></iframe>
+<iframe src="https://neomundi-io.github.io/neomundi-ai-weather/widget.html?theme=light&lang=en" width="380" height="220" loading="lazy" title="NeoMundi AI Weather"></iframe>
 ```
 
 ### Horizontal Topbar — `topbar.html`
 
-Shows exactly the **Core Panel's 8 providers** — the same
+Shows exactly the **Core Panel's 8 systems** — the same
 `config/panels.json → panels.core` list used by `core-panel.html`. Not a
-separate provider list: change the 8 providers in one place and the
-topbar updates automatically.
+separate list: change the 8 systems in one place and the topbar updates
+automatically.
 
 Maximum signal, minimum interface: `AI Weather · ControlTowerAI` followed
-immediately by 8 color dots + provider names. No score, no CLEAR/VARIABLE
-label text, no other wording. One line on desktop; scrolls horizontally
-on narrow viewports without breaking layout. Target height 64–80px.
+immediately by 8 color dots + **model names**. No score, no
+CLEAR/VARIABLE label text, no other wording. One line on desktop; scrolls
+horizontally on narrow viewports without breaking layout. Target height
+64–80px.
 
 ```html
-<iframe src="topbar.html?theme=light&lang=en" width="100%" height="80" loading="lazy" title="AI Weather by ControlTowerAI"></iframe>
+<iframe src="https://neomundi-io.github.io/neomundi-ai-weather/topbar.html?theme=light&lang=en" width="100%" height="80" loading="lazy" title="AI Weather by ControlTowerAI"></iframe>
 ```
 
 ### Vertical Sidebar — `sidebar.html`
 
-Same Core 8 providers, stacked vertically. Just a two-line brand header
-(`AI Weather` / `by ControlTowerAI`), the 8 providers, and a discreet
+Same Core 8 systems, stacked vertically. Just a two-line brand header
+(`AI Weather` / `by ControlTowerAI`), the 8 systems, and a discreet
 `NeoMundi measurement` attribution at the bottom — no subtitle, no
 methodology link, no metrics. Target width 280–320px, flexible height.
 
 ```html
-<iframe src="sidebar.html?theme=light&lang=en" width="300" height="520" loading="lazy" title="AI Weather by ControlTowerAI"></iframe>
+<iframe src="https://neomundi-io.github.io/neomundi-ai-weather/sidebar.html?theme=light&lang=en" width="300" height="520" loading="lazy" title="AI Weather by ControlTowerAI"></iframe>
 ```
 
 **Both read the same panel definition as the Core Panel** — see
-[Core Panel](#core-panel--core-panelhtml) above. Editing
+[Core Panel](#core-panel--core-panelhtml) below. Editing
 `config/panels.json → panels.core` updates the Core Panel, the topbar,
 and the sidebar simultaneously; nothing is duplicated in their HTML/JS.
 
-By default both show **provider only**, never an internal model
-identifier — same `NMData.getPublicIdentity()` boundary described in the
-desidentification section below. A system's `model_public`, if one is
-explicitly set, could be surfaced later without any change to the
-desidentification boundary itself.
+Both show the **model's public brand name only**, never the provider
+company name — see [Public identity](#public-identity) below.
 
-### Individual Provider Widget — `provider-widget.html`
+### Individual System Widget — `provider-widget.html`
 
-One generic component serving all 12 systems — no per-provider HTML
-files. Selects the system from the URL:
+One generic component serving all 12 systems — no per-system HTML files.
+Selects the system from the URL:
 
 ```text
-provider-widget.html?system=infomaniak-euria
-provider-widget.html?provider=Infomaniak
+provider-widget.html?system=openai
+provider-widget.html?provider=OpenAI
 ```
 
 `system` (a stable id) is preferred over `provider` (a free-text name),
 because a provider may eventually have more than one observed model —
-`system=infomaniak-euria` stays unambiguous where `provider=Infomaniak`
-would not. `provider` is kept as a convenience fallback.
+`system=infomaniak` stays unambiguous where `provider=Infomaniak` would
+not. `provider` is kept as a convenience fallback.
 
-Shows color, provider, model — nothing else. Clicking it opens the full
-wall, deep-linked to that system (`index.html?system=infomaniak-euria`),
-where the card is highlighted and its detail opens automatically.
+Shows color and the model's brand name — nothing else (the provider name
+is kept in the link's `aria-label` for accessibility, never shown
+visually). Clicking it opens the full wall, deep-linked to that system
+(`index.html?system=openai`), where the card is highlighted and its
+detail opens automatically.
 
 ```html
-<iframe src="provider-widget.html?system=infomaniak-euria&theme=light&lang=en" width="300" height="120" loading="lazy" title="NeoMundi AI Weather — Infomaniak Euria"></iframe>
+<iframe src="https://neomundi-io.github.io/neomundi-ai-weather/provider-widget.html?system=openai&theme=light&lang=en" width="300" height="120" loading="lazy" title="NeoMundi AI Weather — OpenAI"></iframe>
 ```
 
 ### Core Panel — `core-panel.html`
 
 A more compact public showcase than the Full Wall, built for
-**controltowerai.io**: 8 major global AI providers instead of 12
-systems.
+**controltowerai.io**: 8 major global systems instead of 12.
 
 ```text
 FULL AI WEATHER WALL          CONTROLTOWER CORE PANEL
-12 systems                    8 major providers
+12 systems                    8 major systems
 → complete observation        → compact global readability
 ```
 
@@ -232,7 +250,7 @@ Both views read the **same** `weather.json` — nothing is duplicated.
 {
   "panels": {
     "core": ["openai", "anthropic", "google", "xai", "mistral", "deepseek", "qwen", "moonshot"],
-    "full": ["openai", "infomaniak-euria", "anthropic", "google", "xai", "mistral", "deepseek", "qwen", "moonshot", "system-j", "system-k", "system-l"]
+    "full": ["openai", "anthropic", "google", "xai", "mistral", "deepseek", "qwen", "moonshot", "cohere", "meta", "infomaniak", "perplexity"]
   }
 }
 ```
@@ -241,47 +259,60 @@ Both views read the **same** `weather.json` — nothing is duplicated.
 list through `NMData.getPanelSystems(data, panelIds)` — one function,
 two configurations, zero hardcoded system lists in either page's HTML.
 
-**Changing the 8 core providers later:** edit the `core` array in
-`config/panels.json` (the ids must already exist in `weather.json`). No
-HTML or JS change required in `core-panel.html`, `index.html`, or
-anywhere else.
+**Changing the 8 core systems later:** edit the `core` array in
+`config/panels.json` (the ids must already exist in `weather.json`, i.e.
+in `config/panel.yml`). No HTML or JS change required in
+`core-panel.html`, `index.html`, or anywhere else.
+
+**IDs must stay in sync between `config/panel.yml` and
+`config/panels.json`.** If a system id changes in one, it must change in
+the other, or that system silently disappears from every widget that
+reads `panels.json` (no error is thrown — `getPanelSystems()` skips
+unresolved ids on purpose, so a stale config never crashes a page, but it
+also never warns you it's stale).
 
 ```html
-<iframe src="core-panel.html?theme=light&lang=en" width="100%" height="520" loading="lazy" title="NeoMundi AI Weather — Core Provider Panel"></iframe>
+<iframe src="https://neomundi-io.github.io/neomundi-ai-weather/core-panel.html?theme=light&lang=en" width="100%" height="520" loading="lazy" title="NeoMundi AI Weather — Core Provider Panel"></iframe>
 ```
 
-#### Desidentification
+#### Public identity
 
-The Core Panel shows provider + condition color only — never a specific
-internal model identifier. This is enforced at the **data layer**, not
-by hiding a field with CSS:
+Every public-facing widget shows the **model's public brand name**,
+never the provider company name. This is centralized at the **data
+layer**, not per-component markup:
 
 ```json
 {
   "id": "openai",
   "provider": "OpenAI",
   "provider_display": "OpenAI",
-  "model": "openai-model-placeholder",
+  "model": "gpt-4o-2024-11-20",
+  "model_display": "ChatGPT",
   "model_public": null,
   "public_label": "SYSTEM-01"
 }
 ```
 
 `scripts/weather-data.js` exposes `NMData.getPublicIdentity(system)`,
-which only ever reads `provider_display`/`provider` and
-`model_public`/`public_label` — it never touches `system.model`. A
-public-facing page that uses this helper structurally cannot leak an
-internal field by accident, even if one is added to `weather.json` later.
-Systems with `model_public` set (e.g. `infomaniak-euria`) show that value
-instead of a `public_label` — desidentification is per-system, not
-global.
+which returns `{ provider, label }` — `label` is what every widget
+renders as the visible identity, resolved as `model_display` (preferred)
+→ `model_public` → `public_label` → the raw `model` id, in that order.
+`provider` is still returned for `aria-label` / accessibility text and
+for internal/admin surfaces, but **no public widget renders `provider` as
+visible text** — a change to `getPublicIdentity()` is the only place this
+rule needs to be enforced.
 
-The Full Wall, `provider-widget.html`, `topbar.html`, and `sidebar.html`
-are unaffected — they still read `system.model` directly, as before.
+`config/panel.yml → model_display` is the field to edit for a system's
+public brand name (e.g. "ChatGPT", "Claude", "NVIDIA" for the Infomaniak-
+hosted Nemotron model). No dashboard code changes needed.
 
+The Full Wall (`index.html`) and `provider-widget.html` follow the same
+rule as the Core Panel, Topbar and Sidebar — there is now a single public
+identity policy across every format, not two different ones.
 
+### Integration Gallery — `embed-demo.html`
 
-Live demonstration of every format above, every theme, and three
+Live demonstration of every format above, every theme, and multiple
 languages side by side, plus copyable iframe snippets. This is also
 where a future "Embed Documentation" page can grow from.
 
@@ -336,10 +367,22 @@ embedding page.
 
 | Parameter | Used by | Values |
 |---|---|---|
-| `system` | provider-widget, deep links | stable system id, e.g. `infomaniak-euria` |
+| `system` | provider-widget, deep links | stable system id, e.g. `openai`, `infomaniak` |
 | `provider` | provider-widget (fallback) | provider name, case-insensitive |
 | `theme` | every widget + wall | `light` · `dark` · `slate` · `warm` · `transparent` |
 | `lang` | every widget + wall | `en` · `fr` · `de` · `es` · `it` |
+
+---
+
+## Embedding — absolute URLs required
+
+Every iframe `src` in this document uses the full GitHub Pages URL
+(`https://neomundi-io.github.io/neomundi-ai-weather/...`), not a relative
+path. A relative path (`widget.html?...`) only works when the embedding
+page is served from the same origin as this repo — everywhere else
+(WordPress, Notion, a partner's own site), it resolves against *their*
+domain and fails silently or loads nothing. Always use the absolute URL
+when embedding outside this repo's own pages.
 
 ---
 
@@ -352,17 +395,18 @@ python3 -m http.server 8000
 ```text
 http://localhost:8000/index.html
 http://localhost:8000/core-panel.html
-http://localhost:8000/provider-widget.html?system=infomaniak-euria
-http://localhost:8000/provider-widget.html?system=infomaniak-euria&theme=dark
-http://localhost:8000/provider-widget.html?system=infomaniak-euria&theme=transparent&lang=fr
+http://localhost:8000/provider-widget.html?system=openai
+http://localhost:8000/provider-widget.html?system=openai&theme=dark
+http://localhost:8000/provider-widget.html?system=openai&theme=transparent&lang=fr
 http://localhost:8000/topbar.html
 http://localhost:8000/sidebar.html
 http://localhost:8000/embed-demo.html
 ```
 
-All data shown (`weather.json`, `data/current.json`,
-`data/history/2026-08-16.json`) is **demonstration data**, marked
-`"demo": true`. It must not be interpreted as a live measurement.
+Before the first real measurement is published, `weather.json` is
+**demonstration data**, marked `"demo": true` — not to be interpreted as
+a live measurement. `aggregate_and_publish_weather.ps1` sets `"demo":
+false` on every real run.
 
 ---
 
@@ -379,12 +423,23 @@ a partner produces or validates NeoMundi's measurements.
 
 ## Panel configuration
 
-The observed panel (12 systems) is declared in `config/panel.yml`, not in
-code. Edit it and regenerate `weather.json` to change the panel — no
-dashboard code changes needed. Current entries are still placeholders
-except `infomaniak-euria`, used as the running example throughout this
-kit; replace the rest with real provider/model identifiers before going
-live.
+The observed panel (12 systems) is declared in `config/panel.yml` — the
+single editable source. Fields: `id`, `provider`, `model_id`,
+`model_display` (public brand name, see
+[Public identity](#public-identity)), `runner_provider` (the API-key
+routing value used by `AI_WEATHER_RUNNER\run_weather_*.ps1` — not always
+identical to `provider`, e.g. the `meta` system is queried through
+Together AI's API), `display_name` (internal admin label), `public_label`
+(legacy desidentified label, superseded by `model_display` but kept for
+fallback), `enabled`.
+
+Editing this file and re-running `aggregate_and_publish_weather.ps1`
+regenerates `weather.json` — no dashboard code changes needed. **If a
+system id changes here, update `config/panels.json` too** (see
+[Core Panel](#core-panel--core-panelhtml)).
+
+All 12 entries carry real, currently-observed model identifiers as of
+2026-08-17 — no placeholders remain.
 
 ---
 
@@ -394,25 +449,48 @@ AI Weather is a runtime measurement signal. It does not rank AI models,
 determine whether individual outputs are true or false, replace
 domain-specific evaluation, or act as a governance decision authority.
 
+Score and condition thresholds (`clear` / `variable` / `disrupted`) are a
+documented, versioned policy decision — see `METHODOLOGY_THRESHOLDS.md`.
+Never change a threshold directly in `aggregate_and_publish_weather.ps1`
+without updating that document first.
+
 ---
 
-## Planned automation
+## Daily measurement pipeline
 
-A launcher (see `scripts/launcher/README.md`) will read `config/panel.yml`,
-query each enabled system with the sentinel prompt set, send observations
-through NeoMundi measurement, aggregate, update `weather.json` /
-`data/current.json`, append a snapshot to `data/history/<date>.json`, and
-let GitHub Pages refresh automatically. Everything in this kit already
-reads through that same `weather.json` — connecting the launcher requires
-no change to any widget.
+The daily pipeline is in place and documented step by step in
+`QUICKSTART.md`. Summary:
+
+```text
+AI_WEATHER_RUNNER\launch_ai_weather.ps1
+        (12 systems, results\<date>\*.jsonl)
+                    │
+                    ▼
+    aggregate_and_publish_weather.ps1
+   (applies METHODOLOGY_THRESHOLDS.md, config\panel.yml)
+                    │
+                    ▼
+  weather.json / data/current.json / data/history/<date>.json
+              committed and pushed
+                    │
+                    ▼
+       GitHub Pages refreshes automatically
+```
+
+A run that produces incomplete or suspicious data (fewer than 12 systems,
+several systems on carried-forward stale data, malformed output) is
+**not published automatically** — `aggregate_and_publish_weather.ps1`
+writes `weather.json` locally for inspection but skips the commit/push,
+and prints why. See `QUICKSTART.md` for the recovery procedure.
 
 ---
 
 ## GitHub Pages
 
 Fully static. No backend, no build step, no framework. Every file above
-is served as-is. Nothing is committed automatically by this kit — review
-and commit manually.
+is served as-is. Commits from `aggregate_and_publish_weather.ps1` are the
+only automated commits in this repo — review its output if anything
+looks wrong on the public wall.
 
 ---
 
