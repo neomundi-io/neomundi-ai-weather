@@ -103,9 +103,9 @@
           const identity = NMData.getPublicIdentity(system);
           const href = `${fullUrl}?system=${encodeURIComponent(system.id)}&lang=${encodeURIComponent(lang)}`;
           return `
-            <a class="item" href="${href}" target="_blank" rel="noopener" aria-label="${identity.provider}">
+            <a class="item" href="${href}" target="_blank" rel="noopener" aria-label="${identity.label} (${identity.provider})">
               <span class="nm-dot dot nm-condition-${system.condition}"></span>
-              <span class="label">${identity.provider}</span>
+              <span class="label">${identity.label}</span>
             </a>
           `;
         }).join("");
