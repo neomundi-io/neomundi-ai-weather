@@ -92,14 +92,18 @@
 
         const deepLink = `./index.html?system=${encodeURIComponent(system.id)}&lang=${encodeURIComponent(lang)}`;
 
+        const identity = NMData.getPublicIdentity(system);
+
+        // NOTE 2026-08-17: the ".provider" CSS class below now holds the
+        // MODEL's display name (identity.label), not the provider name —
+        // kept as-is to avoid a CSS rename; see weather-data.js getPublicIdentity().
         widget.outerHTML = `
-          <a class="widget-link" href="${deepLink}" target="_blank" rel="noopener" aria-label="${system.provider} — ${system.model}">
+          <a class="widget-link" href="${deepLink}" target="_blank" rel="noopener" aria-label="${identity.label} (${identity.provider})">
             <div class="widget" id="widget">
               <div class="row">
                 <span class="nm-dot nm-condition-${system.condition}" style="width:12px;height:12px;"></span>
-                <span class="provider">${system.provider || ""}</span>
+                <span class="provider">${identity.label || ""}</span>
               </div>
-              <div class="model">${system.model || system.display_name || ""}</div>
               <div class="mark">NeoMundi</div>
             </div>
           </a>
