@@ -70,20 +70,31 @@
   }
 
   /**
-   * The desidentification boundary. Public-facing widgets that must not
-   * leak an internal model identifier call this instead of reading
-   * system.model directly. Only explicitly public-labeled fields
-   * (model_public, public_label) are ever returned — if neither is set,
-   * label is null and the caller must not fall back to system.model.
+   * The public identity boundary. Every widget calls this instead of
+   * reading system.provider / system.model directly, so a single change
+   * here updates identity display everywhere.
+   *
+   * 2026-08-17 — policy change: the model is the public identity, not
+   * the provider. `label` is the model's public brand name
+   * (model_display, e.g. "ChatGPT"), never the provider name. Falls back
+   * to model_public / public_label / the raw model id, in that order,
+   * only if model_display is missing from weather.json (older data).
+   * `provider` is still returned for aria-label / accessibility text and
+   * for internal/admin surfaces, but callers must not render it as the
+   * visible label on public widgets.
    */
   function getPublicIdentity(system) {
     const provider = (system && (system.provider_display || system.provider)) || "";
     let label = null;
     if (system) {
-      if (system.model_public !== undefined && system.model_public !== null) {
+      if (system.model_display) {
+        label = system.model_display;
+      } else if (system.model_public !== undefined && system.model_public !== null) {
         label = system.model_public;
       } else if (system.public_label) {
         label = system.public_label;
+      } else if (system.model) {
+        label = system.model;
       }
     }
     return { provider, label };
