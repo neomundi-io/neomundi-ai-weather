@@ -264,18 +264,14 @@
       margin-bottom: 14px;
     }
 
-    .card-provider {
-      font-size: 10.5px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 2px;
-    }
-
+    /* Renders the model's public identity (identity.label). Kept the
+       bolder of the two former rules (was .card-provider) since the
+       model is now the card's primary identity, not a secondary detail. */
     .card-model {
-      font-size: 12.5px;
-      color: var(--ink-dim);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--ink);
     }
 
     /* ---------- Detail (modal / sheet) ---------- */
@@ -623,11 +619,13 @@
     function renderCard(system) {
       const meta = conditionMeta(system.condition);
 
+      const identity = NMData.getPublicIdentity(system);
+
       const card = document.createElement("button");
       card.type = "button";
       card.className = `card is-${system.condition}`;
       card.dataset.systemId = system.id;
-      card.setAttribute("aria-label", `Open detail for ${system.display_name}`);
+      card.setAttribute("aria-label", `Open detail for ${identity.label}`);
 
       card.innerHTML = `
         <div class="card-condition">
@@ -635,8 +633,7 @@
           ${meta.label}
         </div>
         <div class="card-reading">${meta.reading}</div>
-        <div class="card-provider">${system.provider || ""}</div>
-        <div class="card-model">${system.model || system.display_name}</div>
+        <div class="card-model">${identity.label}</div>
       `;
 
       card.addEventListener("click", () => openDetail(system));
@@ -669,6 +666,7 @@
       `).join("");
 
       const prevMeta = d.previous_condition ? conditionMeta(d.previous_condition) : null;
+      const identity = NMData.getPublicIdentity(system);
 
       document.getElementById("detail-sheet").innerHTML = `
         <div class="detail-header">
@@ -679,7 +677,7 @@
           <button class="detail-close" id="detail-close-btn">${NMi18n.t("ui.close")}</button>
         </div>
         <div class="detail-reading">${meta.reading}</div>
-        <div class="detail-provider">${system.provider || ""} · ${system.model || ""}</div>
+        <div class="detail-provider">${identity.label}</div>
 
         <div class="detail-score">
           <span class="detail-score-label">${NMi18n.t("ui.score_label")}</span>
