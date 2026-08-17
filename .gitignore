@@ -195,6 +195,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+<<<<<<< Updated upstream
 # ============================================================
 # NeoMundi AI Weather — PRIVATE LOCAL RUNNER
 # ============================================================
@@ -221,3 +222,7 @@ secrets.weather.xml
 # PowerShell temporary / debug files
 *.ps1.bak
 *.ps1.tmp
+=======
+# AI Weather private runner
+/AI_WEATHER_RUNNER/
+>>>>>>> Stashed changes
