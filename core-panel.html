@@ -141,12 +141,6 @@
       text-transform: uppercase;
     }
 
-    .card-public-label {
-      font-size: 11.5px;
-      color: var(--ink-faint);
-      font-family: "SFMono-Regular", Consolas, monospace;
-    }
-
     /* ---------- Footer ---------- */
 
     footer {
@@ -256,14 +250,20 @@
             const card = document.createElement("a");
             card.className = `card is-${system.condition}`;
             card.href = `./index.html?system=${encodeURIComponent(system.id)}&lang=${encodeURIComponent(lang2)}`;
-            card.setAttribute("aria-label", identity.provider);
+            card.setAttribute("aria-label", `${identity.label} (${identity.provider})`);
 
+            // NOTE 2026-08-17: ".card-provider" class kept as-is (no CSS
+            // rename) but now holds the MODEL's display name — the model
+            // is the public identity, not the provider. See
+            // weather-data.js getPublicIdentity(). The former
+            // ".card-public-label" (desidentified sub-label) line is
+            // dropped: there is nothing left to desidentify to once the
+            // model itself is the thing being shown.
             card.innerHTML = `
               <div class="card-top">
                 <span class="dot nm-condition-${system.condition}"></span>
-                <span class="card-provider">${identity.provider}</span>
+                <span class="card-provider">${identity.label}</span>
               </div>
-              ${identity.label ? `<div class="card-public-label">${identity.label}</div>` : ""}
             `;
 
             grid.appendChild(card);
