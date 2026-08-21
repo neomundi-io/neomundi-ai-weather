@@ -239,89 +239,44 @@
       border-left-color: #e74c3c;
     }
 
-    .card-condition {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 12.5px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      margin-bottom: 3px;
-    }
-
-    .card-condition .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      flex: none;
-    }
-
-    .is-clear .card-condition {
-      color: #169c52;
-    }
-
-    .is-watch .card-condition {
-      color: #9a7600;
-    }
-
-    .is-unsettled .card-condition {
-      color: #b85f00;
-    }
-
-    .is-alert .card-condition {
-      color: #c0392b;
-    }
-
-    .is-clear .dot {
-      background: #2ecc71;
-    }
-
-    .is-watch .dot {
-      background: #f1c40f;
-    }
-
-    .is-unsettled .dot {
-      background: #f39c12;
-    }
-
-    .is-alert .dot {
-      background: #e74c3c;
-    }
-
     .card.deep-linked {
       outline: 2px solid #378ADD;
       outline-offset: 2px;
     }
 
-    .card-reading {
-      font-size: 15px;
+    /* Wall v0.3 — the state is communicated by color only.
+       No duplicated CLEAR/WATCH/STABLE text on the 12-card wall. */
+    .card-model {
+      font-size: 13.5px;
       font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
       color: var(--ink);
+      overflow-wrap: anywhere;
       margin-bottom: 14px;
     }
 
     .card-judgment {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+      flex-wrap: wrap;
       font-size: 12px;
-      font-weight: 600;
+      line-height: 1.4;
       color: var(--ink-dim);
-      margin-bottom: 12px;
-      line-height: 1.35;
     }
 
     .card-judgment-level {
       font-family: "SFMono-Regular", Consolas, monospace;
-      font-weight: 700;
+      font-size: 12.5px;
+      font-weight: 800;
       color: var(--ink);
+      letter-spacing: 0.02em;
     }
 
-    /* Renders the model's public identity (identity.label). Kept the
-       bolder of the two former rules (was .card-provider) since the
-       model is now the card's primary identity, not a secondary detail. */
-    .card-model {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      color: var(--ink);
+    .card-judgment-meaning {
+      font-weight: 500;
+      color: var(--ink-dim);
     }
 
     /* ---------- Detail (modal / sheet) ---------- */
@@ -706,7 +661,6 @@
     }
 
     function renderCard(system) {
-      const meta = conditionMeta(system.condition);
       const judgment = judgmentMeta(system.judgment_demand);
       const identity = NMData.getPublicIdentity(system);
 
@@ -714,19 +668,19 @@
       card.type = "button";
       card.className = `card is-${system.condition}`;
       card.dataset.systemId = system.id;
-      card.setAttribute("aria-label", `Open detail for ${identity.label}`);
+
+      const conditionLabel = conditionMeta(system.condition).label;
+      card.setAttribute(
+        "aria-label",
+        `${identity.label} — ${judgment.level} — ${judgment.meaning} — ${conditionLabel}`
+      );
 
       card.innerHTML = `
-        <div class="card-condition">
-          <span class="dot"></span>
-          ${meta.label}
-        </div>
-        <div class="card-reading">${meta.reading}</div>
+        <div class="card-model">${identity.label}</div>
         <div class="card-judgment">
           <span class="card-judgment-level">${judgment.level}</span>
-          ${judgment.meaning !== "—" ? ` — ${judgment.meaning}` : ""}
+          <span class="card-judgment-meaning">${judgment.meaning}</span>
         </div>
-        <div class="card-model">${identity.label}</div>
       `;
 
       card.addEventListener("click", () => openDetail(system));
