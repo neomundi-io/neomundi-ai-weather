@@ -16,9 +16,12 @@
 
   /**
    * Fetch a JSON resource and fail explicitly on HTTP errors.
+   *
+   * Options can be passed through to fetch(), allowing canonical live
+   * resources such as weather.json to bypass browser/service-worker cache.
    */
-  function fetchJson(path) {
-    return fetch(path).then((response) => {
+  function fetchJson(path, options = {}) {
+    return fetch(path, options).then((response) => {
       if (!response.ok) {
         throw new Error("Failed to load " + path);
       }
@@ -30,14 +33,23 @@
   /**
    * Load the canonical current AI Weather dataset.
    *
-   * The result is cached for the lifetime of the page.
+   * The result is cached only for the lifetime of the current page.
+   * On every page load, weather.json is requested fresh.
+   *
+   * The timestamp query parameter prevents stale URL-level cache reuse.
+   * cache: "no-store" asks the browser not to reuse a cached response.
    */
   async function load() {
     if (cached) {
       return cached;
     }
 
-    cached = await fetchJson("./weather.json");
+    const livePath = "./weather.json?v=" + Date.now();
+
+    cached = await fetchJson(livePath, {
+      cache: "no-store"
+    });
+
     return cached;
   }
 
@@ -90,6 +102,9 @@
 
   /**
    * Load public panel configuration.
+   *
+   * Panel configuration changes less frequently than weather.json,
+   * so normal browser caching is acceptable here.
    */
   async function loadPanels() {
     return fetchJson("./config/panels.json");
@@ -116,7 +131,7 @@
    *
    * POLICY v0.2
    *
-   * The real observed model identifier is now the primary public identity.
+   * The real observed model identifier is the primary public identity.
    *
    * Example:
    *
@@ -173,10 +188,20 @@
   }
 
   /**
+   * Clear the in-page weather cache.
+   *
+   * Mainly useful for future live-refresh controls or debugging.
+   */
+  function clearCache() {
+    cached = null;
+  }
+
+  /**
    * Public API exposed to the rest of the frontend.
    */
   window.NMData = {
     load,
+    clearCache,
     resolveSystemFromQuery,
     getQueryParam,
     loadPanels,
