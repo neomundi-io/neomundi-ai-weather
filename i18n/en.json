@@ -7,10 +7,24 @@
   "interpretation.variable": "FLUCTUATING",
   "interpretation.disrupted": "HIGH VARIABILITY",
 
+  "judgment.j1": "Standard judgment",
+  "judgment.j2": "Increased attention",
+  "judgment.j3": "Heightened attention",
+  "judgment.j4": "Critical attention",
+
+  "ui.ai_weather_title": "AI Weather",
+  "ui.question_of_day": "Question of the day",
+  "ui.install_widget_free": "Install this widget on your website for free →",
+
+  "ui.powered_by_neomundi_runtime": "Powered by NeoMundi · Real-time AI metrology",
+
+  "ui.controltower_detail": "ControlTower measures the behavioral reliability of your AI systems in real time to help you stay in control and make better decisions.",
+
   "ui.title": "AI Weather — Daily Observation Wall",
   "ui.subtitle": "Daily observation of how a fixed panel of AI systems behaves under the same questions.",
   "ui.methodology": "Methodology →",
   "ui.systems_observed": "systems observed",
+  "ui.observations_per_system": "observations per system",
   "ui.runtime_observations": "runtime observations",
   "ui.protocol_suffix": "protocol",
   "ui.footer_note": "Each panel shows observed runtime behavioral conditions under the same fixed sentinel protocol. The displayed signal is an observation, not a performance or quality score.",
