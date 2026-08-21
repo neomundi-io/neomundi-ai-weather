@@ -1,86 +1,192 @@
 /**
  * NeoMundi AI Weather — i18n loader.
  *
- * Data model rule: measurement data (weather.json) never contains
- * translated text, only stable semantic ids ("clear", "variable",
- * "disrupted"). Translation happens only here, at the presentation layer.
+ * Presentation rule:
+ * - Measurement data stays language-neutral.
+ * - Translation happens only in the presentation layer.
+ * - English is always the fallback language.
+ * - Text direction is controlled by config/languages.json.
  *
- * Usage (any page, after including this script):
+ * Adding a new language:
+ * 1. create i18n/<code>.json
+ * 2. add it to config/languages.json
+ * 3. optionally set "direction": "rtl"
  *
- *   NMi18n.init().then(() => {
- *     document.title = NMi18n.t("ui.title");
- *   });
- *
- * Adding a new language: create i18n/<code>.json with the same keys as
- * i18n/en.json, then add it to config/languages.json. No JS/HTML changes
- * required elsewhere.
+ * No other JS or HTML change should be required.
  */
 (function (window) {
   "use strict";
 
   const BASE_LANG = "en";
+
   let currentLang = BASE_LANG;
+  let currentDirection = "ltr";
+
   let baseStrings = {};
   let activeStrings = {};
   let languagesConfig = null;
 
   function assetPath(rel) {
-    // Every page in this repo lives at the repository root, so relative
-    // paths resolve the same way everywhere. Kept as a function in case a
-    // future page needs a different base.
     return rel;
+  }
+
+  function normalizeLang(value) {
+    if (!value) return null;
+
+    return String(value)
+      .trim()
+      .toLowerCase()
+      .replace("_", "-")
+      .split("-")[0];
   }
 
   function detectLang() {
     const params = new URLSearchParams(window.location.search);
-    const fromQuery = params.get("lang");
-    if (fromQuery) return fromQuery.toLowerCase().slice(0, 2);
 
-    const nav = (navigator.language || navigator.userLanguage || BASE_LANG);
-    return nav.toLowerCase().slice(0, 2);
+    const fromQuery = normalizeLang(params.get("lang"));
+    if (fromQuery) return fromQuery;
+
+    const nav =
+      navigator.language ||
+      navigator.userLanguage ||
+      BASE_LANG;
+
+    return normalizeLang(nav) || BASE_LANG;
   }
 
   function fetchJson(path) {
     return fetch(path).then(r => {
-      if (!r.ok) throw new Error("Failed to load " + path);
+      if (!r.ok) {
+        throw new Error("Failed to load " + path);
+      }
+
       return r.json();
     });
   }
 
   async function loadLanguagesConfig() {
-    if (languagesConfig) return languagesConfig;
-    try {
-      languagesConfig = await fetchJson(assetPath("./config/languages.json"));
-    } catch (e) {
-      languagesConfig = { default: BASE_LANG, available: [{ code: BASE_LANG, label: "English" }] };
+    if (languagesConfig) {
+      return languagesConfig;
     }
+
+    try {
+      languagesConfig = await fetchJson(
+        assetPath("./config/languages.json")
+      );
+    } catch (e) {
+      languagesConfig = {
+        default: BASE_LANG,
+        available: [
+          {
+            code: BASE_LANG,
+            label: "English",
+            direction: "ltr"
+          }
+        ]
+      };
+    }
+
     return languagesConfig;
+  }
+
+  function getLanguageMeta(code) {
+    if (!languagesConfig) return null;
+
+    const normalized = normalizeLang(code);
+
+    return (languagesConfig.available || []).find(
+      item => normalizeLang(item.code) === normalized
+    ) || null;
+  }
+
+  function applyDocumentLanguage(lang) {
+    const meta = getLanguageMeta(lang);
+
+    const direction =
+      meta && meta.direction === "rtl"
+        ? "rtl"
+        : "ltr";
+
+    currentDirection = direction;
+
+    document.documentElement.setAttribute("lang", lang);
+    document.documentElement.setAttribute("dir", direction);
+
+    document.body?.setAttribute("dir", direction);
   }
 
   async function init(preferredLang) {
     const config = await loadLanguagesConfig();
-    const available = (config.available || []).map(l => l.code);
 
-    let lang = (preferredLang || detectLang() || config.default || BASE_LANG).toLowerCase();
-    if (available.indexOf(lang) === -1) lang = config.default || BASE_LANG;
+    const available = (config.available || [])
+      .map(item => normalizeLang(item.code))
+      .filter(Boolean);
 
-    // Always load English as the fallback layer for missing keys.
-    baseStrings = await fetchJson(assetPath(`./i18n/${BASE_LANG}.json`)).catch(() => ({}));
+    const defaultLang =
+      normalizeLang(config.default) ||
+      BASE_LANG;
+
+    let lang =
+      normalizeLang(preferredLang) ||
+      detectLang() ||
+      defaultLang;
+
+    if (available.indexOf(lang) === -1) {
+      lang = available.indexOf(defaultLang) !== -1
+        ? defaultLang
+        : BASE_LANG;
+    }
+
+    /*
+     * English is always loaded first as the canonical fallback layer.
+     */
+    baseStrings = await fetchJson(
+      assetPath(`./i18n/${BASE_LANG}.json`)
+    ).catch(() => ({}));
 
     if (lang === BASE_LANG) {
       activeStrings = baseStrings;
     } else {
-      const langStrings = await fetchJson(assetPath(`./i18n/${lang}.json`)).catch(() => ({}));
-      activeStrings = Object.assign({}, baseStrings, langStrings);
+      const langStrings = await fetchJson(
+        assetPath(`./i18n/${lang}.json`)
+      ).catch(() => ({}));
+
+      /*
+       * Any missing translation automatically falls back to English.
+       */
+      activeStrings = Object.assign(
+        {},
+        baseStrings,
+        langStrings
+      );
     }
 
     currentLang = lang;
+
+    applyDocumentLanguage(currentLang);
+
     return currentLang;
   }
 
   function t(key) {
-    if (Object.prototype.hasOwnProperty.call(activeStrings, key)) return activeStrings[key];
-    if (Object.prototype.hasOwnProperty.call(baseStrings, key)) return baseStrings[key];
+    if (
+      Object.prototype.hasOwnProperty.call(
+        activeStrings,
+        key
+      )
+    ) {
+      return activeStrings[key];
+    }
+
+    if (
+      Object.prototype.hasOwnProperty.call(
+        baseStrings,
+        key
+      )
+    ) {
+      return baseStrings[key];
+    }
+
     return key;
   }
 
@@ -88,9 +194,25 @@
     return currentLang;
   }
 
+  function direction() {
+    return currentDirection;
+  }
+
+  function isRTL() {
+    return currentDirection === "rtl";
+  }
+
   function getLanguagesConfig() {
     return languagesConfig;
   }
 
-  window.NMi18n = { init, t, lang, getLanguagesConfig };
+  window.NMi18n = {
+    init,
+    t,
+    lang,
+    direction,
+    isRTL,
+    getLanguagesConfig
+  };
+
 })(window);
