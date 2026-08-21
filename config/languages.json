@@ -7,8 +7,12 @@
     { "code": "es", "label": "Español" },
     { "code": "it", "label": "Italiano" },
     { "code": "pt", "label": "Português" },
+    { "code": "nl", "label": "Nederlands" },
     { "code": "zh", "label": "简体中文" },
     { "code": "ja", "label": "日本語" },
+    { "code": "ko", "label": "한국어" },
+    { "code": "hi", "label": "हिन्दी" },
+    { "code": "ar", "label": "العربية", "direction": "rtl" },
     { "code": "ru", "label": "Русский" }
   ]
 }
