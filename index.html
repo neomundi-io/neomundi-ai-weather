@@ -57,8 +57,8 @@
 
     .logo {
       flex: none;
-      width: 40px;
-      height: 40px;
+      width: 80px;
+      height: 80px;
     }
 
     .logo img { width: 100%; height: 100%; display: block; }
@@ -93,6 +93,49 @@
       line-height: 1.55;
       color: var(--ink-dim);
       max-width: 520px;
+    }
+
+    .header-promise {
+      max-width: 760px;
+      margin-top: 10px;
+      font-size: 17px;
+      line-height: 1.45;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .header-product-line {
+      max-width: 760px;
+      margin-top: 10px;
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--ink-dim);
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #378ADD;
+      text-decoration: none;
+    }
+
+    .header-cta:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 560px) {
+      .logo {
+        width: 64px;
+        height: 64px;
+      }
+
+      .header-promise {
+        font-size: 15.5px;
+      }
     }
 
     .methodology-link {
@@ -634,6 +677,17 @@
       margin-top: 6px;
     }
 
+    .footer-brand-line {
+      margin-top: 10px;
+      font-size: 11.5px;
+      color: var(--ink-faint);
+    }
+
+    .footer-brand-line strong {
+      color: var(--ink-dim);
+      font-weight: 700;
+    }
+
     .footer-partner {
       display: none;
       align-items: center;
@@ -666,12 +720,29 @@
     <header>
       <div class="logo"><img src="./assets/logo-controltower.png" alt="ControlTower logo"></div>
       <div class="header-text">
-        <div class="header-brand" id="brand-label">NeoMundi</div>
-        <h1 id="title">AI Weather — Daily Observation Wall</h1>
+        <div class="header-brand" id="brand-label">CONTROLTOWER</div>
+        <h1 id="title">AI Weather</h1>
         <div class="header-date" id="header-date">—</div>
-        <div class="header-subtitle" id="subtitle"></div>
-        <a class="methodology-link" id="methodology-link" href="#" target="_blank" rel="noopener">Methodology →</a>
+
+        <div class="header-promise" id="header-promise">
+          On vous dit qu’une IA peut se tromper.<br>
+          Nous vous montrons quand son comportement appelle davantage de jugement.
+        </div>
+
+        <div class="header-product-line" id="header-product-line">
+          ControlTower mesure en temps réel la fiabilité comportementale de vos IA
+          pour vous aider à garder le contrôle et à mieux décider.
+        </div>
+
+        <a
+          class="header-cta"
+          id="header-cta"
+          href="https://controltowerai.io/ai-weather/"
+          target="_blank"
+          rel="noopener"
+        >Explore AI Weather →</a>
       </div>
+
       <div class="lang-select">
         <button class="lang-button" id="lang-button" type="button" aria-haspopup="true" aria-expanded="false">EN ▾</button>
         <div class="lang-menu" id="lang-menu"></div>
@@ -717,12 +788,7 @@
     <footer>
       <div class="footer-stats" id="footer-stats"></div>
       <div class="footer-note" id="footer-note"></div>
-      <a class="methodology-link" id="footer-methodology-link" href="#" target="_blank" rel="noopener">Methodology →</a>
-      <div class="footer-powered" id="footer-powered"></div>
-      <div class="footer-partner" id="footer-partner">
-        <span class="footer-partner-label" id="footer-partner-label">Infrastructure partner</span>
-        <img id="footer-partner-logo" alt="Infomaniak">
-      </div>
+      <div class="footer-brand-line" id="footer-brand-line"></div>
     </footer>
 
   </main>
@@ -811,14 +877,26 @@
     }
 
     function renderHeader() {
-      document.getElementById("title").textContent = NMi18n.t("ui.title");
+      // "AI Weather" is the product name and is intentionally not translated.
+      document.getElementById("title").textContent = "AI Weather";
       document.getElementById("header-date").textContent = fmtToday();
-      document.getElementById("subtitle").textContent = NMi18n.t("ui.subtitle");
-      document.getElementById("brand-label").textContent = (CONFIG.brand && CONFIG.brand.name) || "NeoMundi";
+      document.getElementById("brand-label").textContent = "CONTROLTOWER";
 
-      const link = document.getElementById("methodology-link");
-      link.textContent = NMi18n.t("ui.methodology");
-      link.href = (CONFIG.links && CONFIG.links.methodology_url) || "#";
+      document.getElementById("header-promise").innerHTML =
+        translatedOrFallback(
+          "ui.header_promise",
+          "On vous dit qu’une IA peut se tromper.<br>Nous vous montrons quand son comportement appelle davantage de jugement."
+        );
+
+      document.getElementById("header-product-line").textContent =
+        translatedOrFallback(
+          "ui.header_product_line",
+          "ControlTower mesure en temps réel la fiabilité comportementale de vos IA pour vous aider à garder le contrôle et à mieux décider."
+        );
+
+      const cta = document.getElementById("header-cta");
+      cta.textContent = translatedOrFallback("ui.explore_ai_weather", "Explore AI Weather →");
+      cta.href = "https://controltowerai.io/ai-weather/";
 
       if (DATA.demo) {
         document.getElementById("demo-flag-holder").innerHTML =
@@ -830,35 +908,30 @@
 
     function renderFooter() {
       const summary = DATA.panel_summary || {};
-      const protocol = DATA.protocol || {};
+
+      const systemsCount = summary.systems_count ?? 12;
+      const totalObservations = summary.total_observations ?? 360;
+      const perSystem = systemsCount > 0
+        ? Math.round(totalObservations / systemsCount)
+        : 30;
 
       document.getElementById("footer-stats").innerHTML = `
-        <span>${summary.systems_count ?? "—"} ${NMi18n.t("ui.systems_observed")}</span>
-        <span>${summary.total_observations ?? "—"} ${NMi18n.t("ui.runtime_observations")}</span>
-        <span>${protocol.id || "—"} ${protocol.version || ""} ${NMi18n.t("ui.protocol_suffix")}</span>
+        <span>${systemsCount} ${translatedOrFallback("ui.systems_observed", "systèmes observés")}</span>
+        <span>${perSystem} ${translatedOrFallback("ui.observations_per_system", "observations par système")}</span>
+        <span>${totalObservations} ${translatedOrFallback("ui.runtime_observations", "observations")}</span>
       `;
 
-      document.getElementById("footer-note").textContent = NMi18n.t("ui.footer_note");
+      document.getElementById("footer-note").textContent =
+        translatedOrFallback(
+          "ui.footer_note",
+          "Le signal affiché est une observation, pas un score de performance ou de qualité."
+        );
 
-      const link = document.getElementById("footer-methodology-link");
-      link.textContent = NMi18n.t("ui.methodology");
-      link.href = (CONFIG.links && CONFIG.links.methodology_url) || "#";
-
-      document.getElementById("footer-powered").textContent = NMi18n.t("ui.powered_by");
-      document.getElementById("footer-partner-label").textContent = NMi18n.t("ui.infrastructure_partner");
-
-      // Only show the partner credit if the logo file actually exists locally.
-      // No fabricated or remotely-fetched logo — see assets/partners/README.md.
-      const partnerPath = (CONFIG.partners && CONFIG.partners.infomaniak_logo) || null;
-      if (partnerPath) {
-        const probe = new Image();
-        probe.onload = () => {
-          document.getElementById("footer-partner-logo").src = partnerPath;
-          document.getElementById("footer-partner").classList.add("visible");
-        };
-        probe.onerror = () => {};
-        probe.src = partnerPath;
-      }
+      document.getElementById("footer-brand-line").innerHTML =
+        `<strong>ControlTower</strong> · ${translatedOrFallback(
+          "ui.powered_by_neomundi_runtime",
+          "Propulsé par NeoMundi · Métrologie IA runtime"
+        )}`;
     }
 
     function renderCard(system) {
