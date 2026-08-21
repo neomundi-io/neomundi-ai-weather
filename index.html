@@ -769,18 +769,6 @@
       border-top: 1px solid var(--card-border);
     }
 
-    .footer-promise {
-      max-width: 760px;
-      font-size: 15px;
-      line-height: 1.5;
-      color: var(--ink);
-      margin-bottom: 10px;
-    }
-
-    .footer-promise strong {
-      font-weight: 800;
-    }
-
     .footer-cta {
       display: inline-flex;
       align-items: center;
@@ -793,16 +781,6 @@
 
     .footer-cta:hover {
       text-decoration: underline;
-    }
-
-    .footer-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px 14px;
-      margin-bottom: 8px;
-      font-size: 10.5px;
-      font-weight: 600;
-      color: var(--ink-faint);
     }
 
     .footer-brand-line {
@@ -887,11 +865,6 @@
     </div>
 
     <footer>
-      <div class="footer-promise" id="footer-promise">
-        <strong>On vous dit qu’une IA peut se tromper.</strong><br>
-        <strong>La météo des IA vous montre quand son comportement appelle davantage de jugement.</strong>
-      </div>
-
       <a
         class="footer-cta"
         id="footer-cta"
@@ -900,7 +873,6 @@
         rel="noopener"
       >Installer gratuitement ce widget sur votre site →</a>
 
-      <div class="footer-stats" id="footer-stats"></div>
       <div class="footer-brand-line" id="footer-brand-line"></div>
     </footer>
 
@@ -1004,35 +976,12 @@
     }
 
     function renderFooter() {
-      const summary = DATA.panel_summary || {};
-
-      const systemsCount = summary.systems_count ?? 12;
-      const totalObservations = summary.total_observations ?? 360;
-      const perSystem = systemsCount > 0
-        ? Math.round(totalObservations / systemsCount)
-        : 30;
-
-      document.getElementById("footer-promise").innerHTML =
-        `<strong>${translatedOrFallback(
-          "ui.footer_promise_1",
-          "On vous dit qu’une IA peut se tromper."
-        )}</strong><br><strong>${translatedOrFallback(
-          "ui.footer_promise_2",
-          "La météo des IA vous montre quand son comportement appelle davantage de jugement."
-        )}</strong>`;
-
       const cta = document.getElementById("footer-cta");
       cta.textContent = translatedOrFallback(
         "ui.install_widget_free",
         "Installer gratuitement ce widget sur votre site →"
       );
       cta.href = "https://controltowerai.io/ai-weather/";
-
-      document.getElementById("footer-stats").innerHTML = `
-        <span>${systemsCount} ${translatedOrFallback("ui.systems_observed", "systèmes observés")}</span>
-        <span>${perSystem} ${translatedOrFallback("ui.observations_per_system", "observations par système")}</span>
-        <span>${totalObservations} ${translatedOrFallback("ui.runtime_observations", "observations runtime")}</span>
-      `;
 
       document.getElementById("footer-brand-line").innerHTML =
         `<strong>ControlTower</strong> · ${translatedOrFallback(
