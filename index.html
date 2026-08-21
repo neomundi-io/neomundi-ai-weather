@@ -182,6 +182,105 @@
       margin: 0 0 12px;
     }
 
+    .wall-intro {
+      margin-bottom: 16px;
+    }
+
+    .wall-heading-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 12px;
+    }
+
+    .wall-heading-row .wall-heading {
+      margin: 2px 0 0;
+      flex: none;
+    }
+
+    .wall-legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 7px 14px;
+      max-width: 720px;
+      font-size: 11.5px;
+      line-height: 1.35;
+      color: var(--ink-dim);
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex: 0 0 10px;
+      border: 1.5px solid #ffffff;
+      box-shadow: 0 0 0 1px rgba(28, 39, 51, 0.10);
+    }
+
+    .legend-green  { background: #22c55e; }
+    .legend-yellow { background: #facc15; }
+    .legend-orange { background: #f97316; }
+    .legend-red    { background: #ef4444; }
+
+    .daily-question {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 14px 18px 15px;
+      box-shadow: 0 4px 16px rgba(45, 75, 95, 0.05);
+    }
+
+    .daily-question::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: #378ADD;
+    }
+
+    .daily-question-label {
+      margin-bottom: 6px;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .daily-question-text {
+      max-width: 980px;
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    @media (max-width: 760px) {
+      .wall-heading-row {
+        display: block;
+      }
+
+      .wall-heading-row .wall-heading {
+        margin-bottom: 10px;
+      }
+
+      .wall-legend {
+        justify-content: flex-start;
+        max-width: none;
+      }
+    }
+
     .wall {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -581,7 +680,35 @@
 
     <div id="demo-flag-holder"></div>
 
-    <div class="wall-heading" id="wall-heading">Observed panel</div>
+    <section class="wall-intro" aria-labelledby="wall-heading">
+      <div class="wall-heading-row">
+        <div class="wall-heading" id="wall-heading">Observed panel</div>
+
+        <div class="wall-legend" id="wall-legend" aria-label="AI Weather legend">
+          <div class="legend-item">
+            <span class="legend-dot legend-green" aria-hidden="true"></span>
+            <span id="legend-green-label">Standard judgment</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot legend-yellow" aria-hidden="true"></span>
+            <span id="legend-yellow-label">Increased attention</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot legend-orange" aria-hidden="true"></span>
+            <span id="legend-orange-label">Heightened attention</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot legend-red" aria-hidden="true"></span>
+            <span id="legend-red-label">Critical attention</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="daily-question" id="daily-question-block">
+        <div class="daily-question-label" id="daily-question-label">Question of the day</div>
+        <div class="daily-question-text" id="daily-question-text">—</div>
+      </div>
+    </section>
 
     <div class="wall" id="wall">
       <div class="state-msg">Loading panel…</div>
@@ -654,6 +781,33 @@
           ? (judgment.meaning || "—")
           : translated
       };
+    }
+
+    function translatedOrFallback(key, fallback) {
+      const value = NMi18n.t(key);
+      return value === key ? fallback : value;
+    }
+
+    function renderWallIntro() {
+      const daily = (DATA && DATA.probe_contract && DATA.probe_contract.daily) || {};
+      const question = daily.question || "—";
+
+      document.getElementById("daily-question-label").textContent =
+        translatedOrFallback("ui.question_of_day", "Question of the day");
+
+      document.getElementById("daily-question-text").textContent = question;
+
+      document.getElementById("legend-green-label").textContent =
+        translatedOrFallback("judgment.j1", "Standard judgment");
+
+      document.getElementById("legend-yellow-label").textContent =
+        translatedOrFallback("judgment.j2", "Increased attention");
+
+      document.getElementById("legend-orange-label").textContent =
+        translatedOrFallback("judgment.j3", "Heightened attention");
+
+      document.getElementById("legend-red-label").textContent =
+        translatedOrFallback("judgment.j4", "Critical attention");
     }
 
     function renderHeader() {
@@ -897,6 +1051,7 @@
         PANEL_SYSTEMS = NMData.getPanelSystems(data, fullIds);
 
         renderHeader();
+        renderWallIntro();
         renderWall();
         renderFooter();
         renderLangMenu();
