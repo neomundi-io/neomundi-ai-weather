@@ -59,9 +59,19 @@
       flex: none;
       width: 72px;
       height: 72px;
+      padding: 8px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid rgba(23, 32, 51, 0.12);
+      box-shadow: 0 4px 14px rgba(23, 32, 51, 0.10);
     }
 
-    .logo img { width: 100%; height: 100%; display: block; }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
 
     .header-text { flex: 1; min-width: 220px; }
 
@@ -93,14 +103,6 @@
       line-height: 1.55;
       color: var(--ink-dim);
       max-width: 520px;
-    }
-
-    .header-tagline {
-      margin-top: 2px;
-      font-size: 14px;
-      line-height: 1.35;
-      font-weight: 600;
-      color: var(--ink-dim);
     }
 
     @media (max-width: 560px) {
@@ -308,14 +310,28 @@
     .wall-heading-row {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 12px;
+      justify-content: space-between;
+      gap: 14px;
       margin-bottom: 8px;
       min-height: 18px;
     }
 
     .wall-heading-row .wall-heading {
       display: none;
+    }
+
+    .wall-cta {
+      flex: none;
+      font-size: 11.5px;
+      line-height: 1.35;
+      font-weight: 700;
+      color: var(--nm-accent);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .wall-cta:hover {
+      text-decoration: underline;
     }
 
     .wall-legend {
@@ -387,11 +403,14 @@
 
     @media (max-width: 760px) {
       .wall-heading-row {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 7px;
       }
 
-      .wall-heading-row .wall-heading {
-        margin-bottom: 10px;
+      .wall-cta {
+        white-space: normal;
       }
 
       .wall-legend {
@@ -769,20 +788,6 @@
       border-top: 1px solid var(--card-border);
     }
 
-    .footer-cta {
-      display: inline-flex;
-      align-items: center;
-      margin-bottom: 14px;
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--nm-accent);
-      text-decoration: none;
-    }
-
-    .footer-cta:hover {
-      text-decoration: underline;
-    }
-
     .footer-brand-line {
       margin-top: 6px;
       font-size: 11px;
@@ -807,7 +812,6 @@
       <div class="header-text">
         <div class="header-brand" id="brand-label">CONTROLTOWER</div>
         <h1 id="title">AI Weather</h1>
-        <div class="header-tagline" id="header-tagline">La météo des IA</div>
         <div class="header-date" id="header-date">—</div>
       </div>
 
@@ -834,6 +838,14 @@
 
     <section class="wall-intro" aria-label="AI Weather observation wall">
       <div class="wall-heading-row">
+        <a
+          class="wall-cta"
+          id="wall-cta"
+          href="https://controltowerai.io/ai-weather/"
+          target="_blank"
+          rel="noopener"
+        >Installer gratuitement ce widget sur votre site →</a>
+
         <div class="wall-legend" id="wall-legend" aria-label="AI Weather legend">
           <div class="legend-item">
             <span class="legend-dot legend-green" aria-hidden="true"></span>
@@ -865,14 +877,6 @@
     </div>
 
     <footer>
-      <a
-        class="footer-cta"
-        id="footer-cta"
-        href="https://controltowerai.io/ai-weather/"
-        target="_blank"
-        rel="noopener"
-      >Installer gratuitement ce widget sur votre site →</a>
-
       <div class="footer-brand-line" id="footer-brand-line"></div>
     </footer>
 
@@ -962,12 +966,28 @@
     }
 
     function renderHeader() {
-      // "AI Weather" is the product name and is intentionally not translated.
-      document.getElementById("title").textContent = "AI Weather";
+      const currentLang = NMi18n.lang();
+
+      // Product title is localized in the active language.
+      // FR intentionally displays "La météo des IA" instead of "AI Weather".
+      const titleFallback = currentLang === "fr"
+        ? "La météo des IA"
+        : "AI Weather";
+
+      document.getElementById("title").textContent =
+        translatedOrFallback("ui.ai_weather_title", titleFallback);
+
       document.getElementById("header-date").textContent = fmtToday();
       document.getElementById("brand-label").textContent = "CONTROLTOWER";
-      document.getElementById("header-tagline").textContent =
-        translatedOrFallback("ui.ai_weather_tagline", "La météo des IA");
+
+      const cta = document.getElementById("wall-cta");
+      cta.textContent = translatedOrFallback(
+        "ui.install_widget_free",
+        currentLang === "fr"
+          ? "Installer gratuitement ce widget sur votre site →"
+          : "Install this widget on your website for free →"
+      );
+      cta.href = "https://controltowerai.io/ai-weather/";
 
       if (DATA.demo) {
         document.getElementById("demo-flag-holder").innerHTML =
@@ -976,17 +996,16 @@
     }
 
     function renderFooter() {
-      const cta = document.getElementById("footer-cta");
-      cta.textContent = translatedOrFallback(
-        "ui.install_widget_free",
-        "Installer gratuitement ce widget sur votre site →"
-      );
-      cta.href = "https://controltowerai.io/ai-weather/";
+      const currentLang = NMi18n.lang();
+
+      const footerFallback = currentLang === "fr"
+        ? "Propulsé par NeoMundi · Métrologie IA en temps réel"
+        : "Powered by NeoMundi · Runtime AI metrology";
 
       document.getElementById("footer-brand-line").innerHTML =
         `<strong>ControlTower</strong> · ${translatedOrFallback(
           "ui.powered_by_neomundi_runtime",
-          "Propulsé par NeoMundi · Métrologie IA runtime"
+          footerFallback
         )}`;
     }
 
