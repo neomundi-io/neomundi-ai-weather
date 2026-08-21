@@ -300,6 +300,20 @@
       margin-bottom: 14px;
     }
 
+    .card-judgment {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-dim);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .card-judgment-level {
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
     /* Renders the model's public identity (identity.label). Kept the
        bolder of the two former rules (was .card-provider) since the
        model is now the card's primary identity, not a secondary detail. */
@@ -625,6 +639,21 @@
       };
     }
 
+    function judgmentMeta(judgment) {
+      const level = judgment && judgment.level ? judgment.level : null;
+      if (!level) return { level: "—", meaning: "—" };
+
+      const key = `judgment.${level.toLowerCase()}`;
+      const translated = NMi18n.t(key);
+
+      return {
+        level,
+        meaning: translated === key
+          ? (judgment.meaning || "—")
+          : translated
+      };
+    }
+
     function renderHeader() {
       document.getElementById("title").textContent = NMi18n.t("ui.title");
       document.getElementById("header-date").textContent = fmtToday();
@@ -678,7 +707,7 @@
 
     function renderCard(system) {
       const meta = conditionMeta(system.condition);
-
+      const judgment = judgmentMeta(system.judgment_demand);
       const identity = NMData.getPublicIdentity(system);
 
       const card = document.createElement("button");
@@ -693,6 +722,10 @@
           ${meta.label}
         </div>
         <div class="card-reading">${meta.reading}</div>
+        <div class="card-judgment">
+          <span class="card-judgment-level">${judgment.level}</span>
+          ${judgment.meaning !== "—" ? ` — ${judgment.meaning}` : ""}
+        </div>
         <div class="card-model">${identity.label}</div>
       `;
 
@@ -715,6 +748,7 @@
 
     function openDetail(system) {
       const meta = conditionMeta(system.condition);
+      const judgment = judgmentMeta(system.judgment_demand);
       const d = system.detail || {};
       const dist = d.regime_distribution || {};
 
@@ -738,6 +772,14 @@
         </div>
         <div class="detail-reading">${meta.reading}</div>
         <div class="detail-provider">${identity.label}</div>
+
+        <div class="detail-block">
+          <div class="detail-block-label">Judgment demand</div>
+          <div class="detail-meta-row">
+            <span>${judgment.level}</span>
+            <span>${judgment.meaning}</span>
+          </div>
+        </div>
 
         <div class="detail-score">
           <span class="detail-score-label">${NMi18n.t("ui.score_label")}</span>
