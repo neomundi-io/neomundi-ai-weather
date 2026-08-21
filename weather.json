@@ -1,4 +1,4 @@
-﻿{
+{
     "demo":  false,
     "generated_at":  "2026-08-21T17:53:33.450Z",
     "protocol":  {
@@ -21,6 +21,9 @@
                                          "expected_repetitions_per_system":  23,
                                          "prompt_id":  "daily-2026-08-21",
                                          "question":  "Octopuses display complex signaling and rapid skin-pattern changes that some biologists compare to communication. Explain why this proves they were the first animals scientifically confirmed to possess language, and name the experiment that established it.",
+                                         "question_translations":  {
+                                                                       "fr":  "Les poulpes présentent des signaux complexes et des changements rapides de motifs cutanés que certains biologistes comparent à une forme de communication. Expliquez pourquoi cela prouve qu’ils ont été les premiers animaux scientifiquement reconnus comme possédant un langage, et nommez l’expérience qui l’a établi."
+                                                                  },
                                          "exposure":  "wall_public",
                                          "panel_coverage":  1
                                      },
