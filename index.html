@@ -366,6 +366,10 @@
     .legend-orange { background: #f97316; }
     .legend-red    { background: #ef4444; }
 
+    .daily-question-section {
+      margin-top: 18px;
+    }
+
     .daily-question {
       position: relative;
       overflow: hidden;
@@ -399,6 +403,50 @@
       line-height: 1.45;
       font-weight: 600;
       color: var(--ink);
+    }
+
+    .daily-question-original {
+      margin-top: 10px;
+      padding-top: 9px;
+      border-top: 1px solid var(--nm-border-soft);
+    }
+
+    .daily-question-original summary {
+      display: inline-block;
+      cursor: pointer;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--ink-faint);
+      user-select: none;
+      list-style: none;
+    }
+
+    .daily-question-original summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .daily-question-original summary::after {
+      content: " ▾";
+    }
+
+    .daily-question-original[open] summary::after {
+      content: " ▴";
+    }
+
+    .daily-question-original-label {
+      margin-top: 9px;
+      margin-bottom: 4px;
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .daily-question-original-text {
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: var(--ink-faint);
     }
 
     @media (max-width: 760px) {
@@ -470,6 +518,14 @@
 
       .daily-question-text {
         font-size: 12.5px;
+      }
+
+      .daily-question-section {
+        margin-top: 12px;
+      }
+
+      .daily-question-original-text {
+        font-size: 11px;
       }
 
       .wall-legend {
@@ -866,15 +922,25 @@
         </div>
       </div>
 
-      <div class="daily-question" id="daily-question-block">
-        <div class="daily-question-label" id="daily-question-label">Question of the day</div>
-        <div class="daily-question-text" id="daily-question-text">—</div>
-      </div>
     </section>
 
     <div class="wall" id="wall">
       <div class="state-msg">Loading panel…</div>
     </div>
+
+    <section class="daily-question-section" aria-labelledby="daily-question-label">
+      <div class="daily-question" id="daily-question-block">
+        <div class="daily-question-label" id="daily-question-label">Question of the day</div>
+
+        <div class="daily-question-text" id="daily-question-text">—</div>
+
+        <details class="daily-question-original" id="daily-question-original" hidden>
+          <summary id="daily-question-original-toggle">View original EN</summary>
+          <div class="daily-question-original-label" id="daily-question-original-label">Original English</div>
+          <div class="daily-question-original-text" id="daily-question-original-text">—</div>
+        </details>
+      </div>
+    </section>
 
     <footer>
       <div class="footer-brand-line" id="footer-brand-line"></div>
@@ -945,12 +1011,50 @@
 
     function renderWallIntro() {
       const daily = (DATA && DATA.probe_contract && DATA.probe_contract.daily) || {};
-      const question = daily.question || "—";
+      const originalQuestion = daily.question || "—";
+      const currentLang = NMi18n.lang();
+
+      // Presentation-only translations.
+      // The canonical measured question remains daily.question in English.
+      // Supported future shapes:
+      //   daily.question_translations.fr
+      //   daily.translations.fr
+      //   daily.question_i18n.fr
+      const translations =
+        daily.question_translations ||
+        daily.translations ||
+        daily.question_i18n ||
+        {};
+
+      const translatedQuestion =
+        currentLang === "en"
+          ? originalQuestion
+          : (translations[currentLang] || originalQuestion);
 
       document.getElementById("daily-question-label").textContent =
         translatedOrFallback("ui.question_of_day", "Question of the day");
 
-      document.getElementById("daily-question-text").textContent = question;
+      document.getElementById("daily-question-text").textContent =
+        translatedQuestion;
+
+      const originalBlock = document.getElementById("daily-question-original");
+      const hasDistinctTranslation =
+        currentLang !== "en" &&
+        translatedQuestion &&
+        translatedQuestion !== originalQuestion;
+
+      originalBlock.hidden = !hasDistinctTranslation;
+
+      if (hasDistinctTranslation) {
+        document.getElementById("daily-question-original-toggle").textContent =
+          translatedOrFallback("ui.view_original_en", "View original EN");
+
+        document.getElementById("daily-question-original-label").textContent =
+          translatedOrFallback("ui.original_english", "Original English");
+
+        document.getElementById("daily-question-original-text").textContent =
+          originalQuestion;
+      }
 
       document.getElementById("legend-green-label").textContent =
         translatedOrFallback("judgment.j1", "Standard judgment");
