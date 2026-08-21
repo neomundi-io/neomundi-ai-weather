@@ -1,65 +1,208 @@
 /*
  * NeoMundi AI Weather — themes.
  *
- * Condition colors carry metrological meaning and must never vary between
- * themes or partners: CLEAR = green, VARIABLE = orange, DISRUPTED = red,
- * always. Only surface colors (background / text / border / muted /
- * card background) change per theme.
+ * Theme rules:
+ * - Themes may change the visual atmosphere of the interface.
+ * - Measurement / judgment colors must NEVER change with the theme.
+ * - Green / yellow / orange / red keep the same semantic meaning
+ *   across every theme, every widget and every embedding context.
  */
 
 :root {
-  /* Condition colors — constant across every theme. */
-  --nm-clear: #2fc67d;
-  --nm-clear-ink: #1c8f56;
-  --nm-variable: #f28a36;
-  --nm-variable-ink: #b5601f;
-  --nm-disrupted: #ef4d4d;
-  --nm-disrupted-ink: #a3312c;
+  /* ------------------------------------------------------------
+     Fixed judgment colors — NEVER theme-dependent
+     ------------------------------------------------------------ */
 
-  /* Default theme: light */
+  --nm-judgment-green: #22c55e;
+  --nm-judgment-yellow: #facc15;
+  --nm-judgment-orange: #f97316;
+  --nm-judgment-red: #ef4444;
+
+  /* Compatibility aliases */
+  --nm-clear: var(--nm-judgment-green);
+  --nm-variable: var(--nm-judgment-orange);
+  --nm-disrupted: var(--nm-judgment-red);
+
+  /* ------------------------------------------------------------
+     Default atmosphere — Light
+     ------------------------------------------------------------ */
+
   --nm-bg: #ffffff;
+  --nm-bg-top: #dceefa;
+  --nm-bg-mid: #edf7fc;
+  --nm-bg-bottom: #ffffff;
+
   --nm-card-bg: #ffffff;
-  --nm-text: #172033;
-  --nm-muted: #6b7a89;
-  --nm-border: #dce5ec;
+  --nm-card-bg-soft: rgba(255, 255, 255, 0.78);
+
+  --nm-text: #1c2733;
+  --nm-text-dim: #5b6b7a;
+  --nm-text-faint: #8b97a3;
+
+  --nm-border: #d6e2eb;
+  --nm-border-soft: #eef2f6;
+
+  --nm-surface-soft: #f6f9fc;
+  --nm-menu-hover: #f3f8fc;
+
+  --nm-accent: #378add;
+
+  --nm-shadow-soft: rgba(45, 75, 95, 0.06);
+  --nm-shadow-medium: rgba(45, 75, 95, 0.10);
+  --nm-overlay: rgba(28, 39, 51, 0.35);
 }
+
+/* ============================================================
+   LIGHT
+   Clean / airy / weather-oriented
+   ============================================================ */
 
 [data-theme="light"] {
   --nm-bg: #ffffff;
+  --nm-bg-top: #dceefa;
+  --nm-bg-mid: #edf7fc;
+  --nm-bg-bottom: #ffffff;
+
   --nm-card-bg: #ffffff;
-  --nm-text: #172033;
-  --nm-muted: #6b7a89;
-  --nm-border: #dce5ec;
+  --nm-card-bg-soft: rgba(255, 255, 255, 0.78);
+
+  --nm-text: #1c2733;
+  --nm-text-dim: #5b6b7a;
+  --nm-text-faint: #8b97a3;
+
+  --nm-border: #d6e2eb;
+  --nm-border-soft: #eef2f6;
+
+  --nm-surface-soft: #f6f9fc;
+  --nm-menu-hover: #f3f8fc;
+
+  --nm-accent: #378add;
+
+  --nm-shadow-soft: rgba(45, 75, 95, 0.06);
+  --nm-shadow-medium: rgba(45, 75, 95, 0.10);
+  --nm-overlay: rgba(28, 39, 51, 0.35);
 }
 
+/* ============================================================
+   DARK
+   Control room / observatory
+   ============================================================ */
+
 [data-theme="dark"] {
-  --nm-bg: #10151b;
+  --nm-bg: #0c1117;
+  --nm-bg-top: #101922;
+  --nm-bg-mid: #111820;
+  --nm-bg-bottom: #0c1117;
+
   --nm-card-bg: #171d24;
+  --nm-card-bg-soft: rgba(23, 29, 36, 0.88);
+
   --nm-text: #eef2f6;
-  --nm-muted: #8b97a3;
+  --nm-text-dim: #b3bdc7;
+  --nm-text-faint: #7f8b97;
+
   --nm-border: #2a333d;
+  --nm-border-soft: #232c35;
+
+  --nm-surface-soft: #131a21;
+  --nm-menu-hover: #202833;
+
+  --nm-accent: #62a9e8;
+
+  --nm-shadow-soft: rgba(0, 0, 0, 0.22);
+  --nm-shadow-medium: rgba(0, 0, 0, 0.34);
+  --nm-overlay: rgba(0, 0, 0, 0.62);
 }
+
+/* ============================================================
+   SLATE
+   Neutral / technical / dashboard
+   ============================================================ */
 
 [data-theme="slate"] {
   --nm-bg: #eef2f5;
+  --nm-bg-top: #dce3e8;
+  --nm-bg-mid: #e9eef2;
+  --nm-bg-bottom: #f4f6f8;
+
   --nm-card-bg: #ffffff;
+  --nm-card-bg-soft: rgba(255, 255, 255, 0.82);
+
   --nm-text: #1f2937;
-  --nm-muted: #64748b;
+  --nm-text-dim: #64748b;
+  --nm-text-faint: #8a98a8;
+
   --nm-border: #d7dee5;
+  --nm-border-soft: #e7ebef;
+
+  --nm-surface-soft: #f2f5f7;
+  --nm-menu-hover: #edf1f4;
+
+  --nm-accent: #426b8f;
+
+  --nm-shadow-soft: rgba(31, 41, 55, 0.06);
+  --nm-shadow-medium: rgba(31, 41, 55, 0.11);
+  --nm-overlay: rgba(31, 41, 55, 0.42);
 }
+
+/* ============================================================
+   WARM
+   Editorial / paper / human
+   ============================================================ */
 
 [data-theme="warm"] {
   --nm-bg: #fbf7f0;
+  --nm-bg-top: #f2eadc;
+  --nm-bg-mid: #f8f2e8;
+  --nm-bg-bottom: #fffdf8;
+
   --nm-card-bg: #fffdf8;
+  --nm-card-bg-soft: rgba(255, 253, 248, 0.86);
+
   --nm-text: #2b2418;
-  --nm-muted: #8a7d63;
+  --nm-text-dim: #766a56;
+  --nm-text-faint: #9a8f7b;
+
   --nm-border: #e8ddc9;
+  --nm-border-soft: #f0e8dc;
+
+  --nm-surface-soft: #f8f2e8;
+  --nm-menu-hover: #f4ebdd;
+
+  --nm-accent: #a66c2f;
+
+  --nm-shadow-soft: rgba(73, 55, 31, 0.06);
+  --nm-shadow-medium: rgba(73, 55, 31, 0.11);
+  --nm-overlay: rgba(43, 36, 24, 0.38);
 }
+
+/* ============================================================
+   TRANSPARENT
+   Intended primarily for embedded widgets
+   ============================================================ */
 
 [data-theme="transparent"] {
   --nm-bg: transparent;
+  --nm-bg-top: transparent;
+  --nm-bg-mid: transparent;
+  --nm-bg-bottom: transparent;
+
   --nm-card-bg: transparent;
+  --nm-card-bg-soft: transparent;
+
   --nm-text: #172033;
-  --nm-muted: #6b7a89;
+  --nm-text-dim: #6b7a89;
+  --nm-text-faint: #8b97a3;
+
   --nm-border: rgba(23, 32, 51, 0.15);
+  --nm-border-soft: rgba(23, 32, 51, 0.08);
+
+  --nm-surface-soft: rgba(255, 255, 255, 0.35);
+  --nm-menu-hover: rgba(255, 255, 255, 0.45);
+
+  --nm-accent: #378add;
+
+  --nm-shadow-soft: transparent;
+  --nm-shadow-medium: transparent;
+  --nm-overlay: rgba(28, 39, 51, 0.35);
 }
