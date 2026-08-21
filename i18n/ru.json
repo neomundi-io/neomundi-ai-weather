@@ -1,0 +1,58 @@
+{
+  "weather.clear": "ЯСНО",
+  "weather.variable": "ПЕРЕМЕННО",
+  "weather.disrupted": "НЕСТАБИЛЬНО",
+
+  "interpretation.clear": "СТАБИЛЬНО",
+  "interpretation.variable": "КОЛЕБЛЕТСЯ",
+  "interpretation.disrupted": "ВЫСОКАЯ ВАРИАБЕЛЬНОСТЬ",
+
+  "judgment.j1": "Стандартное суждение",
+  "judgment.j2": "Повышенное внимание",
+  "judgment.j3": "Усиленное внимание",
+  "judgment.j4": "Критическое внимание",
+
+  "ui.ai_weather_title": "Погода ИИ",
+  "ui.question_of_day": "Вопрос дня",
+  "ui.view_original_en": "Показать оригинал EN",
+  "ui.original_english": "Оригинал на английском",
+  "ui.install_widget_free": "Установите этот виджет на свой сайт бесплатно →",
+
+  "ui.powered_by_neomundi_runtime": "Powered by NeoMundi · Метрология ИИ в реальном времени",
+
+  "ui.controltower_detail": "ControlTower в реальном времени измеряет поведенческую надежность ваших систем ИИ, помогая сохранять контроль и принимать более обоснованные решения.",
+
+  "ui.title": "AI Weather — Ежедневная панель наблюдения",
+  "ui.subtitle": "Ежедневное наблюдение за поведением фиксированной панели систем ИИ при ответах на одни и те же вопросы.",
+  "ui.methodology": "Методология →",
+  "ui.systems_observed": "наблюдаемые системы",
+  "ui.observations_per_system": "наблюдений на систему",
+  "ui.runtime_observations": "наблюдения в реальном времени",
+  "ui.protocol_suffix": "протокол",
+  "ui.footer_note": "Каждая панель показывает наблюдаемые в реальном времени поведенческие условия в рамках одного и того же фиксированного контрольного протокола. Отображаемый сигнал является наблюдением, а не оценкой производительности или качества.",
+  "ui.powered_by": "Powered by NeoMundi · Метрология ИИ в реальном времени",
+  "ui.demo_flag": "Демонстрационные данные — не измерение в реальном времени",
+  "ui.wall_heading": "Наблюдаемая панель",
+  "ui.close": "Закрыть",
+  "ui.score_label": "Синтетическая оценка",
+  "ui.regime_label": "Распределение режимов",
+  "ui.protocol_label": "Протокол",
+  "ui.previous_label": "Предыдущее наблюдение",
+  "ui.no_prior": "Предыдущая кампания отсутствует",
+  "ui.infrastructure_partner": "Инфраструктурный партнер",
+  "ui.unknown_system": "Неизвестная система",
+  "ui.unknown_system_hint": "Ни одна система не соответствует этому поставщику или идентификатору системы.",
+
+  "ui.view_full_wall_12": "Посмотреть полную панель из 12 систем →",
+  "ui.view_full_ai_weather": "Посмотреть полный AI Weather →",
+
+  "ui.core_title": "AI Weather — Основная панель",
+  "ui.core_subtitle": "Ежедневное наблюдение за 8 крупными поставщиками ИИ при использовании одних и тех же вопросов.",
+  "ui.providers_observed": "наблюдаемые поставщики",
+  "ui.neomundi_measurement": "Измерение NeoMundi",
+
+  "regime.normal": "Нормальный",
+  "regime.variation": "Изменение",
+  "regime.factual_alert": "Фактическое предупреждение",
+  "regime.incomplete": "Неполный"
+}
