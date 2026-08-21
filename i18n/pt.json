@@ -1,0 +1,58 @@
+{
+  "weather.clear": "LIMPO",
+  "weather.variable": "VARIÁVEL",
+  "weather.disrupted": "PERTURBADO",
+
+  "interpretation.clear": "ESTÁVEL",
+  "interpretation.variable": "FLUTUANTE",
+  "interpretation.disrupted": "ALTA VARIABILIDADE",
+
+  "judgment.j1": "Julgamento padrão",
+  "judgment.j2": "Atenção aumentada",
+  "judgment.j3": "Atenção reforçada",
+  "judgment.j4": "Atenção crítica",
+
+  "ui.ai_weather_title": "Meteorologia da IA",
+  "ui.question_of_day": "Pergunta do dia",
+  "ui.view_original_en": "Ver original EN",
+  "ui.original_english": "Original em inglês",
+  "ui.install_widget_free": "Instale gratuitamente este widget no seu site →",
+
+  "ui.powered_by_neomundi_runtime": "Powered by NeoMundi · Metrologia de IA em tempo real",
+
+  "ui.controltower_detail": "ControlTower mede em tempo real a fiabilidade comportamental dos seus sistemas de IA para o ajudar a manter o controlo e a tomar melhores decisões.",
+
+  "ui.title": "AI Weather — Painel diário de observação",
+  "ui.subtitle": "Observação diária de como um painel fixo de sistemas de IA se comporta perante as mesmas perguntas.",
+  "ui.methodology": "Metodologia →",
+  "ui.systems_observed": "sistemas observados",
+  "ui.observations_per_system": "observações por sistema",
+  "ui.runtime_observations": "observações em tempo real",
+  "ui.protocol_suffix": "protocolo",
+  "ui.footer_note": "Cada painel mostra condições comportamentais observadas em tempo real sob o mesmo protocolo sentinela fixo. O sinal apresentado é uma observação, não uma pontuação de desempenho ou qualidade.",
+  "ui.powered_by": "Powered by NeoMundi · Metrologia de IA em tempo real",
+  "ui.demo_flag": "Dados de demonstração — não é uma medição ao vivo",
+  "ui.wall_heading": "Painel observado",
+  "ui.close": "Fechar",
+  "ui.score_label": "Pontuação sintética",
+  "ui.regime_label": "Distribuição dos regimes",
+  "ui.protocol_label": "Protocolo",
+  "ui.previous_label": "Observação anterior",
+  "ui.no_prior": "Sem campanha anterior",
+  "ui.infrastructure_partner": "Parceiro de infraestrutura",
+  "ui.unknown_system": "Sistema desconhecido",
+  "ui.unknown_system_hint": "Nenhum sistema corresponde a este fornecedor ou identificador.",
+
+  "ui.view_full_wall_12": "Ver o painel completo de 12 sistemas →",
+  "ui.view_full_ai_weather": "Ver AI Weather completo →",
+
+  "ui.core_title": "AI Weather — Painel principal",
+  "ui.core_subtitle": "Observação diária de 8 grandes fornecedores de IA perante as mesmas perguntas.",
+  "ui.providers_observed": "fornecedores observados",
+  "ui.neomundi_measurement": "Medição NeoMundi",
+
+  "regime.normal": "Normal",
+  "regime.variation": "Variação",
+  "regime.factual_alert": "Alerta factual",
+  "regime.incomplete": "Incompleto"
+}
