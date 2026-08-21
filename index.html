@@ -246,6 +246,37 @@
 
     /* Wall v0.3 — the state is communicated by color only.
        No duplicated CLEAR/WATCH/STABLE text on the 12-card wall. */
+    .card-state-line {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 12px;
+    }
+
+    .card-state-dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      flex: none;
+      box-shadow: 0 0 0 3px rgba(28, 39, 51, 0.04);
+    }
+
+    .is-clear .card-state-dot {
+      background: #2ecc71;
+    }
+
+    .is-watch .card-state-dot {
+      background: #f1c40f;
+    }
+
+    .is-unsettled .card-state-dot {
+      background: #f39c12;
+    }
+
+    .is-alert .card-state-dot {
+      background: #e74c3c;
+    }
+
     .card-model {
       font-size: 13.5px;
       font-weight: 700;
@@ -253,7 +284,7 @@
       letter-spacing: 0.01em;
       color: var(--ink);
       overflow-wrap: anywhere;
-      margin-bottom: 14px;
+      margin: 0;
     }
 
     .card-judgment {
@@ -676,7 +707,10 @@
       );
 
       card.innerHTML = `
-        <div class="card-model">${identity.label}</div>
+        <div class="card-state-line">
+          <span class="card-state-dot" aria-hidden="true"></span>
+          <div class="card-model">${identity.label}</div>
+        </div>
         <div class="card-judgment">
           <span class="card-judgment-level">${judgment.level}</span>
           <span class="card-judgment-meaning">${judgment.meaning}</span>
