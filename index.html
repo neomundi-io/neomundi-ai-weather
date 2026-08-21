@@ -223,9 +223,21 @@
       outline-offset: 2px;
     }
 
-    .card.is-clear     { border-left-color: var(--nm-clear); }
-    .card.is-variable  { border-left-color: var(--nm-variable); }
-    .card.is-disrupted { border-left-color: var(--nm-disrupted); }
+    .card.is-clear {
+      border-left-color: #2ecc71;
+    }
+
+    .card.is-watch {
+      border-left-color: #f1c40f;
+    }
+
+    .card.is-unsettled {
+      border-left-color: #f39c12;
+    }
+
+    .card.is-alert {
+      border-left-color: #e74c3c;
+    }
 
     .card-condition {
       display: flex;
@@ -244,13 +256,37 @@
       flex: none;
     }
 
-    .is-clear .card-condition     { color: var(--nm-clear-ink); }
-    .is-variable .card-condition  { color: var(--nm-variable-ink); }
-    .is-disrupted .card-condition { color: var(--nm-disrupted-ink); }
+    .is-clear .card-condition {
+      color: #169c52;
+    }
 
-    .is-clear .dot     { background: var(--nm-clear); }
-    .is-variable .dot  { background: var(--nm-variable); }
-    .is-disrupted .dot { background: var(--nm-disrupted); }
+    .is-watch .card-condition {
+      color: #9a7600;
+    }
+
+    .is-unsettled .card-condition {
+      color: #b85f00;
+    }
+
+    .is-alert .card-condition {
+      color: #c0392b;
+    }
+
+    .is-clear .dot {
+      background: #2ecc71;
+    }
+
+    .is-watch .dot {
+      background: #f1c40f;
+    }
+
+    .is-unsettled .dot {
+      background: #f39c12;
+    }
+
+    .is-alert .dot {
+      background: #e74c3c;
+    }
 
     .card.deep-linked {
       outline: 2px solid #378ADD;
@@ -332,13 +368,37 @@
       flex: none;
     }
 
-    .detail-condition.is-clear     { color: var(--nm-clear-ink); }
-    .detail-condition.is-variable  { color: var(--nm-variable-ink); }
-    .detail-condition.is-disrupted { color: var(--nm-disrupted-ink); }
+    .detail-condition.is-clear {
+      color: #169c52;
+    }
 
-    .detail-condition.is-clear .dot     { background: var(--nm-clear); }
-    .detail-condition.is-variable .dot  { background: var(--nm-variable); }
-    .detail-condition.is-disrupted .dot { background: var(--nm-disrupted); }
+    .detail-condition.is-watch {
+      color: #9a7600;
+    }
+
+    .detail-condition.is-unsettled {
+      color: #b85f00;
+    }
+
+    .detail-condition.is-alert {
+      color: #c0392b;
+    }
+
+    .detail-condition.is-clear .dot {
+      background: #2ecc71;
+    }
+
+    .detail-condition.is-watch .dot {
+      background: #f1c40f;
+    }
+
+    .detail-condition.is-unsettled .dot {
+      background: #f39c12;
+    }
+
+    .detail-condition.is-alert .dot {
+      background: #e74c3c;
+    }
 
     .detail-close {
       background: none;
