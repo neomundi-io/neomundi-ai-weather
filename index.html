@@ -18,14 +18,14 @@
     * { box-sizing: border-box; }
 
     :root {
-      --sky-top: #dceefa;
-      --sky-mid: #edf7fc;
-      --sky-bottom: #ffffff;
-      --card-bg: #ffffff;
-      --card-border: #d6e2eb;
-      --ink: #1c2733;
-      --ink-dim: #5b6b7a;
-      --ink-faint: #8b97a3;
+      --sky-top: var(--nm-bg-top);
+      --sky-mid: var(--nm-bg-mid);
+      --sky-bottom: var(--nm-bg-bottom);
+      --card-bg: var(--nm-card-bg);
+      --card-border: var(--nm-border);
+      --ink: var(--nm-text);
+      --ink-dim: var(--nm-text-dim);
+      --ink-faint: var(--nm-text-faint);
     }
 
     html, body {
@@ -149,56 +149,23 @@
 
     .methodology-link:hover { text-decoration: underline; }
 
-    /* ---------- Language selector ---------- */
+    /* ---------- Header controls ---------- */
 
-    .lang-select {
+    .header-controls {
       flex: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .theme-select,
+    .lang-select {
       position: relative;
     }
 
-    .lang-button {
-      background: #ffffff;
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--ink-dim);
-      padding: 6px 10px;
-      cursor: pointer;
-    }
+    .theme-button,
 
-    .lang-button:hover { border-color: var(--ink-faint); color: var(--ink); }
 
-    .lang-menu {
-      display: none;
-      position: absolute;
-      top: calc(100% + 4px);
-      right: 0;
-      background: #ffffff;
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      box-shadow: 0 6px 18px rgba(28, 39, 51, 0.1);
-      min-width: 130px;
-      overflow: hidden;
-      z-index: 20;
-    }
-
-    .lang-menu.open { display: block; }
-
-    .lang-option {
-      display: block;
-      width: 100%;
-      text-align: left;
-      background: none;
-      border: none;
-      padding: 9px 12px;
-      font-size: 13px;
-      color: var(--ink);
-      cursor: pointer;
-    }
-
-    .lang-option:hover { background: #f3f8fc; }
-    .lang-option.active { font-weight: 700; }
 
     .demo-flag {
       display: inline-block;
@@ -277,7 +244,7 @@
     .daily-question {
       position: relative;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.78);
+      background: var(--nm-card-bg-soft);
       border: 1px solid var(--card-border);
       border-radius: 16px;
       padding: 14px 18px 15px;
@@ -484,7 +451,7 @@
     .detail-overlay.open { display: flex; }
 
     .detail-sheet {
-      background: #ffffff;
+      background: var(--nm-card-bg);
       border-radius: 20px;
       max-width: 460px;
       width: 100%;
@@ -587,7 +554,7 @@
       display: flex;
       align-items: baseline;
       gap: 8px;
-      background: #f6f9fc;
+      background: var(--nm-surface-soft);
       border-radius: 12px;
       padding: 12px 14px;
       margin-bottom: 18px;
@@ -624,7 +591,7 @@
       font-family: "SFMono-Regular", Consolas, monospace;
       font-size: 13px;
       padding: 6px 0;
-      border-bottom: 1px solid #eef2f6;
+      border-bottom: 1px solid var(--nm-border-soft);
       color: var(--ink-dim);
     }
 
@@ -743,9 +710,22 @@
         >Obtenez le widget AI Weather pour votre IA →</a>
       </div>
 
-      <div class="lang-select">
-        <button class="lang-button" id="lang-button" type="button" aria-haspopup="true" aria-expanded="false">EN ▾</button>
-        <div class="lang-menu" id="lang-menu"></div>
+      <div class="header-controls">
+        <div class="theme-select">
+          <button class="theme-button" id="theme-button" type="button" aria-haspopup="true" aria-expanded="false">Theme ▾</button>
+          <div class="theme-menu" id="theme-menu">
+            <button class="theme-option" data-theme="light" type="button">Light</button>
+            <button class="theme-option" data-theme="dark" type="button">Dark</button>
+            <button class="theme-option" data-theme="slate" type="button">Slate</button>
+            <button class="theme-option" data-theme="warm" type="button">Warm</button>
+            <button class="theme-option" data-theme="transparent" type="button">Transparent</button>
+          </div>
+        </div>
+
+        <div class="lang-select">
+          <button class="lang-button" id="lang-button" type="button" aria-haspopup="true" aria-expanded="false">EN ▾</button>
+          <div class="lang-menu" id="lang-menu"></div>
+        </div>
       </div>
     </header>
 
@@ -1050,6 +1030,43 @@
       if (e.target.id === "detail-overlay") closeDetail();
     });
 
+    // ---------- Theme selector ----------
+
+    function currentTheme() {
+      return document.documentElement.getAttribute("data-theme") || "light";
+    }
+
+    function renderThemeMenu() {
+      const theme = currentTheme();
+      const button = document.getElementById("theme-button");
+      const menu = document.getElementById("theme-menu");
+
+      button.textContent = `${theme.charAt(0).toUpperCase() + theme.slice(1)} ▾`;
+
+      menu.querySelectorAll(".theme-option").forEach(option => {
+        const isActive = option.dataset.theme === theme;
+        option.classList.toggle("active", isActive);
+
+        option.addEventListener("click", () => {
+          const params = new URLSearchParams(window.location.search);
+          params.set("theme", option.dataset.theme);
+          window.location.search = params.toString();
+        });
+      });
+    }
+
+    document.getElementById("theme-button").addEventListener("click", () => {
+      const menu = document.getElementById("theme-menu");
+      const button = document.getElementById("theme-button");
+      const willOpen = !menu.classList.contains("open");
+
+      document.getElementById("lang-menu").classList.remove("open");
+      document.getElementById("lang-button").setAttribute("aria-expanded", "false");
+
+      menu.classList.toggle("open", willOpen);
+      button.setAttribute("aria-expanded", String(willOpen));
+    });
+
     // ---------- Language selector ----------
 
     function renderLangMenu() {
@@ -1078,14 +1095,26 @@
       const menu = document.getElementById("lang-menu");
       const button = document.getElementById("lang-button");
       const willOpen = !menu.classList.contains("open");
+
+      document.getElementById("theme-menu").classList.remove("open");
+      document.getElementById("theme-button").setAttribute("aria-expanded", "false");
+
       menu.classList.toggle("open", willOpen);
       button.setAttribute("aria-expanded", String(willOpen));
     });
 
     document.addEventListener("click", (e) => {
-      const wrap = document.querySelector(".lang-select");
-      if (wrap && !wrap.contains(e.target)) {
+      const langWrap = document.querySelector(".lang-select");
+      const themeWrap = document.querySelector(".theme-select");
+
+      if (langWrap && !langWrap.contains(e.target)) {
         document.getElementById("lang-menu").classList.remove("open");
+        document.getElementById("lang-button").setAttribute("aria-expanded", "false");
+      }
+
+      if (themeWrap && !themeWrap.contains(e.target)) {
+        document.getElementById("theme-menu").classList.remove("open");
+        document.getElementById("theme-button").setAttribute("aria-expanded", "false");
       }
     });
 
@@ -1127,6 +1156,7 @@
         renderWallIntro();
         renderWall();
         renderFooter();
+        renderThemeMenu();
         renderLangMenu();
         applyDeepLink(PANEL_SYSTEMS);
       })
