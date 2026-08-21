@@ -1,0 +1,58 @@
+{
+  "weather.clear": "晴朗",
+  "weather.variable": "多变",
+  "weather.disrupted": "扰动",
+
+  "interpretation.clear": "稳定",
+  "interpretation.variable": "波动",
+  "interpretation.disrupted": "高波动性",
+
+  "judgment.j1": "标准判断",
+  "judgment.j2": "需要更多关注",
+  "judgment.j3": "需要高度关注",
+  "judgment.j4": "需要关键关注",
+
+  "ui.ai_weather_title": "AI 天气",
+  "ui.question_of_day": "今日问题",
+  "ui.view_original_en": "查看英文原文",
+  "ui.original_english": "英文原文",
+  "ui.install_widget_free": "免费将此小组件安装到您的网站 →",
+
+  "ui.powered_by_neomundi_runtime": "由 NeoMundi 提供支持 · 实时 AI 计量",
+
+  "ui.controltower_detail": "ControlTower 实时测量您的 AI 系统的行为可靠性，帮助您保持控制并做出更好的决策。",
+
+  "ui.title": "AI Weather — 每日观察墙",
+  "ui.subtitle": "每天观察固定的一组 AI 系统在面对相同问题时的行为表现。",
+  "ui.methodology": "方法论 →",
+  "ui.systems_observed": "已观察系统",
+  "ui.observations_per_system": "每个系统的观察次数",
+  "ui.runtime_observations": "实时观察",
+  "ui.protocol_suffix": "协议",
+  "ui.footer_note": "每个面板都展示在同一固定哨兵协议下观察到的实时行为状态。所显示的信号是一项观察结果，而不是性能或质量评分。",
+  "ui.powered_by": "由 NeoMundi 提供支持 · 实时 AI 计量",
+  "ui.demo_flag": "演示数据 — 非实时测量",
+  "ui.wall_heading": "观察面板",
+  "ui.close": "关闭",
+  "ui.score_label": "综合评分",
+  "ui.regime_label": "状态分布",
+  "ui.protocol_label": "协议",
+  "ui.previous_label": "上一次观察",
+  "ui.no_prior": "暂无上一期数据",
+  "ui.infrastructure_partner": "基础设施合作伙伴",
+  "ui.unknown_system": "未知系统",
+  "ui.unknown_system_hint": "没有系统与该提供商或系统标识符匹配。",
+
+  "ui.view_full_wall_12": "查看完整的 12 个系统观察墙 →",
+  "ui.view_full_ai_weather": "查看完整 AI Weather →",
+
+  "ui.core_title": "AI Weather — 核心面板",
+  "ui.core_subtitle": "每天观察 8 个主要 AI 提供商在面对相同问题时的行为表现。",
+  "ui.providers_observed": "已观察提供商",
+  "ui.neomundi_measurement": "NeoMundi 测量",
+
+  "regime.normal": "正常",
+  "regime.variation": "变化",
+  "regime.factual_alert": "事实性警报",
+  "regime.incomplete": "不完整"
+}
