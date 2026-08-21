@@ -7,14 +7,30 @@
   "interpretation.variable": "SCHWANKEND",
   "interpretation.disrupted": "HOHE VARIABILITÄT",
 
+  "judgment.j1": "Standardbeurteilung",
+  "judgment.j2": "Erhöhte Aufmerksamkeit",
+  "judgment.j3": "Verstärkte Aufmerksamkeit",
+  "judgment.j4": "Kritische Aufmerksamkeit",
+
+  "ui.ai_weather_title": "KI-Wetter",
+  "ui.question_of_day": "Frage des Tages",
+  "ui.view_original_en": "Englisches Original anzeigen",
+  "ui.original_english": "Englisches Original",
+  "ui.install_widget_free": "Dieses Widget kostenlos auf Ihrer Website installieren →",
+
+  "ui.powered_by_neomundi_runtime": "Powered by NeoMundi · KI-Metrologie in Echtzeit",
+
+  "ui.controltower_detail": "ControlTower misst in Echtzeit die Verhaltenszuverlässigkeit Ihrer KI-Systeme, damit Sie die Kontrolle behalten und bessere Entscheidungen treffen können.",
+
   "ui.title": "AI Weather — Tägliche Beobachtungswand",
   "ui.subtitle": "Tägliche Beobachtung, wie sich ein festes Panel von KI-Systemen bei denselben Fragen verhält.",
   "ui.methodology": "Methodik →",
   "ui.systems_observed": "beobachtete Systeme",
-  "ui.runtime_observations": "Laufzeit-Beobachtungen",
+  "ui.observations_per_system": "Beobachtungen pro System",
+  "ui.runtime_observations": "Echtzeitbeobachtungen",
   "ui.protocol_suffix": "Protokoll",
-  "ui.footer_note": "Jedes Panel zeigt beobachtete Laufzeit-Verhaltensbedingungen unter demselben festen Sentinel-Protokoll. Das angezeigte Signal ist eine Beobachtung, keine Leistungs- oder Qualitätsbewertung.",
-  "ui.powered_by": "Powered by NeoMundi · Runtime AI Metrology",
+  "ui.footer_note": "Jedes Panel zeigt beobachtete Verhaltensbedingungen unter demselben festen Sentinel-Protokoll. Das angezeigte Signal ist eine Beobachtung und keine Leistungs- oder Qualitätsbewertung.",
+  "ui.powered_by": "Powered by NeoMundi · KI-Metrologie in Echtzeit",
   "ui.demo_flag": "Demodaten — keine Live-Messung",
   "ui.wall_heading": "Beobachtetes Panel",
   "ui.close": "Schließen",
@@ -25,7 +41,8 @@
   "ui.no_prior": "Keine vorherige Kampagne",
   "ui.infrastructure_partner": "Infrastrukturpartner",
   "ui.unknown_system": "Unbekanntes System",
-  "ui.unknown_system_hint": "Kein System entspricht diesem Provider oder dieser Kennung.",
+  "ui.unknown_system_hint": "Kein System entspricht diesem Anbieter oder dieser Kennung.",
+
   "ui.view_full_wall_12": "Vollständige Wand mit 12 Systemen ansehen →",
   "ui.view_full_ai_weather": "Vollständiges AI Weather ansehen →",
 
