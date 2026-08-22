@@ -46,27 +46,22 @@
       event: 'load'
     });
 
-    if (typeof navigator.sendBeacon === 'function') {
-      var blob = new Blob([payload], {
-        type: 'application/json'
-      });
-
-      navigator.sendBeacon(ENDPOINT, blob);
+    if (typeof fetch !== 'function') {
       return;
     }
 
-    if (typeof fetch === 'function') {
-      fetch(ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: payload,
-        keepalive: true
-      }).catch(function () {
-        // Telemetry must never affect the widget.
-      });
-    }
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: payload,
+      mode: 'cors',
+      credentials: 'omit',
+      keepalive: true
+    }).catch(function () {
+      // Telemetry must never affect the widget.
+    });
   }
 
   sendPing();
