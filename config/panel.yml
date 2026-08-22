@@ -41,7 +41,7 @@
 # Nemotron), perplexity.
 
 panel:
-  - { id: "openai",     provider: "OpenAI",          model_id: "chat-latest", model_display: "ChatGPT",                          runner_provider: "openai",     display_name: "OpenAI",            public_label: "SYSTEM-01", enabled: true }
+  - { id: "openai",     provider: "OpenAI",          model_id: "gpt-4o-2024-11-20", model_display: "ChatGPT",                          runner_provider: "openai",     display_name: "OpenAI",            public_label: "SYSTEM-01", enabled: true }
   - { id: "anthropic",  provider: "Anthropic",       model_id: "claude-sonnet-4-5-20250929", model_display: "Claude",                 runner_provider: "anthropic",  display_name: "Anthropic",         public_label: "SYSTEM-02", enabled: true }
   - { id: "google",     provider: "Google",          model_id: "gemini-3.6-flash", model_display: "Gemini",                           runner_provider: "google",     display_name: "Google",            public_label: "SYSTEM-03", enabled: true }
   - { id: "xai",        provider: "xAI",             model_id: "grok-4.5", model_display: "Grok",                                     runner_provider: "xai",        display_name: "xAI",               public_label: "SYSTEM-04", enabled: true }
