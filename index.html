@@ -932,68 +932,57 @@
   </style>
 
   <!-- ============================================================
-       SKIN OVERRIDE — Démo 2 : "Mesure dense"
+       SKIN OVERRIDE — Démo 3 : "Signal doux"
        Pure surcouche CSS. N'écrase ni les tokens de thème (--nm-*),
-       ni la logique JS, ni les i18n. Sans-serif + accents monospace,
-       grille plus dense pour un rendu "carnet de mesure".
+       ni la logique JS, ni les i18n. Sans-serif, cartes teintées
+       (couleur d'état en fond très léger), plus d'air.
        ============================================================ -->
-  <style id="skin-dense">
+  <style id="skin-soft">
     body { font-family: "Segoe UI", Inter, Arial, Helvetica, sans-serif; }
 
-    .wall { gap: 6px; }
-    @media (min-width: 860px) { .wall { grid-template-columns: repeat(5, 1fr); } }
-    @media (min-width: 1180px) { .wall { grid-template-columns: repeat(6, 1fr); } }
+    .wall { gap: 14px; }
 
     .card {
-      padding: 10px 10px;
-      border-radius: 6px;
-      border-left-width: 4px;
-      border-width: 1px;
-      box-shadow: none;
+      border-radius: 20px;
+      border-left-width: 5px;
+      border: 1px solid transparent;
+      padding: 16px 15px;
+      box-shadow: 0 3px 10px rgba(28, 39, 51, 0.05);
     }
-    .card:hover, .card:focus-visible {
-      box-shadow: 0 2px 8px rgba(28, 39, 51, 0.08);
-      transform: none;
-    }
+    .card.is-clear     { background: rgba(34, 197, 94, 0.07);  border-left-color: #22c55e; }
+    .card.is-watch     { background: rgba(250, 204, 21, 0.09); border-left-color: #facc15; }
+    .card.is-unsettled { background: rgba(249, 115, 22, 0.08); border-left-color: #f97316; }
+    .card.is-alert     { background: rgba(239, 68, 68, 0.08);  border-left-color: #ef4444; }
 
-    .card-model {
-      font-family: "SFMono-Regular", Consolas, monospace;
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 0;
-    }
-    .card-judgment { font-family: "SFMono-Regular", Consolas, monospace; font-size: 10.5px; }
-    .card-state-dot { width: 14px; height: 14px; border-width: 2px; }
+    .card-state-dot { width: 24px; height: 24px; }
+    .card-model { font-weight: 700; }
 
-    .wall-heading, .detail-block-label {
-      font-family: "SFMono-Regular", Consolas, monospace;
-    }
+    .detail-sheet { border-radius: 24px; padding: 26px 26px calc(26px + env(safe-area-inset-bottom)); }
 
-    .detail-sheet { border-radius: 8px; }
-    .detail-governance { background: var(--nm-surface-soft); border-radius: 6px; }
-    .detail-governance-value {
-      font-family: "SFMono-Regular", Consolas, monospace;
-      font-weight: 800;
+    .detail-governance {
+      border-radius: 16px;
+      padding: 16px 16px;
     }
+    .detail-overlay:has(.detail-condition.is-clear) .detail-governance { background: rgba(34, 197, 94, 0.09); }
+    .detail-overlay:has(.detail-condition.is-watch) .detail-governance { background: rgba(250, 204, 21, 0.12); }
+    .detail-overlay:has(.detail-condition.is-unsettled) .detail-governance { background: rgba(249, 115, 22, 0.10); }
+    .detail-overlay:has(.detail-condition.is-alert) .detail-governance { background: rgba(239, 68, 68, 0.10); }
 
-    .detail-links { display: flex; flex-direction: column; gap: 8px; }
-    .detail-link-secondary {
-      color: var(--ink-dim) !important;
-      font-family: "SFMono-Regular", Consolas, monospace !important;
-      font-weight: 600 !important;
-      font-size: 11.5px !important;
-    }
+    .detail-governance-value { font-size: 19px; }
+
+    .detail-links { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+    .detail-link-secondary { color: var(--ink-dim) !important; font-weight: 600 !important; }
 
     .footer-observatory-line {
-      margin-top: 4px;
-      font-size: 10.5px;
-      font-family: "SFMono-Regular", Consolas, monospace;
+      margin-top: 5px;
+      font-size: 11.5px;
+      line-height: 1.5;
       color: var(--ink-faint);
     }
 
     @media (max-width: 559px) {
-      .wall { gap: 5px; }
-      .card { padding: 9px 8px; }
+      .wall { gap: 10px; }
+      .card { padding: 14px 12px; border-radius: 16px; }
     }
   </style>
 </head>
