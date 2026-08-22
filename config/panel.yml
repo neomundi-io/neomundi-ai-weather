@@ -39,24 +39,26 @@
 # system-j/k/l (4 unmatched demo placeholders) with the 4 real providers
 # that had no panel entry yet: cohere, meta (Together), infomaniak (NVIDIA
 # Nemotron), perplexity.
+
 panel:
-  - { id: "openai",     provider: "OpenAI",          model_id: "gpt-4o-2024-11-20", model_display: "ChatGPT",                        runner_provider: "openai",     display_name: "OpenAI",        public_label: "SYSTEM-01", enabled: true }
-  - { id: "anthropic",  provider: "Anthropic",        model_id: "claude-sonnet-4-5-20250929", model_display: "Claude",               runner_provider: "anthropic",  display_name: "Anthropic",     public_label: "SYSTEM-02", enabled: true }
-  - { id: "google",     provider: "Google",           model_id: "gemini-3.6-flash", model_display: "Gemini",                         runner_provider: "google",     display_name: "Google",        public_label: "SYSTEM-03", enabled: true }
-  - { id: "xai",        provider: "xAI",              model_id: "grok-4.5", model_display: "Grok",                                 runner_provider: "xai",        display_name: "xAI",           public_label: "SYSTEM-04", enabled: true }
-  - { id: "mistral",    provider: "Mistral",          model_id: "mistral-medium-3-5", model_display: "Mistral",                       runner_provider: "mistral",    display_name: "Mistral",       public_label: "SYSTEM-05", enabled: true }
-  - { id: "deepseek",   provider: "DeepSeek",         model_id: "deepseek-v4-pro", model_display: "DeepSeek",                          runner_provider: "deepseek",   display_name: "DeepSeek",      public_label: "SYSTEM-06", enabled: true }
-  - { id: "qwen",       provider: "Qwen",             model_id: "qwen3.7-max-2026-06-08", model_display: "Qwen",                   runner_provider: "qwen",       display_name: "Qwen",          public_label: "SYSTEM-07", enabled: true }
-  - { id: "moonshot",   provider: "Moonshot / Kimi",  model_id: "kimi-k3", model_display: "Kimi",                                  runner_provider: "moonshot",   display_name: "Moonshot / Kimi", public_label: "SYSTEM-08", enabled: true }
-  - { id: "cohere",     provider: "Cohere",           model_id: "command-a-03-2025", model_display: "Command",                        runner_provider: "cohere",     display_name: "Cohere",        public_label: "SYSTEM-09", enabled: true }
-  - { id: "meta",       provider: "Meta",             model_id: "meta-llama/Llama-3.3-70B-Instruct-Turbo", model_display: "Llama",  runner_provider: "together",   display_name: "Meta (via Together AI)", public_label: "SYSTEM-10", enabled: true }
-  - { id: "infomaniak", provider: "Infomaniak",       model_id: "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8", model_display: "NVIDIA", runner_provider: "infomaniak", display_name: "Infomaniak",    public_label: null,       enabled: true }
-  - { id: "perplexity", provider: "Perplexity",       model_id: "sonar-reasoning-pro", model_display: "Perplexity",                      runner_provider: "perplexity", display_name: "Perplexity",    public_label: "SYSTEM-11", enabled: true }
+  - { id: "openai",     provider: "OpenAI",          model_id: "gpt-4o-2024-11-20", model_display: "ChatGPT",                          runner_provider: "openai",     display_name: "OpenAI",            public_label: "SYSTEM-01", enabled: true }
+  - { id: "anthropic",  provider: "Anthropic",       model_id: "claude-sonnet-4-5-20250929", model_display: "Claude",                 runner_provider: "anthropic",  display_name: "Anthropic",         public_label: "SYSTEM-02", enabled: true }
+  - { id: "google",     provider: "Google",          model_id: "gemini-3.6-flash", model_display: "Gemini",                           runner_provider: "google",     display_name: "Google",            public_label: "SYSTEM-03", enabled: true }
+  - { id: "xai",        provider: "xAI",             model_id: "grok-4.5", model_display: "Grok",                                     runner_provider: "xai",        display_name: "xAI",               public_label: "SYSTEM-04", enabled: true }
+  - { id: "mistral",    provider: "Mistral",         model_id: "mistral-medium-3-5", model_display: "Mistral",                         runner_provider: "mistral",    display_name: "Mistral",           public_label: "SYSTEM-05", enabled: true }
+  - { id: "deepseek",   provider: "DeepSeek",        model_id: "deepseek-v4-pro", model_display: "DeepSeek",                          runner_provider: "deepseek",   display_name: "DeepSeek",          public_label: "SYSTEM-06", enabled: true }
+  - { id: "qwen",       provider: "Qwen",            model_id: "qwen3.7-max-2026-06-08", model_display: "Qwen",                         runner_provider: "qwen",       display_name: "Qwen",              public_label: "SYSTEM-07", enabled: true }
+  - { id: "moonshot",   provider: "Moonshot / Kimi", model_id: "kimi-k3", model_display: "Kimi",                                      runner_provider: "moonshot",   display_name: "Moonshot / Kimi",   public_label: "SYSTEM-08", enabled: true }
+  - { id: "cohere",     provider: "Cohere",          model_id: "command-a-03-2025", model_display: "Cohere",                           runner_provider: "cohere",     display_name: "Cohere",            public_label: "SYSTEM-09", enabled: true }
+  - { id: "meta",       provider: "Meta",            model_id: "meta-llama/Llama-3.3-70B-Instruct-Turbo", model_display: "Meta",        runner_provider: "together",   display_name: "Meta (via Together AI)", public_label: "SYSTEM-10", enabled: true }
+  - { id: "infomaniak", provider: "Infomaniak",      model_id: "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8", model_display: "NVIDIA",     runner_provider: "infomaniak", display_name: "Infomaniak",        public_label: null,        enabled: true }
+  - { id: "perplexity", provider: "Perplexity",      model_id: "sonar-reasoning-pro", model_display: "Perplexity",                      runner_provider: "perplexity", display_name: "Perplexity",         public_label: "SYSTEM-11", enabled: true }
 
 # Protocol parameters. iterations/prompt_set here are now superseded by
 # AI_WEATHER_RUNNER\data\panels\ai_weather_panel.csv (per-prompt repetitions
 # column) — that CSV is the single source of truth for the observation
 # volume, kept in sync manually here for documentation only.
+
 protocol:
   id: "WEATHER-SENTINEL"
   version: "0.1"
