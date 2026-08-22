@@ -930,6 +930,58 @@
 
     .state-msg { color: var(--ink-dim); font-size: 14px; }
   </style>
+
+  <!-- ============================================================
+       SKIN OVERRIDE — Démo 1 : "Éditorial"
+       Pure surcouche CSS. N'écrase ni les tokens de thème (--nm-*),
+       ni la logique JS, ni les i18n. Sans-serif partout.
+       ============================================================ -->
+  <style id="skin-editorial">
+    body { font-family: "Segoe UI", Inter, Arial, Helvetica, sans-serif; }
+
+    h1 { font-weight: 800; letter-spacing: -0.015em; }
+
+    .header-brand { font-weight: 700; letter-spacing: 0.16em; }
+
+    /* Cards: stronger left-accent bar, flatter, tighter radius */
+    .card {
+      border-left-width: 6px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(28, 39, 51, 0.05);
+    }
+    .card:hover, .card:focus-visible {
+      box-shadow: 0 8px 20px rgba(28, 39, 51, 0.10);
+    }
+    .card-model { font-weight: 800; letter-spacing: 0; }
+    .card-judgment-level { font-weight: 900; }
+
+    /* Detail sheet */
+    .detail-sheet { border-radius: 12px; }
+
+    .detail-block-label { font-weight: 800; letter-spacing: 0.1em; }
+
+    /* Governance block: left-accent bar instead of soft filled box,
+       colored to match the observed condition (progressive enhancement
+       via :has — falls back to neutral ink-faint bar on older browsers). */
+    .detail-governance {
+      background: transparent;
+      border-left: 5px solid var(--ink-faint);
+      border-radius: 4px;
+      padding: 10px 0 10px 14px;
+    }
+    .detail-overlay:has(.detail-condition.is-clear) .detail-governance { border-left-color: #22c55e; }
+    .detail-overlay:has(.detail-condition.is-watch) .detail-governance { border-left-color: #facc15; }
+    .detail-overlay:has(.detail-condition.is-unsettled) .detail-governance { border-left-color: #f97316; }
+    .detail-overlay:has(.detail-condition.is-alert) .detail-governance { border-left-color: #ef4444; }
+
+    .detail-governance-value { font-weight: 900; font-size: 19px; }
+
+    .detail-links { display: flex; flex-direction: column; gap: 9px; }
+    .detail-link-secondary { color: var(--ink-dim) !important; font-weight: 600 !important; }
+
+    footer { padding-top: 20px; }
+    .footer-observatory-line { margin-top: 4px; font-size: 11px; color: var(--ink-faint); }
+  </style>
 </head>
 
 <body>
@@ -1203,14 +1255,22 @@
       const currentLang = NMi18n.lang();
 
       const footerFallback = currentLang === "fr"
-        ? "Propulsé par NeoMundi · Métrologie IA en temps réel"
-        : "Powered by NeoMundi · Runtime AI metrology";
+        ? "Propulsé par NeoMundi"
+        : "Powered by NeoMundi";
+
+      const observatoryFallback = currentLang === "fr"
+        ? "Observatoire indépendant du comportement des IA — mesure continue, méthode publiée"
+        : "Independent observatory of AI behavior — continuous measurement, published methodology";
 
       document.getElementById("footer-brand-line").innerHTML =
-        `<strong>ControlTower</strong> · ${translatedOrFallback(
+        `<div><strong>ControlTower</strong> · ${translatedOrFallback(
           "ui.powered_by_neomundi_runtime",
           footerFallback
-        )}`;
+        )}</div>
+        <div class="footer-observatory-line">${translatedOrFallback(
+          "ui.observatory_line",
+          observatoryFallback
+        )}</div>`;
     }
 
     function renderCard(system) {
@@ -1296,6 +1356,10 @@
         ? "Installer gratuitement ce widget sur votre site →"
         : "Install this widget on your website for free →";
 
+      const scienceLinkFallback = currentLang === "fr"
+        ? "Découvrir le cadre scientifique et l'Observatoire →"
+        : "Discover the scientific framework and the Observatory →";
+
       const signatureFallback = currentLang === "fr"
         ? "ControlTower by NeoMundi transforme la mesure scientifique du comportement des IA en pouvoir de décision."
         : "ControlTower by NeoMundi turns scientific measurement of AI behavior into decision-making power.";
@@ -1372,6 +1436,16 @@
             ${translatedOrFallback(
               "ui.install_widget_free",
               installFallback
+            )}
+          </a>
+
+          <a
+            href="#"
+            class="detail-link-secondary"
+          >
+            ${translatedOrFallback(
+              "ui.discover_scientific_framework",
+              scienceLinkFallback
             )}
           </a>
         </div>
