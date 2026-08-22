@@ -981,6 +981,143 @@
 
     footer { padding-top: 20px; }
     .footer-observatory-line { margin-top: 4px; font-size: 11px; color: var(--ink-faint); }
+
+    /* ---------- Detail card v0.5 — Observatoire (mesure → signal → décision) ---------- */
+
+    .detail-title-observatory {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      margin: 4px 0 10px;
+      color: var(--ink);
+    }
+
+    .detail-claim {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--ink-dim);
+      margin-bottom: 18px;
+    }
+
+    .detail-today {
+      background: var(--nm-surface-soft);
+      border-radius: 14px;
+      padding: 16px 16px 14px;
+      margin-bottom: 16px;
+    }
+
+    .detail-today-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 10px;
+    }
+
+    .detail-today-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 7px 10px;
+      font-size: 13px;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .detail-today-meta .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex: none;
+    }
+    .detail-today-meta .dot.is-clear     { background: #22c55e; }
+    .detail-today-meta .dot.is-watch     { background: #facc15; }
+    .detail-today-meta .dot.is-unsettled { background: #f97316; }
+    .detail-today-meta .dot.is-alert     { background: #ef4444; }
+
+    .detail-today-meta .sep {
+      color: var(--ink-faint);
+    }
+
+    .detail-today-governance {
+      border-left: 5px solid var(--ink-faint);
+      border-radius: 4px;
+      padding: 10px 0 10px 14px;
+    }
+    .detail-today.is-clear .detail-today-governance     { border-left-color: #22c55e; }
+    .detail-today.is-watch .detail-today-governance     { border-left-color: #facc15; }
+    .detail-today.is-unsettled .detail-today-governance { border-left-color: #f97316; }
+    .detail-today.is-alert .detail-today-governance      { border-left-color: #ef4444; }
+
+    .detail-today-governance-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 3px;
+    }
+
+    .detail-today-governance-value {
+      font-size: 19px;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .detail-yesterday {
+      margin-bottom: 16px;
+    }
+
+    .detail-yesterday-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 8px;
+    }
+
+    .detail-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      font-size: 11.5px;
+      color: var(--ink-dim);
+      padding-top: 14px;
+      margin-bottom: 4px;
+      border-top: 1px solid var(--nm-border-soft);
+    }
+
+    .detail-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      padding-top: 16px;
+      margin-top: 14px;
+      border-top: 1px solid var(--nm-border-soft);
+    }
+
+    .detail-cta a {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--nm-accent);
+      text-decoration: none;
+    }
+    .detail-cta a:hover { text-decoration: underline; }
+    .detail-cta a.detail-link-secondary {
+      color: var(--ink-dim);
+      font-weight: 600;
+    }
+
+    .detail-card-footer {
+      margin-top: 18px;
+      padding-top: 15px;
+      border-top: 1px solid var(--nm-border-soft);
+      font-size: 11px;
+      line-height: 1.55;
+      color: var(--ink-faint);
+    }
   </style>
 </head>
 
@@ -1340,17 +1477,29 @@
           )
         : NMi18n.t("ui.no_prior");
 
+      // --- Fallbacks (used only if the i18n key is missing for the active language) ---
+
+      const measurementObservationFallback = currentLang === "fr"
+        ? "Mesure et observation"
+        : "Measurement and observation";
+
       const measurementClaimFallback = currentLang === "fr"
         ? "Contrairement à un benchmark classique, ControlTower ne cherche pas à classer les IA : nous répétons une même situation 30 fois pour mesurer leur comportement et transformer cette mesure en signal de décision."
         : "Unlike a traditional benchmark, ControlTower does not rank AI systems: we repeat the same situation 30 times to measure their behavior and turn that measurement into a decision signal.";
+
+      const todayFallback = currentLang === "fr" ? "Aujourd'hui" : "Today";
 
       const governanceLabelFallback = currentLang === "fr"
         ? "Recommandation de gouvernance"
         : "Governance recommendation";
 
-      const lastObservedFallback = currentLang === "fr"
-        ? "Dernière observation"
-        : "Last observation";
+      const observationsFallback = currentLang === "fr"
+        ? "30 observations"
+        : "30 observations";
+
+      const yesterdaySituationFallback = currentLang === "fr"
+        ? "La situation hier"
+        : "Yesterday's situation";
 
       const installFallback = currentLang === "fr"
         ? "Installer gratuitement ce widget sur votre site →"
@@ -1360,9 +1509,9 @@
         ? "Découvrir le cadre scientifique et l'Observatoire →"
         : "Discover the scientific framework and the Observatory →";
 
-      const signatureFallback = currentLang === "fr"
-        ? "ControlTower by NeoMundi transforme la mesure scientifique du comportement des IA en pouvoir de décision."
-        : "ControlTower by NeoMundi turns scientific measurement of AI behavior into decision-making power.";
+      const cardFooterFallback = currentLang === "fr"
+        ? "ControlTower · Propulsé par NeoMundi · Métrologie IA en temps réel et Observatoire indépendant."
+        : "ControlTower · Powered by NeoMundi · Real-time AI metrology and independent observatory.";
 
       document.getElementById("detail-sheet").innerHTML = `
         <div class="detail-header">
@@ -1375,46 +1524,41 @@
           </button>
         </div>
 
-        <div class="detail-reading">${identity.label}</div>
-
-        <div class="detail-block">
-          <div class="detail-positioning">
-            ${translatedOrFallback(
-              "ui.measurement_claim",
-              measurementClaimFallback
-            )}
-          </div>
+        <div class="detail-title-observatory">
+          ${translatedOrFallback("ui.measurement_observation", measurementObservationFallback)}
         </div>
 
-        <div class="detail-block detail-governance">
-          <div class="detail-block-label">
-            ${translatedOrFallback(
-              "ui.governance_recommendation",
-              governanceLabelFallback
-            )}
-          </div>
-
-          <div class="detail-governance-value">
-            ${judgment.meaning}
-          </div>
+        <div class="detail-claim">
+          ${translatedOrFallback("ui.measurement_claim", measurementClaimFallback)}
         </div>
 
-        <div class="detail-block">
-          <div class="detail-block-label">
-            ${translatedOrFallback(
-              "ui.last_observed",
-              lastObservedFallback
-            )}
+        <div class="detail-today is-${system.condition}">
+          <div class="detail-today-label">
+            ${translatedOrFallback("ui.today", todayFallback)}
           </div>
 
-          <div class="detail-meta-row">
+          <div class="detail-today-meta">
             <span>${fmtDate(system.last_observed_at)}</span>
+            <span class="sep">·</span>
+            <span>${identity.label}</span>
+            <span class="sep">·</span>
+            <span>${translatedOrFallback("ui.observations", observationsFallback)}</span>
+            <span class="dot is-${system.condition}" aria-hidden="true"></span>
+          </div>
+
+          <div class="detail-today-governance">
+            <div class="detail-today-governance-label">
+              ${translatedOrFallback("ui.governance_recommendation", governanceLabelFallback)}
+            </div>
+            <div class="detail-today-governance-value">
+              ${judgment.meaning}
+            </div>
           </div>
         </div>
 
-        <div class="detail-block">
-          <div class="detail-block-label">
-            ${NMi18n.t("ui.previous_label")}
+        <div class="detail-yesterday">
+          <div class="detail-yesterday-label">
+            ${translatedOrFallback("ui.yesterday_situation", yesterdaySituationFallback)}
           </div>
 
           <div class="detail-previous">
@@ -1427,34 +1571,46 @@
           </div>
         </div>
 
-        <div class="detail-links">
+        <div class="detail-legend" aria-label="AI Weather legend">
+          <span class="legend-item">
+            <span class="legend-dot legend-green" aria-hidden="true"></span>
+            ${translatedOrFallback("judgment.j1", "Standard judgment")}
+          </span>
+          <span class="legend-item">
+            <span class="legend-dot legend-yellow" aria-hidden="true"></span>
+            ${translatedOrFallback("judgment.j2", "Increased attention")}
+          </span>
+          <span class="legend-item">
+            <span class="legend-dot legend-orange" aria-hidden="true"></span>
+            ${translatedOrFallback("judgment.j3", "Heightened attention")}
+          </span>
+          <span class="legend-item">
+            <span class="legend-dot legend-red" aria-hidden="true"></span>
+            ${translatedOrFallback("judgment.j4", "Critical attention")}
+          </span>
+        </div>
+
+        <div class="detail-cta">
           <a
             href="https://controltowerai.io/ai-weather/"
             target="_blank"
             rel="noopener"
           >
-            ${translatedOrFallback(
-              "ui.install_widget_free",
-              installFallback
-            )}
+            ${translatedOrFallback("ui.install_widget_free", installFallback)}
           </a>
 
           <a
-            href="#"
+            href="https://weather.controltowerai.io/#"
+            target="_blank"
+            rel="noopener"
             class="detail-link-secondary"
           >
-            ${translatedOrFallback(
-              "ui.discover_scientific_framework",
-              scienceLinkFallback
-            )}
+            ${translatedOrFallback("ui.discover_scientific_framework", scienceLinkFallback)}
           </a>
         </div>
 
-        <div class="detail-signature">
-          ${translatedOrFallback(
-            "ui.controltower_signature",
-            signatureFallback
-          )}
+        <div class="detail-card-footer">
+          ${translatedOrFallback("ui.card_footer", cardFooterFallback)}
         </div>
       `;
 
