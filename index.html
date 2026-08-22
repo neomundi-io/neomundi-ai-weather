@@ -932,55 +932,69 @@
   </style>
 
   <!-- ============================================================
-       SKIN OVERRIDE — Démo 1 : "Éditorial"
+       SKIN OVERRIDE — Démo 2 : "Mesure dense"
        Pure surcouche CSS. N'écrase ni les tokens de thème (--nm-*),
-       ni la logique JS, ni les i18n. Sans-serif partout.
+       ni la logique JS, ni les i18n. Sans-serif + accents monospace,
+       grille plus dense pour un rendu "carnet de mesure".
        ============================================================ -->
-  <style id="skin-editorial">
+  <style id="skin-dense">
     body { font-family: "Segoe UI", Inter, Arial, Helvetica, sans-serif; }
 
-    h1 { font-weight: 800; letter-spacing: -0.015em; }
+    .wall { gap: 6px; }
+    @media (min-width: 860px) { .wall { grid-template-columns: repeat(5, 1fr); } }
+    @media (min-width: 1180px) { .wall { grid-template-columns: repeat(6, 1fr); } }
 
-    .header-brand { font-weight: 700; letter-spacing: 0.16em; }
-
-    /* Cards: stronger left-accent bar, flatter, tighter radius */
     .card {
-      border-left-width: 6px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(28, 39, 51, 0.05);
+      padding: 10px 10px;
+      border-radius: 6px;
+      border-left-width: 4px;
+      border-width: 1px;
+      box-shadow: none;
     }
     .card:hover, .card:focus-visible {
-      box-shadow: 0 8px 20px rgba(28, 39, 51, 0.10);
+      box-shadow: 0 2px 8px rgba(28, 39, 51, 0.08);
+      transform: none;
     }
-    .card-model { font-weight: 800; letter-spacing: 0; }
-    .card-judgment-level { font-weight: 900; }
 
-    /* Detail sheet */
-    .detail-sheet { border-radius: 12px; }
-
-    .detail-block-label { font-weight: 800; letter-spacing: 0.1em; }
-
-    /* Governance block: left-accent bar instead of soft filled box,
-       colored to match the observed condition (progressive enhancement
-       via :has — falls back to neutral ink-faint bar on older browsers). */
-    .detail-governance {
-      background: transparent;
-      border-left: 5px solid var(--ink-faint);
-      border-radius: 4px;
-      padding: 10px 0 10px 14px;
+    .card-model {
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0;
     }
-    .detail-overlay:has(.detail-condition.is-clear) .detail-governance { border-left-color: #22c55e; }
-    .detail-overlay:has(.detail-condition.is-watch) .detail-governance { border-left-color: #facc15; }
-    .detail-overlay:has(.detail-condition.is-unsettled) .detail-governance { border-left-color: #f97316; }
-    .detail-overlay:has(.detail-condition.is-alert) .detail-governance { border-left-color: #ef4444; }
+    .card-judgment { font-family: "SFMono-Regular", Consolas, monospace; font-size: 10.5px; }
+    .card-state-dot { width: 14px; height: 14px; border-width: 2px; }
 
-    .detail-governance-value { font-weight: 900; font-size: 19px; }
+    .wall-heading, .detail-block-label {
+      font-family: "SFMono-Regular", Consolas, monospace;
+    }
 
-    .detail-links { display: flex; flex-direction: column; gap: 9px; }
-    .detail-link-secondary { color: var(--ink-dim) !important; font-weight: 600 !important; }
+    .detail-sheet { border-radius: 8px; }
+    .detail-governance { background: var(--nm-surface-soft); border-radius: 6px; }
+    .detail-governance-value {
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-weight: 800;
+    }
 
-    footer { padding-top: 20px; }
-    .footer-observatory-line { margin-top: 4px; font-size: 11px; color: var(--ink-faint); }
+    .detail-links { display: flex; flex-direction: column; gap: 8px; }
+    .detail-link-secondary {
+      color: var(--ink-dim) !important;
+      font-family: "SFMono-Regular", Consolas, monospace !important;
+      font-weight: 600 !important;
+      font-size: 11.5px !important;
+    }
+
+    .footer-observatory-line {
+      margin-top: 4px;
+      font-size: 10.5px;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      color: var(--ink-faint);
+    }
+
+    @media (max-width: 559px) {
+      .wall { gap: 5px; }
+      .card { padding: 9px 8px; }
+    }
   </style>
 </head>
 
