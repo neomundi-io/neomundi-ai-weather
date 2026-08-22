@@ -17,7 +17,10 @@ function openDetail(system) {
     : null;
 
   const previousJudgment = previousJudgmentKey
-    ? translatedOrFallback(previousJudgmentKey, prevMeta ? prevMeta.label : "—")
+    ? translatedOrFallback(
+        previousJudgmentKey,
+        prevMeta ? prevMeta.label : "—"
+      )
     : NMi18n.t("ui.no_prior");
 
   document.getElementById("detail-sheet").innerHTML = `
@@ -92,17 +95,6 @@ function openDetail(system) {
         ${translatedOrFallback(
           "ui.install_widget_free",
           "Installer gratuitement ce widget sur votre site →"
-        )}
-      </a>
-
-      <a
-        href="https://controltowerai.io/ai-weather/methodology/"
-        target="_blank"
-        rel="noopener"
-      >
-        ${translatedOrFallback(
-          "ui.how_measure_built",
-          "Voir comment cette mesure est construite →"
         )}
       </a>
     </div>
