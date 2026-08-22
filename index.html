@@ -932,58 +932,55 @@
   </style>
 
   <!-- ============================================================
-       SKIN OVERRIDE — Démo 3 : "Signal doux"
+       SKIN OVERRIDE — Démo 1 : "Éditorial"
        Pure surcouche CSS. N'écrase ni les tokens de thème (--nm-*),
-       ni la logique JS, ni les i18n. Sans-serif, cartes teintées
-       (couleur d'état en fond très léger), plus d'air.
+       ni la logique JS, ni les i18n. Sans-serif partout.
        ============================================================ -->
-  <style id="skin-soft">
+  <style id="skin-editorial">
     body { font-family: "Segoe UI", Inter, Arial, Helvetica, sans-serif; }
 
-    .wall { gap: 14px; }
+    h1 { font-weight: 800; letter-spacing: -0.015em; }
 
+    .header-brand { font-weight: 700; letter-spacing: 0.16em; }
+
+    /* Cards: stronger left-accent bar, flatter, tighter radius */
     .card {
-      border-radius: 20px;
-      border-left-width: 5px;
-      border: 1px solid transparent;
-      padding: 16px 15px;
-      box-shadow: 0 3px 10px rgba(28, 39, 51, 0.05);
+      border-left-width: 6px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(28, 39, 51, 0.05);
     }
-    .card.is-clear     { background: rgba(34, 197, 94, 0.07);  border-left-color: #22c55e; }
-    .card.is-watch     { background: rgba(250, 204, 21, 0.09); border-left-color: #facc15; }
-    .card.is-unsettled { background: rgba(249, 115, 22, 0.08); border-left-color: #f97316; }
-    .card.is-alert     { background: rgba(239, 68, 68, 0.08);  border-left-color: #ef4444; }
+    .card:hover, .card:focus-visible {
+      box-shadow: 0 8px 20px rgba(28, 39, 51, 0.10);
+    }
+    .card-model { font-weight: 800; letter-spacing: 0; }
+    .card-judgment-level { font-weight: 900; }
 
-    .card-state-dot { width: 24px; height: 24px; }
-    .card-model { font-weight: 700; }
+    /* Detail sheet */
+    .detail-sheet { border-radius: 12px; }
 
-    .detail-sheet { border-radius: 24px; padding: 26px 26px calc(26px + env(safe-area-inset-bottom)); }
+    .detail-block-label { font-weight: 800; letter-spacing: 0.1em; }
 
+    /* Governance block: left-accent bar instead of soft filled box,
+       colored to match the observed condition (progressive enhancement
+       via :has — falls back to neutral ink-faint bar on older browsers). */
     .detail-governance {
-      border-radius: 16px;
-      padding: 16px 16px;
+      background: transparent;
+      border-left: 5px solid var(--ink-faint);
+      border-radius: 4px;
+      padding: 10px 0 10px 14px;
     }
-    .detail-overlay:has(.detail-condition.is-clear) .detail-governance { background: rgba(34, 197, 94, 0.09); }
-    .detail-overlay:has(.detail-condition.is-watch) .detail-governance { background: rgba(250, 204, 21, 0.12); }
-    .detail-overlay:has(.detail-condition.is-unsettled) .detail-governance { background: rgba(249, 115, 22, 0.10); }
-    .detail-overlay:has(.detail-condition.is-alert) .detail-governance { background: rgba(239, 68, 68, 0.10); }
+    .detail-overlay:has(.detail-condition.is-clear) .detail-governance { border-left-color: #22c55e; }
+    .detail-overlay:has(.detail-condition.is-watch) .detail-governance { border-left-color: #facc15; }
+    .detail-overlay:has(.detail-condition.is-unsettled) .detail-governance { border-left-color: #f97316; }
+    .detail-overlay:has(.detail-condition.is-alert) .detail-governance { border-left-color: #ef4444; }
 
-    .detail-governance-value { font-size: 19px; }
+    .detail-governance-value { font-weight: 900; font-size: 19px; }
 
-    .detail-links { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+    .detail-links { display: flex; flex-direction: column; gap: 9px; }
     .detail-link-secondary { color: var(--ink-dim) !important; font-weight: 600 !important; }
 
-    .footer-observatory-line {
-      margin-top: 5px;
-      font-size: 11.5px;
-      line-height: 1.5;
-      color: var(--ink-faint);
-    }
-
-    @media (max-width: 559px) {
-      .wall { gap: 10px; }
-      .card { padding: 14px 12px; border-radius: 16px; }
-    }
+    footer { padding-top: 20px; }
+    .footer-observatory-line { margin-top: 4px; font-size: 11px; color: var(--ink-faint); }
   </style>
 </head>
 
