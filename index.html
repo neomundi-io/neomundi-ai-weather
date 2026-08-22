@@ -980,7 +980,6 @@
     .detail-link-secondary { color: var(--ink-dim) !important; font-weight: 600 !important; }
 
     footer { padding-top: 20px; }
-    .footer-observatory-line { margin-top: 4px; font-size: 11px; color: var(--ink-faint); }
 
     /* ---------- Detail card v0.5 — Observatoire (mesure → signal → décision) ---------- */
 
@@ -1006,13 +1005,11 @@
       margin-bottom: 16px;
     }
 
-    .detail-today-label {
-      font-size: 10.5px;
+    .detail-today-headline {
+      font-size: 15px;
       font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 10px;
+      color: var(--ink);
+      margin-bottom: 8px;
     }
 
     .detail-today-meta {
@@ -1021,7 +1018,7 @@
       flex-wrap: wrap;
       gap: 7px 10px;
       font-size: 13px;
-      color: var(--ink);
+      color: var(--ink-dim);
       margin-bottom: 14px;
     }
 
@@ -1391,23 +1388,12 @@
     function renderFooter() {
       const currentLang = NMi18n.lang();
 
-      const footerFallback = currentLang === "fr"
-        ? "Propulsé par NeoMundi"
-        : "Powered by NeoMundi";
-
-      const observatoryFallback = currentLang === "fr"
-        ? "Observatoire indépendant du comportement des IA — mesure continue, méthode publiée"
-        : "Independent observatory of AI behavior — continuous measurement, published methodology";
+      const cardFooterFallback = currentLang === "fr"
+        ? "ControlTower · Propulsé par NeoMundi · Métrologie IA en temps réel et Observatoire indépendant."
+        : "ControlTower · Powered by NeoMundi · Real-time AI metrology and independent observatory.";
 
       document.getElementById("footer-brand-line").innerHTML =
-        `<div><strong>ControlTower</strong> · ${translatedOrFallback(
-          "ui.powered_by_neomundi_runtime",
-          footerFallback
-        )}</div>
-        <div class="footer-observatory-line">${translatedOrFallback(
-          "ui.observatory_line",
-          observatoryFallback
-        )}</div>`;
+        translatedOrFallback("ui.card_footer", cardFooterFallback);
     }
 
     function renderCard(system) {
@@ -1533,13 +1519,11 @@
         </div>
 
         <div class="detail-today is-${system.condition}">
-          <div class="detail-today-label">
-            ${translatedOrFallback("ui.today", todayFallback)}
+          <div class="detail-today-headline">
+            ${translatedOrFallback("ui.today", todayFallback)} · ${fmtDate(system.last_observed_at)}
           </div>
 
           <div class="detail-today-meta">
-            <span>${fmtDate(system.last_observed_at)}</span>
-            <span class="sep">·</span>
             <span>${identity.label}</span>
             <span class="sep">·</span>
             <span>${translatedOrFallback("ui.observations", observationsFallback)}</span>
