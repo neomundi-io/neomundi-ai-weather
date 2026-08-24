@@ -129,30 +129,28 @@
   /**
    * Public identity boundary.
    *
-   * POLICY v0.2
+   * POLICY v0.3 (2026-08-24)
    *
-   * The real observed model identifier is the primary public identity.
+   * The public brand name is the primary public identity again.
    *
    * Example:
-   *
-   *   gpt-4o-2024-11-20
-   *   claude-sonnet-4-5-20250929
-   *   gemini-3.6-flash
-   *   grok-4.5
-   *
-   * This replaces the previous public-first preference for brand-like
-   * display names such as:
    *
    *   ChatGPT
    *   Claude
    *   Gemini
+   *   Grok
+   *
+   * This reverts POLICY v0.2's technical-first preference (which showed
+   * raw model identifiers such as gpt-4o-2024-11-20 as the primary
+   * label). The technical identifier remains available on click/detail
+   * view — it is simply no longer the first thing shown on the card.
    *
    * Priority:
    *
-   *   1. system.model
+   *   1. system.model_display
    *   2. system.model_public
-   *   3. system.model_display
-   *   4. system.public_label
+   *   3. system.public_label
+   *   4. system.model
    *
    * Provider identity remains available separately for accessibility,
    * metadata and contextual rendering.
@@ -167,17 +165,17 @@
     let label = null;
 
     if (system) {
-      if (system.model) {
-        label = system.model;
+      if (system.model_display) {
+        label = system.model_display;
       } else if (
         system.model_public !== undefined &&
         system.model_public !== null
       ) {
         label = system.model_public;
-      } else if (system.model_display) {
-        label = system.model_display;
       } else if (system.public_label) {
         label = system.public_label;
+      } else if (system.model) {
+        label = system.model;
       }
     }
 
