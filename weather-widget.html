@@ -393,7 +393,16 @@
 
     function logoTag(systemId) {
       if (!SHOW_LOGOS) return "";
-      return `<img class="logo-img" src="./assets/logos/${encodeURIComponent(systemId)}.png" alt="" loading="lazy" onerror="this.remove()">`;
+      // Logo filenames match the system id by default (assets/logos/<id>.png).
+      // Override here when the internal id doesn't match the visible brand —
+      // e.g. system id "infomaniak" (the hosting provider) shows the NVIDIA
+      // model publicly, so its logo file is named nvidia.png, not
+      // infomaniak.png.
+      const LOGO_FILE_OVERRIDES = {
+        infomaniak: "nvidia"
+      };
+      const fileName = LOGO_FILE_OVERRIDES[systemId] || systemId;
+      return `<img class="logo-img" src="./assets/logos/${encodeURIComponent(fileName)}.png" alt="" loading="lazy" onerror="this.remove()">`;
     }
 
     function tOrFallback(key, fallback) {
