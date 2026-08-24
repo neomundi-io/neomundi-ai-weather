@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoMundi AI Weather — Widget Gallery</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 40px 20px 80px;
+      font-family: "Segoe UI", "Inter", Arial, Helvetica, sans-serif;
+      background: #f7fafc;
+      color: #1c2733;
+    }
+
+    .page { max-width: 1040px; margin: 0 auto; }
+
+    h1 { font-size: 26px; margin: 0 0 6px; }
+    .lede { color: #5b6b7a; font-size: 14px; margin-bottom: 8px; max-width: 680px; line-height: 1.6; }
+    .lede a { color: #378ADD; }
+
+    .note {
+      font-size: 12.5px;
+      color: #8b97a3;
+      margin-bottom: 44px;
+      max-width: 680px;
+      line-height: 1.6;
+    }
+
+    section { margin-bottom: 52px; }
+
+    h2 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8b97a3;
+      margin: 0 0 6px;
+    }
+
+    h3 { font-size: 18px; margin: 0 0 12px; }
+
+    .desc { font-size: 13px; color: #5b6b7a; margin-bottom: 16px; max-width: 680px; line-height: 1.6; }
+
+    .variants-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .variant-block {
+      background: #ffffff;
+      border: 1px solid #e1e8ef;
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .variant-block.dark { background: #171d24; border-color: #2a333d; }
+
+    .variant-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #8b97a3;
+      margin-bottom: 10px;
+    }
+
+    .variant-block.dark .variant-label { color: #7d8b99; }
+
+    iframe { border: none; display: block; }
+
+    .frame-block {
+      background: #ffffff;
+      border: 1px solid #e1e8ef;
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .frame-block.dark { background: #171d24; border-color: #2a333d; }
+
+    .frame-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #8b97a3;
+      margin-bottom: 10px;
+    }
+
+    .frame-block.dark .frame-label { color: #7d8b99; }
+
+    .pair-row { display: flex; flex-wrap: wrap; gap: 16px; }
+    .pair-row > div { flex: 1; min-width: 260px; }
+
+    pre {
+      background: #10151b;
+      color: #e8eaed;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 11.5px;
+      overflow-x: auto;
+      line-height: 1.6;
+      margin: 10px 0 0;
+    }
+
+    code { font-family: "SFMono-Regular", Consolas, monospace; }
+
+    details { margin-top: 6px; }
+    summary {
+      cursor: pointer;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #378ADD;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <h1>NeoMundi AI Weather — Widget Gallery</h1>
+    <div class="lede">
+      Toutes les configurations du widget unique <code>weather-widget.html</code>,
+      pilotées par paramètres d'URL — voir
+      <a href="./intégration_FR.md">intégration_FR.md</a> pour la référence
+      complète de tous les paramètres.
+    </div>
+    <div class="note">
+      Chaque exemple ci-dessous est une vraie iframe, pas une image statique —
+      ce que tu vois est exactement ce qui s'affichera une fois collé chez toi.
+      Les données affichées sont les données réelles de <code>weather.json</code>.
+    </div>
+
+    <!-- ============================================================
+         1 PROVIDER — positions de logo
+         ============================================================ -->
+    <section>
+      <h2>Section 1 — Widget individuel (1 provider)</h2>
+      <h3>Position du logo</h3>
+      <div class="desc">
+        Le point coloré (statut) est toujours affiché — le logo est additif,
+        jamais un remplacement. <code>logo_pos=</code> ne change rien tant que
+        <code>logos=true</code> n'est pas activé.
+      </div>
+
+      <div class="variants-row">
+        <div class="variant-block">
+          <div class="variant-label">logo_pos=left (défaut)</div>
+          <iframe src="./weather-widget.html?systems=openai&logos=true&logo_pos=left&lang=fr" width="240" height="60" loading="lazy" title="Logo à gauche"></iframe>
+        </div>
+        <div class="variant-block">
+          <div class="variant-label">logo_pos=right</div>
+          <iframe src="./weather-widget.html?systems=openai&logos=true&logo_pos=right&lang=fr" width="240" height="60" loading="lazy" title="Logo à droite"></iframe>
+        </div>
+        <div class="variant-block">
+          <div class="variant-label">logo_pos=top</div>
+          <iframe src="./weather-widget.html?systems=openai&logos=true&logo_pos=top&lang=fr" width="140" height="90" loading="lazy" title="Logo en haut"></iframe>
+        </div>
+        <div class="variant-block">
+          <div class="variant-label">logo_pos=bottom</div>
+          <iframe src="./weather-widget.html?systems=openai&logos=true&logo_pos=bottom&lang=fr" width="140" height="90" loading="lazy" title="Logo en bas"></iframe>
+        </div>
+        <div class="variant-block">
+          <div class="variant-label">logos=false (référence, sans logo)</div>
+          <iframe src="./weather-widget.html?systems=openai&logos=false&lang=fr" width="200" height="60" loading="lazy" title="Sans logo"></iframe>
+        </div>
+      </div>
+
+      <details>
+        <summary>Voir les snippets</summary>
+        <pre><code>&lt;!-- logo à gauche (défaut) --&gt;
+&lt;iframe src="weather-widget.html?systems=openai&amp;logos=true&amp;logo_pos=left&amp;lang=fr" width="240" height="60" loading="lazy" title="NeoMundi AI Weather — OpenAI"&gt;&lt;/iframe&gt;
+
+&lt;!-- logo à droite --&gt;
+&lt;iframe src="weather-widget.html?systems=openai&amp;logos=true&amp;logo_pos=right&amp;lang=fr" width="240" height="60" loading="lazy" title="NeoMundi AI Weather — OpenAI"&gt;&lt;/iframe&gt;
+
+&lt;!-- logo en haut (carte verticale) --&gt;
+&lt;iframe src="weather-widget.html?systems=openai&amp;logos=true&amp;logo_pos=top&amp;lang=fr" width="140" height="90" loading="lazy" title="NeoMundi AI Weather — OpenAI"&gt;&lt;/iframe&gt;
+
+&lt;!-- logo en bas (carte verticale) --&gt;
+&lt;iframe src="weather-widget.html?systems=openai&amp;logos=true&amp;logo_pos=bottom&amp;lang=fr" width="140" height="90" loading="lazy" title="NeoMundi AI Weather — OpenAI"&gt;&lt;/iframe&gt;
+
+&lt;!-- sans logo --&gt;
+&lt;iframe src="weather-widget.html?systems=openai&amp;lang=fr" width="200" height="60" loading="lazy" title="NeoMundi AI Weather — OpenAI"&gt;&lt;/iframe&gt;</code></pre>
+      </details>
+    </section>
+
+    <!-- ============================================================
+         2 PROVIDERS
+         ============================================================ -->
+    <section>
+      <h2>Section 2</h2>
+      <h3>2 providers</h3>
+      <div class="desc">OpenAI + Anthropic, disposition horizontale (<code>layout=row</code>).</div>
+
+      <div class="pair-row">
+        <div class="frame-block">
+          <div class="frame-label">logos=false</div>
+          <iframe src="./weather-widget.html?systems=openai,anthropic&layout=row&lang=fr" width="100%" height="60" loading="lazy" title="2 providers sans logo"></iframe>
+        </div>
+        <div class="frame-block">
+          <div class="frame-label">logos=true</div>
+          <iframe src="./weather-widget.html?systems=openai,anthropic&layout=row&logos=true&lang=fr" width="100%" height="60" loading="lazy" title="2 providers avec logo"></iframe>
+        </div>
+      </div>
+
+      <details>
+        <summary>Voir les snippets</summary>
+        <pre><code>&lt;iframe src="weather-widget.html?systems=openai,anthropic&amp;layout=row&amp;lang=fr" width="100%" height="60" loading="lazy" title="NeoMundi AI Weather"&gt;&lt;/iframe&gt;
+
+&lt;iframe src="weather-widget.html?systems=openai,anthropic&amp;layout=row&amp;logos=true&amp;lang=fr" width="100%" height="60" loading="lazy" title="NeoMundi AI Weather"&gt;&lt;/iframe&gt;</code></pre>
+      </details>
+    </section>
+
+    <!-- ============================================================
+         3 PROVIDERS
+         ============================================================ -->
+    <section>
+      <h2>Section 3</h2>
+      <h3>3 providers</h3>
+      <div class="desc">OpenAI, Anthropic, Google — <code>layout=row</code>.</div>
+
+      <div class="pair-row">
+        <div class="frame-block">
+          <div class="frame-label">logos=false</div>
+          <iframe src="./weather-widget.html?systems=openai,anthropic,google&layout=row&lang=fr" width="100%" height="60" loading="lazy" title="3 providers sans logo"></iframe>
+        </div>
+        <div class="frame-block">
+          <div class="frame-label">logos=true</div>
+          <iframe src="./weather-widget.html?systems=openai,anthropic,google&layout=row&logos=true&lang=fr" width="100%" height="60" loading="lazy" title="3 providers avec logo"></iframe>
+        </div>
+      </div>
+
+      <details>
+        <summary>Voir les snippets</summary>
+        <pre><code>&lt;iframe src="weather-widget.html?systems=openai,anthropic,google&amp;layout=row&amp;lang=fr" width="100%" height="60" loading="lazy" title="NeoMundi AI Weather"&gt;&lt;/iframe&gt;
+
+&lt;iframe src="weather-widget.html?systems=openai,anthropic,google&amp;layout=row&amp;logos=true&amp;lang=fr" width="100%" height="60" loading="lazy" title="NeoMundi AI Weather"&gt;&lt;/iframe&gt;</code></pre>
+      </details>
+    </section>
+
+    <!-- ============================================================
+         4 PROVIDERS
+         ============================================================ -->
+    <section>
+      <h2>Section 4</h2>
+      <h3>4 providers</h3>
+      <div class="desc">OpenAI, Anthropic, Google, xAI — <code>layout=grid</code> (2 colonnes ici).</div>
+
+      <div class="pair-row">
+        <div class="frame-block">
+          <div class="frame-label">logos=false</div>
+          <iframe src="./weather-widget.html?systems=openai,anthropic,google,xai&layout=grid&lang=fr" width="320" height="120" loading="lazy" title="4 providers sans logo"></iframe>
+        </div>
+        <div class="frame-block">
+          <div class="frame-label">logos=true</div>
+          <iframe src="./weather-widget.html?systems=openai,anthropic,google,xai&layout=grid&logos=true&lang=fr" width="320" height="120" loading="lazy" title="4 providers avec logo"></iframe>
+        </div>
+      </div>
+
+      <details>
+        <summary>Voir les snippets</summary>
+        <pre><code>&lt;iframe src="weather-widget.html?systems=openai,anthropic,google,xai&amp;layout=grid&amp;lang=fr" width="320" height="120" loading="lazy" title="NeoMundi AI Weather"&gt;&lt;/iframe&gt;
+
+&lt;iframe src="weather-widget.html?systems=openai,anthropic,google,xai&amp;layout=grid&amp;logos=true&amp;lang=fr" width="320" height="120" loading="lazy" title="NeoMundi AI Weather"&gt;&lt;/iframe&gt;</code></pre>
+      </details>
+    </section>
+
+    <!-- ============================================================
+         6 PROVIDERS
+         ============================================================ -->
+    <section>
+      <h2>Section 5</h2>
+      <h3>6 providers</h3>
+      <div class="desc">OpenAI, Anthropic, Google, xAI, Mistral, DeepSeek — <code>layout=column</code>, thème sombre.</div>
+
+      <div class="pair-row">
+        <div class="variant-block dark">
+          <div class="variant-label">logos=false</div>
+          <iframe src="./weather-widget.html?systems=openai,anthropic,google,xai,mistral,deepseek&layout=column&theme=dark&lang=fr" width="280" height="360" loading="lazy" title="6 providers sans logo"></iframe>
+        </div>
+        <div class="variant-block dark">
+          <div class="variant-label">logos=true</div>
+          <iframe src="./weather-widget.html?systems=openai,anthropic,google,xai,mistral,deepseek&layout=column&theme=dark&logos=true&lang=fr" width="280" height="400" loading="lazy" title="6 providers avec logo"></iframe>
+        </div>
+      </div>
+
+      <details>
+        <summary>Voir les snippets</summary>
+        <pre><code>&lt;iframe src="weather-widget.html?systems=openai,anthropic,google,xai,mistral,deepseek&amp;layout=column&amp;theme=dark&amp;lang=fr" width="280" height="360" loading="lazy" title="NeoMundi AI Weather"&gt;&lt;/iframe&gt;
+
+&lt;iframe src="weather-widget.html?systems=openai,anthropic,google,xai,mistral,deepseek&amp;layout=column&amp;theme=dark&amp;logos=true&amp;lang=fr" width="280" height="400" loading="lazy" title="NeoMundi AI Weather"&gt;&lt;/iframe&gt;</code></pre>
+      </details>
+    </section>
+
+    <!-- ============================================================
+         8 PROVIDERS
+         ============================================================ -->
+    <section>
+      <h2>Section 6</h2>
+      <h3>8 providers</h3>
+      <div class="desc">
+        Les 8 providers "core" — <code>layout=grid</code>.
+      </div>
+
+      <div class="pair-row">
+        <div class="frame-block">
+          <div class="frame-label">logos=false</div>
+          <iframe src="./weather-widget.html?systems=openai,anthropic,google,xai,mistral,deepseek,qwen,moonshot&layout=grid&lang=fr" width="100%" height="180" loading="lazy" title="8 providers sans logo"></iframe>
+        </div>
+        <div class="frame-block">
+          <div class="frame-label">logos=true</div>
+          <iframe src="./weather-widget.html?systems=openai,anthropic,google,xai,mistral,deepseek,qwen,moonshot&layout=grid&logos=true&lang=fr" width="100%" height="180" loading="lazy" title="8 providers avec logo"></iframe>
+        </div>
+      </div>
+
+      <details>
+        <summary>Voir les snippets</summary>
+        <pre><code>&lt;iframe src="weather-widget.html?systems=openai,anthropic,google,xai,mistral,deepseek,qwen,moonshot&amp;layout=grid&amp;lang=fr" width="100%" height="180" loading="lazy" title="NeoMundi AI Weather"&gt;&lt;/iframe&gt;
+
+&lt;iframe src="weather-widget.html?systems=openai,anthropic,google,xai,mistral,deepseek,qwen,moonshot&amp;layout=grid&amp;logos=true&amp;lang=fr" width="100%" height="180" loading="lazy" title="NeoMundi AI Weather"&gt;&lt;/iframe&gt;</code></pre>
+      </details>
+    </section>
+
+    <!-- ============================================================
+         12 PROVIDERS
+         ============================================================ -->
+    <section>
+      <h2>Section 7</h2>
+      <h3>12 providers (panel complet)</h3>
+      <div class="desc"><code>layout=grid</code> — équivalent de l'ancien Core Panel, désormais complet (12/12).</div>
+
+      <div class="frame-block">
+        <div class="frame-label">logos=false</div>
+        <iframe src="./weather-widget.html?systems=openai,anthropic,google,xai,mistral,deepseek,qwen,moonshot,cohere,meta,infomaniak,perplexity&layout=grid&lang=fr" width="100%" height="260" loading="lazy" title="12 providers sans logo"></iframe>
+      </div>
+      <div class="frame-block">
+        <div class="frame-label">logos=true</div>
+        <iframe src="./weather-widget.html?systems=openai,anthropic,google,xai,mistral,deepseek,qwen,moonshot,cohere,meta,infomaniak,perplexity&layout=grid&logos=true&lang=fr" width="100%" height="260" loading="lazy" title="12 providers avec logo"></iframe>
+      </div>
+
+      <details>
+        <summary>Voir les snippets</summary>
+        <pre><code>&lt;iframe src="weather-widget.html?systems=openai,anthropic,google,xai,mistral,deepseek,qwen,moonshot,cohere,meta,infomaniak,perplexity&amp;layout=grid&amp;lang=fr" width="100%" height="260" loading="lazy" title="NeoMundi AI Weather"&gt;&lt;/iframe&gt;
+
+&lt;iframe src="weather-widget.html?systems=openai,anthropic,google,xai,mistral,deepseek,qwen,moonshot,cohere,meta,infomaniak,perplexity&amp;layout=grid&amp;logos=true&amp;lang=fr" width="100%" height="260" loading="lazy" title="NeoMundi AI Weather"&gt;&lt;/iframe&gt;</code></pre>
+      </details>
+    </section>
+
+    <!-- ============================================================
+         GLOBAL
+         ============================================================ -->
+    <section>
+      <h2>Section 8</h2>
+      <h3>Badge global (agrégé, sans provider spécifique)</h3>
+      <div class="desc"><code>systems=</code> omis (ou <code>systems=global</code>) — condition d'ensemble du panel.</div>
+
+      <div class="frame-block">
+        <iframe src="./weather-widget.html?lang=fr" width="380" height="220" loading="lazy" title="Badge global"></iframe>
+      </div>
+
+      <details>
+        <summary>Voir le snippet</summary>
+        <pre><code>&lt;iframe src="weather-widget.html?lang=fr" width="380" height="220" loading="lazy" title="NeoMundi AI Weather"&gt;&lt;/iframe&gt;</code></pre>
+      </details>
+    </section>
+
+  </div>
+
+</body>
+</html>
