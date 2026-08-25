@@ -14,10 +14,13 @@
      *
      * Fully self-contained — colors hardcoded here, no themes.css
      * dependency (same reasoning as the other AI Weather widgets).
+     * The 5 theme palettes below are copied verbatim from
+     * styles/themes.css (the site's canonical source) rather than
+     * reinvented.
      *
      * Configuration via URL only, no in-widget UI:
      *   lang=   en, fr, de, es, it, pt, nl, ru, ar, hi, ja, ko, zh
-     *   theme=  light (default) | dark
+     *   theme=  light (default) | dark | slate | warm | transparent
      *
      * Mini trend line per tile: built from data/history/<date>.json
      * daily snapshots (system.score over the last available days).
@@ -26,14 +29,16 @@
      * intentionally allowed to be sparse rather than fake continuity.
      */
 
-    :root {
+    :root,
+    [data-theme="light"] {
       --card-bg: linear-gradient(180deg, #dceefa 0%, #edf7fc 55%, #ffffff 100%);
-      --card-border: #cfe3f0;
-      --cell-divider: #d7e6f0;
+      --dot-ring: #ffffff;
+      --card-border: #d6e2eb;
+      --cell-divider: #eef2f6;
       --logo-chip-bg: #eef0f3;
-      --ink: #171b21;
-      --ink-dim: #5b6270;
-      --ink-faint: #9ba1ac;
+      --ink: #1c2733;
+      --ink-dim: #5b6b7a;
+      --ink-faint: #8b97a3;
 
       --clear: #22c55e;
       --watch: #facc15;
@@ -42,13 +47,47 @@
     }
 
     [data-theme="dark"] {
-      --card-bg: #1b1f26;
-      --card-border: #2a2f38;
-      --cell-divider: #333944;
+      --card-bg: linear-gradient(180deg, #101922 0%, #111820 55%, #0c1117 100%);
+      --dot-ring: #0c1117;
+      --card-border: #2a333d;
+      --cell-divider: #232c35;
       --logo-chip-bg: #eef0f3;
-      --ink: #f1f2f4;
-      --ink-dim: #a6acb6;
-      --ink-faint: #6b7280;
+      --ink: #eef2f6;
+      --ink-dim: #b3bdc7;
+      --ink-faint: #7f8b97;
+    }
+
+    [data-theme="slate"] {
+      --card-bg: linear-gradient(180deg, #dce3e8 0%, #e9eef2 55%, #f4f6f8 100%);
+      --dot-ring: #f4f6f8;
+      --card-border: #d7dee5;
+      --cell-divider: #e7ebef;
+      --logo-chip-bg: #eef0f3;
+      --ink: #1f2937;
+      --ink-dim: #64748b;
+      --ink-faint: #8a98a8;
+    }
+
+    [data-theme="warm"] {
+      --card-bg: linear-gradient(180deg, #f2eadc 0%, #f8f2e8 55%, #fffdf8 100%);
+      --dot-ring: #fffdf8;
+      --card-border: #e8ddc9;
+      --cell-divider: #f0e8dc;
+      --logo-chip-bg: #eef0f3;
+      --ink: #2b2418;
+      --ink-dim: #766a56;
+      --ink-faint: #9a8f7b;
+    }
+
+    [data-theme="transparent"] {
+      --card-bg: transparent;
+      --dot-ring: transparent;
+      --card-border: rgba(23, 32, 51, 0.15);
+      --cell-divider: rgba(23, 32, 51, 0.08);
+      --logo-chip-bg: rgba(255, 255, 255, 0.6);
+      --ink: #172033;
+      --ink-dim: #6b7a89;
+      --ink-faint: #8b97a3;
     }
 
     * { box-sizing: border-box; }
@@ -168,7 +207,7 @@
       height: 8px;
       border-radius: 50%;
       flex: 0 0 8px;
-      border: 2px solid var(--card-bg);
+      border: 2px solid var(--dot-ring);
     }
 
     .cell.is-clear     .cell-dot { background: var(--clear);     box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.35),  0 0 7px rgba(34, 197, 94, 0.45); }
@@ -219,7 +258,9 @@
   <script src="./scripts/widget-telemetry.js"></script>
   <script>
     const params = new URLSearchParams(window.location.search);
-    const THEME = params.get("theme") === "dark" ? "dark" : "light";
+    const AVAILABLE_THEMES = ["light", "dark", "slate", "warm", "transparent"];
+    const THEME_PARAM = (params.get("theme") || "").toLowerCase();
+    const THEME = AVAILABLE_THEMES.includes(THEME_PARAM) ? THEME_PARAM : "light";
     document.documentElement.setAttribute("data-theme", THEME);
 
     // Logo filenames live directly under ./assets/ (not ./assets/logos/)
