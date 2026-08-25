@@ -25,10 +25,11 @@
      */
 
     :root {
-      --card-bg: #ffffff;
-      --card-border: #e3e7ec;
+      --card-bg: linear-gradient(180deg, #dceefa 0%, #edf7fc 55%, #ffffff 100%);
+      --card-border: #cfe3f0;
       --tile-bg: #ffffff;
       --tile-border: #e3e7ec;
+      --logo-chip-bg: #eef0f3;
       --ink: #171b21;
       --ink-dim: #5b6270;
       --ink-faint: #9ba1ac;
@@ -42,8 +43,9 @@
     [data-theme="dark"] {
       --card-bg: #1b1f26;
       --card-border: #2a2f38;
-      --tile-bg: #20242c;
-      --tile-border: #2a2f38;
+      --tile-bg: #3a3f47;
+      --tile-border: #474d57;
+      --logo-chip-bg: #eef0f3;
       --ink: #f1f2f4;
       --ink-dim: #a6acb6;
       --ink-faint: #6b7280;
@@ -139,7 +141,6 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      margin-bottom: 5px;
     }
 
     .tile-dot {
@@ -166,19 +167,22 @@
       text-overflow: ellipsis;
     }
 
-    .tile-logo {
-      width: 14px;
-      height: 14px;
-      flex: 0 0 14px;
-      object-fit: contain;
-      border-radius: 3px;
+    .tile-logo-wrap {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 16px;
+      background: var(--logo-chip-bg);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px;
     }
 
-    .tile-judgment {
-      display: block;
-      font-size: 8.5px;
-      line-height: 1.25;
-      color: var(--ink-dim);
+    .tile-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .block-foot {
@@ -235,8 +239,10 @@
       const fileName = LOGO_FILE_OVERRIDES[systemId] || systemId;
       const src = `./assets/${encodeURIComponent(fileName)}.png`;
       // Graceful fallback: if the logo genuinely doesn't exist, remove
-      // the <img> so the tile silently reverts to the text-only look.
-      return `<img class="tile-logo" src="${src}" alt="" loading="lazy" onerror="this.remove()">`;
+      // the whole chip so the tile silently reverts to the text-only
+      // look. The chip background is fixed (not theme-dependent) so
+      // dark/black provider logos stay readable in dark theme too.
+      return `<span class="tile-logo-wrap"><img class="tile-logo" src="${src}" alt="" loading="lazy" onerror="this.closest('.tile-logo-wrap').remove()"></span>`;
     }
 
     function tOrFallback(key, fallback) {
@@ -244,13 +250,31 @@
       return value === key ? fallback : value;
     }
 
-    function judgmentMeaning(system) {
-      const judgment = system.judgment_demand || {};
-      const level = judgment.level;
-      if (!level) return "—";
-      const key = `judgment.${level.toLowerCase()}`;
-      return tOrFallback(key, judgment.meaning || "—");
-    }
+    // Hover tooltip / aria-label CTA — short, per-language, dedicated
+    // to this widget (distinct from the longer canonical
+    // "ui.view_full_ai_weather" wording used elsewhere on the site).
+    // Falls back to English for any language not listed here.
+    const TILE_CTA = {
+      en: "See the AI Weather",
+      fr: "Voir la météo des IA",
+      de: "KI-Wetter ansehen",
+      es: "Ver el clima de las IA",
+      it: "Vedi il meteo delle IA",
+      pt: "Ver o clima das IAs",
+      nl: "Bekijk het AI-weer",
+      ru: "Смотреть погоду ИИ",
+      ar: "عرض طقس الذكاء الاصطناعي",
+      hi: "एआई मौसम देखें",
+      ja: "AIの天気を見る",
+      ko: "AI 날씨 보기",
+      zh: "查看AI天气"
+    };
+
+    // Footer signature and CTA are deliberately English-only, regardless
+    // of ?lang= — per explicit product decision (2026-08). Not part of
+    // the 3 translated categories (title / judgment levels / legend).
+    const FOOTER_SIGNATURE = "Powered by NeoMundi · Real-time AI metrology and governance";
+    const FOOTER_CTA = "Embed this widget for free →";
 
     Promise.all([
       NMi18n.init(),
@@ -270,22 +294,21 @@
 
         const brandName = (wording.brand && wording.brand.name) || "ControlTower";
         const fullWeatherUrl = "https://controltowerai.io/ai-weather/";
+        const tileCta = TILE_CTA[lang] || TILE_CTA.en;
 
         const tilesHtml = systems.map(system => {
           const identity = NMData.getPublicIdentity(system);
-          const href = `./index.html?system=${encodeURIComponent(system.id)}&lang=${encodeURIComponent(lang)}`;
-          const meaning = judgmentMeaning(system);
 
           return `
-            <a class="tile is-${system.condition}" href="${href}" target="_blank" rel="noopener"
-               aria-label="${identity.label} (${identity.provider}) — ${meaning}" title="${identity.label} — ${meaning}">
+            <a class="tile is-${system.condition}" href="${fullWeatherUrl}" target="_blank" rel="noopener"
+               aria-label="${identity.label} — ${tileCta}" title="${tileCta}">
               <div class="tile-top">
                 <span class="tile-dot" aria-hidden="true"></span>
                 <span class="tile-name">${identity.label}</span>
                 ${logoTag(system.id, identity.label)}
               </div>
-              <span class="tile-judgment">${meaning}</span>
             </a>
+
           `;
         }).join("");
 
@@ -301,8 +324,8 @@
           <div class="legend">${legendHtml}</div>
           <div class="grid">${tilesHtml}</div>
           <div class="block-foot">
-            <div class="block-foot-brand">${brandName} · ${tOrFallback("ui.powered_by_neomundi_runtime", "Powered by NeoMundi · Real-time AI metrology")}</div>
-            <a class="block-foot-cta" href="${fullWeatherUrl}" target="_blank" rel="noopener">${tOrFallback("ui.view_full_ai_weather", "View full AI Weather →")}</a>
+            <div class="block-foot-brand">${brandName} · ${FOOTER_SIGNATURE}</div>
+            <a class="block-foot-cta" href="${fullWeatherUrl}" target="_blank" rel="noopener">${FOOTER_CTA}</a>
           </div>
         `;
       })
