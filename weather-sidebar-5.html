@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoMundi AI Weather — Sidebar 5 (Claude/GPT/Grok/Kimi/Qwen)</title>
+
+  <style>
+    /*
+     * Widget H′ — barre latérale verticale, sélection à 5 systèmes
+     * (Claude, ChatGPT, Grok, Kimi, Qwen) — reprend weather-bar-5.html
+     * en vertical (une seule colonne) plutôt qu'en grille 2 colonnes,
+     * plus lisible à 5 éléments. Même logique de signal et de données
+     * que weather-sidebar-12.html. Format additionnel, ne remplace
+     * aucun des widgets existants.
+     *
+     * 5 thèmes complets, valeurs reprises telles quelles de
+     * styles/themes.css (source canonique du site) pour rester
+     * cohérent avec le reste du projet — rien n'est réinventé ici :
+     *   light        — clair, dégradé ciel (défaut)
+     *   dark         — sombre, salle de contrôle
+     *   slate        — neutre, technique
+     *   warm         — éditorial, papier
+     *   transparent  — pensé pour l'embed sur fond hôte
+     *
+     * Les couleurs de jugement (vert/jaune/orange/rouge) ne changent
+     * JAMAIS avec le thème — même règle que styles/themes.css.
+     *
+     * Fully self-contained — pas de dépendance à styles/themes.css ni
+     * scripts/themes.js (même raisonnement que les autres widgets :
+     * ne jamais dépendre d'un fichier partagé qui pourrait casser le
+     * widget si une variable venait à manquer). Les valeurs sont
+     * simplement dupliquées ici, à l'identique.
+     *
+     * Configuration via URL only, no in-widget UI:
+     *   lang=   en, fr, de, es, it, pt, nl, ru, ar, hi, ja, ko, zh
+     *   theme=  light (default) | dark | slate | warm | transparent
+     */
+
+    :root,
+    [data-theme="light"] {
+      --card-bg: linear-gradient(180deg, #dceefa 0%, #edf7fc 55%, #ffffff 100%);
+      --card-border: #d6e2eb;
+      --row-bg: #ffffff;
+      --row-divider: #d6e2eb;
+      --logo-chip-bg: #eef0f3;
+      --ink: #1c2733;
+      --ink-dim: #5b6b7a;
+      --ink-faint: #8b97a3;
+
+      --clear: #22c55e;
+      --watch: #facc15;
+      --unsettled: #f97316;
+      --alert: #ef4444;
+    }
+
+    [data-theme="dark"] {
+      --card-bg: linear-gradient(180deg, #101922 0%, #111820 55%, #0c1117 100%);
+      --card-border: #2a333d;
+      --row-bg: #171d24;
+      --row-divider: #2a333d;
+      --logo-chip-bg: #eef0f3;
+      --ink: #eef2f6;
+      --ink-dim: #b3bdc7;
+      --ink-faint: #7f8b97;
+    }
+
+    [data-theme="slate"] {
+      --card-bg: linear-gradient(180deg, #dce3e8 0%, #e9eef2 55%, #f4f6f8 100%);
+      --card-border: #d7dee5;
+      --row-bg: #ffffff;
+      --row-divider: #d7dee5;
+      --logo-chip-bg: #eef0f3;
+      --ink: #1f2937;
+      --ink-dim: #64748b;
+      --ink-faint: #8a98a8;
+    }
+
+    [data-theme="warm"] {
+      --card-bg: linear-gradient(180deg, #f2eadc 0%, #f8f2e8 55%, #fffdf8 100%);
+      --card-border: #e8ddc9;
+      --row-bg: #fffdf8;
+      --row-divider: #e8ddc9;
+      --logo-chip-bg: #eef0f3;
+      --ink: #2b2418;
+      --ink-dim: #766a56;
+      --ink-faint: #9a8f7b;
+    }
+
+    [data-theme="transparent"] {
+      --card-bg: transparent;
+      --card-border: rgba(23, 32, 51, 0.15);
+      --row-bg: rgba(255, 255, 255, 0.35);
+      --row-divider: rgba(23, 32, 51, 0.15);
+      --logo-chip-bg: rgba(255, 255, 255, 0.6);
+      --ink: #172033;
+      --ink-dim: #6b7a89;
+      --ink-faint: #8b97a3;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: transparent;
+      color: var(--ink);
+      font-family: "Segoe UI", "Inter", Arial, Helvetica, sans-serif;
+    }
+
+    .nm-state-msg { color: var(--ink-dim); font-size: 12px; padding: 12px; }
+
+    .block {
+      width: 300px;
+      max-width: 300px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 12px 12px 11px;
+    }
+
+    .block-title-row {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px 8px;
+      margin: 0 0 8px;
+      padding: 0 2px;
+    }
+
+    .block-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .block-signature {
+      font-size: 8.5px;
+      color: var(--ink-faint);
+      line-height: 1.35;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 10px;
+      font-size: 10px;
+      color: var(--ink-dim);
+      margin: 0 0 10px;
+      padding: 0 2px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .legend-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex: 0 0 7px;
+    }
+
+    .legend-clear     { background: var(--clear); }
+    .legend-watch     { background: var(--watch); }
+    .legend-unsettled { background: var(--unsettled); }
+    .legend-alert     { background: var(--alert); }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--row-divider);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    a.row {
+      display: block;
+      padding: 8px 9px 7px;
+      text-decoration: none;
+      color: inherit;
+      background: var(--row-bg);
+      border-bottom: 1px solid var(--row-divider);
+      transition: background 0.15s ease;
+    }
+
+    a.row:last-child { border-bottom: none; }
+
+    a.row:hover { background: rgba(55, 138, 221, 0.06); }
+
+    .row-top {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .row-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex: 0 0 8px;
+      border: 2px solid var(--row-bg);
+    }
+
+    .row.is-clear     .row-dot { background: var(--clear);     box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.35),  0 0 7px rgba(34, 197, 94, 0.45); }
+    .row.is-watch     .row-dot { background: var(--watch);     box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.45), 0 0 7px rgba(250, 204, 21, 0.50); }
+    .row.is-unsettled .row-dot { background: var(--unsettled); box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.40), 0 0 7px rgba(249, 115, 22, 0.48); }
+    .row.is-alert     .row-dot { background: var(--alert);     box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.40),  0 0 7px rgba(239, 68, 68, 0.48); }
+
+    .row-name {
+      flex: 1;
+      min-width: 0;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .row-logo-wrap {
+      width: 14px;
+      height: 14px;
+      flex: 0 0 14px;
+      background: var(--logo-chip-bg);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1px;
+    }
+
+    .row-logo { width: 100%; height: 100%; object-fit: contain; }
+
+    .row-spark {
+      width: 100%;
+      height: 14px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="block" id="block">
+    <div class="nm-state-msg">Loading…</div>
+  </div>
+
+  <script src="./scripts/i18n.js"></script>
+  <script src="./scripts/weather-data.js"></script>
+  <!-- ControlTower widget telemetry -->
+  <script src="./scripts/widget-telemetry.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const AVAILABLE_THEMES = ["light", "dark", "slate", "warm", "transparent"];
+    const THEME_PARAM = (params.get("theme") || "").toLowerCase();
+    const THEME = AVAILABLE_THEMES.includes(THEME_PARAM) ? THEME_PARAM : "light";
+    document.documentElement.setAttribute("data-theme", THEME);
+
+    // Fixed subset: 5 systems, in this display order (same set as
+    // weather-bar-5.html).
+    const SYSTEM_IDS = ["anthropic", "openai", "xai", "moonshot", "qwen"];
+
+    // None of these 5 systems need a logo filename override — each
+    // asset filename matches the system id directly.
+    const LOGO_FILE_OVERRIDES = {};
+
+    function logoTag(systemId) {
+      const fileName = LOGO_FILE_OVERRIDES[systemId] || systemId;
+      const src = `./assets/${encodeURIComponent(fileName)}.png`;
+      return `<span class="row-logo-wrap"><img class="row-logo" src="${src}" alt="" loading="lazy" onerror="this.closest('.row-logo-wrap').remove()"></span>`;
+    }
+
+    function tOrFallback(key, fallback) {
+      const value = NMi18n.t(key);
+      return value === key ? fallback : value;
+    }
+
+    // Same short, per-language hover CTA used on the other AI Weather
+    // widgets — kept identical for consistency.
+    const TILE_CTA = {
+      en: "See the AI Weather",
+      fr: "Voir la météo des IA",
+      de: "KI-Wetter ansehen",
+      es: "Ver el clima de las IA",
+      it: "Vedi il meteo delle IA",
+      pt: "Ver o clima das IAs",
+      nl: "Bekijk het AI-weer",
+      ru: "Смотреть погоду ИИ",
+      ar: "عرض طقس الذكاء الاصطناعي",
+      hi: "एआई मौसम देखें",
+      ja: "AIの天気を見る",
+      ko: "AI 날씨 보기",
+      zh: "查看AI天气"
+    };
+
+    // Brand signature sits inline next to the title, no footer.
+    // English-only regardless of ?lang= — same product decision as
+    // the other AI Weather widgets.
+    const BRAND_SIGNATURE = "Powered by NeoMundi · Real-time AI metrology for governance";
+
+    const CONDITION_VAR = {
+      clear: "--clear",
+      watch: "--watch",
+      unsettled: "--unsettled",
+      alert: "--alert"
+    };
+
+    function pad2(n) { return String(n).padStart(2, "0"); }
+    function dateStr(d) { return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`; }
+
+    // Best-effort trend data: try the last 7 calendar days of
+    // data/history/<date>.json, keep whichever exist, skip the rest.
+    function loadHistoryScores(systemIds) {
+      const days = [];
+      const today = new Date();
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(today);
+        d.setDate(d.getDate() - i);
+        days.push(dateStr(d));
+      }
+
+      return Promise.allSettled(
+        days.map(day =>
+          fetch(`./data/history/${day}.json`).then(r => (r.ok ? r.json() : Promise.reject()))
+        )
+      ).then(results => {
+        const snapshots = results
+          .filter(r => r.status === "fulfilled" && r.value && Array.isArray(r.value.systems))
+          .map(r => r.value);
+
+        snapshots.sort((a, b) => new Date(a.generated_at || 0) - new Date(b.generated_at || 0));
+
+        const scoresBySystem = {};
+        systemIds.forEach(id => { scoresBySystem[id] = []; });
+
+        snapshots.forEach(snap => {
+          (snap.systems || []).forEach(s => {
+            if (scoresBySystem[s.id] && typeof s.score === "number") {
+              scoresBySystem[s.id].push(s.score);
+            }
+          });
+        });
+
+        return scoresBySystem;
+      });
+    }
+
+    function sparklineSvg(scores, conditionVarName) {
+      if (!scores || scores.length < 2) return "";
+
+      const w = 80, h = 14, pad = 2;
+      const min = Math.min(...scores);
+      const max = Math.max(...scores);
+      const range = max - min || 1;
+      const stepX = (w - pad * 2) / (scores.length - 1);
+
+      const points = scores.map((v, i) => {
+        const x = pad + i * stepX;
+        const y = h - pad - ((v - min) / range) * (h - pad * 2);
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      }).join(" ");
+
+      return `<svg class="row-spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
+        <polyline points="${points}" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+          style="stroke: var(${conditionVarName});"></polyline>
+      </svg>`;
+    }
+
+    Promise.all([
+      NMi18n.init(),
+      fetch("./config/wording.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
+      NMData.load()
+    ])
+      .then(([lang, wording, data]) => {
+        const systems = NMData.getPanelSystems(data, SYSTEM_IDS);
+        const block = document.getElementById("block");
+
+        if (systems.length === 0) {
+          block.innerHTML = '<div class="nm-state-msg">No matching systems.</div>';
+          return;
+        }
+
+        const brandName = (wording.brand && wording.brand.name) || "ControlTower";
+        const fullWeatherUrl = "https://controltowerai.io/ai-weather/";
+        const tileCta = TILE_CTA[lang] || TILE_CTA.en;
+
+        loadHistoryScores(SYSTEM_IDS)
+          .catch(() => ({}))
+          .then(scoresBySystem => {
+            const rowsHtml = systems.map(system => {
+              const identity = NMData.getPublicIdentity(system);
+              const conditionVar = CONDITION_VAR[system.condition] || "--ink-faint";
+              const scores = (scoresBySystem && scoresBySystem[system.id]) || [];
+
+              return `
+                <a class="row is-${system.condition}" href="${fullWeatherUrl}" target="_blank" rel="noopener"
+                   aria-label="${identity.label} — ${tileCta}" title="${tileCta}">
+                  <div class="row-top">
+                    <span class="row-dot" aria-hidden="true"></span>
+                    <span class="row-name">${identity.label}</span>
+                    ${logoTag(system.id)}
+                  </div>
+                  ${sparklineSvg(scores, conditionVar)}
+                </a>
+              `;
+            }).join("");
+
+            const legendHtml = `
+              <span class="legend-item"><span class="legend-dot legend-clear"></span>${tOrFallback("judgment.j1", "Standard judgment")}</span>
+              <span class="legend-item"><span class="legend-dot legend-watch"></span>${tOrFallback("judgment.j2", "Increased attention")}</span>
+              <span class="legend-item"><span class="legend-dot legend-unsettled"></span>${tOrFallback("judgment.j3", "Heightened attention")}</span>
+              <span class="legend-item"><span class="legend-dot legend-alert"></span>${tOrFallback("judgment.j4", "Critical attention")}</span>
+            `;
+
+            block.innerHTML = `
+              <div class="block-title-row">
+                <span class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")}</span>
+                <span class="block-signature">${brandName} · ${BRAND_SIGNATURE}</span>
+              </div>
+              <div class="legend">${legendHtml}</div>
+              <div class="list">${rowsHtml}</div>
+            `;
+          });
+      })
+      .catch(() => {
+        document.getElementById("block").innerHTML =
+          '<div class="nm-state-msg">AI Weather data unavailable.</div>';
+      });
+  </script>
+
+</body>
+</html>
