@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoMundi AI Weather — Barre 320 (10 systèmes)</title>
+
+  <style>
+    /*
+     * Widget F′ — barre 320px de large, panel étendu à 10 systèmes
+     * (issu du filtre "IA américaines" à 7, élargi sur demande avec
+     * Kimi, Qwen et Mistral). Même logique de signal, de données et
+     * de tendance que le bandeau 2x6 (weather-bar-2x6.html) — sous-
+     * ensemble fixe de systèmes, grille auto-adaptative.
+     * Format additionnel, ne remplace aucun des widgets existants.
+     *
+     * Systems included (by publicly-shown identity):
+     *   openai (ChatGPT), anthropic (Claude), google (Gemini),
+     *   xai (Grok), meta (Meta), perplexity (Perplexity),
+     *   infomaniak (shows NVIDIA — the model is American even though
+     *   Infomaniak the hosting provider is Swiss), moonshot (Kimi),
+     *   qwen (Qwen), mistral (Mistral).
+     * Still excluded from this 10: deepseek (CN), cohere (CA).
+     *
+     * Fully self-contained — colors hardcoded here, no themes.css
+     * dependency (same reasoning as the other AI Weather widgets).
+     *
+     * Configuration via URL only, no in-widget UI:
+     *   lang=   en, fr, de, es, it, pt, nl, ru, ar, hi, ja, ko, zh
+     *   theme=  light (default) | dark
+     */
+
+    :root {
+      --card-bg: linear-gradient(180deg, #dceefa 0%, #edf7fc 55%, #ffffff 100%);
+      --card-border: #cfe3f0;
+      --cell-divider: #d7e6f0;
+      --logo-chip-bg: #eef0f3;
+      --ink: #171b21;
+      --ink-dim: #5b6270;
+      --ink-faint: #9ba1ac;
+
+      --clear: #22c55e;
+      --watch: #facc15;
+      --unsettled: #f97316;
+      --alert: #ef4444;
+    }
+
+    [data-theme="dark"] {
+      --card-bg: #1b1f26;
+      --card-border: #2a2f38;
+      --cell-divider: #333944;
+      --logo-chip-bg: #eef0f3;
+      --ink: #f1f2f4;
+      --ink-dim: #a6acb6;
+      --ink-faint: #6b7280;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: transparent;
+      color: var(--ink);
+      font-family: "Segoe UI", "Inter", Arial, Helvetica, sans-serif;
+    }
+
+    .nm-state-msg { color: var(--ink-dim); font-size: 12px; padding: 12px; }
+
+    .block {
+      width: 320px;
+      max-width: 320px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 12px 12px 11px;
+    }
+
+    .block-title-row {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px 8px;
+      margin: 0 0 8px;
+      padding: 0 2px;
+    }
+
+    .block-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .block-signature {
+      font-size: 8.5px;
+      color: var(--ink-faint);
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 12px;
+      font-size: 10px;
+      color: var(--ink-dim);
+      margin: 0 0 10px;
+      padding: 0 2px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .legend-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex: 0 0 7px;
+    }
+
+    .legend-clear     { background: var(--clear); }
+    .legend-watch     { background: var(--watch); }
+    .legend-unsettled { background: var(--unsettled); }
+    .legend-alert     { background: var(--alert); }
+
+    /* Only 7 tiles instead of 12 — auto-fit lets them grow to fill
+       the available width rather than sticking to a fixed column
+       count designed for 12. */
+    .strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+      border-top: 1px solid var(--cell-divider);
+      border-left: 1px solid var(--cell-divider);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    a.cell {
+      display: block;
+      padding: 10px 10px 9px;
+      text-decoration: none;
+      color: inherit;
+      border-right: 1px solid var(--cell-divider);
+      border-bottom: 1px solid var(--cell-divider);
+      min-width: 0;
+      transition: background 0.15s ease;
+    }
+
+    a.cell:hover { background: rgba(55, 138, 221, 0.06); }
+
+    .cell-top {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+
+    .cell-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex: 0 0 9px;
+      border: 2px solid var(--card-bg);
+    }
+
+    .cell.is-clear     .cell-dot { background: var(--clear);     box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.35),  0 0 8px rgba(34, 197, 94, 0.45); }
+    .cell.is-watch     .cell-dot { background: var(--watch);     box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.45), 0 0 8px rgba(250, 204, 21, 0.50); }
+    .cell.is-unsettled .cell-dot { background: var(--unsettled); box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.40), 0 0 8px rgba(249, 115, 22, 0.48); }
+    .cell.is-alert     .cell-dot { background: var(--alert);     box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.40),  0 0 8px rgba(239, 68, 68, 0.48); }
+
+    .cell-name {
+      flex: 1;
+      min-width: 0;
+      font-size: 11.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cell-logo-wrap {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 16px;
+      background: var(--logo-chip-bg);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px;
+    }
+
+    .cell-logo { width: 100%; height: 100%; object-fit: contain; }
+
+    .cell-spark {
+      width: 100%;
+      height: 16px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="block" id="block">
+    <div class="nm-state-msg">Loading…</div>
+  </div>
+
+  <script src="./scripts/i18n.js"></script>
+  <script src="./scripts/weather-data.js"></script>
+  <!-- ControlTower widget telemetry -->
+  <script src="./scripts/widget-telemetry.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const THEME = params.get("theme") === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", THEME);
+
+    // Fixed subset: 10 systems, in this display order.
+    const SYSTEM_IDS = ["openai", "anthropic", "google", "xai", "meta", "perplexity", "infomaniak", "moonshot", "qwen", "mistral"];
+
+    // Logo filenames live directly under ./assets/ (not ./assets/logos/)
+    // and mostly match the system id. Two known exceptions:
+    //  - "infomaniak" (the hosting provider) shows the NVIDIA model
+    //    publicly, so its logo file is nvidia.png, not infomaniak.png.
+    //  - "meta" -> the actual file on disk is capitalized (Meta.png).
+    const LOGO_FILE_OVERRIDES = {
+      infomaniak: "nvidia",
+      meta: "Meta"
+    };
+
+    function logoTag(systemId) {
+      const fileName = LOGO_FILE_OVERRIDES[systemId] || systemId;
+      const src = `./assets/${encodeURIComponent(fileName)}.png`;
+      return `<span class="cell-logo-wrap"><img class="cell-logo" src="${src}" alt="" loading="lazy" onerror="this.closest('.cell-logo-wrap').remove()"></span>`;
+    }
+
+    function tOrFallback(key, fallback) {
+      const value = NMi18n.t(key);
+      return value === key ? fallback : value;
+    }
+
+    // Same short, per-language hover CTA used on the other AI Weather
+    // widgets — kept identical for consistency.
+    const TILE_CTA = {
+      en: "See the AI Weather",
+      fr: "Voir la météo des IA",
+      de: "KI-Wetter ansehen",
+      es: "Ver el clima de las IA",
+      it: "Vedi il meteo delle IA",
+      pt: "Ver o clima das IAs",
+      nl: "Bekijk het AI-weer",
+      ru: "Смотреть погоду ИИ",
+      ar: "عرض طقس الذكاء الاصطناعي",
+      hi: "एआई मौसम देखें",
+      ja: "AIの天気を見る",
+      ko: "AI 날씨 보기",
+      zh: "查看AI天气"
+    };
+
+    // Brand signature sits inline next to the title, no footer.
+    // English-only regardless of ?lang= — same product decision as
+    // the other AI Weather widgets.
+    const BRAND_SIGNATURE = "Powered by NeoMundi · Real-time AI metrology for governance";
+
+    const CONDITION_VAR = {
+      clear: "--clear",
+      watch: "--watch",
+      unsettled: "--unsettled",
+      alert: "--alert"
+    };
+
+    function pad2(n) { return String(n).padStart(2, "0"); }
+    function dateStr(d) { return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`; }
+
+    // Best-effort trend data: try the last 7 calendar days of
+    // data/history/<date>.json, keep whichever exist, skip the rest.
+    function loadHistoryScores(systemIds) {
+      const days = [];
+      const today = new Date();
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(today);
+        d.setDate(d.getDate() - i);
+        days.push(dateStr(d));
+      }
+
+      return Promise.allSettled(
+        days.map(day =>
+          fetch(`./data/history/${day}.json`).then(r => (r.ok ? r.json() : Promise.reject()))
+        )
+      ).then(results => {
+        const snapshots = results
+          .filter(r => r.status === "fulfilled" && r.value && Array.isArray(r.value.systems))
+          .map(r => r.value);
+
+        snapshots.sort((a, b) => new Date(a.generated_at || 0) - new Date(b.generated_at || 0));
+
+        const scoresBySystem = {};
+        systemIds.forEach(id => { scoresBySystem[id] = []; });
+
+        snapshots.forEach(snap => {
+          (snap.systems || []).forEach(s => {
+            if (scoresBySystem[s.id] && typeof s.score === "number") {
+              scoresBySystem[s.id].push(s.score);
+            }
+          });
+        });
+
+        return scoresBySystem;
+      });
+    }
+
+    function sparklineSvg(scores, conditionVarName) {
+      if (!scores || scores.length < 2) return "";
+
+      const w = 70, h = 16, pad = 2;
+      const min = Math.min(...scores);
+      const max = Math.max(...scores);
+      const range = max - min || 1;
+      const stepX = (w - pad * 2) / (scores.length - 1);
+
+      const points = scores.map((v, i) => {
+        const x = pad + i * stepX;
+        const y = h - pad - ((v - min) / range) * (h - pad * 2);
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      }).join(" ");
+
+      return `<svg class="cell-spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
+        <polyline points="${points}" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+          style="stroke: var(${conditionVarName});"></polyline>
+      </svg>`;
+    }
+
+    Promise.all([
+      NMi18n.init(),
+      fetch("./config/wording.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
+      NMData.load()
+    ])
+      .then(([lang, wording, data]) => {
+        const systems = NMData.getPanelSystems(data, SYSTEM_IDS);
+        const block = document.getElementById("block");
+
+        if (systems.length === 0) {
+          block.innerHTML = '<div class="nm-state-msg">No matching systems.</div>';
+          return;
+        }
+
+        const brandName = (wording.brand && wording.brand.name) || "ControlTower";
+        const fullWeatherUrl = "https://controltowerai.io/ai-weather/";
+        const tileCta = TILE_CTA[lang] || TILE_CTA.en;
+
+        loadHistoryScores(SYSTEM_IDS)
+          .catch(() => ({}))
+          .then(scoresBySystem => {
+            const cellsHtml = systems.map(system => {
+              const identity = NMData.getPublicIdentity(system);
+              const conditionVar = CONDITION_VAR[system.condition] || "--ink-faint";
+              const scores = (scoresBySystem && scoresBySystem[system.id]) || [];
+
+              return `
+                <a class="cell is-${system.condition}" href="${fullWeatherUrl}" target="_blank" rel="noopener"
+                   aria-label="${identity.label} — ${tileCta}" title="${tileCta}">
+                  <div class="cell-top">
+                    <span class="cell-dot" aria-hidden="true"></span>
+                    <span class="cell-name">${identity.label}</span>
+                    ${logoTag(system.id)}
+                  </div>
+                  ${sparklineSvg(scores, conditionVar)}
+                </a>
+              `;
+            }).join("");
+
+            const legendHtml = `
+              <span class="legend-item"><span class="legend-dot legend-clear"></span>${tOrFallback("judgment.j1", "Standard judgment")}</span>
+              <span class="legend-item"><span class="legend-dot legend-watch"></span>${tOrFallback("judgment.j2", "Increased attention")}</span>
+              <span class="legend-item"><span class="legend-dot legend-unsettled"></span>${tOrFallback("judgment.j3", "Heightened attention")}</span>
+              <span class="legend-item"><span class="legend-dot legend-alert"></span>${tOrFallback("judgment.j4", "Critical attention")}</span>
+            `;
+
+            block.innerHTML = `
+              <div class="block-title-row">
+                <span class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")}</span>
+                <span class="block-signature">${brandName} · ${BRAND_SIGNATURE}</span>
+              </div>
+              <div class="legend">${legendHtml}</div>
+              <div class="strip">${cellsHtml}</div>
+            `;
+          });
+      })
+      .catch(() => {
+        document.getElementById("block").innerHTML =
+          '<div class="nm-state-msg">AI Weather data unavailable.</div>';
+      });
+  </script>
+
+</body>
+</html>
