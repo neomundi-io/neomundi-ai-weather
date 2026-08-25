@@ -195,19 +195,7 @@
     .block-foot-brand {
       font-size: 10px;
       color: var(--ink-dim);
-      margin: 0 0 6px;
     }
-
-    .block-foot-cta {
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid var(--ink-faint);
-      padding-bottom: 1px;
-    }
-
-    .block-foot-cta:hover { border-bottom-color: var(--ink); }
   </style>
 </head>
 <body>
@@ -270,11 +258,10 @@
       zh: "查看AI天气"
     };
 
-    // Footer signature and CTA are deliberately English-only, regardless
-    // of ?lang= — per explicit product decision (2026-08). Not part of
+    // Footer signature is deliberately English-only, regardless of
+    // ?lang= — per explicit product decision (2026-08). Not part of
     // the 3 translated categories (title / judgment levels / legend).
-    const FOOTER_SIGNATURE = "Powered by NeoMundi · Real-time AI metrology and governance";
-    const FOOTER_CTA = "Embed this widget for free →";
+    const FOOTER_SIGNATURE = "Powered by NeoMundi · Real-time AI metrology for governance";
 
     Promise.all([
       NMi18n.init(),
@@ -325,7 +312,6 @@
           <div class="grid">${tilesHtml}</div>
           <div class="block-foot">
             <div class="block-foot-brand">${brandName} · ${FOOTER_SIGNATURE}</div>
-            <a class="block-foot-cta" href="${fullWeatherUrl}" target="_blank" rel="noopener">${FOOTER_CTA}</a>
           </div>
         `;
       })
