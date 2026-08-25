@@ -111,8 +111,8 @@
     .nm-state-msg { color: var(--ink-dim); font-size: 12px; padding: 12px; }
 
     .block {
-      width: 100%;
-      max-width: 240px;
+      width: 300px;
+      max-width: 300px;
       margin: 0 auto;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -261,8 +261,9 @@
     document.documentElement.setAttribute("data-theme", THEME);
 
     // Fixed subset: 5 American systems, NVIDIA excluded, in this
-    // display order.
-    const SYSTEM_IDS = ["anthropic", "openai", "google", "meta", "xai"];
+    // display order (order per Vincent: OpenAI, Claude, Grok, Meta,
+    // Gemini).
+    const SYSTEM_IDS = ["openai", "anthropic", "xai", "meta", "google"];
 
     // Logo filenames live directly under ./assets/ (not ./assets/logos/)
     // and mostly match the system id. "meta" -> the actual file on
