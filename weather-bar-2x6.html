@@ -66,20 +66,35 @@
 
     .block {
       width: 100%;
-      max-width: 760px;
+      max-width: 720px;
       margin: 0 auto;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 14px;
-      padding: 14px 14px 12px;
+      padding: 12px 12px 11px;
+    }
+
+    .block-title-row {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px 8px;
+      margin: 0 0 8px;
+      padding: 0 2px;
     }
 
     .block-title {
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.01em;
-      margin: 0 0 8px;
-      padding: 0 2px;
+    }
+
+    .block-signature {
+      font-size: 8.5px;
+      color: var(--ink-faint);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .legend {
@@ -113,15 +128,19 @@
 
     .strip {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       border-top: 1px solid var(--cell-divider);
       border-left: 1px solid var(--cell-divider);
       border-radius: 10px;
       overflow: hidden;
     }
 
-    @media (max-width: 460px) {
+    @media (min-width: 360px) {
       .strip { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 620px) {
+      .strip { grid-template-columns: repeat(6, 1fr); }
     }
 
     a.cell {
@@ -186,30 +205,6 @@
       height: 13px;
       display: block;
     }
-
-    .block-foot {
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px solid var(--card-border);
-      text-align: center;
-    }
-
-    .block-foot-brand {
-      font-size: 10px;
-      color: var(--ink-dim);
-      margin: 0 0 6px;
-    }
-
-    .block-foot-cta {
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid var(--ink-faint);
-      padding-bottom: 1px;
-    }
-
-    .block-foot-cta:hover { border-bottom-color: var(--ink); }
   </style>
 </head>
 <body>
@@ -266,10 +261,10 @@
       zh: "查看AI天气"
     };
 
-    // Footer signature and CTA are deliberately English-only, regardless
-    // of ?lang= — same product decision as the 3x4 logo block.
-    const FOOTER_SIGNATURE = "Powered by NeoMundi · Real-time AI metrology and governance";
-    const FOOTER_CTA = "Embed this widget for free →";
+    // Brand signature sits inline next to the title now (no more
+    // bottom footer). English-only regardless of ?lang= — same
+    // product decision as the 3x4 logo block.
+    const BRAND_SIGNATURE = "Powered by NeoMundi · Real-time AI metrology for governance";
 
     const CONDITION_VAR = {
       clear: "--clear",
@@ -390,13 +385,12 @@
             `;
 
             block.innerHTML = `
-              <div class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")}</div>
+              <div class="block-title-row">
+                <span class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")}</span>
+                <span class="block-signature">${brandName} · ${BRAND_SIGNATURE}</span>
+              </div>
               <div class="legend">${legendHtml}</div>
               <div class="strip">${cellsHtml}</div>
-              <div class="block-foot">
-                <div class="block-foot-brand">${brandName} · ${FOOTER_SIGNATURE}</div>
-                <a class="block-foot-cta" href="${fullWeatherUrl}" target="_blank" rel="noopener">${FOOTER_CTA}</a>
-              </div>
             `;
           });
       })
