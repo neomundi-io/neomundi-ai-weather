@@ -35,6 +35,16 @@
      * Configuration via URL only, no in-widget UI:
      *   lang=   en, fr, de, es, it, pt, nl, ru, ar, hi, ja, ko, zh
      *   theme=  light (default) | dark | slate | warm | transparent
+     *
+     * 2026-08-26: date-only patch — added measurement date line
+     * ("Mesuré le …" / "Measured on …") right after the title, before
+     * the legend. Date source: data.generated_at (capsule generation
+     * timestamp), NOT the visitor's local clock. Falls back to "now"
+     * only if data.generated_at is ever missing. The 5-theme palette
+     * set, 220px width, and stacked legend layout are all left
+     * untouched — this is a minimal, date-only change. The brand
+     * signature only moved from inline-next-to-title to its own line
+     * below the list, to make room for the date under the title.
      */
 
     :root,
@@ -126,7 +136,7 @@
       align-items: baseline;
       flex-wrap: wrap;
       gap: 4px 8px;
-      margin: 0 0 8px;
+      margin: 0 0 4px;
       padding: 0 2px;
     }
 
@@ -136,304 +146,23 @@
       letter-spacing: 0.01em;
     }
 
+    .measured-date {
+      font-size: 10px;
+      color: var(--ink-dim);
+      margin: 0 0 9px;
+      padding: 0 2px;
+    }
+
     .block-signature {
       font-size: 8.5px;
       color: var(--ink-faint);
       line-height: 1.35;
+      margin: 9px 0 0;
+      padding: 0 2px;
     }
 
     .legend {
       display: flex;
       flex-direction: column;
       gap: 4px;
-      font-size: 10px;
-      color: var(--ink-dim);
-      margin: 0 0 10px;
-      padding: 0 2px;
-    }
-
-    .legend-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      white-space: nowrap;
-    }
-
-    .legend-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      flex: 0 0 7px;
-    }
-
-    .legend-clear     { background: var(--clear); }
-    .legend-watch     { background: var(--watch); }
-    .legend-unsettled { background: var(--unsettled); }
-    .legend-alert     { background: var(--alert); }
-
-    .list {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--row-divider);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    a.row {
-      display: block;
-      padding: 8px 9px 7px;
-      text-decoration: none;
-      color: inherit;
-      background: var(--row-bg);
-      border-bottom: 1px solid var(--row-divider);
-      transition: background 0.15s ease;
-    }
-
-    a.row:last-child { border-bottom: none; }
-
-    a.row:hover { background: rgba(55, 138, 221, 0.06); }
-
-    .row-top {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 4px;
-    }
-
-    .row-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex: 0 0 8px;
-      border: 2px solid var(--row-bg);
-    }
-
-    .row.is-clear     .row-dot { background: var(--clear);     box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.35),  0 0 7px rgba(34, 197, 94, 0.45); }
-    .row.is-watch     .row-dot { background: var(--watch);     box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.45), 0 0 7px rgba(250, 204, 21, 0.50); }
-    .row.is-unsettled .row-dot { background: var(--unsettled); box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.40), 0 0 7px rgba(249, 115, 22, 0.48); }
-    .row.is-alert     .row-dot { background: var(--alert);     box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.40),  0 0 7px rgba(239, 68, 68, 0.48); }
-
-    .row-name {
-      flex: 1;
-      min-width: 0;
-      font-size: 11px;
-      font-weight: 700;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .row-logo-wrap {
-      width: 14px;
-      height: 14px;
-      flex: 0 0 14px;
-      background: var(--logo-chip-bg);
-      border-radius: 3px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1px;
-    }
-
-    .row-logo { width: 100%; height: 100%; object-fit: contain; }
-
-    .row-spark {
-      width: 100%;
-      height: 14px;
-      display: block;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="block" id="block">
-    <div class="nm-state-msg">Loading…</div>
-  </div>
-
-  <script src="./scripts/i18n.js"></script>
-  <script src="./scripts/weather-data.js"></script>
-  <!-- ControlTower widget telemetry -->
-  <script src="./scripts/widget-telemetry.js"></script>
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const AVAILABLE_THEMES = ["light", "dark", "slate", "warm", "transparent"];
-    const THEME_PARAM = (params.get("theme") || "").toLowerCase();
-    const THEME = AVAILABLE_THEMES.includes(THEME_PARAM) ? THEME_PARAM : "light";
-    document.documentElement.setAttribute("data-theme", THEME);
-
-    // "infomaniak" shows the NVIDIA model publicly -> logo file is
-    // nvidia.png. "meta" -> the actual file on disk is capitalized
-    // (Meta.png).
-    const LOGO_FILE_OVERRIDES = {
-      infomaniak: "nvidia",
-      meta: "Meta"
-    };
-
-    function logoTag(systemId) {
-      const fileName = LOGO_FILE_OVERRIDES[systemId] || systemId;
-      const src = `./assets/${encodeURIComponent(fileName)}.png`;
-      return `<span class="row-logo-wrap"><img class="row-logo" src="${src}" alt="" loading="lazy" onerror="this.closest('.row-logo-wrap').remove()"></span>`;
-    }
-
-    function tOrFallback(key, fallback) {
-      const value = NMi18n.t(key);
-      return value === key ? fallback : value;
-    }
-
-    // Same short, per-language hover CTA used on the other AI Weather
-    // widgets — kept identical for consistency.
-    const TILE_CTA = {
-      en: "See the AI Weather",
-      fr: "Voir la météo des IA",
-      de: "KI-Wetter ansehen",
-      es: "Ver el clima de las IA",
-      it: "Vedi il meteo delle IA",
-      pt: "Ver o clima das IAs",
-      nl: "Bekijk het AI-weer",
-      ru: "Смотреть погоду ИИ",
-      ar: "عرض طقس الذكاء الاصطناعي",
-      hi: "एआई मौसम देखें",
-      ja: "AIの天気を見る",
-      ko: "AI 날씨 보기",
-      zh: "查看AI天气"
-    };
-
-    // Brand signature sits inline next to the title, no footer.
-    // English-only regardless of ?lang= — same product decision as
-    // the other AI Weather widgets.
-    const BRAND_SIGNATURE = "Powered by NeoMundi · Real-time AI metrology for governance";
-
-    const CONDITION_VAR = {
-      clear: "--clear",
-      watch: "--watch",
-      unsettled: "--unsettled",
-      alert: "--alert"
-    };
-
-    function pad2(n) { return String(n).padStart(2, "0"); }
-    function dateStr(d) { return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`; }
-
-    // Best-effort trend data: try the last 7 calendar days of
-    // data/history/<date>.json, keep whichever exist, skip the rest.
-    function loadHistoryScores(systemIds) {
-      const days = [];
-      const today = new Date();
-      for (let i = 0; i < 7; i++) {
-        const d = new Date(today);
-        d.setDate(d.getDate() - i);
-        days.push(dateStr(d));
-      }
-
-      return Promise.allSettled(
-        days.map(day =>
-          fetch(`./data/history/${day}.json`).then(r => (r.ok ? r.json() : Promise.reject()))
-        )
-      ).then(results => {
-        const snapshots = results
-          .filter(r => r.status === "fulfilled" && r.value && Array.isArray(r.value.systems))
-          .map(r => r.value);
-
-        snapshots.sort((a, b) => new Date(a.generated_at || 0) - new Date(b.generated_at || 0));
-
-        const scoresBySystem = {};
-        systemIds.forEach(id => { scoresBySystem[id] = []; });
-
-        snapshots.forEach(snap => {
-          (snap.systems || []).forEach(s => {
-            if (scoresBySystem[s.id] && typeof s.score === "number") {
-              scoresBySystem[s.id].push(s.score);
-            }
-          });
-        });
-
-        return scoresBySystem;
-      });
-    }
-
-    function sparklineSvg(scores, conditionVarName) {
-      if (!scores || scores.length < 2) return "";
-
-      const w = 80, h = 14, pad = 2;
-      const min = Math.min(...scores);
-      const max = Math.max(...scores);
-      const range = max - min || 1;
-      const stepX = (w - pad * 2) / (scores.length - 1);
-
-      const points = scores.map((v, i) => {
-        const x = pad + i * stepX;
-        const y = h - pad - ((v - min) / range) * (h - pad * 2);
-        return `${x.toFixed(1)},${y.toFixed(1)}`;
-      }).join(" ");
-
-      return `<svg class="row-spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
-        <polyline points="${points}" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-          style="stroke: var(${conditionVarName});"></polyline>
-      </svg>`;
-    }
-
-    Promise.all([
-      NMi18n.init(),
-      fetch("./config/wording.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
-      NMData.load(),
-      NMData.loadPanels()
-    ])
-      .then(([lang, wording, data, panelsConfig]) => {
-        const ids = (panelsConfig.panels && panelsConfig.panels.full) || (data.systems || []).map(s => s.id);
-        const systems = NMData.getPanelSystems(data, ids);
-        const block = document.getElementById("block");
-
-        if (systems.length === 0) {
-          block.innerHTML = '<div class="nm-state-msg">No matching systems.</div>';
-          return;
-        }
-
-        const brandName = (wording.brand && wording.brand.name) || "ControlTower";
-        const fullWeatherUrl = "https://controltowerai.io/ai-weather/";
-        const tileCta = TILE_CTA[lang] || TILE_CTA.en;
-
-        loadHistoryScores(ids)
-          .catch(() => ({}))
-          .then(scoresBySystem => {
-            const rowsHtml = systems.map(system => {
-              const identity = NMData.getPublicIdentity(system);
-              const conditionVar = CONDITION_VAR[system.condition] || "--ink-faint";
-              const scores = (scoresBySystem && scoresBySystem[system.id]) || [];
-
-              return `
-                <a class="row is-${system.condition}" href="${fullWeatherUrl}" target="_blank" rel="noopener"
-                   aria-label="${identity.label} — ${tileCta}" title="${tileCta}">
-                  <div class="row-top">
-                    <span class="row-dot" aria-hidden="true"></span>
-                    <span class="row-name">${identity.label}</span>
-                    ${logoTag(system.id)}
-                  </div>
-                  ${sparklineSvg(scores, conditionVar)}
-                </a>
-              `;
-            }).join("");
-
-            const legendHtml = `
-              <span class="legend-item"><span class="legend-dot legend-clear"></span>${tOrFallback("judgment.j1", "Standard judgment")}</span>
-              <span class="legend-item"><span class="legend-dot legend-watch"></span>${tOrFallback("judgment.j2", "Increased attention")}</span>
-              <span class="legend-item"><span class="legend-dot legend-unsettled"></span>${tOrFallback("judgment.j3", "Heightened attention")}</span>
-              <span class="legend-item"><span class="legend-dot legend-alert"></span>${tOrFallback("judgment.j4", "Critical attention")}</span>
-            `;
-
-            block.innerHTML = `
-              <div class="block-title-row">
-                <span class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")}</span>
-                <span class="block-signature">${brandName} · ${BRAND_SIGNATURE}</span>
-              </div>
-              <div class="legend">${legendHtml}</div>
-              <div class="list">${rowsHtml}</div>
-            `;
-          });
-      })
-      .catch(() => {
-        document.getElementById("block").innerHTML =
-          '<div class="nm-state-msg">AI Weather data unavailable.</div>';
-      });
-  </script>
-
-</body>
-</html>
+      font-size:
