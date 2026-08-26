@@ -24,39 +24,28 @@
      *
      * Fully self-contained — colors hardcoded here, no themes.css
      * dependency (same reasoning as the other AI Weather widgets).
-     * The 5 theme palettes below are copied verbatim from the other
-     * AI Weather widgets (same source as styles/themes.css) rather
-     * than reinvented.
      *
      * Configuration via URL only, no in-widget UI:
      *   lang=   en, fr, de, es, it, pt, nl, ru, ar, hi, ja, ko, zh
-     *   theme=  light (default) | dark | slate | warm | transparent
+     *   theme=  light (default) | dark
      *
-     * 2026-08-26: (1) expanded from 2 themes (light/dark) to the full
-     * 5-theme set used across the other AI Weather widgets — added
-     * slate/warm/transparent palettes and a dedicated --dot-ring
-     * variable (previously the cell dot border reused --card-bg,
-     * which breaks on the transparent theme). (2) added measurement
-     * date line ("Mesuré le …" / "Measured on …") between title and
-     * legend, per new fixed display order: title -> date -> legend ->
-     * brand signature. Date source: data.generated_at (capsule
-     * generation timestamp), NOT the visitor's local clock — a widget
-     * viewed tomorrow must still say "measured Aug 26", not today's
-     * date. Falls back to "now" only if data.generated_at is ever
-     * missing. Brand signature moved from inline-next-to-title to its
-     * own line below the strip.
+     * 2026-08-26: date-only patch — added measurement date line
+     * ("Mesuré le …" / "Measured on …") right after the title, before
+     * the legend. Date source: data.generated_at (capsule generation
+     * timestamp), NOT the visitor's local clock. Falls back to "now"
+     * only if data.generated_at is ever missing. Theme count (2:
+     * light/dark) and every other structural element left untouched
+     * on purpose — this is a minimal, date-only change.
      */
 
-    :root,
-    [data-theme="light"] {
+    :root {
       --card-bg: linear-gradient(180deg, #dceefa 0%, #edf7fc 55%, #ffffff 100%);
-      --dot-ring: #ffffff;
-      --card-border: #d6e2eb;
-      --cell-divider: #eef2f6;
+      --card-border: #cfe3f0;
+      --cell-divider: #d7e6f0;
       --logo-chip-bg: #eef0f3;
-      --ink: #1c2733;
-      --ink-dim: #5b6b7a;
-      --ink-faint: #8b97a3;
+      --ink: #171b21;
+      --ink-dim: #5b6270;
+      --ink-faint: #9ba1ac;
 
       --clear: #22c55e;
       --watch: #facc15;
@@ -65,47 +54,13 @@
     }
 
     [data-theme="dark"] {
-      --card-bg: linear-gradient(180deg, #101922 0%, #111820 55%, #0c1117 100%);
-      --dot-ring: #0c1117;
-      --card-border: #2a333d;
-      --cell-divider: #232c35;
+      --card-bg: #1b1f26;
+      --card-border: #2a2f38;
+      --cell-divider: #333944;
       --logo-chip-bg: #eef0f3;
-      --ink: #eef2f6;
-      --ink-dim: #b3bdc7;
-      --ink-faint: #7f8b97;
-    }
-
-    [data-theme="slate"] {
-      --card-bg: linear-gradient(180deg, #dce3e8 0%, #e9eef2 55%, #f4f6f8 100%);
-      --dot-ring: #f4f6f8;
-      --card-border: #d7dee5;
-      --cell-divider: #e7ebef;
-      --logo-chip-bg: #eef0f3;
-      --ink: #1f2937;
-      --ink-dim: #64748b;
-      --ink-faint: #8a98a8;
-    }
-
-    [data-theme="warm"] {
-      --card-bg: linear-gradient(180deg, #f2eadc 0%, #f8f2e8 55%, #fffdf8 100%);
-      --dot-ring: #fffdf8;
-      --card-border: #e8ddc9;
-      --cell-divider: #f0e8dc;
-      --logo-chip-bg: #eef0f3;
-      --ink: #2b2418;
-      --ink-dim: #766a56;
-      --ink-faint: #9a8f7b;
-    }
-
-    [data-theme="transparent"] {
-      --card-bg: transparent;
-      --dot-ring: transparent;
-      --card-border: rgba(23, 32, 51, 0.15);
-      --cell-divider: rgba(23, 32, 51, 0.08);
-      --logo-chip-bg: rgba(255, 255, 255, 0.6);
-      --ink: #172033;
-      --ink-dim: #6b7a89;
-      --ink-faint: #8b97a3;
+      --ink: #f1f2f4;
+      --ink-dim: #a6acb6;
+      --ink-faint: #6b7280;
     }
 
     * { box-sizing: border-box; }
@@ -226,7 +181,7 @@
       height: 9px;
       border-radius: 50%;
       flex: 0 0 9px;
-      border: 2px solid var(--dot-ring);
+      border: 2px solid var(--card-bg);
     }
 
     .cell.is-clear     .cell-dot { background: var(--clear);     box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.35),  0 0 8px rgba(34, 197, 94, 0.45); }
@@ -277,9 +232,7 @@
   <script src="./scripts/widget-telemetry.js"></script>
   <script>
     const params = new URLSearchParams(window.location.search);
-    const AVAILABLE_THEMES = ["light", "dark", "slate", "warm", "transparent"];
-    const THEME_PARAM = (params.get("theme") || "").toLowerCase();
-    const THEME = AVAILABLE_THEMES.includes(THEME_PARAM) ? THEME_PARAM : "light";
+    const THEME = params.get("theme") === "dark" ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", THEME);
 
     // Fixed subset: American systems only, in this display order.
@@ -343,8 +296,9 @@
     };
 
     // Brand signature: moved off the title row (2026-08-26), sits on
-    // its own line under the strip now. English-only regardless of
-    // ?lang= — same product decision as the other AI Weather widgets.
+    // its own line below the strip now, so the date can sit right
+    // under the title. English-only regardless of ?lang= — same
+    // product decision as the other AI Weather widgets.
     const BRAND_SIGNATURE = "Powered by NeoMundi · Real-time AI metrology for governance";
 
     const CONDITION_VAR = {
