@@ -22,6 +22,15 @@
      * Logos are loaded from the existing local assets (./assets/<id>.png).
      * If a logo is missing for a system, that tile gracefully falls
      * back to the text-only look (logo simply not shown).
+     *
+     * 2026-08-26: date-only patch — added measurement date line
+     * ("Mesuré le …" / "Measured on …") right after the title, before
+     * the legend. Date source: data.generated_at (capsule generation
+     * timestamp), NOT the visitor's local clock. Falls back to "now"
+     * only if data.generated_at is ever missing. Theme count (2:
+     * light/dark) and every other structural element (including the
+     * separate block-foot signature) left untouched on purpose — this
+     * is a minimal, date-only change.
      */
 
     :root {
@@ -78,7 +87,14 @@
       font-size: 14px;
       font-weight: 800;
       letter-spacing: 0.01em;
-      margin: 0 0 9px;
+      margin: 0 0 3px;
+      padding: 0 2px;
+    }
+
+    .measured-date {
+      font-size: 11px;
+      color: var(--ink-dim);
+      margin: 0 0 10px;
       padding: 0 2px;
     }
 
@@ -258,6 +274,36 @@
       zh: "查看AI天气"
     };
 
+    // "Measured on" / "Mesuré le" prefix, localized, followed by the
+    // capsule date formatted via toLocaleDateString(lang, ...) below.
+    const MEASURED_PREFIX = {
+      en: "Measured on",
+      fr: "Mesuré le",
+      de: "Gemessen am",
+      es: "Medido el",
+      it: "Misurato il",
+      pt: "Medido em",
+      nl: "Gemeten op",
+      ru: "Измерено",
+      ar: "قِيس في",
+      hi: "मापा गया",
+      ja: "測定日",
+      ko: "측정일",
+      zh: "测量日期"
+    };
+
+    // Measurement date shown to the visitor: the capsule's own
+    // generated_at timestamp, NOT the visitor's local "now". Falls
+    // back to "now" only if the field is ever missing, so the widget
+    // never shows a blank line.
+    function formatMeasuredDate(data, lang) {
+      const raw = data && data.generated_at;
+      const d = raw ? new Date(raw) : new Date();
+      const prefix = MEASURED_PREFIX[lang] || MEASURED_PREFIX.en;
+      const dateText = d.toLocaleDateString(lang, { day: "numeric", month: "long" });
+      return `${prefix} ${dateText}`;
+    }
+
     // Footer signature is deliberately English-only, regardless of
     // ?lang= — per explicit product decision (2026-08). Not part of
     // the 3 translated categories (title / judgment levels / legend).
@@ -282,6 +328,7 @@
         const brandName = (wording.brand && wording.brand.name) || "ControlTower";
         const fullWeatherUrl = "https://controltowerai.io/ai-weather/";
         const tileCta = TILE_CTA[lang] || TILE_CTA.en;
+        const measuredDateText = formatMeasuredDate(data, lang);
 
         const tilesHtml = systems.map(system => {
           const identity = NMData.getPublicIdentity(system);
@@ -308,6 +355,7 @@
 
         block.innerHTML = `
           <div class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")}</div>
+          <div class="measured-date">${measuredDateText}</div>
           <div class="legend">${legendHtml}</div>
           <div class="grid">${tilesHtml}</div>
           <div class="block-foot">
