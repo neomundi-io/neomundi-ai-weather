@@ -31,6 +31,15 @@
      * Configuration via URL only, no in-widget UI:
      *   lang=   en, fr, de, es, it, pt, nl, ru, ar, hi, ja, ko, zh
      *   theme=  light (default) | dark | slate | warm | transparent
+     *
+     * 2026-08-26: added measurement date line ("Mesuré le …" /
+     * "Measured on …") between title and legend, per new fixed
+     * display order: title -> date -> legend -> brand signature.
+     * Date source: data.generated_at (capsule generation timestamp),
+     * NOT the visitor's local clock — a widget viewed tomorrow must
+     * still say "measured Aug 26", not today's date. If
+     * data.generated_at is ever absent, falls back to "now" so the
+     * widget never shows a blank/broken date.
      */
 
     :root,
@@ -122,7 +131,7 @@
       align-items: baseline;
       flex-wrap: wrap;
       gap: 4px 8px;
-      margin: 0 0 8px;
+      margin: 0 0 4px;
       padding: 0 2px;
     }
 
@@ -132,9 +141,18 @@
       letter-spacing: 0.01em;
     }
 
+    .measured-date {
+      font-size: 10.5px;
+      color: var(--ink-dim);
+      margin: 0 0 9px;
+      padding: 0 2px;
+    }
+
     .block-signature {
       font-size: 8.5px;
       color: var(--ink-faint);
+      margin: 9px 0 0;
+      padding: 0 2px;
     }
 
     .legend {
@@ -301,9 +319,28 @@
       zh: "查看AI天气"
     };
 
-    // Brand signature sits inline next to the title, no footer.
-    // English-only regardless of ?lang= — same product decision as
-    // the other AI Weather widgets.
+    // "Measured on" / "Mesuré le" prefix, localized, followed by the
+    // capsule date formatted via toLocaleDateString(lang, ...) below.
+    const MEASURED_PREFIX = {
+      en: "Measured on",
+      fr: "Mesuré le",
+      de: "Gemessen am",
+      es: "Medido el",
+      it: "Misurato il",
+      pt: "Medido em",
+      nl: "Gemeten op",
+      ru: "Измерено",
+      ar: "قِيس في",
+      hi: "मापा गया",
+      ja: "測定日",
+      ko: "측정일",
+      zh: "测量日期"
+    };
+
+    // Brand signature sits on its own line at the bottom now (was
+    // inline next to the title before 2026-08-26). English-only
+    // regardless of ?lang= — same product decision as the other
+    // AI Weather widgets.
     const BRAND_SIGNATURE = "Powered by NeoMundi · Real-time AI metrology for governance";
 
     const CONDITION_VAR = {
@@ -315,6 +352,18 @@
 
     function pad2(n) { return String(n).padStart(2, "0"); }
     function dateStr(d) { return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`; }
+
+    // Measurement date shown to the visitor: the capsule's own
+    // generated_at timestamp, NOT the visitor's local "now". Falls
+    // back to "now" only if the field is ever missing, so the widget
+    // never shows a blank line.
+    function formatMeasuredDate(data, lang) {
+      const raw = data && data.generated_at;
+      const d = raw ? new Date(raw) : new Date();
+      const prefix = MEASURED_PREFIX[lang] || MEASURED_PREFIX.en;
+      const dateText = d.toLocaleDateString(lang, { day: "numeric", month: "long" });
+      return `${prefix} ${dateText}`;
+    }
 
     // Best-effort trend data: try the last 7 calendar days of
     // data/history/<date>.json, keep whichever exist, skip the rest.
@@ -391,6 +440,7 @@
         const brandName = (wording.brand && wording.brand.name) || "ControlTower";
         const fullWeatherUrl = "https://controltowerai.io/ai-weather/";
         const tileCta = TILE_CTA[lang] || TILE_CTA.en;
+        const measuredDateText = formatMeasuredDate(data, lang);
 
         loadHistoryScores(SYSTEM_IDS)
           .catch(() => ({}))
@@ -423,10 +473,11 @@
             block.innerHTML = `
               <div class="block-title-row">
                 <span class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")}</span>
-                <span class="block-signature">${brandName} · ${BRAND_SIGNATURE}</span>
               </div>
+              <div class="measured-date">${measuredDateText}</div>
               <div class="legend">${legendHtml}</div>
               <div class="strip">${cellsHtml}</div>
+              <div class="block-signature">${brandName} · ${BRAND_SIGNATURE}</div>
             `;
           });
       })
