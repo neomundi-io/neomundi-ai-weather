@@ -3,43 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NeoMundi AI Weather — Barre 320 (10 systèmes)</title>
+  <title>NeoMundi AI Weather — Barre 320 (6 systèmes)</title>
 
   <style>
     /*
-     * Widget F′ — barre 320px de large, panel étendu à 10 systèmes
-     * (issu du filtre "IA américaines" à 7, élargi sur demande avec
-     * Kimi, Qwen et Mistral). Même logique de signal, de données et
-     * de tendance que le bandeau 2x6 (weather-bar-2x6.html) — sous-
-     * ensemble fixe de systèmes, grille auto-adaptative.
-     * Format additionnel, ne remplace aucun des widgets existants.
+     * Widget F‴ — barre 320px de large, sélection à 6 systèmes
+     * (Claude, ChatGPT, Grok, Kimi, Qwen, Mistral). Même logique de
+     * signal, de données et de tendance que le bandeau 2x6
+     * (weather-bar-2x6.html) — sous-ensemble fixe de systèmes, grille
+     * auto-adaptative. Format additionnel, ne remplace aucun des
+     * widgets existants.
      *
      * Systems included (by publicly-shown identity):
-     *   openai (ChatGPT), anthropic (Claude), google (Gemini),
-     *   xai (Grok), meta (Meta), perplexity (Perplexity),
-     *   infomaniak (shows NVIDIA — the model is American even though
-     *   Infomaniak the hosting provider is Swiss), moonshot (Kimi),
-     *   qwen (Qwen), mistral (Mistral).
-     * Still excluded from this 10: deepseek (CN), cohere (CA).
+     *   anthropic (Claude), openai (ChatGPT), xai (Grok),
+     *   moonshot (Kimi), qwen (Qwen), mistral (Mistral).
      *
      * Fully self-contained — colors hardcoded here, no themes.css
      * dependency (same reasoning as the other AI Weather widgets).
-     * The 5 theme palettes below are copied verbatim from
-     * styles/themes.css (the site's canonical source) rather than
-     * reinvented.
+     * The 5 theme palettes below are copied verbatim from the other
+     * AI Weather widgets (same source as styles/themes.css) rather
+     * than reinvented.
      *
      * Configuration via URL only, no in-widget UI:
      *   lang=   en, fr, de, es, it, pt, nl, ru, ar, hi, ja, ko, zh
      *   theme=  light (default) | dark | slate | warm | transparent
      *
-     * 2026-08-26: added measurement date line ("Mesuré le …" /
-     * "Measured on …") between title and legend, per new fixed
-     * display order: title -> date -> legend -> brand signature.
-     * Date source: data.generated_at (capsule generation timestamp),
-     * NOT the visitor's local clock — a widget viewed tomorrow must
-     * still say "measured Aug 26", not today's date. If
-     * data.generated_at is ever absent, falls back to "now" so the
-     * widget never shows a blank/broken date.
+     * 2026-08-26: (1) expanded from 2 themes (light/dark) to the full
+     * 5-theme set used across the other AI Weather widgets — added
+     * slate/warm/transparent palettes and a dedicated --dot-ring
+     * variable (previously the cell dot border reused --card-bg,
+     * which breaks on the transparent theme). (2) added measurement
+     * date line ("Mesuré le …" / "Measured on …") between title and
+     * legend, per new fixed display order: title -> date -> legend ->
+     * brand signature. Date source: data.generated_at (capsule
+     * generation timestamp), NOT the visitor's local clock — a widget
+     * viewed tomorrow must still say "measured Aug 26", not today's
+     * date. Falls back to "now" only if data.generated_at is ever
+     * missing. Brand signature moved from inline-next-to-title to its
+     * own line below the strip.
      */
 
     :root,
@@ -184,7 +185,7 @@
     .legend-unsettled { background: var(--unsettled); }
     .legend-alert     { background: var(--alert); }
 
-    /* Only 7 tiles instead of 12 — auto-fit lets them grow to fill
+    /* Only 6 tiles instead of 12 — auto-fit lets them grow to fill
        the available width rather than sticking to a fixed column
        count designed for 12. */
     .strip {
@@ -277,8 +278,8 @@
     const THEME = AVAILABLE_THEMES.includes(THEME_PARAM) ? THEME_PARAM : "light";
     document.documentElement.setAttribute("data-theme", THEME);
 
-    // Fixed subset: 10 systems, in this display order.
-    const SYSTEM_IDS = ["openai", "anthropic", "google", "xai", "meta", "perplexity", "infomaniak", "moonshot", "qwen", "mistral"];
+    // Fixed subset: 6 systems, in this display order.
+    const SYSTEM_IDS = ["anthropic", "openai", "xai", "moonshot", "qwen", "mistral"];
 
     // Logo filenames live directly under ./assets/ (not ./assets/logos/)
     // and mostly match the system id. Two known exceptions:
@@ -337,10 +338,9 @@
       zh: "测量日期"
     };
 
-    // Brand signature sits on its own line at the bottom now (was
-    // inline next to the title before 2026-08-26). English-only
-    // regardless of ?lang= — same product decision as the other
-    // AI Weather widgets.
+    // Brand signature: moved off the title row (2026-08-26), sits on
+    // its own line under the strip now. English-only regardless of
+    // ?lang= — same product decision as the other AI Weather widgets.
     const BRAND_SIGNATURE = "Powered by NeoMundi · Real-time AI metrology for governance";
 
     const CONDITION_VAR = {
