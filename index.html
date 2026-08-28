@@ -935,6 +935,22 @@
       font-weight: 700;
     }
 
+    .footer-signature {
+      margin-top: 10px;
+      font-size: 10.5px;
+      line-height: 1.5;
+      color: var(--ink-faint);
+    }
+
+    .footer-signature .sig-line + .sig-line {
+      margin-top: 2px;
+    }
+
+    .footer-signature strong {
+      font-weight: 700;
+      color: var(--ink-dim);
+    }
+
     .state-msg { color: var(--ink-dim); font-size: 14px; }
   </style>
 
@@ -1210,6 +1226,7 @@
 
     <footer>
       <div class="footer-brand-line" id="footer-brand-line"></div>
+      <div class="footer-signature" id="footer-signature"></div>
     </footer>
 
   </main>
@@ -1401,6 +1418,14 @@
 
       document.getElementById("footer-brand-line").innerHTML =
         translatedOrFallback("ui.card_footer", cardFooterFallback);
+
+      // Deliberately English-only, regardless of ?lang= — same product
+      // decision as the AI Weather widgets' footer signature.
+      document.getElementById("footer-signature").innerHTML = `
+        <div class="sig-line">Runtime Interoperability JSON &middot; Schema validated &middot; Hash verifiable &middot; Signature verifiable</div>
+        <div class="sig-line"><strong>NeoMundi</strong> &middot; the fundamental measurement layer for AI behavior</div>
+        <div class="sig-line">One layer. Multiple uses. Heterogeneous infrastructures.</div>
+      `;
     }
 
     function renderCard(system) {
