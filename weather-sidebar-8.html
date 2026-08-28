@@ -145,6 +145,11 @@
       letter-spacing: 0.01em;
     }
 
+    .block-title .title-date {
+      font-weight: 400;
+      color: var(--ink-dim);
+    }
+
     .measured-date {
       font-size: 10px;
       color: var(--ink-dim);
@@ -329,31 +334,11 @@
 
     // "Measured on" / "Mesuré le" prefix, localized, followed by the
     // capsule date formatted via toLocaleDateString(lang, ...) below.
-    const MEASURED_PREFIX = {
-      en: "Measured on",
-      fr: "Mesuré le",
-      de: "Gemessen am",
-      es: "Medido el",
-      it: "Misurato il",
-      pt: "Medido em",
-      nl: "Gemeten op",
-      ru: "Измерено",
-      ar: "قِيس في",
-      hi: "मापा गया",
-      ja: "測定日",
-      ko: "측정일",
-      zh: "测量日期"
-    };
-
     // Brand signature: moved off the title row (2026-08-26), sits on
     // its own line below the list now, so the date can sit right
     // under the title. English-only regardless of ?lang= — same
     // product decision as the other AI Weather widgets.
-    const BRAND_SIGNATURE = `
-      <div class="sig-line">Runtime Interoperability JSON &middot; Schema validated &middot; Hash verifiable &middot; Signature verifiable</div>
-      <div class="sig-line"><strong>NeoMundi</strong> &middot; the fundamental measurement layer for AI behavior</div>
-      <div class="sig-line">One layer. Multiple uses. Heterogeneous infrastructures.</div>
-    `;
+    const BRAND_SIGNATURE = `ControlTower by <strong>NeoMundi</strong> - Machine-readable JSON &middot; Hash &amp; signature verifiable`;
 
     const CONDITION_VAR = {
       clear: "--clear",
@@ -372,9 +357,11 @@
     function formatMeasuredDate(data, lang) {
       const raw = data && data.generated_at;
       const d = raw ? new Date(raw) : new Date();
-      const prefix = MEASURED_PREFIX[lang] || MEASURED_PREFIX.en;
-      const dateText = d.toLocaleDateString(lang, { day: "numeric", month: "long" });
-      return `${prefix} ${dateText}`;
+      const day = pad2(d.getDate());
+      const month = pad2(d.getMonth() + 1);
+      // DD/MM everywhere (international standard) — MM/DD only for
+      // English (US convention).
+      return lang === "en" ? `${month}/${day}` : `${day}/${month}`;
     }
 
     // Best-effort trend data: try the last 7 calendar days of
@@ -484,9 +471,8 @@
 
             block.innerHTML = `
               <div class="block-title-row">
-                <span class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")}</span>
+                <span class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")} <span class="title-date">- ${measuredDateText}</span></span>
               </div>
-              <div class="measured-date">${measuredDateText}</div>
               <div class="legend">${legendHtml}</div>
               <div class="list">${rowsHtml}</div>
               <div class="block-signature">${BRAND_SIGNATURE}</div>
