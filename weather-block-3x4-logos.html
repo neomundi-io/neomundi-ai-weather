@@ -211,6 +211,15 @@
     .block-foot-brand {
       font-size: 10px;
       color: var(--ink-dim);
+      line-height: 1.5;
+    }
+
+    .block-foot-brand .sig-line + .sig-line {
+      margin-top: 2px;
+    }
+
+    .block-foot-brand strong {
+      font-weight: 700;
     }
   </style>
 </head>
@@ -307,7 +316,11 @@
     // Footer signature is deliberately English-only, regardless of
     // ?lang= — per explicit product decision (2026-08). Not part of
     // the 3 translated categories (title / judgment levels / legend).
-    const FOOTER_SIGNATURE = "Powered by NeoMundi · Real-time AI metrology for governance";
+    const FOOTER_SIGNATURE = `
+      <div class="sig-line">Runtime Interoperability JSON &middot; Schema validated &middot; Hash verifiable &middot; Signature verifiable</div>
+      <div class="sig-line"><strong>NeoMundi</strong> &middot; the fundamental measurement layer for AI behavior</div>
+      <div class="sig-line">One layer. Multiple uses. Heterogeneous infrastructures.</div>
+    `;
 
     Promise.all([
       NMi18n.init(),
@@ -359,7 +372,7 @@
           <div class="legend">${legendHtml}</div>
           <div class="grid">${tilesHtml}</div>
           <div class="block-foot">
-            <div class="block-foot-brand">${brandName} · ${FOOTER_SIGNATURE}</div>
+            <div class="block-foot-brand">${FOOTER_SIGNATURE}</div>
           </div>
         `;
       })
