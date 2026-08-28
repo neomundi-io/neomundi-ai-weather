@@ -148,11 +148,18 @@
     .block-signature {
       font-size: 8.5px;
       color: var(--ink-faint);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      line-height: 1.5;
       margin: 9px 0 0;
       padding: 0 2px;
+    }
+
+    .block-signature .sig-line + .sig-line {
+      margin-top: 2px;
+    }
+
+    .block-signature strong {
+      font-weight: 700;
+      color: var(--ink-dim);
     }
 
     .legend {
@@ -342,7 +349,11 @@
     // Brand signature: moved off the title row (2026-08-26), sits on
     // its own line under the strip now. English-only regardless of
     // ?lang= — same product decision as the other AI Weather widgets.
-    const BRAND_SIGNATURE = "Powered by NeoMundi · Real-time AI metrology for governance";
+    const BRAND_SIGNATURE = `
+      <div class="sig-line">Runtime Interoperability JSON &middot; Schema validated &middot; Hash verifiable &middot; Signature verifiable</div>
+      <div class="sig-line"><strong>NeoMundi</strong> &middot; the fundamental measurement layer for AI behavior</div>
+      <div class="sig-line">One layer. Multiple uses. Heterogeneous infrastructures.</div>
+    `;
 
     const CONDITION_VAR = {
       clear: "--clear",
@@ -477,4 +488,20 @@
 
             block.innerHTML = `
               <div class="block-title-row">
-                <span
+                <span class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")}</span>
+              </div>
+              <div class="measured-date">${measuredDateText}</div>
+              <div class="legend">${legendHtml}</div>
+              <div class="strip">${cellsHtml}</div>
+              <div class="block-signature">${BRAND_SIGNATURE}</div>
+            `;
+          });
+      })
+      .catch(() => {
+        document.getElementById("block").innerHTML =
+          '<div class="nm-state-msg">AI Weather data unavailable.</div>';
+      });
+  </script>
+
+</body>
+</html>
