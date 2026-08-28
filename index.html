@@ -99,6 +99,11 @@
       line-height: 1.28;
     }
 
+    .title-date {
+      font-weight: 400;
+      color: var(--ink-dim);
+    }
+
     .header-date {
       font-size: 13px;
       color: var(--ink-dim);
@@ -1371,8 +1376,8 @@
         ? "La météo des IA"
         : "AI Weather";
 
-      document.getElementById("title").textContent =
-        `${translatedOrFallback("ui.ai_weather_title", titleFallback)} - ${fmtTodayNumeric()}`;
+      document.getElementById("title").innerHTML =
+        `${translatedOrFallback("ui.ai_weather_title", titleFallback)} <span class="title-date">- ${fmtTodayNumeric()}</span>`;
       document.getElementById("brand-label").textContent = "CONTROLTOWER";
 
       const cta = document.getElementById("wall-cta");
