@@ -91,6 +91,11 @@
       padding: 0 2px;
     }
 
+    .block-title .title-date {
+      font-weight: 400;
+      color: var(--ink-dim);
+    }
+
     .measured-date {
       font-size: 11px;
       color: var(--ink-dim);
@@ -283,24 +288,6 @@
       zh: "查看AI天气"
     };
 
-    // "Measured on" / "Mesuré le" prefix, localized, followed by the
-    // capsule date formatted via toLocaleDateString(lang, ...) below.
-    const MEASURED_PREFIX = {
-      en: "Measured on",
-      fr: "Mesuré le",
-      de: "Gemessen am",
-      es: "Medido el",
-      it: "Misurato il",
-      pt: "Medido em",
-      nl: "Gemeten op",
-      ru: "Измерено",
-      ar: "قِيس في",
-      hi: "मापा गया",
-      ja: "測定日",
-      ko: "측정일",
-      zh: "测量日期"
-    };
-
     // Measurement date shown to the visitor: the capsule's own
     // generated_at timestamp, NOT the visitor's local "now". Falls
     // back to "now" only if the field is ever missing, so the widget
@@ -308,19 +295,17 @@
     function formatMeasuredDate(data, lang) {
       const raw = data && data.generated_at;
       const d = raw ? new Date(raw) : new Date();
-      const prefix = MEASURED_PREFIX[lang] || MEASURED_PREFIX.en;
-      const dateText = d.toLocaleDateString(lang, { day: "numeric", month: "long" });
-      return `${prefix} ${dateText}`;
+      const day = String(d.getDate()).padStart(2, "0");
+      const month = String(d.getMonth() + 1).padStart(2, "0");
+      // DD/MM everywhere (international standard) — MM/DD only for
+      // English (US convention).
+      return lang === "en" ? `${month}/${day}` : `${day}/${month}`;
     }
 
     // Footer signature is deliberately English-only, regardless of
     // ?lang= — per explicit product decision (2026-08). Not part of
     // the 3 translated categories (title / judgment levels / legend).
-    const FOOTER_SIGNATURE = `
-      <div class="sig-line">Runtime Interoperability JSON &middot; Schema validated &middot; Hash verifiable &middot; Signature verifiable</div>
-      <div class="sig-line"><strong>NeoMundi</strong> &middot; the fundamental measurement layer for AI behavior</div>
-      <div class="sig-line">One layer. Multiple uses. Heterogeneous infrastructures.</div>
-    `;
+    const FOOTER_SIGNATURE = `ControlTower by <strong>NeoMundi</strong> - Machine-readable JSON &middot; Hash &amp; signature verifiable`;
 
     Promise.all([
       NMi18n.init(),
@@ -367,8 +352,7 @@
         `;
 
         block.innerHTML = `
-          <div class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")}</div>
-          <div class="measured-date">${measuredDateText}</div>
+          <div class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")} <span class="title-date">- ${measuredDateText}</span></div>
           <div class="legend">${legendHtml}</div>
           <div class="grid">${tilesHtml}</div>
           <div class="block-foot">
