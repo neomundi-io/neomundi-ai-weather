@@ -1135,7 +1135,6 @@
       <div class="header-text">
         <div class="header-brand" id="brand-label">CONTROLTOWER</div>
         <h1 id="title">AI Weather</h1>
-        <div class="header-date" id="header-date">—</div>
       </div>
 
       <div class="header-controls">
@@ -1264,14 +1263,14 @@
       } catch (e) { return iso; }
     }
 
-    function fmtToday() {
-      const locale = localeForLang(NMi18n.lang());
-      return new Date().toLocaleDateString(locale, {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      });
+    function fmtTodayNumeric() {
+      const lang = NMi18n.lang();
+      const d = new Date();
+      const day = String(d.getDate()).padStart(2, "0");
+      const month = String(d.getMonth() + 1).padStart(2, "0");
+      // DD/MM everywhere (international standard) — MM/DD only for
+      // English (US convention).
+      return lang === "en" ? `${month}/${day}` : `${day}/${month}`;
     }
 
     function conditionMeta(key) {
@@ -1373,9 +1372,7 @@
         : "AI Weather";
 
       document.getElementById("title").textContent =
-        translatedOrFallback("ui.ai_weather_title", titleFallback);
-
-      document.getElementById("header-date").textContent = fmtToday();
+        `${translatedOrFallback("ui.ai_weather_title", titleFallback)} - ${fmtTodayNumeric()}`;
       document.getElementById("brand-label").textContent = "CONTROLTOWER";
 
       const cta = document.getElementById("wall-cta");
@@ -1397,9 +1394,7 @@
       // Deliberately English-only, regardless of ?lang= — same product
       // decision as the AI Weather widgets' footer signature.
       document.getElementById("footer-signature").innerHTML =
-        '<strong>Runtime Interoperability JSON</strong> &middot; Schema validated &middot; Hash verifiable &middot; Signature verifiable ' +
-        '- ControlTower by <strong>NeoMundi</strong> &middot; the fundamental measurement layer for AI behavior ' +
-        '- One layer. Multiple uses. Heterogeneous infrastructures.';
+        'ControlTower by <strong>NeoMundi</strong> - Machine-readable JSON &middot; Hash &amp; signature verifiable';
     }
 
     function renderCard(system) {
