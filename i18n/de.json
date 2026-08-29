@@ -2,26 +2,20 @@
   "weather.clear": "KLAR",
   "weather.variable": "VARIABEL",
   "weather.disrupted": "GESTÖRT",
-
   "interpretation.clear": "STABIL",
   "interpretation.variable": "SCHWANKEND",
   "interpretation.disrupted": "HOHE VARIABILITÄT",
-
-  "judgment.j1": "Standardbeurteilung",
-  "judgment.j2": "Erhöhte Aufmerksamkeit",
-  "judgment.j3": "Verstärkte Aufmerksamkeit",
-  "judgment.j4": "Kritische Aufmerksamkeit",
-
+  "judgment.j1": "Normal",
+  "judgment.j2": "Achtung",
+  "judgment.j3": "Warnung",
+  "judgment.j4": "Kritisch",
   "ui.ai_weather_title": "KI-Wetter",
   "ui.question_of_day": "Frage des Tages",
   "ui.view_original_en": "Englisches Original anzeigen",
   "ui.original_english": "Englisches Original",
   "ui.install_widget_free": "Dieses Widget kostenlos auf Ihrer Website installieren →",
-
   "ui.powered_by_neomundi_runtime": "Powered by NeoMundi · KI-Metrologie in Echtzeit",
-
   "ui.controltower_detail": "ControlTower misst in Echtzeit die Verhaltenszuverlässigkeit Ihrer KI-Systeme, damit Sie die Kontrolle behalten und bessere Entscheidungen treffen können.",
-
   "ui.title": "AI Weather — Tägliche Beobachtungswand",
   "ui.subtitle": "Tägliche Beobachtung, wie sich ein festes Panel von KI-Systemen bei denselben Fragen verhält.",
   "ui.methodology": "Methodik →",
@@ -42,15 +36,12 @@
   "ui.infrastructure_partner": "Infrastrukturpartner",
   "ui.unknown_system": "Unbekanntes System",
   "ui.unknown_system_hint": "Kein System entspricht diesem Anbieter oder dieser Kennung.",
-
   "ui.view_full_wall_12": "Vollständige Wand mit 12 Systemen ansehen →",
   "ui.view_full_ai_weather": "Vollständiges AI Weather ansehen →",
-
   "ui.core_title": "AI Weather — Kernpanel",
   "ui.core_subtitle": "Tägliche Beobachtung von 8 großen KI-Anbietern bei denselben Fragen.",
   "ui.providers_observed": "beobachtete Anbieter",
   "ui.neomundi_measurement": "NeoMundi-Messung",
-
   "regime.normal": "Normal",
   "regime.variation": "Variation",
   "regime.factual_alert": "Faktenalarm",

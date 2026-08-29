@@ -2,26 +2,20 @@
   "weather.clear": "晴れ",
   "weather.variable": "変動",
   "weather.disrupted": "不安定",
-
   "interpretation.clear": "安定",
   "interpretation.variable": "変動中",
   "interpretation.disrupted": "高い変動性",
-
-  "judgment.j1": "標準的な判断",
-  "judgment.j2": "注意の強化",
-  "judgment.j3": "より高い注意",
-  "judgment.j4": "重大な注意",
-
+  "judgment.j1": "正常",
+  "judgment.j2": "注意",
+  "judgment.j3": "警戒",
+  "judgment.j4": "重大",
   "ui.ai_weather_title": "AIの天気",
   "ui.question_of_day": "今日の質問",
   "ui.view_original_en": "英語原文を見る",
   "ui.original_english": "英語原文",
   "ui.install_widget_free": "このウィジェットをあなたのサイトに無料で設置 →",
-
   "ui.powered_by_neomundi_runtime": "Powered by NeoMundi · リアルタイムAI計測",
-
   "ui.controltower_detail": "ControlTowerは、AIシステムの行動信頼性をリアルタイムで測定し、状況を把握しながらより良い意思決定ができるよう支援します。",
-
   "ui.title": "AI Weather — 日次観測ウォール",
   "ui.subtitle": "固定されたAIシステムのパネルが、同じ質問に対してどのように振る舞うかを毎日観測します。",
   "ui.methodology": "方法論 →",
@@ -42,15 +36,12 @@
   "ui.infrastructure_partner": "インフラパートナー",
   "ui.unknown_system": "不明なシステム",
   "ui.unknown_system_hint": "このプロバイダーまたはシステム識別子に一致するシステムはありません。",
-
   "ui.view_full_wall_12": "12システムの完全な観測ウォールを見る →",
   "ui.view_full_ai_weather": "AI Weather 全体を見る →",
-
   "ui.core_title": "AI Weather — コアパネル",
   "ui.core_subtitle": "主要な8つのAIプロバイダーを、同じ質問のもとで毎日観測します。",
   "ui.providers_observed": "観測されたプロバイダー",
   "ui.neomundi_measurement": "NeoMundi計測",
-
   "regime.normal": "通常",
   "regime.variation": "変動",
   "regime.factual_alert": "事実性アラート",

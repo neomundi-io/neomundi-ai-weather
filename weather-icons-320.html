@@ -48,8 +48,8 @@
 
       --clear: #22c55e;
       --watch: #facc15;
-      --unsettled: #f97316;
-      --alert: #ef4444;
+      --unsettled: #fb923c;
+      --alert: #b91c1c;
     }
 
     [data-theme="dark"] {
@@ -415,10 +415,10 @@
             }).join("");
 
             const legendHtml = `
-              <span class="legend-item">${iconSvg("clear", "legend-icon")}${tOrFallback("judgment.j1", "Standard judgment")}</span>
-              <span class="legend-item">${iconSvg("watch", "legend-icon")}${tOrFallback("judgment.j2", "Increased attention")}</span>
-              <span class="legend-item">${iconSvg("unsettled", "legend-icon")}${tOrFallback("judgment.j3", "Heightened attention")}</span>
-              <span class="legend-item">${iconSvg("alert", "legend-icon")}${tOrFallback("judgment.j4", "Critical attention")}</span>
+              <span class="legend-item">${iconSvg("clear", "legend-icon")}${tOrFallback("judgment.j1", "Normal")}</span>
+              <span class="legend-item">${iconSvg("watch", "legend-icon")}${tOrFallback("judgment.j2", "Watch")}</span>
+              <span class="legend-item">${iconSvg("unsettled", "legend-icon")}${tOrFallback("judgment.j3", "Warning")}</span>
+              <span class="legend-item">${iconSvg("alert", "legend-icon")}${tOrFallback("judgment.j4", "Critical")}</span>
             `;
 
             block.innerHTML = `

@@ -2,26 +2,20 @@
   "weather.clear": "साफ़",
   "weather.variable": "परिवर्तनशील",
   "weather.disrupted": "अस्थिर",
-
   "interpretation.clear": "स्थिर",
   "interpretation.variable": "उतार-चढ़ाव वाला",
   "interpretation.disrupted": "उच्च परिवर्तनशीलता",
-
-  "judgment.j1": "मानक निर्णय",
-  "judgment.j2": "अधिक ध्यान आवश्यक",
-  "judgment.j3": "उच्च स्तर का ध्यान आवश्यक",
-  "judgment.j4": "गंभीर ध्यान आवश्यक",
-
+  "judgment.j1": "सामान्य",
+  "judgment.j2": "निगरानी",
+  "judgment.j3": "चेतावनी",
+  "judgment.j4": "गंभीर",
   "ui.ai_weather_title": "AI का मौसम",
   "ui.question_of_day": "आज का प्रश्न",
   "ui.view_original_en": "मूल अंग्रेज़ी देखें",
   "ui.original_english": "मूल अंग्रेज़ी",
   "ui.install_widget_free": "इस विजेट को अपनी वेबसाइट पर निःशुल्क इंस्टॉल करें →",
-
   "ui.powered_by_neomundi_runtime": "NeoMundi द्वारा संचालित · रीयल-टाइम AI मेट्रोलॉजी",
-
   "ui.controltower_detail": "ControlTower आपके AI सिस्टम की व्यवहारिक विश्वसनीयता को रीयल टाइम में मापता है, ताकि आप नियंत्रण बनाए रख सकें और बेहतर निर्णय ले सकें।",
-
   "ui.title": "AI Weather — दैनिक अवलोकन दीवार",
   "ui.subtitle": "एक निश्चित AI सिस्टम पैनल के व्यवहार का प्रतिदिन समान प्रश्नों के सामने अवलोकन।",
   "ui.methodology": "कार्यप्रणाली →",
@@ -42,15 +36,12 @@
   "ui.infrastructure_partner": "इन्फ्रास्ट्रक्चर पार्टनर",
   "ui.unknown_system": "अज्ञात सिस्टम",
   "ui.unknown_system_hint": "इस प्रदाता या सिस्टम पहचानकर्ता से कोई सिस्टम मेल नहीं खाता।",
-
   "ui.view_full_wall_12": "12 सिस्टम की पूरी अवलोकन दीवार देखें →",
   "ui.view_full_ai_weather": "पूरा AI Weather देखें →",
-
   "ui.core_title": "AI Weather — मुख्य पैनल",
   "ui.core_subtitle": "8 प्रमुख AI प्रदाताओं का प्रतिदिन समान प्रश्नों के साथ अवलोकन।",
   "ui.providers_observed": "अवलोकित प्रदाता",
   "ui.neomundi_measurement": "NeoMundi मापन",
-
   "regime.normal": "सामान्य",
   "regime.variation": "परिवर्तन",
   "regime.factual_alert": "तथ्यात्मक चेतावनी",

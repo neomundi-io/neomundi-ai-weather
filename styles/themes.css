@@ -15,8 +15,8 @@
 
   --nm-judgment-green: #22c55e;
   --nm-judgment-yellow: #facc15;
-  --nm-judgment-orange: #f97316;
-  --nm-judgment-red: #ef4444;
+  --nm-judgment-orange: #fb923c;
+  --nm-judgment-red: #b91c1c;
 
   /* Compatibility aliases */
   --nm-clear: var(--nm-judgment-green);

@@ -2,26 +2,20 @@
   "weather.clear": "صافٍ",
   "weather.variable": "متغيّر",
   "weather.disrupted": "مضطرب",
-
   "interpretation.clear": "مستقر",
   "interpretation.variable": "متقلّب",
   "interpretation.disrupted": "تباين مرتفع",
-
-  "judgment.j1": "حكم اعتيادي",
-  "judgment.j2": "يتطلب مزيدًا من الانتباه",
-  "judgment.j3": "يتطلب انتباهًا معززًا",
-  "judgment.j4": "يتطلب انتباهًا حرجًا",
-
+  "judgment.j1": "عادي",
+  "judgment.j2": "مراقبة",
+  "judgment.j3": "تحذير",
+  "judgment.j4": "حرج",
   "ui.ai_weather_title": "طقس الذكاء الاصطناعي",
   "ui.question_of_day": "سؤال اليوم",
   "ui.view_original_en": "عرض النص الأصلي بالإنجليزية",
   "ui.original_english": "النص الأصلي بالإنجليزية",
   "ui.install_widget_free": "ثبّت هذه الأداة مجانًا على موقعك →",
-
   "ui.powered_by_neomundi_runtime": "بدعم من NeoMundi · قياس الذكاء الاصطناعي في الوقت الفعلي",
-
   "ui.controltower_detail": "يقيس ControlTower موثوقية السلوك في أنظمة الذكاء الاصطناعي لديك في الوقت الفعلي، لمساعدتك على الحفاظ على التحكم واتخاذ قرارات أفضل.",
-
   "ui.title": "AI Weather — جدار المراقبة اليومي",
   "ui.subtitle": "مراقبة يومية لكيفية تصرف مجموعة ثابتة من أنظمة الذكاء الاصطناعي عند مواجهة الأسئلة نفسها.",
   "ui.methodology": "المنهجية →",
@@ -42,15 +36,12 @@
   "ui.infrastructure_partner": "شريك البنية التحتية",
   "ui.unknown_system": "نظام غير معروف",
   "ui.unknown_system_hint": "لا يوجد نظام يطابق هذا المزوّد أو معرّف النظام.",
-
   "ui.view_full_wall_12": "عرض جدار المراقبة الكامل لـ 12 نظامًا →",
   "ui.view_full_ai_weather": "عرض AI Weather كاملًا →",
-
   "ui.core_title": "AI Weather — اللوحة الأساسية",
   "ui.core_subtitle": "مراقبة يومية لـ 8 من كبار مزوّدي الذكاء الاصطناعي باستخدام الأسئلة نفسها.",
   "ui.providers_observed": "المزوّدون المراقبون",
   "ui.neomundi_measurement": "قياس NeoMundi",
-
   "regime.normal": "عادي",
   "regime.variation": "تغيّر",
   "regime.factual_alert": "تنبيه واقعي",

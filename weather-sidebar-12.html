@@ -46,8 +46,8 @@
 
       --clear: #22c55e;
       --watch: #facc15;
-      --unsettled: #f97316;
-      --alert: #ef4444;
+      --unsettled: #fb923c;
+      --alert: #b91c1c;
     }
 
     [data-theme="dark"] {
@@ -194,8 +194,8 @@
 
     .row.is-clear     .row-dot { background: var(--clear);     box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.35),  0 0 7px rgba(34, 197, 94, 0.45); }
     .row.is-watch     .row-dot { background: var(--watch);     box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.45), 0 0 7px rgba(250, 204, 21, 0.50); }
-    .row.is-unsettled .row-dot { background: var(--unsettled); box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.40), 0 0 7px rgba(249, 115, 22, 0.48); }
-    .row.is-alert     .row-dot { background: var(--alert);     box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.40),  0 0 7px rgba(239, 68, 68, 0.48); }
+    .row.is-unsettled .row-dot { background: var(--unsettled); box-shadow: 0 0 0 1px rgba(251, 146, 60, 0.40), 0 0 7px rgba(251, 146, 60, 0.48); }
+    .row.is-alert     .row-dot { background: var(--alert);     box-shadow: 0 0 0 1px rgba(185, 28, 28, 0.40),  0 0 7px rgba(185, 28, 28, 0.48); }
 
     .row-name {
       flex: 1;
@@ -417,10 +417,10 @@
             }).join("");
 
             const legendHtml = `
-              <span class="legend-item"><span class="legend-dot legend-clear"></span>${tOrFallback("judgment.j1", "Standard judgment")}</span>
-              <span class="legend-item"><span class="legend-dot legend-watch"></span>${tOrFallback("judgment.j2", "Increased attention")}</span>
-              <span class="legend-item"><span class="legend-dot legend-unsettled"></span>${tOrFallback("judgment.j3", "Heightened attention")}</span>
-              <span class="legend-item"><span class="legend-dot legend-alert"></span>${tOrFallback("judgment.j4", "Critical attention")}</span>
+              <span class="legend-item"><span class="legend-dot legend-clear"></span>${tOrFallback("judgment.j1", "Normal")}</span>
+              <span class="legend-item"><span class="legend-dot legend-watch"></span>${tOrFallback("judgment.j2", "Watch")}</span>
+              <span class="legend-item"><span class="legend-dot legend-unsettled"></span>${tOrFallback("judgment.j3", "Warning")}</span>
+              <span class="legend-item"><span class="legend-dot legend-alert"></span>${tOrFallback("judgment.j4", "Critical")}</span>
             `;
 
             block.innerHTML = `

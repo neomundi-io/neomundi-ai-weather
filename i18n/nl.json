@@ -2,26 +2,20 @@
   "weather.clear": "HELDER",
   "weather.variable": "VARIABEL",
   "weather.disrupted": "VERSTOORD",
-
   "interpretation.clear": "STABIEL",
   "interpretation.variable": "SCHOMMELEND",
   "interpretation.disrupted": "HOGE VARIABILITEIT",
-
-  "judgment.j1": "Standaardbeoordeling",
-  "judgment.j2": "Verhoogde aandacht",
-  "judgment.j3": "Verscherpte aandacht",
-  "judgment.j4": "Kritieke aandacht",
-
+  "judgment.j1": "Normaal",
+  "judgment.j2": "Waakzaam",
+  "judgment.j3": "Waarschuwing",
+  "judgment.j4": "Kritiek",
   "ui.ai_weather_title": "Het weer van AI",
   "ui.question_of_day": "Vraag van de dag",
   "ui.view_original_en": "Origineel EN bekijken",
   "ui.original_english": "Origineel in het Engels",
   "ui.install_widget_free": "Installeer deze widget gratis op uw website →",
-
   "ui.powered_by_neomundi_runtime": "Powered by NeoMundi · AI-metrologie in realtime",
-
   "ui.controltower_detail": "ControlTower meet in realtime de gedragsbetrouwbaarheid van uw AI-systemen om u te helpen de controle te behouden en betere beslissingen te nemen.",
-
   "ui.title": "AI Weather — Dagelijkse observatiewand",
   "ui.subtitle": "Dagelijkse observatie van hoe een vast panel van AI-systemen zich gedraagt bij dezelfde vragen.",
   "ui.methodology": "Methodologie →",
@@ -42,15 +36,12 @@
   "ui.infrastructure_partner": "Infrastructuurpartner",
   "ui.unknown_system": "Onbekend systeem",
   "ui.unknown_system_hint": "Geen enkel systeem komt overeen met deze aanbieder of identificatie.",
-
   "ui.view_full_wall_12": "Bekijk de volledige wand met 12 systemen →",
   "ui.view_full_ai_weather": "Bekijk volledige AI Weather →",
-
   "ui.core_title": "AI Weather — Kernpaneel",
   "ui.core_subtitle": "Dagelijkse observatie van 8 grote AI-aanbieders bij dezelfde vragen.",
   "ui.providers_observed": "geobserveerde aanbieders",
   "ui.neomundi_measurement": "NeoMundi-meting",
-
   "regime.normal": "Normaal",
   "regime.variation": "Variatie",
   "regime.factual_alert": "Feitelijke waarschuwing",

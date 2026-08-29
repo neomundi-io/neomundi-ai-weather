@@ -2,26 +2,20 @@
   "weather.clear": "SERENO",
   "weather.variable": "VARIABILE",
   "weather.disrupted": "PERTURBATO",
-
   "interpretation.clear": "STABILE",
   "interpretation.variable": "FLUTTUANTE",
   "interpretation.disrupted": "ALTA VARIABILITÀ",
-
-  "judgment.j1": "Giudizio standard",
-  "judgment.j2": "Maggiore attenzione",
-  "judgment.j3": "Attenzione rafforzata",
-  "judgment.j4": "Attenzione critica",
-
+  "judgment.j1": "Normale",
+  "judgment.j2": "Attenzione",
+  "judgment.j3": "Allerta",
+  "judgment.j4": "Critico",
   "ui.ai_weather_title": "Il meteo delle IA",
   "ui.question_of_day": "Domanda del giorno",
   "ui.view_original_en": "Vedi originale EN",
   "ui.original_english": "Originale in inglese",
   "ui.install_widget_free": "Installa gratuitamente questo widget sul tuo sito →",
-
   "ui.powered_by_neomundi_runtime": "Powered by NeoMundi · Metrologia IA in tempo reale",
-
   "ui.controltower_detail": "ControlTower misura in tempo reale l'affidabilità comportamentale dei tuoi sistemi di IA per aiutarti a mantenere il controllo e prendere decisioni migliori.",
-
   "ui.title": "AI Weather — Muro di osservazione giornaliero",
   "ui.subtitle": "Osservazione giornaliera di come si comporta un pannello fisso di sistemi IA di fronte alle stesse domande.",
   "ui.methodology": "Metodologia →",
@@ -42,15 +36,12 @@
   "ui.infrastructure_partner": "Partner infrastrutturale",
   "ui.unknown_system": "Sistema sconosciuto",
   "ui.unknown_system_hint": "Nessun sistema corrisponde a questo fornitore o identificatore.",
-
   "ui.view_full_wall_12": "Vedi il muro completo a 12 sistemi →",
   "ui.view_full_ai_weather": "Vedi AI Weather completo →",
-
   "ui.core_title": "AI Weather — Pannello principale",
   "ui.core_subtitle": "Osservazione giornaliera di 8 grandi provider IA di fronte alle stesse domande.",
   "ui.providers_observed": "provider osservati",
   "ui.neomundi_measurement": "Misurazione NeoMundi",
-
   "regime.normal": "Normale",
   "regime.variation": "Variazione",
   "regime.factual_alert": "Allerta fattuale",

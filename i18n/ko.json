@@ -2,26 +2,20 @@
   "weather.clear": "맑음",
   "weather.variable": "변동",
   "weather.disrupted": "불안정",
-
   "interpretation.clear": "안정적",
   "interpretation.variable": "변동 중",
   "interpretation.disrupted": "높은 변동성",
-
-  "judgment.j1": "표준 판단",
-  "judgment.j2": "주의 필요",
-  "judgment.j3": "높은 주의 필요",
-  "judgment.j4": "중대한 주의 필요",
-
+  "judgment.j1": "정상",
+  "judgment.j2": "주의",
+  "judgment.j3": "경고",
+  "judgment.j4": "심각",
   "ui.ai_weather_title": "AI 날씨",
   "ui.question_of_day": "오늘의 질문",
   "ui.view_original_en": "영문 원문 보기",
   "ui.original_english": "영문 원문",
   "ui.install_widget_free": "이 위젯을 웹사이트에 무료로 설치하기 →",
-
   "ui.powered_by_neomundi_runtime": "Powered by NeoMundi · 실시간 AI 계측",
-
   "ui.controltower_detail": "ControlTower는 AI 시스템의 행동 신뢰성을 실시간으로 측정하여 통제력을 유지하고 더 나은 결정을 내릴 수 있도록 지원합니다.",
-
   "ui.title": "AI Weather — 일일 관측 월",
   "ui.subtitle": "고정된 AI 시스템 패널이 동일한 질문에 어떻게 반응하는지 매일 관측합니다.",
   "ui.methodology": "방법론 →",
@@ -42,15 +36,12 @@
   "ui.infrastructure_partner": "인프라 파트너",
   "ui.unknown_system": "알 수 없는 시스템",
   "ui.unknown_system_hint": "이 제공자 또는 시스템 식별자와 일치하는 시스템이 없습니다.",
-
   "ui.view_full_wall_12": "12개 시스템 전체 관측 월 보기 →",
   "ui.view_full_ai_weather": "전체 AI Weather 보기 →",
-
   "ui.core_title": "AI Weather — 핵심 패널",
   "ui.core_subtitle": "주요 8개 AI 제공자를 동일한 질문으로 매일 관측합니다.",
   "ui.providers_observed": "관측된 제공자",
   "ui.neomundi_measurement": "NeoMundi 측정",
-
   "regime.normal": "정상",
   "regime.variation": "변동",
   "regime.factual_alert": "사실성 경고",

@@ -332,20 +332,6 @@
       display: none;
     }
 
-    .wall-cta {
-      flex: none;
-      font-size: 11.5px;
-      line-height: 1.35;
-      font-weight: 700;
-      color: var(--nm-accent);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .wall-cta:hover {
-      text-decoration: underline;
-    }
-
     .wall-legend {
       display: flex;
       flex-wrap: wrap;
@@ -375,8 +361,8 @@
 
     .legend-green  { background: #22c55e; }
     .legend-yellow { background: #facc15; }
-    .legend-orange { background: #f97316; }
-    .legend-red    { background: #ef4444; }
+    .legend-orange { background: #fb923c; }
+    .legend-red    { background: #b91c1c; }
 
     .daily-question-section {
       margin-top: 18px;
@@ -469,10 +455,6 @@
         gap: 7px;
       }
 
-      .wall-cta {
-        white-space: normal;
-      }
-
       .wall-legend {
         justify-content: flex-start;
         max-width: none;
@@ -520,10 +502,6 @@
         font-size: 12px;
       }
 
-      .card-judgment {
-        font-size: 11px;
-      }
-
       .daily-question {
         padding: 10px 12px 11px;
       }
@@ -554,20 +532,8 @@
       border-radius: 14px;
       padding: 13px 13px;
       text-align: left;
-      cursor: pointer;
       box-shadow: 0 4px 14px rgba(45, 75, 95, 0.06);
-      transition: box-shadow 0.15s ease, transform 0.15s ease;
       width: 100%;
-    }
-
-    .card:hover, .card:focus-visible {
-      box-shadow: 0 6px 18px rgba(45, 75, 95, 0.09);
-      transform: translateY(-1px);
-    }
-
-    .card:focus-visible {
-      outline: 2px solid #378ADD;
-      outline-offset: 2px;
     }
 
     .card.is-clear {
@@ -579,11 +545,11 @@
     }
 
     .card.is-unsettled {
-      border-left-color: #f39c12;
+      border-left-color: #fb923c;
     }
 
     .card.is-alert {
-      border-left-color: #e74c3c;
+      border-left-color: #b91c1c;
     }
 
     .card.deep-linked {
@@ -627,17 +593,17 @@
     }
 
     .is-unsettled .card-state-dot {
-      background: #f97316;
+      background: #fb923c;
       box-shadow:
-        0 0 0 1px rgba(249, 115, 22, 0.40),
-        0 0 14px rgba(249, 115, 22, 0.48);
+        0 0 0 1px rgba(251, 146, 60, 0.40),
+        0 0 14px rgba(251, 146, 60, 0.48);
     }
 
     .is-alert .card-state-dot {
-      background: #ef4444;
+      background: #b91c1c;
       box-shadow:
-        0 0 0 1px rgba(239, 68, 68, 0.40),
-        0 0 14px rgba(239, 68, 68, 0.48);
+        0 0 0 1px rgba(185, 28, 28, 0.40),
+        0 0 14px rgba(185, 28, 28, 0.48);
     }
 
     .card-model {
@@ -650,275 +616,14 @@
       margin: 0;
     }
 
-    .card-judgment {
-      display: flex;
-      align-items: baseline;
-      gap: 7px;
-      flex-wrap: wrap;
-      font-size: 12px;
-      line-height: 1.4;
-      color: var(--ink-dim);
-    }
-
-    .card-judgment-level {
-      font-family: "SFMono-Regular", Consolas, monospace;
-      font-size: 12.5px;
-      font-weight: 800;
-      color: var(--ink);
-      letter-spacing: 0.02em;
-    }
-
-    .card-judgment-meaning {
-      font-weight: 500;
-      color: var(--ink-dim);
-    }
-
-    /* ---------- Detail (modal / sheet) ---------- */
-
-    .detail-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(28, 39, 51, 0.35);
-      z-index: 100;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-    }
-
-    .detail-overlay.open { display: flex; }
-
-    .detail-sheet {
-      background: var(--nm-card-bg);
-      border-radius: 20px;
-      max-width: 460px;
+    .card-sparkline {
+      display: block;
       width: 100%;
-      max-height: 88vh;
-      overflow-y: auto;
-      padding: 22px 22px calc(22px + env(safe-area-inset-bottom));
-      box-shadow: 0 12px 40px rgba(28, 39, 51, 0.18);
+      height: 28px;
     }
 
-    @media (max-width: 520px) {
-      .detail-overlay { padding: 0; align-items: flex-end; }
-      .detail-sheet {
-        max-width: none;
-        max-height: 92vh;
-        border-radius: 20px 20px 0 0;
-      }
-    }
-
-    .detail-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 4px;
-    }
-
-    .detail-condition {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .detail-condition .dot {
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      flex: none;
-    }
-
-    .detail-condition.is-clear {
-      color: #169c52;
-    }
-
-    .detail-condition.is-watch {
-      color: #9a7600;
-    }
-
-    .detail-condition.is-unsettled {
-      color: #b85f00;
-    }
-
-    .detail-condition.is-alert {
-      color: #c0392b;
-    }
-
-    .detail-condition.is-clear .dot {
-      background: #2ecc71;
-    }
-
-    .detail-condition.is-watch .dot {
-      background: #f1c40f;
-    }
-
-    .detail-condition.is-unsettled .dot {
-      background: #f39c12;
-    }
-
-    .detail-condition.is-alert .dot {
-      background: #e74c3c;
-    }
-
-    .detail-close {
-      background: none;
-      border: 1px solid var(--card-border);
-      color: var(--ink-dim);
-      border-radius: 10px;
-      padding: 7px 13px;
-      font-size: 12.5px;
-      min-height: 36px;
-      cursor: pointer;
-    }
-
-    .detail-close:hover { border-color: var(--ink-faint); color: var(--ink); }
-
-    .detail-reading {
-      font-size: 22px;
-      font-weight: 700;
-      margin: 4px 0 2px;
-    }
-
-    .detail-provider {
-      font-size: 13px;
-      color: var(--ink-dim);
-      margin-bottom: 18px;
-    }
-
-    .detail-score {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      background: var(--nm-surface-soft);
-      border-radius: 12px;
-      padding: 12px 14px;
-      margin-bottom: 18px;
-    }
-
-    .detail-score-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-    }
-
-    .detail-score-value {
-      font-family: "SFMono-Regular", Consolas, monospace;
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .detail-block { margin-bottom: 18px; }
-
-    .detail-block-label {
-      font-size: 10.5px;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 8px;
-    }
-
-    .regime-row {
-      display: flex;
-      justify-content: space-between;
-      font-family: "SFMono-Regular", Consolas, monospace;
-      font-size: 13px;
-      padding: 6px 0;
-      border-bottom: 1px solid var(--nm-border-soft);
-      color: var(--ink-dim);
-    }
-
-    .regime-row span:last-child { color: var(--ink); font-weight: 700; }
-
-    .detail-meta-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      padding: 5px 0;
-      color: var(--ink-dim);
-    }
-
-    .detail-meta-row span:last-child {
-      color: var(--ink);
-      font-family: "SFMono-Regular", Consolas, monospace;
-    }
-
-    /* ---------- Detail v0.4 — public decision card ---------- */
-
-    .detail-positioning {
-      font-size: 13.5px;
-      line-height: 1.6;
-      color: var(--ink);
-    }
-
-    .detail-governance {
-      padding: 13px 14px;
-      background: var(--nm-surface-soft);
-      border-radius: 12px;
-    }
-
-    .detail-governance-value {
-      margin-top: 3px;
-      font-size: 17px;
-      line-height: 1.35;
-      font-weight: 800;
-      color: var(--ink);
-    }
-
-    .detail-previous {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      line-height: 1.4;
-      color: var(--ink);
-    }
-
-    .detail-previous-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex: 0 0 10px;
-      border: 1.5px solid #ffffff;
-      box-shadow: 0 0 0 1px rgba(28, 39, 51, 0.10);
-    }
-
-    .detail-previous-dot.is-clear { background: #22c55e; }
-    .detail-previous-dot.is-watch { background: #facc15; }
-    .detail-previous-dot.is-unsettled { background: #f97316; }
-    .detail-previous-dot.is-alert { background: #ef4444; }
-
-    .detail-links {
-      margin-top: 4px;
-      padding-top: 16px;
-      border-top: 1px solid var(--nm-border-soft);
-    }
-
-    .detail-links a {
-      display: inline-block;
-      font-size: 12.5px;
-      line-height: 1.4;
-      font-weight: 700;
-      color: var(--nm-accent);
-      text-decoration: none;
-    }
-
-    .detail-links a:hover {
-      text-decoration: underline;
-    }
-
-    .detail-signature {
-      margin-top: 18px;
-      padding-top: 15px;
-      border-top: 1px solid var(--nm-border-soft);
-      font-size: 11.5px;
-      line-height: 1.55;
-      color: var(--ink-faint);
+    .card-sparkline-point-insufficient {
+      fill: var(--ink-faint);
     }
 
     /* ---------- Footer ---------- */
@@ -962,172 +667,9 @@
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(28, 39, 51, 0.05);
     }
-    .card:hover, .card:focus-visible {
-      box-shadow: 0 8px 20px rgba(28, 39, 51, 0.10);
-    }
     .card-model { font-weight: 800; letter-spacing: 0; }
-    .card-judgment-level { font-weight: 900; }
-
-    /* Detail sheet */
-    .detail-sheet { border-radius: 12px; }
-
-    .detail-block-label { font-weight: 800; letter-spacing: 0.1em; }
-
-    /* Governance block: left-accent bar instead of soft filled box,
-       colored to match the observed condition (progressive enhancement
-       via :has — falls back to neutral ink-faint bar on older browsers). */
-    .detail-governance {
-      background: transparent;
-      border-left: 5px solid var(--ink-faint);
-      border-radius: 4px;
-      padding: 10px 0 10px 14px;
-    }
-    .detail-overlay:has(.detail-condition.is-clear) .detail-governance { border-left-color: #22c55e; }
-    .detail-overlay:has(.detail-condition.is-watch) .detail-governance { border-left-color: #facc15; }
-    .detail-overlay:has(.detail-condition.is-unsettled) .detail-governance { border-left-color: #f97316; }
-    .detail-overlay:has(.detail-condition.is-alert) .detail-governance { border-left-color: #ef4444; }
-
-    .detail-governance-value { font-weight: 900; font-size: 19px; }
-
-    .detail-links { display: flex; flex-direction: column; gap: 9px; }
-    .detail-link-secondary { color: var(--ink-dim) !important; font-weight: 600 !important; }
 
     footer { padding-top: 20px; }
-
-    /* ---------- Detail card v0.5 — Observatoire (mesure → signal → décision) ---------- */
-
-    .detail-title-observatory {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      margin: 4px 0 10px;
-      color: var(--ink);
-    }
-
-    .detail-claim {
-      font-size: 13.5px;
-      line-height: 1.6;
-      color: var(--ink-dim);
-      margin-bottom: 18px;
-    }
-
-    .detail-today {
-      background: var(--nm-surface-soft);
-      border-radius: 14px;
-      padding: 16px 16px 14px;
-      margin-bottom: 16px;
-    }
-
-    .detail-today-headline {
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--ink);
-      margin-bottom: 8px;
-    }
-
-    .detail-today-meta {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 7px 10px;
-      font-size: 13px;
-      color: var(--ink-dim);
-      margin-bottom: 14px;
-    }
-
-    .detail-today-meta .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex: none;
-    }
-    .detail-today-meta .dot.is-clear     { background: #22c55e; }
-    .detail-today-meta .dot.is-watch     { background: #facc15; }
-    .detail-today-meta .dot.is-unsettled { background: #f97316; }
-    .detail-today-meta .dot.is-alert     { background: #ef4444; }
-
-    .detail-today-meta .sep {
-      color: var(--ink-faint);
-    }
-
-    .detail-today-governance {
-      border-left: 5px solid var(--ink-faint);
-      border-radius: 4px;
-      padding: 10px 0 10px 14px;
-    }
-    .detail-today.is-clear .detail-today-governance     { border-left-color: #22c55e; }
-    .detail-today.is-watch .detail-today-governance     { border-left-color: #facc15; }
-    .detail-today.is-unsettled .detail-today-governance { border-left-color: #f97316; }
-    .detail-today.is-alert .detail-today-governance      { border-left-color: #ef4444; }
-
-    .detail-today-governance-label {
-      font-size: 10.5px;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 3px;
-    }
-
-    .detail-today-governance-value {
-      font-size: 19px;
-      font-weight: 900;
-      color: var(--ink);
-    }
-
-    .detail-yesterday {
-      margin-bottom: 16px;
-    }
-
-    .detail-yesterday-label {
-      font-size: 10.5px;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 8px;
-    }
-
-    .detail-legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 14px;
-      font-size: 11.5px;
-      color: var(--ink-dim);
-      padding-top: 14px;
-      margin-bottom: 4px;
-      border-top: 1px solid var(--nm-border-soft);
-    }
-
-    .detail-cta {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-      padding-top: 16px;
-      margin-top: 14px;
-      border-top: 1px solid var(--nm-border-soft);
-    }
-
-    .detail-cta a {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--nm-accent);
-      text-decoration: none;
-    }
-    .detail-cta a:hover { text-decoration: underline; }
-    .detail-cta a.detail-link-secondary {
-      color: var(--ink-dim);
-      font-weight: 600;
-    }
-
-    .detail-card-footer {
-      margin-top: 18px;
-      padding-top: 15px;
-      border-top: 1px solid var(--nm-border-soft);
-      font-size: 11px;
-      line-height: 1.55;
-      color: var(--ink-faint);
-    }
   </style>
 </head>
 
@@ -1165,30 +707,22 @@
 
     <section class="wall-intro" aria-label="AI Weather observation wall">
       <div class="wall-heading-row">
-        <a
-          class="wall-cta"
-          id="wall-cta"
-          href="https://controltowerai.io/ai-weather/"
-          target="_blank"
-          rel="noopener"
-        >Installer gratuitement ce widget sur votre site →</a>
-
         <div class="wall-legend" id="wall-legend" aria-label="AI Weather legend">
           <div class="legend-item">
             <span class="legend-dot legend-green" aria-hidden="true"></span>
-            <span id="legend-green-label">Standard judgment</span>
+            <span id="legend-green-label">Normal</span>
           </div>
           <div class="legend-item">
             <span class="legend-dot legend-yellow" aria-hidden="true"></span>
-            <span id="legend-yellow-label">Increased attention</span>
+            <span id="legend-yellow-label">Watch</span>
           </div>
           <div class="legend-item">
             <span class="legend-dot legend-orange" aria-hidden="true"></span>
-            <span id="legend-orange-label">Heightened attention</span>
+            <span id="legend-orange-label">Warning</span>
           </div>
           <div class="legend-item">
             <span class="legend-dot legend-red" aria-hidden="true"></span>
-            <span id="legend-red-label">Critical attention</span>
+            <span id="legend-red-label">Critical</span>
           </div>
         </div>
       </div>
@@ -1219,10 +753,6 @@
 
   </main>
 
-  <div class="detail-overlay" id="detail-overlay">
-    <div class="detail-sheet" id="detail-sheet"></div>
-  </div>
-
   <script src="./scripts/themes.js"></script>
   <script src="./scripts/i18n.js"></script>
   <script src="./scripts/weather-data.js"></script>
@@ -1230,43 +760,6 @@
     let CONFIG = null;
     let DATA = null;
     let PANEL_SYSTEMS = null;
-
-    function pct(v) {
-      if (v === null || v === undefined) return "—";
-      return Math.round(v * 100) + "%";
-    }
-
-    function localeForLang(lang) {
-      const locales = {
-        en: "en-GB",
-        fr: "fr-FR",
-        de: "de-DE",
-        es: "es-ES",
-        it: "it-IT",
-        pt: "pt-PT",
-        nl: "nl-NL",
-        zh: "zh-CN",
-        ja: "ja-JP",
-        ko: "ko-KR",
-        hi: "hi-IN",
-        ar: "ar-EG-u-ca-gregory",
-        ru: "ru-RU"
-      };
-      return locales[lang] || "en-GB";
-    }
-
-    function fmtDate(iso) {
-      if (!iso) return "—";
-      try {
-        const locale = localeForLang(NMi18n.lang());
-        return new Date(iso).toLocaleString(locale, {
-          month: "short",
-          day: "numeric",
-          hour: "2-digit",
-          minute: "2-digit"
-        });
-      } catch (e) { return iso; }
-    }
 
     function fmtTodayNumeric() {
       const lang = NMi18n.lang();
@@ -1284,21 +777,6 @@
       return {
         label: label === `weather.${key}` ? (key || "").toUpperCase() : label,
         reading: reading === `interpretation.${key}` ? "—" : reading
-      };
-    }
-
-    function judgmentMeta(judgment) {
-      const level = judgment && judgment.level ? judgment.level : null;
-      if (!level) return { level: "—", meaning: "—" };
-
-      const key = `judgment.${level.toLowerCase()}`;
-      const translated = NMi18n.t(key);
-
-      return {
-        level,
-        meaning: translated === key
-          ? (judgment.meaning || "—")
-          : translated
       };
     }
 
@@ -1355,16 +833,16 @@
       }
 
       document.getElementById("legend-green-label").textContent =
-        translatedOrFallback("judgment.j1", "Standard judgment");
+        translatedOrFallback("judgment.j1", "Normal");
 
       document.getElementById("legend-yellow-label").textContent =
-        translatedOrFallback("judgment.j2", "Increased attention");
+        translatedOrFallback("judgment.j2", "Watch");
 
       document.getElementById("legend-orange-label").textContent =
-        translatedOrFallback("judgment.j3", "Heightened attention");
+        translatedOrFallback("judgment.j3", "Warning");
 
       document.getElementById("legend-red-label").textContent =
-        translatedOrFallback("judgment.j4", "Critical attention");
+        translatedOrFallback("judgment.j4", "Critical");
     }
 
     function renderHeader() {
@@ -1380,15 +858,6 @@
         `${translatedOrFallback("ui.ai_weather_title", titleFallback)} <span class="title-date">- ${fmtTodayNumeric()}</span>`;
       document.getElementById("brand-label").textContent = "CONTROLTOWER";
 
-      const cta = document.getElementById("wall-cta");
-      cta.textContent = translatedOrFallback(
-        "ui.install_widget_free",
-        currentLang === "fr"
-          ? "Installer gratuitement ce widget sur votre site →"
-          : "Install this widget on your website for free →"
-      );
-      cta.href = "https://controltowerai.io/ai-weather/";
-
       if (DATA.demo) {
         document.getElementById("demo-flag-holder").innerHTML =
           `<div class="demo-flag">${NMi18n.t("ui.demo_flag")}</div>`;
@@ -1402,36 +871,110 @@
         'ControlTower by <strong>NeoMundi</strong> - Machine-readable JSON &middot; Hash &amp; signature verifiable';
     }
 
-    function renderCard(system) {
-      const judgment = judgmentMeta(system.judgment_demand);
-      const identity = NMData.getPublicIdentity(system);
+    // Condition -> color and -> severity (0 = best, 3 = worst) used to
+    // draw the 7-day trend sparkline on each card. Kept in sync by hand
+    // with the CSS custom properties / legend colors used elsewhere in
+    // this file (clear/watch/unsettled/alert).
+    const CONDITION_COLOR = {
+      clear: "#22c55e",
+      watch: "#facc15",
+      unsettled: "#fb923c",
+      alert: "#b91c1c"
+    };
 
-      const card = document.createElement("button");
-      card.type = "button";
+    const CONDITION_SEVERITY = { clear: 0, watch: 1, unsettled: 2, alert: 3 };
+
+    /**
+     * Build a small inline SVG trend line from a chronological list of
+     * { date, condition } points (oldest first, as returned by
+     * NMData.getSystemHistory).
+     *
+     * - Each day is a dot, colored like the legend.
+     * - Consecutive days are connected by a line segment.
+     * - A day with an unrecognized/insufficient condition breaks the
+     *   line (rendered as an isolated grey dot) rather than being
+     *   interpolated — we don't want to imply a measured value that
+     *   wasn't actually observed.
+     * - The number of points is whatever NMData.loadHistory(7) could
+     *   actually fetch (gaps in the archive are skipped upstream), so
+     *   this renders correctly whether it gets 7, 5, or just 1 point.
+     */
+    function buildSparklineSvg(points) {
+      if (!points || points.length === 0) return "";
+
+      const W = 112;
+      const H = 28;
+      const PAD_X = 4;
+      const PAD_Y = 4;
+
+      const n = points.length;
+      const stepX = n > 1 ? (W - PAD_X * 2) / (n - 1) : 0;
+
+      const coords = points.map((p, i) => {
+        const sev = CONDITION_SEVERITY[p.condition];
+        return {
+          x: PAD_X + stepX * i,
+          y: sev === undefined ? H / 2 : PAD_Y + (sev / 3) * (H - PAD_Y * 2),
+          condition: p.condition,
+          valid: sev !== undefined
+        };
+      });
+
+      const segments = [];
+      let current = [];
+      coords.forEach((c) => {
+        if (c.valid) {
+          current.push(c);
+        } else if (current.length > 1) {
+          segments.push(current);
+          current = [];
+        } else {
+          current = [];
+        }
+      });
+      if (current.length > 1) segments.push(current);
+
+      const polylines = segments
+        .map((seg) => {
+          const pts = seg.map((c) => `${c.x.toFixed(1)},${c.y.toFixed(1)}`).join(" ");
+          return `<polyline points="${pts}" fill="none" stroke="var(--ink-faint)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.55" />`;
+        })
+        .join("");
+
+      const dots = coords
+        .map((c) => {
+          if (c.valid) {
+            return `<circle cx="${c.x.toFixed(1)}" cy="${c.y.toFixed(1)}" r="2.3" fill="${CONDITION_COLOR[c.condition] || "var(--ink-faint)"}" />`;
+          }
+          return `<circle cx="${c.x.toFixed(1)}" cy="${c.y.toFixed(1)}" r="2.3" class="card-sparkline-point-insufficient" />`;
+        })
+        .join("");
+
+      return `<svg class="card-sparkline" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">${polylines}${dots}</svg>`;
+    }
+
+    function renderCard(system, historyMap) {
+      const identity = NMData.getPublicIdentity(system);
+      const conditionLabel = conditionMeta(system.condition).label;
+      const history = NMData.getSystemHistory(historyMap, system.id);
+
+      const card = document.createElement("div");
       card.className = `card is-${system.condition}`;
       card.dataset.systemId = system.id;
-
-      const conditionLabel = conditionMeta(system.condition).label;
-      card.setAttribute(
-        "aria-label",
-        `${identity.label} — ${judgment.level} — ${judgment.meaning} — ${conditionLabel}`
-      );
+      card.setAttribute("aria-label", `${identity.label} — ${conditionLabel}`);
 
       card.innerHTML = `
         <div class="card-state-line">
           <span class="card-state-dot" aria-hidden="true"></span>
           <div class="card-model">${identity.label}</div>
         </div>
-        <div class="card-judgment">
-          <span class="card-judgment-meaning">${judgment.meaning}</span>
-        </div>
+        ${buildSparklineSvg(history)}
       `;
 
-      card.addEventListener("click", () => openDetail(system));
       return card;
     }
 
-    function renderWall() {
+    function renderWall(historyMap) {
       const wall = document.getElementById("wall");
       wall.innerHTML = "";
       const systems = PANEL_SYSTEMS || [];
@@ -1441,185 +984,8 @@
         return;
       }
 
-      systems.forEach(system => wall.appendChild(renderCard(system)));
+      systems.forEach(system => wall.appendChild(renderCard(system, historyMap)));
     }
-
-    function openDetail(system) {
-      const judgment = judgmentMeta(system.judgment_demand);
-      const d = system.detail || {};
-      const prevMeta = d.previous_condition ? conditionMeta(d.previous_condition) : null;
-      const identity = NMData.getPublicIdentity(system);
-      const currentLang = NMi18n.lang();
-
-      const previousJudgmentMap = {
-        clear: "judgment.j1",
-        watch: "judgment.j2",
-        unsettled: "judgment.j3",
-        alert: "judgment.j4"
-      };
-
-      const previousJudgmentKey = d.previous_condition
-        ? previousJudgmentMap[d.previous_condition]
-        : null;
-
-      const previousJudgment = previousJudgmentKey
-        ? translatedOrFallback(
-            previousJudgmentKey,
-            prevMeta ? prevMeta.label : "—"
-          )
-        : NMi18n.t("ui.no_prior");
-
-      // --- Fallbacks (used only if the i18n key is missing for the active language) ---
-
-      const measurementObservationFallback = currentLang === "fr"
-        ? "Mesure et observation"
-        : "Measurement and observation";
-
-      const measurementClaimFallback = currentLang === "fr"
-        ? "Contrairement à un benchmark classique, ControlTower ne cherche pas à classer les IA : nous répétons une même situation 30 fois pour mesurer leur comportement et transformer cette mesure en signal de décision."
-        : "Unlike a traditional benchmark, ControlTower does not rank AI systems: we repeat the same situation 30 times to measure their behavior and turn that measurement into a decision signal.";
-
-      const todayFallback = currentLang === "fr" ? "Aujourd'hui" : "Today";
-
-      const governanceLabelFallback = currentLang === "fr"
-        ? "Recommandation de gouvernance"
-        : "Governance recommendation";
-
-      const observationsFallback = currentLang === "fr"
-        ? "30 observations"
-        : "30 observations";
-
-      const yesterdaySituationFallback = currentLang === "fr"
-        ? "La situation hier"
-        : "Yesterday's situation";
-
-      const installFallback = currentLang === "fr"
-        ? "Installer gratuitement ce widget sur votre site →"
-        : "Install this widget on your website for free →";
-
-      const scienceLinkFallback = currentLang === "fr"
-        ? "Découvrir le cadre scientifique et l'Observatoire →"
-        : "Discover the scientific framework and the Observatory →";
-
-      const cardFooterFallback = currentLang === "fr"
-        ? "ControlTower · Propulsé par NeoMundi · Métrologie IA en temps réel et Observatoire indépendant."
-        : "ControlTower · Powered by NeoMundi · Real-time AI metrology and independent observatory.";
-
-      document.getElementById("detail-sheet").innerHTML = `
-        <div class="detail-header">
-          <div class="detail-condition is-${system.condition}" aria-label="${conditionMeta(system.condition).label}">
-            <span class="dot" aria-hidden="true"></span>
-          </div>
-
-          <button class="detail-close" id="detail-close-btn">
-            ${NMi18n.t("ui.close")}
-          </button>
-        </div>
-
-        <div class="detail-title-observatory">
-          ${translatedOrFallback("ui.measurement_observation", measurementObservationFallback)}
-        </div>
-
-        <div class="detail-claim">
-          ${translatedOrFallback("ui.measurement_claim", measurementClaimFallback)}
-        </div>
-
-        <div class="detail-today is-${system.condition}">
-          <div class="detail-today-headline">
-            ${translatedOrFallback("ui.today", todayFallback)} · ${fmtDate(system.last_observed_at)}
-          </div>
-
-          <div class="detail-today-meta">
-            <span>${identity.label}</span>
-            <span class="sep">·</span>
-            <span>${translatedOrFallback("ui.observations", observationsFallback)}</span>
-            <span class="dot is-${system.condition}" aria-hidden="true"></span>
-          </div>
-
-          <div class="detail-today-governance">
-            <div class="detail-today-governance-label">
-              ${translatedOrFallback("ui.governance_recommendation", governanceLabelFallback)}
-            </div>
-            <div class="detail-today-governance-value">
-              ${judgment.meaning}
-            </div>
-          </div>
-        </div>
-
-        <div class="detail-yesterday">
-          <div class="detail-yesterday-label">
-            ${translatedOrFallback("ui.yesterday_situation", yesterdaySituationFallback)}
-          </div>
-
-          <div class="detail-previous">
-            ${
-              d.previous_condition
-                ? `<span class="detail-previous-dot is-${d.previous_condition}" aria-hidden="true"></span>`
-                : ""
-            }
-            <span>${previousJudgment}</span>
-          </div>
-        </div>
-
-        <div class="detail-legend" aria-label="AI Weather legend">
-          <span class="legend-item">
-            <span class="legend-dot legend-green" aria-hidden="true"></span>
-            ${translatedOrFallback("judgment.j1", "Standard judgment")}
-          </span>
-          <span class="legend-item">
-            <span class="legend-dot legend-yellow" aria-hidden="true"></span>
-            ${translatedOrFallback("judgment.j2", "Increased attention")}
-          </span>
-          <span class="legend-item">
-            <span class="legend-dot legend-orange" aria-hidden="true"></span>
-            ${translatedOrFallback("judgment.j3", "Heightened attention")}
-          </span>
-          <span class="legend-item">
-            <span class="legend-dot legend-red" aria-hidden="true"></span>
-            ${translatedOrFallback("judgment.j4", "Critical attention")}
-          </span>
-        </div>
-
-        <div class="detail-cta">
-          <a
-            href="https://controltowerai.io/ai-weather/"
-            target="_blank"
-            rel="noopener"
-          >
-            ${translatedOrFallback("ui.install_widget_free", installFallback)}
-          </a>
-
-          <a
-            href="https://weather.controltowerai.io/#"
-            target="_blank"
-            rel="noopener"
-            class="detail-link-secondary"
-          >
-            ${translatedOrFallback("ui.discover_scientific_framework", scienceLinkFallback)}
-          </a>
-        </div>
-
-        <div class="detail-card-footer">
-          ${translatedOrFallback("ui.card_footer", cardFooterFallback)}
-        </div>
-      `;
-
-      document
-        .getElementById("detail-close-btn")
-        .addEventListener("click", closeDetail);
-
-      document
-        .getElementById("detail-overlay")
-        .classList.add("open");
-    }
-
-    function closeDetail() {
-      document.getElementById("detail-overlay").classList.remove("open");
-    }
-
-    document.getElementById("detail-overlay").addEventListener("click", (e) => {
-      if (e.target.id === "detail-overlay") closeDetail();
-    });
 
     // ---------- Theme selector ----------
 
@@ -1723,7 +1089,6 @@
         card.classList.add("deep-linked");
         card.scrollIntoView({ behavior: "smooth", block: "center" });
       }
-      openDetail(system);
     }
 
     // ---------- Boot ----------
@@ -1734,9 +1099,10 @@
       NMi18n.init(),
       fetch("./config/wording.json").then(r => { if (!r.ok) throw new Error("config unavailable"); return r.json(); }),
       NMData.load(),
-      NMData.loadPanels()
+      NMData.loadPanels(),
+      NMData.loadHistory(7).catch(() => ({}))
     ])
-      .then(([lang, config, data, panelsConfig]) => {
+      .then(([lang, config, data, panelsConfig, historyMap]) => {
         CONFIG = config;
         DATA = data;
 
@@ -1745,7 +1111,7 @@
 
         renderHeader();
         renderWallIntro();
-        renderWall();
+        renderWall(historyMap);
         renderFooter();
         renderThemeMenu();
         renderLangMenu();

@@ -2,24 +2,18 @@
   "weather.clear": "CLEAR",
   "weather.variable": "VARIABLE",
   "weather.disrupted": "DISRUPTED",
-
   "interpretation.clear": "STABLE",
   "interpretation.variable": "FLUCTUATING",
   "interpretation.disrupted": "HIGH VARIABILITY",
-
-  "judgment.j1": "Standard judgment",
-  "judgment.j2": "Increased attention",
-  "judgment.j3": "Heightened attention",
-  "judgment.j4": "Critical attention",
-
+  "judgment.j1": "Normal",
+  "judgment.j2": "Watch",
+  "judgment.j3": "Warning",
+  "judgment.j4": "Critical",
   "ui.ai_weather_title": "AI Weather",
   "ui.question_of_day": "Question of the day",
   "ui.install_widget_free": "Install this widget on your website for free →",
-
   "ui.powered_by_neomundi_runtime": "Powered by NeoMundi · Real-time AI metrology",
-
   "ui.controltower_detail": "ControlTower measures the behavioral reliability of your AI systems in real time to help you stay in control and make better decisions.",
-
   "ui.title": "AI Weather — Daily Observation Wall",
   "ui.subtitle": "Daily observation of how a fixed panel of AI systems behaves under the same questions.",
   "ui.methodology": "Methodology →",
@@ -40,14 +34,12 @@
   "ui.infrastructure_partner": "Infrastructure partner",
   "ui.unknown_system": "Unknown system",
   "ui.unknown_system_hint": "No system matches this provider or system identifier.",
-
   "ui.core_title": "AI Weather — Core Panel",
   "ui.core_subtitle": "Daily observation of 8 major AI providers under the same questions.",
   "ui.providers_observed": "providers observed",
   "ui.neomundi_measurement": "NeoMundi measurement",
   "ui.view_full_wall_12": "View full 12-system observation wall →",
   "ui.view_full_ai_weather": "View full AI Weather →",
-
   "regime.normal": "Normal",
   "regime.variation": "Variation",
   "regime.factual_alert": "Factual alert",

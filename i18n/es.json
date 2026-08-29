@@ -2,26 +2,20 @@
   "weather.clear": "DESPEJADO",
   "weather.variable": "VARIABLE",
   "weather.disrupted": "PERTURBADO",
-
   "interpretation.clear": "ESTABLE",
   "interpretation.variable": "FLUCTUANTE",
   "interpretation.disrupted": "ALTA VARIABILIDAD",
-
-  "judgment.j1": "Juicio estándar",
-  "judgment.j2": "Atención aumentada",
-  "judgment.j3": "Atención reforzada",
-  "judgment.j4": "Atención crítica",
-
+  "judgment.j1": "Normal",
+  "judgment.j2": "Vigilancia",
+  "judgment.j3": "Alerta",
+  "judgment.j4": "Crítico",
   "ui.ai_weather_title": "El tiempo de la IA",
   "ui.question_of_day": "Pregunta del día",
   "ui.view_original_en": "Ver original EN",
   "ui.original_english": "Original en inglés",
   "ui.install_widget_free": "Instala gratis este widget en tu sitio web →",
-
   "ui.powered_by_neomundi_runtime": "Impulsado por NeoMundi · Metrología de IA en tiempo real",
-
   "ui.controltower_detail": "ControlTower mide en tiempo real la fiabilidad del comportamiento de tus sistemas de IA para ayudarte a mantener el control y tomar mejores decisiones.",
-
   "ui.title": "AI Weather — Muro de observación diario",
   "ui.subtitle": "Observación diaria de cómo se comporta un panel fijo de sistemas de IA ante las mismas preguntas.",
   "ui.methodology": "Metodología →",
@@ -42,15 +36,12 @@
   "ui.infrastructure_partner": "Socio de infraestructura",
   "ui.unknown_system": "Sistema desconocido",
   "ui.unknown_system_hint": "Ningún sistema coincide con este proveedor o identificador.",
-
   "ui.view_full_wall_12": "Ver el muro completo de 12 sistemas →",
   "ui.view_full_ai_weather": "Ver AI Weather completo →",
-
   "ui.core_title": "AI Weather — Panel principal",
   "ui.core_subtitle": "Observación diaria de 8 grandes proveedores de IA ante las mismas preguntas.",
   "ui.providers_observed": "proveedores observados",
   "ui.neomundi_measurement": "Medición NeoMundi",
-
   "regime.normal": "Normal",
   "regime.variation": "Variación",
   "regime.factual_alert": "Alerta factual",

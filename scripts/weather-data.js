@@ -54,6 +54,107 @@
   }
 
   /**
+   * Format a Date as an ISO calendar date (YYYY-MM-DD), matching the
+   * data/history/<date>.json file naming convention.
+   */
+  function formatDateISO(d) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return y + "-" + m + "-" + day;
+  }
+
+  /**
+   * Load a rolling window of the last `days` calendar days of system
+   * conditions, for sparkline/trend rendering.
+   *
+   * Design notes:
+   *
+   * - The window is ANCHORED on weather.json's own generated_at date,
+   *   not the visitor's local clock, so it stays correct regardless of
+   *   the visitor's timezone.
+   * - "Today" is never fetched from data/history/ — it is taken
+   *   directly from the already-loaded current weather.json. This is
+   *   deliberate: the daily automation (~14:00) writes
+   *   data/history/<today>.json only once it runs, so a page loaded
+   *   earlier in the day would otherwise show a hole for today.
+   * - Previous days are fetched from data/history/<date>.json. A
+   *   missing file (gap in the archive, a day the pipeline failed to
+   *   publish, etc.) is silently skipped rather than padded — the
+   *   returned series can therefore have fewer than `days` points.
+   *   Callers must not assume a fixed length.
+   * - This function requires no maintenance as new days are published:
+   *   each call recomputes the window relative to the current date, so
+   *   it keeps sliding forward automatically after every automated
+   *   release.
+   *
+   * Returns a map: { [systemId]: [{ date, condition }, ...] }, oldest
+   * first, sorted chronologically, with today's point (if the system
+   * exists in weather.json) always last.
+   */
+  async function loadHistory(days = 7) {
+    const data = await load();
+    const anchorDate = data && data.generated_at ? new Date(data.generated_at) : new Date();
+
+    const datesToFetch = [];
+    for (let i = days - 1; i >= 1; i--) {
+      const d = new Date(anchorDate);
+      d.setDate(d.getDate() - i);
+      datesToFetch.push(formatDateISO(d));
+    }
+
+    const fetchedDays = await Promise.all(
+      datesToFetch.map((iso) =>
+        fetchJson("./data/history/" + iso + ".json").catch(() => null)
+      )
+    );
+
+    const historyBySystem = {};
+
+    fetchedDays.forEach((dayData, idx) => {
+      if (!dayData) {
+        return;
+      }
+
+      const iso = datesToFetch[idx];
+
+      (dayData.systems || []).forEach((system) => {
+        if (!historyBySystem[system.id]) {
+          historyBySystem[system.id] = [];
+        }
+
+        historyBySystem[system.id].push({
+          date: iso,
+          condition: system.condition
+        });
+      });
+    });
+
+    const todayIso = formatDateISO(anchorDate);
+
+    (data.systems || []).forEach((system) => {
+      if (!historyBySystem[system.id]) {
+        historyBySystem[system.id] = [];
+      }
+
+      historyBySystem[system.id].push({
+        date: todayIso,
+        condition: system.condition
+      });
+    });
+
+    return historyBySystem;
+  }
+
+  /**
+   * Convenience accessor: the trend series for a single system id,
+   * or an empty array if none was loaded/found.
+   */
+  function getSystemHistory(historyMap, systemId) {
+    return (historyMap && historyMap[systemId]) || [];
+  }
+
+  /**
    * Read a query-string parameter from the current URL.
    */
   function getQueryParam(name) {
@@ -204,6 +305,8 @@
     getQueryParam,
     loadPanels,
     getPanelSystems,
-    getPublicIdentity
+    getPublicIdentity,
+    loadHistory,
+    getSystemHistory
   };
 })(window);
