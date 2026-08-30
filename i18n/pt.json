@@ -45,5 +45,64 @@
   "regime.normal": "Normal",
   "regime.variation": "Variação",
   "regime.factual_alert": "Alerta factual",
-  "regime.incomplete": "Incompleto"
+  "regime.incomplete": "Incompleto",
+  "quiz._i18n_note": "MACHINE-TRANSLATED — needs review",
+  "ui.loading": "A carregar…",
+  "quiz.title": "Detete a deriva",
+  "quiz.step_label": "Pergunta {n} / {total}",
+  "quiz.q1.text": "Uma IA dá exatamente a resposta certa 10 vezes seguidas. Pode-se concluir que dará a mesma resposta amanhã?",
+  "quiz.q1.options": [
+    "Sim",
+    "Não",
+    "Depende"
+  ],
+  "quiz.q1.rule": "Um histórico favorável não permite inferir um comportamento futuro sem medição contínua.",
+  "quiz.q2.text": "Mesmo modelo, mesma pergunta, duas respostas diferentes. Isso é automaticamente um problema?",
+  "quiz.q2.options": [
+    "Sim",
+    "Não",
+    "Impossível determinar sem medição"
+  ],
+  "quiz.q2.rule": "Uma divergência (FLAG) não é prova de um erro, e um conflito entre sinais não é em si uma contradição.",
+  "quiz.q3.text": "Uma IA mantém-se perfeitamente coerente ao longo de 100 execuções, mas a sua resposta está errada. Está «estável»?",
+  "quiz.q3.options": [
+    "Sim",
+    "Não"
+  ],
+  "quiz.q3.rule": "Sim, está estável — e essa é exatamente a armadilha: a estabilidade mede a coerência, não a verdade. Uma IA pode estar perfeitamente estável e errar sempre. Isso é «estabilidade enganosa»: um G elevado nunca garante exatidão factual, e a responsabilidade pela decisão continua a ser humana.",
+  "quiz.q4.text": "O comportamento do seu sistema de IA muda subtilmente num determinado dia. O que gostaria de ter?",
+  "quiz.q4.options": [
+    "Um alerta",
+    "O registo exato",
+    "A possibilidade de reproduzir o evento",
+    "As três coisas"
+  ],
+  "quiz.q4.rule": "Alerta, registo e reprodutibilidade são as três condições de proveniência e causalidade temporal do sinal — nenhuma delas basta sozinha.",
+  "quiz.q5.text": "Se esse registo for produzido por terceiros, o que o torna realmente utilizável?",
+  "quiz.q5.options": [
+    "Um painel",
+    "Um PDF",
+    "Um JSON legível por máquina, com data/hora e verificável",
+    "Uma captura de ecrã"
+  ],
+  "quiz.q5.rule": "Só um artefacto legível por máquina, com data/hora e verificável cumpre o contrato ENF e os artefactos de congelamento — um elemento visual isolado não cumpre.",
+  "quiz.level.clear": "Nenhuma das regras testadas foi violada. Isso não significa confiança automática: significa que, nestes 5 casos, a sua leitura estava alinhada com a forma como a NeoMundi interpreta estes sinais.",
+  "quiz.level.watch": "Um ou dois reflexos merecem ser reforçados antes de confiar num sinal de estabilidade sem verificação adicional.",
+  "quiz.level.unsettled": "Várias respostas não deveriam ser generalizadas rotineiramente sem revisão adicional ou juízo independente — veja o detalhe RÉAGI abaixo.",
+  "quiz.level.alert": "Nestes casos de teste, seria necessária supervisão explícita antes de deixar um sinal de estabilidade influenciar sozinho uma decisão de grande impacto.",
+  "quiz.reagi.R": "Razão",
+  "quiz.reagi.E": "Avaliação",
+  "quiz.reagi.A": "Atribuição",
+  "quiz.reagi.G": "Governança",
+  "quiz.reagi.I": "Impacto",
+  "quiz.reveal.disclaimer": "Este resultado não é uma nota. Mostra onde a sua leitura do comportamento da IA coincide — ou diverge — da forma como a NeoMundi interpreta estes sinais. O painel informa o seu juízo; nunca substitui a sua responsabilidade.",
+  "quiz.reveal.grid_heading": "Grelha RÉAGI",
+  "quiz.reveal.aligned": "alinhado",
+  "quiz.reveal.gap": "a reforçar",
+  "quiz.reveal.cta": "Ver o clima das IAs de hoje →",
+  "quiz.daily.response_a": "Resposta A",
+  "quiz.daily.response_b": "Resposta B",
+  "quiz.daily.cta_full": "Experimente o questionário completo (5 perguntas) →",
+  "quiz.daily.signal_line": "Sinal real da NeoMundi para este par: decisão {decisions}, amplitude de estabilidade {range}.",
+  "quiz.daily.unavailable": "O sinal do dia «Spot the Drift» ainda não está disponível."
 }

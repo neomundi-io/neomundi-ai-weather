@@ -45,5 +45,64 @@
   "regime.normal": "正常",
   "regime.variation": "变化",
   "regime.factual_alert": "事实性警报",
-  "regime.incomplete": "不完整"
+  "regime.incomplete": "不完整",
+  "quiz._i18n_note": "MACHINE-TRANSLATED — needs review",
+  "ui.loading": "加载中…",
+  "quiz.title": "识别漂移",
+  "quiz.step_label": "第 {n} / {total} 题",
+  "quiz.q1.text": "一个AI连续10次给出完全正确的答案。能否由此断定它明天也会给出同样的答案？",
+  "quiz.q1.options": [
+    "能",
+    "不能",
+    "视情况而定"
+  ],
+  "quiz.q1.rule": "良好的历史表现并不能在没有持续测量的情况下推断出未来的行为。",
+  "quiz.q2.text": "同一模型、同一问题,两次给出不同的答案。这是否自动意味着出了问题？",
+  "quiz.q2.options": [
+    "是",
+    "不是",
+    "没有测量数据无法判断"
+  ],
+  "quiz.q2.rule": "出现分歧（FLAG）并不能证明存在错误,信号之间的冲突本身也不构成矛盾。",
+  "quiz.q3.text": "一个AI在100次运行中表现得完全一致,但其答案是错误的。它算「稳定」吗？",
+  "quiz.q3.options": [
+    "算",
+    "不算"
+  ],
+  "quiz.q3.rule": "是的,它是稳定的——这正是陷阱所在：稳定性衡量的是一致性,而非真实性。一个AI可能完全稳定,却每次都错。这就是「虚假的稳定性」：高G值从不保证事实准确性,决策责任始终在于人类。",
+  "quiz.q4.text": "某一天,您的AI系统行为出现了细微变化。您希望获得什么？",
+  "quiz.q4.options": [
+    "一个警报",
+    "精确的记录轨迹",
+    "重现该事件的可能性",
+    "以上三者"
+  ],
+  "quiz.q4.rule": "警报、轨迹和可复现性是信号溯源与时间因果关系的三个必要条件——单独任何一个都不够。",
+  "quiz.q5.text": "如果该记录轨迹由第三方提供,是什么让它真正可用？",
+  "quiz.q5.options": [
+    "一个仪表盘",
+    "一份PDF",
+    "一份机器可读、带时间戳且可验证的JSON文件",
+    "一张截图"
+  ],
+  "quiz.q5.rule": "只有机器可读、带时间戳且可验证的产物才符合ENF契约和冻结产物的要求——单纯的可视化图表不符合。",
+  "quiz.level.clear": "所测试的规则均未被违反。这并不意味着可以自动信任：它意味着,在这5个案例中,您的判断与NeoMundi解读这些信号的方式是一致的。",
+  "quiz.level.watch": "在没有进一步核实的情况下依赖稳定性信号之前,有一两处判断反应值得加强。",
+  "quiz.level.unsettled": "在没有进一步审查或独立判断的情况下,不应将若干答案作为常规推广——详见下方的RÉAGI分析。",
+  "quiz.level.alert": "在这些测试案例中,若要让稳定性信号单独影响一项高风险决策,需要明确的人工监督。",
+  "quiz.reagi.R": "理由",
+  "quiz.reagi.E": "评估",
+  "quiz.reagi.A": "归责",
+  "quiz.reagi.G": "治理",
+  "quiz.reagi.I": "影响",
+  "quiz.reveal.disclaimer": "这个结果不是分数。它显示的是您对AI行为的判断在多大程度上与NeoMundi解读这些信号的方式一致——或有所偏离。仪表盘为您的判断提供参考,但绝不能替代您的责任。",
+  "quiz.reveal.grid_heading": "RÉAGI 分析表",
+  "quiz.reveal.aligned": "判断一致",
+  "quiz.reveal.gap": "有待加强",
+  "quiz.reveal.cta": "查看今日AI天气 →",
+  "quiz.daily.response_a": "回答 A",
+  "quiz.daily.response_b": "回答 B",
+  "quiz.daily.cta_full": "试试完整版测验（5道题）→",
+  "quiz.daily.signal_line": "该对答案的真实NeoMundi信号：判定结果 {decisions},稳定性差值 {range}。",
+  "quiz.daily.unavailable": "今日的「识别漂移」信号尚不可用。"
 }

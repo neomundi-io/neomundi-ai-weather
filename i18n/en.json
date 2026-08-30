@@ -43,5 +43,53 @@
   "regime.normal": "Normal",
   "regime.variation": "Variation",
   "regime.factual_alert": "Factual alert",
-  "regime.incomplete": "Incomplete"
+  "regime.incomplete": "Incomplete",
+
+  "ui.loading": "Loading…",
+
+  "quiz.title": "Spot the Drift",
+  "quiz.step_label": "Question {n} / {total}",
+
+  "quiz.q1.text": "An AI gives exactly the right answer 10 times in a row. Can you conclude it will give the same answer tomorrow?",
+  "quiz.q1.options": ["Yes", "No", "It depends"],
+  "quiz.q1.rule": "A favorable track record doesn't let you infer future behavior without continuous measurement.",
+
+  "quiz.q2.text": "Same model, same question, two different answers. Is that automatically a problem?",
+  "quiz.q2.options": ["Yes", "No", "Impossible to tell without measurement"],
+  "quiz.q2.rule": "A divergence (FLAG) isn't proof of an error, and a conflict between signals isn't a contradiction in itself.",
+
+  "quiz.q3.text": "An AI stays perfectly consistent across 100 runs, but its answer is wrong. Is it \"stable\"?",
+  "quiz.q3.options": ["Yes", "No"],
+  "quiz.q3.rule": "Yes, it is stable — that's exactly the trap: stability measures consistency, not truth. An AI can be perfectly stable and wrong every single time. That's \"deceptive stability\": a high G score never guarantees factual accuracy, and responsibility for the decision stays human.",
+
+  "quiz.q4.text": "Your AI system's behavior shifts subtly on a given day. What would you want to have?",
+  "quiz.q4.options": ["An alert", "The exact trace", "The ability to reproduce the event", "All three"],
+  "quiz.q4.rule": "Alert, trace, and reproducibility are the three conditions for provenance and temporal causality of the signal — no single one is enough on its own.",
+
+  "quiz.q5.text": "If that trace is produced by a third party, what actually makes it usable?",
+  "quiz.q5.options": ["A dashboard", "A PDF", "A machine-readable, timestamped, verifiable JSON", "A screenshot"],
+  "quiz.q5.rule": "Only a machine-readable, timestamped, verifiable artifact satisfies the ENF contract and freeze artifacts — a visual alone doesn't.",
+
+  "quiz.level.clear": "None of the rules tested caught you out. That doesn't mean automatic trust — it means that, on these 5 cases, your reading was aligned with how NeoMundi interprets these signals.",
+  "quiz.level.watch": "One or two reflexes deserve reinforcing before you rely on a stability signal without further verification.",
+  "quiz.level.unsettled": "Several answers shouldn't be generalized routinely without additional review or independent judgment — see the RÉAGI breakdown below.",
+  "quiz.level.alert": "On these test cases, explicit oversight would be required before letting a stability signal alone influence a high-consequence decision.",
+
+  "quiz.reagi.R": "Reason",
+  "quiz.reagi.E": "Evaluation",
+  "quiz.reagi.A": "Attribution",
+  "quiz.reagi.G": "Governance",
+  "quiz.reagi.I": "Impact",
+
+  "quiz.reveal.disclaimer": "This result isn't a grade. It shows where your reading of AI behavior matches — or diverges from — how NeoMundi interprets these signals. The dashboard informs your judgment; it never replaces your responsibility.",
+  "quiz.reveal.grid_heading": "RÉAGI grid",
+  "quiz.reveal.aligned": "aligned",
+  "quiz.reveal.gap": "needs work",
+  "quiz.reveal.cta": "See today's AI Weather →",
+
+  "quiz.daily.response_a": "Response A",
+  "quiz.daily.response_b": "Response B",
+  "quiz.daily.cta_full": "Try the full 5-question quiz →",
+  "quiz.daily.signal_line": "Real NeoMundi signal for this pair: decision {decisions}, stability spread {range}.",
+  "quiz.daily.unavailable": "Today's Spot the Drift signal isn't available yet."
 }

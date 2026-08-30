@@ -45,5 +45,64 @@
   "regime.normal": "Normale",
   "regime.variation": "Variazione",
   "regime.factual_alert": "Allerta fattuale",
-  "regime.incomplete": "Incompleto"
+  "regime.incomplete": "Incompleto",
+  "quiz._i18n_note": "MACHINE-TRANSLATED — needs review",
+  "ui.loading": "Caricamento…",
+  "quiz.title": "Individua la deriva",
+  "quiz.step_label": "Domanda {n} / {total}",
+  "quiz.q1.text": "Un'IA dà esattamente la risposta corretta per 10 volte di fila. Si può concludere che darà la stessa risposta domani?",
+  "quiz.q1.options": [
+    "Sì",
+    "No",
+    "Dipende"
+  ],
+  "quiz.q1.rule": "Uno storico favorevole non permette di dedurre un comportamento futuro senza una misurazione continua.",
+  "quiz.q2.text": "Stesso modello, stessa domanda, due risposte diverse. È automaticamente un problema?",
+  "quiz.q2.options": [
+    "Sì",
+    "No",
+    "Impossibile determinarlo senza misurazione"
+  ],
+  "quiz.q2.rule": "Una divergenza (FLAG) non è prova di un errore, e un conflitto tra segnali non è di per sé una contraddizione.",
+  "quiz.q3.text": "Un'IA rimane perfettamente coerente per 100 esecuzioni, ma la sua risposta è sbagliata. È «stabile»?",
+  "quiz.q3.options": [
+    "Sì",
+    "No"
+  ],
+  "quiz.q3.rule": "Sì, è stabile — ed è proprio questa la trappola: la stabilità misura la coerenza, non la verità. Un'IA può essere perfettamente stabile e sbagliare ogni volta. Questa è «stabilità ingannevole»: un punteggio G elevato non garantisce mai l'accuratezza fattuale, e la responsabilità della decisione resta umana.",
+  "quiz.q4.text": "Il comportamento del vostro sistema IA cambia in modo sottile un dato giorno. Cosa vorreste avere?",
+  "quiz.q4.options": [
+    "Un avviso",
+    "La traccia esatta",
+    "La possibilità di riprodurre l'evento",
+    "Tutte e tre"
+  ],
+  "quiz.q4.rule": "Avviso, traccia e riproducibilità sono le tre condizioni di provenienza e causalità temporale del segnale — nessuna da sola è sufficiente.",
+  "quiz.q5.text": "Se quella traccia è prodotta da terzi, cosa la rende davvero utilizzabile?",
+  "quiz.q5.options": [
+    "Una dashboard",
+    "Un PDF",
+    "Un JSON leggibile da macchina, con timestamp e verificabile",
+    "Uno screenshot"
+  ],
+  "quiz.q5.rule": "Solo un artefatto leggibile da macchina, con timestamp e verificabile rispetta il contratto ENF e gli artefatti di freeze — un elemento visivo da solo no.",
+  "quiz.level.clear": "Nessuna delle regole testate è stata violata. Questo non significa fiducia automatica: significa che, su questi 5 casi, la vostra lettura era allineata con il modo in cui NeoMundi interpreta questi segnali.",
+  "quiz.level.watch": "Uno o due riflessi meritano di essere rafforzati prima di affidarsi a un segnale di stabilità senza ulteriore verifica.",
+  "quiz.level.unsettled": "Diverse risposte non dovrebbero essere generalizzate di routine senza ulteriore revisione o giudizio indipendente — vedi il dettaglio RÉAGI qui sotto.",
+  "quiz.level.alert": "Su questi casi di prova, sarebbe necessaria una supervisione esplicita prima di lasciare che un segnale di stabilità da solo influenzi una decisione ad alto impatto.",
+  "quiz.reagi.R": "Ragione",
+  "quiz.reagi.E": "Valutazione",
+  "quiz.reagi.A": "Attribuzione",
+  "quiz.reagi.G": "Governance",
+  "quiz.reagi.I": "Impatto",
+  "quiz.reveal.disclaimer": "Questo risultato non è un voto. Mostra dove la vostra lettura del comportamento dell'IA coincide — o si discosta — dal modo in cui NeoMundi interpreta questi segnali. La dashboard informa il vostro giudizio; non sostituisce mai la vostra responsabilità.",
+  "quiz.reveal.grid_heading": "Griglia RÉAGI",
+  "quiz.reveal.aligned": "allineato",
+  "quiz.reveal.gap": "da rafforzare",
+  "quiz.reveal.cta": "Guarda il meteo delle IA di oggi →",
+  "quiz.daily.response_a": "Risposta A",
+  "quiz.daily.response_b": "Risposta B",
+  "quiz.daily.cta_full": "Prova il quiz completo (5 domande) →",
+  "quiz.daily.signal_line": "Segnale NeoMundi reale per questa coppia: decisione {decisions}, intervallo di stabilità {range}.",
+  "quiz.daily.unavailable": "Il segnale del giorno «Spot the Drift» non è ancora disponibile."
 }

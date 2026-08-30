@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spot the Drift — NeoMundi AI Weather</title>
+<!-- This page lives two levels deep (widgets/quiz/), but scripts/i18n.js
+     fetches ./i18n/<lang>.json and ./config/languages.json as page-relative
+     paths, same as every other AI Weather widget (which all sit at repo
+     root). <base> makes every relative URL in this document — including
+     i18n.js's own internal fetches, which we don't touch — resolve as if
+     this page were served from the repo root, without needing any change
+     to that shared module. Every relative href/src below is written
+     accordingly (repo-root-relative, no ../../ or ./). -->
+<base href="../../">
+<link rel="stylesheet" href="widgets/quiz/quiz.css">
+</head>
+<body>
+
+<!--
+  quiz-full — standalone, shareable "Spot the Drift" quiz (Step 3).
+
+  Role match: this page is the same kind of destination as index.html
+  (a page people land on directly and share a URL to), not a pure
+  embed like weather-bar-*.html. So — per the 2026-08-30 product
+  decision — it gets the same visible language selector as
+  index.html's .lang-select, same markup/position/behavior (full
+  reload with an updated ?lang=). quiz-daily.html does NOT have this;
+  it follows the embeddable-widget convention instead. See that file's
+  header comment.
+
+  All rendering logic lives in quiz-engine.js — nothing here but
+  boot wiring, matching every other AI Weather widget's structure
+  (e.g. weather-bar-6.html).
+-->
+
+<div class="quiz-wrap">
+  <div class="quiz-controls" id="quiz-controls"></div>
+  <div class="quiz" id="quiz">
+    <div class="quiz-loading">Loading…</div>
+  </div>
+</div>
+
+<script src="scripts/i18n.js"></script>
+<script src="widgets/quiz/quiz-engine.js"></script>
+<script src="scripts/quiz-telemetry.js"></script>
+<script>
+  // Theme: ?theme= URL param only, no in-widget switcher — same
+  // convention as weather-bar-6.html.
+  const params = new URLSearchParams(window.location.search);
+  document.documentElement.setAttribute("data-theme", params.get("theme") === "dark" ? "dark" : "light");
+
+  NMi18n.init().then(() => {
+    NMQuiz.renderLangSelect(document.getElementById("quiz-controls"));
+    NMQuiz.initQuizFull(document.getElementById("quiz"), {
+      onEvent: (name, payload) => NMQuizTelemetry.track(name, payload),
+    });
+  });
+</script>
+
+</body>
+</html>

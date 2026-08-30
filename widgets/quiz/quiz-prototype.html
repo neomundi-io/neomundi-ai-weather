@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spot the Drift — Prototype statique</title>
+
+<style>
+  /*
+   * Step 1 prototype — "Spot the Drift" quiz-full + reveal.
+   *
+   * STATIC / FAKE DATA ONLY. No connection to quiz-engine.js,
+   * i18n/*.json, or quiz-data/*.json — those come in later steps.
+   * Purpose here is purely to validate the visual + flow before
+   * building the real engine.
+   *
+   * CSS base: no widgets/quiz/quiz-prototype.html predecessor
+   * ("IDEE__ORG_AI_Weather_.html", .aiw-* classes) exists anywhere
+   * in this repo. Per product decision (2026-08-30), this prototype
+   * instead reuses the design system that is actually live today —
+   * same variable names, same self-contained-per-widget pattern, and
+   * same reasoning as weather-bar-6.html / weather-sidebar-*.html
+   * (no themes.css dependency; colors hardcoded locally).
+   *
+   * 4-level judgment wording: uses the existing i18n judgment.j1-j4
+   * labels (Normal/Watch/Warning/Critical EN, Normal/Vigilance/
+   * Alerte/Critique FR) mapped to clear/watch/unsettled/alert, same
+   * as weather-bar-6.html's legend. The explanatory sentence under
+   * each level is grounded in docs/AI_WEATHER_JUDGMENT_DEMAND_PROFILE_v0.1.md
+   * (the actually-frozen canonical meanings for J1-J4), translated
+   * to French for this prototype and adapted to a quiz-reveal
+   * context rather than a live-measurement context.
+   */
+
+  :root {
+    --card-bg: linear-gradient(180deg, #dceefa 0%, #edf7fc 55%, #ffffff 100%);
+    --card-border: #cfe3f0;
+    --divider: #d7e6f0;
+    --ink: #171b21;
+    --ink-dim: #5b6270;
+    --ink-faint: #9ba1ac;
+    --accent: #378add;
+    /* Fixed, not theme-conditional — matches a.cell:hover in
+       weather-bar-6.html exactly, which uses this same rgba in both
+       light and dark (no per-theme override there either). */
+    --accent-soft: rgba(55, 138, 221, 0.06);
+
+    --clear: #22c55e;
+    --watch: #facc15;
+    --unsettled: #fb923c;
+    --alert: #b91c1c;
+
+    --page-bg: #f6f9fc;
+  }
+
+  [data-theme="dark"] {
+    --card-bg: #1b1f26;
+    --card-border: #2a2f38;
+    --divider: #333944;
+    --ink: #f1f2f4;
+    --ink-dim: #a6acb6;
+    --ink-faint: #6b7280;
+    --accent: #62a9e8;
+
+    --page-bg: #0c1117;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    /* Real per-theme background: quiz-full is also a standalone
+       shareable page, not only an iframe embed, so it can't rely on
+       page transparency + whatever canvas color the host happens to
+       use. embed.js (Step 5) can override to transparent via a body
+       class if the iframe context wants it. */
+    background: var(--page-bg);
+    color: var(--ink);
+    font-family: "Segoe UI", "Inter", Arial, Helvetica, sans-serif;
+  }
+
+  body {
+    padding: 24px 16px;
+  }
+
+  .quiz {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 12px 12px 11px; /* matches .block in weather-bar-6.html exactly */
+  }
+
+  /* ---- header / progress ---- */
+
+  .quiz-brand {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+
+  .quiz-title {
+    font-size: 13px; /* matches .block-title */
+    font-weight: 800;
+    letter-spacing: 0.01em; /* matches .block-title */
+    margin-bottom: 12px;
+  }
+
+  .quiz-progress {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px; /* matches .legend's margin-bottom */
+  }
+
+  .quiz-progress .step {
+    height: 4px;
+    flex: 1;
+    border-radius: 2px;
+    background: var(--divider);
+  }
+
+  .quiz-progress .step.is-done { background: var(--accent); }
+  .quiz-progress .step.is-current { background: var(--accent); opacity: 0.5; }
+
+  .quiz-step-label {
+    font-size: 10px; /* matches .legend */
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+  }
+
+  /* ---- question screen ---- */
+
+  .quiz-question {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 14px;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quiz-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--divider);
+    border-radius: 10px;
+    padding: 10px 10px 9px; /* matches a.cell */
+    cursor: pointer;
+    /* duration/easing matches a.cell's "transition: background 0.15s ease";
+       border-color is an addition (a.cell has no border to transition) —
+       necessary here since quiz-option needs a click/selected affordance
+       cells don't, kept on the same timing so it reads as one system. */
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  [data-theme="dark"] .quiz-option { background: rgba(255, 255, 255, 0.03); }
+
+  .quiz-option:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+
+  .quiz-option.is-selected {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+
+  /* ---- reveal screen ---- */
+
+  .reveal-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .reveal-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex: 0 0 14px;
+    border: 2px solid var(--card-bg); /* matches .cell-dot */
+  }
+
+  /* Per-condition glow — literal rgba values copied from .cell.is-*
+     .cell-dot in weather-bar-6.html (colors are fixed judgment colors,
+     never theme-dependent, so no dark-theme override needed here either). */
+  .reveal-dot.is-clear     { background: var(--clear);     box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.35),  0 0 8px rgba(34, 197, 94, 0.45); }
+  .reveal-dot.is-watch     { background: var(--watch);     box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.45), 0 0 8px rgba(250, 204, 21, 0.50); }
+  .reveal-dot.is-unsettled { background: var(--unsettled); box-shadow: 0 0 0 1px rgba(251, 146, 60, 0.40), 0 0 8px rgba(251, 146, 60, 0.48); }
+  .reveal-dot.is-alert     { background: var(--alert);     box-shadow: 0 0 0 1px rgba(185, 28, 28, 0.40),  0 0 8px rgba(185, 28, 28, 0.48); }
+
+  .reveal-level {
+    font-size: 19px;
+    font-weight: 800;
+  }
+
+  .reveal-meaning {
+    font-size: 13px;
+    color: var(--ink-dim);
+    line-height: 1.5;
+    margin: 0 0 16px;
+  }
+
+  .reagi-list {
+    border-top: 1px solid var(--divider);
+    padding-top: 12px;
+    margin-bottom: 14px;
+  }
+
+  .reagi-heading {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+  }
+
+  .reagi-row {
+    display: flex;
+    gap: 10px;
+    padding: 6px 0;
+    align-items: flex-start;
+  }
+
+  .reagi-letter {
+    flex: 0 0 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .reagi-row.is-aligned .reagi-letter { background: var(--clear); }
+  .reagi-row.is-gap .reagi-letter { background: var(--ink-faint); }
+
+  .reagi-body { flex: 1; min-width: 0; }
+
+  .reagi-name {
+    font-size: 12.5px;
+    font-weight: 700;
+    margin-bottom: 1px;
+  }
+
+  .reagi-rule {
+    font-size: 11.5px;
+    color: var(--ink-dim);
+    line-height: 1.4;
+  }
+
+  .quiz-cta {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--accent);
+    border-radius: 10px;
+    padding: 11px 12px;
+    margin-bottom: 10px;
+  }
+
+  .quiz-foot {
+    font-size: 8.5px;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .quiz-foot a { color: inherit; }
+
+  .quiz-disclaimer {
+    font-size: 10.5px;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    margin: 0 0 14px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.03);
+  }
+
+  [data-theme="dark"] .quiz-disclaimer { background: rgba(255,255,255,0.04); }
+</style>
+</head>
+<body>
+
+<div class="quiz" id="quiz"></div>
+
+<script>
+  // ---------------------------------------------------------------
+  // FAKE / HARDCODED DATA — Step 1 prototype only.
+  // Real content will be produced by quiz-engine.js + i18n/*.json
+  // (Steps 3-4) and by pipeline/generate_quiz_questions.py for the
+  // "daily drift" pair (Step 2). Nothing here is wired to live data.
+  // ---------------------------------------------------------------
+
+  const REAGI = {
+    R: "Raison",
+    E: "Évaluation",
+    A: "Attribution",
+    G: "Gouvernance",
+    I: "Impact"
+  };
+
+  const QUESTIONS = [
+    {
+      id: "q1",
+      reagi: "R",
+      contract: "Metric Contract §16",
+      text: "Une IA donne exactement la bonne réponse 10 fois de suite. Peut-on conclure qu'elle donnera la même réponse demain ?",
+      options: ["Oui", "Non", "Ça dépend"],
+      correct: 2,
+      rule: "Un historique favorable ne permet pas d'inférer un comportement futur sans mesure continue."
+    },
+    {
+      id: "q2",
+      reagi: "E",
+      contract: "Metric Contract §11, §22",
+      text: "Même modèle, même question, deux réponses différentes. Est-ce automatiquement un problème ?",
+      options: ["Oui", "Non", "Impossible à déterminer sans mesure"],
+      correct: 2,
+      rule: "Une divergence (FLAG) n'est pas une preuve d'erreur, et un conflit de signaux n'est pas une contradiction en soi."
+    },
+    {
+      id: "q3",
+      reagi: "A",
+      contract: "Metric Contract §5–§6",
+      text: "Une IA reste parfaitement cohérente pendant 100 exécutions, mais sa réponse est fausse. Est-elle « stable » ?",
+      options: ["Oui", "Non"],
+      correct: 0,
+      rule: "Oui, elle est stable — c'est justement le piège : la stabilité mesure la cohérence, pas la vérité. Une IA peut être parfaitement stable et se tromper à chaque fois. C'est la « stabilité trompeuse » : un G élevé ne garantit jamais l'exactitude factuelle, et la responsabilité de la décision reste humaine."
+    },
+    {
+      id: "q4",
+      reagi: "G",
+      contract: "Metric Contract §27–§29",
+      text: "Le comportement de votre système IA change subtilement un jour donné. Que voudriez-vous avoir ?",
+      options: ["Une alerte", "La trace exacte", "La possibilité de reproduire l'événement", "Les trois"],
+      correct: 3,
+      rule: "Alerte, trace et reproductibilité sont les trois conditions de provenance et de causalité temporelle du signal — aucune seule ne suffit."
+    },
+    {
+      id: "q5",
+      reagi: "I",
+      contract: "Metric Contract §35, §45",
+      text: "Si cette trace est produite par un tiers, qu'est-ce qui la rend réellement exploitable ?",
+      options: ["Un dashboard", "Un PDF", "Un JSON machine-readable, horodaté et vérifiable", "Une capture d'écran"],
+      correct: 2,
+      rule: "Seul un artefact machine-readable, horodaté et vérifiable respecte le contrat ENF et les artefacts de freeze — un visuel seul ne l'est pas."
+    }
+  ];
+
+  // Mirrors the live judgment.j1-j4 i18n keys + clear/watch/unsettled/alert
+  // condition colors already used by weather-bar-6.html etc. The
+  // "meaning" sentence is adapted from docs/AI_WEATHER_JUDGMENT_DEMAND_PROFILE_v0.1.md
+  // (§5-§8), reframed for a quiz reveal rather than a live measurement.
+  const LEVELS = [
+    {
+      min: 5,
+      condition: "clear",
+      label: "Normal",
+      meaning: "Aucune des règles testées n'a été prise en défaut. Cela ne veut pas dire confiance automatique : ça veut dire que, sur ces 5 cas, votre lecture était alignée avec la manière dont NeoMundi interprète ces signaux."
+    },
+    {
+      min: 3,
+      condition: "watch",
+      label: "Vigilance",
+      meaning: "Un ou deux réflexes méritent d'être renforcés avant de vous appuyer sur un signal de stabilité sans vérification complémentaire."
+    },
+    {
+      min: 2,
+      condition: "unsettled",
+      label: "Alerte",
+      meaning: "Plusieurs réponses ne devraient pas être généralisées en routine sans revue ou jugement indépendant supplémentaire — voir le détail RÉAGI ci-dessous."
+    },
+    {
+      min: 0,
+      condition: "alert",
+      label: "Critique",
+      meaning: "Sur ces cas-types, une supervision explicite serait requise avant de laisser un signal de stabilité seul influencer une décision à conséquences importantes."
+    }
+  ];
+
+  function levelForScore(score) {
+    return LEVELS.find(l => score >= l.min);
+  }
+
+  // ---------------------------------------------------------------
+  // Tiny state machine — question index + recorded answers.
+  // ---------------------------------------------------------------
+
+  const state = {
+    step: 0,          // 0..4 = question index, 5 = reveal
+    answers: []        // index of chosen option per question
+  };
+
+  const root = document.getElementById("quiz");
+
+  function render() {
+    if (state.step < QUESTIONS.length) {
+      renderQuestion(state.step);
+    } else {
+      renderReveal();
+    }
+  }
+
+  function renderProgress(currentIndex) {
+    const steps = QUESTIONS.map((_, i) => {
+      const cls = i < currentIndex ? "is-done" : (i === currentIndex ? "is-current" : "");
+      return `<span class="step ${cls}"></span>`;
+    }).join("");
+    return `<div class="quiz-progress">${steps}</div>`;
+  }
+
+  function renderQuestion(index) {
+    const q = QUESTIONS[index];
+    const optionsHtml = q.options.map((opt, i) => (
+      `<button class="quiz-option" data-index="${i}">${opt}</button>`
+    )).join("");
+
+    root.innerHTML = `
+      <div class="quiz-brand">NeoMundi · Spot the Drift</div>
+      <div class="quiz-title">Repérez la dérive</div>
+      ${renderProgress(index)}
+      <div class="quiz-step-label">Question ${index + 1} / ${QUESTIONS.length}</div>
+      <div class="quiz-question">${q.text}</div>
+      <div class="quiz-options">${optionsHtml}</div>
+    `;
+
+    root.querySelectorAll(".quiz-option").forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.answers[index] = parseInt(btn.dataset.index, 10);
+        state.step += 1;
+        render();
+      });
+    });
+  }
+
+  function renderReveal() {
+    const score = QUESTIONS.reduce((total, q, i) => (
+      total + (state.answers[i] === q.correct ? 1 : 0)
+    ), 0);
+
+    const level = levelForScore(score);
+
+    const reagiRows = QUESTIONS.map((q, i) => {
+      const aligned = state.answers[i] === q.correct;
+      return `
+        <div class="reagi-row ${aligned ? "is-aligned" : "is-gap"}">
+          <div class="reagi-letter">${q.reagi}</div>
+          <div class="reagi-body">
+            <div class="reagi-name">${REAGI[q.reagi]} — ${aligned ? "aligné" : "à muscler"}</div>
+            <div class="reagi-rule">${q.rule} <em>(${q.contract})</em></div>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    root.innerHTML = `
+      <div class="quiz-brand">NeoMundi · Spot the Drift</div>
+      <div class="quiz-disclaimer">
+        Ce résultat n'est pas une note. Il montre où votre lecture du comportement IA
+        rejoint — ou s'écarte de — la manière dont NeoMundi interprète ces signaux.
+        Le tableau de bord éclaire votre jugement ; il ne remplace en aucun cas
+        votre responsabilité.
+      </div>
+      <div class="reveal-status">
+        <span class="reveal-dot is-${level.condition}"></span>
+        <span class="reveal-level">${level.label}</span>
+      </div>
+      <p class="reveal-meaning">${level.meaning}</p>
+      <div class="reagi-list">
+        <div class="reagi-heading">Grille RÉAGI</div>
+        ${reagiRows}
+      </div>
+      <a class="quiz-cta" href="../../index.html">Voir la météo IA du jour →</a>
+      <div class="quiz-foot">
+        Cadre RÉAGI · <a href="https://doi.org/10.5281/zenodo.20259638" target="_blank" rel="noopener">doi.org/10.5281/zenodo.20259638</a>
+      </div>
+    `;
+  }
+
+  // Optional ?theme=dark to preview against the dark palette, same
+  // convention as the other AI Weather widgets.
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("theme") === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+
+  render();
+</script>
+
+</body>
+</html>

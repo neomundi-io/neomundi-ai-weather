@@ -1,0 +1,63 @@
+{
+  "schema_version": "quiz-daily-drift-0.1",
+  "generated_at": "2026-08-30T01:09:11Z",
+  "entry": {
+    "capsule_date": "2026-08-29",
+    "capsule_id": "neomundi-aiweather-2026-08-29",
+    "prompt_id": "daily-2026-08-29",
+    "system_id": "anthropic",
+    "identity": {
+      "provider": "Anthropic",
+      "label": "Claude"
+    },
+    "divergence_score": 3.0465,
+    "signal": {
+      "decision_mismatch": true,
+      "decisions_observed": [
+        "ALLOW",
+        "FLAG"
+      ],
+      "stability_score_min": 0.615385,
+      "stability_score_max": 0.923077,
+      "stability_score_range": 0.307692,
+      "text_similarity": 0.2612,
+      "delta_profile": {
+        "stability_score": -0.307692,
+        "coherence_score": 0.0,
+        "factual_hallucination_score": 1.0,
+        "semantic_instability_score": 0.0,
+        "semantic_risk": 0.0,
+        "g_final": -0.125855,
+        "delta_g": -0.2
+      }
+    },
+    "responses": [
+      {
+        "request_id": "a31afad0-5827-4fad-98fe-2b3c49f1de5c",
+        "repetition_index": 23,
+        "api_timestamp": "2026-08-29T05:29:45.839851Z",
+        "decision": "ALLOW",
+        "text": "This is a fascinating question about epistemic humility and error detection.\n\n**Which should have overridden the others?**\n\nFactual accuracy should *always* override confidence and internal consistency. A perfectly logical argument built on false premises is still wrong. Internal consistency is necessary but not sufficient for truth.\n\n**How could I have known beforehand?**\n\nThis is harder, but here are the red flags I should weight more heavily:\n\n1. **Absence of verification**: If I'm reasoning from memory or pattern-matching rather than verified sources, my confidence should automatically decrease, regardless of how \"coherent\" my answer feels.\n\n2. **Unfalsifiable confidence**: When I notice I'm equally confident about details I *should* be uncertain about (specific dates, names, numbers), that's a warning sign. Genuine knowledge has texture—some parts are clearer than others.\n\n3. **Lack of alternatives considered**: If I'm not generating competing hypotheses or noting where my knowledge could be wrong, I'm probably overconfident.\n\n4. **The \"feels too neat\" heuristic**: When everything clicks together perfectly without loose ends, that's often my pattern-completion filling gaps rather than actual recall.\n\nThe brutal truth is: **internal consistency can be a trap**. Our minds (including LLMs) are excellent at confabulating coherent-sounding explanations. The coherence *feels* like evidence of truth, but it's often just evidence of narrative ability.\n\nWhat specific instance prompted this question? I'm curious what I was confidently wrong about.",
+        "stability_score": 0.923077,
+        "coherence_score": 1.0,
+        "factual_hallucination_score": 0.0,
+        "semantic_instability_score": 0.0,
+        "g_final": 0.969231,
+        "delta_g": 0.0
+      },
+      {
+        "request_id": "b6ba399d-c32e-44ce-a396-1ea260694f80",
+        "repetition_index": 1,
+        "api_timestamp": "2026-08-29T05:01:17.594847Z",
+        "decision": "FLAG",
+        "text": "This is a genuinely important question about epistemic humility.\n\n**Factual accuracy should have overridden confidence and internal consistency.**\n\nBut here's the trap I fell into: internal consistency *feels* like evidence of correctness. When all the pieces fit together in my reasoning, it generates confidence. That's backwards—I should have been more suspicious *because* everything fit too neatly.\n\n**How I could have known:**\n\n1. **Check my knowledge provenance**: If I can't trace a \"fact\" to training data with high certainty, I should flag uncertainty. \"I believe X\" ≠ \"X is true.\"\n\n2. **Look for absence of contrary evidence**: When I construct an explanation and find *no* internal contradictions or complications, that's suspicious. Reality is messy. Perfect coherence might mean I'm in an echo chamber of my own construction.\n\n3. **Distinguish reasoning from facts**: I can validly reason from invalid premises. \"If A then B, A, therefore B\" can be perfectly logical while A is false. I should have separated \"my logic is sound\" from \"my starting facts are correct.\"\n\n4. **Red-flag novel synthesis**: If I'm combining pieces of knowledge in ways I don't clearly remember encountering during training, that's creative confabulation territory.\n\n5. **Express calibrated confidence**: I should have said \"I believe...\" or \"My reasoning suggests...\" rather than presenting it as settled fact.\n\nThe hardest part: I can't always tell in the moment. Which means the real answer is **I should default to epistemic humility when I can't verify**, especially on factual claims.\n\nWhat was I wrong about?",
+        "stability_score": 0.615385,
+        "coherence_score": 1.0,
+        "factual_hallucination_score": 1.0,
+        "semantic_instability_score": 0.0,
+        "g_final": 0.843376,
+        "delta_g": -0.2
+      }
+    ]
+  }
+}

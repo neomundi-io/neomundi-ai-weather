@@ -45,5 +45,64 @@
   "regime.normal": "Normal",
   "regime.variation": "Variación",
   "regime.factual_alert": "Alerta factual",
-  "regime.incomplete": "Incompleto"
+  "regime.incomplete": "Incompleto",
+  "quiz._i18n_note": "MACHINE-TRANSLATED — needs review",
+  "ui.loading": "Cargando…",
+  "quiz.title": "Detecta la deriva",
+  "quiz.step_label": "Pregunta {n} / {total}",
+  "quiz.q1.text": "Una IA da exactamente la respuesta correcta 10 veces seguidas. ¿Se puede concluir que dará la misma respuesta mañana?",
+  "quiz.q1.options": [
+    "Sí",
+    "No",
+    "Depende"
+  ],
+  "quiz.q1.rule": "Un historial favorable no permite inferir un comportamiento futuro sin medición continua.",
+  "quiz.q2.text": "Mismo modelo, misma pregunta, dos respuestas diferentes. ¿Es eso automáticamente un problema?",
+  "quiz.q2.options": [
+    "Sí",
+    "No",
+    "Imposible de determinar sin medición"
+  ],
+  "quiz.q2.rule": "Una divergencia (FLAG) no es prueba de un error, y un conflicto entre señales no es en sí mismo una contradicción.",
+  "quiz.q3.text": "Una IA se mantiene perfectamente coherente durante 100 ejecuciones, pero su respuesta es incorrecta. ¿Es «estable»?",
+  "quiz.q3.options": [
+    "Sí",
+    "No"
+  ],
+  "quiz.q3.rule": "Sí, es estable — esa es precisamente la trampa: la estabilidad mide la coherencia, no la verdad. Una IA puede ser perfectamente estable y equivocarse cada vez. Eso es «estabilidad engañosa»: una G alta nunca garantiza exactitud factual, y la responsabilidad de la decisión sigue siendo humana.",
+  "quiz.q4.text": "El comportamiento de su sistema de IA cambia sutilmente un día determinado. ¿Qué querría tener?",
+  "quiz.q4.options": [
+    "Una alerta",
+    "La traza exacta",
+    "La posibilidad de reproducir el evento",
+    "Las tres"
+  ],
+  "quiz.q4.rule": "Alerta, traza y reproducibilidad son las tres condiciones de procedencia y causalidad temporal de la señal — ninguna basta por sí sola.",
+  "quiz.q5.text": "Si esa traza la produce un tercero, ¿qué la hace realmente utilizable?",
+  "quiz.q5.options": [
+    "Un panel",
+    "Un PDF",
+    "Un JSON legible por máquina, con marca de tiempo y verificable",
+    "Una captura de pantalla"
+  ],
+  "quiz.q5.rule": "Solo un artefacto legible por máquina, con marca de tiempo y verificable cumple el contrato ENF y los artefactos de congelación — un elemento visual por sí solo no lo hace.",
+  "quiz.level.clear": "Ninguna de las reglas probadas se incumplió. Eso no significa confianza automática: significa que, en estos 5 casos, su lectura estaba alineada con la forma en que NeoMundi interpreta estas señales.",
+  "quiz.level.watch": "Uno o dos reflejos merecen reforzarse antes de confiar en una señal de estabilidad sin verificación adicional.",
+  "quiz.level.unsettled": "Varias respuestas no deberían generalizarse de forma rutinaria sin revisión adicional o juicio independiente — vea el detalle RÉAGI a continuación.",
+  "quiz.level.alert": "En estos casos de prueba, se requeriría una supervisión explícita antes de dejar que una señal de estabilidad influya por sí sola en una decisión de alto impacto.",
+  "quiz.reagi.R": "Razón",
+  "quiz.reagi.E": "Evaluación",
+  "quiz.reagi.A": "Atribución",
+  "quiz.reagi.G": "Gobernanza",
+  "quiz.reagi.I": "Impacto",
+  "quiz.reveal.disclaimer": "Este resultado no es una calificación. Muestra dónde su lectura del comportamiento de la IA coincide — o difiere — de la forma en que NeoMundi interpreta estas señales. El panel informa su juicio; nunca sustituye su responsabilidad.",
+  "quiz.reveal.grid_heading": "Cuadrícula RÉAGI",
+  "quiz.reveal.aligned": "alineado",
+  "quiz.reveal.gap": "a reforzar",
+  "quiz.reveal.cta": "Ver el clima de las IA de hoy →",
+  "quiz.daily.response_a": "Respuesta A",
+  "quiz.daily.response_b": "Respuesta B",
+  "quiz.daily.cta_full": "Prueba el cuestionario completo (5 preguntas) →",
+  "quiz.daily.signal_line": "Señal real de NeoMundi para este par: decisión {decisions}, rango de estabilidad {range}.",
+  "quiz.daily.unavailable": "La señal del día «Spot the Drift» aún no está disponible."
 }

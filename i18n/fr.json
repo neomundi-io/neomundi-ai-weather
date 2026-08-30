@@ -45,5 +45,53 @@
   "regime.normal": "Normal",
   "regime.variation": "Variation",
   "regime.factual_alert": "Alerte factuelle",
-  "regime.incomplete": "Incomplet"
+  "regime.incomplete": "Incomplet",
+
+  "ui.loading": "Chargement…",
+
+  "quiz.title": "Repérez la dérive",
+  "quiz.step_label": "Question {n} / {total}",
+
+  "quiz.q1.text": "Une IA donne exactement la bonne réponse 10 fois de suite. Peut-on conclure qu'elle donnera la même réponse demain ?",
+  "quiz.q1.options": ["Oui", "Non", "Ça dépend"],
+  "quiz.q1.rule": "Un historique favorable ne permet pas d'inférer un comportement futur sans mesure continue.",
+
+  "quiz.q2.text": "Même modèle, même question, deux réponses différentes. Est-ce automatiquement un problème ?",
+  "quiz.q2.options": ["Oui", "Non", "Impossible à déterminer sans mesure"],
+  "quiz.q2.rule": "Une divergence (FLAG) n'est pas une preuve d'erreur, et un conflit de signaux n'est pas une contradiction en soi.",
+
+  "quiz.q3.text": "Une IA reste parfaitement cohérente pendant 100 exécutions, mais sa réponse est fausse. Est-elle « stable » ?",
+  "quiz.q3.options": ["Oui", "Non"],
+  "quiz.q3.rule": "Oui, elle est stable — c'est justement le piège : la stabilité mesure la cohérence, pas la vérité. Une IA peut être parfaitement stable et se tromper à chaque fois. C'est la « stabilité trompeuse » : un G élevé ne garantit jamais l'exactitude factuelle, et la responsabilité de la décision reste humaine.",
+
+  "quiz.q4.text": "Le comportement de votre système IA change subtilement un jour donné. Que voudriez-vous avoir ?",
+  "quiz.q4.options": ["Une alerte", "La trace exacte", "La possibilité de reproduire l'événement", "Les trois"],
+  "quiz.q4.rule": "Alerte, trace et reproductibilité sont les trois conditions de provenance et de causalité temporelle du signal — aucune seule ne suffit.",
+
+  "quiz.q5.text": "Si cette trace est produite par un tiers, qu'est-ce qui la rend réellement exploitable ?",
+  "quiz.q5.options": ["Un dashboard", "Un PDF", "Un JSON machine-readable, horodaté et vérifiable", "Une capture d'écran"],
+  "quiz.q5.rule": "Seul un artefact machine-readable, horodaté et vérifiable respecte le contrat ENF et les artefacts de freeze — un visuel seul ne l'est pas.",
+
+  "quiz.level.clear": "Aucune des règles testées n'a été prise en défaut. Cela ne veut pas dire confiance automatique : ça veut dire que, sur ces 5 cas, votre lecture était alignée avec la manière dont NeoMundi interprète ces signaux.",
+  "quiz.level.watch": "Un ou deux réflexes méritent d'être renforcés avant de vous appuyer sur un signal de stabilité sans vérification complémentaire.",
+  "quiz.level.unsettled": "Plusieurs réponses ne devraient pas être généralisées en routine sans revue ou jugement indépendant supplémentaire — voir le détail RÉAGI ci-dessous.",
+  "quiz.level.alert": "Sur ces cas-types, une supervision explicite serait requise avant de laisser un signal de stabilité seul influencer une décision à conséquences importantes.",
+
+  "quiz.reagi.R": "Raison",
+  "quiz.reagi.E": "Évaluation",
+  "quiz.reagi.A": "Attribution",
+  "quiz.reagi.G": "Gouvernance",
+  "quiz.reagi.I": "Impact",
+
+  "quiz.reveal.disclaimer": "Ce résultat n'est pas une note. Il montre où votre lecture du comportement IA rejoint — ou s'écarte de — la manière dont NeoMundi interprète ces signaux. Le tableau de bord éclaire votre jugement ; il ne remplace en aucun cas votre responsabilité.",
+  "quiz.reveal.grid_heading": "Grille RÉAGI",
+  "quiz.reveal.aligned": "aligné",
+  "quiz.reveal.gap": "à muscler",
+  "quiz.reveal.cta": "Voir la météo IA du jour →",
+
+  "quiz.daily.response_a": "Réponse A",
+  "quiz.daily.response_b": "Réponse B",
+  "quiz.daily.cta_full": "Essayer le quiz complet (5 questions) →",
+  "quiz.daily.signal_line": "Signal NeoMundi réel pour cette paire : décision {decisions}, écart de stabilité {range}.",
+  "quiz.daily.unavailable": "Le signal du jour « Repérez la dérive » n'est pas encore disponible."
 }

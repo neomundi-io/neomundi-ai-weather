@@ -45,5 +45,64 @@
   "regime.normal": "Normal",
   "regime.variation": "Variation",
   "regime.factual_alert": "Faktenalarm",
-  "regime.incomplete": "Unvollständig"
+  "regime.incomplete": "Unvollständig",
+  "quiz._i18n_note": "MACHINE-TRANSLATED — needs review",
+  "ui.loading": "Wird geladen…",
+  "quiz.title": "Die Drift erkennen",
+  "quiz.step_label": "Frage {n} / {total}",
+  "quiz.q1.text": "Eine KI gibt 10 Mal hintereinander genau die richtige Antwort. Kann man daraus schließen, dass sie morgen dieselbe Antwort geben wird?",
+  "quiz.q1.options": [
+    "Ja",
+    "Nein",
+    "Kommt darauf an"
+  ],
+  "quiz.q1.rule": "Eine positive Erfolgsbilanz erlaubt ohne kontinuierliche Messung keine Rückschlüsse auf künftiges Verhalten.",
+  "quiz.q2.text": "Gleiches Modell, gleiche Frage, zwei unterschiedliche Antworten. Ist das automatisch ein Problem?",
+  "quiz.q2.options": [
+    "Ja",
+    "Nein",
+    "Ohne Messung nicht zu bestimmen"
+  ],
+  "quiz.q2.rule": "Eine Abweichung (FLAG) ist kein Beweis für einen Fehler, und ein Konflikt zwischen Signalen ist an sich kein Widerspruch.",
+  "quiz.q3.text": "Eine KI bleibt über 100 Durchläufe hinweg vollkommen konsistent, aber ihre Antwort ist falsch. Ist sie „stabil“?",
+  "quiz.q3.options": [
+    "Ja",
+    "Nein"
+  ],
+  "quiz.q3.rule": "Ja, sie ist stabil — genau das ist die Falle: Stabilität misst Konsistenz, nicht Wahrheit. Eine KI kann vollkommen stabil und dabei jedes Mal falsch sein. Das ist „trügerische Stabilität“: Ein hoher G-Wert garantiert nie sachliche Richtigkeit, und die Verantwortung für die Entscheidung bleibt beim Menschen.",
+  "quiz.q4.text": "Das Verhalten Ihres KI-Systems ändert sich an einem bestimmten Tag geringfügig. Was würden Sie sich wünschen?",
+  "quiz.q4.options": [
+    "Eine Warnung",
+    "Die genaue Spur",
+    "Die Möglichkeit, das Ereignis zu reproduzieren",
+    "Alle drei"
+  ],
+  "quiz.q4.rule": "Warnung, Spur und Reproduzierbarkeit sind die drei Voraussetzungen für Herkunft und zeitliche Kausalität des Signals — keine davon reicht allein aus.",
+  "quiz.q5.text": "Wenn diese Spur von einem Dritten erstellt wird, was macht sie tatsächlich nutzbar?",
+  "quiz.q5.options": [
+    "Ein Dashboard",
+    "Ein PDF",
+    "Ein maschinenlesbares, zeitgestempeltes, verifizierbares JSON",
+    "Ein Screenshot"
+  ],
+  "quiz.q5.rule": "Nur ein maschinenlesbares, zeitgestempeltes, verifizierbares Artefakt erfüllt den ENF-Vertrag und die Freeze-Artefakte — eine reine Visualisierung nicht.",
+  "quiz.level.clear": "Keine der getesteten Regeln wurde verletzt. Das bedeutet nicht automatisches Vertrauen: Es bedeutet, dass Ihre Einschätzung bei diesen 5 Fällen mit der Art übereinstimmte, wie NeoMundi diese Signale interpretiert.",
+  "quiz.level.watch": "Ein oder zwei Reflexe sollten geschärft werden, bevor Sie sich ohne weitere Prüfung auf ein Stabilitätssignal verlassen.",
+  "quiz.level.unsettled": "Mehrere Antworten sollten nicht routinemäßig verallgemeinert werden, ohne weitere Prüfung oder unabhängiges Urteil — siehe die RÉAGI-Aufschlüsselung unten.",
+  "quiz.level.alert": "Bei diesen Testfällen wäre eine ausdrückliche Aufsicht erforderlich, bevor ein Stabilitätssignal allein eine folgenreiche Entscheidung beeinflusst.",
+  "quiz.reagi.R": "Vernunft",
+  "quiz.reagi.E": "Bewertung",
+  "quiz.reagi.A": "Zurechnung",
+  "quiz.reagi.G": "Steuerung",
+  "quiz.reagi.I": "Wirkung",
+  "quiz.reveal.disclaimer": "Dieses Ergebnis ist keine Note. Es zeigt, wo Ihre Einschätzung des KI-Verhaltens mit der Art übereinstimmt — oder davon abweicht —, wie NeoMundi diese Signale interpretiert. Das Dashboard unterstützt Ihr Urteilsvermögen; es ersetzt niemals Ihre Verantwortung.",
+  "quiz.reveal.grid_heading": "RÉAGI-Raster",
+  "quiz.reveal.aligned": "übereinstimmend",
+  "quiz.reveal.gap": "ausbaufähig",
+  "quiz.reveal.cta": "Das heutige KI-Wetter ansehen →",
+  "quiz.daily.response_a": "Antwort A",
+  "quiz.daily.response_b": "Antwort B",
+  "quiz.daily.cta_full": "Das vollständige 5-Fragen-Quiz ausprobieren →",
+  "quiz.daily.signal_line": "Echtes NeoMundi-Signal für dieses Paar: Entscheidung {decisions}, Stabilitätsspanne {range}.",
+  "quiz.daily.unavailable": "Das heutige „Spot the Drift“-Signal ist noch nicht verfügbar."
 }

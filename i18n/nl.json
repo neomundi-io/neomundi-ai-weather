@@ -45,5 +45,64 @@
   "regime.normal": "Normaal",
   "regime.variation": "Variatie",
   "regime.factual_alert": "Feitelijke waarschuwing",
-  "regime.incomplete": "Onvolledig"
+  "regime.incomplete": "Onvolledig",
+  "quiz._i18n_note": "MACHINE-TRANSLATED — needs review",
+  "ui.loading": "Laden…",
+  "quiz.title": "Spoor de drift op",
+  "quiz.step_label": "Vraag {n} / {total}",
+  "quiz.q1.text": "Een AI geeft 10 keer op rij precies het juiste antwoord. Kun je daaruit concluderen dat hij morgen hetzelfde antwoord geeft?",
+  "quiz.q1.options": [
+    "Ja",
+    "Nee",
+    "Dat hangt ervan af"
+  ],
+  "quiz.q1.rule": "Een gunstige trackrecord laat zonder continue meting geen conclusies toe over toekomstig gedrag.",
+  "quiz.q2.text": "Zelfde model, zelfde vraag, twee verschillende antwoorden. Is dat automatisch een probleem?",
+  "quiz.q2.options": [
+    "Ja",
+    "Nee",
+    "Zonder meting niet vast te stellen"
+  ],
+  "quiz.q2.rule": "Een afwijking (FLAG) is geen bewijs van een fout, en een conflict tussen signalen is op zich geen tegenspraak.",
+  "quiz.q3.text": "Een AI blijft 100 uitvoeringen lang volledig consistent, maar het antwoord is fout. Is hij «stabiel»?",
+  "quiz.q3.options": [
+    "Ja",
+    "Nee"
+  ],
+  "quiz.q3.rule": "Ja, hij is stabiel — dat is precies de valkuil: stabiliteit meet consistentie, geen waarheid. Een AI kan volledig stabiel zijn en toch elke keer fout zitten. Dat is «misleidende stabiliteit»: een hoge G-score garandeert nooit feitelijke juistheid, en de verantwoordelijkheid voor de beslissing blijft menselijk.",
+  "quiz.q4.text": "Het gedrag van uw AI-systeem verandert op een bepaalde dag subtiel. Wat zou u dan willen hebben?",
+  "quiz.q4.options": [
+    "Een melding",
+    "Het exacte spoor",
+    "De mogelijkheid om de gebeurtenis te reproduceren",
+    "Alle drie"
+  ],
+  "quiz.q4.rule": "Melding, spoor en reproduceerbaarheid zijn de drie voorwaarden voor herkomst en temporele causaliteit van het signaal — geen enkele volstaat alleen.",
+  "quiz.q5.text": "Als dat spoor door een derde partij wordt geproduceerd, wat maakt het dan écht bruikbaar?",
+  "quiz.q5.options": [
+    "Een dashboard",
+    "Een PDF",
+    "Een machineleesbare, tijdgestempelde, verifieerbare JSON",
+    "Een schermafbeelding"
+  ],
+  "quiz.q5.rule": "Alleen een machineleesbaar, tijdgestempeld, verifieerbaar artefact voldoet aan het ENF-contract en de freeze-artefacten — een louter visueel element niet.",
+  "quiz.level.clear": "Geen van de geteste regels is overtreden. Dat betekent geen automatisch vertrouwen: het betekent dat uw lezing bij deze 5 gevallen overeenkwam met de manier waarop NeoMundi deze signalen interpreteert.",
+  "quiz.level.watch": "Een of twee reflexen verdienen versterking voordat u zonder verdere verificatie op een stabiliteitssignaal vertrouwt.",
+  "quiz.level.unsettled": "Verschillende antwoorden zouden niet routinematig veralgemeend moeten worden zonder verdere controle of onafhankelijk oordeel — zie het RÉAGI-detail hieronder.",
+  "quiz.level.alert": "Bij deze testgevallen zou expliciet toezicht nodig zijn voordat een stabiliteitssignaal alleen een besluit met grote gevolgen mag beïnvloeden.",
+  "quiz.reagi.R": "Reden",
+  "quiz.reagi.E": "Evaluatie",
+  "quiz.reagi.A": "Toerekening",
+  "quiz.reagi.G": "Governance",
+  "quiz.reagi.I": "Impact",
+  "quiz.reveal.disclaimer": "Dit resultaat is geen cijfer. Het laat zien waar uw lezing van AI-gedrag overeenkomt met — of afwijkt van — de manier waarop NeoMundi deze signalen interpreteert. Het dashboard informeert uw oordeel; het vervangt nooit uw verantwoordelijkheid.",
+  "quiz.reveal.grid_heading": "RÉAGI-rooster",
+  "quiz.reveal.aligned": "in lijn",
+  "quiz.reveal.gap": "te versterken",
+  "quiz.reveal.cta": "Bekijk het AI-weer van vandaag →",
+  "quiz.daily.response_a": "Antwoord A",
+  "quiz.daily.response_b": "Antwoord B",
+  "quiz.daily.cta_full": "Probeer de volledige quiz (5 vragen) →",
+  "quiz.daily.signal_line": "Echt NeoMundi-signaal voor dit paar: beslissing {decisions}, stabiliteitsbereik {range}.",
+  "quiz.daily.unavailable": "Het signaal van vandaag voor «Spot the Drift» is nog niet beschikbaar."
 }
