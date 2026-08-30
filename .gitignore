@@ -152,11 +152,6 @@ marimo/_lsp/
 __marimo__/
 # Streamlit
 .streamlit/secrets.toml
-<<<<<<< HEAD
-
-<<<<<<< Updated upstream
-=======
->>>>>>> f097bd2ff3f414ae8a9cdeccdebe8aed3ab66c7d
 # ============================================================
 # NeoMundi AI Weather -- PRIVATE LOCAL RUNNER
 # ============================================================
@@ -178,10 +173,6 @@ secrets.weather.xml
 # PowerShell temporary / debug files
 *.ps1.bak
 *.ps1.tmp
-=======
-# AI Weather private runner
-/AI_WEATHER_RUNNER/
->>>>>>> Stashed changes
 
 aiweather-capsule-smoke/
 aiweather-capsule.zip
