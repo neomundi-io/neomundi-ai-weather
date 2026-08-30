@@ -496,7 +496,10 @@
         <div class="reagi-heading">Grille RÉAGI</div>
         ${reagiRows}
       </div>
-      <a class="quiz-cta" href="../../index.html">Voir la météo IA du jour →</a>
+      <!-- controltowerai.io is the public hub; weather.controltowerai.io is
+           embedded inside it, not a standalone destination — same fix and
+           same URL as quiz-engine.js's fullWeatherUrl (2026-08-30). -->
+      <a class="quiz-cta" href="https://controltowerai.io/ai-weather/" target="_blank" rel="noopener">Voir la météo IA du jour →</a>
       <div class="quiz-foot">
         Cadre RÉAGI · <a href="https://doi.org/10.5281/zenodo.20259638" target="_blank" rel="noopener">doi.org/10.5281/zenodo.20259638</a>
       </div>

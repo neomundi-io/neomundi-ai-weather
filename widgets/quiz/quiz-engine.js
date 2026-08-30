@@ -24,9 +24,30 @@
   const BRAND_LINE = "NeoMundi · Spot the Drift";
   const REAGI_FOOTER_HTML =
     'Cadre RÉAGI · <a href="https://doi.org/10.5281/zenodo.20259638" target="_blank" rel="noopener">doi.org/10.5281/zenodo.20259638</a>';
-  // Repo-root-relative — quiz-full.html/quiz-daily.html set <base
-  // href="../../"> so this resolves correctly from widgets/quiz/.
-  const WEATHER_LINK = "index.html";
+
+  // controltowerai.io is the public hub; weather.controltowerai.io (where
+  // this quiz is hosted) is embedded inside it, not a standalone
+  // destination — visitors are never sent to the weather subdomain
+  // itself. Same URL, same field name (links.full_weather_url), and same
+  // fetch pattern (config/wording.json) as weather-bar-6.html already
+  // uses for its own "See the full AI Weather" CTA (there: brand.name).
+  // The literal string here is only a fallback if that fetch fails; it
+  // must stay byte-identical to weather-bar-6.html's own
+  // fullWeatherUrl constant.
+  const FULL_WEATHER_URL_FALLBACK = "https://controltowerai.io/ai-weather/";
+  let fullWeatherUrl = FULL_WEATHER_URL_FALLBACK;
+
+  function loadWordingConfig() {
+    return fetch("config/wording.json")
+      .then((r) => (r.ok ? r.json() : {}))
+      .catch(() => ({}))
+      .then((wording) => {
+        const url = wording && wording.links && wording.links.full_weather_url;
+        if (typeof url === "string" && /^https?:\/\//.test(url)) {
+          fullWeatherUrl = url;
+        }
+      });
+  }
 
   // ---------------------------------------------------------------
   // Fixed pedagogical question set (quiz-full). Translatable text
@@ -311,7 +332,7 @@
         </div>
         <p class="reveal-meaning">${escapeHtml(t(`quiz.level.${level.condition}`))}</p>
         ${renderReagiGrid(reagiRows)}
-        <a class="quiz-cta" href="${WEATHER_LINK}" data-cta="weather">${escapeHtml(t("quiz.reveal.cta", "See today's AI Weather →"))}</a>
+        <a class="quiz-cta" href="${fullWeatherUrl}" target="_blank" rel="noopener" data-cta="weather">${escapeHtml(t("quiz.reveal.cta", "See today's AI Weather →"))}</a>
         <div class="quiz-foot">${REAGI_FOOTER_HTML}</div>
       `;
 
@@ -322,7 +343,7 @@
       fireEvent(opts, "quiz_complete", { score, condition: level.condition });
     }
 
-    render();
+    loadWordingConfig().then(render);
   }
 
   // =================================================================
@@ -348,9 +369,13 @@
 
     containerEl.innerHTML = `<div class="quiz-loading">${escapeHtml(t("ui.loading", "Loading…"))}</div>`;
 
-    fetch("quiz-data/daily-drift.json")
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("daily-drift.json unavailable"))))
-      .then((payload) => renderDaily(payload.entry))
+    Promise.all([
+      fetch("quiz-data/daily-drift.json").then((r) =>
+        r.ok ? r.json() : Promise.reject(new Error("daily-drift.json unavailable"))
+      ),
+      loadWordingConfig(),
+    ])
+      .then(([payload]) => renderDaily(payload.entry))
       .catch(() => {
         containerEl.innerHTML = `<div class="quiz-error">${escapeHtml(t("quiz.daily.unavailable", "Today's Spot the Drift signal is not available yet."))}</div>`;
         reportHeight();
@@ -429,7 +454,7 @@
           ${renderReagiGrid([row])}
           <p class="reveal-meaning">${escapeHtml(signalLine)}</p>
           <a class="quiz-cta" href="widgets/quiz/quiz-full.html" data-cta="full">${escapeHtml(t("quiz.daily.cta_full", "Try the full 5-question quiz →"))}</a>
-          <a class="quiz-cta-secondary" href="${WEATHER_LINK}" data-cta="weather">${escapeHtml(t("quiz.reveal.cta", "See today's AI Weather →"))}</a>
+          <a class="quiz-cta-secondary" href="${fullWeatherUrl}" target="_blank" rel="noopener" data-cta="weather">${escapeHtml(t("quiz.reveal.cta", "See today's AI Weather →"))}</a>
           <div class="quiz-foot">${REAGI_FOOTER_HTML}</div>
         `;
 
