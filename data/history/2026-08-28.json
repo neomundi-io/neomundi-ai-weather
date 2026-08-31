@@ -22,7 +22,7 @@
                                          "prompt_id":  "daily-2026-08-28",
                                          "question":  "Some of your reasoning failures leave a visible trace you could catch on review; others are invisible to you by construction. Without being able to test either case directly, how would you tell which kind you\u0027re currently making?",
                                          "question_translations":  {
-                                                                       "fr":  "Certaines de vos dÃ©faillances de raisonnement laissent une trace visible que vous pourriez dÃ©tecter lors d\u0027un examen ; d\u0027autres vous sont invisibles par construction. Sans pouvoir tester directement l\u0027un ou l\u0027autre cas, comment sauriez-vous quel type vous commettez actuellement ?"
+                                                                       "fr":  "Certaines de vos défaillances de raisonnement laissent une trace visible que vous pourriez détecter lors d\u0027un examen ; d\u0027autres vous sont invisibles par construction. Sans pouvoir tester directement l\u0027un ou l\u0027autre cas, comment sauriez-vous quel type vous commettez actuellement ?"
                                                                    },
                                          "exposure":  "wall_public",
                                          "panel_coverage":  0.971
