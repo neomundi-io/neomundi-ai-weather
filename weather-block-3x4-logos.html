@@ -91,11 +91,6 @@
       padding: 0 2px;
     }
 
-    .block-title .title-date {
-      font-weight: 400;
-      color: var(--ink-dim);
-    }
-
     .measured-date {
       font-size: 11px;
       color: var(--ink-dim);
@@ -288,18 +283,26 @@
       zh: "查看AI天气"
     };
 
-    // Measurement date shown to the visitor: the capsule's own
-    // generated_at timestamp, NOT the visitor's local "now". Falls
-    // back to "now" only if the field is ever missing, so the widget
-    // never shows a blank line.
+    // Measurement date/time shown to the visitor: the capsule's own
+    // generated_at timestamp, NOT the visitor's local "now". Falls back
+    // to "now" only if the field is ever missing, so the widget never
+    // shows a blank line. Formatted in UTC (the capsule's native
+    // timezone) so the displayed instant is unambiguous regardless of
+    // the visitor's own timezone, localized via Intl per language.
     function formatMeasuredDate(data, lang) {
       const raw = data && data.generated_at;
       const d = raw ? new Date(raw) : new Date();
-      const day = String(d.getDate()).padStart(2, "0");
-      const month = String(d.getMonth() + 1).padStart(2, "0");
-      // DD/MM everywhere (international standard) — MM/DD only for
-      // English (US convention).
-      return lang === "en" ? `${month}/${day}` : `${day}/${month}`;
+      const dateOptions = { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
+      const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "UTC" };
+      let datePart, timePart;
+      try {
+        datePart = d.toLocaleDateString(lang, dateOptions);
+        timePart = d.toLocaleTimeString(lang, timeOptions);
+      } catch (e) {
+        datePart = d.toISOString().slice(0, 10);
+        timePart = d.toISOString().slice(11, 16);
+      }
+      return `${tOrFallback("ui.measured_on", "Measured on")} ${datePart}, ${timePart} UTC`;
     }
 
     // Footer signature is deliberately English-only, regardless of
@@ -344,15 +347,17 @@
           `;
         }).join("");
 
+        const legendPrefix = tOrFallback("legend.prefix", "Judgment");
         const legendHtml = `
-          <span class="legend-item"><span class="legend-dot legend-clear"></span>${tOrFallback("judgment.j1", "Normal")}</span>
-          <span class="legend-item"><span class="legend-dot legend-watch"></span>${tOrFallback("judgment.j2", "Watch")}</span>
-          <span class="legend-item"><span class="legend-dot legend-unsettled"></span>${tOrFallback("judgment.j3", "Warning")}</span>
-          <span class="legend-item"><span class="legend-dot legend-alert"></span>${tOrFallback("judgment.j4", "Critical")}</span>
+          <span class="legend-item"><span class="legend-dot legend-clear"></span>${legendPrefix} ${tOrFallback("judgment.j1", "Normal")}</span>
+          <span class="legend-item"><span class="legend-dot legend-watch"></span>${legendPrefix} ${tOrFallback("judgment.j2", "Watch")}</span>
+          <span class="legend-item"><span class="legend-dot legend-unsettled"></span>${legendPrefix} ${tOrFallback("judgment.j3", "Warning")}</span>
+          <span class="legend-item"><span class="legend-dot legend-alert"></span>${legendPrefix} ${tOrFallback("judgment.j4", "Critical")}</span>
         `;
 
         block.innerHTML = `
-          <div class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")} <span class="title-date">- ${measuredDateText}</span></div>
+          <div class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")}</div>
+          <div class="measured-date">${measuredDateText}</div>
           <div class="legend">${legendHtml}</div>
           <div class="grid">${tilesHtml}</div>
           <div class="block-foot">

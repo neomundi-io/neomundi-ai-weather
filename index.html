@@ -99,11 +99,6 @@
       line-height: 1.28;
     }
 
-    .title-date {
-      font-weight: 400;
-      color: var(--ink-dim);
-    }
-
     .header-date {
       font-size: 13px;
       color: var(--ink-dim);
@@ -682,6 +677,7 @@
       <div class="header-text">
         <div class="header-brand" id="brand-label">CONTROLTOWER</div>
         <h1 id="title">AI Weather</h1>
+        <div class="header-date" id="header-date"></div>
       </div>
 
       <div class="header-controls">
@@ -761,14 +757,27 @@
     let DATA = null;
     let PANEL_SYSTEMS = null;
 
-    function fmtTodayNumeric() {
-      const lang = NMi18n.lang();
-      const d = new Date();
-      const day = String(d.getDate()).padStart(2, "0");
-      const month = String(d.getMonth() + 1).padStart(2, "0");
-      // DD/MM everywhere (international standard) — MM/DD only for
-      // English (US convention).
-      return lang === "en" ? `${month}/${day}` : `${day}/${month}`;
+    // Measurement date/time shown to the visitor: the capsule's own
+    // generated_at timestamp, NOT the visitor's local clock -- a widget
+    // viewed tomorrow must still say when it was actually measured, not
+    // today's date. Falls back to "now" only if generated_at is ever
+    // missing. Formatted in UTC (the capsule's native timezone) so the
+    // displayed instant is unambiguous regardless of the visitor's own
+    // timezone, and localized via Intl so each language reads naturally
+    // (e.g. "30 août 2026" for fr, "2026年8月30日" for ja).
+    function formatMeasuredDateTime(rawDate, lang) {
+      const d = rawDate ? new Date(rawDate) : new Date();
+      const dateOptions = { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
+      const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "UTC" };
+      let datePart, timePart;
+      try {
+        datePart = d.toLocaleDateString(lang, dateOptions);
+        timePart = d.toLocaleTimeString(lang, timeOptions);
+      } catch (e) {
+        datePart = d.toISOString().slice(0, 10);
+        timePart = d.toISOString().slice(11, 16);
+      }
+      return `${datePart}, ${timePart} UTC`;
     }
 
     function conditionMeta(key) {
@@ -832,17 +841,19 @@
           originalQuestion;
       }
 
+      const legendPrefix = translatedOrFallback("legend.prefix", "Judgment");
+
       document.getElementById("legend-green-label").textContent =
-        translatedOrFallback("judgment.j1", "Normal");
+        `${legendPrefix} ${translatedOrFallback("judgment.j1", "Normal")}`;
 
       document.getElementById("legend-yellow-label").textContent =
-        translatedOrFallback("judgment.j2", "Watch");
+        `${legendPrefix} ${translatedOrFallback("judgment.j2", "Watch")}`;
 
       document.getElementById("legend-orange-label").textContent =
-        translatedOrFallback("judgment.j3", "Warning");
+        `${legendPrefix} ${translatedOrFallback("judgment.j3", "Warning")}`;
 
       document.getElementById("legend-red-label").textContent =
-        translatedOrFallback("judgment.j4", "Critical");
+        `${legendPrefix} ${translatedOrFallback("judgment.j4", "Critical")}`;
     }
 
     function renderHeader() {
@@ -854,9 +865,12 @@
         ? "La météo des IA"
         : "AI Weather";
 
-      document.getElementById("title").innerHTML =
-        `${translatedOrFallback("ui.ai_weather_title", titleFallback)} <span class="title-date">- ${fmtTodayNumeric()}</span>`;
+      document.getElementById("title").textContent =
+        translatedOrFallback("ui.ai_weather_title", titleFallback);
       document.getElementById("brand-label").textContent = "CONTROLTOWER";
+
+      document.getElementById("header-date").textContent =
+        `${translatedOrFallback("ui.measured_on", "Measured on")} ${formatMeasuredDateTime(DATA.generated_at, currentLang)}`;
 
       if (DATA.demo) {
         document.getElementById("demo-flag-holder").innerHTML =
