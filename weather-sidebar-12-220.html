@@ -283,7 +283,9 @@
   <script src="./scripts/widget-telemetry.js"></script>
   <script>
     const params = new URLSearchParams(window.location.search);
-    const THEME = params.get("theme") === "dark" ? "dark" : "light";
+    const AVAILABLE_THEMES = ["light", "dark", "slate", "warm", "transparent"];
+    const THEME_PARAM = (params.get("theme") || "").toLowerCase();
+    const THEME = AVAILABLE_THEMES.includes(THEME_PARAM) ? THEME_PARAM : "light";
     document.documentElement.setAttribute("data-theme", THEME);
 
     // Logo filenames live directly under ./assets/ (not ./assets/logos/)
