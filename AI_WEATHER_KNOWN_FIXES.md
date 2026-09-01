@@ -1,5 +1,11 @@
 # AI Weather — Known Fixes (ne jamais régresser)
 
+> **Avant toute modification du pipeline AI Weather** (scripts PowerShell,
+> agrégation, widgets, planification), **relire cette liste intégralement.**
+> **Après toute modification**, vérifier qu'aucun des points ci-dessous n'a
+> régressé, et **ajouter une entrée** si un nouveau comportement doit être
+> figé.
+
 Check-list à relire **avant tout changement** touchant `AI_WEATHER_RUNNER/`,
 `index.html`, `i18n/`, `data/`, `weather.json` ou les tâches planifiées.
 Chaque entrée décrit un comportement qui a déjà cassé une fois et le
@@ -7,6 +13,35 @@ comportement attendu qui doit rester vrai en permanence. Voir aussi
 `AI_WEATHER_PIPELINE_AUDIT.md` (audit ponctuel, daté) et `TODO_NEXT.md`
 (travail à venir) — ce fichier-ci est le seul des trois qui sert de
 check-list figée.
+
+## Script compagnon : `AI_WEATHER_RUNNER/check_known_fixes.ps1`
+
+Certains points ci-dessous sont vérifiables mécaniquement — ce script les
+teste et affiche `[OK]`/`[FAIL]`/`[SKIP]`/`[MANUAL]` par point numéroté.
+**Statut actuel (2026-09-01) : non-bloquant.** Il est appelé en info-only
+au début de `release_ai_weather.ps1` et après le coverage gate dans
+`run_full_pipeline.ps1` (repérer `TODO(blocking)` dans ces deux fichiers
+pour le rendre bloquant plus tard).
+
+```
+.\AI_WEATHER_RUNNER\check_known_fixes.ps1 -Date "2026-09-01"
+```
+
+| # | Point | Vérifiable auto ? |
+|---|---|---|
+| 1 | Label "Mesuré le" en UTC de mesure | Partiel — code + cohérence des dates |
+| 2 | Légende judgment-word prefix | Partiel — code + présence de la clé i18n |
+| 3 | Encodage UTF-8 (pas de mojibake) | Oui |
+| 4 | `question_translations` : 12 langues, non vides, ≠ EN | Oui |
+| 5 | Budget/timeout de l'étape de traduction | Oui (présence du garde-fou dans le code) |
+| 6 | Agrégation avant push ; horaire Measure/Release | Partiel — code, + tâches planifiées (cette machine seulement) |
+| 7 | Runner Moonshot/Kimi lit le panel généré | Oui |
+| 8 | CTA quiz → controltowerai.io | Oui |
+
+**Jamais automatisable (reste manuel)** : qualité/exactitude des
+traductions, rendu visuel réel dans un navigateur (RTL, mise en page),
+confirmation que les tâches planifiées se sont *effectivement*
+déclenchées à l'heure (à relire dans `AI_WEATHER_RUNNER\logs`).
 
 ---
 
