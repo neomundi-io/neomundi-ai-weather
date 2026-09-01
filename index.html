@@ -757,11 +757,15 @@
     let DATA = null;
     let PANEL_SYSTEMS = null;
 
-    // Measurement date/time shown to the visitor: the capsule's own
-    // generated_at timestamp, NOT the visitor's local clock -- a widget
-    // viewed tomorrow must still say when it was actually measured, not
-    // today's date. Falls back to "now" only if generated_at is ever
-    // missing. Formatted in UTC (the capsule's native timezone) so the
+    // Measurement date/time shown to the visitor: the panel's real
+    // last_measurement_at timestamp (derived from the runners' own
+    // api_timestamp values), NOT the visitor's local clock and NOT the
+    // capsule's generated_at (which reflects when the aggregation/publish
+    // script happened to run -- those can drift apart if a release is
+    // delayed or re-run later in the day). A widget viewed tomorrow must
+    // still say when it was actually measured, not today's date. Falls
+    // back to generated_at, then "now", only if last_measurement_at is
+    // ever missing. Formatted in UTC (the capsule's native timezone) so the
     // displayed instant is unambiguous regardless of the visitor's own
     // timezone, and localized via Intl so each language reads naturally
     // (e.g. "30 août 2026" for fr, "2026年8月30日" for ja).
@@ -869,8 +873,12 @@
         translatedOrFallback("ui.ai_weather_title", titleFallback);
       document.getElementById("brand-label").textContent = "CONTROLTOWER";
 
+      const measuredAt =
+        (DATA.panel_summary && DATA.panel_summary.last_measurement_at) ||
+        DATA.generated_at;
+
       document.getElementById("header-date").textContent =
-        `${translatedOrFallback("ui.measured_on", "Measured on")} ${formatMeasuredDateTime(DATA.generated_at, currentLang)}`;
+        `${translatedOrFallback("ui.measured_on", "Measured on")} ${formatMeasuredDateTime(measuredAt, currentLang)}`;
 
       if (DATA.demo) {
         document.getElementById("demo-flag-holder").innerHTML =

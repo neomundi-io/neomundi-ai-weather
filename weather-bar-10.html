@@ -35,11 +35,11 @@
      * which breaks on the transparent theme). (2) added measurement
      * date line ("Mesuré le …" / "Measured on …") between title and
      * legend, per new fixed display order: title -> date -> legend ->
-     * brand signature. Date source: data.generated_at (capsule
-     * generation timestamp), NOT the visitor's local clock — a widget
+     * brand signature. Date source: data.panel_summary.last_measurement_at
+     * (real measurement timestamp), NOT the visitor's local clock — a widget
      * viewed tomorrow must still say "measured Aug 26", not today's
-     * date. Falls back to "now" only if data.generated_at is ever
-     * missing. Brand signature moved from inline-next-to-title to its
+     * date. Falls back to data.generated_at, then "now", only if the
+     * real measurement timestamp is ever missing. Brand signature moved from inline-next-to-title to its
      * own line below the strip.
      */
 
@@ -348,13 +348,13 @@
     function dateStr(d) { return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`; }
 
     // Measurement date/time shown to the visitor: the capsule's own
-    // generated_at timestamp, NOT the visitor's local "now". Falls back
+    // last_measurement_at timestamp (falls back to generated_at), NOT the visitor's local "now". Falls back further
     // to "now" only if the field is ever missing, so the widget never
     // shows a blank line. Formatted in UTC (the capsule's native
     // timezone) so the displayed instant is unambiguous regardless of
     // the visitor's own timezone, localized via Intl per language.
     function formatMeasuredDate(data, lang) {
-      const raw = data && data.generated_at;
+      const raw = data && ((data.panel_summary && data.panel_summary.last_measurement_at) || data.generated_at);
       const d = raw ? new Date(raw) : new Date();
       const dateOptions = { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
       const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "UTC" };

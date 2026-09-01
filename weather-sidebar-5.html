@@ -38,9 +38,9 @@
      *
      * 2026-08-26: date-only patch — added measurement date line
      * ("Mesuré le …" / "Measured on …") right after the title, before
-     * the legend. Date source: data.generated_at (capsule generation
+     * the legend. Date source: data.panel_summary.last_measurement_at (real measurement
      * timestamp), NOT the visitor's local clock. Falls back to "now"
-     * only if data.generated_at is ever missing. The 5-theme palette
+     * only if the real measurement timestamp is ever missing (then data.generated_at, then now). The 5-theme palette
      * set, 300px width, and 5-system selection all left untouched —
      * this is a minimal, date-only change. The brand signature only
      * moved from inline-next-to-title to its own line below the list,
@@ -345,13 +345,13 @@
     function dateStr(d) { return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`; }
 
     // Measurement date/time shown to the visitor: the capsule's own
-    // generated_at timestamp, NOT the visitor's local "now". Falls back
+    // last_measurement_at timestamp (falls back to generated_at), NOT the visitor's local "now". Falls back further
     // to "now" only if the field is ever missing, so the widget never
     // shows a blank line. Formatted in UTC (the capsule's native
     // timezone) so the displayed instant is unambiguous regardless of
     // the visitor's own timezone, localized via Intl per language.
     function formatMeasuredDate(data, lang) {
-      const raw = data && data.generated_at;
+      const raw = data && ((data.panel_summary && data.panel_summary.last_measurement_at) || data.generated_at);
       const d = raw ? new Date(raw) : new Date();
       const dateOptions = { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
       const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "UTC" };
