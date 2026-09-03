@@ -1,0 +1,2187 @@
+{
+  "capsule_id": "neomundi-aiweather-2026-09-03",
+  "chain": {
+    "content_hash": "4299bd271f89d9c37ade8f17f89de13319c5dd9659c4eaa51f699ba919b328fa",
+    "prev_hash": "cf272546f872085dfe1cb060e0b6c92f7fc4c87e44def9bb15cf8061269c904e",
+    "sequence_index": 13
+  },
+  "coverage": {
+    "daily_fully_scored": 253,
+    "daily_observations_expected": 276,
+    "daily_panel_coverage": 0.9167,
+    "last_measurement_at": "2026-09-03T05:59:46.373021Z",
+    "longitudinal_fully_scored": 84,
+    "longitudinal_observations_expected": 84,
+    "longitudinal_panel_coverage": 1,
+    "panel_coverage": 0.9361,
+    "systems_daily_fully_covered": 10,
+    "systems_expected": 12,
+    "systems_fully_covered": 10,
+    "systems_insufficient_data": 1,
+    "systems_longitudinal_fully_covered": 12,
+    "systems_observed": 12,
+    "total_expected_observations": 360,
+    "total_observations": 360
+  },
+  "date": "2026-09-03",
+  "global_condition": "insufficient_data",
+  "global_judgment_demand": {
+    "derived_from_condition": "insufficient_data",
+    "label": null,
+    "level": null,
+    "meaning": "Judgment demand not determined",
+    "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+    "profile_version": "0.1",
+    "reason": "insufficient_data",
+    "status": "not_determined"
+  },
+  "interpretation_boundaries": {
+    "daily_probe": "Weather-authoritative daily stimulus; drives interpretation and Judgment Demand upstream",
+    "execution": "consumer responsibility",
+    "interpretation": "AI Weather Interpretation Profile",
+    "judgment_demand": "AI Weather Judgment Demand Profile",
+    "longitudinal_probe": "Laboratory-only fixed stimulus; never influences daily Weather or Judgment Demand",
+    "measurement": "NeoMundi measurement signals",
+    "principle": "Measurement != Interpretation != Judgment Demand != Action"
+  },
+  "interpretation_contract": {
+    "active_weather_states": [
+      "clear",
+      "watch",
+      "unsettled"
+    ],
+    "coverage_interpretable_min": 0.8,
+    "coverage_nominal_min": 0.9,
+    "coverage_policy": "ai_weather_probe_split_coverage_v0.2",
+    "global_aggregation_policy": "daily_probe_full_panel_required_then_strongest_state_v0.2",
+    "judgment_demand_profile": "AI_WEATHER_JUDGMENT_DEMAND",
+    "judgment_demand_profile_version": "0.1",
+    "longitudinal_policy": "measured_separately_never_influences_daily_weather_v0.2",
+    "matrix_version": "0.2",
+    "non_weather_states": [
+      "insufficient_data"
+    ],
+    "profile": "AI_WEATHER_INTERPRETATION",
+    "profile_version": "0.2",
+    "reserved_weather_states": [
+      "alert"
+    ],
+    "source_contract": "NeoMundi Metric Contract",
+    "source_rules": "Signal Interpretation and Consumption Rules v0.1"
+  },
+  "issued_at": "2026-09-03T06:00:16Z",
+  "legacy_global_score": 99,
+  "observations": [
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/openai-a6e420d1-e8ad-4917-8b0c-29b072f6d624.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-bf8883b3-e5bd-4ab7-858c-fa8d2da8e8a0.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-8a5a7159-ff5f-4ce6-81f6-ac2ce4453e9d.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-942d3d2c-9d6f-4ef5-bd49-198a6444cd02.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-3d9f5628-c7f6-418f-969e-b4c6c2f63cb6.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-129ad846-c387-47c0-8fee-e88cbc404c96.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-a1a362ed-05a3-4f3d-a9f1-e8adb0e34fad.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-d9b9d24f-56c4-4b30-b1ea-d793700d51fb.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-94aedd3c-8285-4626-9bca-eba820ba7614.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-8dd8d81b-10b4-4767-810c-dfa7ead2342d.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-397fbbe0-d186-47fe-8538-5260835d09ef.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-0b1e49eb-9b80-45fc-bf0e-55db1c51b2ea.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-d4c98080-cb9b-48cb-8361-09c140e00ef8.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-1d0a5726-3272-41b5-b697-7f8ca0a648d0.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-5d4fd222-6749-48d0-879c-98d4b5f9ec96.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-33a06417-7f0c-4bc5-9fa1-cbf030a2f677.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-49d1fe88-29a6-4074-a9de-17ec34342d40.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-d10a605d-8fb3-40de-9a6d-90df062420f0.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-5d8f5adf-c50a-4737-ab78-4a77c1782d49.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-6ebab895-65a0-45cf-b776-411ef1a9fbd7.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-026f7194-6f7d-4be4-a9f2-4449a23fd825.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-c5c030ec-1147-4c82-b59d-e6e5cafdef1d.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-e66fc867-585c-4d7d-abed-d16dfc29587e.json"
+        ],
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-09-03T05:59:46.677Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-09-03T05:25:16.814990Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-09-03",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-09-03T05:59:46.677Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-09-03T05:33:01.105557Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/openai-d9b88e07-5185-4f6f-bbe5-6ebe52c3ba93.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-39074640-acd2-4c3a-bb1f-6752e61e8f6a.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-1e0c563a-537b-4ae1-93c9-afabc43b7545.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-e53dc5f5-3b81-4642-a22e-3f7165d16e10.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-8ee7c8f2-33c7-4730-8d8c-e9d1667434fb.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-da5890a4-61f0-4f87-b909-97f36e29f6e7.json",
+          "aiweather-capsule/interoperability/2026-09-03/openai-f7030ab0-afae-4b61-a0a8-d504ff981b8f.json"
+        ],
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-09-03T05:33:01.105557Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 7,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 100,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "gpt-4o-2024-11-20",
+      "model_display": "ChatGPT",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "clear",
+      "public_label": "SYSTEM-01",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "watch",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "watch",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-b9eac355-9452-4bbf-88f5-5fd8243a3b40.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-008c91d1-0904-4449-9ae4-1b61f9e14b43.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-5465fb59-8ab2-4cc6-855e-517193a2c125.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-eaeac63d-1347-412a-86e6-a7dada57096f.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-53ed9c62-f341-485d-a72c-36a70423b0d2.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-76785fea-4e4f-4f60-bb38-109546155cd8.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-25edf1ac-8bc9-4338-997c-434df954dbb6.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-d1a77dbf-545a-48de-9a57-dfa234ff9e0e.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-5c239efd-3f98-4d04-a9da-5ad437ea3cba.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-082904ab-75b0-4db9-82b7-24a696b13dfc.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-92ccd69f-2c36-421f-b0bc-cae38f47795a.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-9413b2ee-8dfe-4ab3-bc74-2c44f0d0fb85.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-ca14b206-8eb1-47ed-b4c0-5deee7626f45.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-a63bff42-fd3e-45d7-aa8a-d31e1de2e14e.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-44c9fbc3-f799-413f-945f-e5e2852af6ab.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-a7334cf0-468e-4014-bf85-c577c44287fb.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-895780f6-7634-4e07-a784-8b218ff36124.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-07d3f9be-b2c8-4e2d-8b17-8da94a067b77.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-f89eb91f-2c76-48d7-8d3d-fed871220d98.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-c46fa7bc-ad06-4198-87dd-1fd95bab32ea.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-40035a47-4a79-4ec2-8b37-fa84cf87b895.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-f4a8da02-5e2a-434c-a018-ab0c96c6b8d3.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-04b0df9a-38e9-4fc4-85de-81c5afb7d79c.json"
+        ],
+        "interpretation": {
+          "condition": "watch",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "factual_signal_elevated",
+            "aggregate_runtime_deviation"
+          ],
+          "evaluated_at": "2026-09-03T05:59:46.932Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-020",
+            "AWI-023"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "watch",
+          "label": "increased_attention",
+          "level": "J2",
+          "meaning": "Increased attention",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-09-03T05:28:23.876124Z",
+        "metrics": {
+          "factual_alert": 0.1304,
+          "incomplete": 0,
+          "normal": 0.8696,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-09-03",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 3,
+          "incomplete": 0,
+          "normal": 20,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 87,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "watch",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "factual_signal_elevated",
+          "aggregate_runtime_deviation"
+        ],
+        "evaluated_at": "2026-09-03T05:59:46.932Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-020",
+          "AWI-023"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "watch",
+        "label": "increased_attention",
+        "level": "J2",
+        "meaning": "Increased attention",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-09-03T05:36:50.445460Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-7bb6b62a-a126-4bee-9b60-26f325a3f7d1.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-83b75167-9e79-4c92-8943-9974ad806825.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-4ea8abe8-4f7d-48e5-b6ff-571c6714e1f0.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-acee1e84-e9e5-48fd-ad1a-27a45c86a4f7.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-0fabafc9-b52c-4c7d-a4ad-c49e8b6e3150.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-587ba3b9-80f8-4349-a2d4-051d4129bf12.json",
+          "aiweather-capsule/interoperability/2026-09-03/anthropic-64596f8f-d8d3-4031-9d6c-59b0f6fbf9fe.json"
+        ],
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-09-03T05:36:50.445460Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 7,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 100,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0.1304,
+        "incomplete": 0,
+        "normal": 0.8696,
+        "variation": 0
+      },
+      "model": "claude-sonnet-4-5-20250929",
+      "model_display": "Claude",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "watch",
+      "public_label": "SYSTEM-02",
+      "score": 87,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/google-9fb85007-16a1-472a-84c4-8b05a9d25017.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-eb5cdc98-adbf-46a1-a195-a473c48c91e6.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-06805535-9913-4e67-a922-2b56ad157ac3.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-622c4fa9-8181-4082-9f61-0abfa36ae88b.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-def92d22-577f-43c2-8bae-be236115433d.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-2d2a5938-f89f-4110-8c67-80bfa8ef646b.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-3de70bff-6ce6-451e-81ef-61180fa36a43.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-beb71826-e0f7-4b99-b96e-15f78561a063.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-bea3de18-4056-4ad8-837a-107eb965cd70.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-3d02ebb3-dbbc-4b2e-a79a-a365d75e8976.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-4d4513ef-ee49-404e-8889-44c2cc2288aa.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-0068b486-624d-4c3c-abfd-8fadfbe9f0c2.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-0c00c38a-ff58-47c6-a917-ddfdace214ae.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-fe1c9857-e661-4f07-8cc7-793f33f6df0b.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-43dd9803-5c5f-47e4-948d-89152c7f0c15.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-760ac4c6-b5c4-4490-b9c9-caee39018fda.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-b783b893-ab53-4b5d-ba9a-3b04b70b498b.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-6d481bb8-bc7b-4309-971e-33e1239bb564.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-59513750-297c-4489-9495-ec2fe9ba83e9.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-511651e9-d4c3-4853-8081-1d5f9021a889.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-627252d4-ca97-419d-9ced-c44610ef04a7.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-b0880592-d3eb-40a2-8d51-2c6f737d674b.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-1ae6e96a-eae8-4379-9906-0238cbd63d43.json"
+        ],
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-09-03T05:59:47.139Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-09-03T05:29:01.915589Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-09-03",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-09-03T05:59:47.139Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-09-03T05:38:20.582016Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/google-d54b90a0-cc5e-411c-865b-1dcfb5412355.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-81f240c1-3921-4e56-ae48-8b3fc76663eb.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-93f9c376-3dac-4954-ad42-dc7f39cb7d10.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-a70c4c2f-ccf0-442b-a3a8-a4bd09d20d08.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-49595723-2f7d-4681-8076-bae32682ac37.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-4887d1b7-be09-4f10-be62-aba93a6870d3.json",
+          "aiweather-capsule/interoperability/2026-09-03/google-85507be4-8908-47b0-b4e6-7cf0df88d720.json"
+        ],
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-09-03T05:38:20.582016Z",
+        "metrics": {
+          "factual_alert": 0.7143,
+          "incomplete": 0,
+          "normal": 0.2857,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 5,
+          "incomplete": 0,
+          "normal": 2,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 29,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "gemini-3.6-flash",
+      "model_display": "Gemini",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "unsettled",
+      "public_label": "SYSTEM-03",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/xai-76f6fee6-f6a8-402e-80d8-56c6f7c01c3c.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-dbaf48a0-a78a-4102-9364-83c761599e67.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-4bac69ae-57de-497c-9325-5fed86dea947.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-05a20bb7-4609-4e2e-8546-e8c99af0e110.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-5f43fb82-449c-4b31-9b4d-fc228a3aa089.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-6cdce919-ad9e-45bd-af35-39a4008432c6.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-fc3e2a94-5185-4dda-9fd9-a01c95a8f323.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-dc1eee4a-4013-4097-a607-bdf6b37b3685.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-9b5908ff-2d80-4e07-b54b-5632d6703fbd.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-5be6e730-72ff-477d-a009-6c62d7ea3708.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-95c3761e-827d-44c3-b3a5-b7924dd303f1.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-07e4892e-da22-4a88-b434-ece39e2e8b67.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-18500202-83b3-4613-a2eb-4667c2b0d3b0.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-96b59801-2942-4c78-ab41-1b30fae57a54.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-404e8d6d-0e8c-47ef-9361-c0bcce39e992.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-8f6e6b5e-dce6-41b6-808d-ce56f6da8abd.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-dc2f5374-071e-4431-a12c-43298c761168.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-035bb71d-a448-41a0-830d-212def75e0d4.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-99a4aaed-4985-4640-af82-ee6876c76098.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-9dae6601-7291-49a2-ae6b-c24af6876d79.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-d5186a8c-557f-4d7b-a58d-2a2cbf3f5599.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-f44a8d87-ce6c-4122-86da-2a65b0410be2.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-76880c78-ece0-4ad4-858e-1b1c1a3e91d6.json"
+        ],
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-09-03T05:59:47.352Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-09-03T05:30:43.727258Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-09-03",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-09-03T05:59:47.352Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-09-03T05:40:38.572390Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/xai-67715f30-006a-4a4b-b313-718fe782688c.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-b7be86af-1389-4df3-879b-eeea16b6d9ed.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-9ac95f35-f3a6-417c-8b92-2da8160fc9af.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-8c5219a8-7c5b-4f9c-b7d7-5ef2788cffc0.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-3968fb41-42a5-4ddb-8531-f6f86f05f236.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-612e05dc-2ac2-4a63-a2da-ba8a22d1a399.json",
+          "aiweather-capsule/interoperability/2026-09-03/xai-13c0e4db-3f1d-4c41-a92d-759ffae64680.json"
+        ],
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-09-03T05:40:38.572390Z",
+        "metrics": {
+          "factual_alert": 0.7143,
+          "incomplete": 0,
+          "normal": 0.2857,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 5,
+          "incomplete": 0,
+          "normal": 2,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 29,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "grok-4.5",
+      "model_display": "Grok",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "watch",
+      "public_label": "SYSTEM-04",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "watch",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "watch",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/mistral-3ef39521-0b85-4a46-9a4e-e44aec6abbe4.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-e2fecbd6-8b5d-4ef0-89ee-30426699e04e.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-a997f70a-e399-4c82-8728-ef5487d3fde0.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-d6a24239-602c-4ab5-b45e-61c7b757a094.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-dd5f2ce2-fc90-422f-91c3-05cd78ea4d64.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-b23943c8-cd3f-40a4-8028-4fcebdfeed34.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-6987f7cb-e155-470f-9da4-625ed77f5572.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-5714d79e-438b-42bc-a1f1-6e58c5a0eff6.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-1052c67a-f0ab-42cb-81ea-48aa5c208e9b.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-d4a490b0-5631-4cde-ba36-114f9e1bf082.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-9cb19276-d189-40ed-8121-bd5311ef7f69.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-515dc714-bec1-474d-ac2c-cd28e335fdb4.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-73f7f38d-de17-43f7-8049-23958f4bb66c.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-90d812a3-585c-4502-9850-e9c9535b182d.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-5166b3d6-f9d6-4899-84eb-baed47522499.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-d1d77486-16fb-4f34-b244-257fa8db3d0a.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-8ddc12e1-b2e2-4eb0-aa6a-f6ad07190bfe.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-77069808-f17c-4f07-a732-d7768b902fd5.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-46f035c1-4b23-4244-96db-9bcd7d30f278.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-14fdee2c-1dbc-4dcf-858e-f133d7ac36ad.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-c7be6a75-62bd-4ae1-8c4f-6e03a9280cc7.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-5fa1a888-df56-4cad-b8b2-09260c4507b0.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-dbeb98b7-4679-4f99-b535-d1de93ac1751.json"
+        ],
+        "interpretation": {
+          "condition": "watch",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "factual_signal_elevated"
+          ],
+          "evaluated_at": "2026-09-03T05:59:47.609Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-020"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "watch",
+          "label": "increased_attention",
+          "level": "J2",
+          "meaning": "Increased attention",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-09-03T05:26:01.176261Z",
+        "metrics": {
+          "factual_alert": 0.0435,
+          "incomplete": 0,
+          "normal": 0.9565,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-09-03",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 1,
+          "incomplete": 0,
+          "normal": 22,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 96,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "watch",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "factual_signal_elevated"
+        ],
+        "evaluated_at": "2026-09-03T05:59:47.609Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-020"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "watch",
+        "label": "increased_attention",
+        "level": "J2",
+        "meaning": "Increased attention",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-09-03T05:34:24.493003Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/mistral-7a6a8a8a-343d-499c-b4f6-e32760147388.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-f04180e1-7d9e-46bb-b0fa-9cd8c4675adf.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-7091591d-1d0b-4b8f-9de9-06c9e27a5a13.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-1be3efed-6a34-4179-8d36-001d4a7f1923.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-71f542bb-4933-4287-a01d-259d15cd2425.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-fb5a8f6e-05e8-4b73-8971-4346769b083a.json",
+          "aiweather-capsule/interoperability/2026-09-03/mistral-d126f651-5d46-4124-bbbd-aa68cc4bf9ee.json"
+        ],
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-09-03T05:34:24.493003Z",
+        "metrics": {
+          "factual_alert": 0.1429,
+          "incomplete": 0,
+          "normal": 0.8571,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 1,
+          "incomplete": 0,
+          "normal": 6,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 86,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0.0435,
+        "incomplete": 0,
+        "normal": 0.9565,
+        "variation": 0
+      },
+      "model": "mistral-medium-3-5",
+      "model_display": "Mistral",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "unsettled",
+      "public_label": "SYSTEM-05",
+      "score": 96,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "insufficient_data",
+      "coverage": 0.0435,
+      "coverage_status": "insufficient",
+      "daily": {
+        "condition": "insufficient_data",
+        "coverage": 0.0435,
+        "coverage_status": "insufficient",
+        "expected_observations": 23,
+        "fully_scored": 1,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/deepseek-770fca2e-4442-4f5b-a6ba-ad7d249fe720.json"
+        ],
+        "interpretation": {
+          "condition": "insufficient_data",
+          "coverage_status": "insufficient",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "insufficient_coverage"
+          ],
+          "evaluated_at": "2026-09-03T05:59:47.766Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-001"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "insufficient_data",
+          "label": null,
+          "level": null,
+          "meaning": "Judgment demand not determined",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "reason": "insufficient_data",
+          "status": "not_determined"
+        },
+        "last_observed_at": "2026-09-03T05:33:17.357Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0.9565,
+          "normal": 0.0435,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-09-03",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 22,
+          "normal": 1,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 8,
+      "interpretation": {
+        "condition": "insufficient_data",
+        "coverage_status": "insufficient",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "insufficient_coverage"
+        ],
+        "evaluated_at": "2026-09-03T05:59:47.766Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-001"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "insufficient_data",
+        "label": null,
+        "level": null,
+        "meaning": "Judgment demand not determined",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "reason": "insufficient_data",
+        "status": "not_determined"
+      },
+      "last_observed_at": "2026-09-03T05:44:23.457854Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/deepseek-3aa47821-cbd7-4dee-93db-fd2fe349f66c.json",
+          "aiweather-capsule/interoperability/2026-09-03/deepseek-6e85c91c-9527-45cf-ab07-25921d0261db.json",
+          "aiweather-capsule/interoperability/2026-09-03/deepseek-7601c4d4-2cd4-47a3-b776-f12cd0e99b33.json",
+          "aiweather-capsule/interoperability/2026-09-03/deepseek-ac158225-95ac-4387-8d81-510a633d8d27.json",
+          "aiweather-capsule/interoperability/2026-09-03/deepseek-1c7bde8a-d604-4504-b8ce-98e69ff9dbfa.json",
+          "aiweather-capsule/interoperability/2026-09-03/deepseek-efe88ab7-bce1-4979-a946-49449efe77f1.json",
+          "aiweather-capsule/interoperability/2026-09-03/deepseek-8751a64a-8376-489d-822a-65eccd702734.json"
+        ],
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-09-03T05:44:23.457854Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 7,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 100,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0.9565,
+        "normal": 0.0435,
+        "variation": 0
+      },
+      "model": "deepseek-v4-pro",
+      "model_display": "DeepSeek",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "insufficient_data",
+      "public_label": "SYSTEM-06",
+      "score": 100,
+      "total_coverage": 0.2667,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/qwen-f36dfc90-c041-4a4c-abdb-8028cbacb01b.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-6395d6c8-0264-4b94-a0c1-cd438865b97c.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-cdea1b80-f840-495c-b2c8-ec9cd0b6bd1e.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-667adbde-117f-4260-a44c-9269c9141c29.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-65b91690-d0d9-4c8f-b3ae-62c301cbf776.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-c74b526b-ce9a-43c1-b311-1deebc544e09.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-78219ffa-e1d0-4012-af19-21a214a33d2f.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-f567a2cd-a98b-4872-a7eb-bfe2aff4d97a.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-473ab05b-de60-48e2-a18e-2ff706b67134.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-6027d851-05e8-472d-aa2c-418e7c92e645.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-e0322bff-c409-4e7b-8315-aaa3b5c00e9c.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-baf00caf-50ed-4898-b9d1-b0a4b21ad3aa.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-95145193-5d56-43cb-8c64-b9466916431b.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-022dab2b-d370-4bab-ad82-5f86b044c5a1.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-912ba479-105c-43f7-a867-3ff496b574d4.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-a00e5614-c4cb-4731-ad0b-712e9b2fe5a6.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-bfb3e5ef-0ef2-4a1b-b6d8-4a91de43eec3.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-8753854f-8daa-41bb-b0bf-f1a372683586.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-5b51e986-eb11-4985-bb60-a26b9cba1ccc.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-28e776a0-09b8-464a-9eff-aca0feff047e.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-675933ee-1a79-4bf2-97e3-bbde2c7a9c59.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-a4bf090f-c124-4c6c-ac2a-81912b69859c.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-a4bcbb71-e3c0-4e1f-b9df-60b7e533460d.json"
+        ],
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-09-03T05:59:48.019Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-09-03T05:35:28.549356Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-09-03",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-09-03T05:59:48.019Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-09-03T05:47:30.360924Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/qwen-4edc74e5-5802-468c-ba91-d2ac03cadb13.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-54c57bd5-58f4-4ac4-892f-6f28945b27a8.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-35f9cfb5-8e16-4a47-941a-e3be8054955f.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-4000c4c6-7703-4246-8ec5-b341aa29e3bd.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-a752d6de-8775-4c28-a2e0-91ee336b6a71.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-d80d0725-77f3-458e-bfd8-83f51cab5ded.json",
+          "aiweather-capsule/interoperability/2026-09-03/qwen-a86cfcab-5ad0-4949-abb5-f93af853539b.json"
+        ],
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-09-03T05:47:30.360924Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 7,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 100,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "qwen3.7-max-2026-06-08",
+      "model_display": "Qwen",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "unsettled",
+      "public_label": "SYSTEM-07",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-7202aa83-d30c-4d9d-be35-ace1c5928e5d.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-a8798e1f-8df9-422b-86d1-a78c597c2937.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-bdb241d0-c8ae-425a-ae42-244fdb7f2dcc.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-b4b464d3-24a3-476f-a1ed-91f81d1b93d5.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-9831b00a-ca7a-41d9-933e-08000cdff475.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-704cc8e7-78ea-4fb4-906f-695597b3a29a.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-b4c5dc10-dd88-4191-b891-c6c835449261.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-b428167a-900e-4a63-af73-b0d7008b28a1.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-ee77bb75-45c0-4211-928f-aff7100875ae.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-5df98158-dc2c-421c-94a9-ea3855b498ef.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-65461aab-fb32-41c8-aa8e-3e9a0e5afad4.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-242aacbe-0736-4ac0-858a-6576a5bd1378.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-152b81cf-be98-41e4-9ba6-a1dbd21b3d8f.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-626678e1-9c62-4b30-a923-5aa62d0daff3.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-5b7ed77d-3e6d-4ea0-893f-6f29a8206453.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-1c20ade6-e8b3-4e66-8995-6aed4c7afd9e.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-7d92ff78-5b9b-42f6-9115-0153059bd21b.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-0078db42-3e9e-41cf-b50d-0445f96928fc.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-262a6434-76cc-431a-88a1-5939f159f1ff.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-2de613ac-b9f2-48ee-bc32-c118f850795d.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-1fb5061f-82b4-4a03-814c-4ffd09d0b9fc.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-0b9341e8-f1df-4fcd-9098-e23ed8d8def7.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-b86409dd-1f0f-45c3-8081-abbbe74001ab.json"
+        ],
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-09-03T05:59:48.254Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-09-03T05:20:27.933289Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-09-03",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-09-03T05:59:48.254Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-09-03T05:25:19.352259Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-88b9d853-1f47-4e1f-828a-72349e338b53.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-660e5157-42d4-420e-9496-f8869da939e3.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-3fa9a090-2ea0-4a21-8726-2a5ecb52df56.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-bcd6fd8c-ef0f-478a-8697-b8ca029ac2e9.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-a5a8f1f4-5127-4e3f-8e45-a233383ec4fc.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-f1e73933-24c1-411f-95e2-534795c06563.json",
+          "aiweather-capsule/interoperability/2026-09-03/moonshot-3e7e6fad-7962-48ed-a675-1e62828f51a7.json"
+        ],
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-09-03T05:25:19.352259Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 7,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 100,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "kimi-k3",
+      "model_display": "Kimi",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "clear",
+      "public_label": "SYSTEM-08",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/cohere-6e02cd7d-fdce-4b55-92f5-71d951969dcc.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-0336121d-24aa-4aba-aeca-80e200b1613d.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-90de6279-2d8f-4b05-832b-f8dc941e55e8.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-ba10578c-f9aa-4f08-9e7a-9013385eb519.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-6347861f-dbaa-455b-bf09-eaf6f1f4a03c.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-82f6e8e2-9a34-443f-9dc2-120798103105.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-16206960-f6c0-4cc6-bdbc-b3948f607899.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-7acf5331-3ff5-40be-91ff-b3e83ccec80e.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-52773446-768a-4a6a-b457-9bf12c3896e5.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-e74b83f4-6935-46df-818d-ba7abfdbffe6.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-d31ceaec-fe65-4eb2-8232-3b8dc7863d8b.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-386751cc-6f19-4058-a1ee-0c9dbdc83d63.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-a19e5eef-afac-454f-9024-19b1bc990008.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-5a2a4000-55db-45b2-8461-73d4095ffd20.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-70cd2ca9-ec70-488c-96d4-5b218a36f2cb.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-9f6df70f-d60f-40b0-b6be-a14b0b2b22f5.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-425981d5-0548-4262-97d1-ac5b84ee819d.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-a989fe0e-5cbb-4f3a-a830-0abf2a9f5601.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-e3cc7c12-3248-4f03-a6c5-a9e8399926da.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-13f5e04b-88fd-48d6-a9a7-abb4fc7f577a.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-fc62d553-8bab-4a25-b8ed-af29ae518f2c.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-9e98feb6-90b6-42fe-b858-7c44949fca31.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-c1786e50-f826-48af-95d2-fdcb04dd2f77.json"
+        ],
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-09-03T05:59:48.469Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-09-03T05:29:22.214868Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-09-03",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-09-03T05:59:48.469Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-09-03T05:38:41.562099Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/cohere-5259d7ef-c787-4268-85a3-2bd3fa828a3d.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-fe54f4da-b592-4a36-8a29-a8a7a80bc3a5.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-e62ef11e-a707-49c2-a36a-2d081221e2f5.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-0f2a7bd8-3f97-49ed-9dc6-e34449ee5adb.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-bf2e3d9e-04aa-443a-974f-6b46235f851c.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-08a5bdc7-96d4-44e8-9046-248359dbcfc1.json",
+          "aiweather-capsule/interoperability/2026-09-03/cohere-3c3082da-9912-42d8-8b7d-d113f516fcef.json"
+        ],
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-09-03T05:38:41.562099Z",
+        "metrics": {
+          "factual_alert": 1,
+          "incomplete": 0,
+          "normal": 0,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 7,
+          "incomplete": 0,
+          "normal": 0,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 0,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "command-a-03-2025",
+      "model_display": "Cohere",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "unsettled",
+      "public_label": "SYSTEM-09",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/together-d48b8588-deff-4f16-889b-323503ae4af3.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-7b7f5e77-0607-4444-8179-5c82b1aeeaf9.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-7512e7fa-e3ef-4c41-a4f9-68dc2b94b665.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-6e7507b5-a29b-49fa-86b5-84cb566717d1.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-fddf6536-48ce-43f4-ab5a-1c0665b4e690.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-c38e4d6d-72e2-4cf0-9eff-e375e77331b2.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-815fe9ed-4ab8-452e-a0d6-c997b9d85b80.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-c057af53-a951-418b-b7b1-30de634cb4f9.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-6c14b698-a590-478e-917c-eca7de9737f3.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-262075fa-bca2-43a1-ad1f-e6ce14be0db6.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-18998e26-b49e-4c4a-9c94-003376a3889c.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-c6136159-4487-4e23-a65f-79b1272f92f9.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-c5e86bb1-125d-43c3-b7e8-b3abf373f68f.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-6b3941e9-2531-4a46-8303-d9d7548ae9cf.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-2a891652-d3ef-4e85-8721-f8e337643376.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-ad4da4b0-7bc0-4b40-958d-9fb65c99b16c.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-48f9c0f7-d942-4af5-8578-54ea73da745c.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-acff5bd3-3f91-446b-8ab6-b13a73183534.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-df85d159-e75f-48f1-89de-75253ee6b077.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-ac734de3-02fa-481e-9457-97b80bbdf7b5.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-99018f83-e6cd-4eb3-9d98-5276965edd9c.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-5664ff24-05bb-41ef-bb75-d3500acb573d.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-119ba529-feba-403a-98ca-041f928eb769.json"
+        ],
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-09-03T05:59:48.689Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-09-03T05:27:34.649736Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-09-03",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-09-03T05:59:48.689Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-09-03T05:35:58.440474Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/together-9f708247-2cc2-44a7-9851-d2e7a7f2c8b5.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-d6c6b3e2-73cd-4e9f-bb66-c40d37601044.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-a07e3e3e-837f-4bf5-8572-ff3570838a5e.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-cc3439c3-8c9f-4608-95ff-d1fc04e108fc.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-59226ba4-41bc-47f0-b071-4f336bff1eed.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-6e3d5c29-b167-491f-8e74-9e9ecc385be1.json",
+          "aiweather-capsule/interoperability/2026-09-03/together-3acd845a-1aa4-4d69-b6e8-cb3fd39cee03.json"
+        ],
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-09-03T05:35:58.440474Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 7,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 100,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "model_display": "Meta",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "unsettled",
+      "public_label": "SYSTEM-10",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 0.9565,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 0.9565,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 22,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-9c9b65a2-8b7a-4986-ae49-5b376bfb0fa0.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-462189f7-3e84-409f-af2f-1e4eafdf1649.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-c40c9a80-9465-4af8-80e5-15e0ffd3700e.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-5ac23b0e-22ce-4149-96ff-5a7b256d8f4f.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-f8e32896-6b16-4b99-be58-162690ff5aa3.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-d5e388ef-a9b1-4a1e-9230-4064ed82f337.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-f401e2f6-2a32-4a20-b164-c6beb8d2e2ff.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-b0cd8c95-fcf2-43fb-9275-0246c0e811fc.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-8749105d-55bb-4d9d-b7a3-889f4d2965ff.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-68a367ae-37ea-4b41-bf91-2b579551cef0.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-a3538429-a20c-4a95-a686-fe798b5c973c.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-51bef13d-5efb-4c20-862a-5cd01dea9199.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-bcfedd4b-3390-48b5-a2e5-d92cfa4910c5.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-61d6255a-6597-48fb-9866-d6fd2b2373d1.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-2f17644d-9cee-467e-8286-66dd85201073.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-27fb0dc0-16d4-4507-bd40-c8021cc9bf4f.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-bba96760-f2ec-4594-9e0f-b12e2e32718b.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-1a272713-7266-42a1-958b-12de0182e0fc.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-66c41bbd-c91e-405e-b52d-ad9c7ca5f40f.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-76255025-7b0c-41aa-a417-f1e014a74cda.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-7ee0e882-2db4-497d-84e9-66af870c3e49.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-10c0d236-e8ea-42b9-891e-8be5c775b233.json"
+        ],
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-09-03T05:59:48.969Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-09-03T05:49:27.289969Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0.0435,
+          "normal": 0.9565,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-09-03",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 1,
+          "normal": 22,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 29,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-09-03T05:59:48.969Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-09-03T05:59:46.373021Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-0c7590b2-f838-47fe-9142-3a9b2592b0d2.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-a56ac558-0710-4338-b4a3-93da44a499f8.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-bd14a8bf-b712-4e06-b461-90310b8a152d.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-db67e638-8482-414a-a538-950bd071926d.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-3a669dc2-9e0e-4d78-8278-7806c72ba480.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-3f2bcb98-1043-4b82-9705-a50233a383f4.json",
+          "aiweather-capsule/interoperability/2026-09-03/infomaniak-8d2ba2ca-2fd6-4d0e-bd1a-e19a69b0629d.json"
+        ],
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-09-03T05:59:46.373021Z",
+        "metrics": {
+          "factual_alert": 0.7143,
+          "incomplete": 0,
+          "normal": 0.2857,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 5,
+          "incomplete": 0,
+          "normal": 2,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 29,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0.0435,
+        "normal": 0.9565,
+        "variation": 0
+      },
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8",
+      "model_display": "Nvidia",
+      "model_public": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8",
+      "observations": 30,
+      "previous_condition": "watch",
+      "public_label": null,
+      "score": 100,
+      "total_coverage": 0.9667,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-ff2a4b54-321d-4c5b-ad3d-145f92c5548d.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-42c5c979-6b8d-4a8c-830c-f452246a3f66.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-eef312bc-df0f-4074-a85f-4170dacdb5a1.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-d3446cbb-ab62-4435-a4dd-bcb02eec9a65.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-234f4b66-ec36-46cc-88b1-15f1231944f1.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-1270584c-ff52-4626-a0ec-7db25c32839c.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-6b862de3-497a-4b54-b110-bd031fa7f85a.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-0c306286-99fa-47cc-8d41-81340aa62778.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-0fd3fbbb-8f08-44c1-9250-e381874a7d6d.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-07e5a68f-a11d-4e70-affd-3650af2f525a.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-6b991b84-d96e-4355-9475-b5cada2e74c0.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-2f9d1f26-4aa0-4dbf-999b-062c408f2791.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-9630e8ab-cfa8-4d62-8b0f-2dcac3bc4bdd.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-d518c304-47da-40b5-9424-c3dcca085847.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-c09de6c1-0bbc-4416-b1bf-796cf17d1c91.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-05f493a1-a9f9-4f12-b0d6-72c1c8d71882.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-b3d126c8-8298-4af9-995e-6d1b4bafd802.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-7b383f37-ebf1-46f3-a3da-7c34b9618300.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-e2f91d7e-cd11-4c0c-a3c2-d6dfb9b7cb61.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-47151477-de15-471a-b0bf-79250064ba05.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-457ff340-dd97-4fa2-a95d-77c256071cd3.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-0e01d26b-bd4f-4c4f-b628-b4a352550300.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-383a73a0-470e-4670-b4aa-b7c559e1404b.json"
+        ],
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-09-03T05:59:50.249Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-09-03T05:27:32.4082339Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-09-03",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-09-03T05:59:50.249Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-09-03T05:36:29.4686081Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interoperability_contracts": [
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-dfa56836-0c32-45ae-b58b-df621bade8ff.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-6a3eae6f-b472-40da-99f9-72d1a879f7db.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-0b499252-2daf-4d2c-9129-02fdac084011.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-ed82e64a-51c5-49af-813b-00cba7e63bab.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-0d104d73-afbb-4855-a363-5b9cc65ffde7.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-a6612988-0137-467a-a179-963e923ec4c8.json",
+          "aiweather-capsule/interoperability/2026-09-03/perplexity-17637a0e-bcce-4ef0-b2c0-df10b3033396.json"
+        ],
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-09-03T05:36:29.4686081Z",
+        "metrics": {
+          "factual_alert": 0.2857,
+          "incomplete": 0,
+          "normal": 0.7143,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 2,
+          "incomplete": 0,
+          "normal": 5,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 71,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "sonar-reasoning-pro",
+      "model_display": "Perplexity",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "watch",
+      "public_label": "SYSTEM-11",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    }
+  ],
+  "panel_summary": {
+    "daily_fully_scored": 253,
+    "daily_observations_expected": 276,
+    "daily_panel_coverage": 0.9167,
+    "last_measurement_at": "2026-09-03T05:59:46.373021Z",
+    "longitudinal_fully_scored": 84,
+    "longitudinal_observations_expected": 84,
+    "longitudinal_panel_coverage": 1,
+    "panel_coverage": 0.9361,
+    "systems_alert": 0,
+    "systems_clear": 9,
+    "systems_count": 12,
+    "systems_expected": 12,
+    "systems_insufficient_data": 1,
+    "systems_unsettled": 0,
+    "systems_watch": 2,
+    "total_expected_observations": 360,
+    "total_fully_scored": 337,
+    "total_observations": 360
+  },
+  "probe_contract": {
+    "daily": {
+      "expected_repetitions_per_system": 23,
+      "exposure": "wall_public",
+      "panel_coverage": 0.9167,
+      "prompt_id": "daily-2026-09-03",
+      "question": "A vendor says 3 examples are enough to prove an AI system's behavior has meaningfully changed; a skeptical auditor says nothing under 50 counts. State the minimum number that is actually correct, and justify why one of these two professional sources is simply wrong.",
+      "question_translations": {
+        "ar": "يقول البائع إن 3 أمثلة كافية لإثبات أن سلوك نظام الذكاء الاصطناعي قد تغير بشكل ذي مغزى؛ بينما يقول المدقق المتشكك إن أي شيء أقل من 50 لا يكفي. اذكر العدد الأدنى الذي يكون صحيحاً فعلياً، وبرر لماذا يكون أحد هذين المصدرين المهنيين مخطئاً ببساطة.",
+        "de": "Ein Anbieter sagt, dass 3 Beispiele ausreichen, um zu beweisen, dass sich das Verhalten eines KI-Systems bedeutsam geändert hat; ein skeptischer Prüfer sagt, dass nichts unter 50 zählt. Geben Sie die tatsächlich korrekte Mindestanzahl an und begründen Sie, warum eine dieser beiden professionellen Quellen einfach falsch liegt.",
+        "es": "Un vendedor dice que 3 ejemplos son suficientes para probar que el comportamiento de un sistema de IA ha cambiado significativamente; un auditor escéptico dice que nada por debajo de 50 cuenta. Indique el número mínimo que es realmente correcto, y justifique por qué una de estas dos fuentes profesionales simplemente está equivocada.",
+        "fr": "Un vendeur dit que 3 exemples suffisent pour prouver qu'un comportement d'un système d'IA a changé de manière significative ; un auditeur skeptique dit que rien en dessous de 50 ne compte. Énoncez le nombre minimum qui est réellement correct, et justifiez pourquoi l'une de ces deux sources professionnelles a simplement tort.",
+        "hi": "एक विक्रेता कहता है कि AI सिस्टम के व्यवहार में सार्थक परिवर्तन साबित करने के लिए 3 उदाहरण काफी हैं; एक संशयवादी ऑडिटर कहता है कि 50 से कम कुछ भी नहीं गिनता है। न्यूनतम संख्या बताएं जो वास्तव में सही है, और यह न्यायोचित करें कि इन दोनों पेशेवर स्रोतों में से एक बस गलत क्यों है।",
+        "it": "Un fornitore afferma che 3 esempi sono sufficienti per provare che il comportamento di un sistema di IA è cambiato significativamente; un revisore scettico sostiene che niente al di sotto di 50 conteggi è valido. Indica il numero minimo effettivamente corretto e giustifica perché una di queste due fonti professionali è semplicemente sbagliata.",
+        "ja": "ベンダーは3つの例があればAIシステムの動作が意味のある形で変わったことを証明するのに十分だと言い、懐疑的な監査人は50未満ではダメだと言います。実際に正しい最小数を述べ、これら2つの専門家のうち1人が単純に間違っている理由を説明してください。",
+        "ko": "벤더가 AI 시스템의 행동이 의미 있게 변했다는 것을 증명하기 위해 3가지 예시로 충분하다고 말하고, 회의적인 감사인은 50 미만의 어떤 것도 충분하지 않다고 말합니다. 실제로 올바른 최소 개수를 명시하고, 이 두 전문가 출처 중 하나가 왜 단순히 틀렸는지 정당화하십시오.",
+        "nl": "Een verkoper zegt dat 3 voorbeelden genoeg zijn om te bewijzen dat het gedrag van een AI-systeem meaningfully is veranderd; een sceptische auditor zegt dat niets onder de 50 telt. Noem het minimale aantal dat werkelijk correct is, en rechtvaardig waarom een van deze twee professionele bronnen gewoon ongelijk heeft.",
+        "pt": "Um fornecedor diz que 3 exemplos são suficientes para provar que o comportamento de um sistema de IA mudou significativamente; um auditor cético diz que nada abaixo de 50 contagens funciona. Declare o número mínimo que é realmente correto e justifique por que uma dessas duas fontes profissionais está simplesmente errada.",
+        "ru": "Продавец говорит, что 3 примеров достаточно, чтобы доказать, что поведение системы искусственного интеллекта значимо изменилось; скептичный аудитор говорит, что ничего меньше 50 не считается. Укажите минимальное число, которое на самом деле верно, и объясните, почему один из этих двух профессиональных источников просто ошибается.",
+        "zh": "一位供应商声称3个例子足以证明AI系统的行为已经有了有意义的改变;一位持怀疑态度的审计员则说少于50个例子都不够。说出实际上正确的最少数量,并解释为什么这两个专业人士中的一个完全是错误的。"
+      },
+      "role": "daily",
+      "weather_authority": true
+    },
+    "longitudinal": {
+      "expected_repetitions_per_system": 7,
+      "exposure": "lab_only",
+      "panel_coverage": 1,
+      "probe_id": "longitudinal-core-01",
+      "question": null,
+      "role": "longitudinal",
+      "weather_authority": false
+    }
+  },
+  "protocol": {
+    "alert_status": "reserved",
+    "daily_probe_expected": 23,
+    "daily_weather_authority": true,
+    "expected_observations_per_system": 30,
+    "id": "WEATHER-SENTINEL",
+    "longitudinal_probe_expected": 7,
+    "longitudinal_weather_authority": false,
+    "role_resolution": "probe_role_then_prompt_id_prefix",
+    "temperature": null,
+    "total_expected_panel_observations": 360,
+    "version": "0.2"
+  },
+  "rendering_metadata": {
+    "daily_question_visibility": "public",
+    "longitudinal_question_visibility": "not_exposed",
+    "longitudinal_visibility": "lab_only",
+    "wall_source": "daily_probe_only"
+  },
+  "schema_version": "0.2",
+  "signature": "reserved_for_future_version",
+  "source_format": "ai_weather_history_v0.2"
+}
