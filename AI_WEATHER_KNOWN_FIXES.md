@@ -141,3 +141,30 @@ capsule.
 **Commit** : `6512f4c`
 Le call-to-action des widgets `quiz-*.html` doit renvoyer vers
 `controltowerai.io` (le hub), jamais vers le sous-domaine AI Weather.
+
+## 10. Manifeste public des capsules — inventaire atomique et publication cohérente
+
+`aiweather-capsule/generate_capsule_index.py` produit `data/capsule-index.json`
+uniquement à partir des capsules existantes et valides, sans modifier leurs octets.
+Toutes les dates disponibles sont conservées, y compris les observations avec
+données insuffisantes ; les entrées sont uniques et triées par date décroissante.
+Le manifeste ne contient que sa version de schéma et les dates/chemins publics.
+Il est déterministe (UTF-8 sans BOM, LF, aucun horodatage de génération) et remplacé
+atomiquement depuis un temporaire du même répertoire. Une relance identique ne
+réécrit pas le fichier. Un inventaire invalide conserve le manifeste précédent.
+
+`run_full_pipeline.ps1` le génère après vérification de chaîne et avant `-NoPublish`,
+même si la capsule du jour existait déjà. `release_ai_weather.ps1` ne le génère
+jamais : il vérifie sa fraîcheur avant/après synchronisation Git et le publie avec
+la capsule dans le même commit canonique. Chaque référence doit correspondre au
+contenu présent dans l'index Git du futur commit ; une capsule seulement locale
+ou différente bloque la publication. Aucun ajout automatique d'archives non prévues.
+
+`index_full.html` sélectionne au maximum les 15 capsules les plus récentes du manifeste,
+sans deviner d'URL ni combler les jours absents. Les conditions publiées ne sont
+jamais recalculées ; absence, insuffisance et observation ambiguë sont distinctes.
+Le prompt anglais reste accessible et sert de repli lorsque sa traduction manque.
+La lecture automatique est désactivée avec `prefers-reduced-motion`.
+
+Tests : `python -B -m unittest discover -s aiweather-capsule/tests -v` et
+`node docs/climate-history-review/validate.cjs`. Aucun de ces tests ne publie le dépôt.

@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#eaf4fb">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="AI Weather">
+  <link rel="manifest" href="./manifest.json">
+
+  <!-- Favicon set — ControlTower logo, white mark on brand blue (#378ADD) -->
+  <link rel="icon" href="./assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48.png">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="./styles/themes.css">
+
+  <title>NeoMundi AI Weather — Observation Wall</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --sky-top: var(--nm-bg-top);
+      --sky-mid: var(--nm-bg-mid);
+      --sky-bottom: var(--nm-bg-bottom);
+      --card-bg: var(--nm-card-bg);
+      --card-border: var(--nm-border);
+      --ink: var(--nm-text);
+      --ink-dim: var(--nm-text-dim);
+      --ink-faint: var(--nm-text-faint);
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 45%, var(--sky-bottom) 100%) no-repeat;
+      background-size: 100% 640px;
+      background-color: var(--sky-bottom);
+      color: var(--ink);
+      font-family: "Segoe UI", "Inter", Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: calc(18px + env(safe-area-inset-top)) 18px 48px;
+    }
+
+    /* ---------- Header ---------- */
+
+    header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      flex: none;
+      width: 72px;
+      height: 72px;
+      padding: 8px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid rgba(23, 32, 51, 0.12);
+      box-shadow: 0 4px 14px rgba(23, 32, 51, 0.10);
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    .header-text { flex: 1; min-width: 220px; }
+
+    .header-brand {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #9aa7b2;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-size: 25px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 5px 0;
+      line-height: 1.28;
+    }
+
+    .header-date {
+      font-size: 13px;
+      color: var(--ink-dim);
+      margin-bottom: 8px;
+    }
+
+    .header-subtitle {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--ink-dim);
+      max-width: 520px;
+    }
+
+    @media (max-width: 560px) {
+      .logo {
+        width: 64px;
+        height: 64px;
+      }
+
+    }
+
+    .methodology-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #378ADD;
+      text-decoration: none;
+    }
+
+    .methodology-link:hover { text-decoration: underline; }
+
+    /* ---------- Header controls ---------- */
+
+    .header-controls {
+      flex: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-left: auto;
+    }
+
+    .theme-select,
+    .lang-select {
+      position: relative;
+    }
+
+    .theme-button,
+    .lang-button {
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      padding: 6px 10px;
+      background: var(--nm-card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: var(--ink-dim);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 2px 8px var(--nm-shadow-soft);
+    }
+
+    .theme-button:hover,
+    .lang-button:hover,
+    .theme-button:focus-visible,
+    .lang-button:focus-visible {
+      color: var(--ink);
+      border-color: var(--ink-faint);
+      outline: none;
+    }
+
+    .theme-menu,
+    .lang-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      min-width: 150px;
+      max-height: min(360px, 70vh);
+      overflow-y: auto;
+      padding: 5px;
+      background: var(--nm-card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      box-shadow: 0 10px 28px var(--nm-shadow-medium);
+      z-index: 1000;
+    }
+
+    .theme-menu.open,
+    .lang-menu.open {
+      display: block;
+    }
+
+    .theme-option,
+    .lang-option {
+      appearance: none;
+      -webkit-appearance: none;
+      display: block;
+      width: 100%;
+      padding: 9px 10px;
+      background: transparent;
+      border: 0;
+      border-radius: 7px;
+      color: var(--ink);
+      font: inherit;
+      font-size: 12.5px;
+      text-align: left;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .theme-option:hover,
+    .lang-option:hover,
+    .theme-option:focus-visible,
+    .lang-option:focus-visible {
+      background: var(--nm-menu-hover);
+      outline: none;
+    }
+
+    .theme-option.active,
+    .lang-option.active {
+      background: var(--nm-surface-soft);
+      font-weight: 800;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 12px;
+      }
+
+      .header-text {
+        min-width: 0;
+      }
+
+      .header-controls {
+        grid-column: 3;
+        grid-row: 1;
+        align-self: start;
+        gap: 6px;
+      }
+
+      .theme-button,
+      .lang-button {
+        min-height: 30px;
+        padding: 5px 8px;
+        font-size: 11.5px;
+      }
+
+      .theme-menu,
+      .lang-menu {
+        min-width: 140px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      header {
+        grid-template-columns: 64px 1fr;
+      }
+
+      .logo {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .header-text {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .header-controls {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 2px;
+      }
+    }
+
+    .demo-flag {
+      display: inline-block;
+      margin: 12px 0 20px;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #7a5200;
+      background: #fdf0da;
+      border: 1px solid #f0dcb0;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* ---------- Wall ---------- */
+
+    .wall-heading {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin: 0 0 12px;
+    }
+
+    .wall-intro {
+      margin-bottom: 12px;
+    }
+
+    .wall-heading-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 8px;
+      min-height: 18px;
+    }
+
+    .wall-heading-row .wall-heading {
+      display: none;
+    }
+
+    .wall-legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 7px 14px;
+      max-width: 720px;
+      font-size: 11.5px;
+      line-height: 1.35;
+      color: var(--ink-dim);
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex: 0 0 10px;
+      border: 1.5px solid #ffffff;
+      box-shadow: 0 0 0 1px rgba(28, 39, 51, 0.10);
+    }
+
+    .legend-green  { background: #22c55e; }
+    .legend-yellow { background: #facc15; }
+    .legend-orange { background: #fb923c; }
+    .legend-red    { background: #b91c1c; }
+
+    .daily-question-section {
+      margin-top: 18px;
+    }
+
+    .daily-question {
+      position: relative;
+      overflow: hidden;
+      background: var(--nm-card-bg-soft);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 11px 16px 12px;
+      box-shadow: 0 4px 16px rgba(45, 75, 95, 0.05);
+    }
+
+    .daily-question::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: #378ADD;
+    }
+
+    .daily-question-label {
+      margin-bottom: 4px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .daily-question-text {
+      max-width: 980px;
+      font-size: 13.5px;
+      line-height: 1.45;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .daily-question-original {
+      margin-top: 10px;
+      padding-top: 9px;
+      border-top: 1px solid var(--nm-border-soft);
+    }
+
+    .daily-question-original summary {
+      display: inline-block;
+      cursor: pointer;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--ink-faint);
+      user-select: none;
+      list-style: none;
+    }
+
+    .daily-question-original summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .daily-question-original summary::after {
+      content: " ▾";
+    }
+
+    .daily-question-original[open] summary::after {
+      content: " ▴";
+    }
+
+    .daily-question-original-label {
+      margin-top: 9px;
+      margin-bottom: 4px;
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .daily-question-original-text {
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: var(--ink-faint);
+    }
+
+    @media (max-width: 760px) {
+      .wall-heading-row {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 7px;
+      }
+
+      .wall-legend {
+        justify-content: flex-start;
+        max-width: none;
+      }
+    }
+
+    .wall {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 340px) {
+      .wall { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 560px) {
+      .wall { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 860px) {
+      .wall { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media (max-width: 559px) {
+      .container {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .wall {
+        gap: 8px;
+      }
+
+      .card {
+        padding: 11px 10px;
+      }
+
+      .card-state-line {
+        gap: 8px;
+        margin-bottom: 7px;
+      }
+
+      .card-model {
+        font-size: 12px;
+      }
+
+      .daily-question {
+        padding: 10px 12px 11px;
+      }
+
+      .daily-question-text {
+        font-size: 12.5px;
+      }
+
+      .daily-question-section {
+        margin-top: 12px;
+      }
+
+      .daily-question-original-text {
+        font-size: 11px;
+      }
+
+      .wall-legend {
+        justify-content: flex-start;
+        gap: 5px 10px;
+        font-size: 10.5px;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--ink-faint);
+      border-radius: 14px;
+      padding: 13px 13px;
+      text-align: left;
+      box-shadow: 0 4px 14px rgba(45, 75, 95, 0.06);
+      width: 100%;
+    }
+
+    .card.is-clear {
+      border-left-color: #2ecc71;
+    }
+
+    .card.is-watch {
+      border-left-color: #f1c40f;
+    }
+
+    .card.is-unsettled {
+      border-left-color: #fb923c;
+    }
+
+    .card.is-alert {
+      border-left-color: #b91c1c;
+    }
+
+    .card.deep-linked {
+      outline: 2px solid #378ADD;
+      outline-offset: 2px;
+    }
+
+    /* Wall v0.3 — the state is communicated by color only.
+       No duplicated CLEAR/WATCH/STABLE text on the 12-card wall. */
+    .card-state-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 9px;
+      min-height: 24px;
+    }
+
+    .card-state-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      flex: 0 0 20px;
+      border: 3px solid #ffffff;
+      box-shadow:
+        0 0 0 1px rgba(28, 39, 51, 0.12),
+        0 3px 10px rgba(28, 39, 51, 0.14);
+    }
+
+    .is-clear .card-state-dot {
+      background: #22c55e;
+      box-shadow:
+        0 0 0 1px rgba(34, 197, 94, 0.35),
+        0 0 14px rgba(34, 197, 94, 0.45);
+    }
+
+    .is-watch .card-state-dot {
+      background: #facc15;
+      box-shadow:
+        0 0 0 1px rgba(250, 204, 21, 0.45),
+        0 0 14px rgba(250, 204, 21, 0.50);
+    }
+
+    .is-unsettled .card-state-dot {
+      background: #fb923c;
+      box-shadow:
+        0 0 0 1px rgba(251, 146, 60, 0.40),
+        0 0 14px rgba(251, 146, 60, 0.48);
+    }
+
+    .is-alert .card-state-dot {
+      background: #b91c1c;
+      box-shadow:
+        0 0 0 1px rgba(185, 28, 28, 0.40),
+        0 0 14px rgba(185, 28, 28, 0.48);
+    }
+
+    .card-model {
+      font-size: 13.5px;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      overflow-wrap: anywhere;
+      margin: 0;
+    }
+
+    .card-sparkline {
+      display: block;
+      width: 100%;
+      height: 28px;
+    }
+
+    .card-sparkline-point-insufficient {
+      fill: var(--ink-faint);
+    }
+
+    /* ---------- Footer ---------- */
+
+    footer {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .footer-signature {
+      margin-top: 6px;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--ink-faint);
+    }
+
+    .footer-signature strong {
+      font-weight: 700;
+      color: var(--ink-dim);
+    }
+
+    .state-msg { color: var(--ink-dim); font-size: 14px; }
+
+    /* Climate history prototype: all additions are locally scoped. */
+    .climate-history { margin-top: 24px; }
+    .climate-history .climate-history-panel { padding: 20px; border: 1px solid var(--card-border); border-radius: 16px; background: var(--card-bg); }
+    .climate-history h2 { margin: 6px 0 10px; font-size: 20px; line-height: 1.3; }
+    .climate-history .climate-history-brand { margin: 0; font-weight: 600; color: var(--ink-dim); }
+    .climate-history .climate-history-badge { display: inline-block; padding: 6px 10px; border: 1px solid var(--card-border); border-radius: 8px; font-size: 12px; color: var(--ink-dim); }
+    .climate-history .wall-legend { margin: 16px 0; }
+    .climate-history .climate-history-status { margin: 0; padding-block: 16px; border-top: 1px solid var(--card-border); line-height: 1.6; }
+    .climate-history .footer-signature { padding-top: 8px; }
+    .climate-history .ch-controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 16px 0; }
+    .climate-history button, .climate-history summary { font: inherit; cursor: pointer; color: var(--ink); }
+    .climate-history .ch-controls button { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; }
+    .climate-history button:disabled { opacity: .55; cursor: default; }
+    .climate-history :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+    .climate-history .ch-scroll { overflow-x: auto; border: 1px solid var(--card-border); border-radius: 10px; scrollbar-width: auto; }
+    .climate-history table { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 12px; }
+    .climate-history th, .climate-history td { padding: 5px; border-bottom: 1px solid var(--card-border); text-align: center; white-space: nowrap; }
+    .climate-history th { font-weight: 600; }
+    .climate-history th:first-child { position: sticky; inset-inline-start: 0; z-index: 1; background: var(--card-bg); min-width: 118px; text-align: start; padding-inline: 12px; }
+    .climate-history td button { width: 44px; min-height: 36px; border: 1px solid var(--card-border); background: var(--card-bg); border-radius: 7px; }
+    .climate-history .ch-cell-mark { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-inline-end: 3px; }
+    .climate-history [data-condition="clear"] .ch-cell-mark { background: var(--nm-judgment-green); }
+    .climate-history [data-condition="watch"] .ch-cell-mark { background: var(--nm-judgment-yellow); }
+    .climate-history [data-condition="unsettled"] .ch-cell-mark { background: var(--nm-judgment-orange); }
+    .climate-history [data-condition="alert"] .ch-cell-mark { background: var(--nm-judgment-red); }
+    .climate-history [data-condition="insufficient"] .ch-cell-mark { border: 2px dashed var(--ink-dim); }
+    .climate-history [data-condition="absent"] .ch-cell-mark, .climate-history [data-condition="unknown"] .ch-cell-mark { border: 1px solid var(--ink-dim); }
+    .climate-history .ch-active { box-shadow: inset 0 -2px var(--ink); }
+    .climate-history [aria-pressed="true"] { outline: 2px solid var(--ink); outline-offset: -2px; }
+    .climate-history .ch-hint { color: var(--ink-dim); font-size: 12px; line-height: 1.6; }
+    .climate-history .ch-detail { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--card-border); overflow-wrap: anywhere; }
+    .climate-history .ch-detail h3 { margin: 0 0 12px; font-size: 16px; }
+    .climate-history dl { display: grid; grid-template-columns: minmax(100px, 1fr) 2fr; gap: 8px 16px; font-size: 13px; }
+    .climate-history dt { color: var(--ink-dim); }
+    .climate-history dd { margin: 0; }
+    .climate-history .ch-question { line-height: 1.6; font-size: 14px; white-space: pre-wrap; }
+    .climate-history summary { padding-block: 10px; }
+    .climate-history a { color: var(--ink); }
+    @media (max-width: 560px) { .climate-history .climate-history-panel { padding: 14px; } }
+  </style>
+
+  <!-- ============================================================
+       SKIN OVERRIDE — Démo 1 : "Éditorial"
+       Pure surcouche CSS. N'écrase ni les tokens de thème (--nm-*),
+       ni la logique JS, ni les i18n. Sans-serif partout.
+       ============================================================ -->
+  <style id="skin-editorial">
+    body { font-family: "Segoe UI", Inter, Arial, Helvetica, sans-serif; }
+
+    h1 { font-weight: 800; letter-spacing: -0.015em; }
+
+    .header-brand { font-weight: 700; letter-spacing: 0.16em; }
+
+    /* Cards: stronger left-accent bar, flatter, tighter radius */
+    .card {
+      border-left-width: 6px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(28, 39, 51, 0.05);
+    }
+    .card-model { font-weight: 800; letter-spacing: 0; }
+
+    footer { padding-top: 20px; }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header>
+      <div class="logo"><img src="./assets/logo-controltower.png" alt="ControlTower logo"></div>
+      <div class="header-text">
+        <div class="header-brand" id="brand-label">CONTROLTOWER</div>
+        <h1 id="title">AI Weather</h1>
+        <div class="header-date" id="header-date"></div>
+      </div>
+
+      <div class="header-controls">
+        <div class="lang-select">
+          <button class="lang-button" id="lang-button" type="button" aria-haspopup="true" aria-expanded="false">EN ▾</button>
+          <div class="lang-menu" id="lang-menu"></div>
+        </div>
+
+        <div class="theme-select">
+          <button class="theme-button" id="theme-button" type="button" aria-haspopup="true" aria-expanded="false">Theme ▾</button>
+          <div class="theme-menu" id="theme-menu">
+            <button class="theme-option" data-theme="light" type="button">Light</button>
+            <button class="theme-option" data-theme="dark" type="button">Dark</button>
+            <button class="theme-option" data-theme="slate" type="button">Slate</button>
+            <button class="theme-option" data-theme="warm" type="button">Warm</button>
+            <button class="theme-option" data-theme="transparent" type="button">Transparent</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="demo-flag-holder"></div>
+
+    <section class="wall-intro" aria-label="AI Weather observation wall">
+      <div class="wall-heading-row">
+        <div class="wall-legend" id="wall-legend" aria-label="AI Weather legend">
+          <div class="legend-item">
+            <span class="legend-dot legend-green" aria-hidden="true"></span>
+            <span id="legend-green-label">Normal</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot legend-yellow" aria-hidden="true"></span>
+            <span id="legend-yellow-label">Watch</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot legend-orange" aria-hidden="true"></span>
+            <span id="legend-orange-label">Warning</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot legend-red" aria-hidden="true"></span>
+            <span id="legend-red-label">Critical</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="wall" id="wall">
+      <div class="state-msg">Loading panel…</div>
+    </div>
+
+    <!-- Climate history: only paths supplied by the public capsule inventory. -->
+    <section class="climate-history" aria-labelledby="climate-history-title">
+      <div class="climate-history-panel">
+        <p class="climate-history-brand" id="climate-history-brand">AI Weather™</p>
+        <h2 id="climate-history-title">AI climate history</h2>
+        <p class="header-subtitle" id="climate-history-subtitle">Compare the daily evolution of observed systems and consult the conditions of each measurement.</p>
+        <p class="climate-history-badge" id="climate-history-badge">Experimental history — real observations</p>
+        <div class="wall-legend" id="climate-history-legend"></div>
+        <p class="state-msg climate-history-status" id="climate-history-status" role="status"></p>
+        <div id="ch-content" hidden>
+          <div class="ch-controls">
+            <button id="ch-prev" type="button"></button>
+            <button id="ch-play" type="button" aria-pressed="false"></button>
+            <button id="ch-next" type="button"></button>
+          </div>
+          <p class="ch-hint" id="ch-hint"></p>
+          <div class="ch-scroll" id="ch-scroll" tabindex="0" role="region" aria-labelledby="climate-history-title" aria-describedby="ch-hint">
+            <table id="ch-table" aria-labelledby="climate-history-title"></table>
+          </div>
+          <div class="ch-detail" id="ch-detail" role="region" aria-labelledby="ch-detail-title">
+            <h3 id="ch-detail-title"></h3>
+            <dl id="ch-metadata"></dl>
+            <h4 id="ch-question-label"></h4>
+            <p class="ch-question" id="ch-question"></p>
+            <details id="ch-original">
+              <summary id="ch-original-toggle"></summary>
+              <p class="ch-question" id="ch-original-text" lang="en" dir="ltr"></p>
+            </details>
+            <a id="ch-json">JSON</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-signature">ControlTower by <strong>NeoMundi</strong> — Machine-readable JSON · Hash &amp; signature verifiable</div>
+    </section>
+
+    <section class="daily-question-section" aria-labelledby="daily-question-label">
+      <div class="daily-question" id="daily-question-block">
+        <div class="daily-question-label" id="daily-question-label">Question of the day</div>
+
+        <div class="daily-question-text" id="daily-question-text">—</div>
+
+        <details class="daily-question-original" id="daily-question-original" hidden>
+          <summary id="daily-question-original-toggle">View original EN</summary>
+          <div class="daily-question-original-label" id="daily-question-original-label">Original English</div>
+          <div class="daily-question-original-text" id="daily-question-original-text">—</div>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-signature" id="footer-signature"></div>
+    </footer>
+
+  </main>
+
+  <script src="./scripts/themes.js"></script>
+  <script src="./scripts/i18n.js"></script>
+  <script src="./scripts/weather-data.js"></script>
+  <script>
+    let CONFIG = null;
+    let DATA = null;
+    let PANEL_SYSTEMS = null;
+
+    // Measurement date/time shown to the visitor: the panel's real
+    // last_measurement_at timestamp (derived from the runners' own
+    // api_timestamp values), NOT the visitor's local clock and NOT the
+    // capsule's generated_at (which reflects when the aggregation/publish
+    // script happened to run -- those can drift apart if a release is
+    // delayed or re-run later in the day). A widget viewed tomorrow must
+    // still say when it was actually measured, not today's date. Falls
+    // back to generated_at, then "now", only if last_measurement_at is
+    // ever missing. Formatted in UTC (the capsule's native timezone) so the
+    // displayed instant is unambiguous regardless of the visitor's own
+    // timezone, and localized via Intl so each language reads naturally
+    // (e.g. "30 août 2026" for fr, "2026年8月30日" for ja).
+    function formatMeasuredDateTime(rawDate, lang) {
+      const d = rawDate ? new Date(rawDate) : new Date();
+      const dateOptions = { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
+      const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "UTC" };
+      let datePart, timePart;
+      try {
+        datePart = d.toLocaleDateString(lang, dateOptions);
+        timePart = d.toLocaleTimeString(lang, timeOptions);
+      } catch (e) {
+        datePart = d.toISOString().slice(0, 10);
+        timePart = d.toISOString().slice(11, 16);
+      }
+      return `${datePart}, ${timePart} UTC`;
+    }
+
+    function conditionMeta(key) {
+      const label = NMi18n.t(`weather.${key}`);
+      const reading = NMi18n.t(`interpretation.${key}`);
+      return {
+        label: label === `weather.${key}` ? (key || "").toUpperCase() : label,
+        reading: reading === `interpretation.${key}` ? "—" : reading
+      };
+    }
+
+    function translatedOrFallback(key, fallback) {
+      const value = NMi18n.t(key);
+      return value === key ? fallback : value;
+    }
+
+    function renderWallIntro() {
+      const daily = (DATA && DATA.probe_contract && DATA.probe_contract.daily) || {};
+      const originalQuestion = daily.question || "—";
+      const currentLang = NMi18n.lang();
+
+      // Presentation-only translations.
+      // The canonical measured question remains daily.question in English.
+      // Supported future shapes:
+      //   daily.question_translations.fr
+      //   daily.translations.fr
+      //   daily.question_i18n.fr
+      const translations =
+        daily.question_translations ||
+        daily.translations ||
+        daily.question_i18n ||
+        {};
+
+      const translatedQuestion =
+        currentLang === "en"
+          ? originalQuestion
+          : (translations[currentLang] || originalQuestion);
+
+      document.getElementById("daily-question-label").textContent =
+        translatedOrFallback("ui.question_of_day", "Question of the day");
+
+      document.getElementById("daily-question-text").textContent =
+        translatedQuestion;
+
+      const originalBlock = document.getElementById("daily-question-original");
+      const hasDistinctTranslation =
+        currentLang !== "en" &&
+        translatedQuestion &&
+        translatedQuestion !== originalQuestion;
+
+      originalBlock.hidden = !hasDistinctTranslation;
+
+      if (hasDistinctTranslation) {
+        document.getElementById("daily-question-original-toggle").textContent =
+          translatedOrFallback("ui.view_original_en", "View original EN");
+
+        document.getElementById("daily-question-original-label").textContent =
+          translatedOrFallback("ui.original_english", "Original English");
+
+        document.getElementById("daily-question-original-text").textContent =
+          originalQuestion;
+      }
+
+      const legendPrefix = translatedOrFallback("legend.prefix", "Judgment");
+
+      document.getElementById("legend-green-label").textContent =
+        `${legendPrefix} ${translatedOrFallback("judgment.j1", "Normal")}`;
+
+      document.getElementById("legend-yellow-label").textContent =
+        `${legendPrefix} ${translatedOrFallback("judgment.j2", "Watch")}`;
+
+      document.getElementById("legend-orange-label").textContent =
+        `${legendPrefix} ${translatedOrFallback("judgment.j3", "Warning")}`;
+
+      document.getElementById("legend-red-label").textContent =
+        `${legendPrefix} ${translatedOrFallback("judgment.j4", "Critical")}`;
+    }
+
+    function renderHeader() {
+      const currentLang = NMi18n.lang();
+
+      // Product title is localized in the active language.
+      // FR intentionally displays "La météo des IA" instead of "AI Weather".
+      const titleFallback = currentLang === "fr"
+        ? "La météo des IA"
+        : "AI Weather";
+
+      document.getElementById("title").textContent =
+        translatedOrFallback("ui.ai_weather_title", titleFallback);
+      document.getElementById("brand-label").textContent = "CONTROLTOWER";
+
+      const measuredAt =
+        (DATA.panel_summary && DATA.panel_summary.last_measurement_at) ||
+        DATA.generated_at;
+
+      document.getElementById("header-date").textContent =
+        `${translatedOrFallback("ui.measured_on", "Measured on")} ${formatMeasuredDateTime(measuredAt, currentLang)}`;
+
+      if (DATA.demo) {
+        document.getElementById("demo-flag-holder").innerHTML =
+          `<div class="demo-flag">${NMi18n.t("ui.demo_flag")}</div>`;
+      }
+    }
+
+    function renderFooter() {
+      // Deliberately English-only, regardless of ?lang= — same product
+      // decision as the AI Weather widgets' footer signature.
+      document.getElementById("footer-signature").innerHTML =
+        'ControlTower by <strong>NeoMundi</strong> - Machine-readable JSON &middot; Hash &amp; signature verifiable';
+    }
+
+    // Condition -> color and -> severity (0 = best, 3 = worst) used to
+    // draw the 7-day trend sparkline on each card. Kept in sync by hand
+    // with the CSS custom properties / legend colors used elsewhere in
+    // this file (clear/watch/unsettled/alert).
+    const CONDITION_COLOR = {
+      clear: "#22c55e",
+      watch: "#facc15",
+      unsettled: "#fb923c",
+      alert: "#b91c1c"
+    };
+
+    const CONDITION_SEVERITY = { clear: 0, watch: 1, unsettled: 2, alert: 3 };
+
+    /**
+     * Build a small inline SVG trend line from a chronological list of
+     * { date, condition } points (oldest first, as returned by
+     * NMData.getSystemHistory).
+     *
+     * - Each day is a dot, colored like the legend.
+     * - Consecutive days are connected by a line segment.
+     * - A day with an unrecognized/insufficient condition breaks the
+     *   line (rendered as an isolated grey dot) rather than being
+     *   interpolated — we don't want to imply a measured value that
+     *   wasn't actually observed.
+     * - The number of points is whatever NMData.loadHistory(7) could
+     *   actually fetch (gaps in the archive are skipped upstream), so
+     *   this renders correctly whether it gets 7, 5, or just 1 point.
+     */
+    function buildSparklineSvg(points) {
+      if (!points || points.length === 0) return "";
+
+      const W = 112;
+      const H = 28;
+      const PAD_X = 4;
+      const PAD_Y = 4;
+
+      const n = points.length;
+      const stepX = n > 1 ? (W - PAD_X * 2) / (n - 1) : 0;
+
+      const coords = points.map((p, i) => {
+        const sev = CONDITION_SEVERITY[p.condition];
+        return {
+          x: PAD_X + stepX * i,
+          y: sev === undefined ? H / 2 : PAD_Y + (sev / 3) * (H - PAD_Y * 2),
+          condition: p.condition,
+          valid: sev !== undefined
+        };
+      });
+
+      const segments = [];
+      let current = [];
+      coords.forEach((c) => {
+        if (c.valid) {
+          current.push(c);
+        } else if (current.length > 1) {
+          segments.push(current);
+          current = [];
+        } else {
+          current = [];
+        }
+      });
+      if (current.length > 1) segments.push(current);
+
+      const polylines = segments
+        .map((seg) => {
+          const pts = seg.map((c) => `${c.x.toFixed(1)},${c.y.toFixed(1)}`).join(" ");
+          return `<polyline points="${pts}" fill="none" stroke="var(--ink-faint)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.55" />`;
+        })
+        .join("");
+
+      const dots = coords
+        .map((c) => {
+          if (c.valid) {
+            return `<circle cx="${c.x.toFixed(1)}" cy="${c.y.toFixed(1)}" r="2.3" fill="${CONDITION_COLOR[c.condition] || "var(--ink-faint)"}" />`;
+          }
+          return `<circle cx="${c.x.toFixed(1)}" cy="${c.y.toFixed(1)}" r="2.3" class="card-sparkline-point-insufficient" />`;
+        })
+        .join("");
+
+      return `<svg class="card-sparkline" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">${polylines}${dots}</svg>`;
+    }
+
+    function renderCard(system, historyMap) {
+      const identity = NMData.getPublicIdentity(system);
+      const conditionLabel = conditionMeta(system.condition).label;
+      const history = NMData.getSystemHistory(historyMap, system.id);
+
+      const card = document.createElement("div");
+      card.className = `card is-${system.condition}`;
+      card.dataset.systemId = system.id;
+      card.setAttribute("aria-label", `${identity.label} — ${conditionLabel}`);
+
+      card.innerHTML = `
+        <div class="card-state-line">
+          <span class="card-state-dot" aria-hidden="true"></span>
+          <div class="card-model">${identity.label}</div>
+        </div>
+        ${buildSparklineSvg(history)}
+      `;
+
+      return card;
+    }
+
+    function renderWall(historyMap) {
+      const wall = document.getElementById("wall");
+      wall.innerHTML = "";
+      const systems = PANEL_SYSTEMS || [];
+
+      if (systems.length === 0) {
+        wall.innerHTML = '<div class="state-msg">No systems in the observed panel yet.</div>';
+        return;
+      }
+
+      systems.forEach(system => wall.appendChild(renderCard(system, historyMap)));
+    }
+
+    // ---------- Theme selector ----------
+
+    function currentTheme() {
+      return document.documentElement.getAttribute("data-theme") || "light";
+    }
+
+    function renderThemeMenu() {
+      const theme = currentTheme();
+      const button = document.getElementById("theme-button");
+      const menu = document.getElementById("theme-menu");
+
+      button.textContent = `${theme.charAt(0).toUpperCase() + theme.slice(1)} ▾`;
+
+      menu.querySelectorAll(".theme-option").forEach(option => {
+        const isActive = option.dataset.theme === theme;
+        option.classList.toggle("active", isActive);
+
+        option.addEventListener("click", () => {
+          const params = new URLSearchParams(window.location.search);
+          params.set("theme", option.dataset.theme);
+          window.location.search = params.toString();
+        });
+      });
+    }
+
+    document.getElementById("theme-button").addEventListener("click", () => {
+      const menu = document.getElementById("theme-menu");
+      const button = document.getElementById("theme-button");
+      const willOpen = !menu.classList.contains("open");
+
+      document.getElementById("lang-menu").classList.remove("open");
+      document.getElementById("lang-button").setAttribute("aria-expanded", "false");
+
+      menu.classList.toggle("open", willOpen);
+      button.setAttribute("aria-expanded", String(willOpen));
+    });
+
+    // ---------- Language selector ----------
+
+    function renderLangMenu() {
+      const langConfig = NMi18n.getLanguagesConfig();
+      const menu = document.getElementById("lang-menu");
+      const current = NMi18n.lang();
+
+      menu.innerHTML = (langConfig.available || []).map(l => `
+        <button class="lang-option ${l.code === current ? "active" : ""}" data-lang="${l.code}" type="button">
+          ${l.label}
+        </button>
+      `).join("");
+
+      document.getElementById("lang-button").textContent = `${current.toUpperCase()} ▾`;
+
+      menu.querySelectorAll(".lang-option").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const params = new URLSearchParams(window.location.search);
+          params.set("lang", btn.dataset.lang);
+          window.location.search = params.toString();
+        });
+      });
+    }
+
+    document.getElementById("lang-button").addEventListener("click", () => {
+      const menu = document.getElementById("lang-menu");
+      const button = document.getElementById("lang-button");
+      const willOpen = !menu.classList.contains("open");
+
+      document.getElementById("theme-menu").classList.remove("open");
+      document.getElementById("theme-button").setAttribute("aria-expanded", "false");
+
+      menu.classList.toggle("open", willOpen);
+      button.setAttribute("aria-expanded", String(willOpen));
+    });
+
+    document.addEventListener("click", (e) => {
+      const langWrap = document.querySelector(".lang-select");
+      const themeWrap = document.querySelector(".theme-select");
+
+      if (langWrap && !langWrap.contains(e.target)) {
+        document.getElementById("lang-menu").classList.remove("open");
+        document.getElementById("lang-button").setAttribute("aria-expanded", "false");
+      }
+
+      if (themeWrap && !themeWrap.contains(e.target)) {
+        document.getElementById("theme-menu").classList.remove("open");
+        document.getElementById("theme-button").setAttribute("aria-expanded", "false");
+      }
+    });
+
+    // ---------- Deep link (?system=) ----------
+
+    function applyDeepLink(systems) {
+      const targetId = NMData.getQueryParam("system");
+      if (!targetId) return;
+
+      const system = systems.find(s => s.id === targetId);
+      if (!system) return;
+
+      const card = document.querySelector(`.card[data-system-id="${CSS.escape(targetId)}"]`);
+      if (card) {
+        card.classList.add("deep-linked");
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+
+
+    // Presentation only: preserve the existing loader and its language selection.
+    const CH_SYSTEMS = [
+      ['openai', 'ChatGPT', ['openai', 'chatgpt', 'gpt-4o-2024-11-20']],
+      ['anthropic', 'Claude', ['anthropic', 'claude', 'claude-sonnet-4-5-20250929']],
+      ['google', 'Gemini', ['google', 'gemini', 'gemini-3.6-flash']],
+      ['xai', 'Grok', ['xai', 'x.ai', 'grok', 'grok-4.5']],
+      ['mistral', 'Mistral', ['mistral', 'mistral ai', 'mistral-medium-3-5']],
+      ['deepseek', 'DeepSeek', ['deepseek', 'deepseek-v4-pro']],
+      ['qwen', 'Qwen', ['qwen', 'alibaba', 'qwen3.7-max-2026-06-08']],
+      ['moonshot', 'Kimi', ['moonshot', 'moonshot ai', 'kimi', 'kimi-k3']],
+      ['cohere', 'Cohere', ['cohere', 'command-a-03-2025']],
+      ['meta', 'Meta', ['meta', 'llama', 'meta-llama', 'together', 'meta-llama/llama-3.3-70b-instruct-turbo']],
+      ['infomaniak', 'Nvidia', ['infomaniak', 'nvidia', 'nemotron', 'nvidia/nvidia-nemotron-3-nano-30b-a3b-fp8']],
+      ['perplexity', 'Perplexity', ['perplexity', 'sonar', 'sonar-reasoning-pro']]
+    ];
+    const CH_WORDS = {
+      en: ['Play', 'Pause', 'Previous day', 'Next day', 'Insufficient data', 'No observation', 'Unrecognized or ambiguous observation', 'Scroll horizontally ↔ · Select a cell to inspect its measurement.', 'Automatic playback disabled: reduced motion.', 'No capsules available.', 'History unavailable. Reload to retry.', 'Question unavailable in this capsule.', 'System', 'Model', 'Coverage', 'Observations'],
+      fr: ['Lecture', 'Pause', 'Jour précédent', 'Jour suivant', 'Données insuffisantes', 'Observation absente', 'Observation non reconnue ou ambiguë', 'Défilement horizontal ↔ · Sélectionnez une cellule pour consulter sa mesure.', 'Lecture automatique désactivée : mouvements réduits.', 'Aucune capsule disponible.', 'Historique indisponible. Rechargez pour réessayer.', 'Question absente de cette capsule.', 'Système', 'Modèle', 'Couverture', 'Observations'],
+      de: ['Wiedergabe', 'Pause', 'Vorheriger Tag', 'Nächster Tag', 'Unzureichende Daten', 'Keine Beobachtung', 'Unbekannte oder mehrdeutige Beobachtung', 'Horizontal scrollen ↔ · Zelle auswählen, um die Messung zu prüfen.', 'Automatische Wiedergabe deaktiviert: reduzierte Bewegung.', 'Keine Kapseln verfügbar.', 'Verlauf nicht verfügbar. Zum Wiederholen neu laden.', 'Frage in dieser Kapsel nicht verfügbar.', 'System', 'Modell', 'Abdeckung', 'Beobachtungen'],
+      es: ['Reproducir', 'Pausa', 'Día anterior', 'Día siguiente', 'Datos insuficientes', 'Sin observación', 'Observación desconocida o ambigua', 'Desplazamiento horizontal ↔ · Seleccione una celda para consultar su medición.', 'Reproducción automática desactivada: movimiento reducido.', 'No hay cápsulas disponibles.', 'Historial no disponible. Recargue para reintentar.', 'Pregunta no disponible en esta cápsula.', 'Sistema', 'Modelo', 'Cobertura', 'Observaciones'],
+      it: ['Riproduci', 'Pausa', 'Giorno precedente', 'Giorno successivo', 'Dati insufficienti', 'Nessuna osservazione', 'Osservazione sconosciuta o ambigua', 'Scorri orizzontalmente ↔ · Seleziona una cella per consultare la misurazione.', 'Riproduzione automatica disattivata: movimento ridotto.', 'Nessuna capsula disponibile.', 'Storico non disponibile. Ricarica per riprovare.', 'Domanda non disponibile in questa capsula.', 'Sistema', 'Modello', 'Copertura', 'Osservazioni'],
+      pt: ['Reproduzir', 'Pausa', 'Dia anterior', 'Dia seguinte', 'Dados insuficientes', 'Sem observação', 'Observação desconhecida ou ambígua', 'Deslocamento horizontal ↔ · Selecione uma célula para consultar a medição.', 'Reprodução automática desativada: movimento reduzido.', 'Nenhuma cápsula disponível.', 'Histórico indisponível. Recarregue para tentar novamente.', 'Pergunta indisponível nesta cápsula.', 'Sistema', 'Modelo', 'Cobertura', 'Observações'],
+      nl: ['Afspelen', 'Pauze', 'Vorige dag', 'Volgende dag', 'Onvoldoende gegevens', 'Geen waarneming', 'Onbekende of dubbelzinnige waarneming', 'Horizontaal scrollen ↔ · Selecteer een cel om de meting te bekijken.', 'Automatisch afspelen uitgeschakeld: verminderde beweging.', 'Geen capsules beschikbaar.', 'Geschiedenis niet beschikbaar. Herlaad om opnieuw te proberen.', 'Vraag niet beschikbaar in deze capsule.', 'Systeem', 'Model', 'Dekking', 'Waarnemingen'],
+      ru: ['Воспроизведение', 'Пауза', 'Предыдущий день', 'Следующий день', 'Недостаточно данных', 'Нет наблюдения', 'Неизвестное или неоднозначное наблюдение', 'Прокрутка по горизонтали ↔ · Выберите ячейку для просмотра измерения.', 'Автовоспроизведение отключено: уменьшение движения.', 'Нет доступных капсул.', 'История недоступна. Перезагрузите страницу.', 'Вопрос отсутствует в этой капсуле.', 'Система', 'Модель', 'Покрытие', 'Наблюдения'],
+      ar: ['تشغيل', 'إيقاف مؤقت', 'اليوم السابق', 'اليوم التالي', 'بيانات غير كافية', 'لا توجد ملاحظة', 'ملاحظة غير معروفة أو ملتبسة', 'تمرير أفقي ↔ · اختر خلية للاطّلاع على قياسها.', 'التشغيل التلقائي معطّل: تقليل الحركة.', 'لا توجد كبسولات متاحة.', 'السجل غير متاح. أعد تحميل الصفحة للمحاولة.', 'السؤال غير متاح في هذه الكبسولة.', 'النظام', 'النموذج', 'التغطية', 'الملاحظات'],
+      hi: ['चलाएँ', 'रोकें', 'पिछला दिन', 'अगला दिन', 'अपर्याप्त डेटा', 'कोई अवलोकन नहीं', 'अज्ञात या अस्पष्ट अवलोकन', 'क्षैतिज स्क्रॉल ↔ · माप देखने के लिए सेल चुनें।', 'स्वचालित प्लेबैक बंद: कम गति।', 'कोई कैप्सूल उपलब्ध नहीं है।', 'इतिहास उपलब्ध नहीं है। पुनः लोड करें।', 'इस कैप्सूल में प्रश्न उपलब्ध नहीं है।', 'प्रणाली', 'मॉडल', 'कवरेज', 'अवलोकन'],
+      ja: ['再生', '一時停止', '前の日', '次の日', 'データ不足', '観測なし', '不明または曖昧な観測', '横スクロール ↔ · セルを選択して測定を確認します。', '自動再生は無効です：視差効果を減らす設定。', '利用可能なカプセルはありません。', '履歴を利用できません。再読み込みしてください。', 'このカプセルには質問がありません。', 'システム', 'モデル', 'カバレッジ', '観測数'],
+      ko: ['재생', '일시 정지', '이전 날짜', '다음 날짜', '데이터 부족', '관측 없음', '알 수 없거나 모호한 관측', '가로 스크롤 ↔ · 셀을 선택하여 측정을 확인하세요.', '자동 재생 비활성화: 동작 줄이기.', '사용 가능한 캡슐이 없습니다.', '이력을 사용할 수 없습니다. 새로고침하세요.', '이 캡슐에 질문이 없습니다.', '시스템', '모델', '커버리지', '관측 수'],
+      zh: ['播放', '暂停', '前一天', '后一天', '数据不足', '无观测', '未知或有歧义的观测', '水平滚动 ↔ · 选择单元格以查看测量。', '自动播放已禁用：减少动态效果。', '没有可用的胶囊。', '历史记录不可用。请重新加载。', '此胶囊中没有问题。', '系统', '模型', '覆盖率', '观测数']
+    };
+    const CH = { days: [], day: 0, row: 0, timer: null, motion: matchMedia('(prefers-reduced-motion: reduce)') };
+    const chText = i => (CH_WORDS[NMi18n.lang()] || CH_WORDS.en)[i];
+    const chNode = id => document.getElementById(id);
+    function chElement(tag, text) { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; return node; }
+    function chIdentity(observation) {
+      const values = ['id', 'system_id', 'model_display', 'model_public', 'model', 'provider', 'public_label'].map(key => String(observation[key] || '').trim().toLowerCase());
+      const matches = CH_SYSTEMS.filter(system => values.some(value => system[2].includes(value)));
+      return matches.length === 1 ? matches[0][0] : null;
+    }
+    function chObservation(capsule, id) {
+      const matches = capsule.observations.filter(item => item && chIdentity(item) === id);
+      return matches.length > 1 ? { condition: 'ambiguous' } : matches[0];
+    }
+    function chCondition(observation) {
+      if (!observation) return 'absent';
+      // Read the published classification; never derive it from scores or coverage.
+      const condition = observation.condition;
+      if (condition === 'insufficient_data' || observation.data_status === 'insufficient_data' || observation.coverage_status === 'insufficient_data') return 'insufficient';
+      return ['clear', 'watch', 'unsettled', 'alert'].includes(condition) ? condition : 'unknown';
+    }
+    function chLabel(condition) {
+      const index = ['clear', 'watch', 'unsettled', 'alert'].indexOf(condition);
+      return index >= 0 ? NMi18n.t('legend.prefix') + ' ' + NMi18n.t('judgment.j' + (index + 1)) : chText(condition === 'insufficient' ? 4 : condition === 'absent' ? 5 : 6);
+    }
+    function chDate(day, short = false) {
+      return new Intl.DateTimeFormat(NMi18n.lang(), {year: short ? undefined : 'numeric', month: short ? '2-digit' : 'short', day: '2-digit', timeZone: 'UTC'}).format(new Date(day + 'T00:00:00Z'));
+    }
+    function chSelect(day, row = CH.row, reveal = false) {
+      CH.day = day; CH.row = row;
+      chNode('ch-table').querySelectorAll('[data-day]').forEach(node => {
+        const active = Number(node.dataset.day) === day;
+        node.classList.toggle('ch-active', active);
+        if (node.tagName === 'BUTTON') node.setAttribute('aria-pressed', String(active && Number(node.dataset.row) === row));
+      });
+      const record = CH.days[day], system = CH_SYSTEMS[row];
+      const observation = chObservation(record.capsule, system[0]);
+      chNode('ch-detail-title').textContent = `${system[1]} · ${chDate(record.date)} · ${chLabel(chCondition(observation))}`;
+      const daily = record.capsule.probe_contract?.daily || {};
+      const measured = observation?.daily || observation || {};
+      const protocol = record.capsule.protocol || {};
+      const metadata = chNode('ch-metadata'); metadata.replaceChildren();
+      const pairs = [
+        [chText(13), observation?.model],
+        [NMi18n.t('ui.measured_on'), measured.last_observed_at || record.capsule.coverage?.last_measurement_at],
+        [NMi18n.t('ui.protocol_label'), [protocol.id, protocol.version].filter(Boolean).join(' · ')],
+        [chText(14), measured.coverage],
+        [chText(15), measured.observations],
+        ['Prompt ID', daily.prompt_id]
+      ];
+      pairs.forEach(([label, value]) => { metadata.append(chElement('dt', label), chElement('dd', value ?? '—')); });
+      const original = typeof daily.question === 'string' && daily.question.trim() ? daily.question : null;
+      const translated = daily.question_translations?.[NMi18n.lang()];
+      const hasTranslation = NMi18n.lang() !== 'en' && typeof translated === 'string' && translated.trim();
+      const question = chNode('ch-question');
+      question.textContent = (hasTranslation ? translated : original) || chText(11);
+      question.lang = hasTranslation || !original ? NMi18n.lang() : 'en';
+      question.dir = question.lang === 'ar' ? 'rtl' : 'ltr';
+      chNode('ch-question-label').textContent = NMi18n.t('ui.question_of_day');
+      chNode('ch-original-toggle').textContent = NMi18n.t('ui.view_original_en');
+      chNode('ch-original-text').textContent = original || '—';
+      chNode('ch-original').hidden = !original;
+      chNode('ch-json').href = record.url;
+      chNode('ch-json').textContent = `JSON · ${record.capsule.capsule_id || record.date}`;
+      chNode('ch-prev').disabled = day === 0;
+      chNode('ch-next').disabled = day === CH.days.length - 1;
+      if (reveal) {
+        // Change only the horizontal scroll position; never move keyboard focus or the page.
+        const cell = chNode('ch-table').querySelector(`button[data-day="${day}"][data-row="${row}"]`);
+        const scroller = chNode('ch-scroll'), bounds = scroller.getBoundingClientRect(), rect = cell.getBoundingClientRect();
+        const sticky = chNode('ch-table').querySelector('th').getBoundingClientRect().width;
+        const rtl = document.documentElement.dir === 'rtl';
+        const left = bounds.left + (rtl ? 0 : sticky) + 8, right = bounds.right - (rtl ? sticky : 0) - 8;
+        if (rect.left < left) scroller.scrollLeft += rect.left - left;
+        else if (rect.right > right) scroller.scrollLeft += rect.right - right;
+      }
+    }
+    function chPause() {
+      clearInterval(CH.timer); CH.timer = null;
+      chNode('ch-play').textContent = chText(0);
+      chNode('ch-play').setAttribute('aria-pressed', 'false');
+    }
+    function chMotion() {
+      chPause();
+      chNode('ch-play').disabled = CH.motion.matches || CH.days.length < 2;
+      chNode('ch-hint').textContent = chText(7) + (CH.motion.matches ? ' ' + chText(8) : '');
+    }
+    async function chLoad() {
+      const manifestURL = new URL('./data/capsule-index.json', location.href);
+      async function json(url) {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 15000);
+        try {
+          const response = await fetch(url, {cache: 'no-store', signal: controller.signal});
+          if (!response.ok) throw new Error('HTTP ' + response.status);
+          return await response.json();
+        } finally { clearTimeout(timeout); }
+      }
+      const manifest = await json(manifestURL);
+      if (manifest.schema_version !== 1 || !Array.isArray(manifest.capsules)) throw new Error('Invalid manifest');
+      const seen = new Set();
+      for (const entry of manifest.capsules) {
+        if (!entry || !/^\d{4}-\d{2}-\d{2}$/.test(entry.date) || seen.has(entry.date)) throw new Error('Invalid or duplicate date');
+        const parsed = new Date(entry.date + 'T00:00:00Z');
+        if (!Number.isFinite(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== entry.date) throw new Error('Invalid date');
+        if (entry.path !== '../aiweather-capsule/capsules/' + entry.date.replaceAll('-', '/') + '.json') throw new Error('Invalid path');
+        seen.add(entry.date);
+      }
+      const selected = [...manifest.capsules].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 15).reverse();
+      CH.days = await Promise.all(selected.map(async entry => {
+        const url = new URL(entry.path, manifestURL).href;
+        const capsule = await json(url);
+        if (capsule.date !== entry.date || !Array.isArray(capsule.observations)) throw new Error('Invalid capsule');
+        return {...entry, url, capsule};
+      }));
+      if (!CH.days.length) { chNode('climate-history-status').textContent = chText(9); return; }
+      const table = chNode('ch-table'); table.replaceChildren();
+      const head = chElement('thead'), heading = chElement('tr'), corner = chElement('th', chText(12));
+      corner.scope = 'col'; heading.append(corner);
+      CH.days.forEach((record, i) => {
+        const th = chElement('th', chDate(record.date, true)); th.scope = 'col'; th.dataset.day = i;
+        th.title = chDate(record.date); th.setAttribute('aria-label', chDate(record.date)); heading.append(th);
+      });
+      head.append(heading); table.append(head);
+      const body = chElement('tbody');
+      CH_SYSTEMS.forEach((system, row) => {
+        const tr = chElement('tr'), label = chElement('th', system[1]); label.scope = 'row'; tr.append(label);
+        CH.days.forEach((record, day) => {
+          const condition = chCondition(chObservation(record.capsule, system[0]));
+          const td = chElement('td'), button = chElement('button');
+          button.type = 'button'; button.dataset.day = day; button.dataset.row = row; button.dataset.condition = condition;
+          button.setAttribute('aria-controls', 'ch-detail');
+          const description = `${system[1]} · ${chDate(record.date)} · ${chLabel(condition)}`;
+          button.setAttribute('aria-label', description); button.title = description;
+          const mark = chElement('span'); mark.className = 'ch-cell-mark'; mark.setAttribute('aria-hidden', 'true');
+          const rank = ['clear', 'watch', 'unsettled', 'alert'].indexOf(condition);
+          const symbol = chElement('span', rank >= 0 ? 'J' + (rank + 1) : condition === 'insufficient' ? '∅' : condition === 'absent' ? '—' : '?');
+          symbol.setAttribute('aria-hidden', 'true'); button.append(mark, symbol);
+          button.addEventListener('click', () => { chPause(); chSelect(day, row); });
+          td.append(button); tr.append(td);
+        });
+        body.append(tr);
+      });
+      table.append(body);
+      const unknown = CH.days.reduce((count, record) => count + record.capsule.observations.filter(o => !o || !chIdentity(o)).length, 0);
+      chNode('climate-history-status').textContent = `${CH.days.length} · ${chDate(CH.days[0].date)} → ${chDate(CH.days.at(-1).date)}` + (unknown ? ` · ${chText(6)}: ${unknown}` : '');
+      chNode('ch-content').hidden = false;
+      chNode('ch-prev').textContent = chText(2); chNode('ch-next').textContent = chText(3);
+      chNode('ch-prev').onclick = () => { chPause(); chSelect(Math.max(0, CH.day - 1), CH.row, true); };
+      chNode('ch-next').onclick = () => { chPause(); chSelect(Math.min(CH.days.length - 1, CH.day + 1), CH.row, true); };
+      chNode('ch-play').onclick = () => {
+        if (CH.timer) { chPause(); return; }
+        if (CH.motion.matches || CH.days.length < 2) return;
+        if (CH.day === CH.days.length - 1) chSelect(0, CH.row, true);
+        chNode('ch-play').textContent = chText(1); chNode('ch-play').setAttribute('aria-pressed', 'true');
+        CH.timer = setInterval(() => {
+          if (CH.day >= CH.days.length - 1) { chPause(); return; }
+          chSelect(CH.day + 1, CH.row, true);
+          if (CH.day === CH.days.length - 1) chPause();
+        }, 2500);
+      };
+      chNode('ch-original').addEventListener('toggle', () => { if (chNode('ch-original').open) chPause(); });
+      chNode('ch-detail').addEventListener('focusin', chPause);
+      chNode('ch-scroll').addEventListener('pointerdown', chPause);
+      CH.motion.addEventListener('change', chMotion);
+      document.addEventListener('visibilitychange', () => { if (document.hidden) chPause(); });
+      window.addEventListener('pagehide', chPause);
+      chMotion(); chSelect(CH.days.length - 1, 0, true);
+    }
+    function renderClimateHistory() {
+      const strings = {
+  "en": [
+    "AI climate history",
+    "Compare the daily evolution of observed systems and consult the conditions of each measurement.",
+    "Experimental history — real observations",
+    "History unavailable: an index of available capsules is required."
+  ],
+  "fr": [
+    "Historique du climat des IA",
+    "Comparez l’évolution quotidienne des systèmes observés et consultez les conditions de chaque mesure.",
+    "Historique expérimental — observations réelles",
+    "Historique indisponible : un index des capsules disponibles est nécessaire."
+  ],
+  "de": [
+    "Verlauf des KI-Klimas",
+    "Vergleichen Sie die tägliche Entwicklung der beobachteten Systeme und prüfen Sie die Bedingungen jeder Messung.",
+    "Experimenteller Verlauf — reale Beobachtungen",
+    "Verlauf nicht verfügbar: Ein Index der verfügbaren Kapseln ist erforderlich."
+  ],
+  "es": [
+    "Historial del clima de las IA",
+    "Compare la evolución diaria de los sistemas observados y consulte las condiciones de cada medición.",
+    "Historial experimental — observaciones reales",
+    "Historial no disponible: se necesita un índice de las cápsulas disponibles."
+  ],
+  "it": [
+    "Storico del clima delle IA",
+    "Confronta l’evoluzione quotidiana dei sistemi osservati e consulta le condizioni di ogni misurazione.",
+    "Storico sperimentale — osservazioni reali",
+    "Storico non disponibile: è necessario un indice delle capsule disponibili."
+  ],
+  "pt": [
+    "Histórico do clima das IA",
+    "Compare a evolução diária dos sistemas observados e consulte as condições de cada medição.",
+    "Histórico experimental — observações reais",
+    "Histórico indisponível: é necessário um índice das cápsulas disponíveis."
+  ],
+  "nl": [
+    "Geschiedenis van het AI-klimaat",
+    "Vergelijk de dagelijkse ontwikkeling van de geobserveerde systemen en bekijk de omstandigheden van elke meting.",
+    "Experimentele geschiedenis — echte waarnemingen",
+    "Geschiedenis niet beschikbaar: een index van beschikbare capsules is vereist."
+  ],
+  "ru": [
+    "История климата ИИ",
+    "Сравнивайте ежедневную динамику наблюдаемых систем и условия каждого измерения.",
+    "Экспериментальная история — реальные наблюдения",
+    "История недоступна: необходим индекс доступных капсул."
+  ],
+  "ar": [
+    "سجل مناخ الذكاء الاصطناعي",
+    "قارن التطور اليومي للأنظمة المرصودة واطّلع على ظروف كل قياس.",
+    "سجل تجريبي — ملاحظات حقيقية",
+    "السجل غير متاح: يلزم فهرس للكبسولات المتاحة."
+  ],
+  "hi": [
+    "एआई जलवायु का इतिहास",
+    "देखी गई प्रणालियों के दैनिक विकास की तुलना करें और प्रत्येक माप की परिस्थितियाँ देखें।",
+    "प्रायोगिक इतिहास — वास्तविक अवलोकन",
+    "इतिहास उपलब्ध नहीं है: उपलब्ध कैप्सूल की सूची आवश्यक है।"
+  ],
+  "ja": [
+    "AIの気候履歴",
+    "観測対象システムの日々の変化を比較し、各測定の条件を確認できます。",
+    "実験的な履歴 — 実際の観測",
+    "履歴を利用できません。利用可能なカプセルの索引が必要です。"
+  ],
+  "ko": [
+    "AI 기후 이력",
+    "관측 시스템의 일별 변화를 비교하고 각 측정의 조건을 확인하세요.",
+    "실험적 이력 — 실제 관측",
+    "이력을 사용할 수 없습니다. 사용 가능한 캡슐 목록이 필요합니다."
+  ],
+  "zh": [
+    "AI 气候历史",
+    "比较观测系统的每日变化，并查看每次测量的条件。",
+    "实验性历史 — 真实观测",
+    "历史记录不可用：需要可用胶囊的索引。"
+  ]
+};
+      const lang = NMi18n.lang();
+      const copy = strings[lang] || strings.en;
+      document.getElementById('climate-history-brand').textContent = lang === 'fr'
+        ? 'Météo des IA™' : translatedOrFallback('ui.ai_weather_title', 'AI Weather™');
+      ['title', 'subtitle', 'badge'].forEach((key, i) => {
+        document.getElementById('climate-history-' + key).textContent = copy[i];
+      });
+      const legend = document.getElementById('climate-history-legend');
+      legend.replaceChildren(...Array.from(document.getElementById('wall-legend').children, item => {
+        const clone = item.cloneNode(true);
+        clone.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
+        return clone;
+      }));
+      const insufficient = chElement('div', '∅ ' + chText(4)); insufficient.className = 'legend-item'; legend.append(insufficient);
+      chNode('climate-history-status').textContent = NMi18n.t('ui.loading');
+      chLoad().catch(() => {
+        chPause(); chNode('ch-content').hidden = true;
+        chNode('climate-history-status').textContent = chText(10);
+      });
+    }
+    // ---------- Boot ----------
+
+    NMThemes.init();
+
+    Promise.all([
+      NMi18n.init(),
+      fetch("./config/wording.json").then(r => { if (!r.ok) throw new Error("config unavailable"); return r.json(); }),
+      NMData.load(),
+      NMData.loadPanels(),
+      NMData.loadHistory(7).catch(() => ({}))
+    ])
+      .then(([lang, config, data, panelsConfig, historyMap]) => {
+        CONFIG = config;
+        DATA = data;
+
+        const fullIds = (panelsConfig.panels && panelsConfig.panels.full) || (data.systems || []).map(s => s.id);
+        PANEL_SYSTEMS = NMData.getPanelSystems(data, fullIds);
+
+        renderHeader();
+        renderWallIntro();
+        renderClimateHistory();
+        renderWall(historyMap);
+        renderFooter();
+        renderThemeMenu();
+        renderLangMenu();
+        applyDeepLink(PANEL_SYSTEMS);
+      })
+      .catch(() => {
+        document.getElementById("wall").innerHTML =
+          '<div class="state-msg">AI Weather data currently unavailable.</div>';
+      });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+      });
+    }
+  </script>
+
+</body>
+</html>

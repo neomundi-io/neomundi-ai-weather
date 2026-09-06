@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "capsules": [
+    {
+      "date": "2026-09-05",
+      "path": "../aiweather-capsule/capsules/2026/09/05.json"
+    },
+    {
+      "date": "2026-09-04",
+      "path": "../aiweather-capsule/capsules/2026/09/04.json"
+    },
+    {
+      "date": "2026-09-03",
+      "path": "../aiweather-capsule/capsules/2026/09/03.json"
+    },
+    {
+      "date": "2026-09-02",
+      "path": "../aiweather-capsule/capsules/2026/09/02.json"
+    },
+    {
+      "date": "2026-09-01",
+      "path": "../aiweather-capsule/capsules/2026/09/01.json"
+    },
+    {
+      "date": "2026-08-30",
+      "path": "../aiweather-capsule/capsules/2026/08/30.json"
+    },
+    {
+      "date": "2026-08-29",
+      "path": "../aiweather-capsule/capsules/2026/08/29.json"
+    },
+    {
+      "date": "2026-08-28",
+      "path": "../aiweather-capsule/capsules/2026/08/28.json"
+    },
+    {
+      "date": "2026-08-27",
+      "path": "../aiweather-capsule/capsules/2026/08/27.json"
+    },
+    {
+      "date": "2026-08-26",
+      "path": "../aiweather-capsule/capsules/2026/08/26.json"
+    },
+    {
+      "date": "2026-08-25",
+      "path": "../aiweather-capsule/capsules/2026/08/25.json"
+    },
+    {
+      "date": "2026-08-24",
+      "path": "../aiweather-capsule/capsules/2026/08/24.json"
+    },
+    {
+      "date": "2026-08-23",
+      "path": "../aiweather-capsule/capsules/2026/08/23.json"
+    },
+    {
+      "date": "2026-08-22",
+      "path": "../aiweather-capsule/capsules/2026/08/22.json"
+    },
+    {
+      "date": "2026-08-21",
+      "path": "../aiweather-capsule/capsules/2026/08/21.json"
+    },
+    {
+      "date": "2026-08-17",
+      "path": "../aiweather-capsule/capsules/2026/08/17.json"
+    }
+  ]
+}
