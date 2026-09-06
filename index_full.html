@@ -1246,6 +1246,27 @@
     function chDate(day, short = false) {
       return new Intl.DateTimeFormat(NMi18n.lang(), {year: short ? undefined : 'numeric', month: short ? '2-digit' : 'short', day: '2-digit', timeZone: 'UTC'}).format(new Date(day + 'T00:00:00Z'));
     }
+    function chDisplayQuestion(text) {
+      // Older translations stored UTF-8 bytes misread as Windows-1252.
+      // Repair presentation only, once; never rewrite the capsule or normalize languages.
+      const mojibake = /\u00c3|\u00c2|\u00e2\u20ac|\u00f0\u0178/;
+      if (typeof text !== 'string' || !mojibake.test(text)) return text;
+      try {
+        const windows1252 = new TextDecoder('windows-1252');
+        const byteFor = new Map(Array.from({length: 256}, (_, byte) =>
+          [windows1252.decode(Uint8Array.of(byte)), byte]));
+        const bytes = [];
+        for (const character of text) {
+          if (!byteFor.has(character)) return text;
+          bytes.push(byteFor.get(character));
+        }
+        const repaired = new TextDecoder('utf-8', {fatal: true}).decode(Uint8Array.from(bytes));
+        // Reject ambiguous/multiply encoded input instead of cascading conversions.
+        return mojibake.test(repaired) ? text : repaired;
+      } catch (_) {
+        return text;
+      }
+    }
     function chSelect(day, row = CH.row, reveal = false) {
       CH.day = day; CH.row = row;
       chNode('ch-table').querySelectorAll('[data-day]').forEach(node => {
@@ -1273,12 +1294,12 @@
       const translated = daily.question_translations?.[NMi18n.lang()];
       const hasTranslation = NMi18n.lang() !== 'en' && typeof translated === 'string' && translated.trim();
       const question = chNode('ch-question');
-      question.textContent = (hasTranslation ? translated : original) || chText(11);
+      question.textContent = chDisplayQuestion((hasTranslation ? translated : original) || chText(11));
       question.lang = hasTranslation || !original ? NMi18n.lang() : 'en';
       question.dir = question.lang === 'ar' ? 'rtl' : 'ltr';
       chNode('ch-question-label').textContent = NMi18n.t('ui.question_of_day');
       chNode('ch-original-toggle').textContent = NMi18n.t('ui.view_original_en');
-      chNode('ch-original-text').textContent = original || '—';
+      chNode('ch-original-text').textContent = chDisplayQuestion(original || '—');
       chNode('ch-original').hidden = !original;
       chNode('ch-json').href = record.url;
       chNode('ch-json').textContent = `JSON · ${record.capsule.capsule_id || record.date}`;
