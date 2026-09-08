@@ -2,6 +2,10 @@
   "schema_version": 1,
   "capsules": [
     {
+      "date": "2026-09-08",
+      "path": "../aiweather-capsule/capsules/2026/09/08.json"
+    },
+    {
       "date": "2026-09-07",
       "path": "../aiweather-capsule/capsules/2026/09/07.json"
     },
