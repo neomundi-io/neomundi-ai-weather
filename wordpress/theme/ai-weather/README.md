@@ -1,6 +1,6 @@
 # AI Weather — thème WordPress hybride
 
-Version 0.1.0. PHP 8.0+, WordPress 6.6+. Aucun plugin tiers obligatoire.
+Version 0.2.0. PHP 8.0+, WordPress 6.6+. Aucun plugin tiers obligatoire.
 
 ## Installation sur le staging
 
@@ -12,18 +12,15 @@ Version 0.1.0. PHP 8.0+, WordPress 6.6+. Aucun plugin tiers obligatoire.
 
 L'activation seule ne crée ni ne remplace de contenu. Le thème ne modifie pas les secrets, les certificats, wp-config.php ni les fichiers serveur.
 
-## Modifier le wording
+## Phase 1 — rendu canonique, édition publique suspendue
 
-Dans Pages, ouvrir la page puis utiliser la vue en liste de Gutenberg : chaque bloc est nommé par section et langue. Les titres sont des blocs Titre ; les paragraphes et labels, des blocs Paragraphe ; les destinations, des blocs Bouton ; les images, des blocs Image.
+Version 0.2.0 : chaque page publique est rendue depuis son HTML canonique du dossier `controltowerai-wordpress-redesign`. Le routeur par slug impose la composition correspondante. Il ne lit pas les champs Gutenberg, et le template public n'appelle jamais `the_content()`.
 
-- Modifier les textes EN et FR séparément ; ES existe uniquement lorsque la référence le fournit.
-- Dans un bloc nommé « Lien », modifier la destination du lien. Le libellé visible du CTA se modifie dans son bloc de texte/traduction voisin, pas dans le titre indicatif du bloc Lien.
-- Les champs SEO sont les deux premiers blocs de chaque page.
-- Navigation et footer : Apparence > AI Weather — Navigation / Footer. Les champs identiques sont partagés entre les pages. Les variations présentes dans la référence restent distinctes.
-- Les blocs conservent les révisions WordPress. Les champs non édités conservent leurs valeurs de référence.
-- La vue Gutenberg est un éditeur de contenus nommés, pas une reproduction visuelle complète du frontend. Utiliser Aperçu pour le rendu final.
+Les anciens champs et révisions restent conservés dans WordPress, mais leurs modifications ne sont pas appliquées au site pendant cette phase. Les titres, textes, traductions, liens, images, navigation et footer proviennent des fichiers HTML canoniques. La réactivation progressive de l'édition attend une validation visuelle explicite et un raccordement champ par champ.
 
-La structure est verrouillée. Les textes sont échappés à la sortie et les URL filtrées. Aucun script ni iframe ne provient de post_content.
+Home utilise `index.html`, Widgets `widgets.html`, Today `today.html`, Station USA `us-station.html`. `index_full.html` n'est jamais utilisé comme template global ou comme accueil.
+
+Pour construire le thème : `npm run build` depuis le dossier `wordpress`, puis `node tools/package.cjs`. Le build lit directement les dix fichiers HTML du dossier canonique, conserve leurs structures et extrait leurs CSS/scripts. Les chemins publics sont raccordés par les fonctions WordPress. Les mesures, widgets, quiz et scripts de télémétrie du runtime restent inchangés.
 
 ## Organisation du thème
 

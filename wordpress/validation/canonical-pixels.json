@@ -1,0 +1,274 @@
+[
+  {
+    "page": "home",
+    "width": 1440,
+    "reference_size": [
+      1440,
+      3926
+    ],
+    "wordpress_size": [
+      1440,
+      3926
+    ],
+    "changed_pixels_over_20": 0,
+    "changed_percent": 0.0
+  },
+  {
+    "page": "home",
+    "width": 390,
+    "reference_size": [
+      499,
+      6687
+    ],
+    "wordpress_size": [
+      390,
+      6687
+    ],
+    "changed_pixels_below_mobile_header": 0
+  },
+  {
+    "page": "widgets",
+    "width": 1440,
+    "reference_size": [
+      1440,
+      3053
+    ],
+    "wordpress_size": [
+      1440,
+      3053
+    ],
+    "changed_pixels_over_20": 6263,
+    "changed_percent": 0.1425
+  },
+  {
+    "page": "widgets",
+    "width": 390,
+    "reference_size": [
+      495,
+      4789
+    ],
+    "wordpress_size": [
+      390,
+      4808
+    ]
+  },
+  {
+    "page": "how-it-works",
+    "width": 1440,
+    "reference_size": [
+      1440,
+      3160
+    ],
+    "wordpress_size": [
+      1440,
+      3160
+    ],
+    "changed_pixels_over_20": 0,
+    "changed_percent": 0.0
+  },
+  {
+    "page": "how-it-works",
+    "width": 390,
+    "reference_size": [
+      499,
+      5888
+    ],
+    "wordpress_size": [
+      390,
+      5888
+    ],
+    "changed_pixels_below_mobile_header": 0
+  },
+  {
+    "page": "us-station",
+    "width": 1440,
+    "reference_size": [
+      1440,
+      1877
+    ],
+    "wordpress_size": [
+      1440,
+      1877
+    ],
+    "changed_pixels_over_20": 288389,
+    "changed_percent": 10.6697,
+    "changed_pixels_outside_animation": 0
+  },
+  {
+    "page": "us-station",
+    "width": 390,
+    "reference_size": [
+      390,
+      2621
+    ],
+    "wordpress_size": [
+      390,
+      2621
+    ],
+    "changed_pixels_over_20": 24731,
+    "changed_percent": 2.4194,
+    "changed_pixels_outside_animation": 0
+  },
+  {
+    "page": "today",
+    "width": 1440,
+    "reference_size": [
+      1440,
+      4031
+    ],
+    "wordpress_size": [
+      1440,
+      4031
+    ],
+    "changed_pixels_over_20": 0,
+    "changed_percent": 0.0
+  },
+  {
+    "page": "today",
+    "width": 390,
+    "reference_size": [
+      481,
+      6163
+    ],
+    "wordpress_size": [
+      390,
+      6163
+    ],
+    "changed_pixels_below_mobile_header": 0
+  },
+  {
+    "page": "stations",
+    "width": 1440,
+    "reference_size": [
+      1440,
+      1484
+    ],
+    "wordpress_size": [
+      1440,
+      1484
+    ],
+    "changed_pixels_over_20": 0,
+    "changed_percent": 0.0
+  },
+  {
+    "page": "stations",
+    "width": 390,
+    "reference_size": [
+      499,
+      2393
+    ],
+    "wordpress_size": [
+      390,
+      2393
+    ],
+    "changed_pixels_below_mobile_header": 0
+  },
+  {
+    "page": "for-media",
+    "width": 1440,
+    "reference_size": [
+      1440,
+      1590
+    ],
+    "wordpress_size": [
+      1440,
+      1590
+    ],
+    "changed_pixels_over_20": 0,
+    "changed_percent": 0.0
+  },
+  {
+    "page": "for-media",
+    "width": 390,
+    "reference_size": [
+      499,
+      2398
+    ],
+    "wordpress_size": [
+      390,
+      2398
+    ],
+    "changed_pixels_below_mobile_header": 0
+  },
+  {
+    "page": "about",
+    "width": 1440,
+    "reference_size": [
+      1440,
+      1412
+    ],
+    "wordpress_size": [
+      1440,
+      1412
+    ],
+    "changed_pixels_over_20": 0,
+    "changed_percent": 0.0
+  },
+  {
+    "page": "about",
+    "width": 390,
+    "reference_size": [
+      499,
+      2065
+    ],
+    "wordpress_size": [
+      390,
+      2065
+    ],
+    "changed_pixels_below_mobile_header": 0
+  },
+  {
+    "page": "contact",
+    "width": 1440,
+    "reference_size": [
+      1440,
+      1000
+    ],
+    "wordpress_size": [
+      1440,
+      1000
+    ],
+    "changed_pixels_over_20": 0,
+    "changed_percent": 0.0
+  },
+  {
+    "page": "contact",
+    "width": 390,
+    "reference_size": [
+      499,
+      1607
+    ],
+    "wordpress_size": [
+      390,
+      1607
+    ],
+    "changed_pixels_below_mobile_header": 0
+  },
+  {
+    "page": "daily-brief",
+    "width": 1440,
+    "reference_size": [
+      1440,
+      1095
+    ],
+    "wordpress_size": [
+      1440,
+      1095
+    ],
+    "changed_pixels_over_20": 0,
+    "changed_percent": 0.0
+  },
+  {
+    "page": "daily-brief",
+    "width": 390,
+    "reference_size": [
+      499,
+      1853
+    ],
+    "wordpress_size": [
+      390,
+      1853
+    ],
+    "changed_pixels_below_mobile_header": 0
+  }
+]

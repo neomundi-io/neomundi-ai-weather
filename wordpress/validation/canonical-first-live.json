@@ -1,0 +1,1081 @@
+{
+  "pairs": [
+    {
+      "page": "home",
+      "width": 1440,
+      "source": {
+        "status": 200,
+        "themeVersionLoaded": false,
+        "styles": {
+          ".site-header": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 69,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(244, 248, 253, 0.82)"
+            }
+          ],
+          ".station-topbar": [],
+          "h1": [
+            {
+              "x": 154,
+              "y": 155.390625,
+              "width": 882.953125,
+              "height": 116.625,
+              "font": "800 54px / 58.32px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".hero": [
+            {
+              "x": 0,
+              "y": 69,
+              "width": 1440,
+              "height": 737.625,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          "main": [],
+          "section": [
+            {
+              "x": 0,
+              "y": 69,
+              "width": 1440,
+              "height": 737.625,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 806.625,
+              "width": 1440,
+              "height": 663.90625,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 1470.53125,
+              "width": 1440,
+              "height": 598,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 2068.53125,
+              "width": 1440,
+              "height": 633.34375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 2701.875,
+              "width": 1440,
+              "height": 604.9375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 3306.8125,
+              "width": 1440,
+              "height": 305.78125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgb(246, 250, 255)"
+            }
+          ],
+          "footer": [
+            {
+              "x": 0,
+              "y": 3612.59375,
+              "width": 1440,
+              "height": 312.953125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "none",
+              "backgroundColor": "rgb(7, 13, 24)"
+            }
+          ],
+          ".format-grid": [],
+          ".preview-wrap": [],
+          ".us-observatory": []
+        },
+        "raw": 0,
+        "editorHints": false,
+        "overflow": false,
+        "h1": "AI Weather™ is the daily weather report for AI behavior."
+      },
+      "wordpress": {
+        "status": 200,
+        "themeVersionLoaded": true,
+        "styles": {
+          ".site-header": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 69,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(244, 248, 253, 0.82)"
+            }
+          ],
+          ".station-topbar": [],
+          "h1": [
+            {
+              "x": 154,
+              "y": 155.390625,
+              "width": 882.953125,
+              "height": 116.625,
+              "font": "800 54px / 58.32px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".hero": [
+            {
+              "x": 0,
+              "y": 69,
+              "width": 1440,
+              "height": 737.625,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          "main": [],
+          "section": [
+            {
+              "x": 0,
+              "y": 69,
+              "width": 1440,
+              "height": 737.625,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 806.625,
+              "width": 1440,
+              "height": 663.90625,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 1470.53125,
+              "width": 1440,
+              "height": 598,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 2068.53125,
+              "width": 1440,
+              "height": 633.34375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 2701.875,
+              "width": 1440,
+              "height": 604.9375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 3306.8125,
+              "width": 1440,
+              "height": 305.78125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgb(246, 250, 255)"
+            }
+          ],
+          "footer": [
+            {
+              "x": 0,
+              "y": 3612.59375,
+              "width": 1440,
+              "height": 312.953125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "none",
+              "backgroundColor": "rgb(7, 13, 24)"
+            }
+          ],
+          ".format-grid": [],
+          ".preview-wrap": [],
+          ".us-observatory": []
+        },
+        "raw": 0,
+        "editorHints": false,
+        "overflow": false,
+        "h1": "AI Weather™ is the daily weather report for AI behavior."
+      },
+      "differences": []
+    },
+    {
+      "page": "home",
+      "width": 390,
+      "source": {
+        "status": 200,
+        "themeVersionLoaded": false,
+        "styles": {
+          ".site-header": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 69,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(244, 248, 253, 0.82)"
+            }
+          ],
+          ".station-topbar": [],
+          "h1": [
+            {
+              "x": 24,
+              "y": 173.78125,
+              "width": 342,
+              "height": 103.640625,
+              "font": "800 32px / 34.56px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".hero": [
+            {
+              "x": 0,
+              "y": 69,
+              "width": 390,
+              "height": 998.75,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          "main": [],
+          "section": [
+            {
+              "x": 0,
+              "y": 69,
+              "width": 390,
+              "height": 998.75,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 1067.75,
+              "width": 390,
+              "height": 1280.609375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 2348.359375,
+              "width": 390,
+              "height": 869.703125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 3218.0625,
+              "width": 390,
+              "height": 1376.671875,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 4594.734375,
+              "width": 390,
+              "height": 1087.3125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 5682.046875,
+              "width": 390,
+              "height": 396.5625,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgb(246, 250, 255)"
+            }
+          ],
+          "footer": [
+            {
+              "x": 0,
+              "y": 6078.609375,
+              "width": 390,
+              "height": 608.109375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "none",
+              "backgroundColor": "rgb(7, 13, 24)"
+            }
+          ],
+          ".format-grid": [],
+          ".preview-wrap": [],
+          ".us-observatory": []
+        },
+        "raw": 0,
+        "editorHints": false,
+        "overflow": true,
+        "h1": "AI Weather™ is the daily weather report for AI behavior."
+      },
+      "wordpress": {
+        "status": 200,
+        "themeVersionLoaded": true,
+        "styles": {
+          ".site-header": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 69,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(244, 248, 253, 0.82)"
+            }
+          ],
+          ".station-topbar": [],
+          "h1": [
+            {
+              "x": 24,
+              "y": 173.78125,
+              "width": 342,
+              "height": 103.640625,
+              "font": "800 32px / 34.56px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".hero": [
+            {
+              "x": 0,
+              "y": 69,
+              "width": 390,
+              "height": 998.75,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          "main": [],
+          "section": [
+            {
+              "x": 0,
+              "y": 69,
+              "width": 390,
+              "height": 998.75,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 1067.75,
+              "width": 390,
+              "height": 1280.609375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 2348.359375,
+              "width": 390,
+              "height": 869.703125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 3218.0625,
+              "width": 390,
+              "height": 1376.671875,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 4594.734375,
+              "width": 390,
+              "height": 1087.3125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 5682.046875,
+              "width": 390,
+              "height": 396.5625,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgb(246, 250, 255)"
+            }
+          ],
+          "footer": [
+            {
+              "x": 0,
+              "y": 6078.609375,
+              "width": 390,
+              "height": 608.109375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "none",
+              "backgroundColor": "rgb(7, 13, 24)"
+            }
+          ],
+          ".format-grid": [],
+          ".preview-wrap": [],
+          ".us-observatory": []
+        },
+        "raw": 0,
+        "editorHints": false,
+        "overflow": false,
+        "h1": "AI Weather™ is the daily weather report for AI behavior."
+      },
+      "differences": []
+    },
+    {
+      "page": "widgets",
+      "width": 1440,
+      "source": {
+        "status": 200,
+        "themeVersionLoaded": false,
+        "styles": {
+          ".site-header": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 69,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(244, 248, 253, 0.82)"
+            }
+          ],
+          ".station-topbar": [],
+          "h1": [
+            {
+              "x": 154,
+              "y": 159.390625,
+              "width": 1132,
+              "height": 50.59375,
+              "font": "800 46px / 50.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".hero": [],
+          "main": [],
+          "section": [
+            {
+              "x": 0,
+              "y": 69,
+              "width": 1440,
+              "height": 394.953125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 80%)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 463.953125,
+              "width": 1440,
+              "height": 1072.21875,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 1536.171875,
+              "width": 1440,
+              "height": 373.765625,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 1909.9375,
+              "width": 1440,
+              "height": 419.4375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 2329.375,
+              "width": 1440,
+              "height": 410.578125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          "footer": [
+            {
+              "x": 0,
+              "y": 2739.953125,
+              "width": 1440,
+              "height": 312.953125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "none",
+              "backgroundColor": "rgb(7, 13, 24)"
+            }
+          ],
+          ".format-grid": [
+            {
+              "x": 154,
+              "y": 689.171875,
+              "width": 541,
+              "height": 401.5625,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".preview-wrap": [
+            {
+              "x": 754,
+              "y": 735.234375,
+              "width": 513,
+              "height": 149,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".us-observatory": []
+        },
+        "raw": 0,
+        "editorHints": false,
+        "overflow": false,
+        "h1": "Embed AI Weather™ on your site"
+      },
+      "wordpress": {
+        "status": 200,
+        "renderer": "canonical-0.2.0",
+        "themeVersionLoaded": true,
+        "styles": {
+          ".site-header": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 69,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(244, 248, 253, 0.82)"
+            }
+          ],
+          ".station-topbar": [],
+          "h1": [
+            {
+              "x": 154,
+              "y": 159.390625,
+              "width": 1132,
+              "height": 50.59375,
+              "font": "800 46px / 50.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".hero": [],
+          "main": [],
+          "section": [
+            {
+              "x": 0,
+              "y": 69,
+              "width": 1440,
+              "height": 394.953125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 80%)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 463.953125,
+              "width": 1440,
+              "height": 1072.21875,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 1536.171875,
+              "width": 1440,
+              "height": 373.765625,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 1909.9375,
+              "width": 1440,
+              "height": 419.4375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 2329.375,
+              "width": 1440,
+              "height": 410.578125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          "footer": [
+            {
+              "x": 0,
+              "y": 2739.953125,
+              "width": 1440,
+              "height": 312.953125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "none",
+              "backgroundColor": "rgb(7, 13, 24)"
+            }
+          ],
+          ".format-grid": [
+            {
+              "x": 154,
+              "y": 689.171875,
+              "width": 541,
+              "height": 401.5625,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".preview-wrap": [
+            {
+              "x": 754,
+              "y": 735.234375,
+              "width": 513,
+              "height": 149,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".us-observatory": []
+        },
+        "raw": 0,
+        "editorHints": false,
+        "overflow": false,
+        "h1": "Embed AI Weather™ on your site"
+      },
+      "differences": []
+    },
+    {
+      "page": "widgets",
+      "width": 390,
+      "source": {
+        "status": 200,
+        "themeVersionLoaded": false,
+        "styles": {
+          ".site-header": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 69,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(244, 248, 253, 0.82)"
+            }
+          ],
+          ".station-topbar": [],
+          "h1": [
+            {
+              "x": 24,
+              "y": 159.390625,
+              "width": 342,
+              "height": 66,
+              "font": "800 30px / 33px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".hero": [],
+          "main": [],
+          "section": [
+            {
+              "x": 0,
+              "y": 69,
+              "width": 390,
+              "height": 410.359375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 80%)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 479.359375,
+              "width": 390,
+              "height": 1908.8125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 2388.171875,
+              "width": 390,
+              "height": 601.109375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 2989.28125,
+              "width": 390,
+              "height": 738.796875,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 3728.078125,
+              "width": 390,
+              "height": 452.328125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          "footer": [
+            {
+              "x": 0,
+              "y": 4180.40625,
+              "width": 390,
+              "height": 608.109375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "none",
+              "backgroundColor": "rgb(7, 13, 24)"
+            }
+          ],
+          ".format-grid": [
+            {
+              "x": 24,
+              "y": 715.140625,
+              "width": 374,
+              "height": 632.84375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".preview-wrap": [
+            {
+              "x": 43,
+              "y": 1934.921875,
+              "width": 336,
+              "height": 97,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".us-observatory": []
+        },
+        "raw": 0,
+        "editorHints": false,
+        "overflow": true,
+        "h1": "Embed AI Weather™ on your site"
+      },
+      "wordpress": {
+        "status": 200,
+        "themeVersionLoaded": true,
+        "styles": {
+          ".site-header": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 69,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(244, 248, 253, 0.82)"
+            }
+          ],
+          ".station-topbar": [],
+          "h1": [
+            {
+              "x": 24,
+              "y": 159.390625,
+              "width": 342,
+              "height": 66,
+              "font": "800 30px / 33px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".hero": [],
+          "main": [],
+          "section": [
+            {
+              "x": 0,
+              "y": 69,
+              "width": 390,
+              "height": 410.359375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 80%)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 479.359375,
+              "width": 390,
+              "height": 1928,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 2407.359375,
+              "width": 390,
+              "height": 601.109375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 3008.46875,
+              "width": 390,
+              "height": 738.796875,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "x": 0,
+              "y": 3747.265625,
+              "width": 390,
+              "height": 452.328125,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          "footer": [
+            {
+              "x": 0,
+              "y": 4199.59375,
+              "width": 390,
+              "height": 608.109375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(169, 186, 208)",
+              "background": "none",
+              "backgroundColor": "rgb(7, 13, 24)"
+            }
+          ],
+          ".format-grid": [
+            {
+              "x": 24,
+              "y": 715.140625,
+              "width": 342,
+              "height": 632.84375,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".preview-wrap": [
+            {
+              "x": 43,
+              "y": 1934.921875,
+              "width": 304,
+              "height": 97,
+              "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+              "color": "rgb(15, 24, 38)",
+              "background": "none",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          ],
+          ".us-observatory": []
+        },
+        "raw": 0,
+        "editorHints": false,
+        "overflow": false,
+        "h1": "Embed AI Weather™ on your site"
+      },
+      "differences": [
+        {
+          "selector": "section",
+          "index": 1,
+          "field": "height",
+          "source": 1908.8125,
+          "wordpress": 1928
+        },
+        {
+          "selector": "section",
+          "index": 2,
+          "field": "y",
+          "source": 2388.171875,
+          "wordpress": 2407.359375
+        },
+        {
+          "selector": "section",
+          "index": 3,
+          "field": "y",
+          "source": 2989.28125,
+          "wordpress": 3008.46875
+        },
+        {
+          "selector": "section",
+          "index": 4,
+          "field": "y",
+          "source": 3728.078125,
+          "wordpress": 3747.265625
+        },
+        {
+          "selector": "footer",
+          "index": 0,
+          "field": "y",
+          "source": 4180.40625,
+          "wordpress": 4199.59375
+        },
+        {
+          "selector": ".format-grid",
+          "index": 0,
+          "field": "width",
+          "source": 374,
+          "wordpress": 342
+        },
+        {
+          "selector": ".preview-wrap",
+          "index": 0,
+          "field": "width",
+          "source": 336,
+          "wordpress": 304
+        }
+      ]
+    }
+  ],
+  "network": [],
+  "errors": []
+}

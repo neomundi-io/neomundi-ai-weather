@@ -174,8 +174,8 @@
     },
     {
       "path": "ai-weather/inc/content.php",
-      "bytes": 4116,
-      "sha256": "c2ef2d6a35ea7f1059f0794283e2245128bf44ac118bf26b49bea282ccd2ef74"
+      "bytes": 4415,
+      "sha256": "abccf3a81a24440df2a4956859471e47b36c1552846cb8cb63195881097d191f"
     },
     {
       "path": "ai-weather/inc/setup.php",
@@ -194,8 +194,8 @@
     },
     {
       "path": "ai-weather/README.md",
-      "bytes": 6224,
-      "sha256": "b185ae6ff6eb816ca33b41d4468cecff716cbb8252d9c92aae4cd3064fd508aa"
+      "bytes": 6193,
+      "sha256": "0a46405579d15f4ed254f38c1861036b2c8adaa7f8334bc25d8e9cfaaf7eae11"
     },
     {
       "path": "ai-weather/runtime/aiweather-capsule/capsules/2026/08/17.json",
@@ -844,43 +844,43 @@
     },
     {
       "path": "ai-weather/template-parts/about-footer.html",
-      "bytes": 2751,
-      "sha256": "97bb567306d7364d0c35427f36ea06eee8cb17c309fc92e4f4c634a488bfbb8a"
+      "bytes": 3127,
+      "sha256": "d0f729a6d53b97947205690002219a26cacca6b647113ac0d461f2fc686fa61c"
     },
     {
       "path": "ai-weather/template-parts/about-header.html",
-      "bytes": 1656,
-      "sha256": "df18ea926be8b2b5efed031a3889da9be46e3843a34ee98221a50a2c13dfbe05"
+      "bytes": 2249,
+      "sha256": "1d35c164980b62adab2343a20043d3552d2344ffa3e2f0e14f38964ff240b4d2"
     },
     {
       "path": "ai-weather/template-parts/contact-footer.html",
-      "bytes": 2751,
-      "sha256": "97bb567306d7364d0c35427f36ea06eee8cb17c309fc92e4f4c634a488bfbb8a"
+      "bytes": 3127,
+      "sha256": "d0f729a6d53b97947205690002219a26cacca6b647113ac0d461f2fc686fa61c"
     },
     {
       "path": "ai-weather/template-parts/contact-header.html",
-      "bytes": 1656,
-      "sha256": "df18ea926be8b2b5efed031a3889da9be46e3843a34ee98221a50a2c13dfbe05"
+      "bytes": 2249,
+      "sha256": "1d35c164980b62adab2343a20043d3552d2344ffa3e2f0e14f38964ff240b4d2"
     },
     {
       "path": "ai-weather/template-parts/daily-brief-footer.html",
-      "bytes": 2849,
-      "sha256": "421b6f8d891530eb49421430b779732254641cfc9c61ea1e0427c31e22f701ac"
+      "bytes": 3225,
+      "sha256": "4237cdbc74e284e36debbde87c46e0e88d6839a6194278e0b0e0409fb6d5ec45"
     },
     {
       "path": "ai-weather/template-parts/daily-brief-header.html",
-      "bytes": 1656,
-      "sha256": "df18ea926be8b2b5efed031a3889da9be46e3843a34ee98221a50a2c13dfbe05"
+      "bytes": 2249,
+      "sha256": "1d35c164980b62adab2343a20043d3552d2344ffa3e2f0e14f38964ff240b4d2"
     },
     {
       "path": "ai-weather/template-parts/for-media-footer.html",
-      "bytes": 2751,
-      "sha256": "97bb567306d7364d0c35427f36ea06eee8cb17c309fc92e4f4c634a488bfbb8a"
+      "bytes": 3127,
+      "sha256": "d0f729a6d53b97947205690002219a26cacca6b647113ac0d461f2fc686fa61c"
     },
     {
       "path": "ai-weather/template-parts/for-media-header.html",
-      "bytes": 1656,
-      "sha256": "df18ea926be8b2b5efed031a3889da9be46e3843a34ee98221a50a2c13dfbe05"
+      "bytes": 2249,
+      "sha256": "1d35c164980b62adab2343a20043d3552d2344ffa3e2f0e14f38964ff240b4d2"
     },
     {
       "path": "ai-weather/template-parts/home-footer.html",
@@ -894,38 +894,38 @@
     },
     {
       "path": "ai-weather/template-parts/how-it-works-footer.html",
-      "bytes": 2849,
-      "sha256": "421b6f8d891530eb49421430b779732254641cfc9c61ea1e0427c31e22f701ac"
+      "bytes": 3225,
+      "sha256": "4237cdbc74e284e36debbde87c46e0e88d6839a6194278e0b0e0409fb6d5ec45"
     },
     {
       "path": "ai-weather/template-parts/how-it-works-header.html",
-      "bytes": 1672,
-      "sha256": "8dd2688a6a872a4a6afd3d66203db433e1c60907010d33e576a6d7a741d08d4f"
+      "bytes": 2265,
+      "sha256": "da985afa64d6131b484831ecf91b411c13f3ae47f30855596c679e0c02d593de"
     },
     {
       "path": "ai-weather/template-parts/stations-footer.html",
-      "bytes": 3461,
-      "sha256": "160c342f5a328c9b4b882759996dafdbf34d9eaa678332ec0a833c49e6ce0486"
+      "bytes": 3905,
+      "sha256": "c7470ca377fb06f6abae5e1769e9cd3ac3e207eefa6f7277524ccfe7b4f66ec2"
     },
     {
       "path": "ai-weather/template-parts/stations-header.html",
-      "bytes": 1897,
-      "sha256": "9acd03d10634db88c19e449353489a6db2e0baa61e82396ed26a31c242201afb"
+      "bytes": 2625,
+      "sha256": "0fbbdd6abb01eaa63a49bfaeecc2356daaf59b9af3ec5bd326fe323d048c595e"
     },
     {
       "path": "ai-weather/template-parts/today-footer.html",
-      "bytes": 2849,
-      "sha256": "421b6f8d891530eb49421430b779732254641cfc9c61ea1e0427c31e22f701ac"
+      "bytes": 3225,
+      "sha256": "4237cdbc74e284e36debbde87c46e0e88d6839a6194278e0b0e0409fb6d5ec45"
     },
     {
       "path": "ai-weather/template-parts/today-header.html",
-      "bytes": 1666,
-      "sha256": "ab7ba7c389e37c8f48151a8b4c98bac874a2ed23aa78497e732d3db44f841983"
+      "bytes": 2265,
+      "sha256": "00a780e0e2d0303aa7110664118fad327d4f35d267f330b5389c9ab71f655fa5"
     },
     {
       "path": "ai-weather/template-parts/us-station-header.html",
-      "bytes": 997,
-      "sha256": "1588899a24e35adf726dc799b7a6e92e5f0d4592573e3a6e3bad25345b87bc7e"
+      "bytes": 1299,
+      "sha256": "b0f3061d6811c1204266a171043078252af9fe89e54b80cd1356410c491b61f1"
     },
     {
       "path": "ai-weather/template-parts/widgets-footer.html",
@@ -939,23 +939,23 @@
     },
     {
       "path": "ai-weather/templates/about.html",
-      "bytes": 4281,
-      "sha256": "d3cb8e28100bd2d5603eccc4c2d2df8789d72a6601428679b8eba38e57eba5f7"
+      "bytes": 2450,
+      "sha256": "75eb3332a8c4e737c710939c7f571aaceb3987690e146fea99ea4956c874e1e4"
     },
     {
       "path": "ai-weather/templates/contact.html",
-      "bytes": 2747,
-      "sha256": "ab2c9fbab56c81db257f2a6b1a9089e5d5339a09bc4dd8ef76bc9a73ae2f78df"
+      "bytes": 1803,
+      "sha256": "66001d39986d2e547201a5e24b2f36150adc03ab679fc94a5d218276a1b9b7f5"
     },
     {
       "path": "ai-weather/templates/daily-brief.html",
-      "bytes": 3228,
-      "sha256": "ef4cd583c59bfe361032131549b7ee6c0dde8ce9c571955b89e8e59bccf0640f"
+      "bytes": 2472,
+      "sha256": "9b67deb8969dd82226e5e9909ecf1ed65feb86e3b46b305f61ba02c80b5cf022"
     },
     {
       "path": "ai-weather/templates/for-media.html",
-      "bytes": 5708,
-      "sha256": "08c0a0048db05230f8afae2c25511224664d60de6a56cc1c8fc9e5dbb8a13f2f"
+      "bytes": 4091,
+      "sha256": "44a3cf7bb0dd2e9cc46b5229d7ab8637fea706fe80fcaaee054dc8f1ea18da01"
     },
     {
       "path": "ai-weather/templates/home.html",
@@ -964,28 +964,28 @@
     },
     {
       "path": "ai-weather/templates/how-it-works.html",
-      "bytes": 15661,
-      "sha256": "a6c3f8c8ca2219ed8dcacb3357e347076d2bbb4d8236a319ee525fd3bfd91a69"
+      "bytes": 12049,
+      "sha256": "42a85d5fdd3044476c7f8df89860bd08dd72da4edee2a785465fa5d8e459bf24"
     },
     {
       "path": "ai-weather/templates/quiz.html",
-      "bytes": 369,
-      "sha256": "ee35733b63476468d6c9c28d09bc1599af6427148c1714e4301bbdec73f526c4"
+      "bytes": 377,
+      "sha256": "059314a7ecb82d27ce277438b1f97a0aa215d1eecc4c5897bb63e08f9e8b0c5c"
     },
     {
       "path": "ai-weather/templates/stations.html",
-      "bytes": 7706,
-      "sha256": "e92ef357dd5d061a3fb67c9bc75830ab48fc6b5e7f6ad3f75b7f0c4a9b29edd5"
+      "bytes": 4809,
+      "sha256": "8aab81be2347b89cab9be0ee92dbe845e9acb092f957cd4bd917e60a9cd0320c"
     },
     {
       "path": "ai-weather/templates/today.html",
-      "bytes": 13138,
-      "sha256": "9a137467f472da865568b7f3ccef66b6807fe39587486f6227026dace3dfe1da"
+      "bytes": 11869,
+      "sha256": "e62cff90748ff416c1ad04980c8c411b88224fcfd7893d69f7ba80049e166ef2"
     },
     {
       "path": "ai-weather/templates/us-station.html",
-      "bytes": 14963,
-      "sha256": "26b48293964438dbe98368c90c0a03111ef7efbb094fa398ce70cd8c7dd98170"
+      "bytes": 12035,
+      "sha256": "2b44eb6d54eb996a7a755b511b67f0a26122fe5fcf452f900aa1638c17d945a2"
     },
     {
       "path": "ai-weather/templates/widgets.html",
@@ -993,5 +993,5 @@
       "sha256": "697b4d86009f8a101058f0dd41fed33de10ac155d464a6d6489e4b63451dc429"
     }
   ],
-  "totalBytes": 8484874
+  "totalBytes": 8476590
 }

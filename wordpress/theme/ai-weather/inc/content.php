@@ -2,15 +2,18 @@
 if (!defined('ABSPATH')) { exit; }
 function aw_catalog(){static $data=null;if($data===null)$data=json_decode(file_get_contents(__DIR__.'/catalog.json'),true);return $data;}
 function aw_current_layout(){
-    if(!is_singular('page'))return '';
-    $id=get_queried_object_id();$catalog=aw_catalog();
-    $key=get_post_meta($id,'_aw_layout',true);
-    if($key!=='shared'&&isset($catalog[$key]))return $key;
-    // Resolve the layout before wp_head, even if an editor removed its metadata.
-    foreach(get_option('aw_page_ids',[]) as $candidate=>$page_id){
-        if((int)$page_id===$id&&$candidate!=='shared'&&isset($catalog[$candidate]))return $candidate;
-    }
+    if(is_admin())return '';
+    $catalog=aw_catalog();$id=get_queried_object_id();
+    $slug=$id?get_post_field('post_name',$id):'';
+    if($slug!=='shared'&&isset($catalog[$slug]))return $slug;
     if(is_front_page())return 'home';
+    // Public routing never depends on Gutenberg blocks or editorial metadata.
+    $path=trim((string)wp_parse_url($_SERVER['REQUEST_URI']??'/',PHP_URL_PATH),'/');
+    if($path===''||$path==='index.php')return 'home';
+    $parts=explode('/',$path);
+    if(count($parts)===2&&in_array($parts[0],['en','fr','es'],true))$path=$parts[1];
+    $path=preg_replace('/\.html$/','',$path);if($path==='index')$path='home';
+    if($path!=='shared'&&isset($catalog[$path]))return $path;
     return '';
 }
 function aw_page_url($key){$ids=get_option('aw_page_ids',[]);return !empty($ids[$key])?get_permalink($ids[$key]):home_url($key==='home'?'/':'/'.$key.'/');}
@@ -37,19 +40,14 @@ function aw_values($blocks){
     }
     return $values;
 }
-function aw_page_values(){return aw_values(parse_blocks(get_post_field('post_content',get_queried_object_id())));}
+function aw_page_values(){return [];}
 function aw_render_layout($key,$blocks){
     $catalog=aw_catalog();if(!isset($catalog[$key])||$key==='shared')return '';
-    $values=aw_values($blocks);$shared=get_post((int)get_option('aw_shared_id'));
-    if($shared)$values=array_merge(aw_values(parse_blocks($shared->post_content)),$values);
-    $replace=[];
-    foreach(array_merge($catalog['shared']['fields'],$catalog[$key]['fields']) as $field){
-        $value=$values[$field['key']]??$field['value'];$value=aw_urls($value);
-        $replace['@@FIELD:'.$field['key'].'@@']=in_array($field['kind'],['url','image'],true)?esc_url($value):esc_html($value);
-    }
+    // Phase 1: saved editorial fields are retained in the database but are never
+    // used in public output. Canonical HTML is the only visual/content authority.
     $html=file_get_contents(get_theme_file_path('templates/'.$key.'.html'));
     $html=preg_replace_callback('/@@PART:([a-z-]+)@@/',function($m){$file=get_theme_file_path('template-parts/'.$m[1].'.html');return is_file($file)?file_get_contents($file):'';},$html);
-    return aw_urls(strtr($html,$replace));
+    return aw_urls($html);
 }
 function aw_seed_content($key){
     $schema=aw_catalog()[$key];$blocks=[];

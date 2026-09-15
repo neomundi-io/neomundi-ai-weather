@@ -5,6 +5,10 @@ HERE = pathlib.Path(__file__).resolve().parent
 SSH = ['ssh', '-F', 'NUL', '-o', 'BatchMode=yes', '-o', 'StrictHostKeyChecking=yes', '-o', 'ConnectTimeout=20', '-p', '22', os.environ['AW_SSH_USER']+'@'+os.environ['AW_SSH_HOST']]
 ROOT = '/home/clients/85f40bb325280e979ad0b9d01cc5b8a6/sites/neomundi.cloud'
 script = (HERE / sys.argv[1]).read_bytes()
+if b'@@PATCH_LABEL@@' in script:
+    label=os.environ['AW_PATCH_LABEL']
+    assert label in ['home-widgets','remaining-pages']
+    script=script.replace(b'@@PATCH_LABEL@@',label.encode())
 script = script.replace(b'@@MANIFEST_BASE64@@',base64.b64encode((HERE.parent/'validation/DEPLOYMENT-INVENTORY.json').read_bytes()))
 script = script.replace(b'@@NEW_MANIFEST_BASE64@@',base64.b64encode((HERE.parent/'dist/DEPLOYMENT-INVENTORY.json').read_bytes()))
 script = script.replace(b'@@BASELINE_0_1_0@@',base64.b64encode((HERE.parent/'validation/DEPLOYMENT-INVENTORY-0.1.0.json').read_bytes()))

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "node tools/build.cjs",
+    "build": "node tools/build-canonical.cjs",
     "test": "node tools/verify.cjs"
   },
   "devDependencies": {

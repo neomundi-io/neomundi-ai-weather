@@ -1,0 +1,52 @@
+[
+  {
+    "page": "home",
+    "file": "index.html",
+    "sha256": "b4b93f0ec2bae19bb1b9dea6b6f026795ea7c4ef49ab81b3a7ca8616c266569d"
+  },
+  {
+    "page": "widgets",
+    "file": "widgets.html",
+    "sha256": "89853e695800925d1b1b0f17eed218dd21333a0c39d258d417d1203726c79417"
+  },
+  {
+    "page": "how-it-works",
+    "file": "how-it-works.html",
+    "sha256": "3939311a03c63fe559896b7a05dc1a25d82fbc4bc52078bd7f6ecfed3985113e"
+  },
+  {
+    "page": "us-station",
+    "file": "us-station.html",
+    "sha256": "4d111b6ad0d8cf128a299fb07194de7e525e4b19c40662f67ff45dfb699b0b4d"
+  },
+  {
+    "page": "today",
+    "file": "today.html",
+    "sha256": "bfa5cd8a60ec707dc39ad4d290274f124045a5759459dfdf141600ca5b9e4011"
+  },
+  {
+    "page": "stations",
+    "file": "stations.html",
+    "sha256": "864942c95e64548fbd2f3dfef7bc97e8e273dc4314c9e512630a0489864d041c"
+  },
+  {
+    "page": "daily-brief",
+    "file": "daily-brief.html",
+    "sha256": "438a4dad7c21402076d8f69b3d254446e205510ccb3ffbe0cbe26c58c17a490a"
+  },
+  {
+    "page": "for-media",
+    "file": "for-media.html",
+    "sha256": "72e84236a555b3d8d17e1c30e162052e971fe2d1ccfae0225e234b5dd317b38c"
+  },
+  {
+    "page": "about",
+    "file": "about.html",
+    "sha256": "0f3428eb30b8dff0bcbe3a16f9cb351d71b817b252929288928523e45872a696"
+  },
+  {
+    "page": "contact",
+    "file": "contact.html",
+    "sha256": "2c28dc97a62dee30a2e90594be66112d5aabaebf1a58ecf4a2afd8a4c55e3aa0"
+  }
+]

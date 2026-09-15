@@ -1,0 +1,40 @@
+{
+  "formats": [
+    {
+      "id": "bar-2x6",
+      "loaded": true
+    },
+    {
+      "id": "sidebar-us5",
+      "loaded": true
+    },
+    {
+      "id": "sidebar-5",
+      "loaded": true
+    },
+    {
+      "id": "sidebar-8",
+      "loaded": true
+    },
+    {
+      "id": "sidebar-12-v2",
+      "loaded": true
+    },
+    {
+      "id": "sidebar-12-220",
+      "loaded": true
+    }
+  ],
+  "quiz": [
+    {
+      "width": 1440,
+      "complete": true
+    },
+    {
+      "width": 390,
+      "complete": true
+    }
+  ],
+  "configuration": true,
+  "languageOptions": 13
+}

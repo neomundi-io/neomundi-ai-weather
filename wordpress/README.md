@@ -2,6 +2,8 @@
 
 Branche isolée : staging/neomundi-cloud-wordpress-20260915. Le dépôt de mesure reste sur main.
 
+**État actuel : 0.2.0, restauration canonique.** Le rendu public utilise directement les HTML du dossier redesign et ignore les champs Gutenberg conservés en base. L'édition progressive attend une validation visuelle distincte. Voir [CANONICAL-RESTORATION.md](CANONICAL-RESTORATION.md) pour le déploiement, les captures comparatives et les fichiers corrigés. `npm run build` appelle le générateur canonique ; ne pas relancer l'ancien générateur éditorial `tools/build.cjs` pour cette version.
+
 ## Reproduire
 
 ```powershell

@@ -2,6 +2,14 @@
 if (!defined('ABSPATH')) { exit; }
 require_once __DIR__ . '/inc/content.php';
 require_once __DIR__ . '/inc/setup.php';
+// The canonical page router overrides inherited page templates and never exposes
+// post_content. Gutenberg remains stored for a later, separately validated phase.
+add_filter('template_include',function($template){return aw_current_layout()?get_theme_file_path('index.php'):$template;},PHP_INT_MAX);
+add_action('template_redirect',function(){if(aw_current_layout()){status_header(200);header('X-AI-Weather-Renderer: canonical-0.2.0');}},999);
+add_filter('the_content',function($content){
+    if(!is_admin()&&aw_current_layout())return aw_render_layout(aw_current_layout(),[]);
+    return $content;
+},PHP_INT_MAX);
 function aw_csp_nonce(){static $nonce=null;if($nonce===null)$nonce=base64_encode(random_bytes(18));return $nonce;}
 add_action('template_redirect',function(){
     if(aw_current_layout()!=='us-station')return;
