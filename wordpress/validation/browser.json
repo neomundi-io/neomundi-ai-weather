@@ -1,0 +1,243 @@
+{
+  "results": [
+    {
+      "page": "home",
+      "status": 200,
+      "title": "ControlTower AI · AI Weather™",
+      "unresolved": false,
+      "h1": [
+        "AI Weather™ is the daily weather report for AI behavior."
+      ],
+      "errors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "page": "today",
+      "status": 200,
+      "title": "Today's AI Weather™ · ControlTower AI",
+      "unresolved": false,
+      "h1": [
+        "Today's AI Weather™"
+      ],
+      "errors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "page": "how-it-works",
+      "status": 200,
+      "title": "How It Works · AI Weather™",
+      "unresolved": false,
+      "h1": [
+        "How It Works"
+      ],
+      "errors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "page": "stations",
+      "status": 200,
+      "title": "Station USA · AI Weather™",
+      "unresolved": false,
+      "h1": [
+        "Station USA"
+      ],
+      "errors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "page": "widgets",
+      "status": 200,
+      "title": "Widget Library · AI Weather™",
+      "unresolved": false,
+      "h1": [
+        "Embed AI Weather™ on your site"
+      ],
+      "errors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "page": "daily-brief",
+      "status": 200,
+      "title": "Daily Brief · AI Weather™",
+      "unresolved": false,
+      "h1": [
+        "Get the daily reading in your inbox"
+      ],
+      "errors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "page": "for-media",
+      "status": 200,
+      "title": "For Media · AI Weather™",
+      "unresolved": false,
+      "h1": [
+        "AI Weather™, for journalists and researchers"
+      ],
+      "errors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "page": "about",
+      "status": 200,
+      "title": "About · ControlTower AI",
+      "unresolved": false,
+      "h1": [
+        "About ControlTower AI"
+      ],
+      "errors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "page": "contact",
+      "status": 200,
+      "title": "Contact · AI Weather™",
+      "unresolved": false,
+      "h1": [
+        "Contact"
+      ],
+      "errors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "page": "us-station",
+      "status": 200,
+      "title": "NeoMundi Experimental Station US · OmarAGI × NeoMundi",
+      "unresolved": false,
+      "h1": [
+        "NeoMundi Experimental Station US",
+        "US Station live globe"
+      ],
+      "errors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "page": "quiz",
+      "status": 200,
+      "title": "Spot the Drift · AI Weather",
+      "unresolved": false,
+      "h1": [
+        "Spot the Drift"
+      ],
+      "errors": [],
+      "horizontalOverflow": false
+    },
+    {
+      "page": "home",
+      "mobile": true,
+      "horizontalOverflow": false
+    },
+    {
+      "page": "today",
+      "mobile": true,
+      "horizontalOverflow": false
+    },
+    {
+      "page": "how-it-works",
+      "mobile": true,
+      "horizontalOverflow": false
+    },
+    {
+      "page": "stations",
+      "mobile": true,
+      "horizontalOverflow": false
+    },
+    {
+      "page": "widgets",
+      "mobile": true,
+      "horizontalOverflow": false
+    },
+    {
+      "page": "us-station",
+      "mobile": true,
+      "horizontalOverflow": false
+    },
+    {
+      "page": "quiz",
+      "mobile": true,
+      "horizontalOverflow": false
+    }
+  ],
+  "blocked": [
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "api.controltowerai.io",
+      "method": "POST"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "api.controltowerai.io",
+      "method": "POST"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "method": "GET"
+    }
+  ]
+}

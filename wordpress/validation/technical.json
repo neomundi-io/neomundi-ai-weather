@@ -1,0 +1,157 @@
+{
+  "results": [
+    {
+      "file": "core-panel.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "embed-demo.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "index.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "index_full.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "provider-widget.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "sidebar.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "topbar.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-bar-10.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-bar-2x6.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-bar-5.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-bar-6.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-bar-us-320.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-block-3x4-logos.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-home-1180.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-icons-320.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-sidebar-12-220.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-sidebar-12-v2.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-sidebar-12.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-sidebar-5.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-sidebar-8.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "weather-sidebar-us5.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    },
+    {
+      "file": "widget.html",
+      "status": 200,
+      "errors": [],
+      "loading": false
+    }
+  ],
+  "quizzes": [
+    {
+      "lang": "en",
+      "completed": true
+    },
+    {
+      "lang": "fr",
+      "completed": true
+    },
+    {
+      "lang": "es",
+      "completed": true
+    }
+  ],
+  "today": {
+    "cards": 12,
+    "text": "ChatGPT\nClaude\nGemini\nGrok\nMistral\nDeepSeek\nQwen\nKimi\nCohere\nMeta\nNvidia\nPerplexity",
+    "history": false
+  },
+  "telemetryAttempts": 15,
+  "telemetryFailureMethod": "Browser blocked requests before network; original POST code executed without mock response."
+}

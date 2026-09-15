@@ -1,0 +1,80 @@
+[
+  {
+    "lang": "en",
+    "cards": 12,
+    "historyVisible": true,
+    "direction": "ltr"
+  },
+  {
+    "lang": "fr",
+    "cards": 12,
+    "historyVisible": true,
+    "direction": "ltr"
+  },
+  {
+    "lang": "de",
+    "cards": 12,
+    "historyVisible": true,
+    "direction": "ltr"
+  },
+  {
+    "lang": "es",
+    "cards": 12,
+    "historyVisible": true,
+    "direction": "ltr"
+  },
+  {
+    "lang": "it",
+    "cards": 12,
+    "historyVisible": true,
+    "direction": "ltr"
+  },
+  {
+    "lang": "pt",
+    "cards": 12,
+    "historyVisible": true,
+    "direction": "ltr"
+  },
+  {
+    "lang": "nl",
+    "cards": 12,
+    "historyVisible": true,
+    "direction": "ltr"
+  },
+  {
+    "lang": "zh",
+    "cards": 12,
+    "historyVisible": true,
+    "direction": "ltr"
+  },
+  {
+    "lang": "ja",
+    "cards": 12,
+    "historyVisible": true,
+    "direction": "ltr"
+  },
+  {
+    "lang": "ko",
+    "cards": 12,
+    "historyVisible": true,
+    "direction": "ltr"
+  },
+  {
+    "lang": "hi",
+    "cards": 12,
+    "historyVisible": true,
+    "direction": "ltr"
+  },
+  {
+    "lang": "ar",
+    "cards": 12,
+    "historyVisible": true,
+    "direction": "rtl"
+  },
+  {
+    "lang": "ru",
+    "cards": 12,
+    "historyVisible": true,
+    "direction": "ltr"
+  }
+]
