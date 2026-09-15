@@ -38,8 +38,14 @@ add_filter('block_editor_settings_all', function($settings,$context){
 add_action('wp_enqueue_scripts',function(){
     $key=aw_current_layout(); if(!$key)return;
     $schema=aw_catalog()[$key];
-    foreach($schema['styles'] as $i=>$file){$url=str_contains($file,'@@')?aw_urls($file):(str_starts_with($file,'https://')?$file:get_theme_file_uri($file));wp_enqueue_style('aw-page-'.$i,$url,[], '0.1.0');}
-    wp_enqueue_style('aw-theme',get_stylesheet_uri(),[],'0.1.0');
+    $version=wp_get_theme()->get('Version');
+    foreach($schema['styles'] as $i=>$file){
+        $url=str_contains($file,'@@')?aw_urls($file):(str_starts_with($file,'https://')?$file:get_theme_file_uri($file));
+        // Google Fonts repeats the family parameter. Appending ver via older
+        // WordPress query helpers drops Inter and silently changes typography.
+        wp_enqueue_style('aw-page-'.$i,$url,[],str_starts_with($file,'https://')?null:$version);
+    }
+    wp_enqueue_style('aw-theme',get_stylesheet_uri(),[],$version);
     $prev=[];
     foreach($schema['scripts'] as $i=>$script){$handle='aw-script-'.$i;
         if(isset($script['src'])){wp_enqueue_script($handle,aw_urls($script['src']),$prev,'0.1.0',true);}

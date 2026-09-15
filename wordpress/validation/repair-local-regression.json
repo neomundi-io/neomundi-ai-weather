@@ -1,0 +1,222 @@
+[
+  {
+    "page": "home",
+    "mode": "normal",
+    "h1": "AI Weather™ is the daily weather report for AI behavior.",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": true
+  },
+  {
+    "page": "home",
+    "mode": "resilient",
+    "h1": "AI Weather™ is the daily weather report for AI behavior.",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": true
+  },
+  {
+    "page": "today",
+    "mode": "normal",
+    "h1": "Today's AI Weather™",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "today",
+    "mode": "resilient",
+    "h1": "Today's AI Weather™",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "how-it-works",
+    "mode": "normal",
+    "h1": "How It Works",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "how-it-works",
+    "mode": "resilient",
+    "h1": "How It Works",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "stations",
+    "mode": "normal",
+    "h1": "Station USA",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "stations",
+    "mode": "resilient",
+    "h1": "Station USA",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "widgets",
+    "mode": "normal",
+    "h1": "Embed AI Weather™ on your site",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "widgets",
+    "mode": "resilient",
+    "h1": "Embed AI Weather™ on your site",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "quiz",
+    "mode": "normal",
+    "h1": "Spot the Drift",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "quiz",
+    "mode": "resilient",
+    "h1": "Spot the Drift",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "daily-brief",
+    "mode": "normal",
+    "h1": "Get the daily reading in your inbox",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "daily-brief",
+    "mode": "resilient",
+    "h1": "Get the daily reading in your inbox",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "for-media",
+    "mode": "normal",
+    "h1": "AI Weather™, for journalists and researchers",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "for-media",
+    "mode": "resilient",
+    "h1": "AI Weather™, for journalists and researchers",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "about",
+    "mode": "normal",
+    "h1": "About ControlTower AI",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "about",
+    "mode": "resilient",
+    "h1": "About ControlTower AI",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "contact",
+    "mode": "normal",
+    "h1": "Contact",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "contact",
+    "mode": "resilient",
+    "h1": "Contact",
+    "header": true,
+    "footer": true,
+    "raw": 0,
+    "css": 7,
+    "hero": false
+  },
+  {
+    "page": "us-station",
+    "mode": "normal",
+    "h1": "NeoMundi Experimental Station US",
+    "header": true,
+    "footer": false,
+    "raw": 0,
+    "css": 8,
+    "hero": false
+  },
+  {
+    "page": "us-station",
+    "mode": "resilient",
+    "h1": "NeoMundi Experimental Station US",
+    "header": true,
+    "footer": false,
+    "raw": 0,
+    "css": 8,
+    "hero": false
+  }
+]

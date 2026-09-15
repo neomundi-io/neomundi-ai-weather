@@ -1,6 +1,6 @@
 {
   "theme": "ai-weather",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "files": [
     {
       "path": "ai-weather/assets/editor.js",
@@ -159,8 +159,8 @@
     },
     {
       "path": "ai-weather/functions.php",
-      "bytes": 4980,
-      "sha256": "4bac6db0b9e297bb1f18142d54ef1270f7cbcfb313405568a913a2f30fff9ac2"
+      "bytes": 4714,
+      "sha256": "d2c2ab681cb534f2b756e8d56efcfdd37f1937c20a63a30272fd2bc1b0b0f67b"
     },
     {
       "path": "ai-weather/header.php",
@@ -174,8 +174,8 @@
     },
     {
       "path": "ai-weather/inc/content.php",
-      "bytes": 4326,
-      "sha256": "a06cce8ac4b1543ccd0a45e820fddcb1b1d9ed49ae4e2768c61de68666460ae6"
+      "bytes": 3904,
+      "sha256": "1f9d5df4c7128280f199cde1661086e453a65c7e9a4c519648e71fbe61fb2b31"
     },
     {
       "path": "ai-weather/inc/setup.php",
@@ -184,8 +184,8 @@
     },
     {
       "path": "ai-weather/index.php",
-      "bytes": 584,
-      "sha256": "0d603f07f5d7fd860b5e6cd70abd9504a4127d2455376ab7a6746be1d6db6d11"
+      "bytes": 255,
+      "sha256": "0f01b4b9cafa116e2517a0b2649dffdc061d5202c6e7fa9ffd5c88709aa8fe2d"
     },
     {
       "path": "ai-weather/page.php",
@@ -840,7 +840,7 @@
     {
       "path": "ai-weather/style.css",
       "bytes": 675,
-      "sha256": "6db967b78db90a243075a87715e2bf65a7f3e3b89cc3d9b743f129abdd33f6eb"
+      "sha256": "f67220c7760eea7d3b7b72aa6c3f671da015697742a69b4ba4d5ec95f4495520"
     },
     {
       "path": "ai-weather/template-parts/about-footer.html",
@@ -993,5 +993,5 @@
       "sha256": "a4764f39c47e142360481d6a9df966aca47ff5ce84f649696a30fde03073b7c0"
     }
   ],
-  "totalBytes": 8469972
+  "totalBytes": 8468955
 }

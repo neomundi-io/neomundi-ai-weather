@@ -6,6 +6,8 @@ SSH = ['ssh', '-F', 'NUL', '-o', 'BatchMode=yes', '-o', 'StrictHostKeyChecking=y
 ROOT = '/home/clients/85f40bb325280e979ad0b9d01cc5b8a6/sites/neomundi.cloud'
 script = (HERE / sys.argv[1]).read_bytes()
 script = script.replace(b'@@MANIFEST_BASE64@@',base64.b64encode((HERE.parent/'validation/DEPLOYMENT-INVENTORY.json').read_bytes()))
+script = script.replace(b'@@NEW_MANIFEST_BASE64@@',base64.b64encode((HERE.parent/'dist/DEPLOYMENT-INVENTORY.json').read_bytes()))
+script = script.replace(b'@@BASELINE_0_1_0@@',base64.b64encode((HERE.parent/'validation/DEPLOYMENT-INVENTORY-0.1.0.json').read_bytes()))
 interpreter = 'python3' if sys.argv[1].endswith('.py') else 'php'
 result = subprocess.run(SSH + ['cd ' + ROOT + ' && ' + interpreter], input=script, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 sys.stdout.buffer.write(result.stdout)

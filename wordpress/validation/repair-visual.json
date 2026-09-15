@@ -1,0 +1,2452 @@
+[
+  {
+    "kind": "canonical",
+    "width": 1440,
+    "status": 200,
+    "headers": {
+      "connection": "keep-alive",
+      "content-length": "47696",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Tue, 15 Sep 2026 21:19:27 GMT",
+      "keep-alive": "timeout=5"
+    },
+    "errors": [],
+    "paragraphs": [
+      {
+        "text": "GLOBAL AI WEATHER STATION · CONTROLTOWER AI",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 1132
+      },
+      {
+        "text": "Every day, the ControlTower AI instrument asks the same challenging question 23 times, followed by a second question 7 times, to each of the 12 AI systems in the panel. It then compares their responses with one another and over time.",
+        "height": 81.5625,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 769.75
+      },
+      {
+        "text": "AI Weather™ publishes a simple reading of their current condition, stability, variations and observed behavioral drift.",
+        "height": 54.375,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 769.75
+      },
+      {
+        "text": "An AI system can change, drift or make mistakes without it being immediately visible.",
+        "height": 55.5,
+        "margin": "26px 0px 0px",
+        "font": "700 17px / 25.5px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.5px",
+        "width": 769.75
+      },
+      {
+        "text": "We created AI Weather™ to help everyone read these changes more clearly, strengthen their judgment and use AI systems with greater discernment.",
+        "height": 54.375,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 769.75
+      },
+      {
+        "text": "We observe and measure. We do not certify, guarantee or predict anything that has not been demonstrated.",
+        "height": 20.796875,
+        "margin": "22px 0px 0px",
+        "font": "13px / 20.8px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20.8px",
+        "width": 769.75
+      },
+      {
+        "text": "READ THE WEATHER",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 640
+      },
+      {
+        "text": "Each color indicates the level of behavioral variation observed. It helps people understand where to focus their attention without making the decision for them.",
+        "height": 51.1875,
+        "margin": "14px 0px 0px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 640
+      },
+      {
+        "text": "Observed behavior remains within its expected range for this period.",
+        "height": 43.1875,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229
+      },
+      {
+        "text": "A variation has been observed. It should be monitored across the next observations.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229
+      },
+      {
+        "text": "A more marked deviation has been measured. A careful reading of the context and results is recommended.",
+        "height": 86.375,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229
+      },
+      {
+        "text": "A significant disruption in observed behavior has been detected. It requires deeper human analysis.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229
+      },
+      {
+        "text": "These levels describe a behavioral condition observed at a given moment. They are not a certification, a guarantee or a definitive judgment about an AI system.",
+        "height": 38.375,
+        "margin": "24px 226px 0px",
+        "font": "12px / 19.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "19.2px",
+        "width": 680
+      },
+      {
+        "text": "YOUR CALL",
+        "height": 23.1875,
+        "margin": "14px 0px 12px",
+        "font": "600 14.5px / 23.2px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "23.2px",
+        "width": 626.390625
+      },
+      {
+        "text": "Every day, a real situation from our observations becomes a simple question. Compare the signals, tell a normal variation from a drift, and put your judgment to the test against real AI behavior.",
+        "height": 69.5625,
+        "margin": "14px 0px 0px",
+        "font": "14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 626.390625
+      },
+      {
+        "text": "One question. Two signals. Your turn to read the weather.",
+        "height": 23.1875,
+        "margin": "14px 0px 0px",
+        "font": "700 14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 626.390625
+      },
+      {
+        "text": "Quiz not loading? \n          Try it here →",
+        "height": 0,
+        "margin": "12px 0px 0px",
+        "font": "12.5px / 20px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20px",
+        "width": 0
+      },
+      {
+        "text": "GO FURTHER",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 640
+      },
+      {
+        "text": "AI Weather™ can be read at several levels. Four paths to go further, from a first look to a closer reading.",
+        "height": 51.1875,
+        "margin": "0px 0px 34px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 640
+      },
+      {
+        "text": "UNDERSTAND",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 229.75
+      },
+      {
+        "text": "What AI Weather™ actually measures, the four attention levels, and the fixed protocol behind every published condition.",
+        "height": 86.375,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229.75
+      },
+      {
+        "text": "OBSERVE",
+        "height": 60.140625,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 229.75
+      },
+      {
+        "text": "The full observation wall, system by system, with each panel AI's current condition and recent trend.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229.75
+      },
+      {
+        "text": "TEST",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 229.75
+      },
+      {
+        "text": "Compare two real signals and put your judgment to the test against an actual observed variation, with no easy answer.",
+        "height": 86.375,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229.75
+      },
+      {
+        "text": "USE",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 229.75
+      },
+      {
+        "text": "Real, embeddable formats reading the same daily measurement: full wall, Core Panel, bar, sidebar, individual badge, and the quiz.",
+        "height": 86.375,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229.75
+      },
+      {
+        "text": "BEHIND THE WEATHER",
+        "height": 23.1875,
+        "margin": "14px 0px 12px",
+        "font": "600 14.5px / 23.2px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "23.2px",
+        "width": 596.1875
+      },
+      {
+        "text": "AI Weather™ is published by ControlTower AI, the public face of NeoMundi. Every measurement is produced by the same runtime metrology layer, then hash-chained into a timestamped capsule, verifiable independently of ControlTower AI itself.",
+        "height": 69.5625,
+        "margin": "14px 0px 0px",
+        "font": "14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 596.1875
+      },
+      {
+        "text": "This is not a ranking. AI Weather™ does not determine which AI is “best”, and does not judge whether an individual answer is true or false. Every view shows an observed condition, never a competitive score.",
+        "height": 60,
+        "margin": "22px 0px 0px",
+        "font": "12.5px / 20px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20px",
+        "width": 596.1875
+      },
+      {
+        "text": "Today's level and any notable drift, straight to your inbox. This form isn't connected to a sending service yet: it shows the intended interface for the Daily Brief.",
+        "height": 18.390625,
+        "margin": "8px 0px 0px",
+        "font": "11.5px / 18.4px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "18.4px",
+        "width": 860.671875
+      },
+      {
+        "text": "ControlTowerAI",
+        "height": 26,
+        "margin": "0px 0px 12px",
+        "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "normal",
+        "width": 329.625
+      },
+      {
+        "text": "AI Weather™: machine-readable JSON, hash & signature verifiable. Powered by NeoMundi, Runtime AI Metrology.",
+        "height": 102.375,
+        "margin": "0px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 280
+      }
+    ],
+    "geometry": {
+      ".site-header": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 69,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(244, 248, 253, 0.82)"
+        }
+      ],
+      "h1": [
+        {
+          "x": 154,
+          "y": 155.390625,
+          "width": 882.953125,
+          "height": 116.625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "main": [],
+      ".hero": [
+        {
+          "x": 0,
+          "y": 69,
+          "width": 1440,
+          "height": 737.625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "footer": [
+        {
+          "x": 0,
+          "y": 3612.59375,
+          "width": 1440,
+          "height": 312.953125,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "none",
+          "backgroundColor": "rgb(7, 13, 24)"
+        }
+      ],
+      "section": [
+        {
+          "x": 0,
+          "y": 69,
+          "width": 1440,
+          "height": 737.625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 806.625,
+          "width": 1440,
+          "height": 663.90625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 1470.53125,
+          "width": 1440,
+          "height": 598,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 2068.53125,
+          "width": 1440,
+          "height": 633.34375,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 2701.875,
+          "width": 1440,
+          "height": 604.9375,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 3306.8125,
+          "width": 1440,
+          "height": 305.78125,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgb(246, 250, 255)"
+        }
+      ]
+    },
+    "title": "ControlTower AI · AI Weather™",
+    "h1": "AI Weather™ is the daily weather report for AI behavior.",
+    "rawBlocks": 0,
+    "overflow": false,
+    "styleSheets": [
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+      null
+    ],
+    "bodyText": "ControlTowerAI\nToday's Weather\nHow It Works\nStation USA\nWidgets\nEN ▾\nToday's AI Weather™ →\n\nGLOBAL AI WEATHER STATION · CONTROLTOWER AI\n\nAI Weather™ is the daily weather report for AI behavior.\n\nEvery day, the ControlTow"
+  },
+  {
+    "kind": "live",
+    "width": 1440,
+    "status": 200,
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "text/html; charset=UTF-8",
+      "date": "Tue, 15 Sep 2026 21:19:31 GMT",
+      "link": "<https://neomundi.cloud/wp-json/>; rel=\"https://api.w.org/\", <https://neomundi.cloud/wp-json/wp/v2/pages/131>; rel=\"alternate\"; title=\"JSON\"; type=\"application/json\", <https://neomundi.cloud/>; rel=shortlink",
+      "permissions-policy": "private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")",
+      "server": "Apache",
+      "strict-transport-security": "max-age=16000000",
+      "vary": "Accept-Encoding,Cookie,X-FORWARDED-PROTO"
+    },
+    "errors": [],
+    "paragraphs": [
+      {
+        "text": "GLOBAL AI WEATHER STATION · CONTROLTOWER AI",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 1132
+      },
+      {
+        "text": "Every day, the ControlTower AI instrument asks the same challenging question 23 times, followed by a second question 7 times, to each of the 12 AI systems in the panel. It then compares their responses with one another and over time.",
+        "height": 81.5625,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 769.75
+      },
+      {
+        "text": "AI Weather™ publishes a simple reading of their current condition, stability, variations and observed behavioral drift.",
+        "height": 54.375,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 769.75
+      },
+      {
+        "text": "An AI system can change, drift or make mistakes without it being immediately visible.",
+        "height": 55.5,
+        "margin": "26px 0px 0px",
+        "font": "700 17px / 25.5px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.5px",
+        "width": 769.75
+      },
+      {
+        "text": "We created AI Weather™ to help everyone read these changes more clearly, strengthen their judgment and use AI systems with greater discernment.",
+        "height": 54.375,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 769.75
+      },
+      {
+        "text": "We observe and measure. We do not certify, guarantee or predict anything that has not been demonstrated.",
+        "height": 20.796875,
+        "margin": "22px 0px 0px",
+        "font": "13px / 20.8px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20.8px",
+        "width": 769.75
+      },
+      {
+        "text": "READ THE WEATHER",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 640
+      },
+      {
+        "text": "Each color indicates the level of behavioral variation observed. It helps people understand where to focus their attention without making the decision for them.",
+        "height": 51.1875,
+        "margin": "14px 0px 0px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 640
+      },
+      {
+        "text": "Observed behavior remains within its expected range for this period.",
+        "height": 43.1875,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229
+      },
+      {
+        "text": "A variation has been observed. It should be monitored across the next observations.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229
+      },
+      {
+        "text": "A more marked deviation has been measured. A careful reading of the context and results is recommended.",
+        "height": 86.375,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229
+      },
+      {
+        "text": "A significant disruption in observed behavior has been detected. It requires deeper human analysis.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229
+      },
+      {
+        "text": "These levels describe a behavioral condition observed at a given moment. They are not a certification, a guarantee or a definitive judgment about an AI system.",
+        "height": 38.375,
+        "margin": "24px 226px 0px",
+        "font": "12px / 19.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "19.2px",
+        "width": 680
+      },
+      {
+        "text": "YOUR CALL",
+        "height": 23.1875,
+        "margin": "14px 0px 12px",
+        "font": "600 14.5px / 23.2px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "23.2px",
+        "width": 626.390625
+      },
+      {
+        "text": "Every day, a real situation from our observations becomes a simple question. Compare the signals, tell a normal variation from a drift, and put your judgment to the test against real AI behavior.",
+        "height": 69.5625,
+        "margin": "14px 0px 0px",
+        "font": "14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 626.390625
+      },
+      {
+        "text": "One question. Two signals. Your turn to read the weather.",
+        "height": 23.1875,
+        "margin": "14px 0px 0px",
+        "font": "700 14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 626.390625
+      },
+      {
+        "text": "Quiz not loading? \n          Try it here →",
+        "height": 0,
+        "margin": "12px 0px 0px",
+        "font": "12.5px / 20px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20px",
+        "width": 0
+      },
+      {
+        "text": "GO FURTHER",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 640
+      },
+      {
+        "text": "AI Weather™ can be read at several levels. Four paths to go further, from a first look to a closer reading.",
+        "height": 51.1875,
+        "margin": "0px 0px 34px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 640
+      },
+      {
+        "text": "UNDERSTAND",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 229.75
+      },
+      {
+        "text": "What AI Weather™ actually measures, the four attention levels, and the fixed protocol behind every published condition.",
+        "height": 86.375,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229.75
+      },
+      {
+        "text": "OBSERVE",
+        "height": 60.140625,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 229.75
+      },
+      {
+        "text": "The full observation wall, system by system, with each panel AI's current condition and recent trend.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229.75
+      },
+      {
+        "text": "TEST",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 229.75
+      },
+      {
+        "text": "Compare two real signals and put your judgment to the test against an actual observed variation, with no easy answer.",
+        "height": 86.375,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229.75
+      },
+      {
+        "text": "USE",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 229.75
+      },
+      {
+        "text": "Real, embeddable formats reading the same daily measurement: full wall, Core Panel, bar, sidebar, individual badge, and the quiz.",
+        "height": 86.375,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229.75
+      },
+      {
+        "text": "BEHIND THE WEATHER",
+        "height": 23.1875,
+        "margin": "14px 0px 12px",
+        "font": "600 14.5px / 23.2px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "23.2px",
+        "width": 596.1875
+      },
+      {
+        "text": "AI Weather™ is published by ControlTower AI, the public face of NeoMundi. Every measurement is produced by the same runtime metrology layer, then hash-chained into a timestamped capsule, verifiable independently of ControlTower AI itself.",
+        "height": 69.5625,
+        "margin": "14px 0px 0px",
+        "font": "14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 596.1875
+      },
+      {
+        "text": "This is not a ranking. AI Weather™ does not determine which AI is “best”, and does not judge whether an individual answer is true or false. Every view shows an observed condition, never a competitive score.",
+        "height": 60,
+        "margin": "22px 0px 0px",
+        "font": "12.5px / 20px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20px",
+        "width": 596.1875
+      },
+      {
+        "text": "Today's level and any notable drift, straight to your inbox. This form isn't connected to a sending service yet: it shows the intended interface for the Daily Brief.",
+        "height": 18.390625,
+        "margin": "8px 0px 0px",
+        "font": "11.5px / 18.4px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "18.4px",
+        "width": 860.671875
+      },
+      {
+        "text": "ControlTowerAI",
+        "height": 26,
+        "margin": "0px 0px 12px",
+        "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "normal",
+        "width": 329.625
+      },
+      {
+        "text": "AI Weather™: machine-readable JSON, hash & signature verifiable. Powered by NeoMundi, Runtime AI Metrology.",
+        "height": 102.375,
+        "margin": "0px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 280
+      }
+    ],
+    "geometry": {
+      ".site-header": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 69,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(244, 248, 253, 0.82)"
+        }
+      ],
+      "h1": [
+        {
+          "x": 154,
+          "y": 155.390625,
+          "width": 882.953125,
+          "height": 116.625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "main": [],
+      ".hero": [
+        {
+          "x": 0,
+          "y": 69,
+          "width": 1440,
+          "height": 737.625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "footer": [
+        {
+          "x": 0,
+          "y": 3612.59375,
+          "width": 1440,
+          "height": 312.953125,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "none",
+          "backgroundColor": "rgb(7, 13, 24)"
+        }
+      ],
+      "section": [
+        {
+          "x": 0,
+          "y": 69,
+          "width": 1440,
+          "height": 737.625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 806.625,
+          "width": 1440,
+          "height": 663.90625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 1470.53125,
+          "width": 1440,
+          "height": 598,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 2068.53125,
+          "width": 1440,
+          "height": 633.34375,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 2701.875,
+          "width": 1440,
+          "height": 604.9375,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 3306.8125,
+          "width": 1440,
+          "height": 305.78125,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgb(246, 250, 255)"
+        }
+      ]
+    },
+    "title": "ControlTower AI · AI Weather™",
+    "h1": "AI Weather™ is the daily weather report for AI behavior.",
+    "rawBlocks": 0,
+    "overflow": false,
+    "styleSheets": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+      "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/home-0.css?ver=0.1.1",
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+      "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.1.1"
+    ],
+    "bodyText": "ControlTowerAI\nToday's Weather\nHow It Works\nStation USA\nWidgets\nEN ▾\nToday's AI Weather™ →\n\nGLOBAL AI WEATHER STATION · CONTROLTOWER AI\n\nAI Weather™ is the daily weather report for AI behavior.\n\nEvery day, the ControlTow"
+  },
+  {
+    "kind": "uncached",
+    "width": 1440,
+    "status": 200,
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "text/html; charset=UTF-8",
+      "date": "Tue, 15 Sep 2026 21:19:34 GMT",
+      "link": "<https://neomundi.cloud/wp-json/>; rel=\"https://api.w.org/\", <https://neomundi.cloud/wp-json/wp/v2/pages/131>; rel=\"alternate\"; title=\"JSON\"; type=\"application/json\", <https://neomundi.cloud/>; rel=shortlink",
+      "permissions-policy": "private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")",
+      "server": "Apache",
+      "strict-transport-security": "max-age=16000000",
+      "vary": "Accept-Encoding,Cookie,X-FORWARDED-PROTO"
+    },
+    "errors": [],
+    "paragraphs": [
+      {
+        "text": "GLOBAL AI WEATHER STATION · CONTROLTOWER AI",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 1132
+      },
+      {
+        "text": "Every day, the ControlTower AI instrument asks the same challenging question 23 times, followed by a second question 7 times, to each of the 12 AI systems in the panel. It then compares their responses with one another and over time.",
+        "height": 81.5625,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 769.75
+      },
+      {
+        "text": "AI Weather™ publishes a simple reading of their current condition, stability, variations and observed behavioral drift.",
+        "height": 54.375,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 769.75
+      },
+      {
+        "text": "An AI system can change, drift or make mistakes without it being immediately visible.",
+        "height": 55.5,
+        "margin": "26px 0px 0px",
+        "font": "700 17px / 25.5px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.5px",
+        "width": 769.75
+      },
+      {
+        "text": "We created AI Weather™ to help everyone read these changes more clearly, strengthen their judgment and use AI systems with greater discernment.",
+        "height": 54.375,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 769.75
+      },
+      {
+        "text": "We observe and measure. We do not certify, guarantee or predict anything that has not been demonstrated.",
+        "height": 20.796875,
+        "margin": "22px 0px 0px",
+        "font": "13px / 20.8px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20.8px",
+        "width": 769.75
+      },
+      {
+        "text": "READ THE WEATHER",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 640
+      },
+      {
+        "text": "Each color indicates the level of behavioral variation observed. It helps people understand where to focus their attention without making the decision for them.",
+        "height": 51.1875,
+        "margin": "14px 0px 0px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 640
+      },
+      {
+        "text": "Observed behavior remains within its expected range for this period.",
+        "height": 43.1875,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229
+      },
+      {
+        "text": "A variation has been observed. It should be monitored across the next observations.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229
+      },
+      {
+        "text": "A more marked deviation has been measured. A careful reading of the context and results is recommended.",
+        "height": 86.375,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229
+      },
+      {
+        "text": "A significant disruption in observed behavior has been detected. It requires deeper human analysis.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229
+      },
+      {
+        "text": "These levels describe a behavioral condition observed at a given moment. They are not a certification, a guarantee or a definitive judgment about an AI system.",
+        "height": 38.375,
+        "margin": "24px 226px 0px",
+        "font": "12px / 19.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "19.2px",
+        "width": 680
+      },
+      {
+        "text": "YOUR CALL",
+        "height": 23.1875,
+        "margin": "14px 0px 12px",
+        "font": "600 14.5px / 23.2px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "23.2px",
+        "width": 626.390625
+      },
+      {
+        "text": "Every day, a real situation from our observations becomes a simple question. Compare the signals, tell a normal variation from a drift, and put your judgment to the test against real AI behavior.",
+        "height": 69.5625,
+        "margin": "14px 0px 0px",
+        "font": "14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 626.390625
+      },
+      {
+        "text": "One question. Two signals. Your turn to read the weather.",
+        "height": 23.1875,
+        "margin": "14px 0px 0px",
+        "font": "700 14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 626.390625
+      },
+      {
+        "text": "Quiz not loading? \n          Try it here →",
+        "height": 0,
+        "margin": "12px 0px 0px",
+        "font": "12.5px / 20px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20px",
+        "width": 0
+      },
+      {
+        "text": "GO FURTHER",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 640
+      },
+      {
+        "text": "AI Weather™ can be read at several levels. Four paths to go further, from a first look to a closer reading.",
+        "height": 51.1875,
+        "margin": "0px 0px 34px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 640
+      },
+      {
+        "text": "UNDERSTAND",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 229.75
+      },
+      {
+        "text": "What AI Weather™ actually measures, the four attention levels, and the fixed protocol behind every published condition.",
+        "height": 86.375,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229.75
+      },
+      {
+        "text": "OBSERVE",
+        "height": 60.140625,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 229.75
+      },
+      {
+        "text": "The full observation wall, system by system, with each panel AI's current condition and recent trend.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229.75
+      },
+      {
+        "text": "TEST",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 229.75
+      },
+      {
+        "text": "Compare two real signals and put your judgment to the test against an actual observed variation, with no easy answer.",
+        "height": 86.375,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229.75
+      },
+      {
+        "text": "USE",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 229.75
+      },
+      {
+        "text": "Real, embeddable formats reading the same daily measurement: full wall, Core Panel, bar, sidebar, individual badge, and the quiz.",
+        "height": 86.375,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 229.75
+      },
+      {
+        "text": "BEHIND THE WEATHER",
+        "height": 23.1875,
+        "margin": "14px 0px 12px",
+        "font": "600 14.5px / 23.2px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "23.2px",
+        "width": 596.1875
+      },
+      {
+        "text": "AI Weather™ is published by ControlTower AI, the public face of NeoMundi. Every measurement is produced by the same runtime metrology layer, then hash-chained into a timestamped capsule, verifiable independently of ControlTower AI itself.",
+        "height": 69.5625,
+        "margin": "14px 0px 0px",
+        "font": "14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 596.1875
+      },
+      {
+        "text": "This is not a ranking. AI Weather™ does not determine which AI is “best”, and does not judge whether an individual answer is true or false. Every view shows an observed condition, never a competitive score.",
+        "height": 60,
+        "margin": "22px 0px 0px",
+        "font": "12.5px / 20px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20px",
+        "width": 596.1875
+      },
+      {
+        "text": "Today's level and any notable drift, straight to your inbox. This form isn't connected to a sending service yet: it shows the intended interface for the Daily Brief.",
+        "height": 18.390625,
+        "margin": "8px 0px 0px",
+        "font": "11.5px / 18.4px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "18.4px",
+        "width": 860.671875
+      },
+      {
+        "text": "ControlTowerAI",
+        "height": 26,
+        "margin": "0px 0px 12px",
+        "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "normal",
+        "width": 329.625
+      },
+      {
+        "text": "AI Weather™: machine-readable JSON, hash & signature verifiable. Powered by NeoMundi, Runtime AI Metrology.",
+        "height": 102.375,
+        "margin": "0px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 280
+      }
+    ],
+    "geometry": {
+      ".site-header": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 69,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(244, 248, 253, 0.82)"
+        }
+      ],
+      "h1": [
+        {
+          "x": 154,
+          "y": 155.390625,
+          "width": 882.953125,
+          "height": 116.625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "main": [],
+      ".hero": [
+        {
+          "x": 0,
+          "y": 69,
+          "width": 1440,
+          "height": 737.625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "footer": [
+        {
+          "x": 0,
+          "y": 3612.59375,
+          "width": 1440,
+          "height": 312.953125,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "none",
+          "backgroundColor": "rgb(7, 13, 24)"
+        }
+      ],
+      "section": [
+        {
+          "x": 0,
+          "y": 69,
+          "width": 1440,
+          "height": 737.625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 806.625,
+          "width": 1440,
+          "height": 663.90625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 1470.53125,
+          "width": 1440,
+          "height": 598,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 2068.53125,
+          "width": 1440,
+          "height": 633.34375,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 2701.875,
+          "width": 1440,
+          "height": 604.9375,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 3306.8125,
+          "width": 1440,
+          "height": 305.78125,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgb(246, 250, 255)"
+        }
+      ]
+    },
+    "title": "ControlTower AI · AI Weather™",
+    "h1": "AI Weather™ is the daily weather report for AI behavior.",
+    "rawBlocks": 0,
+    "overflow": false,
+    "styleSheets": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+      "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/home-0.css?ver=0.1.1",
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+      "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.1.1"
+    ],
+    "bodyText": "ControlTowerAI\nToday's Weather\nHow It Works\nStation USA\nWidgets\nEN ▾\nToday's AI Weather™ →\n\nGLOBAL AI WEATHER STATION · CONTROLTOWER AI\n\nAI Weather™ is the daily weather report for AI behavior.\n\nEvery day, the ControlTow"
+  },
+  {
+    "kind": "canonical",
+    "width": 390,
+    "status": 200,
+    "headers": {
+      "connection": "keep-alive",
+      "content-length": "47696",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Tue, 15 Sep 2026 21:19:37 GMT",
+      "keep-alive": "timeout=5"
+    },
+    "errors": [],
+    "paragraphs": [
+      {
+        "text": "GLOBAL AI WEATHER STATION · CONTROLTOWER AI",
+        "height": 36.78125,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 342
+      },
+      {
+        "text": "Every day, the ControlTower AI instrument asks the same challenging question 23 times, followed by a second question 7 times, to each of the 12 AI systems in the panel. It then compares their responses with one another and over time.",
+        "height": 163.125,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 342
+      },
+      {
+        "text": "AI Weather™ publishes a simple reading of their current condition, stability, variations and observed behavioral drift.",
+        "height": 81.5625,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 342
+      },
+      {
+        "text": "An AI system can change, drift or make mistakes without it being immediately visible.",
+        "height": 106.5,
+        "margin": "26px 0px 0px",
+        "font": "700 17px / 25.5px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.5px",
+        "width": 342
+      },
+      {
+        "text": "We created AI Weather™ to help everyone read these changes more clearly, strengthen their judgment and use AI systems with greater discernment.",
+        "height": 108.75,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 342
+      },
+      {
+        "text": "We observe and measure. We do not certify, guarantee or predict anything that has not been demonstrated.",
+        "height": 62.390625,
+        "margin": "22px 0px 0px",
+        "font": "13px / 20.8px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20.8px",
+        "width": 342
+      },
+      {
+        "text": "READ THE WEATHER",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 342
+      },
+      {
+        "text": "Each color indicates the level of behavioral variation observed. It helps people understand where to focus their attention without making the decision for them.",
+        "height": 102.375,
+        "margin": "14px 0px 0px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 342
+      },
+      {
+        "text": "Observed behavior remains within its expected range for this period.",
+        "height": 43.1875,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 300
+      },
+      {
+        "text": "A variation has been observed. It should be monitored across the next observations.",
+        "height": 43.1875,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 300
+      },
+      {
+        "text": "A more marked deviation has been measured. A careful reading of the context and results is recommended.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 300
+      },
+      {
+        "text": "A significant disruption in observed behavior has been detected. It requires deeper human analysis.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 300
+      },
+      {
+        "text": "These levels describe a behavioral condition observed at a given moment. They are not a certification, a guarantee or a definitive judgment about an AI system.",
+        "height": 57.5625,
+        "margin": "24px 0px 0px",
+        "font": "12px / 19.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "19.2px",
+        "width": 342
+      },
+      {
+        "text": "YOUR CALL",
+        "height": 23.1875,
+        "margin": "14px 0px 12px",
+        "font": "600 14.5px / 23.2px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "Every day, a real situation from our observations becomes a simple question. Compare the signals, tell a normal variation from a drift, and put your judgment to the test against real AI behavior.",
+        "height": 92.75,
+        "margin": "14px 0px 0px",
+        "font": "14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "One question. Two signals. Your turn to read the weather.",
+        "height": 46.375,
+        "margin": "14px 0px 0px",
+        "font": "700 14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "Quiz not loading? \n          Try it here →",
+        "height": 0,
+        "margin": "12px 0px 0px",
+        "font": "12.5px / 20px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20px",
+        "width": 0
+      },
+      {
+        "text": "GO FURTHER",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 342
+      },
+      {
+        "text": "AI Weather™ can be read at several levels. Four paths to go further, from a first look to a closer reading.",
+        "height": 76.78125,
+        "margin": "0px 0px 34px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 342
+      },
+      {
+        "text": "UNDERSTAND",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 288
+      },
+      {
+        "text": "What AI Weather™ actually measures, the four attention levels, and the fixed protocol behind every published condition.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 288
+      },
+      {
+        "text": "OBSERVE",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 288
+      },
+      {
+        "text": "The full observation wall, system by system, with each panel AI's current condition and recent trend.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 288
+      },
+      {
+        "text": "TEST",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 288
+      },
+      {
+        "text": "Compare two real signals and put your judgment to the test against an actual observed variation, with no easy answer.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 288
+      },
+      {
+        "text": "USE",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 288
+      },
+      {
+        "text": "Real, embeddable formats reading the same daily measurement: full wall, Core Panel, bar, sidebar, individual badge, and the quiz.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 288
+      },
+      {
+        "text": "BEHIND THE WEATHER",
+        "height": 23.1875,
+        "margin": "14px 0px 12px",
+        "font": "600 14.5px / 23.2px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "AI Weather™ is published by ControlTower AI, the public face of NeoMundi. Every measurement is produced by the same runtime metrology layer, then hash-chained into a timestamped capsule, verifiable independently of ControlTower AI itself.",
+        "height": 115.9375,
+        "margin": "14px 0px 0px",
+        "font": "14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "This is not a ranking. AI Weather™ does not determine which AI is “best”, and does not judge whether an individual answer is true or false. Every view shows an observed condition, never a competitive score.",
+        "height": 80,
+        "margin": "22px 0px 0px",
+        "font": "12.5px / 20px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20px",
+        "width": 342
+      },
+      {
+        "text": "Today's level and any notable drift, straight to your inbox. This form isn't connected to a sending service yet: it shows the intended interface for the Daily Brief.",
+        "height": 55.171875,
+        "margin": "8px 0px 0px",
+        "font": "11.5px / 18.4px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "18.4px",
+        "width": 342
+      },
+      {
+        "text": "ControlTowerAI",
+        "height": 26,
+        "margin": "0px 0px 12px",
+        "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "normal",
+        "width": 155
+      },
+      {
+        "text": "AI Weather™: machine-readable JSON, hash & signature verifiable. Powered by NeoMundi, Runtime AI Metrology.",
+        "height": 179.15625,
+        "margin": "0px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 155
+      }
+    ],
+    "geometry": {
+      ".site-header": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 69,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(244, 248, 253, 0.82)"
+        }
+      ],
+      "h1": [
+        {
+          "x": 24,
+          "y": 173.78125,
+          "width": 342,
+          "height": 103.640625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "main": [],
+      ".hero": [
+        {
+          "x": 0,
+          "y": 69,
+          "width": 390,
+          "height": 998.75,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "footer": [
+        {
+          "x": 0,
+          "y": 6078.609375,
+          "width": 390,
+          "height": 608.109375,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "none",
+          "backgroundColor": "rgb(7, 13, 24)"
+        }
+      ],
+      "section": [
+        {
+          "x": 0,
+          "y": 69,
+          "width": 390,
+          "height": 998.75,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 1067.75,
+          "width": 390,
+          "height": 1280.609375,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 2348.359375,
+          "width": 390,
+          "height": 869.703125,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 3218.0625,
+          "width": 390,
+          "height": 1376.671875,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 4594.734375,
+          "width": 390,
+          "height": 1087.3125,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 5682.046875,
+          "width": 390,
+          "height": 396.5625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgb(246, 250, 255)"
+        }
+      ]
+    },
+    "title": "ControlTower AI · AI Weather™",
+    "h1": "AI Weather™ is the daily weather report for AI behavior.",
+    "rawBlocks": 0,
+    "overflow": true,
+    "styleSheets": [
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+      null
+    ],
+    "bodyText": "ControlTowerAI\nEN ▾\nToday's AI Weather™ →\n☰\n\nGLOBAL AI WEATHER STATION · CONTROLTOWER AI\n\nAI Weather™ is the daily weather report for AI behavior.\n\nEvery day, the ControlTower AI instrument asks the same challenging ques"
+  },
+  {
+    "kind": "live",
+    "width": 390,
+    "status": 200,
+    "headers": {
+      "accept-ranges": "bytes",
+      "cache-control": "max-age=3, must-revalidate",
+      "content-encoding": "gzip",
+      "content-length": "14380",
+      "content-type": "text/html; charset=UTF-8",
+      "date": "Tue, 15 Sep 2026 21:19:40 GMT",
+      "etag": "\"d2d2-65b8c1b44b05a-gzip\"",
+      "expires": "Tue, 15 Sep 2026 21:19:43 GMT",
+      "last-modified": "Tue, 15 Sep 2026 21:19:31 GMT",
+      "server": "Apache",
+      "strict-transport-security": "max-age=16000000",
+      "vary": "Accept-Encoding,Cookie"
+    },
+    "errors": [],
+    "paragraphs": [
+      {
+        "text": "GLOBAL AI WEATHER STATION · CONTROLTOWER AI",
+        "height": 36.78125,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 342
+      },
+      {
+        "text": "Every day, the ControlTower AI instrument asks the same challenging question 23 times, followed by a second question 7 times, to each of the 12 AI systems in the panel. It then compares their responses with one another and over time.",
+        "height": 163.125,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 342
+      },
+      {
+        "text": "AI Weather™ publishes a simple reading of their current condition, stability, variations and observed behavioral drift.",
+        "height": 81.5625,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 342
+      },
+      {
+        "text": "An AI system can change, drift or make mistakes without it being immediately visible.",
+        "height": 106.5,
+        "margin": "26px 0px 0px",
+        "font": "700 17px / 25.5px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.5px",
+        "width": 342
+      },
+      {
+        "text": "We created AI Weather™ to help everyone read these changes more clearly, strengthen their judgment and use AI systems with greater discernment.",
+        "height": 108.75,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 342
+      },
+      {
+        "text": "We observe and measure. We do not certify, guarantee or predict anything that has not been demonstrated.",
+        "height": 62.390625,
+        "margin": "22px 0px 0px",
+        "font": "13px / 20.8px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20.8px",
+        "width": 342
+      },
+      {
+        "text": "READ THE WEATHER",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 342
+      },
+      {
+        "text": "Each color indicates the level of behavioral variation observed. It helps people understand where to focus their attention without making the decision for them.",
+        "height": 102.375,
+        "margin": "14px 0px 0px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 342
+      },
+      {
+        "text": "Observed behavior remains within its expected range for this period.",
+        "height": 43.1875,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 300
+      },
+      {
+        "text": "A variation has been observed. It should be monitored across the next observations.",
+        "height": 43.1875,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 300
+      },
+      {
+        "text": "A more marked deviation has been measured. A careful reading of the context and results is recommended.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 300
+      },
+      {
+        "text": "A significant disruption in observed behavior has been detected. It requires deeper human analysis.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 300
+      },
+      {
+        "text": "These levels describe a behavioral condition observed at a given moment. They are not a certification, a guarantee or a definitive judgment about an AI system.",
+        "height": 57.5625,
+        "margin": "24px 0px 0px",
+        "font": "12px / 19.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "19.2px",
+        "width": 342
+      },
+      {
+        "text": "YOUR CALL",
+        "height": 23.1875,
+        "margin": "14px 0px 12px",
+        "font": "600 14.5px / 23.2px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "Every day, a real situation from our observations becomes a simple question. Compare the signals, tell a normal variation from a drift, and put your judgment to the test against real AI behavior.",
+        "height": 92.75,
+        "margin": "14px 0px 0px",
+        "font": "14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "One question. Two signals. Your turn to read the weather.",
+        "height": 46.375,
+        "margin": "14px 0px 0px",
+        "font": "700 14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "Quiz not loading? \n          Try it here →",
+        "height": 0,
+        "margin": "12px 0px 0px",
+        "font": "12.5px / 20px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20px",
+        "width": 0
+      },
+      {
+        "text": "GO FURTHER",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 342
+      },
+      {
+        "text": "AI Weather™ can be read at several levels. Four paths to go further, from a first look to a closer reading.",
+        "height": 76.78125,
+        "margin": "0px 0px 34px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 342
+      },
+      {
+        "text": "UNDERSTAND",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 288
+      },
+      {
+        "text": "What AI Weather™ actually measures, the four attention levels, and the fixed protocol behind every published condition.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 288
+      },
+      {
+        "text": "OBSERVE",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 288
+      },
+      {
+        "text": "The full observation wall, system by system, with each panel AI's current condition and recent trend.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 288
+      },
+      {
+        "text": "TEST",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 288
+      },
+      {
+        "text": "Compare two real signals and put your judgment to the test against an actual observed variation, with no easy answer.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 288
+      },
+      {
+        "text": "USE",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 288
+      },
+      {
+        "text": "Real, embeddable formats reading the same daily measurement: full wall, Core Panel, bar, sidebar, individual badge, and the quiz.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 288
+      },
+      {
+        "text": "BEHIND THE WEATHER",
+        "height": 23.1875,
+        "margin": "14px 0px 12px",
+        "font": "600 14.5px / 23.2px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "AI Weather™ is published by ControlTower AI, the public face of NeoMundi. Every measurement is produced by the same runtime metrology layer, then hash-chained into a timestamped capsule, verifiable independently of ControlTower AI itself.",
+        "height": 115.9375,
+        "margin": "14px 0px 0px",
+        "font": "14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "This is not a ranking. AI Weather™ does not determine which AI is “best”, and does not judge whether an individual answer is true or false. Every view shows an observed condition, never a competitive score.",
+        "height": 80,
+        "margin": "22px 0px 0px",
+        "font": "12.5px / 20px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20px",
+        "width": 342
+      },
+      {
+        "text": "Today's level and any notable drift, straight to your inbox. This form isn't connected to a sending service yet: it shows the intended interface for the Daily Brief.",
+        "height": 55.171875,
+        "margin": "8px 0px 0px",
+        "font": "11.5px / 18.4px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "18.4px",
+        "width": 342
+      },
+      {
+        "text": "ControlTowerAI",
+        "height": 26,
+        "margin": "0px 0px 12px",
+        "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "normal",
+        "width": 155
+      },
+      {
+        "text": "AI Weather™: machine-readable JSON, hash & signature verifiable. Powered by NeoMundi, Runtime AI Metrology.",
+        "height": 179.15625,
+        "margin": "0px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 155
+      }
+    ],
+    "geometry": {
+      ".site-header": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 69,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(244, 248, 253, 0.82)"
+        }
+      ],
+      "h1": [
+        {
+          "x": 24,
+          "y": 173.78125,
+          "width": 342,
+          "height": 103.640625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "main": [],
+      ".hero": [
+        {
+          "x": 0,
+          "y": 69,
+          "width": 390,
+          "height": 998.75,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "footer": [
+        {
+          "x": 0,
+          "y": 6078.609375,
+          "width": 390,
+          "height": 608.109375,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "none",
+          "backgroundColor": "rgb(7, 13, 24)"
+        }
+      ],
+      "section": [
+        {
+          "x": 0,
+          "y": 69,
+          "width": 390,
+          "height": 998.75,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 1067.75,
+          "width": 390,
+          "height": 1280.609375,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 2348.359375,
+          "width": 390,
+          "height": 869.703125,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 3218.0625,
+          "width": 390,
+          "height": 1376.671875,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 4594.734375,
+          "width": 390,
+          "height": 1087.3125,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 5682.046875,
+          "width": 390,
+          "height": 396.5625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgb(246, 250, 255)"
+        }
+      ]
+    },
+    "title": "ControlTower AI · AI Weather™",
+    "h1": "AI Weather™ is the daily weather report for AI behavior.",
+    "rawBlocks": 0,
+    "overflow": false,
+    "styleSheets": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+      "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/home-0.css?ver=0.1.1",
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+      "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.1.1"
+    ],
+    "bodyText": "ControlTowerAI\nEN ▾\n☰\n\nGLOBAL AI WEATHER STATION · CONTROLTOWER AI\n\nAI Weather™ is the daily weather report for AI behavior.\n\nEvery day, the ControlTower AI instrument asks the same challenging question 23 times, followe"
+  },
+  {
+    "kind": "uncached",
+    "width": 390,
+    "status": 200,
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "text/html; charset=UTF-8",
+      "date": "Tue, 15 Sep 2026 21:19:43 GMT",
+      "link": "<https://neomundi.cloud/wp-json/>; rel=\"https://api.w.org/\", <https://neomundi.cloud/wp-json/wp/v2/pages/131>; rel=\"alternate\"; title=\"JSON\"; type=\"application/json\", <https://neomundi.cloud/>; rel=shortlink",
+      "permissions-policy": "private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")",
+      "server": "Apache",
+      "strict-transport-security": "max-age=16000000",
+      "vary": "Accept-Encoding,Cookie,X-FORWARDED-PROTO"
+    },
+    "errors": [],
+    "paragraphs": [
+      {
+        "text": "GLOBAL AI WEATHER STATION · CONTROLTOWER AI",
+        "height": 36.78125,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 342
+      },
+      {
+        "text": "Every day, the ControlTower AI instrument asks the same challenging question 23 times, followed by a second question 7 times, to each of the 12 AI systems in the panel. It then compares their responses with one another and over time.",
+        "height": 163.125,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 342
+      },
+      {
+        "text": "AI Weather™ publishes a simple reading of their current condition, stability, variations and observed behavioral drift.",
+        "height": 81.5625,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 342
+      },
+      {
+        "text": "An AI system can change, drift or make mistakes without it being immediately visible.",
+        "height": 106.5,
+        "margin": "26px 0px 0px",
+        "font": "700 17px / 25.5px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.5px",
+        "width": 342
+      },
+      {
+        "text": "We created AI Weather™ to help everyone read these changes more clearly, strengthen their judgment and use AI systems with greater discernment.",
+        "height": 108.75,
+        "margin": "20px 0px 0px",
+        "font": "17px / 27.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "27.2px",
+        "width": 342
+      },
+      {
+        "text": "We observe and measure. We do not certify, guarantee or predict anything that has not been demonstrated.",
+        "height": 62.390625,
+        "margin": "22px 0px 0px",
+        "font": "13px / 20.8px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20.8px",
+        "width": 342
+      },
+      {
+        "text": "READ THE WEATHER",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 342
+      },
+      {
+        "text": "Each color indicates the level of behavioral variation observed. It helps people understand where to focus their attention without making the decision for them.",
+        "height": 102.375,
+        "margin": "14px 0px 0px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 342
+      },
+      {
+        "text": "Observed behavior remains within its expected range for this period.",
+        "height": 43.1875,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 300
+      },
+      {
+        "text": "A variation has been observed. It should be monitored across the next observations.",
+        "height": 43.1875,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 300
+      },
+      {
+        "text": "A more marked deviation has been measured. A careful reading of the context and results is recommended.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 300
+      },
+      {
+        "text": "A significant disruption in observed behavior has been detected. It requires deeper human analysis.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 300
+      },
+      {
+        "text": "These levels describe a behavioral condition observed at a given moment. They are not a certification, a guarantee or a definitive judgment about an AI system.",
+        "height": 57.5625,
+        "margin": "24px 0px 0px",
+        "font": "12px / 19.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "19.2px",
+        "width": 342
+      },
+      {
+        "text": "YOUR CALL",
+        "height": 23.1875,
+        "margin": "14px 0px 12px",
+        "font": "600 14.5px / 23.2px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "Every day, a real situation from our observations becomes a simple question. Compare the signals, tell a normal variation from a drift, and put your judgment to the test against real AI behavior.",
+        "height": 92.75,
+        "margin": "14px 0px 0px",
+        "font": "14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "One question. Two signals. Your turn to read the weather.",
+        "height": 46.375,
+        "margin": "14px 0px 0px",
+        "font": "700 14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "Quiz not loading? \n          Try it here →",
+        "height": 0,
+        "margin": "12px 0px 0px",
+        "font": "12.5px / 20px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20px",
+        "width": 0
+      },
+      {
+        "text": "GO FURTHER",
+        "height": 18.390625,
+        "margin": "0px 0px 12px",
+        "font": "600 11.5px / 18.4px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "18.4px",
+        "width": 342
+      },
+      {
+        "text": "AI Weather™ can be read at several levels. Four paths to go further, from a first look to a closer reading.",
+        "height": 76.78125,
+        "margin": "0px 0px 34px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 342
+      },
+      {
+        "text": "UNDERSTAND",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 288
+      },
+      {
+        "text": "What AI Weather™ actually measures, the four attention levels, and the fixed protocol behind every published condition.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 288
+      },
+      {
+        "text": "OBSERVE",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 288
+      },
+      {
+        "text": "The full observation wall, system by system, with each panel AI's current condition and recent trend.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 288
+      },
+      {
+        "text": "TEST",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 288
+      },
+      {
+        "text": "Compare two real signals and put your judgment to the test against an actual observed variation, with no easy answer.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 288
+      },
+      {
+        "text": "USE",
+        "height": 16.796875,
+        "margin": "0px 0px 8px",
+        "font": "700 10.5px / 16.8px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "16.8px",
+        "width": 288
+      },
+      {
+        "text": "Real, embeddable formats reading the same daily measurement: full wall, Core Panel, bar, sidebar, individual badge, and the quiz.",
+        "height": 64.78125,
+        "margin": "0px",
+        "font": "13.5px / 21.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "21.6px",
+        "width": 288
+      },
+      {
+        "text": "BEHIND THE WEATHER",
+        "height": 23.1875,
+        "margin": "14px 0px 12px",
+        "font": "600 14.5px / 23.2px \"IBM Plex Mono\", SFMono-Regular, Consolas, monospace",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "AI Weather™ is published by ControlTower AI, the public face of NeoMundi. Every measurement is produced by the same runtime metrology layer, then hash-chained into a timestamped capsule, verifiable independently of ControlTower AI itself.",
+        "height": 115.9375,
+        "margin": "14px 0px 0px",
+        "font": "14.5px / 23.2px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "23.2px",
+        "width": 342
+      },
+      {
+        "text": "This is not a ranking. AI Weather™ does not determine which AI is “best”, and does not judge whether an individual answer is true or false. Every view shows an observed condition, never a competitive score.",
+        "height": 80,
+        "margin": "22px 0px 0px",
+        "font": "12.5px / 20px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "20px",
+        "width": 342
+      },
+      {
+        "text": "Today's level and any notable drift, straight to your inbox. This form isn't connected to a sending service yet: it shows the intended interface for the Daily Brief.",
+        "height": 55.171875,
+        "margin": "8px 0px 0px",
+        "font": "11.5px / 18.4px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "18.4px",
+        "width": 342
+      },
+      {
+        "text": "ControlTowerAI",
+        "height": 26,
+        "margin": "0px 0px 12px",
+        "font": "16px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "normal",
+        "width": 155
+      },
+      {
+        "text": "AI Weather™: machine-readable JSON, hash & signature verifiable. Powered by NeoMundi, Runtime AI Metrology.",
+        "height": 179.15625,
+        "margin": "0px",
+        "font": "16px / 25.6px Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+        "lineHeight": "25.6px",
+        "width": 155
+      }
+    ],
+    "geometry": {
+      ".site-header": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 69,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(244, 248, 253, 0.82)"
+        }
+      ],
+      "h1": [
+        {
+          "x": 24,
+          "y": 173.78125,
+          "width": 342,
+          "height": 103.640625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "main": [],
+      ".hero": [
+        {
+          "x": 0,
+          "y": 69,
+          "width": 390,
+          "height": 998.75,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "footer": [
+        {
+          "x": 0,
+          "y": 6078.609375,
+          "width": 390,
+          "height": 608.109375,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "none",
+          "backgroundColor": "rgb(7, 13, 24)"
+        }
+      ],
+      "section": [
+        {
+          "x": 0,
+          "y": 69,
+          "width": 390,
+          "height": 998.75,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "radial-gradient(900px 380px at 85% -10%, rgba(47, 125, 216, 0.14), rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(234, 242, 251) 0%, rgb(244, 248, 253) 65%)",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 1067.75,
+          "width": 390,
+          "height": 1280.609375,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 2348.359375,
+          "width": 390,
+          "height": 869.703125,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 3218.0625,
+          "width": 390,
+          "height": 1376.671875,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 4594.734375,
+          "width": 390,
+          "height": 1087.3125,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(169, 186, 208)",
+          "background": "radial-gradient(1200px 500px at 20% -10%, rgb(18, 34, 65) 0%, rgba(0, 0, 0, 0) 60%), linear-gradient(rgb(10, 18, 32), rgb(7, 13, 24))",
+          "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "x": 0,
+          "y": 5682.046875,
+          "width": 390,
+          "height": 396.5625,
+          "font": "Inter, \"Segoe UI\", system-ui, Arial, sans-serif",
+          "color": "rgb(15, 24, 38)",
+          "background": "none",
+          "backgroundColor": "rgb(246, 250, 255)"
+        }
+      ]
+    },
+    "title": "ControlTower AI · AI Weather™",
+    "h1": "AI Weather™ is the daily weather report for AI behavior.",
+    "rawBlocks": 0,
+    "overflow": false,
+    "styleSheets": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+      "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/home-0.css?ver=0.1.1",
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+      "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.1.1"
+    ],
+    "bodyText": "ControlTowerAI\nEN ▾\n☰\n\nGLOBAL AI WEATHER STATION · CONTROLTOWER AI\n\nAI Weather™ is the daily weather report for AI behavior.\n\nEvery day, the ControlTower AI instrument asks the same challenging question 23 times, followe"
+  }
+]

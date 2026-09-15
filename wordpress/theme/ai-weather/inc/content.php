@@ -1,7 +1,18 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 function aw_catalog(){static $data=null;if($data===null)$data=json_decode(file_get_contents(__DIR__.'/catalog.json'),true);return $data;}
-function aw_current_layout(){return is_singular('page') ? get_post_meta(get_queried_object_id(),'_aw_layout',true):'';}
+function aw_current_layout(){
+    if(!is_singular('page'))return '';
+    $id=get_queried_object_id();$catalog=aw_catalog();
+    $key=get_post_meta($id,'_aw_layout',true);
+    if($key!=='shared'&&isset($catalog[$key]))return $key;
+    // Resolve the layout before wp_head, even if an editor removed its metadata.
+    foreach(get_option('aw_page_ids',[]) as $candidate=>$page_id){
+        if((int)$page_id===$id&&$candidate!=='shared'&&isset($catalog[$candidate]))return $candidate;
+    }
+    if(is_front_page())return 'home';
+    return '';
+}
 function aw_page_url($key){$ids=get_option('aw_page_ids',[]);return !empty($ids[$key])?get_permalink($ids[$key]):home_url($key==='home'?'/':'/'.$key.'/');}
 function aw_urls($html){
     $html=str_replace(['@@THEME@@','@@RUNTIME@@'],[untrailingslashit(get_template_directory_uri()),get_theme_file_uri('runtime')],$html);
