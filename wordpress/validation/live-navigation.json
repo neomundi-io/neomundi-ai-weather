@@ -1,0 +1,176 @@
+{
+  "languages": [
+    {
+      "lang": "en",
+      "cards": 12,
+      "historyVisible": true,
+      "direction": "ltr"
+    },
+    {
+      "lang": "fr",
+      "cards": 12,
+      "historyVisible": true,
+      "direction": "ltr"
+    },
+    {
+      "lang": "de",
+      "cards": 12,
+      "historyVisible": true,
+      "direction": "ltr"
+    },
+    {
+      "lang": "es",
+      "cards": 12,
+      "historyVisible": true,
+      "direction": "ltr"
+    },
+    {
+      "lang": "it",
+      "cards": 12,
+      "historyVisible": true,
+      "direction": "ltr"
+    },
+    {
+      "lang": "pt",
+      "cards": 12,
+      "historyVisible": true,
+      "direction": "ltr"
+    },
+    {
+      "lang": "nl",
+      "cards": 12,
+      "historyVisible": true,
+      "direction": "ltr"
+    },
+    {
+      "lang": "zh",
+      "cards": 12,
+      "historyVisible": true,
+      "direction": "ltr"
+    },
+    {
+      "lang": "ja",
+      "cards": 12,
+      "historyVisible": true,
+      "direction": "ltr"
+    },
+    {
+      "lang": "ko",
+      "cards": 12,
+      "historyVisible": true,
+      "direction": "ltr"
+    },
+    {
+      "lang": "hi",
+      "cards": 12,
+      "historyVisible": true,
+      "direction": "ltr"
+    },
+    {
+      "lang": "ar",
+      "cards": 12,
+      "historyVisible": true,
+      "direction": "rtl"
+    },
+    {
+      "lang": "ru",
+      "cards": 12,
+      "historyVisible": true,
+      "direction": "ltr"
+    }
+  ],
+  "links": [
+    {
+      "url": "https://neomundi.cloud/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/today/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/how-it-works/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/stations/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/widgets/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/widgets/quiz-public/daily.html",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/weather.json",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/about/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/for-media/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/contact/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/daily-brief/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/home/",
+      "status": 301,
+      "redirect": "https://neomundi.cloud/"
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/index.html",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/core-panel.html",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/us-station/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/embed-demo.html",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/quiz/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/aiweather-capsule/latest.json",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/assets/logo-controltower.png",
+      "status": 200
+    }
+  ],
+  "mobileMenu": true,
+  "marketing": [
+    {
+      "lang": "en",
+      "h1": "AI Weather™ is the daily weather report for AI behavior."
+    },
+    {
+      "lang": "fr",
+      "h1": "La Météo des IA™ est le bulletin quotidien du comportement des IA."
+    },
+    {
+      "lang": "es",
+      "h1": "La Météo des IA™ est le bulletin quotidien du comportement des IA."
+    }
+  ]
+}

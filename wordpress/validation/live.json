@@ -1,0 +1,1352 @@
+{
+  "started": "2026-09-15T20:15:24.768Z",
+  "pages": [
+    {
+      "page": "home desktop",
+      "status": 200,
+      "url": "https://neomundi.cloud/",
+      "title": "ControlTower AI · AI Weather™",
+      "h1": [
+        "AI Weather™ is the daily weather report for AI behavior."
+      ],
+      "overflow": false,
+      "description": "AI Weather™ is the daily weather report for AI behavior. It is a global observatory that measures the stability, variation and drift of AI systems, every day.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "today desktop",
+      "status": 200,
+      "url": "https://neomundi.cloud/today/",
+      "title": "Today's AI Weather™ · ControlTower AI",
+      "h1": [
+        "Today's AI Weather™"
+      ],
+      "overflow": false,
+      "description": "Today's real AI Weather™ observation: the full panel, 15 days of real history, and each system's condition, read live from the actual measurement.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 12,
+      "historyHidden": false
+    },
+    {
+      "page": "how-it-works desktop",
+      "status": 200,
+      "url": "https://neomundi.cloud/how-it-works/",
+      "title": "How It Works · AI Weather™",
+      "h1": [
+        "How It Works"
+      ],
+      "overflow": false,
+      "description": "What AI Weather™ observes, and the fixed WEATHER-SENTINEL protocol behind every measurement: stability, variation, behavioral drift, and how a condition gets published.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "stations desktop",
+      "status": 200,
+      "url": "https://neomundi.cloud/stations/",
+      "title": "Station USA · AI Weather™",
+      "h1": [
+        "Station USA"
+      ],
+      "overflow": false,
+      "description": "Station USA: the experimental NeoMundi extension to AI Weather™, and its place next to the main global observation network.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "widgets desktop",
+      "status": 200,
+      "url": "https://neomundi.cloud/widgets/",
+      "title": "Widget Library · AI Weather™",
+      "h1": [
+        "Embed AI Weather™ on your site"
+      ],
+      "overflow": false,
+      "description": "Embed AI Weather™ on your site: choose a format, a theme and a language, preview the real widget, copy the code.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "quiz desktop",
+      "status": 200,
+      "url": "https://neomundi.cloud/quiz/",
+      "title": "Spot the Drift · AI Weather",
+      "h1": [
+        "Spot the Drift"
+      ],
+      "overflow": false,
+      "description": "Seven questions about AI behavior.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "daily-brief desktop",
+      "status": 200,
+      "url": "https://neomundi.cloud/daily-brief/",
+      "title": "Daily Brief · AI Weather™",
+      "h1": [
+        "Get the daily reading in your inbox"
+      ],
+      "overflow": false,
+      "description": "Subscribe to the AI Weather™ Daily Brief: the day's condition levels and any notable drift, straight to your inbox.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "for-media desktop",
+      "status": 200,
+      "url": "https://neomundi.cloud/for-media/",
+      "title": "For Media · AI Weather™",
+      "h1": [
+        "AI Weather™, for journalists and researchers"
+      ],
+      "overflow": false,
+      "description": "AI Weather™ for journalists and researchers: a short positioning statement, the real methodology, sources, and reusable elements.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "about desktop",
+      "status": 200,
+      "url": "https://neomundi.cloud/about/",
+      "title": "About · ControlTower AI",
+      "h1": [
+        "About ControlTower AI"
+      ],
+      "overflow": false,
+      "description": "ControlTower AI is the public, extensible brand behind AI Weather™. NeoMundi is its underlying runtime metrology layer.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "contact desktop",
+      "status": 200,
+      "url": "https://neomundi.cloud/contact/",
+      "title": "Contact · AI Weather™",
+      "h1": [
+        "Contact"
+      ],
+      "overflow": false,
+      "description": "How to reach the AI Weather™ / ControlTower AI project: technical questions, press, and where the underlying NeoMundi ecosystem lives.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "us-station desktop",
+      "status": 200,
+      "url": "https://neomundi.cloud/us-station/",
+      "title": "NeoMundi Experimental Station US · OmarAGI × NeoMundi",
+      "h1": [
+        "NeoMundi Experimental Station US",
+        "US Station live globe"
+      ],
+      "overflow": false,
+      "description": "NeoMundi Experimental Station US: an experimental, artistic extension of AI Weather™. OmarAGI × NeoMundi.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "home mobile",
+      "status": 200,
+      "url": "https://neomundi.cloud/",
+      "title": "ControlTower AI · AI Weather™",
+      "h1": [
+        "AI Weather™ is the daily weather report for AI behavior."
+      ],
+      "overflow": false,
+      "description": "AI Weather™ is the daily weather report for AI behavior. It is a global observatory that measures the stability, variation and drift of AI systems, every day.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "today mobile",
+      "status": 200,
+      "url": "https://neomundi.cloud/today/",
+      "title": "Today's AI Weather™ · ControlTower AI",
+      "h1": [
+        "Today's AI Weather™"
+      ],
+      "overflow": false,
+      "description": "Today's real AI Weather™ observation: the full panel, 15 days of real history, and each system's condition, read live from the actual measurement.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 12,
+      "historyHidden": false
+    },
+    {
+      "page": "how-it-works mobile",
+      "status": 200,
+      "url": "https://neomundi.cloud/how-it-works/",
+      "title": "How It Works · AI Weather™",
+      "h1": [
+        "How It Works"
+      ],
+      "overflow": false,
+      "description": "What AI Weather™ observes, and the fixed WEATHER-SENTINEL protocol behind every measurement: stability, variation, behavioral drift, and how a condition gets published.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "stations mobile",
+      "status": 200,
+      "url": "https://neomundi.cloud/stations/",
+      "title": "Station USA · AI Weather™",
+      "h1": [
+        "Station USA"
+      ],
+      "overflow": false,
+      "description": "Station USA: the experimental NeoMundi extension to AI Weather™, and its place next to the main global observation network.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "widgets mobile",
+      "status": 200,
+      "url": "https://neomundi.cloud/widgets/",
+      "title": "Widget Library · AI Weather™",
+      "h1": [
+        "Embed AI Weather™ on your site"
+      ],
+      "overflow": false,
+      "description": "Embed AI Weather™ on your site: choose a format, a theme and a language, preview the real widget, copy the code.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "quiz mobile",
+      "status": 200,
+      "url": "https://neomundi.cloud/quiz/",
+      "title": "Spot the Drift · AI Weather",
+      "h1": [
+        "Spot the Drift"
+      ],
+      "overflow": false,
+      "description": "Seven questions about AI behavior.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "daily-brief mobile",
+      "status": 200,
+      "url": "https://neomundi.cloud/daily-brief/",
+      "title": "Daily Brief · AI Weather™",
+      "h1": [
+        "Get the daily reading in your inbox"
+      ],
+      "overflow": false,
+      "description": "Subscribe to the AI Weather™ Daily Brief: the day's condition levels and any notable drift, straight to your inbox.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "for-media mobile",
+      "status": 200,
+      "url": "https://neomundi.cloud/for-media/",
+      "title": "For Media · AI Weather™",
+      "h1": [
+        "AI Weather™, for journalists and researchers"
+      ],
+      "overflow": false,
+      "description": "AI Weather™ for journalists and researchers: a short positioning statement, the real methodology, sources, and reusable elements.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "about mobile",
+      "status": 200,
+      "url": "https://neomundi.cloud/about/",
+      "title": "About · ControlTower AI",
+      "h1": [
+        "About ControlTower AI"
+      ],
+      "overflow": false,
+      "description": "ControlTower AI is the public, extensible brand behind AI Weather™. NeoMundi is its underlying runtime metrology layer.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "contact mobile",
+      "status": 200,
+      "url": "https://neomundi.cloud/contact/",
+      "title": "Contact · AI Weather™",
+      "h1": [
+        "Contact"
+      ],
+      "overflow": false,
+      "description": "How to reach the AI Weather™ / ControlTower AI project: technical questions, press, and where the underlying NeoMundi ecosystem lives.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "us-station mobile",
+      "status": 200,
+      "url": "https://neomundi.cloud/us-station/",
+      "title": "NeoMundi Experimental Station US · OmarAGI × NeoMundi",
+      "h1": [
+        "NeoMundi Experimental Station US",
+        "US Station live globe"
+      ],
+      "overflow": false,
+      "description": "NeoMundi Experimental Station US: an experimental, artistic extension of AI Weather™. OmarAGI × NeoMundi.",
+      "robots": "noindex, nofollow",
+      "unresolved": false,
+      "localLinks": [],
+      "cards": 0
+    },
+    {
+      "page": "runtime/core-panel.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/embed-demo.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/index.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/index_full.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/provider-widget.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/sidebar.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/topbar.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-bar-10.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-bar-2x6.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-bar-5.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-bar-6.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-bar-us-320.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-block-3x4-logos.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-home-1180.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-icons-320.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-sidebar-12-220.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-sidebar-12-v2.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-sidebar-12.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-sidebar-5.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-sidebar-8.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/weather-sidebar-us5.html",
+      "status": 200,
+      "loading": false
+    },
+    {
+      "page": "runtime/widget.html",
+      "status": 200,
+      "loading": false
+    }
+  ],
+  "resources": [
+    {
+      "page": "us-station desktop",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/assets/station/us-station-earth-topo.json",
+      "status": 404
+    },
+    {
+      "page": "us-station mobile",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/assets/station/us-station-earth-topo.json",
+      "status": 404
+    }
+  ],
+  "failures": [
+    {
+      "page": "home desktop",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/widgets/quiz-public/daily.html?theme=dark&lang=en",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "page": "widgets desktop",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/weather-bar-2x6.html?lang=en&theme=light",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "page": "quiz desktop",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/widgets/quiz-public/daily.html?theme=dark&lang=en",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "page": "home mobile",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/assets/station/us-station-earth-topo.json",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "page": "home mobile",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/widgets/quiz-public/daily.html?theme=dark&lang=en",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "page": "today mobile",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/widgets/quiz-public/daily.html?theme=dark&lang=en",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "page": "quiz mobile",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/widgets/quiz-public/daily.html?theme=dark&lang=en",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "page": "runtime/core-panel.html",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/assets/station/us-station-earth-topo.json",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "console": [
+    {
+      "page": "us-station desktop",
+      "type": "warning",
+      "text": "Allow attribute will take precedence over 'allowfullscreen'."
+    },
+    {
+      "page": "us-station desktop",
+      "type": "warning",
+      "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+    },
+    {
+      "page": "us-station desktop",
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "page": "us-station mobile",
+      "type": "warning",
+      "text": "Allow attribute will take precedence over 'allowfullscreen'."
+    },
+    {
+      "page": "us-station mobile",
+      "type": "warning",
+      "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+    },
+    {
+      "page": "us-station mobile",
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    }
+  ],
+  "errors": [],
+  "telemetry": [
+    {
+      "event": "request",
+      "page": "widgets desktop",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "widgets desktop",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:15:39 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "request",
+      "page": "widgets mobile",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "widgets mobile",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:16:10 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-bar-10.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-bar-10.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:16:41 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-bar-10.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-bar-10.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:16:41 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-bar-2x6.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-bar-2x6.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:16:43 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-bar-2x6.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-bar-2x6.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:16:43 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-bar-5.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-bar-5.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:16:45 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-bar-5.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-bar-5.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:16:45 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-bar-6.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-bar-6.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:16:47 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-bar-6.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-bar-6.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:16:47 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-bar-us-320.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-bar-us-320.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-bar-us-320.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:16:49 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-bar-us-320.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:16:49 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-block-3x4-logos.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-block-3x4-logos.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-block-3x4-logos.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:16:50 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-block-3x4-logos.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:16:50 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-home-1180.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-home-1180.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:16:52 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-home-1180.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-home-1180.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:16:52 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-icons-320.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-icons-320.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:16:54 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-icons-320.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-icons-320.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:16:54 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-sidebar-12-220.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-sidebar-12-220.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:16:56 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-sidebar-12-220.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-sidebar-12-220.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:16:56 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-sidebar-12-v2.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-sidebar-12-v2.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-sidebar-12-v2.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:16:58 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-sidebar-12-v2.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:16:58 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-sidebar-12.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-sidebar-12.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:16:59 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-sidebar-12.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-sidebar-12.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:16:59 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-sidebar-5.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-sidebar-5.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-sidebar-5.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:17:01 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-sidebar-5.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:17:01 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-sidebar-8.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-sidebar-8.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:17:03 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-sidebar-8.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-sidebar-8.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:17:03 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-sidebar-us5.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-sidebar-us5.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:17:05 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/weather-sidebar-us5.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/weather-sidebar-us5.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:17:05 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    },
+    {
+      "event": "request",
+      "page": "runtime/widget.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "request",
+      "page": "runtime/widget.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "method": "POST",
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}"
+    },
+    {
+      "event": "response",
+      "page": "runtime/widget.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 15 Sep 2026 20:17:07 GMT",
+        "server": "Apache",
+        "strict-transport-security": "max-age=16000000",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO"
+      }
+    },
+    {
+      "event": "response",
+      "page": "runtime/widget.html",
+      "url": "https://api.controltowerai.io/widget-ping.php",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=16000000",
+        "access-control-max-age": "86400",
+        "content-encoding": "gzip",
+        "access-control-allow-methods": "POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "date": "Tue, 15 Sep 2026 20:17:07 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept-Encoding,X-FORWARDED-PROTO",
+        "server": "Apache",
+        "access-control-allow-headers": "Content-Type"
+      }
+    }
+  ],
+  "quizzes": [
+    {
+      "lang": "en",
+      "completed": true
+    },
+    {
+      "lang": "fr",
+      "completed": true
+    },
+    {
+      "lang": "es",
+      "completed": true
+    }
+  ]
+}
