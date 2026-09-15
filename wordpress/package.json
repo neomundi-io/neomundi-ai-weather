@@ -1,0 +1,14 @@
+{
+  "name": "ai-weather-wordpress-tools",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "node tools/build.cjs",
+    "test": "node tools/verify.cjs"
+  },
+  "devDependencies": {
+    "@wp-playground/cli": "3.1.54",
+    "adm-zip": "0.6.1",
+    "jsdom": "30.0.1"
+  }
+}

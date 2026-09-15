@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a1220">
+<title>How It Works · AI Weather™</title>
+<meta name="description" content="What AI Weather™ observes, and the fixed WEATHER-SENTINEL protocol behind every measurement: stability, variation, behavioral drift, and how a condition gets published.">
+
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --page-bg: #f4f8fd; --page-bg-alt: #eaf2fb; --surface: #ffffff; --surface-soft: #f6faff;
+    --navy-900: #070d18; --navy-800: #0a1220;
+    --ink: #0f1826; --ink-dim: #4c5c6e; --ink-faint: #8595a6;
+    --on-navy: #eef4fc; --on-navy-dim: #a9bad0; --on-navy-faint: #6d80998f;
+    --border: #dde6f0; --border-soft: #e9f0f7; --border-navy: #24334f;
+    --accent: #2f7dd8; --accent-strong: #1c5cb0; --accent-soft: #e4f0fd; --cyan: #22d3ee;
+    --lvl-green: #22c55e; --lvl-yellow: #facc15; --lvl-orange: #fb923c; --lvl-red: #b91c1c;
+    --radius-lg: 22px; --radius-md: 14px; --radius-sm: 9px;
+    --shadow-1: 0 1px 2px rgba(15,24,38,.05), 0 10px 28px rgba(15,24,38,.06);
+    --shadow-2: 0 20px 60px rgba(8,14,26,.16);
+    --container: 1180px; --font-sans: "Inter","Segoe UI",system-ui,sans-serif; --font-mono: "IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--font-sans); color: var(--ink); background: var(--page-bg); -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+  .eyebrow { font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-strong); margin: 0 0 12px; }
+  .eyebrow.center { text-align: center; }
+  .on-navy .eyebrow { color: var(--cyan); }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -.01em; margin: 0; }
+  h1 { font-size: clamp(30px, 4vw, 46px); line-height: 1.1; }
+  h2 { font-size: clamp(22px, 2.6vw, 30px); line-height: 1.18; }
+  p { line-height: 1.6; color: var(--ink-dim); margin: 0; }
+  .on-navy, .on-navy p { color: var(--on-navy-dim); }
+  .on-navy h2, .on-navy h3 { color: var(--on-navy); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 700; font-size: 14.5px; text-decoration: none; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
+  .btn-primary { background: linear-gradient(180deg, #3a8ae0, var(--accent-strong)); color: #fff; box-shadow: 0 8px 22px rgba(47,125,216,.35); }
+  .btn-sm { padding: 9px 16px; font-size: 13px; }
+
+  .site-header { position: sticky; top: 0; z-index: 100; background: rgba(244,248,253,.82); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-soft); }
+  .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 20px; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex: none; }
+  .brand img { width: 32px; height: 32px; border-radius: 50%; }
+  .brand-text { font-weight: 800; font-size: 15.5px; letter-spacing: -.01em; color: var(--ink); }
+  .brand-text em { font-style: normal; color: var(--accent-strong); }
+  .main-nav { display: flex; gap: 26px; margin-left: 12px; flex: 1; }
+  .main-nav a { font-size: 13.5px; font-weight: 600; text-decoration: none; color: var(--ink-dim); }
+  .main-nav a.current, .main-nav a:hover { color: var(--ink); }
+  .header-actions { display: flex; align-items: center; gap: 10px; flex: none; }
+  .lang-select { position: relative; }
+  .lang-button { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; background: #fff; border: 1px solid var(--border); border-radius: 999px; font: inherit; font-size: 12.5px; font-weight: 700; color: var(--ink-dim); cursor: pointer; }
+  .lang-menu { display: none; position: absolute; top: calc(100% + 8px); right: 0; min-width: 190px; max-height: 320px; overflow-y: auto; background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-2); padding: 6px; z-index: 200; }
+  .lang-menu.open { display: block; }
+  .lang-option { display: block; width: 100%; text-align: left; padding: 9px 10px; border: 0; background: transparent; border-radius: 8px; cursor: pointer; font: inherit; font-size: 13px; color: var(--ink); }
+  .lang-option:hover { background: var(--surface-soft); }
+  .lang-option.active { background: var(--accent-soft); font-weight: 700; color: var(--accent-strong); }
+  .nav-toggle { display: none; width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 16px; }
+  .mobile-nav { display: none; flex-direction: column; gap: 2px; padding: 10px 24px 16px; border-top: 1px solid var(--border-soft); background: var(--surface); }
+  .mobile-nav a { padding: 12px 4px; font-weight: 600; font-size: 14.5px; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--border-soft); }
+  .mobile-nav.open { display: flex; }
+  @media (max-width: 880px) { .main-nav { display: none; } .nav-toggle { display: block; } }
+
+  section { padding: 68px 0; }
+  .dark { background: radial-gradient(1200px 500px at 20% -10%, #122241 0%, transparent 60%), linear-gradient(180deg, var(--navy-800), var(--navy-900)); position: relative; overflow: hidden; }
+  .dark::before { content: ""; position: absolute; inset: 0; opacity: .5; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px); background-size: 46px 46px; mask-image: radial-gradient(75% 60% at 50% 20%, #000 40%, transparent 100%); }
+  .dark > .wrap { position: relative; z-index: 1; }
+  .section-head { max-width: 680px; margin: 0 0 40px; }
+  .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+
+  .page-intro { padding: 52px 0 40px; background: linear-gradient(180deg, var(--page-bg-alt) 0%, var(--page-bg) 80%); text-align: center; }
+  .page-intro .lede { font-size: 16px; max-width: 640px; margin: 14px auto 0; }
+
+  .levels-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .level-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 22px 20px; box-shadow: var(--shadow-1); border-top: 4px solid var(--lvl); }
+  .level-card .dot { width: 30px; height: 30px; border-radius: 50%; background: var(--lvl); box-shadow: 0 0 0 5px color-mix(in srgb, var(--lvl) 16%, transparent), 0 4px 14px color-mix(in srgb, var(--lvl) 45%, transparent); margin-bottom: 16px; }
+  .level-card h3 { margin-bottom: 3px; }
+  .level-fr { font-size: 12px; color: var(--ink-faint); margin-bottom: 10px; }
+  .level-card p { font-size: 13.5px; }
+  @media (max-width: 880px) { .levels-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .levels-grid { grid-template-columns: 1fr; } }
+
+  .observe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .observe-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-1); }
+  .observe-card h3 { margin-bottom: 8px; }
+  .observe-card p { font-size: 13.5px; }
+  .observe-stat { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-soft); font-family: var(--font-mono); font-size: 20px; font-weight: 600; color: var(--accent-strong); }
+  .stat-label { font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .06em; margin-top: 3px; }
+  @media (max-width: 880px) { .observe-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .observe-grid { grid-template-columns: 1fr; } }
+
+  .how-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .how-step { padding: 0 18px 0 0; position: relative; }
+  .how-step:not(:last-child)::after { content: ""; position: absolute; top: 19px; left: calc(100% - 9px); width: 18px; border-top: 2px dashed var(--border-navy); }
+  .step-num { width: 38px; height: 38px; border-radius: 50%; background: rgba(34,211,238,.1); border: 1px solid var(--border-navy); color: var(--cyan); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; margin-bottom: 16px; }
+  .how-step h3 { font-size: 15.5px; margin-bottom: 8px; }
+  .how-step p { font-size: 13px; }
+  @media (max-width: 880px) { .how-steps { grid-template-columns: 1fr 1fr; gap: 28px; } .how-step:not(:last-child)::after { display: none; } }
+  @media (max-width: 560px) { .how-steps { grid-template-columns: 1fr; } }
+
+  .methodology-cta { text-align: center; margin-top: 44px; }
+
+  .block-intro { max-width: 760px; font-size: 15.5px; margin-bottom: 34px; }
+  .on-navy .block-intro { color: var(--on-navy-dim); }
+  .sub-head { margin: 44px 0 22px; }
+  .sub-head h3 { font-size: 18px; }
+  .sub-head p { font-size: 13.5px; margin-top: 8px; max-width: 640px; }
+
+  .limits-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; max-width: 780px; }
+  .limits-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 14.5px; line-height: 1.6; color: var(--ink-dim); }
+  .limits-list li::before { content: "—"; color: var(--ink-faint); flex: none; font-weight: 700; }
+  .limits-lead { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 22px; }
+
+  .final-links { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 8px; }
+
+  footer { background: var(--navy-900); color: var(--on-navy-dim); padding: 56px 0 28px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; margin-bottom: 40px; }
+  .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .footer-brand img { width: 26px; height: 26px; border-radius: 50%; }
+  .footer-brand span { font-weight: 800; color: var(--on-navy); }
+  .footer-col h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--on-navy); margin-bottom: 14px; }
+  .footer-col a { display: block; font-size: 13.5px; text-decoration: none; color: var(--on-navy-dim); margin-bottom: 10px; }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--border-navy); font-size: 12px; color: var(--on-navy-faint); }
+  @media (max-width: 780px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <img src="../assets/logo-controltower.png" alt="ControlTower AI">
+      <span class="brand-text">ControlTower<em>AI</em></span>
+    </a>
+    <nav class="main-nav">
+      <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour">Today's Weather</a>
+      <a href="how-it-works.html" class="current" data-en="How It Works" data-fr="Comment ça marche">How It Works</a>
+      <a href="stations.html" data-en="Station USA" data-fr="Station USA">Station USA</a>
+      <a href="widgets.html" data-en="Widgets" data-fr="Widgets">Widgets</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-select">
+        <button class="lang-button" id="lang-button" type="button" aria-haspopup="true" aria-expanded="false">EN ▾</button>
+        <div class="lang-menu" id="lang-menu"></div>
+      </div>
+      <a class="btn btn-primary btn-sm" href="today.html" data-en="Today's AI Weather™ →" data-fr="La Météo des IA™ du jour →">Today's AI Weather™ →</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour">Today's Weather</a>
+    <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche">How It Works</a>
+    <a href="stations.html" data-en="Station USA" data-fr="Station USA">Station USA</a>
+    <a href="widgets.html" data-en="Widgets" data-fr="Widgets">Widgets</a>
+  </nav>
+</header>
+
+<section class="page-intro">
+  <div class="wrap">
+    <p class="eyebrow center" data-en="WHAT'S BEHIND IT" data-fr="CE QU'IL Y A DERRIÈRE">WHAT'S BEHIND IT</p>
+    <h1 data-en="How It Works" data-fr="Comment ça marche">How It Works</h1>
+    <p class="lede" data-en="Four short answers: why we observe AI behavior, what we measure, how the measurement is produced, and what it does not say." data-fr="Quatre réponses courtes : pourquoi nous observons le comportement des IA, ce que nous mesurons, comment la mesure est produite, et ce qu'elle ne dit pas.">Four short answers: why we observe AI behavior, what we measure, how the measurement is produced, and what it does not say.</p>
+  </div>
+</section>
+
+<!-- ================= 01 · WHY ================= -->
+<section id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-en="01 · PURPOSE" data-fr="01 · POURQUOI">01 · PURPOSE</p>
+      <h2 data-en="Why observe AI systems?" data-fr="Pourquoi observer les IA ?">Why observe AI systems?</h2>
+    </div>
+    <p class="block-intro" data-en="AI systems don't behave like fixed software. Their answers can shift from one day to the next, without warning and without it being visible to the people using them. AI Weather™ exists to make that possible change visible, plainly and every day, so that everyone from a first-time user to a newsroom can know when to look more closely." data-fr="Les systèmes d'IA ne se comportent pas comme un logiciel figé. Leurs réponses peuvent varier d'un jour à l'autre, sans prévenir et sans que cela soit visible pour les personnes qui les utilisent. La Météo des IA™ existe pour rendre ce changement possible visible, simplement et chaque jour, afin que chacun, d'un premier utilisateur à une rédaction, sache quand regarder de plus près.">AI systems don't behave like fixed software. Their answers can shift from one day to the next, without warning and without it being visible to the people using them. AI Weather™ exists to make that possible change visible, plainly and every day, so that everyone from a first-time user to a newsroom can know when to look more closely.</p>
+
+    <div class="sub-head">
+      <h3 data-en="Four levels to guide attention" data-fr="Quatre niveaux pour orienter l'attention">Four levels to guide attention</h3>
+      <p data-en="Each color indicates the level of behavioral variation observed. It helps people know where to focus their attention, without making the decision for them." data-fr="Chaque couleur indique le niveau de variation comportementale observé. Elle aide à savoir où porter son attention, sans décider à la place de l'utilisateur.">Each color indicates the level of behavioral variation observed. It helps people know where to focus their attention, without making the decision for them.</p>
+    </div>
+    <div class="levels-grid">
+      <div class="level-card" style="--lvl:var(--lvl-green)">
+        <div class="dot"></div>
+        <h3 data-en="Normal" data-fr="Normal">Normal</h3>
+        <div class="level-fr" data-en="FR: Normal" data-fr="EN: Normal">FR: Normal</div>
+        <p data-en="The system's behavior is within its expected range for this observation." data-fr="Le comportement du système reste dans sa plage attendue pour cette observation.">The system's behavior is within its expected range for this observation.</p>
+      </div>
+      <div class="level-card" style="--lvl:var(--lvl-yellow)">
+        <div class="dot"></div>
+        <h3 data-en="Watch" data-fr="Vigilance">Watch</h3>
+        <div class="level-fr" data-en="FR: Vigilance" data-fr="EN: Watch">FR: Vigilance</div>
+        <p data-en="A variation has been observed and is worth monitoring over the coming days." data-fr="Une variation a été observée et mérite d'être suivie dans les jours qui viennent.">A variation has been observed and is worth monitoring over the coming days.</p>
+      </div>
+      <div class="level-card" style="--lvl:var(--lvl-orange)">
+        <div class="dot"></div>
+        <h3 data-en="Warning" data-fr="Alerte">Warning</h3>
+        <div class="level-fr" data-en="FR: Alerte" data-fr="EN: Warning">FR: Alerte</div>
+        <p data-en="A more pronounced deviation from the expected behavior has been measured." data-fr="Un écart plus marqué par rapport au comportement attendu a été mesuré.">A more pronounced deviation from the expected behavior has been measured.</p>
+      </div>
+      <div class="level-card" style="--lvl:var(--lvl-red)">
+        <div class="dot"></div>
+        <h3 data-en="Critical" data-fr="Critique">Critical</h3>
+        <div class="level-fr" data-en="FR: Critique" data-fr="EN: Critical">FR: Critique</div>
+        <p data-en="A significant disruption has been observed in the system's behavior." data-fr="Une perturbation importante du comportement du système a été observée.">A significant disruption has been observed in the system's behavior.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 · WHAT WE MEASURE ================= -->
+<section id="what-we-measure" class="dark on-navy">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-en="02 · WHAT WE MEASURE" data-fr="02 · CE QUE NOUS MESURONS">02 · WHAT WE MEASURE</p>
+      <h2 data-en="What we measure" data-fr="Ce que nous mesurons">What we measure</h2>
+      <p data-en="Six real, documented notions behind every panel card: nothing here is a performance or quality score." data-fr="Six notions réelles et documentées derrière chaque carte du panel : rien ici n'est un score de performance ou de qualité.">Six real, documented notions behind every panel card: nothing here is a performance or quality score.</p>
+    </div>
+    <div class="observe-grid">
+      <div class="observe-card">
+        <h3 data-en="Stability" data-fr="Stabilité">Stability</h3>
+        <p data-en="How consistently a system answers the same question across repeated runs of the sentinel protocol." data-fr="La constance avec laquelle un système répond à la même question sur des passages répétés du protocole sentinelle.">How consistently a system answers the same question across repeated runs of the sentinel protocol.</p>
+      </div>
+      <div class="observe-card">
+        <h3 data-en="Variation" data-fr="Variation">Variation</h3>
+        <p data-en="A measurable shift in a system's answers from one observation to the next, under otherwise identical conditions." data-fr="Un changement mesurable dans les réponses d'un système d'une observation à l'autre, à conditions par ailleurs identiques.">A measurable shift in a system's answers from one observation to the next, under otherwise identical conditions.</p>
+      </div>
+      <div class="observe-card">
+        <h3 data-en="Behavioral drift" data-fr="Dérive comportementale">Behavioral drift</h3>
+        <p data-en="A sustained change in a system's behavior across multiple days, not a single day's blip." data-fr="Un changement durable du comportement d'un système sur plusieurs jours, pas un simple pic isolé.">A sustained change in a system's behavior across multiple days, not a single day's blip.</p>
+      </div>
+      <div class="observe-card">
+        <h3 data-en="Daily observation" data-fr="Observation quotidienne">Daily observation</h3>
+        <p data-en="Measured once per day, every day, under the same fixed WEATHER-SENTINEL protocol." data-fr="Mesuré une fois par jour, chaque jour, sous le même protocole fixe WEATHER-SENTINEL.">Measured once per day, every day, under the same fixed WEATHER-SENTINEL protocol.</p>
+        <div class="observe-stat" id="stat-days">—</div>
+        <div class="stat-label" data-en="consecutive days published" data-fr="jours consécutifs publiés">consecutive days published</div>
+      </div>
+      <div class="observe-card">
+        <h3 data-en="Timestamping" data-fr="Horodatage">Timestamping</h3>
+        <p data-en="Every measurement carries its real UTC capture time, not the time the page happens to be rendered." data-fr="Chaque mesure porte son heure de capture réelle en UTC, pas l'heure de rendu de la page.">Every measurement carries its real UTC capture time, not the time the page happens to be rendered.</p>
+        <div class="observe-stat" id="stat-measured-at">—</div>
+        <div class="stat-label" data-en="last measurement (UTC)" data-fr="dernière mesure (UTC)">last measurement (UTC)</div>
+      </div>
+      <div class="observe-card">
+        <h3 data-en="Coverage" data-fr="Couverture">Coverage</h3>
+        <p data-en="The share of expected observations that were actually completed and scored, disclosed openly and never hidden when incomplete." data-fr="La part des observations attendues qui ont réellement été menées et notées, divulguée ouvertement et jamais masquée si incomplète.">The share of expected observations that were actually completed and scored, disclosed openly and never hidden when incomplete.</p>
+        <div class="observe-stat" id="stat-coverage">—</div>
+        <div class="stat-label" data-en="panel coverage, today" data-fr="couverture du panel, aujourd'hui">panel coverage, today</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 · HOW IT'S PRODUCED ================= -->
+<section id="how-produced">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-en="03 · HOW IT'S PRODUCED" data-fr="03 · COMMENT LA MESURE EST PRODUITE">03 · HOW IT'S PRODUCED</p>
+      <h2 data-en="How the measurement is produced" data-fr="Comment la mesure est produite">How the measurement is produced</h2>
+      <p data-en="WEATHER-SENTINEL, the fixed protocol behind every card on the wall." data-fr="WEATHER-SENTINEL, le protocole fixe derrière chaque carte du mur.">WEATHER-SENTINEL, the fixed protocol behind every card on the wall.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-num">01</div>
+        <h3 data-en="Fixed panel, fixed questions" data-fr="Panel fixe, questions fixes">Fixed panel, fixed questions</h3>
+        <p data-en="The same panel of AI systems is asked the same sentinel questions, every day, under identical conditions." data-fr="Le même panel de systèmes d'IA reçoit les mêmes questions sentinelles, chaque jour, dans des conditions identiques.">The same panel of AI systems is asked the same sentinel questions, every day, under identical conditions.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">02</div>
+        <h3 data-en="Repeated measurement" data-fr="Mesure répétée">Repeated measurement</h3>
+        <p data-en="Each system is probed multiple times per question: up to 23 daily observations per system under protocol WEATHER-SENTINEL v0.2." data-fr="Chaque système est sondé plusieurs fois par question : jusqu'à 23 observations quotidiennes par système sous le protocole WEATHER-SENTINEL v0.2.">Each system is probed multiple times per question: up to 23 daily observations per system under protocol WEATHER-SENTINEL v0.2.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">03</div>
+        <h3 data-en="Aggregation into a condition" data-fr="Agrégation en une condition">Aggregation into a condition</h3>
+        <p data-en="Responses are scored and reduced to one of four observed conditions per system: Normal, Watch, Warning, Critical." data-fr="Les réponses sont notées et ramenées à l'une des quatre conditions observées par système : Normal, Vigilance, Alerte, Critique.">Responses are scored and reduced to one of four observed conditions per system: Normal, Watch, Warning, Critical.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">04</div>
+        <h3 data-en="Published &amp; hash-chained" data-fr="Publié &amp; chaîné par hash">Published &amp; hash-chained</h3>
+        <p data-en="The day's result is written to a timestamped, verifiable capsule and published as JSON and as widgets." data-fr="Le résultat du jour est écrit dans une capsule horodatée et vérifiable, puis publié en JSON et sous forme de widgets.">The day's result is written to a timestamped, verifiable capsule and published as JSON and as widgets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 · LIMITS ================= -->
+<section id="limits" class="dark on-navy">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-en="04 · LIMITS" data-fr="04 · LIMITES">04 · LIMITS</p>
+      <h2 data-en="What the measurement does not say" data-fr="Ce que la mesure ne dit pas">What the measurement does not say</h2>
+    </div>
+    <p class="limits-lead" data-en="AI Weather™ observes and measures behavioral signals. It does not go further than that." data-fr="La Météo des IA™ observe et mesure des signaux comportementaux. Elle ne va pas plus loin.">AI Weather™ observes and measures behavioral signals. It does not go further than that.</p>
+    <ul class="limits-list">
+      <li data-en="It does not rank AI systems, and never determines which one is “best”." data-fr="Elle ne classe pas les systèmes d'IA et ne détermine jamais lequel est « le meilleur ».">It does not rank AI systems, and never determines which one is "best".</li>
+      <li data-en="It does not certify, guarantee, or predict future AI behavior." data-fr="Elle ne certifie, ne garantit ni ne prédit le comportement futur d'une IA.">It does not certify, guarantee, or predict future AI behavior.</li>
+      <li data-en="It does not judge whether an individual answer is true or false." data-fr="Elle ne juge pas si une réponse individuelle est vraie ou fausse.">It does not judge whether an individual answer is true or false.</li>
+      <li data-en="A level is a starting point for attention, not a verdict. Reading the context and using your own judgment remain necessary." data-fr="Un niveau est un point de départ pour l'attention, pas un verdict. La lecture du contexte et votre propre jugement restent nécessaires.">A level is a starting point for attention, not a verdict. Reading the context and using your own judgment remain necessary.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= GO FURTHER (external links) ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow center" data-en="GO FURTHER" data-fr="POUR ALLER PLUS LOIN">GO FURTHER</p>
+      <h2 data-en="Read the sources behind AI Weather™" data-fr="Lire les sources derrière La Météo des IA™">Read the sources behind AI Weather™</h2>
+    </div>
+    <div class="final-links">
+      <a class="btn btn-primary" href="https://neomundi.org/methodology" target="_blank" rel="noopener" data-en="Full methodology →" data-fr="Méthodologie complète →">Full methodology →</a>
+      <a class="btn btn-ghost" href="../weather.json" target="_blank" rel="noopener" data-en="Available data (weather.json) →" data-fr="Données disponibles (weather.json) →">Available data (weather.json) →</a>
+      <a class="btn btn-ghost" href="https://github.com/neomundi-io/neomundi-ai-weather" target="_blank" rel="noopener" data-en="Public source code →" data-fr="Code source public →">Public source code →</a>
+      <a class="btn btn-ghost" href="https://neomundi.org/" target="_blank" rel="noopener" data-en="NeoMundi Observatory publications →" data-fr="Publications de l'Observatoire NeoMundi →">NeoMundi Observatory publications →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="../assets/logo-controltower.png" alt="ControlTower AI">
+          <span>ControlTowerAI</span>
+        </div>
+        <p style="max-width:280px" data-en="AI Weather™: machine-readable JSON, hash &amp; signature verifiable. Powered by NeoMundi, Runtime AI Metrology." data-fr="La Météo des IA™ : JSON exploitable par machine, hash et signature vérifiables. Propulsé par NeoMundi, métrologie IA en temps réel.">AI Weather™: machine-readable JSON, hash &amp; signature verifiable. Powered by NeoMundi, Runtime AI Metrology.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Explore" data-fr="Explorer">Explore</h4>
+        <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour">Today's Weather</a>
+        <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche">How It Works</a>
+        <a href="stations.html" data-en="Station USA" data-fr="Station USA">Station USA</a>
+        <a href="widgets.html" data-en="Widgets" data-fr="Widgets">Widgets</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Company" data-fr="Société">Company</h4>
+        <a href="about.html" data-en="About" data-fr="À propos">About</a>
+        <a href="index.html#instrument" data-en="NeoMundi Observatory" data-fr="Observatoire NeoMundi">NeoMundi Observatory</a>
+        <a href="for-media.html" data-en="For Media" data-fr="Pour les médias">For Media</a>
+        <a href="contact.html" data-en="Contact" data-fr="Contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Resources" data-fr="Ressources">Resources</h4>
+        <a href="daily-brief.html" data-en="Daily Brief" data-fr="Bulletin quotidien">Daily Brief</a>
+        <a href="https://neomundi.org/methodology" target="_blank" rel="noopener" data-en="Methodology" data-fr="Méthodologie">Methodology</a>
+        <a href="../weather.json" target="_blank" rel="noopener" data-en="Raw data" data-fr="Données brutes">Raw data</a>
+        <a href="https://github.com/neomundi-io/neomundi-ai-weather" target="_blank" rel="noopener" data-en="Source code" data-fr="Code source">Source code</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-en="AI Weather™ observes and measures behavioral signals. It does not certify, guarantee, or predict outcomes." data-fr="La Météo des IA™ observe et mesure des signaux comportementaux. Elle ne certifie, ne garantit ni ne prédit aucun résultat.">AI Weather™ observes and measures behavioral signals. It does not certify, guarantee, or predict outcomes.</span>
+      <span>© 2026 NeoMundi · ControlTower AI</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var LANGS = [
+    { code: "en", label: "English" }, { code: "fr", label: "Français" }, { code: "de", label: "Deutsch" },
+    { code: "es", label: "Español" }, { code: "it", label: "Italiano" }, { code: "pt", label: "Português" },
+    { code: "nl", label: "Nederlands" }, { code: "zh", label: "简体中文" }, { code: "ja", label: "日本語" },
+    { code: "ko", label: "한국어" }, { code: "hi", label: "हिन्दी" }, { code: "ar", label: "العربية" }, { code: "ru", label: "Русский" }
+  ];
+  var COPY_LANGS = ["en", "fr"];
+  var langButton = document.getElementById("lang-button");
+  var langMenu = document.getElementById("lang-menu");
+  langMenu.innerHTML = LANGS.map(function (l) {
+    return '<button class="lang-option' + (l.code === "en" ? " active" : "") + '" data-lang="' + l.code + '" type="button">' + l.label + "</button>";
+  }).join("");
+  function applyCopy(lang) {
+    var key = COPY_LANGS.indexOf(lang) !== -1 ? lang : "en";
+    document.querySelectorAll("[data-" + key + "]").forEach(function (el) { el.textContent = el.getAttribute("data-" + key); });
+  }
+  function selectLang(lang) {
+    langButton.textContent = lang.toUpperCase() + " ▾";
+    langMenu.querySelectorAll(".lang-option").forEach(function (opt) { opt.classList.toggle("active", opt.getAttribute("data-lang") === lang); });
+    applyCopy(lang);
+    langMenu.classList.remove("open");
+    langButton.setAttribute("aria-expanded", "false");
+  }
+  langButton.addEventListener("click", function () {
+    var willOpen = !langMenu.classList.contains("open");
+    langMenu.classList.toggle("open", willOpen);
+    langButton.setAttribute("aria-expanded", String(willOpen));
+  });
+  langMenu.addEventListener("click", function (e) {
+    var btn = e.target.closest(".lang-option");
+    if (btn) selectLang(btn.getAttribute("data-lang"));
+  });
+  document.addEventListener("click", function (e) {
+    if (!document.querySelector(".lang-select").contains(e.target)) {
+      langMenu.classList.remove("open");
+      langButton.setAttribute("aria-expanded", "false");
+    }
+  });
+  var navToggle = document.getElementById("nav-toggle");
+  var mobileNav = document.getElementById("mobile-nav");
+  navToggle.addEventListener("click", function () { mobileNav.classList.toggle("open"); });
+  mobileNav.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { mobileNav.classList.remove("open"); }); });
+
+  function formatUtc(iso) {
+    var d = new Date(iso);
+    var pad = function (n) { return String(n).padStart(2, "0"); };
+    return pad(d.getUTCHours()) + ":" + pad(d.getUTCMinutes()) + " UTC";
+  }
+  fetch("../weather.json").then(function (r) { return r.json(); }).then(function (data) {
+    var ps = data.panel_summary || {};
+    if (typeof ps.panel_coverage === "number") document.getElementById("stat-coverage").textContent = Math.round(ps.panel_coverage * 1000) / 10 + "%";
+    var measuredAt = ps.last_measurement_at || data.generated_at;
+    if (measuredAt) document.getElementById("stat-measured-at").textContent = formatUtc(measuredAt);
+  }).catch(function () {});
+  fetch("../data/capsule-index.json").then(function (r) { return r.json(); }).then(function (data) {
+    var n = (data.capsules || []).length;
+    if (n) document.getElementById("stat-days").textContent = n;
+  }).catch(function () {});
+})();
+</script>
+
+</body>
+</html>

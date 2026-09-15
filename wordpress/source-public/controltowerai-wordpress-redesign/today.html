@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a1220">
+<title>Today's AI Weather™ · ControlTower AI</title>
+<meta name="description" content="Today's real AI Weather™ observation: the full panel, 15 days of real history, and each system's condition, read live from the actual measurement.">
+
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --page-bg: #f4f8fd; --page-bg-alt: #eaf2fb; --surface: #ffffff; --surface-soft: #f6faff;
+    --navy-900: #070d18; --navy-800: #0a1220;
+    --ink: #0f1826; --ink-dim: #4c5c6e; --ink-faint: #8595a6;
+    --on-navy: #eef4fc; --on-navy-dim: #a9bad0; --on-navy-faint: #6d80998f;
+    --border: #dde6f0; --border-soft: #e9f0f7; --border-navy: #24334f;
+    --accent: #2f7dd8; --accent-strong: #1c5cb0; --accent-soft: #e4f0fd; --cyan: #22d3ee;
+    --lvl-green: #22c55e; --lvl-yellow: #facc15; --lvl-orange: #fb923c; --lvl-red: #b91c1c; --lvl-grey: #5c6577;
+    --radius-lg: 22px; --radius-md: 14px; --radius-sm: 9px;
+    --shadow-1: 0 1px 2px rgba(15,24,38,.05), 0 10px 28px rgba(15,24,38,.06);
+    --shadow-2: 0 20px 60px rgba(8,14,26,.16);
+    --container: 1180px; --font-sans: "Inter","Segoe UI",system-ui,sans-serif; --font-mono: "IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--font-sans); color: var(--ink); background: var(--page-bg); -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+  .eyebrow { font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-strong); margin: 0 0 12px; }
+  .on-navy .eyebrow { color: var(--cyan); }
+  h1, h2, h3, h4 { font-weight: 800; letter-spacing: -.01em; margin: 0; }
+  h1 { font-size: clamp(30px, 4vw, 46px); line-height: 1.1; }
+  h2 { font-size: clamp(22px, 2.6vw, 30px); line-height: 1.18; }
+  h3 { font-size: 17px; }
+  p { line-height: 1.6; color: var(--ink-dim); margin: 0; }
+  .on-navy, .on-navy p { color: var(--on-navy-dim); }
+  .on-navy h2, .on-navy h3 { color: var(--on-navy); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 700; font-size: 14.5px; text-decoration: none; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
+  .btn-primary { background: linear-gradient(180deg, #3a8ae0, var(--accent-strong)); color: #fff; box-shadow: 0 8px 22px rgba(47,125,216,.35); }
+  .btn-ghost { background: #fff; color: var(--ink); border-color: var(--border); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-strong); }
+  .btn-sm { padding: 9px 16px; font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+  .site-header { position: sticky; top: 0; z-index: 100; background: rgba(244,248,253,.82); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-soft); }
+  .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 20px; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex: none; }
+  .brand img { width: 32px; height: 32px; border-radius: 50%; }
+  .brand-text { font-weight: 800; font-size: 15.5px; letter-spacing: -.01em; color: var(--ink); }
+  .brand-text em { font-style: normal; color: var(--accent-strong); }
+  .main-nav { display: flex; gap: 26px; margin-left: 12px; flex: 1; }
+  .main-nav a { font-size: 13.5px; font-weight: 600; text-decoration: none; color: var(--ink-dim); }
+  .main-nav a.current, .main-nav a:hover { color: var(--ink); }
+  .header-actions { display: flex; align-items: center; gap: 10px; flex: none; }
+  .lang-select { position: relative; }
+  .lang-button { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; background: #fff; border: 1px solid var(--border); border-radius: 999px; font: inherit; font-size: 12.5px; font-weight: 700; color: var(--ink-dim); cursor: pointer; }
+  .lang-menu { display: none; position: absolute; top: calc(100% + 8px); right: 0; min-width: 190px; max-height: 320px; overflow-y: auto; background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-2); padding: 6px; z-index: 200; }
+  .lang-menu.open { display: block; }
+  .lang-option { display: block; width: 100%; text-align: left; padding: 9px 10px; border: 0; background: transparent; border-radius: 8px; cursor: pointer; font: inherit; font-size: 13px; color: var(--ink); }
+  .lang-option:hover { background: var(--surface-soft); }
+  .lang-option.active { background: var(--accent-soft); font-weight: 700; color: var(--accent-strong); }
+  .nav-toggle { display: none; width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 16px; }
+  .mobile-nav { display: none; flex-direction: column; gap: 2px; padding: 10px 24px 16px; border-top: 1px solid var(--border-soft); background: var(--surface); }
+  .mobile-nav a { padding: 12px 4px; font-weight: 600; font-size: 14.5px; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--border-soft); }
+  .mobile-nav.open { display: flex; }
+  @media (max-width: 880px) { .main-nav { display: none; } .nav-toggle { display: block; } }
+
+  section { padding: 60px 0; }
+  .dark { background: radial-gradient(1200px 500px at 20% -10%, #122241 0%, transparent 60%), linear-gradient(180deg, var(--navy-800), var(--navy-900)); position: relative; overflow: hidden; }
+  .dark::before { content: ""; position: absolute; inset: 0; opacity: .5; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px); background-size: 46px 46px; mask-image: radial-gradient(75% 60% at 50% 20%, #000 40%, transparent 100%); }
+  .dark > .wrap { position: relative; z-index: 1; }
+
+  /* ---------------- Hero ---------------- */
+  .page-intro { padding: 52px 0 40px; background: linear-gradient(180deg, var(--page-bg-alt) 0%, var(--page-bg) 80%); }
+  .page-intro .lede { font-size: 16px; max-width: 640px; margin-top: 14px; }
+  .hero-top-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .state-badge { display: inline-flex; align-items: center; gap: 9px; padding: 9px 16px; border-radius: 999px; font-weight: 800; font-size: 13.5px; background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow-1); white-space: nowrap; }
+  .state-badge .dot { width: 12px; height: 12px; border-radius: 50%; flex: none; box-shadow: 0 0 0 4px currentColor22; }
+  .state-badge.st-clear { color: #15803d; } .state-badge.st-clear .dot { background: var(--lvl-green); }
+  .state-badge.st-watch { color: #92720a; } .state-badge.st-watch .dot { background: var(--lvl-yellow); }
+  .state-badge.st-unsettled { color: #9a4c15; } .state-badge.st-unsettled .dot { background: var(--lvl-orange); }
+  .state-badge.st-alert { color: #991b1b; } .state-badge.st-alert .dot { background: var(--lvl-red); }
+  .intro-stats { display: flex; gap: 34px; flex-wrap: wrap; margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--border-soft); }
+  .stat-num { font-family: var(--font-mono); font-size: 21px; font-weight: 600; color: var(--ink); display: block; }
+  .stat-label { font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .06em; margin-top: 3px; }
+
+  .levels-strip { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 34px; }
+  .levels-strip .lvl { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: var(--on-navy-dim); }
+  .levels-strip .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+
+  /* ---------------- Native wall (no iframe) ---------------- */
+  .wall-native { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  @media (min-width: 560px) { .wall-native { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 860px) { .wall-native { grid-template-columns: repeat(4, 1fr); } }
+  .wcard { background: rgba(255,255,255,.03); border: 1px solid var(--border-navy); border-left: 4px solid var(--ink-faint); border-radius: var(--radius-md); padding: 14px; }
+  .wcard.is-clear { border-left-color: var(--lvl-green); }
+  .wcard.is-watch { border-left-color: var(--lvl-yellow); }
+  .wcard.is-unsettled { border-left-color: var(--lvl-orange); }
+  .wcard.is-alert { border-left-color: var(--lvl-red); }
+  .wcard-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .wcard-dot { width: 18px; height: 18px; border-radius: 50%; flex: none; border: 2px solid rgba(255,255,255,.9); }
+  .wcard.is-clear .wcard-dot { background: var(--lvl-green); box-shadow: 0 0 12px rgba(34,197,94,.5); }
+  .wcard.is-watch .wcard-dot { background: var(--lvl-yellow); box-shadow: 0 0 12px rgba(250,204,21,.5); }
+  .wcard.is-unsettled .wcard-dot { background: var(--lvl-orange); box-shadow: 0 0 12px rgba(251,146,60,.5); }
+  .wcard.is-alert .wcard-dot { background: var(--lvl-red); box-shadow: 0 0 12px rgba(185,28,28,.5); }
+  .wcard-name { font-size: 13.5px; font-weight: 700; color: var(--on-navy); }
+  .wcard-spark { display: block; width: 100%; height: 26px; }
+  .wall-state-msg { color: var(--on-navy-dim); font-size: 13.5px; grid-column: 1 / -1; }
+
+  .frame-fallback { font-size: 12.5px; color: var(--on-navy-faint); margin-top: 10px; }
+  .frame-fallback a { color: var(--cyan); font-weight: 700; text-decoration: none; }
+  .frame-fallback a:hover { text-decoration: underline; }
+  .today-links { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 22px; }
+  .today-links a { font-size: 13.5px; font-weight: 700; text-decoration: none; color: var(--cyan); }
+  .today-links a:hover { text-decoration: underline; }
+
+  /* ---------------- Question of the day ---------------- */
+  .qod { position: relative; overflow: hidden; margin-top: 30px; background: rgba(255,255,255,.03); border: 1px solid var(--border-navy); border-radius: var(--radius-md); padding: 16px 20px 18px; }
+  .qod::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--cyan); }
+  .qod-label { font-family: var(--font-mono); font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--on-navy-faint); margin-bottom: 6px; }
+  .qod-text { font-size: 14.5px; font-weight: 600; line-height: 1.5; color: var(--on-navy); max-width: 900px; }
+  .qod-original { margin-top: 10px; padding-top: 9px; border-top: 1px solid var(--border-navy); }
+  .qod-original summary { cursor: pointer; font-size: 11px; font-weight: 700; color: var(--on-navy-faint); list-style: none; }
+  .qod-original summary::-webkit-details-marker { display: none; }
+  .qod-original summary::after { content: " ▾"; }
+  .qod-original[open] summary::after { content: " ▴"; }
+  .qod-original-text { margin-top: 8px; font-size: 12px; line-height: 1.5; color: var(--on-navy-faint); }
+
+  /* ---------------- Understand section ---------------- */
+  .understand-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  @media (max-width: 980px) { .understand-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .understand-grid { grid-template-columns: 1fr; } }
+  .u-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px; box-shadow: var(--shadow-1); }
+  .u-dot { width: 16px; height: 16px; border-radius: 50%; margin-bottom: 12px; }
+  .u-card p { font-size: 13px; }
+  .u-title { font-size: 13.5px; font-weight: 800; margin-bottom: 6px; color: var(--ink); }
+  .understand-cta { margin-top: 26px; }
+
+  footer { background: var(--navy-900); color: var(--on-navy-dim); padding: 56px 0 28px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; margin-bottom: 40px; }
+  .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .footer-brand img { width: 26px; height: 26px; border-radius: 50%; }
+  .footer-brand span { font-weight: 800; color: var(--on-navy); }
+  .footer-col h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--on-navy); margin-bottom: 14px; }
+  .footer-col a { display: block; font-size: 13.5px; text-decoration: none; color: var(--on-navy-dim); margin-bottom: 10px; }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--border-navy); font-size: 12px; color: var(--on-navy-faint); }
+  @media (max-width: 780px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+
+  .quiz-block { margin-top: 56px; display: grid; grid-template-columns: 1fr 340px; gap: 32px; align-items: center; background: rgba(255,255,255,.03); border: 1px solid var(--border-navy); border-radius: var(--radius-lg); padding: 28px; }
+  .quiz-frame-wrap { width: 100%; max-width: 340px; }
+  .quiz-frame { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-navy); background: #0c1420; }
+  .quiz-frame iframe { display: block; width: 100%; height: 420px; border: 0; }
+  @media (max-width: 860px) { .quiz-block { grid-template-columns: 1fr; } .quiz-frame-wrap { max-width: 300px; } }
+
+  /* ================================================================
+     15-DAY VISION — self-contained, own i18n (real i18n/<lang>.json +
+     config/languages.json content, no shared-loader side effects so
+     the rest of this page's chrome never flips to RTL). Colors and
+     tokens match the section's own dark/light context; classification
+     vocabulary is never invented here, only read and displayed.
+     ================================================================ */
+  .history-section { padding-top: 8px; }
+  .history-head { max-width: 720px; margin-bottom: 30px; }
+  .history-status { font-size: 13.5px; color: var(--ink-dim); }
+
+  /* A — global 15-day strip */
+  .hist-strip-wrap { margin-bottom: 40px; }
+  .hist-controls { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+  .hist-controls button { font: inherit; font-size: 12.5px; font-weight: 700; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border); background: #fff; color: var(--ink); cursor: pointer; }
+  .hist-controls button:disabled { opacity: .4; cursor: default; }
+  .hist-hint { font-size: 12px; color: var(--ink-faint); }
+  .hist-strip { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin; }
+  .hist-day { flex: none; width: 64px; text-align: center; padding: 10px 4px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--surface); cursor: pointer; font: inherit; }
+  .hist-day:hover { border-color: var(--accent); }
+  .hist-day.is-active { border-color: var(--ink); box-shadow: 0 0 0 2px var(--ink) inset; }
+  .hist-day-date { font-family: var(--font-mono); font-size: 10px; color: var(--ink-faint); margin-bottom: 8px; }
+  .hist-day-dot { width: 18px; height: 18px; border-radius: 50%; margin: 0 auto; }
+  .hist-day.cond-clear .hist-day-dot { background: var(--lvl-green); }
+  .hist-day.cond-watch .hist-day-dot { background: var(--lvl-yellow); }
+  .hist-day.cond-unsettled .hist-day-dot { background: var(--lvl-orange); }
+  .hist-day.cond-alert .hist-day-dot { background: var(--lvl-red); }
+  .hist-day.cond-insufficient .hist-day-dot { background: transparent; border: 2px dashed var(--ink-faint); }
+  .hist-day.cond-absent .hist-day-dot, .hist-day.cond-unknown .hist-day-dot { background: transparent; border: 1.5px solid var(--ink-faint); }
+
+  /* B — comparison table */
+  .hist-table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); }
+  table.hist-table { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 12.5px; }
+  .hist-table th, .hist-table td { padding: 8px 6px; text-align: center; white-space: nowrap; border-bottom: 1px solid var(--border-soft); }
+  .hist-table thead th { font-size: 11px; color: var(--ink-faint); font-weight: 700; padding-top: 10px; }
+  .hist-table th:first-child { position: sticky; inset-inline-start: 0; z-index: 1; background: var(--surface); text-align: start; padding-inline: 14px; min-width: 130px; box-shadow: 1px 0 0 var(--border); }
+  .hist-cell-btn { width: 40px; min-height: 34px; border-radius: 8px; border: 1px solid var(--border); background: #fff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+  .hist-cell-btn[aria-pressed="true"] { border-color: var(--ink); box-shadow: 0 0 0 2px var(--ink) inset; }
+  .hist-mark { display: inline-block; width: 11px; height: 11px; border-radius: 50%; }
+  .hist-cell-btn.cond-clear .hist-mark { background: var(--lvl-green); }
+  .hist-cell-btn.cond-watch .hist-mark { background: var(--lvl-yellow); }
+  .hist-cell-btn.cond-unsettled .hist-mark { background: var(--lvl-orange); }
+  .hist-cell-btn.cond-alert .hist-mark { background: var(--lvl-red); }
+  .hist-cell-btn.cond-insufficient .hist-mark { background: transparent; border: 2px dashed var(--ink-faint); }
+  .hist-cell-btn.cond-absent .hist-mark, .hist-cell-btn.cond-unknown .hist-mark { background: transparent; border: 1.5px solid var(--ink-faint); }
+
+  /* C — detail card */
+  .hist-detail { margin-top: 26px; padding: 22px; background: var(--navy-900); color: var(--on-navy); border-radius: var(--radius-lg); box-shadow: var(--shadow-2); }
+  .hist-detail h3 { color: var(--on-navy); margin-bottom: 14px; }
+  .hist-detail dl { display: grid; grid-template-columns: repeat(2, minmax(140px, 1fr)); gap: 10px 24px; margin: 0 0 18px; }
+  @media (max-width: 620px) { .hist-detail dl { grid-template-columns: 1fr; } }
+  .hist-detail dt { font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--on-navy-faint); }
+  .hist-detail dd { margin: 2px 0 0; font-size: 13.5px; color: var(--on-navy); }
+  .hist-detail .qod { margin-top: 0; }
+  .hist-json-link { display: inline-block; margin-top: 14px; font-size: 12.5px; font-weight: 700; color: var(--cyan); text-decoration: none; }
+  .hist-json-link:hover { text-decoration: underline; }
+
+  .history-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; font-size: 12px; color: var(--ink-faint); }
+  .history-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .history-legend i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+  .history-legend i.dashed { background: transparent; border: 2px dashed var(--ink-faint); width: 6px; height: 6px; }
+
+  [dir="rtl"] .hist-table th:first-child { box-shadow: -1px 0 0 var(--border); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <img src="../assets/logo-controltower.png" alt="ControlTower AI">
+      <span class="brand-text">ControlTower<em>AI</em></span>
+    </a>
+    <nav class="main-nav">
+      <a href="today.html" class="current" data-en="Today's Weather" data-fr="Météo du jour">Today's Weather</a>
+      <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche">How It Works</a>
+      <a href="stations.html" data-en="Station USA" data-fr="Station USA">Station USA</a>
+      <a href="widgets.html" data-en="Widgets" data-fr="Widgets">Widgets</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-select">
+        <button class="lang-button" id="lang-button" type="button" aria-haspopup="true" aria-expanded="false">EN ▾</button>
+        <div class="lang-menu" id="lang-menu"></div>
+      </div>
+      <a class="btn btn-primary btn-sm" href="daily-brief.html" data-en="Get the Daily Brief →" data-fr="Recevoir le bulletin →">Get the Daily Brief →</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour">Today's Weather</a>
+    <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche">How It Works</a>
+    <a href="stations.html" data-en="Station USA" data-fr="Station USA">Station USA</a>
+    <a href="widgets.html" data-en="Widgets" data-fr="Widgets">Widgets</a>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="page-intro">
+  <div class="wrap">
+    <div class="hero-top-row">
+      <div>
+        <p class="eyebrow" data-en="LIVE PANEL · REAL MEASUREMENT" data-fr="PANNEAU EN DIRECT · MESURE RÉELLE">LIVE PANEL · REAL MEASUREMENT</p>
+        <h1 data-en="Today's AI Weather™" data-fr="La Météo des IA™ du jour">Today's AI Weather™</h1>
+      </div>
+      <span class="state-badge" id="hero-state-badge" hidden></span>
+    </div>
+    <p class="lede" data-en="The full observation wall, updated daily: every system in the panel, the real question asked today, and each system's condition and recent trend." data-fr="Le mur d'observation complet, mis à jour chaque jour : tous les systèmes du panel, la vraie question posée aujourd'hui, et la condition ainsi que la tendance récente de chaque système.">The full observation wall, updated daily: every system in the panel, the real question asked today, and each system's condition and recent trend.</p>
+    <p class="lede" style="margin-top:8px" data-en="One instrument, read every day: what changed, what held steady, and what still needs your judgment." data-fr="Un même instrument, lu chaque jour : ce qui a changé, ce qui est resté stable, et ce qui demande encore votre jugement.">One instrument, read every day: what changed, what held steady, and what still needs your judgment.</p>
+    <div class="intro-stats">
+      <div><span class="stat-num" id="stat-measured">—</span><span class="stat-label" data-en="last measured (UTC)" data-fr="dernière mesure (UTC)">last measured (UTC)</span></div>
+      <div><span class="stat-num" id="stat-coverage">—</span><span class="stat-label" data-en="panel coverage today" data-fr="couverture du panel aujourd'hui">panel coverage today</span></div>
+      <div><span class="stat-num" id="stat-systems">—</span><span class="stat-label" data-en="systems observed" data-fr="systèmes observés">systems observed</span></div>
+      <div id="stat-runs-block" hidden><span class="stat-num" id="stat-runs">—</span><span class="stat-label" data-en="total runs today" data-fr="exécutions totales aujourd'hui">total runs today</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TODAY'S WEATHER (native, no iframe) ================= -->
+<section class="dark on-navy">
+  <div class="wrap">
+    <div class="levels-strip">
+      <span class="lvl"><i class="dot" style="background:#22c55e"></i><span data-en="Normal" data-fr="Normal">Normal</span></span>
+      <span class="lvl"><i class="dot" style="background:#facc15"></i><span data-en="Watch" data-fr="Vigilance">Watch</span></span>
+      <span class="lvl"><i class="dot" style="background:#fb923c"></i><span data-en="Warning" data-fr="Alerte">Warning</span></span>
+      <span class="lvl"><i class="dot" style="background:#b91c1c"></i><span data-en="Critical" data-fr="Critique">Critical</span></span>
+      <a href="how-it-works.html#why" style="margin-left:auto;font-size:12.5px;font-weight:700;color:var(--cyan);text-decoration:none" data-en="What do these mean? →" data-fr="Que signifient-ils ? →">What do these mean? →</a>
+    </div>
+
+    <div class="wall-native" id="wall-native" role="list" aria-label="Today's observed AI systems">
+      <p class="wall-state-msg" data-en="Loading panel…" data-fr="Chargement du panneau…">Loading panel…</p>
+    </div>
+    <p class="frame-fallback" id="wall-fallback" hidden>
+      <span data-en="Panel data is temporarily unavailable. " data-fr="Les données du panneau sont temporairement indisponibles. ">Panel data is temporarily unavailable. </span>
+      <a href="../weather.json" target="_blank" rel="noopener" data-en="Open the raw JSON →" data-fr="Ouvrir le JSON brut →">Open the raw JSON →</a>
+    </p>
+
+    <div class="today-links">
+      <a href="../index.html" target="_blank" rel="noopener" data-en="Open the full wall →" data-fr="Ouvrir le mur complet →">Open the full wall →</a>
+      <a href="../core-panel.html" target="_blank" rel="noopener" data-en="Core panel (8 providers) →" data-fr="Panneau Core (8 fournisseurs) →">Core panel (8 providers) →</a>
+      <a href="widgets.html" data-en="All widget formats →" data-fr="Tous les formats de widgets →">All widget formats →</a>
+    </div>
+
+    <div class="qod" id="qod-block" hidden>
+      <div class="qod-label" data-en="Question of the day" data-fr="Question du jour">Question of the day</div>
+      <div class="qod-text" id="qod-text">—</div>
+      <details class="qod-original" id="qod-original" hidden>
+        <summary data-en="View original EN" data-fr="Voir l'original EN">View original EN</summary>
+        <div class="qod-original-text" id="qod-original-text" lang="en" dir="ltr">—</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 15-DAY VISION ================= -->
+<section class="history-section" id="history-root">
+  <div class="wrap">
+    <div class="history-head">
+      <p class="eyebrow" data-en="15-DAY VISION" data-fr="VISION SUR 15 JOURS">15-DAY VISION</p>
+      <h2 data-en="How the panel evolved" data-fr="Comment le panel a évolué">How the panel evolved</h2>
+      <p class="lede" style="margin-top:10px" data-en="Every cell reads a real, published capsule. Nothing here is interpolated, averaged, or recomputed: a missing day stays visibly missing." data-fr="Chaque case lit une capsule réelle et publiée. Rien n'est interpolé, moyenné ou recalculé ici : un jour manquant reste visiblement manquant.">Every cell reads a real, published capsule. Nothing here is interpolated, averaged, or recomputed: a missing day stays visibly missing.</p>
+    </div>
+
+    <p class="history-status" id="history-status" role="status"></p>
+
+    <div id="history-content" hidden>
+      <!-- A. Global 15-day strip -->
+      <div class="hist-strip-wrap">
+        <div class="hist-controls">
+          <button type="button" id="hist-prev"></button>
+          <button type="button" id="hist-play" aria-pressed="false"></button>
+          <button type="button" id="hist-next"></button>
+          <span class="hist-hint" id="hist-hint"></span>
+        </div>
+        <div class="hist-strip" id="hist-strip" role="tablist" aria-label="Global condition, last 15 days"></div>
+      </div>
+
+      <!-- B. Comparative systems view -->
+      <div class="hist-table-scroll" id="hist-table-scroll" tabindex="0" role="region" aria-labelledby="history-title-table">
+        <h3 id="history-title-table" class="u-visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Per-system condition, last 15 days</h3>
+        <table class="hist-table" id="hist-table"></table>
+      </div>
+
+      <div class="history-legend" id="history-legend"></div>
+
+      <!-- C. Detail card -->
+      <div class="hist-detail" id="hist-detail" role="region" aria-live="polite" aria-labelledby="hist-detail-title">
+        <h3 id="hist-detail-title"></h3>
+        <dl id="hist-metadata"></dl>
+        <div class="qod" style="background:rgba(255,255,255,.04)">
+          <div class="qod-label" id="hist-question-label"></div>
+          <div class="qod-text" id="hist-question"></div>
+          <details class="qod-original" id="hist-original" hidden>
+            <summary id="hist-original-toggle"></summary>
+            <div class="qod-original-text" id="hist-original-text" lang="en" dir="ltr"></div>
+          </details>
+        </div>
+        <a class="hist-json-link" id="hist-json" href="#" target="_blank" rel="noopener">JSON</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= UNDERSTAND THE WEATHER ================= -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow" data-en="UNDERSTAND THE WEATHER" data-fr="COMPRENDRE LA MÉTÉO">UNDERSTAND THE WEATHER</p>
+    <h2 data-en="What each color means" data-fr="Ce que signifie chaque couleur">What each color means</h2>
+    <p class="lede" style="margin-top:10px;margin-bottom:26px" data-en="Four levels to guide attention, and one explicit state for when there simply isn't enough data to say anything." data-fr="Quatre niveaux pour orienter l'attention, et un état explicite lorsqu'il n'y a tout simplement pas assez de données pour conclure.">Four levels to guide attention, and one explicit state for when there simply isn't enough data to say anything.</p>
+    <div class="understand-grid">
+      <div class="u-card">
+        <div class="u-dot" style="background:var(--lvl-green)"></div>
+        <div class="u-title" data-en="Normal" data-fr="Normal">Normal</div>
+        <p data-en="Behavior observed within its expected range." data-fr="Comportement observé dans sa plage attendue.">Behavior observed within its expected range.</p>
+      </div>
+      <div class="u-card">
+        <div class="u-dot" style="background:var(--lvl-yellow)"></div>
+        <div class="u-title" data-en="Watch" data-fr="Vigilance">Watch</div>
+        <p data-en="Heightened attention: a variation worth monitoring." data-fr="Attention accrue : une variation qui mérite d'être suivie.">Heightened attention: a variation worth monitoring.</p>
+      </div>
+      <div class="u-card">
+        <div class="u-dot" style="background:var(--lvl-orange)"></div>
+        <div class="u-title" data-en="Warning" data-fr="Alerte">Warning</div>
+        <p data-en="Reinforced attention: a more marked deviation was measured." data-fr="Attention renforcée : un écart plus marqué a été mesuré.">Reinforced attention: a more marked deviation was measured.</p>
+      </div>
+      <div class="u-card">
+        <div class="u-dot" style="background:var(--lvl-red)"></div>
+        <div class="u-title" data-en="Critical" data-fr="Critique">Critical</div>
+        <p data-en="Critical attention: a significant disruption was observed." data-fr="Attention critique : une perturbation importante a été observée.">Critical attention: a significant disruption was observed.</p>
+      </div>
+      <div class="u-card">
+        <div class="u-dot" style="background:transparent;border:2px dashed var(--ink-faint)"></div>
+        <div class="u-title" data-en="Insufficient data" data-fr="Données insuffisantes">Insufficient data</div>
+        <p data-en="No conclusion should be drawn. This is not a level: it means the measurement itself is incomplete." data-fr="Aucune conclusion ne doit être tirée. Ce n'est pas un niveau : cela signifie que la mesure elle-même est incomplète.">No conclusion should be drawn. This is not a level: it means the measurement itself is incomplete.</p>
+      </div>
+    </div>
+    <div class="understand-cta">
+      <a class="btn btn-primary" href="how-it-works.html" data-en="How It Works →" data-fr="Comment ça marche →">How It Works →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUIZ (distinct chantier — unchanged) ================= -->
+<section class="dark on-navy">
+  <div class="wrap">
+    <div class="quiz-block" id="quiz">
+      <div class="quiz-copy">
+        <p class="eyebrow" data-en="TEST YOURSELF" data-fr="TESTEZ-VOUS">TEST YOURSELF</p>
+        <h3 data-en="Can you spot the drift?" data-fr="Saurez-vous repérer la dérive ?">Can you spot the drift?</h3>
+        <p data-en="A daily visual quiz built from real AI Weather™ observations. Compare two signals, identify meaningful change, and test your reading of AI behavior." data-fr="Un quiz visuel quotidien construit à partir des observations réelles de La Météo des IA™. Comparez deux signaux, repérez les changements significatifs et testez votre lecture du comportement des IA.">A daily visual quiz built from real AI Weather™ observations. Compare two signals, identify meaningful change, and test your reading of AI behavior.</p>
+      </div>
+      <div class="quiz-frame-wrap">
+        <div class="quiz-frame" id="quiz-frame">
+          <iframe id="iframe-quiz-daily" data-src="../widgets/quiz-public/daily.html" src="../widgets/quiz-public/daily.html?theme=dark&amp;lang=en" loading="lazy" title="Spot the Drift: today's question" scrolling="no"></iframe>
+        </div>
+        <p class="frame-fallback" id="quiz-fallback">
+          <span data-en="Quiz not loading? " data-fr="Le quiz ne se charge pas ? ">Quiz not loading? </span>
+          <a href="../widgets/quiz-public/daily.html" target="_blank" rel="noopener" data-en="Try it here →" data-fr="Essayez-le ici →">Try it here →</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="../assets/logo-controltower.png" alt="ControlTower AI">
+          <span>ControlTowerAI</span>
+        </div>
+        <p style="max-width:280px" data-en="AI Weather™: machine-readable JSON, hash &amp; signature verifiable. Powered by NeoMundi, Runtime AI Metrology." data-fr="La Météo des IA™ : JSON exploitable par machine, hash et signature vérifiables. Propulsé par NeoMundi, métrologie IA en temps réel.">AI Weather™: machine-readable JSON, hash &amp; signature verifiable. Powered by NeoMundi, Runtime AI Metrology.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Explore" data-fr="Explorer">Explore</h4>
+        <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour">Today's Weather</a>
+        <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche">How It Works</a>
+        <a href="stations.html" data-en="Station USA" data-fr="Station USA">Station USA</a>
+        <a href="widgets.html" data-en="Widgets" data-fr="Widgets">Widgets</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Company" data-fr="Société">Company</h4>
+        <a href="about.html" data-en="About" data-fr="À propos">About</a>
+        <a href="index.html#instrument" data-en="NeoMundi Observatory" data-fr="Observatoire NeoMundi">NeoMundi Observatory</a>
+        <a href="for-media.html" data-en="For Media" data-fr="Pour les médias">For Media</a>
+        <a href="contact.html" data-en="Contact" data-fr="Contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Resources" data-fr="Ressources">Resources</h4>
+        <a href="daily-brief.html" data-en="Daily Brief" data-fr="Bulletin quotidien">Daily Brief</a>
+        <a href="https://neomundi.org/methodology" target="_blank" rel="noopener" data-en="Methodology" data-fr="Méthodologie">Methodology</a>
+        <a href="../weather.json" target="_blank" rel="noopener" data-en="Raw data" data-fr="Données brutes">Raw data</a>
+        <a href="https://github.com/neomundi-io/neomundi-ai-weather" target="_blank" rel="noopener" data-en="Source code" data-fr="Code source">Source code</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-en="AI Weather™ observes and measures behavioral signals. It does not certify, guarantee, or predict outcomes." data-fr="La Météo des IA™ observe et mesure des signaux comportementaux. Elle ne certifie, ne garantit ni ne prédit aucun résultat.">AI Weather™ observes and measures behavioral signals. It does not certify, guarantee, or predict outcomes.</span>
+      <span>© 2026 NeoMundi · ControlTower AI</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../scripts/weather-data.js"></script>
+<script>
+(function () {
+  // ---------------- Site chrome (nav / lang / mobile) — unchanged mechanism ----------------
+  var LANGS = [
+    { code: "en", label: "English" }, { code: "fr", label: "Français" }, { code: "de", label: "Deutsch" },
+    { code: "es", label: "Español" }, { code: "it", label: "Italiano" }, { code: "pt", label: "Português" },
+    { code: "nl", label: "Nederlands" }, { code: "zh", label: "简体中文" }, { code: "ja", label: "日本語" },
+    { code: "ko", label: "한국어" }, { code: "hi", label: "हिन्दी" }, { code: "ar", label: "العربية" }, { code: "ru", label: "Русский" }
+  ];
+  var COPY_LANGS = ["en", "fr"];
+  var current = "en";
+  var langButton = document.getElementById("lang-button");
+  var langMenu = document.getElementById("lang-menu");
+  langMenu.innerHTML = LANGS.map(function (l) {
+    return '<button class="lang-option' + (l.code === "en" ? " active" : "") + '" data-lang="' + l.code + '" type="button">' + l.label + "</button>";
+  }).join("");
+  function applyCopy(lang) {
+    var key = COPY_LANGS.indexOf(lang) !== -1 ? lang : "en";
+    document.querySelectorAll("[data-" + key + "]").forEach(function (el) { el.textContent = el.getAttribute("data-" + key); });
+  }
+  function selectLang(lang) {
+    current = lang;
+    langButton.textContent = lang.toUpperCase() + " ▾";
+    langMenu.querySelectorAll(".lang-option").forEach(function (opt) { opt.classList.toggle("active", opt.getAttribute("data-lang") === lang); });
+    applyCopy(lang);
+    setWidgetLang(lang);
+    renderHistory(lang);
+    langMenu.classList.remove("open");
+    langButton.setAttribute("aria-expanded", "false");
+  }
+  langButton.addEventListener("click", function () {
+    var willOpen = !langMenu.classList.contains("open");
+    langMenu.classList.toggle("open", willOpen);
+    langButton.setAttribute("aria-expanded", String(willOpen));
+  });
+  langMenu.addEventListener("click", function (e) {
+    var btn = e.target.closest(".lang-option");
+    if (btn) selectLang(btn.getAttribute("data-lang"));
+  });
+  document.addEventListener("click", function (e) {
+    if (!document.querySelector(".lang-select").contains(e.target)) {
+      langMenu.classList.remove("open");
+      langButton.setAttribute("aria-expanded", "false");
+    }
+  });
+  var navToggle = document.getElementById("nav-toggle");
+  var mobileNav = document.getElementById("mobile-nav");
+  navToggle.addEventListener("click", function () { mobileNav.classList.toggle("open"); });
+  mobileNav.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { mobileNav.classList.remove("open"); }); });
+
+  function setWidgetLang(lang) {
+    var frame = document.getElementById("iframe-quiz-daily");
+    if (!frame) return;
+    var base = frame.getAttribute("data-src");
+    var url = new URL(base, window.location.href);
+    var currentParams = new URL(frame.src, window.location.href).searchParams;
+    currentParams.set("lang", lang);
+    url.search = currentParams.toString();
+    frame.src = url.toString();
+  }
+
+  var quizFrame = document.getElementById("iframe-quiz-daily");
+  if (quizFrame) {
+    window.addEventListener("message", function (event) {
+      if (event.source !== quizFrame.contentWindow) return;
+      if (!event.data || event.data.type !== "nm-quiz-resize") return;
+      if (typeof event.data.height === "number") quizFrame.style.height = event.data.height + "px";
+    });
+    quizFrame.addEventListener("error", function () {
+      var fb = document.getElementById("quiz-fallback");
+      if (fb) fb.style.display = "block";
+    });
+  }
+
+  // ---------------- Condition helpers (shared by wall + history) ----------------
+  var CONDITION_COLOR = { clear: "#22c55e", watch: "#facc15", unsettled: "#fb923c", alert: "#b91c1c" };
+  var CONDITION_SEVERITY = { clear: 0, watch: 1, unsettled: 2, alert: 3 };
+  function pad2(n) { return String(n).padStart(2, "0"); }
+  function formatUtcParts(iso) {
+    var d = new Date(iso);
+    return { date: d, hh: pad2(d.getUTCHours()), mm: pad2(d.getUTCMinutes()) };
+  }
+
+  // ---------------- Hero + native wall ----------------
+  function renderHeroAndWall(data, panelSystems, historyMap) {
+    var ps = data.panel_summary || {};
+    var badge = document.getElementById("hero-state-badge");
+    var cond = data.global_condition;
+    var STATE_LABEL = {
+      en: { clear: "Normal", watch: "Watch", unsettled: "Warning", alert: "Critical" },
+      fr: { clear: "Normal", watch: "Vigilance", unsettled: "Alerte", alert: "Critique" }
+    };
+    if (cond && CONDITION_COLOR[cond]) {
+      badge.hidden = false;
+      badge.className = "state-badge st-" + cond;
+      badge.innerHTML = '<span class="dot" aria-hidden="true"></span><span></span>';
+      badge.dataset.stateEn = STATE_LABEL.en[cond];
+      badge.dataset.stateFr = STATE_LABEL.fr[cond];
+      badge.querySelector("span:last-child").textContent = STATE_LABEL[current] ? STATE_LABEL[current][cond] : STATE_LABEL.en[cond];
+    }
+
+    if (typeof ps.systems_count === "number") document.getElementById("stat-systems").textContent = ps.systems_count;
+    if (typeof ps.panel_coverage === "number") document.getElementById("stat-coverage").textContent = Math.round(ps.panel_coverage * 1000) / 10 + "%";
+    var measuredAt = ps.last_measurement_at || data.generated_at;
+    if (measuredAt) {
+      var parts = formatUtcParts(measuredAt);
+      document.getElementById("stat-measured").textContent = parts.hh + ":" + parts.mm;
+    }
+    if (typeof ps.total_observations === "number") {
+      document.getElementById("stat-runs-block").hidden = false;
+      document.getElementById("stat-runs").textContent = ps.total_observations;
+    }
+
+    var wall = document.getElementById("wall-native");
+    wall.innerHTML = "";
+    if (!panelSystems.length) {
+      wall.innerHTML = '<p class="wall-state-msg" data-en="No systems in the observed panel yet." data-fr="Aucun système dans le panel observé pour le moment.">No systems in the observed panel yet.</p>';
+      applyCopy(current);
+      return;
+    }
+    panelSystems.forEach(function (system) {
+      var identity = NMData.getPublicIdentity(system);
+      var history = NMData.getSystemHistory(historyMap, system.id);
+      var card = document.createElement("div");
+      card.className = "wcard is-" + system.condition;
+      card.setAttribute("role", "listitem");
+      card.setAttribute("aria-label", identity.label + " — " + system.condition);
+      card.innerHTML =
+        '<div class="wcard-top"><span class="wcard-dot" aria-hidden="true"></span><span class="wcard-name"></span></div>' +
+        buildSparklineSvg(history);
+      card.querySelector(".wcard-name").textContent = identity.label;
+      wall.appendChild(card);
+    });
+
+    // Question of the day (moved here, right after the wall — never left for later).
+    var daily = (data.probe_contract && data.probe_contract.daily) || {};
+    var originalQuestion = daily.question;
+    var qodBlock = document.getElementById("qod-block");
+    if (originalQuestion) {
+      qodBlock.hidden = false;
+      var translations = daily.question_translations || {};
+      var translated = current === "en" ? originalQuestion : (translations[current] || originalQuestion);
+      document.getElementById("qod-text").textContent = histDisplayQuestion(translated);
+      var hasDistinct = current !== "en" && translated && translated !== originalQuestion;
+      var originalBlock = document.getElementById("qod-original");
+      originalBlock.hidden = !hasDistinct;
+      if (hasDistinct) document.getElementById("qod-original-text").textContent = histDisplayQuestion(originalQuestion);
+    }
+  }
+
+  function buildSparklineSvg(points) {
+    if (!points || !points.length) return "";
+    var W = 112, H = 26, PAD_X = 4, PAD_Y = 4;
+    var n = points.length;
+    var stepX = n > 1 ? (W - PAD_X * 2) / (n - 1) : 0;
+    var coords = points.map(function (p, i) {
+      var sev = CONDITION_SEVERITY[p.condition];
+      return {
+        x: PAD_X + stepX * i,
+        y: sev === undefined ? H / 2 : PAD_Y + (sev / 3) * (H - PAD_Y * 2),
+        condition: p.condition, valid: sev !== undefined
+      };
+    });
+    var segments = [], cur = [];
+    coords.forEach(function (c) {
+      if (c.valid) cur.push(c);
+      else { if (cur.length > 1) segments.push(cur); cur = []; }
+    });
+    if (cur.length > 1) segments.push(cur);
+    var polylines = segments.map(function (seg) {
+      var pts = seg.map(function (c) { return c.x.toFixed(1) + "," + c.y.toFixed(1); }).join(" ");
+      return '<polyline points="' + pts + '" fill="none" stroke="var(--on-navy-faint)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.55" />';
+    }).join("");
+    var dots = coords.map(function (c) {
+      if (c.valid) return '<circle cx="' + c.x.toFixed(1) + '" cy="' + c.y.toFixed(1) + '" r="2.3" fill="' + (CONDITION_COLOR[c.condition] || "var(--on-navy-faint)") + '" />';
+      return '<circle cx="' + c.x.toFixed(1) + '" cy="' + c.y.toFixed(1) + '" r="2.3" fill="var(--on-navy-faint)" />';
+    }).join("");
+    return '<svg class="wcard-spark" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" aria-hidden="true">' + polylines + dots + "</svg>";
+  }
+
+  // ---------------- 15-day history: own minimal i18n, no shared side effects ----------------
+  var HIST_WORDS = {
+    en: ['Play', 'Pause', 'Previous day', 'Next day', 'Insufficient data', 'No observation', 'Unrecognized or ambiguous observation', 'Scroll horizontally ↔ · Select a cell to inspect its measurement.', 'Automatic playback disabled: reduced motion.', 'No capsules available.', 'History unavailable. Reload to retry.', 'Question unavailable in this capsule.', 'System', 'Model', 'Coverage', 'Observations', 'Loading history…'],
+    fr: ['Lecture', 'Pause', 'Jour précédent', 'Jour suivant', 'Données insuffisantes', 'Observation absente', 'Observation non reconnue ou ambiguë', 'Défilement horizontal ↔ · Sélectionnez une cellule pour consulter sa mesure.', 'Lecture automatique désactivée : mouvements réduits.', 'Aucune capsule disponible.', 'Historique indisponible. Rechargez pour réessayer.', 'Question absente de cette capsule.', 'Système', 'Modèle', 'Couverture', 'Observations', 'Chargement de l’historique…'],
+    de: ['Wiedergabe', 'Pause', 'Vorheriger Tag', 'Nächster Tag', 'Unzureichende Daten', 'Keine Beobachtung', 'Unbekannte oder mehrdeutige Beobachtung', 'Horizontal scrollen ↔ · Zelle auswählen, um die Messung zu prüfen.', 'Automatische Wiedergabe deaktiviert: reduzierte Bewegung.', 'Keine Kapseln verfügbar.', 'Verlauf nicht verfügbar. Zum Wiederholen neu laden.', 'Frage in dieser Kapsel nicht verfügbar.', 'System', 'Modell', 'Abdeckung', 'Beobachtungen', 'Verlauf wird geladen…'],
+    es: ['Reproducir', 'Pausa', 'Día anterior', 'Día siguiente', 'Datos insuficientes', 'Sin observación', 'Observación desconocida o ambigua', 'Desplazamiento horizontal ↔ · Seleccione una celda para consultar su medición.', 'Reproducción automática desactivada: movimiento reducido.', 'No hay cápsulas disponibles.', 'Historial no disponible. Recargue para reintentar.', 'Pregunta no disponible en esta cápsula.', 'Sistema', 'Modelo', 'Cobertura', 'Observaciones', 'Cargando historial…'],
+    it: ['Riproduci', 'Pausa', 'Giorno precedente', 'Giorno successivo', 'Dati insufficienti', 'Nessuna osservazione', 'Osservazione sconosciuta o ambigua', 'Scorri orizzontalmente ↔ · Seleziona una cella per consultare la misurazione.', 'Riproduzione automatica disattivata: movimento ridotto.', 'Nessuna capsula disponibile.', 'Storico non disponibile. Ricarica per riprovare.', 'Domanda non disponibile in questa capsula.', 'Sistema', 'Modello', 'Copertura', 'Osservazioni', 'Caricamento dello storico…'],
+    pt: ['Reproduzir', 'Pausa', 'Dia anterior', 'Dia seguinte', 'Dados insuficientes', 'Sem observação', 'Observação desconhecida ou ambígua', 'Deslocamento horizontal ↔ · Selecione uma célula para consultar a medição.', 'Reprodução automática desativada: movimento reduzido.', 'Nenhuma cápsula disponível.', 'Histórico indisponível. Recarregue para tentar novamente.', 'Pergunta indisponível nesta cápsula.', 'Sistema', 'Modelo', 'Cobertura', 'Observações', 'Carregando histórico…'],
+    nl: ['Afspelen', 'Pauze', 'Vorige dag', 'Volgende dag', 'Onvoldoende gegevens', 'Geen waarneming', 'Onbekende of dubbelzinnige waarneming', 'Horizontaal scrollen ↔ · Selecteer een cel om de meting te bekijken.', 'Automatisch afspelen uitgeschakeld: verminderde beweging.', 'Geen capsules beschikbaar.', 'Geschiedenis niet beschikbaar. Herlaad om opnieuw te proberen.', 'Vraag niet beschikbaar in deze capsule.', 'Systeem', 'Model', 'Dekking', 'Waarnemingen', 'Geschiedenis laden…'],
+    ru: ['Воспроизведение', 'Пауза', 'Предыдущий день', 'Следующий день', 'Недостаточно данных', 'Нет наблюдения', 'Неизвестное или неоднозначное наблюдение', 'Прокрутка по горизонтали ↔ · Выберите ячейку для просмотра измерения.', 'Автовоспроизведение отключено: уменьшение движения.', 'Нет доступных капсул.', 'История недоступна. Перезагрузите страницу.', 'Вопрос отсутствует в этой капсуле.', 'Система', 'Модель', 'Покрытие', 'Наблюдения', 'Загрузка истории…'],
+    ar: ['تشغيل', 'إيقاف مؤقت', 'اليوم السابق', 'اليوم التالي', 'بيانات غير كافية', 'لا توجد ملاحظة', 'ملاحظة غير معروفة أو ملتبسة', 'تمرير أفقي ↔ · اختر خلية للاطّلاع على قياسها.', 'التشغيل التلقائي معطّل: تقليل الحركة.', 'لا توجد كبسولات متاحة.', 'السجل غير متاح. أعد تحميل الصفحة للمحاولة.', 'السؤال غير متاح في هذه الكبسولة.', 'النظام', 'النموذج', 'التغطية', 'الملاحظات', 'جارٍ تحميل السجل…'],
+    hi: ['चलाएँ', 'रोकें', 'पिछला दिन', 'अगला दिन', 'अपर्याप्त डेटा', 'कोई अवलोकन नहीं', 'अज्ञात या अस्पष्ट अवलोकन', 'क्षैतिज स्क्रॉल ↔ · माप देखने के लिए सेल चुनें।', 'स्वचालित प्लेबैक बंद: कम गति।', 'कोई कैप्सूल उपलब्ध नहीं है।', 'इतिहास उपलब्ध नहीं है। पुनः लोड करें।', 'इस कैप्सूल में प्रश्न उपलब्ध नहीं है।', 'प्रणाली', 'मॉडल', 'कवरेज', 'अवलोकन', 'इतिहास लोड हो रहा है…'],
+    ja: ['再生', '一時停止', '前の日', '次の日', 'データ不足', '観測なし', '不明または曖昧な観測', '横スクロール ↔ · セルを選択して測定を確認します。', '自動再生は無効です：視差効果を減らす設定。', '利用可能なカプセルはありません。', '履歴を利用できません。再読み込みしてください。', 'このカプセルには質問がありません。', 'システム', 'モデル', 'カバレッジ', '観測数', '履歴を読み込み中…'],
+    ko: ['재생', '일시 정지', '이전 날짜', '다음 날짜', '데이터 부족', '관측 없음', '알 수 없거나 모호한 관측', '가로 스크롤 ↔ · 셀을 선택하여 측정을 확인하세요.', '자동 재생 비활성화: 동작 줄이기.', '사용 가능한 캡슐이 없습니다.', '이력을 사용할 수 없습니다. 새로고침하세요.', '이 캡슐에 질문이 없습니다.', '시스템', '모델', '커버리지', '관측 수', '이력 로드 중…'],
+    zh: ['播放', '暂停', '前一天', '后一天', '数据不足', '无观测', '未知或有歧义的观测', '水平滚动 ↔ · 选择单元格以查看测量。', '自动播放已禁用：减少动态效果。', '没有可用的胶囊。', '历史记录不可用。请重新加载。', '此胶囊中没有问题。', '系统', '模型', '覆盖率', '观测数', '正在加载历史记录…']
+  };
+  var i18nCache = {};
+  function loadOfficialStrings(lang) {
+    if (i18nCache[lang]) return Promise.resolve(i18nCache[lang]);
+    return fetch("../i18n/en.json").then(function (r) { return r.json(); }).catch(function () { return {}; }).then(function (base) {
+      if (lang === "en") { i18nCache[lang] = base; return base; }
+      return fetch("../i18n/" + lang + ".json").then(function (r) { return r.json(); }).catch(function () { return {}; }).then(function (over) {
+        var merged = Object.assign({}, base, over);
+        i18nCache[lang] = merged;
+        return merged;
+      });
+    });
+  }
+  var languagesConfigCache = null;
+  function loadLanguagesConfig() {
+    if (languagesConfigCache) return Promise.resolve(languagesConfigCache);
+    return fetch("../config/languages.json").then(function (r) { return r.json(); }).then(function (cfg) {
+      languagesConfigCache = cfg; return cfg;
+    }).catch(function () { return { available: [] }; });
+  }
+
+  var HIST = { days: [], day: 0, row: 0, timer: null, motion: window.matchMedia("(prefers-reduced-motion: reduce)"), systems: [], strings: {}, words: HIST_WORDS.en, isRtl: false };
+
+  function hw(i) { return HIST.words[i]; }
+  function ht(key, fallback) {
+    var v = HIST.strings[key];
+    return v === undefined || v === key ? fallback : v;
+  }
+  function histCondition(observation) {
+    if (!observation) return "absent";
+    var condition = observation.condition;
+    if (condition === "insufficient_data" || observation.coverage_status === "insufficient_data") return "insufficient";
+    return ["clear", "watch", "unsettled", "alert"].indexOf(condition) !== -1 ? condition : "unknown";
+  }
+  function histLabel(condition) {
+    var idx = ["clear", "watch", "unsettled", "alert"].indexOf(condition);
+    if (idx >= 0) {
+      var prefix = ht("legend.prefix", "Judgment");
+      var word = ht("judgment.j" + (idx + 1), ["Normal", "Watch", "Warning", "Critical"][idx]);
+      return prefix + " " + word;
+    }
+    return condition === "insufficient" ? hw(4) : condition === "absent" ? hw(5) : hw(6);
+  }
+  // Some older capsule translations were stored as UTF-8 bytes misread as
+  // Windows-1252 at write time (real, pre-existing data issue — visible
+  // e.g. in a handful of German questions from late August). This repairs
+  // the DISPLAY only, once, never the capsule file itself, and only when
+  // the mojibake signature is actually detected. Ported from
+  // index_full.html's chDisplayQuestion(), unchanged.
+  function histDisplayQuestion(text) {
+    var mojibake = /Ã|Â|â€|ðŸ/;
+    if (typeof text !== "string" || !mojibake.test(text)) return text;
+    try {
+      // The corruption is raw UTF-8 bytes read back as ISO-8859-1 (Latin-1),
+      // where byte value === code point 1:1 — NOT windows-1252, whose
+      // 0x80-0x9F range remaps to curly quotes/dashes/€ instead of the
+      // literal C1 control code points. Browsers alias the "iso-8859-1"
+      // TextDecoder label to windows-1252 (WHATWG spec), so there is no
+      // decoder to ask for here; String.fromCharCode's inverse is exact.
+      var bytes = [];
+      for (var ch of text) {
+        var code = ch.codePointAt(0);
+        if (code > 255) return text;
+        bytes.push(code);
+      }
+      var repaired = new TextDecoder("utf-8", { fatal: true }).decode(Uint8Array.from(bytes));
+      return mojibake.test(repaired) ? text : repaired;
+    } catch (e) { return text; }
+  }
+  function histDate(iso, short) {
+    try {
+      return new Intl.DateTimeFormat(HIST.lang, { year: short ? undefined : "numeric", month: short ? "2-digit" : "short", day: "2-digit", timeZone: "UTC" }).format(new Date(iso + "T00:00:00Z"));
+    } catch (e) { return iso; }
+  }
+  // Find, for a given (already-live) system, the matching observation in a
+  // historical capsule. Matched on the technical `model` string only — the
+  // one field both weather.json's live systems and a capsule's own
+  // observations actually share. A model rename between two capsules is
+  // therefore shown honestly as "no observation that day" rather than
+  // guessed via a hardcoded alias table (see project note on CH_SYSTEMS).
+  function histObservation(capsule, model) {
+    var matches = (capsule.observations || []).filter(function (o) { return o && o.model === model; });
+    return matches.length > 1 ? { condition: "ambiguous" } : matches[0];
+  }
+  function histPause() {
+    clearInterval(HIST.timer); HIST.timer = null;
+    var btn = document.getElementById("hist-play");
+    btn.textContent = hw(0); btn.setAttribute("aria-pressed", "false");
+  }
+  function histMotion() {
+    histPause();
+    var btn = document.getElementById("hist-play");
+    btn.disabled = HIST.motion.matches || HIST.days.length < 2;
+    document.getElementById("hist-hint").textContent = hw(7) + (HIST.motion.matches ? " " + hw(8) : "");
+  }
+  function histSelect(day, row, reveal) {
+    if (row === undefined) row = HIST.row;
+    HIST.day = day; HIST.row = row;
+    document.querySelectorAll("#hist-strip .hist-day").forEach(function (el) { el.classList.toggle("is-active", Number(el.dataset.day) === day); });
+    document.querySelectorAll("#hist-table [data-day]").forEach(function (el) {
+      if (el.tagName !== "BUTTON") return;
+      var active = Number(el.dataset.day) === day && Number(el.dataset.row) === row;
+      el.setAttribute("aria-pressed", String(active));
+    });
+    var record = HIST.days[day], system = HIST.systems[row];
+    if (!system) return;
+    var identity = NMData.getPublicIdentity(system);
+    var observation = histObservation(record.capsule, system.model);
+    document.getElementById("hist-detail-title").textContent = identity.label + " · " + histDate(record.date) + " · " + histLabel(histCondition(observation));
+    var daily = (record.capsule.probe_contract || {}).daily || {};
+    var measured = (observation && observation.daily) || observation || {};
+    var protocol = record.capsule.protocol || {};
+    var metadata = document.getElementById("hist-metadata");
+    metadata.innerHTML = "";
+    var measuredAtRaw = (measured && measured.last_observed_at) || (record.capsule.coverage && record.capsule.coverage.last_measurement_at);
+    var measuredAtDisplay = "—";
+    if (measuredAtRaw) {
+      try {
+        var md = new Date(measuredAtRaw);
+        measuredAtDisplay = new Intl.DateTimeFormat(HIST.lang, { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }).format(md) +
+          ", " + pad2(md.getUTCHours()) + ":" + pad2(md.getUTCMinutes()) + " UTC";
+      } catch (e) { measuredAtDisplay = measuredAtRaw; }
+    }
+    var pairs = [
+      [hw(13), (observation && observation.model) || "—"],
+      [ht("ui.measured_on", "Measured on"), measuredAtDisplay],
+      [ht("ui.protocol_label", "Protocol"), [protocol.id, protocol.version].filter(Boolean).join(" · ") || "—"],
+      [hw(14), measured && typeof measured.coverage === "number" ? Math.round(measured.coverage * 100) + "%" : "—"],
+      [hw(15), (measured && measured.observations) || "—"]
+    ];
+    pairs.forEach(function (pair) {
+      var dt = document.createElement("dt"); dt.textContent = pair[0];
+      var dd = document.createElement("dd"); dd.textContent = pair[1];
+      metadata.appendChild(dt); metadata.appendChild(dd);
+    });
+    var original = typeof daily.question === "string" && daily.question.trim() ? daily.question : null;
+    var translated = daily.question_translations && daily.question_translations[HIST.lang];
+    var hasTranslation = HIST.lang !== "en" && typeof translated === "string" && translated.trim();
+    document.getElementById("hist-question").textContent = histDisplayQuestion((hasTranslation ? translated : original) || hw(11));
+    document.getElementById("hist-question-label").textContent = ht("ui.question_of_day", "Question of the day");
+    var originalDetails = document.getElementById("hist-original");
+    document.getElementById("hist-original-toggle").textContent = ht("ui.view_original_en", "View original EN");
+    document.getElementById("hist-original-text").textContent = histDisplayQuestion(original || "—");
+    originalDetails.hidden = !(hasTranslation && original);
+    var jsonLink = document.getElementById("hist-json");
+    jsonLink.href = record.url;
+    jsonLink.textContent = "JSON · " + (record.capsule.capsule_id || record.date);
+    document.getElementById("hist-prev").disabled = day === 0;
+    document.getElementById("hist-next").disabled = day === HIST.days.length - 1;
+    if (reveal) {
+      var cell = document.querySelector('#hist-table button[data-day="' + day + '"][data-row="' + row + '"]');
+      var scroller = document.getElementById("hist-table-scroll");
+      if (cell && scroller) {
+        var bounds = scroller.getBoundingClientRect(), rect = cell.getBoundingClientRect();
+        var sticky = document.querySelector("#hist-table th") ? document.querySelector("#hist-table th").getBoundingClientRect().width : 0;
+        var rtl = HIST.isRtl;
+        var left = bounds.left + (rtl ? 0 : sticky) + 8, right = bounds.right - (rtl ? sticky : 0) - 8;
+        if (rect.left < left) scroller.scrollLeft += rect.left - left;
+        else if (rect.right > right) scroller.scrollLeft += rect.right - right;
+      }
+    }
+  }
+  function buildHistoryDom() {
+    var strip = document.getElementById("hist-strip");
+    strip.innerHTML = "";
+    HIST.days.forEach(function (record, i) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "hist-day cond-" + histCondition({ condition: record.capsule.global_condition });
+      btn.dataset.day = i;
+      btn.setAttribute("role", "tab");
+      var label = histLabel(histCondition({ condition: record.capsule.global_condition }));
+      btn.setAttribute("aria-label", histDate(record.date) + " · " + label);
+      btn.title = histDate(record.date) + " · " + label;
+      btn.innerHTML = '<span class="hist-day-date">' + histDate(record.date, true) + '</span><span class="hist-day-dot" aria-hidden="true"></span>';
+      btn.addEventListener("click", function () { histPause(); histSelect(i, HIST.row, true); });
+      strip.appendChild(btn);
+    });
+
+    var table = document.getElementById("hist-table");
+    table.innerHTML = "";
+    var thead = document.createElement("thead");
+    var headRow = document.createElement("tr");
+    var corner = document.createElement("th"); corner.scope = "col"; corner.textContent = hw(12);
+    headRow.appendChild(corner);
+    HIST.days.forEach(function (record, i) {
+      var th = document.createElement("th"); th.scope = "col"; th.dataset.day = i;
+      th.textContent = histDate(record.date, true);
+      th.title = histDate(record.date);
+      th.setAttribute("aria-label", histDate(record.date));
+      headRow.appendChild(th);
+    });
+    thead.appendChild(headRow); table.appendChild(thead);
+
+    var tbody = document.createElement("tbody");
+    HIST.systems.forEach(function (system, row) {
+      var identity = NMData.getPublicIdentity(system);
+      var tr = document.createElement("tr");
+      var th = document.createElement("th"); th.scope = "row"; th.textContent = identity.label;
+      tr.appendChild(th);
+      HIST.days.forEach(function (record, day) {
+        var observation = histObservation(record.capsule, system.model);
+        var condition = histCondition(observation);
+        var td = document.createElement("td");
+        var btn = document.createElement("button");
+        btn.type = "button"; btn.className = "hist-cell-btn cond-" + condition;
+        btn.dataset.day = day; btn.dataset.row = row;
+        btn.setAttribute("aria-controls", "hist-detail");
+        var description = identity.label + " · " + histDate(record.date) + " · " + histLabel(condition);
+        btn.setAttribute("aria-label", description); btn.title = description;
+        btn.innerHTML = '<span class="hist-mark" aria-hidden="true"></span>';
+        btn.addEventListener("click", function () { histPause(); histSelect(day, row); });
+        td.appendChild(btn); tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+
+    var legend = document.getElementById("history-legend");
+    var LEVELS = ["clear", "watch", "unsettled", "alert"];
+    legend.innerHTML = LEVELS.map(function (cond) {
+      return '<span><i style="background:' + CONDITION_COLOR[cond] + '"></i>' + ht("judgment.j" + (LEVELS.indexOf(cond) + 1), cond) + "</span>";
+    }).join("") + '<span><i class="dashed"></i>' + hw(4) + "</span>";
+
+    document.getElementById("hist-prev").textContent = hw(2);
+    document.getElementById("hist-next").textContent = hw(3);
+    document.getElementById("hist-prev").onclick = function () { histPause(); histSelect(Math.max(0, HIST.day - 1), HIST.row, true); };
+    document.getElementById("hist-next").onclick = function () { histPause(); histSelect(Math.min(HIST.days.length - 1, HIST.day + 1), HIST.row, true); };
+    document.getElementById("hist-play").onclick = function () {
+      if (HIST.timer) { histPause(); return; }
+      if (HIST.motion.matches || HIST.days.length < 2) return;
+      if (HIST.day === HIST.days.length - 1) histSelect(0, HIST.row, true);
+      document.getElementById("hist-play").textContent = hw(1);
+      document.getElementById("hist-play").setAttribute("aria-pressed", "true");
+      HIST.timer = setInterval(function () {
+        if (HIST.day >= HIST.days.length - 1) { histPause(); return; }
+        histSelect(HIST.day + 1, HIST.row, true);
+        if (HIST.day === HIST.days.length - 1) histPause();
+      }, 2500);
+    };
+    document.getElementById("hist-original").addEventListener("toggle", function () { if (this.open) histPause(); });
+    document.getElementById("hist-detail").addEventListener("focusin", histPause);
+    document.getElementById("hist-table-scroll").addEventListener("pointerdown", histPause);
+    HIST.motion.addEventListener("change", histMotion);
+    document.addEventListener("visibilitychange", function () { if (document.hidden) histPause(); });
+    window.addEventListener("pagehide", histPause);
+    histMotion();
+    histSelect(HIST.days.length - 1, 0, true);
+  }
+
+  var historyLoadStarted = false;
+  function loadHistoryOnce(weatherData, panelSystems) {
+    if (historyLoadStarted) return;
+    historyLoadStarted = true;
+    HIST.systems = panelSystems;
+    var status = document.getElementById("history-status");
+    status.textContent = hw(16) || "Loading history…";
+
+    var manifestUrl = new URL("../data/capsule-index.json", window.location.href);
+    function json(url) {
+      var controller = new AbortController();
+      var timeout = setTimeout(function () { controller.abort(); }, 15000);
+      return fetch(url, { cache: "no-store", signal: controller.signal }).then(function (r) {
+        clearTimeout(timeout);
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      }, function (err) { clearTimeout(timeout); throw err; });
+    }
+    json(manifestUrl).then(function (manifest) {
+      if (manifest.schema_version !== 1 || !Array.isArray(manifest.capsules)) throw new Error("Invalid manifest");
+      var seen = {};
+      manifest.capsules.forEach(function (entry) {
+        if (!entry || !/^\d{4}-\d{2}-\d{2}$/.test(entry.date) || seen[entry.date]) throw new Error("Invalid or duplicate date");
+        seen[entry.date] = true;
+      });
+      var selected = manifest.capsules.slice().sort(function (a, b) { return b.date.localeCompare(a.date); }).slice(0, 15).reverse();
+      return Promise.all(selected.map(function (entry) {
+        var url = new URL(entry.path, manifestUrl).href;
+        return json(url).then(function (capsule) {
+          if (capsule.date !== entry.date || !Array.isArray(capsule.observations)) throw new Error("Invalid capsule");
+          return Object.assign({}, entry, { url: url, capsule: capsule });
+        });
+      }));
+    }).then(function (days) {
+      HIST.days = days;
+      if (!days.length) { status.textContent = hw(9); return; }
+      status.textContent = "";
+      document.getElementById("history-content").hidden = false;
+      buildHistoryDom();
+    }).catch(function () {
+      document.getElementById("history-content").hidden = true;
+      status.textContent = hw(10);
+    });
+  }
+
+  var weatherDataGlobal = null, panelSystemsGlobal = null;
+
+  function renderHistory(lang) {
+    HIST.lang = lang;
+    HIST.words = HIST_WORDS[lang] || HIST_WORDS.en;
+    Promise.all([loadOfficialStrings(lang), loadLanguagesConfig()]).then(function (results) {
+      HIST.strings = results[0] || {};
+      var langsCfg = results[1] || { available: [] };
+      var meta = (langsCfg.available || []).find(function (l) { return l.code === lang; });
+      HIST.isRtl = !!(meta && meta.direction === "rtl");
+      // Scoped to the data-driven widget only (not .history-head above it,
+      // which is this page's own EN/FR-only chrome copy) — otherwise an
+      // un-translated English heading sitting inside a dir="rtl" ancestor
+      // gets its digits/punctuation visually reordered by the browser's
+      // bidi algorithm even though the text itself is plain English.
+      var root = document.getElementById("history-content");
+      root.setAttribute("dir", HIST.isRtl ? "rtl" : "ltr");
+      if (HIST.days.length) buildHistoryDom();
+      else if (weatherDataGlobal) loadHistoryOnce(weatherDataGlobal, panelSystemsGlobal);
+    });
+  }
+
+  // ---------------- Boot ----------------
+  // NMData.load()/loadPanels()/loadHistory() hardcode "./..." paths that
+  // assume the calling page lives at the repo root (like index.html
+  // itself). today.html is one directory deeper, so those fixed paths
+  // would resolve wrong here. We fetch with the correct relative paths
+  // ourselves and only reuse NMData's pure, path-free helpers
+  // (getPanelSystems / getPublicIdentity / getSystemHistory) — exactly
+  // the functions relevant to "don't hardcode system identity".
+  function loadWeatherJson() {
+    return fetch("../weather.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) {
+      if (!r.ok) throw new Error("Failed to load weather.json");
+      return r.json();
+    });
+  }
+  function loadPanelsConfig() {
+    return fetch("../config/panels.json").then(function (r) {
+      if (!r.ok) throw new Error("Failed to load panels.json");
+      return r.json();
+    });
+  }
+  function loadHistory7(anchorData) {
+    var anchorDate = anchorData && anchorData.generated_at ? new Date(anchorData.generated_at) : new Date();
+    var datesToFetch = [];
+    for (var i = 6; i >= 1; i--) {
+      var d = new Date(anchorDate);
+      d.setDate(d.getDate() - i);
+      datesToFetch.push(d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate()));
+    }
+    return Promise.all(datesToFetch.map(function (iso) {
+      return fetch("../data/history/" + iso + ".json").then(function (r) { if (!r.ok) throw new Error("missing"); return r.json(); }).catch(function () { return null; });
+    })).then(function (fetchedDays) {
+      var historyBySystem = {};
+      fetchedDays.forEach(function (dayData, idx) {
+        if (!dayData) return;
+        var iso = datesToFetch[idx];
+        (dayData.systems || []).forEach(function (system) {
+          if (!historyBySystem[system.id]) historyBySystem[system.id] = [];
+          historyBySystem[system.id].push({ date: iso, condition: system.condition });
+        });
+      });
+      var todayIso = anchorDate.getFullYear() + "-" + pad2(anchorDate.getMonth() + 1) + "-" + pad2(anchorDate.getDate());
+      (anchorData.systems || []).forEach(function (system) {
+        if (!historyBySystem[system.id]) historyBySystem[system.id] = [];
+        historyBySystem[system.id].push({ date: todayIso, condition: system.condition });
+      });
+      return historyBySystem;
+    });
+  }
+
+  Promise.all([loadWeatherJson(), loadPanelsConfig()])
+    .then(function (results) {
+      return loadHistory7(results[0]).catch(function () { return {}; }).then(function (historyMap) {
+        return [results[0], results[1], historyMap];
+      });
+    })
+    .then(function (results) {
+      var data = results[0], panelsConfig = results[1], historyMap = results[2];
+      weatherDataGlobal = data;
+      var fullIds = (panelsConfig.panels && panelsConfig.panels.full) || (data.systems || []).map(function (s) { return s.id; });
+      panelSystemsGlobal = NMData.getPanelSystems(data, fullIds);
+      renderHeroAndWall(data, panelSystemsGlobal, historyMap);
+      applyCopy(current);
+      loadHistoryOnce(data, panelSystemsGlobal);
+      renderHistory(current);
+    })
+    .catch(function () {
+      document.getElementById("wall-native").innerHTML = "";
+      document.getElementById("wall-fallback").hidden = false;
+    });
+})();
+</script>
+
+<!--
+  WordPress iframe embedding contract: this page runs standalone, but when
+  it is embedded via <iframe>, it reports its own real content height to
+  the parent so the host page can size the iframe with no internal
+  scrollbar and no leftover empty space. Same postMessage pattern already
+  used by index.html (nm-panel-resize) and the quiz widget
+  (nm-quiz-resize). document.body is safe to observe here: unlike
+  index.html, today.html has no min-height:100% rule that would create a
+  resize feedback loop.
+-->
+<script>
+(function () {
+  if (window.parent === window) return;
+  var lastHeight = 0;
+  function reportHeight() {
+    var height = Math.ceil(document.body.getBoundingClientRect().height);
+    if (height === lastHeight) return;
+    lastHeight = height;
+    window.parent.postMessage({ type: "nm-today-resize", height: height }, "*");
+  }
+  new ResizeObserver(reportHeight).observe(document.body);
+  window.addEventListener("load", reportHeight);
+})();
+</script>
+
+</body>
+</html>

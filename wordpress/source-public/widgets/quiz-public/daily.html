@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI Weather™ · Spot the Drift</title>
+<meta name="description" content="A short, non-technical 7-question quiz about judging AI behavior — not a score, a habit of checking.">
+
+<!--
+  Public-awareness quiz. Deliberately independent of
+  widgets/quiz/quiz-engine.js: no RÉAGI grid, no "aligné / à muscler"
+  levels, no score, no ranking, no tracking. Content is fixed and fully
+  inline (EN/FR/ES) — ported from the locally supplied quizz_ok/quiz-fixe.html
+  (7 real public-awareness questions, their options, explanations and
+  final summary), adapted to this widget's existing dark art direction,
+  iframe sizing and postMessage contract. No network fetch: the old
+  date-based real/example JSON picking (quiz-data/public-awareness-quiz.json)
+  no longer applies to this fixed quiz — that file is left in place
+  in case anything else references it, just unused by this widget now.
+-->
+
+<style>
+  :root {
+    --bg: #0c1420;
+    --card-bg: rgba(255,255,255,.03);
+    --card-bg-hover: rgba(255,255,255,.055);
+    --border: #24334f;
+    --border-strong: #34497a;
+    --ink: #eef4fc;
+    --ink-dim: #a9bad0;
+    --ink-faint: #6d80998f;
+    --accent: #2f7dd8;
+    --accent-strong: #1c5cb0;
+    --cyan: #22d3ee;
+    --good: #22c55e;
+    --warn: #facc15;
+    --radius-lg: 22px;
+    --radius-md: 14px;
+    --radius-sm: 9px;
+    --font-sans: "Inter","Segoe UI",system-ui,Arial,sans-serif;
+    --font-mono: "IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  }
+  :root[data-theme="light"] {
+    --bg: #ffffff;
+    --card-bg: #f6faff;
+    --card-bg-hover: #eaf2fb;
+    --border: #dde6f0;
+    --border-strong: #b9cbe2;
+    --ink: #0f1826;
+    --ink-dim: #4c5c6e;
+    --ink-faint: #8595a6;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans); color: var(--ink); background: var(--bg);
+    -webkit-font-smoothing: antialiased; padding: 20px 20px 22px;
+  }
+  #quiz-root { position: relative; }
+
+  .qz-progress { position: relative; z-index: 1; display: flex; gap: 5px; margin-bottom: 16px; flex-shrink: 0; }
+  .qz-progress span { flex: 1; height: 4px; border-radius: 2px; background: var(--border); transition: background .3s ease; }
+  .qz-progress span.done { background: var(--cyan); }
+
+  .qz-screen { position: relative; z-index: 1; display: none; flex-direction: column; opacity: 1; transition: opacity .18s ease; }
+  .qz-screen.active { display: flex; }
+
+  .qz-counter { font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+  .qz-question { font-size: 15.5px; font-weight: 700; line-height: 1.42; color: var(--ink); margin: 0 0 16px; }
+
+  .qz-options { display: flex; flex-direction: column; gap: 10px; }
+  .qz-option {
+    text-align: left; background: var(--card-bg); border: 1px solid var(--border); color: var(--ink);
+    padding: 12px 14px; border-radius: var(--radius-md); font: inherit; font-size: 13.5px; font-weight: 600;
+    cursor: pointer; transition: border-color .15s ease, background .15s ease;
+  }
+  .qz-option:hover { background: var(--card-bg-hover); border-color: var(--border-strong); }
+
+  .qz-reveal-tag {
+    display: inline-flex; align-self: flex-start; font-family: var(--font-mono); font-size: 10.5px; font-weight: 700;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--cyan); background: rgba(34,211,238,.1);
+    border: 1px solid rgba(34,211,238,.3); padding: 4px 10px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .qz-reveal-text { font-size: 13.5px; line-height: 1.6; color: var(--ink-dim); margin: 0 0 20px; }
+
+  .qz-btn {
+    align-self: flex-start; background: var(--accent); color: #fff; border: none;
+    padding: 11px 20px; border-radius: 999px; font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer;
+  }
+  .qz-btn:hover { background: var(--accent-strong); }
+
+  .qz-option:focus-visible, .qz-btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+  .qz-screen:focus { outline: none; }
+
+  .qz-intro h1 { font-size: 18.5px; line-height: 1.3; margin: 0 0 10px; color: var(--ink); }
+  .qz-intro p { font-size: 13.5px; line-height: 1.6; color: var(--ink-dim); margin: 0 0 18px; }
+
+  .qz-final h2 { font-size: 17px; margin: 0 0 12px; color: var(--ink); }
+  .qz-final p { font-size: 13.5px; line-height: 1.6; color: var(--ink-dim); margin: 0 0 10px; }
+
+  @media (max-width: 380px) {
+    .qz-question { font-size: 14.5px; }
+    .qz-option, .qz-reveal-text, .qz-intro p, .qz-final p { font-size: 13px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .qz-screen { transition: none; }
+    .qz-progress span { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap" id="quiz-root" role="group" aria-label="Daily awareness quiz">
+  <!-- INTRO -->
+  <div class="qz-screen qz-intro active" data-screen="intro">
+    <h1 id="qz-intro-title"></h1>
+    <p id="qz-intro-body"></p>
+    <button class="qz-btn" type="button" id="qz-start"></button>
+  </div>
+
+  <!-- Question / reveal / final screens are generated in JS to avoid duplication -->
+  <div id="qz-dynamic"></div>
+</div>
+
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var LANG = (params.get("lang") || "en").toLowerCase();
+  var SUPPORTED = ["en", "fr", "es"];
+  if (SUPPORTED.indexOf(LANG) === -1) LANG = "en";
+  var theme = params.get("theme");
+  if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
+  document.documentElement.lang = LANG;
+
+  function reportHeight() {
+    if (window.parent === window) return;
+    var height = Math.ceil(document.documentElement.scrollHeight);
+    window.parent.postMessage({ type: "nm-quiz-resize", height: height }, "*");
+  }
+
+  var I18N = {
+    en: {
+      intro: { title: "A quick check before the weather", body: "7 simple questions about how an AI behaves. Answer, and we'll explain right away why.", start: "Start" },
+      counter: function (i, n) { return "Question " + i + " / " + n; },
+      answerTag: "Answer",
+      next: "Next question",
+      seeSummary: "See the summary",
+      final: {
+        title: "In summary",
+        p1: "An AI can be right many times, always be wrong in the same way, or change its answer without it being a problem. The real reflex is to check — especially when it really matters.",
+        p2: "That's why we observe how AIs behave every day: so you don't have to guess, and so changes can be spotted before they become a problem."
+      },
+      questions: [
+        { q: "An AI answers correctly 10 times in a row. Does that mean it will always be right after that?", options: ["Yes, always", "No, not necessarily", "I don't know"], reveal: "No. Even after several correct answers, nothing guarantees the next one. You still need to keep checking, not just rely on the track record." },
+        { q: "You ask an AI the same question twice, and it answers differently. Is that necessarily a bug?", options: ["Yes, it's a bug", "No, not necessarily", "It depends"], reveal: "Not necessarily. An AI can vary a little without it being an error — but it's worth checking rather than ignoring." },
+        { q: "An AI gives the exact same answer 100 times in a row. Does that mean it's right?", options: ["Yes", "No"], reveal: "No. It can be very consistent... and be wrong the same way every time. Repeating a mistake doesn't correct it." },
+        { q: "One day, an AI behaves differently than usual. What helps most to understand why?", options: ["Just being alerted", "Being able to review what happened", "Both"], reveal: "Both. Being alerted isn't enough — being able to go back and review exactly what changed is what actually lets you understand." },
+        { q: "A piece of information about an AI is circulating with no verifiable proof, just a screenshot. Can it be trusted?", options: ["Yes", "No", "It depends on the source"], reveal: "A screenshot can be edited or taken out of context. Real proof needs to be dated and verifiable, not just shown." },
+        { q: "An AI makes a mistake once on a difficult topic. Should you stop using it?", options: ["Yes, never trust it again", "No, but stay alert", "It depends on the topic"], reveal: "A single mistake doesn't cancel out an AI's overall usefulness. But on important topics, it should always make you want to double-check." },
+        { q: "An AI helps make a decision. Who remains responsible for the final choice?", options: ["The AI", "The person using it", "It doesn't matter"], reveal: "The person. An AI can inform a choice, but the responsibility for the decision remains human." }
+      ]
+    },
+    fr: {
+      intro: { title: "Un coup d'œil avant la météo", body: "7 questions simples sur la façon dont une IA se comporte. Répondez, on vous explique tout de suite pourquoi.", start: "Commencer" },
+      counter: function (i, n) { return "Question " + i + " / " + n; },
+      answerTag: "Réponse",
+      next: "Question suivante",
+      seeSummary: "Voir le résumé",
+      final: {
+        title: "En résumé",
+        p1: "Une IA peut avoir raison plein de fois, se tromper toujours de la même façon, ou changer de réponse sans que ce soit grave. Le vrai réflexe, c'est de vérifier — surtout quand la question compte vraiment.",
+        p2: "C'est pour ça qu'on observe chaque jour comment les IA se comportent : pour ne pas avoir à deviner, et repérer les changements avant qu'ils posent problème."
+      },
+      questions: [
+        { q: "Une IA répond juste 10 fois de suite. Ça veut dire qu'elle aura toujours raison après ?", options: ["Oui, toujours", "Non, pas forcément", "Je ne sais pas"], reveal: "Non. Même après plusieurs bonnes réponses, rien ne garantit la suivante. Il faut continuer à vérifier, pas seulement se fier à l'historique." },
+        { q: "On pose deux fois la même question à une IA, et elle répond différemment. C'est forcément un bug ?", options: ["Oui, c'est un bug", "Non, pas forcément", "Ça dépend"], reveal: "Pas forcément. Une IA peut varier un peu sans que ce soit une erreur — mais ça mérite d'être vérifié plutôt qu'ignoré." },
+        { q: "Une IA donne 100 fois de suite exactement la même réponse. Ça veut dire qu'elle a raison ?", options: ["Oui", "Non"], reveal: "Non. Elle peut être très régulière... et se tromper à chaque fois de la même façon. Répéter une erreur ne la corrige pas." },
+        { q: "Un jour, une IA se comporte différemment de d'habitude. Qu'est-ce qui aide le plus à comprendre pourquoi ?", options: ["Juste être prévenu", "Pouvoir revoir ce qui s'est passé", "Les deux"], reveal: "Les deux. Être alerté ne suffit pas — pouvoir remonter dans le temps et revoir exactement ce qui a changé, c'est ce qui permet de vraiment comprendre." },
+        { q: "Une info sur une IA circule sans preuve vérifiable, juste une capture d'écran. Peut-on lui faire confiance ?", options: ["Oui", "Non", "Ça dépend de la source"], reveal: "Une capture peut être modifiée ou sortie de son contexte. Une vraie preuve doit pouvoir être datée et vérifiée, pas juste montrée." },
+        { q: "Une IA se trompe une fois sur un sujet difficile. Faut-il arrêter de l'utiliser ?", options: ["Oui, plus jamais confiance", "Non, mais rester attentif", "Ça dépend du sujet"], reveal: "Une erreur isolée n'annule pas toute l'utilité d'une IA. Mais sur les sujets importants, elle doit toujours donner envie de vérifier." },
+        { q: "Une IA aide à prendre une décision. Qui reste responsable du choix final ?", options: ["L'IA", "La personne qui l'utilise", "Peu importe"], reveal: "La personne. Une IA peut éclairer un choix, mais la responsabilité de la décision reste humaine." }
+      ]
+    },
+    es: {
+      intro: { title: "Un vistazo antes del clima", body: "7 preguntas sencillas sobre cómo se comporta una IA. Responde y te explicamos enseguida por qué.", start: "Empezar" },
+      counter: function (i, n) { return "Pregunta " + i + " / " + n; },
+      answerTag: "Respuesta",
+      next: "Siguiente pregunta",
+      seeSummary: "Ver el resumen",
+      final: {
+        title: "En resumen",
+        p1: "Una IA puede tener razón muchas veces, equivocarse siempre de la misma manera, o cambiar de respuesta sin que sea grave. El verdadero reflejo es comprobar, sobre todo cuando la pregunta realmente importa.",
+        p2: "Por eso observamos cada día cómo se comportan las IA: para no tener que adivinar, y para detectar los cambios antes de que se conviertan en un problema."
+      },
+      questions: [
+        { q: "Una IA responde correctamente 10 veces seguidas. ¿Eso significa que siempre tendrá razón después?", options: ["Sí, siempre", "No, no necesariamente", "No lo sé"], reveal: "No. Incluso después de varias respuestas correctas, nada garantiza la siguiente. Hay que seguir verificando, no basta con fiarse del historial." },
+        { q: "Se le hace la misma pregunta dos veces a una IA y responde de forma diferente. ¿Es necesariamente un error?", options: ["Sí, es un error", "No, no necesariamente", "Depende"], reveal: "No necesariamente. Una IA puede variar un poco sin que sea un error, pero merece la pena comprobarlo en lugar de ignorarlo." },
+        { q: "Una IA da exactamente la misma respuesta 100 veces seguidas. ¿Significa que tiene razón?", options: ["Sí", "No"], reveal: "No. Puede ser muy constante... y equivocarse siempre de la misma manera. Repetir un error no lo corrige." },
+        { q: "Un día, una IA se comporta de forma distinta a lo habitual. ¿Qué ayuda más a entender por qué?", options: ["Solo ser avisado", "Poder revisar lo que ocurrió", "Ambas cosas"], reveal: "Ambas cosas. Ser alertado no basta: poder volver atrás y revisar exactamente qué cambió es lo que realmente permite comprender." },
+        { q: "Circula una información sobre una IA sin prueba verificable, solo una captura de pantalla. ¿Se puede confiar en ella?", options: ["Sí", "No", "Depende de la fuente"], reveal: "Una captura se puede modificar o sacar de contexto. Una prueba real debe poder fecharse y verificarse, no solo mostrarse." },
+        { q: "Una IA se equivoca una vez en un tema difícil. ¿Hay que dejar de usarla?", options: ["Sí, no volver a confiar nunca", "No, pero hay que estar atento", "Depende del tema"], reveal: "Un error aislado no anula toda la utilidad de una IA. Pero en temas importantes, siempre debería generar ganas de comprobar." },
+        { q: "Una IA ayuda a tomar una decisión. ¿Quién sigue siendo responsable de la elección final?", options: ["La IA", "La persona que la usa", "No importa"], reveal: "La persona. Una IA puede orientar una decisión, pero la responsabilidad de la decisión sigue siendo humana." }
+      ]
+    }
+  };
+
+  var DATA = I18N[LANG];
+  var QUESTIONS = DATA.questions;
+  var dynamicRoot = document.getElementById("qz-dynamic");
+
+  function buildProgress(activeCount) {
+    var dots = '<div class="qz-progress" role="presentation">';
+    for (var i = 0; i < QUESTIONS.length; i++) {
+      dots += '<span class="' + (i < activeCount ? "done" : "") + '"></span>';
+    }
+    dots += "</div>";
+    return dots;
+  }
+
+  function showScreen(el, moveFocus) {
+    document.querySelectorAll(".qz-screen").forEach(function (s) { s.classList.remove("active"); });
+    el.classList.add("active");
+    reportHeight();
+    if (moveFocus) {
+      el.setAttribute("tabindex", "-1");
+      el.focus({ preventScroll: true });
+    }
+  }
+
+  function renderQuestion(index) {
+    var item = QUESTIONS[index];
+
+    var qScreen = document.createElement("div");
+    qScreen.className = "qz-screen";
+    qScreen.dataset.screen = "q" + index;
+    qScreen.innerHTML =
+      buildProgress(index) +
+      '<div class="qz-counter">' + DATA.counter(index + 1, QUESTIONS.length) + "</div>" +
+      '<div class="qz-question">' + item.q + "</div>" +
+      '<div class="qz-options">' +
+        item.options.map(function (opt, i) { return '<button class="qz-option" type="button" data-i="' + i + '">' + opt + "</button>"; }).join("") +
+      "</div>";
+    dynamicRoot.appendChild(qScreen);
+
+    var rScreen = document.createElement("div");
+    rScreen.className = "qz-screen qz-reveal-screen";
+    rScreen.dataset.screen = "r" + index;
+    rScreen.innerHTML =
+      buildProgress(index + 1) +
+      '<div class="qz-reveal-tag">' + DATA.answerTag + "</div>" +
+      '<p class="qz-reveal-text">' + item.reveal + "</p>" +
+      '<button class="qz-btn qz-next" type="button">' + (index < QUESTIONS.length - 1 ? DATA.next : DATA.seeSummary) + "</button>";
+    dynamicRoot.appendChild(rScreen);
+
+    qScreen.querySelectorAll(".qz-option").forEach(function (btn) {
+      btn.addEventListener("click", function () { showScreen(rScreen, true); });
+    });
+
+    rScreen.querySelector(".qz-next").addEventListener("click", function () {
+      if (index < QUESTIONS.length - 1) {
+        showScreen(document.querySelector('[data-screen="q' + (index + 1) + '"]'), true);
+      } else {
+        showScreen(document.querySelector('[data-screen="final"]'), true);
+      }
+    });
+  }
+
+  function renderFinal() {
+    var finalScreen = document.createElement("div");
+    finalScreen.className = "qz-screen qz-final";
+    finalScreen.dataset.screen = "final";
+    finalScreen.innerHTML =
+      "<h2>" + DATA.final.title + "</h2>" +
+      "<p>" + DATA.final.p1 + "</p>" +
+      "<p>" + DATA.final.p2 + "</p>";
+    dynamicRoot.appendChild(finalScreen);
+  }
+
+  document.getElementById("qz-intro-title").textContent = DATA.intro.title;
+  document.getElementById("qz-intro-body").textContent = DATA.intro.body;
+  var startBtn = document.getElementById("qz-start");
+  startBtn.textContent = DATA.intro.start;
+
+  QUESTIONS.forEach(function (_, i) { renderQuestion(i); });
+  renderFinal();
+
+  startBtn.addEventListener("click", function () {
+    showScreen(document.querySelector('[data-screen="q0"]'), true);
+  });
+
+  reportHeight();
+  window.addEventListener("resize", function () {
+    requestAnimationFrame(reportHeight);
+  });
+})();
+</script>
+
+</body>
+</html>

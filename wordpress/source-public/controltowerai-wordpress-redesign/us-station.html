@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" data-us-station-page data-temporal-frame="present">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050305">
+<meta name="color-scheme" content="dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://api.open-meteo.com; worker-src 'self' blob:; frame-src https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="description" content="NeoMundi Experimental Station US: an experimental, artistic extension of AI Weather™. OmarAGI × NeoMundi.">
+<title>NeoMundi Experimental Station US · OmarAGI × NeoMundi</title>
+
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./us-station-assets/us-station.css?v=2">
+<link rel="stylesheet" href="./us-station-assets/station-chrome.css">
+</head>
+<body class="us-station-body" data-surface="flagship">
+
+<div class="station-chrome">
+  <div class="station-topbar">
+    <a class="back" href="index.html">
+      <img src="../assets/logo-controltower.png" alt="ControlTower AI">
+      ControlTowerAI
+    </a>
+    <span class="divider" aria-hidden="true"></span>
+    <span class="label" data-en="Experimental Station" data-fr="Station expérimentale">Experimental Station</span>
+    <nav>
+      <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour">Today's Weather</a>
+      <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche">How It Works</a>
+      <a href="stations.html" class="current" data-en="Station USA" data-fr="Station USA">Station USA</a>
+      <a href="widgets.html" data-en="Widgets" data-fr="Widgets">Widgets</a>
+    </nav>
+    <div class="lang-select">
+      <button class="lang-button" id="lang-button" type="button" aria-haspopup="true" aria-expanded="false">EN ▾</button>
+      <div class="lang-menu" id="lang-menu"></div>
+    </div>
+  </div>
+
+  <div class="station-intro">
+    <div class="station-intro-inner">
+      <p class="station-eyebrow" data-en="FIRST INTERNATIONAL EXPERIMENTAL EXTENSION" data-fr="PREMIÈRE EXTENSION EXPÉRIMENTALE INTERNATIONALE">FIRST INTERNATIONAL EXPERIMENTAL EXTENSION</p>
+      <h1 data-en="NeoMundi Experimental Station US" data-fr="Station expérimentale NeoMundi USA">NeoMundi Experimental Station US</h1>
+      <p data-en="An experimental, artistic extension of AI Weather™: a collaboration between OmarAGI and NeoMundi. It observes real cities on a live globe, pairing each one's real physical weather with the same day's real, measured AI Weather™ condition, without ever merging the two into a single value." data-fr="Une extension expérimentale et artistique de La Météo des IA™ : une collaboration entre OmarAGI et NeoMundi. Elle observe des villes réelles sur un globe en direct, associant la météo physique réelle de chacune à la condition réelle et mesurée de La Météo des IA™ du même jour, sans jamais fusionner les deux en une seule valeur.">An experimental, artistic extension of AI Weather™: a collaboration between <strong>OmarAGI</strong> and <strong>NeoMundi</strong>. It observes real cities on a live globe, pairing each one's real physical weather with the same day's real, measured AI Weather™ condition, without ever merging the two into a single value.</p>
+      <ul class="station-facts">
+        <li data-en="Status: a separate, experimental station. It is not the main AI Weather™ observation wall and does not replace it." data-fr="Statut : une station séparée et expérimentale. Ce n'est pas le mur d'observation principal de La Météo des IA™ et elle ne le remplace pas."><b>Status</b>: a separate, experimental station. It is not the main AI Weather™ observation wall and does not replace it.</li>
+        <li data-en="Collaboration: OmarAGI × NeoMundi. Individual work credited on the piece itself, below." data-fr="Collaboration : OmarAGI × NeoMundi. Le travail individuel est crédité sur l'œuvre elle-même, ci-dessous."><b>Collaboration</b>: OmarAGI × NeoMundi. Individual work credited on the piece itself, below.</li>
+        <li data-en="Physical weather: real, live, from Open-Meteo, per selected city." data-fr="Météo physique : réelle, en direct, fournie par Open-Meteo, par ville sélectionnée."><b>Physical weather</b>: real, live, from Open-Meteo, per selected city.</li>
+        <li data-en="AI Weather™ signal: the real measured condition for today, from this same repository's weather.json and its verifiable capsule." data-fr="Signal La Météo des IA™ : la condition réelle mesurée pour aujourd'hui, issue du weather.json de ce même dépôt et de sa capsule vérifiable."><b>AI Weather™ signal</b>: the real measured condition for today, from this same repository's <code>weather.json</code> and its verifiable capsule.</li>
+      </ul>
+      <p class="station-note" data-en="Running locally: the “+24h projected” state you may see referenced below is inactive in this build. One of its source files wasn't part of the local capture supplied for this integration. Everything else on this page (the globe, city selection, live physical weather, the real AI Weather™ condition, and the live camera feed) reads real data." data-fr="En exécution locale : l'état « +24h projeté » évoqué plus bas est inactif dans cette version. L'un de ses fichiers sources ne faisait pas partie de la capture locale fournie pour cette intégration. Tout le reste de cette page (le globe, la sélection de ville, la météo physique en direct, la condition réelle de La Météo des IA™ et le flux caméra en direct) lit des données réelles.">Running locally: the "+24h projected" state you may see referenced below is inactive in this build. One of its source files wasn't part of the local capture supplied for this integration. Everything else on this page (the globe, city selection, live physical weather, the real AI Weather™ condition, and the live camera feed) reads real data.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     Below this line: the real "US Station Edition — OmarAGI × NeoMundi"
+     artwork markup, structure and credits, unmodified from the supplied
+     capture (only initial snapshot values were reset to neutral "—"
+     placeholders below, since no city is selected yet on load — the
+     real values are filled in live by us-station-bootstrap.js the
+     moment a city is picked).
+     ============================================================ -->
+<div class="us-noise" aria-hidden="true"></div>
+
+<main>
+  <section class="us-observatory" id="observatory" aria-label="NeoMundi live planetary observatory">
+    <h1 class="us-visually-hidden">US Station live globe</h1>
+    <div class="us-landing-signatures" aria-label="Edition and artist collaboration">
+      <p class="us-landing-edition">
+        <span>NeoMundi</span>
+        <strong>US Station Edition</strong>
+      </p>
+      <p class="us-landing-credit">
+        <span>Ben B</span>
+        <b aria-hidden="true">×</b>
+        <span class="us-collaborator-name">Sébastien FAVRE</span>
+      </p>
+    </div>
+    <div class="us-globe-column">
+      <div class="us-globe-stage">
+        <canvas id="us-globe" class="us-globe" tabindex="0" aria-label="Interactive Earth. Drag to rotate, scroll to zoom, then select a city point." width="1920" height="911"></canvas>
+        <canvas class="us-globe-markers" data-globe-markers aria-hidden="true" width="1920" height="911"></canvas>
+        <div class="us-hover-label" data-hover-label aria-live="polite">
+          <span></span><strong></strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="us-artwork" data-artwork role="dialog" aria-modal="true" aria-hidden="true" aria-label="City motion observation">
+    <div class="us-artwork-dialog" data-artwork-dialog>
+      <header class="us-artwork-header">
+        <button class="us-back" type="button" data-back aria-label="Close the city artwork">
+          <span aria-hidden="true">×</span><span class="us-back-label">Close</span>
+        </button>
+        <div class="us-artwork-title-block">
+          <p><span class="us-live-dot"></span><span data-artwork-mode-label>Live city weather</span></p>
+          <time data-city-time>—</time>
+        </div>
+        <button class="us-next-state" type="button" data-next-state aria-label="Move to projected tomorrow state">
+          <span class="us-next-copy">
+            <small data-next-kicker>Next temporal state</small>
+            <strong data-next-label>Tomorrow</strong>
+          </span>
+          <span class="us-next-arrow" aria-hidden="true">→</span>
+        </button>
+      </header>
+
+      <div class="us-work-frame">
+        <div class="us-media" data-media>
+          <div class="us-media-current" data-media-current>
+            <iframe data-live-frame title="Selected city: live" loading="eager" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
+          <div class="us-city-simulation" data-city-simulation aria-label="Verified city-specific tomorrow render">
+            <video class="us-tomorrow-video" data-tomorrow-video muted loop autoplay playsinline preload="none"></video>
+          </div>
+          <div class="us-media-shade" aria-hidden="true"></div>
+          <div class="us-source-state" data-source-state>
+            <span class="us-live-dot"></span>
+            <strong>—</strong>
+          </div>
+          <a class="us-source-link" data-source-link href="#" target="_blank" rel="noopener noreferrer">Open original source ↗</a>
+        </div>
+      </div>
+
+      <div class="us-work-information">
+        <header class="us-work-heading">
+          <p data-work-number>Live atmospheric observation</p>
+          <h2 id="artwork-title">
+            <span data-city-title>—</span>
+            <em data-work-subtitle>Current city weather</em>
+          </h2>
+        </header>
+
+        <details class="us-signal-ledger" open>
+          <summary>
+            <span><small>Climate register</small><strong>Signal and physical atmosphere</strong></span>
+            <span aria-hidden="true">+</span>
+          </summary>
+          <dl data-metadata>
+            <div><dt>Temperature</dt><dd data-meta-temperature>—</dd></div>
+            <div><dt>Feels like</dt><dd data-meta-apparent>—</dd></div>
+            <div><dt>Precipitation</dt><dd data-meta-precipitation>—</dd></div>
+            <div><dt>Wind</dt><dd data-meta-wind>—</dd></div>
+            <div><dt>Cloud cover</dt><dd data-meta-cloud>—</dd></div>
+            <div><dt>NeoMundi state</dt><dd data-meta-condition>—</dd></div>
+            <div><dt>Judgment demand</dt><dd data-meta-demand>—</dd></div>
+            <div><dt>Observation visibility</dt><dd data-meta-visibility>—</dd></div>
+            <div><dt>Temporal frame</dt><dd data-meta-temporal>Present</dd></div>
+          </dl>
+        </details>
+
+        <div class="us-work-register">
+          <section class="us-work-metadata" aria-labelledby="metadata-title">
+            <p class="us-section-label" id="metadata-title">Weather register</p>
+            <dl class="us-catalogue-metadata">
+              <div><dt>Weather state</dt><dd data-meta-physical>—</dd></div>
+              <div><dt>Atmospheric stability</dt><dd data-meta-stability>—</dd></div>
+              <div><dt>Weather shift</dt><dd data-meta-shift>—</dd></div>
+              <div><dt>Signal density</dt><dd data-meta-density>—</dd></div>
+              <div><dt>Coherence</dt><dd data-meta-coherence>—</dd></div>
+              <div><dt>Observed</dt><dd data-meta-observed>—</dd></div>
+              <div><dt>Protocol</dt><dd data-meta-protocol>—</dd></div>
+            </dl>
+          </section>
+
+          <section class="us-work-description" aria-labelledby="description-title">
+            <p class="us-section-label" id="description-title">Forecast note</p>
+            <div data-description><p>Select a city on the globe to load its real, live observation.</p></div>
+          </section>
+        </div>
+
+        <details class="us-machine-layer" data-machine-layer>
+          <summary>
+            <span><small>Machine surface</small><strong>Interoperability JSON</strong></span>
+            <span aria-hidden="true">+</span>
+          </summary>
+          <div>
+            <p data-machine-status>The boundary is reserved. No interoperability object is inferred before a source-issued object is present.</p>
+            <pre data-machine-json hidden></pre>
+            <small data-machine-provenance>Human surface first · machine surface available when issued</small>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="us-loading is-complete" data-loading role="status" aria-label="Receiving the current observation">
+  <span class="us-loading-ring" aria-hidden="true"></span>
+</div>
+
+<div class="station-chrome">
+  <div class="station-outro">
+    <div class="station-outro-grid">
+      <div>
+        <h4 data-en="About this station" data-fr="À propos de cette station">About this station</h4>
+        <p data-en="The globe pairs two sources that are never merged: each city's real physical weather (Open-Meteo) and this repository's real, measured AI Weather™ condition for the day (weather.json, verified against its hash-chained capsule). A live public webcam gives each city a real, current view." data-fr="Le globe associe deux sources qui ne sont jamais fusionnées : la météo physique réelle de chaque ville (Open-Meteo) et la condition réelle et mesurée de La Météo des IA™ du jour dans ce dépôt (weather.json, vérifié par sa capsule chaînée par hash). Une webcam publique en direct donne à chaque ville une vue réelle et actuelle.">The globe pairs two sources that are never merged: each city's real physical weather (Open-Meteo) and this repository's real, measured AI Weather™ condition for the day (<code>weather.json</code>, verified against its hash-chained capsule). A live public webcam gives each city a real, current view.</p>
+      </div>
+      <div>
+        <h4 data-en="Real sources" data-fr="Sources réelles">Real sources</h4>
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener" data-en="Open-Meteo: physical weather ↗" data-fr="Open-Meteo : météo physique ↗">Open-Meteo: physical weather ↗</a>
+        <a href="../weather.json" target="_blank" rel="noopener" data-en="This repo's weather.json ↗" data-fr="Le weather.json de ce dépôt ↗">This repo's weather.json ↗</a>
+        <a href="../aiweather-capsule/latest.json" target="_blank" rel="noopener" data-en="Latest capsule ↗" data-fr="Dernière capsule ↗">Latest capsule ↗</a>
+      </div>
+      <div>
+        <h4 data-en="Elsewhere" data-fr="Ailleurs">Elsewhere</h4>
+        <a href="index.html" data-en="ControlTowerAI · AI Weather™ home" data-fr="ControlTowerAI · Accueil La Météo des IA™">ControlTowerAI · AI Weather™ home</a>
+        <a href="stations.html" data-en="Station USA" data-fr="Station USA">Station USA</a>
+        <a href="widgets.html" data-en="Widget library" data-fr="Bibliothèque de widgets">Widget library</a>
+        <a href="https://neomundi.org/" target="_blank" rel="noopener">NeoMundi</a>
+      </div>
+    </div>
+    <p class="station-outro-bottom" data-en="This experimental station is distinct from the main AI Weather™ observation wall. It does not duplicate or replace its data, and its canonical public home is planned for the ControlTowerAI.io ecosystem, with entry points from NeoMundi.org and NeoMundi.io to follow separately." data-fr="Cette station expérimentale est distincte du mur d'observation principal de La Météo des IA™. Elle ne duplique ni ne remplace ses données, et son emplacement public canonique est prévu au sein de l'écosystème ControlTowerAI.io, avec des points d'entrée depuis NeoMundi.org et NeoMundi.io à venir séparément.">This experimental station is distinct from the main AI Weather™ observation wall. It does not duplicate or replace its data, and its canonical public home is planned for the ControlTowerAI.io ecosystem, with entry points from NeoMundi.org and NeoMundi.io to follow separately.</p>
+  </div>
+</div>
+
+<script src="./us-station-assets/weather-data.js"></script>
+<script src="./us-station-assets/us-station-data.js"></script>
+<script src="./us-station-assets/us-station-globe.js"></script>
+<script src="./us-station-assets/us-station-bootstrap.js"></script>
+
+<!-- Wrapper chrome language toggle only. Never touches the real
+     artwork markup, data or scripts loaded above. External file
+     because this page's CSP is script-src 'self' (no inline scripts). -->
+<script src="./us-station-assets/lang-toggle.js"></script>
+
+</body>
+</html>

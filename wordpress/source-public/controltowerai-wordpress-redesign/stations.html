@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a1220">
+<title>Station USA · AI Weather™</title>
+<meta name="description" content="Station USA: the experimental NeoMundi extension to AI Weather™, and its place next to the main global observation network.">
+
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --page-bg: #f4f8fd; --page-bg-alt: #eaf2fb; --surface: #ffffff; --surface-soft: #f6faff;
+    --navy-900: #070d18; --navy-800: #0a1220;
+    --ink: #0f1826; --ink-dim: #4c5c6e; --ink-faint: #8595a6;
+    --on-navy: #eef4fc; --on-navy-dim: #a9bad0; --on-navy-faint: #6d80998f;
+    --border: #dde6f0; --border-soft: #e9f0f7; --border-navy: #24334f;
+    --accent: #2f7dd8; --accent-strong: #1c5cb0; --accent-soft: #e4f0fd; --cyan: #22d3ee;
+    --radius-lg: 22px; --radius-md: 14px; --radius-sm: 9px;
+    --shadow-1: 0 1px 2px rgba(15,24,38,.05), 0 10px 28px rgba(15,24,38,.06);
+    --shadow-2: 0 20px 60px rgba(8,14,26,.16);
+    --container: 1180px; --font-sans: "Inter","Segoe UI",system-ui,sans-serif; --font-mono: "IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--font-sans); color: var(--ink); background: var(--page-bg); -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+  .eyebrow { font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-strong); margin: 0 0 12px; }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -.01em; margin: 0; }
+  h1 { font-size: clamp(30px, 4vw, 46px); line-height: 1.1; }
+  h2 { font-size: clamp(20px, 2.2vw, 24px); line-height: 1.2; }
+  p { line-height: 1.6; color: var(--ink-dim); margin: 0; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 700; font-size: 14.5px; text-decoration: none; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
+  .btn-primary { background: linear-gradient(180deg, #3a8ae0, var(--accent-strong)); color: #fff; box-shadow: 0 8px 22px rgba(47,125,216,.35); }
+  .btn-ghost { background: #fff; color: var(--ink); border-color: var(--border); }
+  .btn-sm { padding: 9px 16px; font-size: 13px; }
+
+  .site-header { position: sticky; top: 0; z-index: 100; background: rgba(244,248,253,.82); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-soft); }
+  .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 20px; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex: none; }
+  .brand img { width: 32px; height: 32px; border-radius: 50%; }
+  .brand-text { font-weight: 800; font-size: 15.5px; letter-spacing: -.01em; color: var(--ink); }
+  .brand-text em { font-style: normal; color: var(--accent-strong); }
+  .main-nav { display: flex; gap: 26px; margin-left: 12px; flex: 1; }
+  .main-nav a { font-size: 13.5px; font-weight: 600; text-decoration: none; color: var(--ink-dim); }
+  .main-nav a.current, .main-nav a:hover { color: var(--ink); }
+  .header-actions { display: flex; align-items: center; gap: 10px; flex: none; }
+  .lang-select { position: relative; }
+  .lang-button { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; background: #fff; border: 1px solid var(--border); border-radius: 999px; font: inherit; font-size: 12.5px; font-weight: 700; color: var(--ink-dim); cursor: pointer; }
+  .lang-menu { display: none; position: absolute; top: calc(100% + 8px); right: 0; min-width: 190px; max-height: 320px; overflow-y: auto; background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-2); padding: 6px; z-index: 200; }
+  .lang-menu.open { display: block; }
+  .lang-option { display: block; width: 100%; text-align: left; padding: 9px 10px; border: 0; background: transparent; border-radius: 8px; cursor: pointer; font: inherit; font-size: 13px; color: var(--ink); }
+  .lang-option:hover { background: var(--surface-soft); }
+  .lang-option.active { background: var(--accent-soft); font-weight: 700; color: var(--accent-strong); }
+  .nav-toggle { display: none; width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 16px; }
+  .mobile-nav { display: none; flex-direction: column; gap: 2px; padding: 10px 24px 16px; border-top: 1px solid var(--border-soft); background: var(--surface); }
+  .mobile-nav a { padding: 12px 4px; font-weight: 600; font-size: 14.5px; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--border-soft); }
+  .mobile-nav.open { display: flex; }
+  @media (max-width: 880px) { .main-nav { display: none; } .nav-toggle { display: block; } }
+
+  section { padding: 68px 0; }
+  .page-intro { padding: 52px 0 40px; background: linear-gradient(180deg, var(--page-bg-alt) 0%, var(--page-bg) 80%); }
+  .page-intro .lede { font-size: 16px; max-width: 640px; margin-top: 14px; }
+
+  .station-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .station-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 28px; box-shadow: var(--shadow-1); display: flex; flex-direction: column;
+  }
+  .station-card.is-experimental {
+    background: linear-gradient(160deg, #0c0c10, #050506); border-color: #24242c; color: #cfd4db;
+  }
+  .station-tag {
+    display: inline-flex; align-self: flex-start; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+    padding: 5px 11px; border-radius: 999px; margin-bottom: 16px;
+  }
+  .station-tag.tag-primary { background: var(--accent-soft); color: var(--accent-strong); }
+  .station-tag.tag-experimental { background: rgba(255,111,176,.12); color: #ff6fb0; border: 1px solid rgba(255,111,176,.3); }
+  .station-card h2 { margin-bottom: 4px; }
+  .station-card.is-experimental h2 { color: #fff; }
+  .station-meta { font-size: 12px; color: var(--ink-faint); margin-bottom: 14px; }
+  .station-card.is-experimental .station-meta { color: #8a93a1; }
+  .station-card p.desc { font-size: 14px; margin-bottom: 18px; flex: 1; }
+  .station-card.is-experimental p.desc { color: #9aa2ad; }
+  .station-facts { list-style: none; margin: 0 0 20px; padding: 0; }
+  .station-facts li { font-size: 12.5px; color: var(--ink-faint); padding: 6px 0; border-top: 1px solid var(--border-soft); }
+  .station-card.is-experimental .station-facts li { color: #7c8798; border-top-color: #24242c; }
+  .station-facts li:first-child { border-top: 0; }
+  .station-facts b { color: var(--ink); font-weight: 700; }
+  .station-card.is-experimental .station-facts b { color: #dfe3e8; }
+
+  .station-card.is-placeholder { background: var(--surface-soft); border-style: dashed; align-items: flex-start; justify-content: center; }
+  .station-card.is-placeholder h2 { color: var(--ink-faint); }
+  @media (max-width: 860px) { .station-grid { grid-template-columns: 1fr; } }
+
+  .observatory-links { list-style: none; margin: 6px 0 22px; padding: 0; }
+  .observatory-links li { padding: 12px 0; border-top: 1px solid var(--border-soft); display: flex; flex-direction: column; gap: 3px; }
+  .observatory-links li:first-child { border-top: 0; padding-top: 0; }
+  .observatory-links .ol-name { font-size: 13.5px; font-weight: 700; color: var(--ink); }
+  .observatory-links .ol-desc { font-size: 12px; color: var(--ink-faint); line-height: 1.5; }
+
+  footer { background: var(--navy-900); color: var(--on-navy-dim); padding: 56px 0 28px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; margin-bottom: 40px; }
+  .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .footer-brand img { width: 26px; height: 26px; border-radius: 50%; }
+  .footer-brand span { font-weight: 800; color: var(--on-navy); }
+  .footer-col h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--on-navy); margin-bottom: 14px; }
+  .footer-col a { display: block; font-size: 13.5px; text-decoration: none; color: var(--on-navy-dim); margin-bottom: 10px; }
+  .footer-col a:hover { color: #fff; }
+  .footer-col p { color: var(--on-navy-dim); }
+  .footer-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--border-navy); font-size: 12px; color: var(--on-navy-faint); }
+  @media (max-width: 780px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <img src="../assets/logo-controltower.png" alt="ControlTower AI">
+      <span class="brand-text">ControlTower<em>AI</em></span>
+    </a>
+    <nav class="main-nav">
+      <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour" data-es="El clima de hoy">Today's Weather</a>
+      <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche" data-es="Cómo funciona">How It Works</a>
+      <a href="stations.html" class="current" data-en="Station USA" data-fr="Station USA" data-es="Station USA">Station USA</a>
+      <a href="widgets.html" data-en="Widgets" data-fr="Widgets" data-es="Widgets">Widgets</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-select">
+        <button class="lang-button" id="lang-button" type="button" aria-haspopup="true" aria-expanded="false">EN ▾</button>
+        <div class="lang-menu" id="lang-menu"></div>
+      </div>
+      <a class="btn btn-primary btn-sm" href="today.html" data-en="Today's AI Weather™ →" data-fr="La Météo des IA™ du jour →" data-es="El Clima de las IA™ de hoy →">Today's AI Weather™ →</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour" data-es="El clima de hoy">Today's Weather</a>
+    <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche" data-es="Cómo funciona">How It Works</a>
+    <a href="stations.html" data-en="Station USA" data-fr="Station USA" data-es="Station USA">Station USA</a>
+    <a href="widgets.html" data-en="Widgets" data-fr="Widgets" data-es="Widgets">Widgets</a>
+  </nav>
+</header>
+
+<section class="page-intro">
+  <div class="wrap">
+    <p class="eyebrow" data-en="EXPERIMENTAL EXTENSION" data-fr="EXTENSION EXPÉRIMENTALE" data-es="EXTENSIÓN EXPERIMENTAL">EXPERIMENTAL EXTENSION</p>
+    <h1 data-en="Station USA" data-fr="Station USA" data-es="Station USA">Station USA</h1>
+    <p class="lede" data-en="AI Weather™ is published from a growing network of observation stations. Station USA is its first experimental extension: a distinct, artistic reading of the same real, measured data, alongside the main global network." data-fr="La Météo des IA™ est publiée depuis un réseau croissant de stations d'observation. Station USA en est la première extension expérimentale : une lecture artistique distincte des mêmes données réelles et mesurées, aux côtés du réseau global principal." data-es="El Clima de las IA™ se publica desde una red creciente de estaciones de observación. Station USA es su primera extensión experimental: una lectura artística distinta de los mismos datos reales y medidos, junto a la red global principal.">AI Weather™ is published from a growing network of observation stations. Station USA is its first experimental extension: a distinct, artistic reading of the same real, measured data, alongside the main global network.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="station-grid">
+      <div class="station-card is-experimental">
+        <span class="station-tag tag-experimental" data-en="Experimental · OmarAGI × NeoMundi" data-fr="Expérimental · OmarAGI × NeoMundi" data-es="Experimental · OmarAGI × NeoMundi">Experimental · OmarAGI × NeoMundi</span>
+        <h2 data-en="Station USA" data-fr="Station expérimentale NeoMundi USA" data-es="Estación experimental NeoMundi USA">Station USA</h2>
+        <div class="station-meta" data-en="First international experimental extension" data-fr="Première extension expérimentale internationale" data-es="Primera extensión experimental internacional">First international experimental extension</div>
+        <p class="desc" data-en="An artistic, interactive extension: a live globe pairing real per-city physical weather with the same day's real AI Weather™ condition, the two sources shown side by side, never merged." data-fr="Une extension artistique et interactive : un globe en direct associant la météo physique réelle par ville à la condition réelle de La Météo des IA™ du même jour, les deux sources montrées côte à côte, jamais fusionnées." data-es="Una extensión artística e interactiva: un globo en directo que combina la meteorología física real de cada ciudad con la condición real de El Clima de las IA™ del mismo día, ambas fuentes mostradas una junto a la otra, nunca fusionadas.">An artistic, interactive extension: a live globe pairing real per-city physical weather with the same day's real AI Weather™ condition, the two sources shown side by side, never merged.</p>
+        <ul class="station-facts">
+          <li data-en="Status: separate, experimental. Does not replace the main network." data-fr="Statut : séparée, expérimentale. Ne remplace pas le réseau principal." data-es="Estado: separada, experimental. No sustituye a la red principal.">Status: separate, experimental. Does not replace the main network.</li>
+          <li data-en="Collaboration: Ben B × Sébastien Favre, OmarAGI × NeoMundi" data-fr="Collaboration : Ben B × Sébastien Favre, OmarAGI × NeoMundi" data-es="Colaboración: Ben B × Sébastien Favre, OmarAGI × NeoMundi">Collaboration: Ben B × Sébastien Favre, OmarAGI × NeoMundi</li>
+        </ul>
+        <a class="btn btn-ghost" href="us-station.html" data-en="Enter the station →" data-fr="Entrer dans la station →" data-es="Entrar en la estación →">Enter the station →</a>
+      </div>
+
+      <div class="station-card">
+        <span class="station-tag tag-primary" data-en="PUBLIC RESEARCH INFRASTRUCTURE" data-fr="INFRASTRUCTURE DE RECHERCHE PUBLIQUE" data-es="INFRAESTRUCTURA DE INVESTIGACIÓN PÚBLICA">PUBLIC RESEARCH INFRASTRUCTURE</span>
+        <h2 data-en="NeoMundi Observatory" data-fr="Observatoire NeoMundi" data-es="Observatorio NeoMundi">NeoMundi Observatory</h2>
+        <p class="desc" data-en="A public, longitudinal record of AI behavior. Explore the Observatory hub, AI Barometers, cartographies and open science resources built from documented observations." data-fr="Une mémoire publique et longitudinale du comportement des IA. Explorez le hub de l'Observatoire, les baromètres IA, les cartographies et les ressources de science ouverte, construits à partir d'observations documentées." data-es="Un registro público y longitudinal del comportamiento de las IA. Explora el hub del Observatorio, los barómetros de IA, las cartografías y los recursos de ciencia abierta, construidos a partir de observaciones documentadas.">A public, longitudinal record of AI behavior. Explore the Observatory hub, AI Barometers, cartographies and open science resources built from documented observations.</p>
+        <ul class="observatory-links">
+          <li>
+            <span class="ol-name">Observatory Hub</span>
+            <span class="ol-desc" data-en="The central entry point to NeoMundi's public observation work." data-fr="Le point d'entrée central des travaux d'observation publics de NeoMundi." data-es="El punto de entrada central al trabajo de observación pública de NeoMundi.">The central entry point to NeoMundi's public observation work.</span>
+          </li>
+          <li>
+            <span class="ol-name">AI Barometers</span>
+            <span class="ol-desc" data-en="Readings that track AI behavior over time." data-fr="Des relevés qui suivent le comportement des IA dans le temps." data-es="Mediciones que siguen el comportamiento de las IA a lo largo del tiempo.">Readings that track AI behavior over time.</span>
+          </li>
+          <li>
+            <span class="ol-name">AI Cartographies</span>
+            <span class="ol-desc" data-en="Visual maps of observed conditions." data-fr="Des cartes visuelles des conditions observées." data-es="Mapas visuales de las condiciones observadas.">Visual maps of observed conditions.</span>
+          </li>
+          <li>
+            <span class="ol-name">Open Science</span>
+            <span class="ol-desc" data-en="Documentation and resources published in the open." data-fr="Documentation et ressources publiées en accès libre." data-es="Documentación y recursos publicados en abierto.">Documentation and resources published in the open.</span>
+          </li>
+        </ul>
+        <a class="btn btn-primary" href="https://neomundi.org/" target="_blank" rel="noopener" data-en="Discover the Observatory →" data-fr="Découvrir l'Observatoire →" data-es="Descubrir el Observatorio →">Discover the Observatory →</a>
+      </div>
+
+      <div class="station-card is-placeholder">
+        <h2 data-en="More stations, as they launch" data-fr="D'autres stations, à mesure qu'elles seront lancées" data-es="Más estaciones, a medida que se lancen">More stations, as they launch</h2>
+        <p class="desc" data-en="This network grows station by station: never with a placeholder standing in for a real observation." data-fr="Ce réseau s'agrandit station par station : jamais avec un substitut simulant une observation réelle." data-es="Esta red crece estación por estación: nunca con un sustituto que simule una observación real.">This network grows station by station: never with a placeholder standing in for a real observation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="../assets/logo-controltower.png" alt="ControlTower AI">
+          <span>ControlTowerAI</span>
+        </div>
+        <p style="max-width:280px" data-en="AI Weather™: machine-readable JSON, hash &amp; signature verifiable. Powered by NeoMundi, Runtime AI Metrology." data-fr="La Météo des IA™ : JSON exploitable par machine, hash et signature vérifiables. Propulsé par NeoMundi, métrologie IA en temps réel." data-es="El Clima de las IA™: JSON legible por máquina, hash y firma verificables. Desarrollado por NeoMundi, metrología de IA en tiempo real.">AI Weather™: machine-readable JSON, hash &amp; signature verifiable. Powered by NeoMundi, Runtime AI Metrology.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Explore" data-fr="Explorer" data-es="Explorar">Explore</h4>
+        <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour" data-es="El clima de hoy">Today's Weather</a>
+        <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche" data-es="Cómo funciona">How It Works</a>
+        <a href="stations.html" data-en="Station USA" data-fr="Station USA" data-es="Station USA">Station USA</a>
+        <a href="widgets.html" data-en="Widgets" data-fr="Widgets" data-es="Widgets">Widgets</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Company" data-fr="Société" data-es="Empresa">Company</h4>
+        <a href="about.html" data-en="About" data-fr="À propos" data-es="Acerca de">About</a>
+        <a href="index.html#instrument" data-en="NeoMundi Observatory" data-fr="Observatoire NeoMundi" data-es="Observatorio NeoMundi">NeoMundi Observatory</a>
+        <a href="for-media.html" data-en="For Media" data-fr="Pour les médias" data-es="Para medios">For Media</a>
+        <a href="contact.html" data-en="Contact" data-fr="Contact" data-es="Contacto">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Resources" data-fr="Ressources" data-es="Recursos">Resources</h4>
+        <a href="daily-brief.html" data-en="Daily Brief" data-fr="Bulletin quotidien" data-es="Boletín diario">Daily Brief</a>
+        <a href="https://neomundi.org/methodology" target="_blank" rel="noopener" data-en="Methodology" data-fr="Méthodologie" data-es="Metodología">Methodology</a>
+        <a href="../weather.json" target="_blank" rel="noopener" data-en="Raw data" data-fr="Données brutes" data-es="Datos en bruto">Raw data</a>
+        <a href="https://github.com/neomundi-io/neomundi-ai-weather" target="_blank" rel="noopener" data-en="Source code" data-fr="Code source" data-es="Código fuente">Source code</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-en="AI Weather™ observes and measures behavioral signals. It does not certify, guarantee, or predict outcomes." data-fr="La Météo des IA™ observe et mesure des signaux comportementaux. Elle ne certifie, ne garantit ni ne prédit aucun résultat." data-es="El Clima de las IA™ observa y mide señales de comportamiento. No certifica, no garantiza ni predice resultados.">AI Weather™ observes and measures behavioral signals. It does not certify, guarantee, or predict outcomes.</span>
+      <span>© 2026 NeoMundi · ControlTower AI</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var LANGS = [
+    { code: "en", label: "English" }, { code: "fr", label: "Français" }, { code: "de", label: "Deutsch" },
+    { code: "es", label: "Español" }, { code: "it", label: "Italiano" }, { code: "pt", label: "Português" },
+    { code: "nl", label: "Nederlands" }, { code: "zh", label: "简体中文" }, { code: "ja", label: "日本語" },
+    { code: "ko", label: "한국어" }, { code: "hi", label: "हिन्दी" }, { code: "ar", label: "العربية" }, { code: "ru", label: "Русский" }
+  ];
+  var COPY_LANGS = ["en", "fr", "es"];
+  var langButton = document.getElementById("lang-button");
+  var langMenu = document.getElementById("lang-menu");
+  langMenu.innerHTML = LANGS.map(function (l) {
+    return '<button class="lang-option' + (l.code === "en" ? " active" : "") + '" data-lang="' + l.code + '" type="button">' + l.label + "</button>";
+  }).join("");
+  function applyCopy(lang) {
+    var key = COPY_LANGS.indexOf(lang) !== -1 ? lang : "en";
+    document.querySelectorAll("[data-" + key + "]").forEach(function (el) { el.textContent = el.getAttribute("data-" + key); });
+  }
+  function selectLang(lang) {
+    langButton.textContent = lang.toUpperCase() + " ▾";
+    langMenu.querySelectorAll(".lang-option").forEach(function (opt) { opt.classList.toggle("active", opt.getAttribute("data-lang") === lang); });
+    applyCopy(lang);
+    langMenu.classList.remove("open");
+    langButton.setAttribute("aria-expanded", "false");
+  }
+  langButton.addEventListener("click", function () {
+    var willOpen = !langMenu.classList.contains("open");
+    langMenu.classList.toggle("open", willOpen);
+    langButton.setAttribute("aria-expanded", String(willOpen));
+  });
+  langMenu.addEventListener("click", function (e) {
+    var btn = e.target.closest(".lang-option");
+    if (btn) selectLang(btn.getAttribute("data-lang"));
+  });
+  document.addEventListener("click", function (e) {
+    if (!document.querySelector(".lang-select").contains(e.target)) {
+      langMenu.classList.remove("open");
+      langButton.setAttribute("aria-expanded", "false");
+    }
+  });
+  var navToggle = document.getElementById("nav-toggle");
+  var mobileNav = document.getElementById("mobile-nav");
+  navToggle.addEventListener("click", function () { mobileNav.classList.toggle("open"); });
+  mobileNav.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { mobileNav.classList.remove("open"); }); });
+})();
+</script>
+
+</body>
+</html>

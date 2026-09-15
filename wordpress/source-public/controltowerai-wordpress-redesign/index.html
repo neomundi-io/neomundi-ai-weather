@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a1220">
+<title>ControlTower AI · AI Weather™</title>
+<meta name="description" content="AI Weather™ is the daily weather report for AI behavior. It is a global observatory that measures the stability, variation and drift of AI systems, every day.">
+
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ==========================================================
+     Design tokens — "Global AI Weather Station" direction.
+     Judgment colors (green/yellow/orange/red) are copied verbatim
+     from styles/themes.css and must stay identical to the real
+     widgets — see AI_WEATHER canon: color meaning never changes.
+     ========================================================== */
+  :root {
+    --page-bg: #f4f8fd;
+    --page-bg-alt: #eaf2fb;
+    --surface: #ffffff;
+    --surface-soft: #f6faff;
+
+    --navy-900: #070d18;
+    --navy-800: #0a1220;
+    --navy-700: #101b30;
+    --navy-600: #16233d;
+
+    --ink: #0f1826;
+    --ink-dim: #4c5c6e;
+    --ink-faint: #8595a6;
+
+    --on-navy: #eef4fc;
+    --on-navy-dim: #a9bad0;
+    --on-navy-faint: #6d80998f;
+
+    --border: #dde6f0;
+    --border-soft: #e9f0f7;
+    --border-navy: #24334f;
+
+    --accent: #2f7dd8;
+    --accent-strong: #1c5cb0;
+    --accent-soft: #e4f0fd;
+    --cyan: #22d3ee;
+
+    --lvl-green: #22c55e;
+    --lvl-yellow: #facc15;
+    --lvl-orange: #fb923c;
+    --lvl-red: #b91c1c;
+
+    --radius-lg: 22px;
+    --radius-md: 14px;
+    --radius-sm: 9px;
+
+    --shadow-1: 0 1px 2px rgba(15,24,38,.05), 0 10px 28px rgba(15,24,38,.06);
+    --shadow-2: 0 20px 60px rgba(8,14,26,.16);
+
+    --container: 1180px;
+    --font-sans: "Inter", "Segoe UI", system-ui, Arial, sans-serif;
+    --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--ink);
+    background: var(--page-bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    margin: 0 0 12px;
+  }
+  .on-navy .eyebrow { color: var(--cyan); }
+  .eyebrow.center { text-align: center; }
+
+  h1, h2, h3 { font-weight: 800; letter-spacing: -.01em; margin: 0; }
+  h1 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; }
+  h2 { font-size: clamp(24px, 3vw, 34px); line-height: 1.15; }
+  h3 { font-size: 18px; line-height: 1.3; }
+  p  { line-height: 1.6; color: var(--ink-dim); margin: 0; }
+  .on-navy, .on-navy p { color: var(--on-navy-dim); }
+  .on-navy h2, .on-navy h3 { color: var(--on-navy); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14.5px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    white-space: nowrap;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary {
+    background: linear-gradient(180deg, #3a8ae0, var(--accent-strong));
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(47,125,216,.35);
+  }
+  .btn-primary:hover { box-shadow: 0 10px 28px rgba(47,125,216,.45); }
+  .btn-ghost {
+    background: #fff;
+    color: var(--ink);
+    border-color: var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-strong); }
+  .btn-ghost-invert {
+    background: transparent;
+    color: var(--on-navy);
+    border-color: var(--border-navy);
+  }
+  .btn-ghost-invert:hover { border-color: var(--cyan); color: #fff; }
+  .btn-sm { padding: 9px 16px; font-size: 13px; }
+
+  /* ---------------- Header ---------------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(244,248,253,.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .header-inner {
+    max-width: var(--container); margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; gap: 20px;
+    height: 68px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex: none; }
+  .brand img { width: 32px; height: 32px; border-radius: 50%; }
+  .brand-text { font-weight: 800; font-size: 15.5px; letter-spacing: -.01em; color: var(--ink); }
+  .brand-text em { font-style: normal; color: var(--accent-strong); }
+  .main-nav { display: flex; gap: 26px; margin-left: 12px; flex: 1; }
+  .main-nav a {
+    font-size: 13.5px; font-weight: 600; text-decoration: none;
+    color: var(--ink-dim);
+  }
+  .main-nav a:hover { color: var(--ink); }
+  .header-actions { display: flex; align-items: center; gap: 10px; flex: none; }
+
+  .lang-select { position: relative; }
+  .lang-button {
+    display: inline-flex; align-items: center; gap: 6px;
+    height: 36px; padding: 0 12px;
+    background: #fff; border: 1px solid var(--border); border-radius: 999px;
+    font: inherit; font-size: 12.5px; font-weight: 700; color: var(--ink-dim);
+    cursor: pointer;
+  }
+  .lang-menu {
+    display: none; position: absolute; top: calc(100% + 8px); right: 0;
+    min-width: 190px; max-height: 320px; overflow-y: auto;
+    background: #fff; border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-2); padding: 6px; z-index: 200;
+  }
+  .lang-menu.open { display: block; }
+  .lang-option {
+    display: block; width: 100%; text-align: left; padding: 9px 10px;
+    border: 0; background: transparent; border-radius: 8px; cursor: pointer;
+    font: inherit; font-size: 13px; color: var(--ink);
+  }
+  .lang-option:hover { background: var(--surface-soft); }
+  .lang-option.active { background: var(--accent-soft); font-weight: 700; color: var(--accent-strong); }
+
+  .nav-toggle {
+    display: none; width: 36px; height: 36px; border-radius: 9px;
+    border: 1px solid var(--border); background: #fff; cursor: pointer;
+    font-size: 16px;
+  }
+  .mobile-nav {
+    display: none; flex-direction: column; gap: 2px;
+    padding: 10px 24px 16px; border-top: 1px solid var(--border-soft);
+    background: var(--surface);
+  }
+  .mobile-nav a { padding: 12px 4px; font-weight: 600; font-size: 14.5px; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--border-soft); }
+  .mobile-nav.open { display: flex; }
+
+  @media (max-width: 880px) {
+    .main-nav { display: none; }
+    .nav-toggle { display: block; }
+  }
+
+  /* ---------------- Section shell ---------------- */
+  section { padding: 88px 0; }
+  .dark { background: radial-gradient(1200px 500px at 20% -10%, #122241 0%, transparent 60%), linear-gradient(180deg, var(--navy-800), var(--navy-900)); position: relative; overflow: hidden; }
+  .dark::before {
+    content: ""; position: absolute; inset: 0; opacity: .5; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: radial-gradient(75% 60% at 50% 20%, #000 40%, transparent 100%);
+  }
+  .dark > .wrap { position: relative; z-index: 1; }
+  .section-head { max-width: 640px; margin: 0 0 44px; }
+  .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+
+  /* ---------------- Hero ---------------- */
+  .hero {
+    padding: 56px 0 80px;
+    background:
+      radial-gradient(900px 380px at 85% -10%, rgba(47,125,216,.14), transparent 60%),
+      linear-gradient(180deg, var(--page-bg-alt) 0%, var(--page-bg) 65%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; opacity: .6; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(16,32,54,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16,32,54,.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(70% 55% at 78% 15%, #000 30%, transparent 100%);
+  }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero-copy { width: 100%; }
+  .hero-copy h1 { max-width: 78%; }
+  .hero-copy .lede { font-size: 17px; max-width: 68%; margin-top: 20px; }
+  .hero-alert {
+    margin-top: 26px; padding: 15px 20px;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: 0 12px 12px 0;
+    font-size: 17px; font-weight: 700; line-height: 1.5;
+    color: var(--ink); max-width: 68%;
+  }
+  .rigor-note {
+    margin-top: 22px; font-size: 13px; color: var(--ink-faint);
+    padding-left: 12px; border-left: 2px solid var(--border);
+    max-width: 68%;
+  }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+
+  @media (max-width: 980px) {
+    .hero-copy h1, .hero-copy .lede, .hero-alert, .rigor-note { max-width: 100%; }
+  }
+
+  /* ---------------- Levels ---------------- */
+  .levels-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .level-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 22px 20px; box-shadow: var(--shadow-1);
+    border-top: 4px solid var(--lvl);
+  }
+  .level-card .dot {
+    width: 30px; height: 30px; border-radius: 50%; background: var(--lvl);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--lvl) 16%, transparent), 0 4px 14px color-mix(in srgb, var(--lvl) 45%, transparent);
+    margin-bottom: 16px;
+  }
+  .level-card h3 { margin-bottom: 3px; }
+  .level-fr { font-size: 12px; color: var(--ink-faint); margin-bottom: 10px; }
+  .level-fr:empty { display: none; }
+  .level-card p { font-size: 13.5px; }
+  .levels-intro { max-width: 640px; margin: 14px auto 0; }
+  .levels-note {
+    max-width: 680px; margin: 24px auto 0; text-align: center;
+    font-size: 12px; color: var(--ink-faint);
+  }
+  @media (max-width: 880px) { .levels-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .levels-grid { grid-template-columns: 1fr; } }
+
+  /* ---------------- Today / wall ---------------- */
+  .frame-fallback {
+    display: none; margin-top: 12px; font-size: 12.5px; color: var(--on-navy-faint);
+  }
+  .frame-fallback.is-visible { display: block; }
+  .frame-fallback a { color: var(--cyan); font-weight: 700; text-decoration: none; }
+  .frame-fallback a:hover { text-decoration: underline; }
+
+  /* ---------------- Quiz block ---------------- */
+  .quiz-block {
+    display: grid; grid-template-columns: 58fr 42fr; gap: 52px; align-items: center;
+  }
+  .quiz-copy p { font-size: 14.5px; margin-top: 14px; }
+  .quiz-conclusion { margin-top: 20px; font-size: 15.5px; font-weight: 700; color: var(--on-navy); }
+  .quiz-frame-wrap { display: flex; flex-direction: column; align-items: center; }
+  .quiz-frame {
+    width: 100%; max-width: 420px; border-radius: var(--radius-lg); overflow: hidden;
+    border: 1px solid var(--border-navy); background: #0c1420; box-shadow: var(--shadow-2);
+    position: relative;
+  }
+  .quiz-frame::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--cyan), var(--accent)); z-index: 2;
+  }
+  .quiz-frame iframe { display: block; width: 100%; height: 420px; border: 0; transition: height .25s ease; }
+  .quiz-frame-wrap .frame-fallback { max-width: 420px; text-align: center; }
+  @media (max-width: 860px) {
+    .quiz-block { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* ---------------- Four entry points ---------------- */
+  .paths-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-soft); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); overflow: hidden; }
+  .path-card { background: var(--surface); padding: 30px 26px 28px; display: flex; flex-direction: column; position: relative; }
+  .path-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--path-accent); }
+  .path-num { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--path-accent); letter-spacing: .06em; margin-bottom: 18px; }
+  .path-card .path-eyebrow { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--path-accent); margin: 0 0 8px; }
+  .path-card h3 { font-size: 17px; line-height: 1.28; margin-bottom: 10px; }
+  .path-card p { font-size: 13.5px; flex: 1; }
+  .path-card a.path-cta { margin-top: 18px; display: inline-flex; font-size: 13px; font-weight: 700; text-decoration: none; color: var(--path-accent); }
+  .path-card a.path-cta:hover { text-decoration: underline; }
+  @media (max-width: 980px) { .paths-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 620px) { .paths-grid { grid-template-columns: 1fr; } }
+  .paths-intro { max-width: 720px; margin-bottom: 34px; }
+
+  .code-block {
+    background: var(--navy-900); border: 1px solid var(--border-navy); border-radius: var(--radius-md);
+    padding: 18px 20px; position: relative; overflow-x: auto;
+  }
+  .code-block pre { margin: 0; font-family: var(--font-mono); font-size: 12.5px; color: #cfe3ff; white-space: pre-wrap; word-break: break-all; }
+  .copy-btn {
+    position: absolute; top: 12px; right: 12px;
+    font-family: var(--font-sans); font-size: 11.5px; font-weight: 700;
+    background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.16);
+    border-radius: 999px; padding: 6px 12px; cursor: pointer;
+  }
+  .copy-btn:hover { background: rgba(255,255,255,.14); }
+
+  /* ---------------- Instrument ---------------- */
+  .instrument-section .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+  .instrument-copy p { margin-top: 14px; font-size: 14.5px; }
+  .instrument-copy .disclaimer {
+    margin-top: 22px; font-size: 12.5px; color: var(--on-navy-dim);
+    border-left: 2px solid var(--border-navy); padding-left: 12px;
+  }
+  .instrument-links { display: flex; gap: 14px; margin-top: 26px; flex-wrap: wrap; }
+  .instrument-panel {
+    background: rgba(255,255,255,.03); border: 1px solid var(--border-navy); border-radius: var(--radius-lg);
+    padding: 26px;
+  }
+  .il-row { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--border-navy); }
+  .il-row:last-child { border-bottom: 0; }
+  .il-label { font-size: 12.5px; color: var(--on-navy-faint); }
+  .il-value { font-family: var(--font-mono); font-size: 14px; color: var(--on-navy); font-weight: 600; text-align: right; }
+  @media (max-width: 880px) { .instrument-section .wrap { grid-template-columns: 1fr; } }
+
+  /* ---------------- Newsletter / footer ---------------- */
+  .newsletter { background: var(--surface-soft); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); }
+  .newsletter .wrap { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+  .newsletter-form { display: flex; gap: 10px; flex-wrap: wrap; }
+  .newsletter-form input {
+    height: 46px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--border);
+    font: inherit; font-size: 14px; min-width: 260px; background: #fff;
+  }
+  .newsletter-note { font-size: 11.5px; color: var(--ink-faint); margin-top: 8px; }
+
+  footer { background: var(--navy-900); color: var(--on-navy-dim); padding: 56px 0 28px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; margin-bottom: 40px; }
+  .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .footer-brand img { width: 26px; height: 26px; border-radius: 50%; }
+  .footer-brand span { font-weight: 800; color: var(--on-navy); }
+  .footer-col h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--on-navy); margin-bottom: 14px; }
+  .footer-col a { display: block; font-size: 13.5px; text-decoration: none; color: var(--on-navy-dim); margin-bottom: 10px; }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom {
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    padding-top: 24px; border-top: 1px solid var(--border-navy);
+    font-size: 12px; color: var(--on-navy-faint);
+  }
+  @media (max-width: 780px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#hero">
+      <img src="../assets/logo-controltower.png" alt="ControlTower AI">
+      <span class="brand-text">ControlTower<em>AI</em></span>
+    </a>
+    <nav class="main-nav">
+      <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour">Today's Weather</a>
+      <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche">How It Works</a>
+      <a href="stations.html" data-en="Station USA" data-fr="Station USA">Station USA</a>
+      <a href="widgets.html" data-en="Widgets" data-fr="Widgets">Widgets</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-select">
+        <button class="lang-button" id="lang-button" type="button" aria-haspopup="true" aria-expanded="false">EN ▾</button>
+        <div class="lang-menu" id="lang-menu"></div>
+      </div>
+      <a class="btn btn-primary btn-sm" href="today.html" data-en="Today's AI Weather™ →" data-fr="La Météo des IA™ du jour →">Today's AI Weather™ →</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour">Today's Weather</a>
+    <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche">How It Works</a>
+    <a href="stations.html" data-en="Station USA" data-fr="Station USA">Station USA</a>
+    <a href="widgets.html" data-en="Widgets" data-fr="Widgets">Widgets</a>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="hero" class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow" data-en="GLOBAL AI WEATHER STATION · CONTROLTOWER AI" data-fr="STATION MÉTÉO MONDIALE DES IA · CONTROLTOWER AI">GLOBAL AI WEATHER STATION · CONTROLTOWER AI</p>
+      <h1 data-en="AI Weather™ is the daily weather report for AI behavior." data-fr="La Météo des IA™ est le bulletin quotidien du comportement des IA.">AI Weather™ is the daily weather report for AI behavior.</h1>
+      <p class="lede" data-en="Every day, the ControlTower AI instrument asks the same challenging question 23 times, followed by a second question 7 times, to each of the 12 AI systems in the panel. It then compares their responses with one another and over time." data-fr="Chaque jour, l'instrument ControlTower AI pose une même question exigeante 23 fois, puis une seconde question 7 fois, à chacune des 12 IA du panel. Il compare ensuite leurs réponses entre elles et dans le temps.">Every day, the ControlTower AI instrument asks the same challenging question 23 times, followed by a second question 7 times, to each of the 12 AI systems in the panel. It then compares their responses with one another and over time.</p>
+      <p class="lede" data-en="AI Weather™ publishes a simple reading of their current condition, stability, variations and observed behavioral drift." data-fr="La Météo des IA™ publie une lecture simple de leur état du jour, de leur stabilité, de leurs variations et des dérives comportementales observées.">AI Weather™ publishes a simple reading of their current condition, stability, variations and observed behavioral drift.</p>
+      <p class="hero-alert" data-en="An AI system can change, drift or make mistakes without it being immediately visible." data-fr="Une IA peut changer, dériver ou se tromper sans que cela soit immédiatement visible.">An AI system can change, drift or make mistakes without it being immediately visible.</p>
+      <p class="lede" data-en="We created AI Weather™ to help everyone read these changes more clearly, strengthen their judgment and use AI systems with greater discernment." data-fr="Nous faisons La Météo des IA™ pour aider chacun à mieux lire ces changements, renforcer son jugement et utiliser les IA avec davantage de discernement.">We created AI Weather™ to help everyone read these changes more clearly, strengthen their judgment and use AI systems with greater discernment.</p>
+      <p class="rigor-note" data-en="We observe and measure. We do not certify, guarantee or predict anything that has not been demonstrated." data-fr="Nous observons et mesurons. Nous ne certifions, ne garantissons ni ne prédisons rien qui ne soit démontré.">We observe and measure. We do not certify, guarantee or predict anything that has not been demonstrated.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="today.html" data-en="View today's AI Weather™ →" data-fr="Voir La Météo des IA™ du jour →">View today's AI Weather™ →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEVELS ================= -->
+<section id="levels">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="eyebrow center" data-en="READ THE WEATHER" data-fr="LIRE LA MÉTÉO">READ THE WEATHER</p>
+      <h2 data-en="Four levels to guide attention. Never replace judgment." data-fr="Quatre niveaux pour orienter l'attention. Jamais pour remplacer le jugement.">Four levels to guide attention. Never replace judgment.</h2>
+      <p class="levels-intro" data-en="Each color indicates the level of behavioral variation observed. It helps people understand where to focus their attention without making the decision for them." data-fr="Chaque couleur indique le niveau de variation comportementale observé. Elle aide à savoir où porter son attention, sans décider à la place de l'utilisateur.">Each color indicates the level of behavioral variation observed. It helps people understand where to focus their attention without making the decision for them.</p>
+    </div>
+    <div class="levels-grid">
+      <div class="level-card" style="--lvl:var(--lvl-green)">
+        <div class="dot"></div>
+        <h3 data-en="Standard" data-fr="Standard">Standard</h3>
+        <div class="level-fr" data-en="" data-fr="EN: Standard"></div>
+        <p data-en="Observed behavior remains within its expected range for this period." data-fr="Le comportement observé reste dans sa plage attendue pour cette période.">Observed behavior remains within its expected range for this period.</p>
+      </div>
+      <div class="level-card" style="--lvl:var(--lvl-yellow)">
+        <div class="dot"></div>
+        <h3 data-en="Heightened attention" data-fr="Attention accrue">Heightened attention</h3>
+        <div class="level-fr" data-en="" data-fr="EN: Heightened attention"></div>
+        <p data-en="A variation has been observed. It should be monitored across the next observations." data-fr="Une variation a été observée. Elle mérite d'être suivie dans les prochaines observations.">A variation has been observed. It should be monitored across the next observations.</p>
+      </div>
+      <div class="level-card" style="--lvl:var(--lvl-orange)">
+        <div class="dot"></div>
+        <h3 data-en="Reinforced attention" data-fr="Attention renforcée">Reinforced attention</h3>
+        <div class="level-fr" data-en="" data-fr="EN: Reinforced attention"></div>
+        <p data-en="A more marked deviation has been measured. A careful reading of the context and results is recommended." data-fr="Un écart plus marqué a été mesuré. Une lecture attentive du contexte et des résultats est recommandée.">A more marked deviation has been measured. A careful reading of the context and results is recommended.</p>
+      </div>
+      <div class="level-card" style="--lvl:var(--lvl-red)">
+        <div class="dot"></div>
+        <h3 data-en="Critical attention" data-fr="Attention critique">Critical attention</h3>
+        <div class="level-fr" data-en="" data-fr="EN: Critical attention"></div>
+        <p data-en="A significant disruption in observed behavior has been detected. It requires deeper human analysis." data-fr="Une perturbation importante du comportement observé a été détectée. Elle nécessite une analyse humaine approfondie.">A significant disruption in observed behavior has been detected. It requires deeper human analysis.</p>
+      </div>
+    </div>
+    <p class="levels-note" data-en="These levels describe a behavioral condition observed at a given moment. They are not a certification, a guarantee or a definitive judgment about an AI system." data-fr="Ces niveaux décrivent un état comportemental observé à un moment donné. Ils ne constituent ni une certification, ni une garantie, ni un jugement définitif sur une IA.">These levels describe a behavioral condition observed at a given moment. They are not a certification, a guarantee or a definitive judgment about an AI system.</p>
+  </div>
+</section>
+
+<!-- ================= QUIZ ================= -->
+<section id="quiz-section" class="dark on-navy">
+  <div class="wrap">
+    <div class="quiz-block" id="quiz">
+      <div class="quiz-copy">
+        <p class="eyebrow" data-en="YOUR CALL" data-fr="À VOUS DE JUGER">YOUR CALL</p>
+        <h3 data-en="Can you spot the drift?" data-fr="Saurez-vous repérer la dérive ?">Can you spot the drift?</h3>
+        <p data-en="Every day, a real situation from our observations becomes a simple question. Compare the signals, tell a normal variation from a drift, and put your judgment to the test against real AI behavior." data-fr="Chaque jour, une situation réelle issue de nos observations devient une question simple. Comparez les signaux, distinguez une variation normale d'une dérive et exercez votre jugement face au comportement des IA.">Every day, a real situation from our observations becomes a simple question. Compare the signals, tell a normal variation from a drift, and put your judgment to the test against real AI behavior.</p>
+        <p class="quiz-conclusion" data-en="One question. Two signals. Your turn to read the weather." data-fr="Une question. Deux signaux. À vous de lire la météo.">One question. Two signals. Your turn to read the weather.</p>
+      </div>
+      <!--
+        Public-awareness quiz, local preview: points at
+        widgets/quiz-public/daily.html, same relative-path convention as
+        every other real widget on this page (../index.html,
+        ../core-panel.html). Deliberately NOT widgets/quiz/quiz-daily.html:
+        that engine's reveal is built around the internal RÉAGI grid
+        ("aligné" / "à muscler" per letter), which is out of scope for this
+        public-facing slot. This widget's own data lives in
+        quiz-data/public-awareness-quiz.json (real, verifiable excerpts, or
+        content explicitly labeled "Example").
+      -->
+      <div class="quiz-frame-wrap">
+        <div class="quiz-frame" id="quiz-frame">
+          <iframe id="iframe-quiz-daily" data-src="../widgets/quiz-public/daily.html" src="../widgets/quiz-public/daily.html?theme=dark&amp;lang=en" loading="lazy" title="Spot the Drift: today's question" scrolling="no"></iframe>
+        </div>
+        <p class="frame-fallback" id="quiz-fallback">
+          <span data-en="Quiz not loading? " data-fr="Le quiz ne se charge pas ? ">Quiz not loading? </span>
+          <a href="../widgets/quiz-public/daily.html" target="_blank" rel="noopener" data-en="Try it here →" data-fr="Essayez-le ici →">Try it here →</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOUR ENTRY POINTS ================= -->
+<section id="paths">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-en="GO FURTHER" data-fr="POUR ALLER PLUS LOIN">GO FURTHER</p>
+      <h2 data-en="Understand, observe, test, use." data-fr="Comprendre, observer, tester, utiliser.">Understand, observe, test, use.</h2>
+      <p class="paths-intro" data-en="AI Weather™ can be read at several levels. Four paths to go further, from a first look to a closer reading." data-fr="La Météo des IA™ se lit à plusieurs niveaux. Quatre chemins pour aller plus loin, du premier coup d'œil à une lecture plus approfondie.">AI Weather™ can be read at several levels. Four paths to go further, from a first look to a closer reading.</p>
+    </div>
+    <div class="paths-grid">
+      <div class="path-card" style="--path-accent:#2f7dd8">
+        <div class="path-num">01</div>
+        <p class="path-eyebrow" data-en="UNDERSTAND" data-fr="COMPRENDRE">UNDERSTAND</p>
+        <h3 data-en="Why an AI's behavior can change" data-fr="Pourquoi le comportement d'une IA peut changer">Why an AI's behavior can change</h3>
+        <p data-en="What AI Weather™ actually measures, the four attention levels, and the fixed protocol behind every published condition." data-fr="Ce que La Météo des IA™ mesure réellement, les quatre niveaux d'attention, et le protocole fixe derrière chaque condition publiée.">What AI Weather™ actually measures, the four attention levels, and the fixed protocol behind every published condition.</p>
+        <a class="path-cta" href="how-it-works.html" data-en="How it works →" data-fr="Comment ça marche →">How it works →</a>
+      </div>
+      <div class="path-card" style="--path-accent:#22b8cf">
+        <div class="path-num">02</div>
+        <p class="path-eyebrow" data-en="OBSERVE" data-fr="OBSERVER">OBSERVE</p>
+        <h3 data-en="Today's real results" data-fr="Les résultats réels du jour">Today's real results</h3>
+        <p data-en="The full observation wall, system by system, with each panel AI's current condition and recent trend." data-fr="Le mur d'observation complet, système par système, avec la condition actuelle et la tendance récente de chaque IA du panel.">The full observation wall, system by system, with each panel AI's current condition and recent trend.</p>
+        <a class="path-cta" href="today.html" data-en="View today's weather →" data-fr="Voir la météo du jour →">View today's weather →</a>
+      </div>
+      <div class="path-card" style="--path-accent:#8b5cf6">
+        <div class="path-num">03</div>
+        <p class="path-eyebrow" data-en="TEST" data-fr="TESTER">TEST</p>
+        <h3 data-en="Your own reading of the signals" data-fr="Votre propre lecture des signaux">Your own reading of the signals</h3>
+        <p data-en="Compare two real signals and put your judgment to the test against an actual observed variation, with no easy answer." data-fr="Comparez deux signaux réels et exercez votre jugement face à une variation réellement observée, sans réponse toute faite.">Compare two real signals and put your judgment to the test against an actual observed variation, with no easy answer.</p>
+        <a class="path-cta" href="#quiz" data-en="Take today's quiz →" data-fr="Faire le quiz du jour →">Take today's quiz →</a>
+      </div>
+      <div class="path-card" style="--path-accent:#d6469b">
+        <div class="path-num">04</div>
+        <p class="path-eyebrow" data-en="USE" data-fr="UTILISER">USE</p>
+        <h3 data-en="Install and share AI Weather™" data-fr="Installer et partager La Météo des IA™">Install and share AI Weather™</h3>
+        <p data-en="Real, embeddable formats reading the same daily measurement: full wall, Core Panel, bar, sidebar, individual badge, and the quiz." data-fr="Des formats réels et intégrables qui lisent la même mesure quotidienne : mur complet, panneau Core, barre, barre latérale, badge individuel, et le quiz.">Real, embeddable formats reading the same daily measurement: full wall, Core Panel, bar, sidebar, individual badge, and the quiz.</p>
+        <a class="path-cta" href="widgets.html" data-en="Explore the widgets →" data-fr="Explorer les widgets →">Explore the widgets →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INSTRUMENT ================= -->
+<section id="instrument" class="dark on-navy instrument-section">
+  <div class="wrap">
+    <div class="instrument-copy">
+      <p class="eyebrow" data-en="BEHIND THE WEATHER" data-fr="DERRIÈRE LA MÉTÉO">BEHIND THE WEATHER</p>
+      <h2 data-en="A public instrument, an independent measurement." data-fr="Un instrument public, une mesure indépendante.">A public instrument, an independent measurement.</h2>
+      <p data-en="AI Weather™ is published by ControlTower AI, the public face of NeoMundi. Every measurement is produced by the same runtime metrology layer, then hash-chained into a timestamped capsule, verifiable independently of ControlTower AI itself." data-fr="La Météo des IA™ est publiée par ControlTower AI, la surface publique de NeoMundi. Chaque mesure est produite par la même couche de métrologie runtime, puis chaînée par hash dans une capsule horodatée, vérifiable indépendamment de ControlTower AI elle-même.">AI Weather™ is published by ControlTower AI, the public face of NeoMundi. Every measurement is produced by the same runtime metrology layer, then hash-chained into a timestamped capsule, verifiable independently of ControlTower AI itself.</p>
+      <p class="disclaimer" data-en="This is not a ranking. AI Weather™ does not determine which AI is “best”, and does not judge whether an individual answer is true or false. Every view shows an observed condition, never a competitive score." data-fr="Ce n'est pas un classement. La Météo des IA™ ne détermine pas quelle IA est « la meilleure » et ne juge pas si une réponse individuelle est vraie ou fausse. Chaque vue montre une condition observée, jamais un score compétitif.">This is not a ranking. AI Weather™ does not determine which AI is “best”, and does not judge whether an individual answer is true or false. Every view shows an observed condition, never a competitive score.</p>
+      <div class="instrument-links">
+        <a class="btn btn-ghost-invert" href="how-it-works.html" data-en="How it works →" data-fr="Comment ça marche →">How it works →</a>
+        <a class="btn btn-ghost-invert" href="https://neomundi.org/methodology" target="_blank" rel="noopener" data-en="Methodology →" data-fr="Méthodologie →">Methodology →</a>
+        <a class="btn btn-ghost-invert" href="../weather.json" target="_blank" rel="noopener" data-en="Available data →" data-fr="Données disponibles →">Available data →</a>
+        <a class="btn btn-ghost-invert" href="https://neomundi.org/" target="_blank" rel="noopener" data-en="NeoMundi Observatory →" data-fr="Observatoire NeoMundi →">NeoMundi Observatory →</a>
+      </div>
+    </div>
+    <div class="instrument-panel">
+      <div class="il-row"><span class="il-label" data-en="Protocol" data-fr="Protocole">Protocol</span><span class="il-value">WEATHER-SENTINEL v0.2</span></div>
+      <div class="il-row"><span class="il-label" data-en="Panel size" data-fr="Taille du panel">Panel size</span><span class="il-value" id="il-systems">12 systems</span></div>
+      <div class="il-row"><span class="il-label" data-en="Expected obs. / system" data-fr="Obs. attendues / système">Expected obs. / system</span><span class="il-value">30</span></div>
+      <div class="il-row"><span class="il-label" data-en="Panel coverage today" data-fr="Couverture du panel aujourd'hui">Panel coverage today</span><span class="il-value" id="il-coverage">—</span></div>
+      <div class="il-row"><span class="il-label" data-en="Last measurement (UTC)" data-fr="Dernière mesure (UTC)">Last measurement (UTC)</span><span class="il-value" id="il-measured">—</span></div>
+      <div class="il-row"><span class="il-label" data-en="Consecutive capsules" data-fr="Capsules consécutives">Consecutive capsules</span><span class="il-value" id="il-days">—</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWSLETTER ================= -->
+<section class="newsletter">
+  <div class="wrap">
+    <div>
+      <h3 data-en="Get AI Weather™ every day" data-fr="Recevez La Météo des IA™ chaque jour">Get AI Weather™ every day</h3>
+      <p class="newsletter-note" data-en="Today's level and any notable drift, straight to your inbox. This form isn't connected to a sending service yet: it shows the intended interface for the Daily Brief." data-fr="Le niveau du jour et toute dérive notable, directement dans votre boîte mail. Ce formulaire n'est pas encore connecté à un service d'envoi : il montre l'interface prévue pour le bulletin quotidien.">Today's level and any notable drift, straight to your inbox. This form isn't connected to a sending service yet: it shows the intended interface for the Daily Brief.</p>
+    </div>
+    <form class="newsletter-form" onsubmit="return false;">
+      <input type="email" placeholder="you@company.com" data-en-placeholder="you@company.com" data-fr-placeholder="vous@entreprise.com" required>
+      <button class="btn btn-primary" type="submit" data-en="Subscribe" data-fr="S'abonner">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="../assets/logo-controltower.png" alt="ControlTower AI">
+          <span>ControlTowerAI</span>
+        </div>
+        <p style="max-width:280px" data-en="AI Weather™: machine-readable JSON, hash &amp; signature verifiable. Powered by NeoMundi, Runtime AI Metrology." data-fr="La Météo des IA™ : JSON exploitable par machine, hash et signature vérifiables. Propulsé par NeoMundi, métrologie IA en temps réel.">AI Weather™: machine-readable JSON, hash &amp; signature verifiable. Powered by NeoMundi, Runtime AI Metrology.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Explore" data-fr="Explorer">Explore</h4>
+        <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour">Today's Weather</a>
+        <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche">How It Works</a>
+        <a href="stations.html" data-en="Station USA" data-fr="Station USA">Station USA</a>
+        <a href="widgets.html" data-en="Widgets" data-fr="Widgets">Widgets</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Company" data-fr="Société">Company</h4>
+        <a href="about.html" data-en="About" data-fr="À propos">About</a>
+        <a href="#instrument" data-en="NeoMundi Observatory" data-fr="Observatoire NeoMundi">NeoMundi Observatory</a>
+        <a href="for-media.html" data-en="For Media" data-fr="Pour les médias">For Media</a>
+        <a href="contact.html" data-en="Contact" data-fr="Contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Resources" data-fr="Ressources">Resources</h4>
+        <a href="daily-brief.html" data-en="Daily Brief" data-fr="Bulletin quotidien">Daily Brief</a>
+        <a href="https://neomundi.org/methodology" target="_blank" rel="noopener" data-en="Methodology" data-fr="Méthodologie">Methodology</a>
+        <a href="../weather.json" target="_blank" rel="noopener" data-en="Raw data" data-fr="Données brutes">Raw data</a>
+        <a href="https://github.com/neomundi-io/neomundi-ai-weather" target="_blank" rel="noopener" data-en="Source code" data-fr="Code source">Source code</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-en="AI Weather™ observes and measures behavioral signals. It does not certify, guarantee, or predict outcomes." data-fr="La Météo des IA™ observe et mesure des signaux comportementaux. Elle ne certifie, ne garantit ni ne prédit aucun résultat.">AI Weather™ observes and measures behavioral signals. It does not certify, guarantee, or predict outcomes.</span>
+      <span>© 2026 NeoMundi · ControlTower AI</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var LANGS = [
+    { code: "en", label: "English" },
+    { code: "fr", label: "Français" },
+    { code: "de", label: "Deutsch" },
+    { code: "es", label: "Español" },
+    { code: "it", label: "Italiano" },
+    { code: "pt", label: "Português" },
+    { code: "nl", label: "Nederlands" },
+    { code: "zh", label: "简体中文" },
+    { code: "ja", label: "日本語" },
+    { code: "ko", label: "한국어" },
+    { code: "hi", label: "हिन्दी" },
+    { code: "ar", label: "العربية" },
+    { code: "ru", label: "Русский" }
+  ];
+  var COPY_LANGS = ["en", "fr", "es"]; // marketing copy authored so far; widgets support all 13
+  var current = "en";
+
+  var langButton = document.getElementById("lang-button");
+  var langMenu = document.getElementById("lang-menu");
+
+  langMenu.innerHTML = LANGS.map(function (l) {
+    return '<button class="lang-option' + (l.code === "en" ? " active" : "") + '" data-lang="' + l.code + '" type="button">' + l.label + "</button>";
+  }).join("");
+
+  function applyCopy(lang) {
+    var key = COPY_LANGS.indexOf(lang) !== -1 ? lang : "en";
+    document.querySelectorAll("[data-" + key + "]").forEach(function (el) {
+      el.textContent = el.getAttribute("data-" + key);
+    });
+    document.querySelectorAll("[data-" + key + "-placeholder]").forEach(function (el) {
+      el.setAttribute("placeholder", el.getAttribute("data-" + key + "-placeholder"));
+    });
+  }
+
+  function setWidgetLang(lang) {
+    ["iframe-quiz-daily"].forEach(function (id) {
+      var frame = document.getElementById(id);
+      if (!frame) return;
+      var base = frame.getAttribute("data-src");
+      var url = new URL(base, window.location.href);
+      var currentParams = new URL(frame.src, window.location.href).searchParams;
+      currentParams.set("lang", lang);
+      url.search = currentParams.toString();
+      frame.src = url.toString();
+    });
+  }
+
+  function selectLang(lang) {
+    current = lang;
+    langButton.textContent = lang.toUpperCase() + " ▾";
+    langMenu.querySelectorAll(".lang-option").forEach(function (opt) {
+      opt.classList.toggle("active", opt.getAttribute("data-lang") === lang);
+    });
+    applyCopy(lang);
+    setWidgetLang(lang);
+    langMenu.classList.remove("open");
+    langButton.setAttribute("aria-expanded", "false");
+  }
+
+  langButton.addEventListener("click", function () {
+    var willOpen = !langMenu.classList.contains("open");
+    langMenu.classList.toggle("open", willOpen);
+    langButton.setAttribute("aria-expanded", String(willOpen));
+  });
+
+  langMenu.addEventListener("click", function (e) {
+    var btn = e.target.closest(".lang-option");
+    if (btn) selectLang(btn.getAttribute("data-lang"));
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!document.querySelector(".lang-select").contains(e.target)) {
+      langMenu.classList.remove("open");
+      langButton.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // Mobile nav
+  var navToggle = document.getElementById("nav-toggle");
+  var mobileNav = document.getElementById("mobile-nav");
+  navToggle.addEventListener("click", function () {
+    mobileNav.classList.toggle("open");
+  });
+  mobileNav.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () { mobileNav.classList.remove("open"); });
+  });
+
+  // Live stats — reads the real published weather.json / capsule index.
+  // Never fabricates a number: on failure, fields simply keep their
+  // static fallback text already in the markup.
+  function formatPct(x) {
+    return Math.round(x * 1000) / 10 + "%";
+  }
+  function formatUtc(iso) {
+    var d = new Date(iso);
+    var pad = function (n) { return String(n).padStart(2, "0"); };
+    return d.getUTCFullYear() + "-" + pad(d.getUTCMonth() + 1) + "-" + pad(d.getUTCDate()) +
+      " " + pad(d.getUTCHours()) + ":" + pad(d.getUTCMinutes()) + " UTC";
+  }
+
+  function setText(id, value) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = value;
+  }
+
+  fetch("../weather.json").then(function (r) { return r.json(); }).then(function (data) {
+    var ps = data.panel_summary || {};
+    if (typeof ps.systems_count === "number") {
+      setText("il-systems", ps.systems_count + " systems");
+    }
+    if (typeof ps.panel_coverage === "number") {
+      setText("il-coverage", formatPct(ps.panel_coverage));
+    }
+    var measuredAt = ps.last_measurement_at || data.generated_at;
+    if (measuredAt) {
+      setText("il-measured", formatUtc(measuredAt));
+    }
+  }).catch(function () {});
+
+  fetch("../data/capsule-index.json").then(function (r) { return r.json(); }).then(function (data) {
+    var n = (data.capsules || []).length;
+    if (n) {
+      setText("stat-days", n);
+      setText("stat-days-2", n);
+      setText("il-days", n);
+    }
+  }).catch(function () {});
+
+  // Public quiz widget (widgets/quiz-public/daily.html) reports its own
+  // rendered height on every state change via postMessage, using the
+  // same { type: "nm-quiz-resize", height } contract as the RÉAGI-based
+  // widgets/quiz/embed.js, so this listener needs no changes if that
+  // widget is ever swapped for another one using the same contract.
+  var quizFrame = document.getElementById("iframe-quiz-daily");
+  if (quizFrame) {
+    window.addEventListener("message", function (event) {
+      if (event.source !== quizFrame.contentWindow) return;
+      if (!event.data || event.data.type !== "nm-quiz-resize") return;
+      var height = parseInt(event.data.height, 10);
+      if (!isFinite(height) || height <= 0) return;
+      quizFrame.style.height = height + "px";
+    });
+  }
+
+  // Defensive fallback: same-origin local iframes essentially never fire
+  // "error" for a valid HTML response, but a real navigation/network
+  // failure (moved file, server down) does. Shown alongside the
+  // always-present "open it directly" link below the quiz frame.
+  (function () {
+    var frame = document.getElementById("iframe-quiz-daily");
+    var fallback = document.getElementById("quiz-fallback");
+    if (!frame || !fallback) return;
+    frame.addEventListener("error", function () {
+      fallback.classList.add("is-visible");
+    });
+  })();
+})();
+</script>
+
+</body>
+</html>

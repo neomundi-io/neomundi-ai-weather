@@ -1,0 +1,431 @@
+﻿{
+    "demo":  false,
+    "generated_at":  "2026-08-17T23:24:52.023Z",
+    "protocol":  {
+                     "id":  "WEATHER-SENTINEL",
+                     "version":  "0.1",
+                     "prompt_set":  [
+                                        "sentinel-02",
+                                        "sentinel-03",
+                                        "sentinel-04"
+                                    ],
+                     "iterations":  10,
+                     "temperature":  null
+                 },
+    "global_condition":  "clear",
+    "panel_summary":  {
+                          "systems_count":  12,
+                          "total_observations":  360,
+                          "last_measurement_at":  "2026-08-17T22:34:07.164024Z"
+                      },
+    "systems":  [
+                    {
+                        "id":  "openai",
+                        "display_name":  "OpenAI",
+                        "provider":  "OpenAI",
+                        "provider_slug":  "openai",
+                        "provider_display":  "OpenAI",
+                        "model":  "gpt-4o-2024-11-20",
+                        "model_display":  "ChatGPT",
+                        "model_public":  null,
+                        "public_label":  "SYSTEM-01",
+                        "condition":  "clear",
+                        "score":  100,
+                        "observations":  30,
+                        "fully_scored":  30,
+                        "coverage":  1,
+                        "metrics":  {
+                                        "normal":  1,
+                                        "variation":  0,
+                                        "factual_alert":  0,
+                                        "incomplete":  0
+                                    },
+                        "last_observed_at":  "2026-08-17T21:37:27.959696Z",
+                        "detail":  {
+                                       "regime_distribution":  {
+                                                                   "normal":  30,
+                                                                   "variation":  0,
+                                                                   "factual_alert":  0,
+                                                                   "incomplete":  0
+                                                               },
+                                       "prompt_set":  "sentinel-02,sentinel-03,sentinel-04",
+                                       "previous_condition":  "clear",
+                                       "source_file":  "openai_gpt-4o-2024-11-20_weather_sentinel_0_1_20260817T210325Z_results.jsonl"
+                                   }
+                    },
+                    {
+                        "id":  "anthropic",
+                        "display_name":  "Anthropic",
+                        "provider":  "Anthropic",
+                        "provider_slug":  "anthropic",
+                        "provider_display":  "Anthropic",
+                        "model":  "claude-sonnet-4-5-20250929",
+                        "model_display":  "Claude",
+                        "model_public":  null,
+                        "public_label":  "SYSTEM-02",
+                        "condition":  "clear",
+                        "score":  100,
+                        "observations":  30,
+                        "fully_scored":  30,
+                        "coverage":  1,
+                        "metrics":  {
+                                        "normal":  1,
+                                        "variation":  0,
+                                        "factual_alert":  0,
+                                        "incomplete":  0
+                                    },
+                        "last_observed_at":  "2026-08-17T21:39:48.247072Z",
+                        "detail":  {
+                                       "regime_distribution":  {
+                                                                   "normal":  30,
+                                                                   "variation":  0,
+                                                                   "factual_alert":  0,
+                                                                   "incomplete":  0
+                                                               },
+                                       "prompt_set":  "sentinel-02,sentinel-03,sentinel-04",
+                                       "previous_condition":  "clear",
+                                       "source_file":  "anthropic_claude-sonnet-4-5-20250929_weather_sentinel_0_1_20260817T210324Z_results.jsonl"
+                                   }
+                    },
+                    {
+                        "id":  "google",
+                        "display_name":  "Google",
+                        "provider":  "Google",
+                        "provider_slug":  "google",
+                        "provider_display":  "Google",
+                        "model":  "gemini-3.6-flash",
+                        "model_display":  "Gemini",
+                        "model_public":  null,
+                        "public_label":  "SYSTEM-03",
+                        "condition":  "clear",
+                        "score":  100,
+                        "observations":  30,
+                        "fully_scored":  30,
+                        "coverage":  1,
+                        "metrics":  {
+                                        "normal":  1,
+                                        "variation":  0,
+                                        "factual_alert":  0,
+                                        "incomplete":  0
+                                    },
+                        "last_observed_at":  "2026-08-17T21:41:08.181313Z",
+                        "detail":  {
+                                       "regime_distribution":  {
+                                                                   "normal":  30,
+                                                                   "variation":  0,
+                                                                   "factual_alert":  0,
+                                                                   "incomplete":  0
+                                                               },
+                                       "prompt_set":  "sentinel-02,sentinel-03,sentinel-04",
+                                       "previous_condition":  "clear",
+                                       "source_file":  "google_gemini-3.6-flash_weather_sentinel_0_1_20260817T210324Z_results.jsonl"
+                                   }
+                    },
+                    {
+                        "id":  "xai",
+                        "display_name":  "xAI",
+                        "provider":  "xAI",
+                        "provider_slug":  "xai",
+                        "provider_display":  "xAI",
+                        "model":  "grok-4.5",
+                        "model_display":  "Grok",
+                        "model_public":  null,
+                        "public_label":  "SYSTEM-04",
+                        "condition":  "clear",
+                        "score":  100,
+                        "observations":  30,
+                        "fully_scored":  29,
+                        "coverage":  0.97,
+                        "metrics":  {
+                                        "normal":  0.97,
+                                        "variation":  0,
+                                        "factual_alert":  0,
+                                        "incomplete":  0.03
+                                    },
+                        "last_observed_at":  "2026-08-17T21:58:48.354Z",
+                        "detail":  {
+                                       "regime_distribution":  {
+                                                                   "normal":  29,
+                                                                   "variation":  0,
+                                                                   "factual_alert":  0,
+                                                                   "incomplete":  1
+                                                               },
+                                       "prompt_set":  "sentinel-02,sentinel-03,sentinel-04",
+                                       "previous_condition":  "clear",
+                                       "source_file":  "xai_grok-4.5_weather_sentinel_0_1_20260817T210325Z_results.jsonl"
+                                   }
+                    },
+                    {
+                        "id":  "mistral",
+                        "display_name":  "Mistral",
+                        "provider":  "Mistral",
+                        "provider_slug":  "mistral",
+                        "provider_display":  "Mistral",
+                        "model":  "mistral-medium-3-5",
+                        "model_display":  "Mistral",
+                        "model_public":  null,
+                        "public_label":  "SYSTEM-05",
+                        "condition":  "clear",
+                        "score":  97,
+                        "observations":  30,
+                        "fully_scored":  30,
+                        "coverage":  1,
+                        "metrics":  {
+                                        "normal":  0.97,
+                                        "variation":  0,
+                                        "factual_alert":  0.03,
+                                        "incomplete":  0
+                                    },
+                        "last_observed_at":  "2026-08-17T21:38:29.291528Z",
+                        "detail":  {
+                                       "regime_distribution":  {
+                                                                   "normal":  29,
+                                                                   "variation":  0,
+                                                                   "factual_alert":  1,
+                                                                   "incomplete":  0
+                                                               },
+                                       "prompt_set":  "sentinel-02,sentinel-03,sentinel-04",
+                                       "previous_condition":  "clear",
+                                       "source_file":  "mistral_mistral-medium-3-5_weather_sentinel_0_1_20260817T210325Z_results.jsonl"
+                                   }
+                    },
+                    {
+                        "id":  "deepseek",
+                        "display_name":  "DeepSeek",
+                        "provider":  "DeepSeek",
+                        "provider_slug":  "deepseek",
+                        "provider_display":  "DeepSeek",
+                        "model":  "deepseek-v4-pro",
+                        "model_display":  "DeepSeek",
+                        "model_public":  null,
+                        "public_label":  "SYSTEM-06",
+                        "condition":  "clear",
+                        "score":  100,
+                        "observations":  30,
+                        "fully_scored":  30,
+                        "coverage":  1,
+                        "metrics":  {
+                                        "normal":  1,
+                                        "variation":  0,
+                                        "factual_alert":  0,
+                                        "incomplete":  0
+                                    },
+                        "last_observed_at":  "2026-08-17T21:48:57.346082Z",
+                        "detail":  {
+                                       "regime_distribution":  {
+                                                                   "normal":  30,
+                                                                   "variation":  0,
+                                                                   "factual_alert":  0,
+                                                                   "incomplete":  0
+                                                               },
+                                       "prompt_set":  "sentinel-02,sentinel-03,sentinel-04",
+                                       "previous_condition":  "clear",
+                                       "source_file":  "deepseek_deepseek-v4-pro_weather_sentinel_0_1_20260817T210324Z_results.jsonl"
+                                   }
+                    },
+                    {
+                        "id":  "qwen",
+                        "display_name":  "Qwen",
+                        "provider":  "Qwen",
+                        "provider_slug":  "qwen",
+                        "provider_display":  "Qwen",
+                        "model":  "qwen3.7-max-2026-06-08",
+                        "model_display":  "Qwen",
+                        "model_public":  null,
+                        "public_label":  "SYSTEM-07",
+                        "condition":  "clear",
+                        "score":  100,
+                        "observations":  30,
+                        "fully_scored":  30,
+                        "coverage":  1,
+                        "metrics":  {
+                                        "normal":  1,
+                                        "variation":  0,
+                                        "factual_alert":  0,
+                                        "incomplete":  0
+                                    },
+                        "last_observed_at":  "2026-08-17T21:52:56.165492Z",
+                        "detail":  {
+                                       "regime_distribution":  {
+                                                                   "normal":  30,
+                                                                   "variation":  0,
+                                                                   "factual_alert":  0,
+                                                                   "incomplete":  0
+                                                               },
+                                       "prompt_set":  "sentinel-02,sentinel-03,sentinel-04",
+                                       "previous_condition":  "clear",
+                                       "source_file":  "qwen_qwen3.7-max-2026-06-08_weather_sentinel_0_1_20260817T210325Z_results.jsonl"
+                                   }
+                    },
+                    {
+                        "id":  "moonshot",
+                        "display_name":  "Moonshot / Kimi",
+                        "provider":  "Moonshot / Kimi",
+                        "provider_slug":  "moonshot",
+                        "provider_display":  "Moonshot / Kimi",
+                        "model":  "kimi-k3",
+                        "model_display":  "Kimi",
+                        "model_public":  null,
+                        "public_label":  "SYSTEM-08",
+                        "condition":  "clear",
+                        "score":  100,
+                        "observations":  30,
+                        "fully_scored":  30,
+                        "coverage":  1,
+                        "metrics":  {
+                                        "normal":  1,
+                                        "variation":  0,
+                                        "factual_alert":  0,
+                                        "incomplete":  0
+                                    },
+                        "last_observed_at":  "2026-08-17T22:34:07.164024Z",
+                        "detail":  {
+                                       "regime_distribution":  {
+                                                                   "normal":  30,
+                                                                   "variation":  0,
+                                                                   "factual_alert":  0,
+                                                                   "incomplete":  0
+                                                               },
+                                       "prompt_set":  "sentinel-02,sentinel-03,sentinel-04",
+                                       "previous_condition":  "clear",
+                                       "source_file":  "moonshot_kimi-k3_kimi_k3_cross_domain_wave_1_20260817T221429Z_results.jsonl"
+                                   }
+                    },
+                    {
+                        "id":  "cohere",
+                        "display_name":  "Cohere",
+                        "provider":  "Cohere",
+                        "provider_slug":  "cohere",
+                        "provider_display":  "Cohere",
+                        "model":  "command-a-03-2025",
+                        "model_display":  "Command",
+                        "model_public":  null,
+                        "public_label":  "SYSTEM-09",
+                        "condition":  "clear",
+                        "score":  100,
+                        "observations":  30,
+                        "fully_scored":  30,
+                        "coverage":  1,
+                        "metrics":  {
+                                        "normal":  1,
+                                        "variation":  0,
+                                        "factual_alert":  0,
+                                        "incomplete":  0
+                                    },
+                        "last_observed_at":  "2026-08-17T21:39:04.504244Z",
+                        "detail":  {
+                                       "regime_distribution":  {
+                                                                   "normal":  30,
+                                                                   "variation":  0,
+                                                                   "factual_alert":  0,
+                                                                   "incomplete":  0
+                                                               },
+                                       "prompt_set":  "sentinel-02,sentinel-03,sentinel-04",
+                                       "previous_condition":  "clear",
+                                       "source_file":  "cohere_command-a-03-2025_weather_sentinel_0_1_20260817T210324Z_results.jsonl"
+                                   }
+                    },
+                    {
+                        "id":  "meta",
+                        "display_name":  "Meta (via Together AI)",
+                        "provider":  "Meta",
+                        "provider_slug":  "meta",
+                        "provider_display":  "Meta",
+                        "model":  "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+                        "model_display":  "Llama",
+                        "model_public":  null,
+                        "public_label":  "SYSTEM-10",
+                        "condition":  "clear",
+                        "score":  100,
+                        "observations":  30,
+                        "fully_scored":  30,
+                        "coverage":  1,
+                        "metrics":  {
+                                        "normal":  1,
+                                        "variation":  0,
+                                        "factual_alert":  0,
+                                        "incomplete":  0
+                                    },
+                        "last_observed_at":  "2026-08-17T21:39:34.024091Z",
+                        "detail":  {
+                                       "regime_distribution":  {
+                                                                   "normal":  30,
+                                                                   "variation":  0,
+                                                                   "factual_alert":  0,
+                                                                   "incomplete":  0
+                                                               },
+                                       "prompt_set":  "sentinel-02,sentinel-03,sentinel-04",
+                                       "previous_condition":  "clear",
+                                       "source_file":  "together_meta-llama_Llama-3.3-70B-Instruct-Turbo_weather_sentinel_0_1_20260817T210325Z_results.jsonl"
+                                   }
+                    },
+                    {
+                        "id":  "infomaniak",
+                        "display_name":  "Infomaniak",
+                        "provider":  "Infomaniak",
+                        "provider_slug":  "infomaniak",
+                        "provider_display":  "Infomaniak",
+                        "model":  "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8",
+                        "model_display":  "NVIDIA",
+                        "model_public":  "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8",
+                        "public_label":  null,
+                        "condition":  "clear",
+                        "score":  97,
+                        "observations":  30,
+                        "fully_scored":  30,
+                        "coverage":  1,
+                        "metrics":  {
+                                        "normal":  0.97,
+                                        "variation":  0,
+                                        "factual_alert":  0.03,
+                                        "incomplete":  0
+                                    },
+                        "last_observed_at":  "2026-08-17T21:47:45.034864Z",
+                        "detail":  {
+                                       "regime_distribution":  {
+                                                                   "normal":  29,
+                                                                   "variation":  0,
+                                                                   "factual_alert":  1,
+                                                                   "incomplete":  0
+                                                               },
+                                       "prompt_set":  "sentinel-02,sentinel-03,sentinel-04",
+                                       "previous_condition":  "clear",
+                                       "source_file":  "infomaniak_nvidia_NVIDIA-Nemotron-3-Nano-30B-A3B-FP8_weather_sentinel_0_1_20260817T210325Z_results.jsonl"
+                                   }
+                    },
+                    {
+                        "id":  "perplexity",
+                        "display_name":  "Perplexity",
+                        "provider":  "Perplexity",
+                        "provider_slug":  "perplexity",
+                        "provider_display":  "Perplexity",
+                        "model":  "sonar-reasoning-pro",
+                        "model_display":  "Perplexity",
+                        "model_public":  null,
+                        "public_label":  "SYSTEM-11",
+                        "condition":  "clear",
+                        "score":  97,
+                        "observations":  30,
+                        "fully_scored":  30,
+                        "coverage":  1,
+                        "metrics":  {
+                                        "normal":  0.97,
+                                        "variation":  0,
+                                        "factual_alert":  0.03,
+                                        "incomplete":  0
+                                    },
+                        "last_observed_at":  "2026-08-17T21:38:30.716Z",
+                        "detail":  {
+                                       "regime_distribution":  {
+                                                                   "normal":  29,
+                                                                   "variation":  0,
+                                                                   "factual_alert":  1,
+                                                                   "incomplete":  0
+                                                               },
+                                       "prompt_set":  "sentinel-02,sentinel-03,sentinel-04",
+                                       "previous_condition":  "clear",
+                                       "source_file":  "perplexity_sonar-reasoning-pro_weather_sentinel_0_1_20260817T210325Z_results.jsonl"
+                                   }
+                    }
+                ]
+}

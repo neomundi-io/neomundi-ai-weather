@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a1220">
+<title>About · ControlTower AI</title>
+<meta name="description" content="ControlTower AI is the public, extensible brand behind AI Weather™. NeoMundi is its underlying runtime metrology layer.">
+
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --page-bg: #f4f8fd; --page-bg-alt: #eaf2fb; --surface: #ffffff; --surface-soft: #f6faff;
+    --navy-900: #070d18; --navy-800: #0a1220;
+    --ink: #0f1826; --ink-dim: #4c5c6e; --ink-faint: #8595a6;
+    --on-navy: #eef4fc; --on-navy-dim: #a9bad0;
+    --border: #dde6f0; --border-soft: #e9f0f7; --border-navy: #24334f;
+    --accent: #2f7dd8; --accent-strong: #1c5cb0; --accent-soft: #e4f0fd; --cyan: #22d3ee;
+    --radius-lg: 22px; --radius-md: 14px;
+    --shadow-1: 0 1px 2px rgba(15,24,38,.05), 0 10px 28px rgba(15,24,38,.06);
+    --shadow-2: 0 20px 60px rgba(8,14,26,.16);
+    --container: 1180px; --font-sans: "Inter","Segoe UI",system-ui,sans-serif; --font-mono: "IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font-sans); color: var(--ink); background: var(--page-bg); -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  .eyebrow { font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-strong); margin: 0 0 12px; }
+  h1, h2 { font-weight: 800; letter-spacing: -.01em; margin: 0; }
+  h1 { font-size: clamp(28px, 3.6vw, 40px); line-height: 1.15; }
+  h2 { font-size: 19px; margin-bottom: 14px; }
+  p { line-height: 1.65; color: var(--ink-dim); margin: 0; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 700; font-size: 14.5px; text-decoration: none; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
+  .btn-primary { background: linear-gradient(180deg, #3a8ae0, var(--accent-strong)); color: #fff; box-shadow: 0 8px 22px rgba(47,125,216,.35); }
+  .btn-sm { padding: 9px 16px; font-size: 13px; }
+
+  .site-header { position: sticky; top: 0; z-index: 100; background: rgba(244,248,253,.82); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-soft); }
+  .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 20px; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex: none; }
+  .brand img { width: 32px; height: 32px; border-radius: 50%; }
+  .brand-text { font-weight: 800; font-size: 15.5px; letter-spacing: -.01em; color: var(--ink); }
+  .brand-text em { font-style: normal; color: var(--accent-strong); }
+  .main-nav { display: flex; gap: 26px; margin-left: 12px; flex: 1; }
+  .main-nav a { font-size: 13.5px; font-weight: 600; text-decoration: none; color: var(--ink-dim); }
+  .main-nav a:hover { color: var(--ink); }
+  .header-actions { display: flex; align-items: center; gap: 10px; flex: none; }
+  .lang-select { position: relative; }
+  .lang-button { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; background: #fff; border: 1px solid var(--border); border-radius: 999px; font: inherit; font-size: 12.5px; font-weight: 700; color: var(--ink-dim); cursor: pointer; }
+  .lang-menu { display: none; position: absolute; top: calc(100% + 8px); right: 0; min-width: 190px; max-height: 320px; overflow-y: auto; background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-2); padding: 6px; z-index: 200; }
+  .lang-menu.open { display: block; }
+  .lang-option { display: block; width: 100%; text-align: left; padding: 9px 10px; border: 0; background: transparent; border-radius: 8px; cursor: pointer; font: inherit; font-size: 13px; color: var(--ink); }
+  .lang-option:hover { background: var(--surface-soft); }
+  .lang-option.active { background: var(--accent-soft); font-weight: 700; color: var(--accent-strong); }
+  .nav-toggle { display: none; width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 16px; }
+  .mobile-nav { display: none; flex-direction: column; gap: 2px; padding: 10px 24px 16px; border-top: 1px solid var(--border-soft); background: var(--surface); }
+  .mobile-nav a { padding: 12px 4px; font-weight: 600; font-size: 14.5px; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--border-soft); }
+  .mobile-nav.open { display: flex; }
+  @media (max-width: 880px) { .main-nav { display: none; } .nav-toggle { display: block; } }
+
+  .doc-hero { padding: 60px 0 40px; background: linear-gradient(180deg, var(--page-bg-alt) 0%, var(--page-bg) 80%); }
+  .doc-hero .lede { font-size: 15.5px; max-width: 640px; margin-top: 14px; }
+  .doc-body { padding: 20px 0 80px; }
+  .doc-section { padding: 30px 0; border-bottom: 1px solid var(--border-soft); }
+  .doc-section:last-child { border-bottom: 0; }
+  .doc-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+  .doc-links a { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--accent-strong); text-decoration: none; padding: 10px 16px; border: 1px solid var(--border); border-radius: 999px; background: #fff; }
+  .doc-links a:hover { border-color: var(--accent); }
+
+  footer { background: var(--navy-900); color: var(--on-navy-dim); padding: 56px 0 28px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; margin-bottom: 40px; max-width: var(--container); margin-left: auto; margin-right: auto; padding: 0 24px; }
+  .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .footer-brand img { width: 26px; height: 26px; border-radius: 50%; }
+  .footer-brand span { font-weight: 800; color: var(--on-navy); }
+  .footer-col h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--on-navy); margin-bottom: 14px; }
+  .footer-col a { display: block; font-size: 13.5px; text-decoration: none; color: var(--on-navy-dim); margin-bottom: 10px; }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--border-navy); font-size: 12px; color: var(--on-navy-faint); max-width: var(--container); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+  @media (max-width: 780px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <img src="../assets/logo-controltower.png" alt="ControlTower AI">
+      <span class="brand-text">ControlTower<em>AI</em></span>
+    </a>
+    <nav class="main-nav">
+      <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour">Today's Weather</a>
+      <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche">How It Works</a>
+      <a href="stations.html" data-en="Station USA" data-fr="Station USA">Station USA</a>
+      <a href="widgets.html" data-en="Widgets" data-fr="Widgets">Widgets</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-select">
+        <button class="lang-button" id="lang-button" type="button" aria-haspopup="true" aria-expanded="false">EN ▾</button>
+        <div class="lang-menu" id="lang-menu"></div>
+      </div>
+      <a class="btn btn-primary btn-sm" href="today.html" data-en="Today's AI Weather™ →" data-fr="La Météo des IA™ du jour →">Today's AI Weather™ →</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour">Today's Weather</a>
+    <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche">How It Works</a>
+    <a href="stations.html" data-en="Station USA" data-fr="Station USA">Station USA</a>
+    <a href="widgets.html" data-en="Widgets" data-fr="Widgets">Widgets</a>
+  </nav>
+</header>
+
+<section class="doc-hero">
+  <div class="wrap">
+    <p class="eyebrow" data-en="ABOUT" data-fr="À PROPOS">ABOUT</p>
+    <h1 data-en="About ControlTower AI" data-fr="À propos de ControlTower AI">About ControlTower AI</h1>
+    <p class="lede" data-en="ControlTower AI is the public, extensible brand for real-time observation of AI system behavior. AI Weather™ is its main, current experience." data-fr="ControlTower AI est la marque publique et extensible dédiée à l'observation en temps réel du comportement des systèmes d'IA. La Météo des IA™ en est l'expérience principale actuelle.">ControlTower AI is the public, extensible brand for real-time observation of AI system behavior. AI Weather™ is its main, current experience.</p>
+  </div>
+</section>
+
+<section class="doc-body">
+  <div class="wrap">
+    <div class="doc-section">
+      <h2 data-en="What ControlTower AI does" data-fr="Ce que fait ControlTower AI">What ControlTower AI does</h2>
+      <p data-en="ControlTower AI measures the behavioral reliability of AI systems in real time, to help you stay in control and make better decisions. AI Weather™ (the daily observation wall, its widgets, and this site) is its public, daily-updated observatory." data-fr="ControlTower AI mesure en temps réel la fiabilité comportementale des systèmes d'IA, pour vous aider à garder le contrôle et à mieux décider. La Météo des IA™ (le mur d'observation quotidien, ses widgets et ce site) en est l'observatoire public, mis à jour chaque jour.">ControlTower AI measures the behavioral reliability of AI systems in real time, to help you stay in control and make better decisions. AI Weather™ (the daily observation wall, its widgets, and this site) is its public, daily-updated observatory.</p>
+    </div>
+
+    <div class="doc-section">
+      <h2 data-en="NeoMundi, underneath" data-fr="NeoMundi, en dessous">NeoMundi, underneath</h2>
+      <p data-en="The NeoMundi runtime metrology layer produces every measurement and hash-chains each day's result into a timestamped capsule, verifiable independently of ControlTower AI itself." data-fr="La couche de métrologie runtime NeoMundi produit chaque mesure et chaîne par hash le résultat de chaque jour dans une capsule horodatée, vérifiable indépendamment de ControlTower AI elle-même.">The NeoMundi runtime metrology layer produces every measurement and hash-chains each day's result into a timestamped capsule, verifiable independently of ControlTower AI itself.</p>
+      <div class="doc-links">
+        <a href="index.html#instrument" data-en="NeoMundi Observatory →" data-fr="Observatoire NeoMundi →">NeoMundi Observatory →</a>
+        <a href="https://neomundi.org/" target="_blank" rel="noopener">NeoMundi.org ↗</a>
+      </div>
+    </div>
+
+    <div class="doc-section">
+      <h2 data-en="What this is not" data-fr="Ce que ce n'est pas">What this is not</h2>
+      <p data-en="This is not a leaderboard. AI Weather™ does not rank AI systems, determine which one is “best”, or judge whether individual answers are true or false. Every view shows an observed condition, not a competitive score." data-fr="Ce n'est pas un classement. La Météo des IA™ ne classe pas les systèmes d'IA, ne détermine pas lequel est « le meilleur », et ne juge pas si une réponse individuelle est vraie ou fausse. Chaque vue montre une condition observée, jamais un score compétitif.">This is not a leaderboard. AI Weather™ does not rank AI systems, determine which one is "best", or judge whether individual answers are true or false. Every view shows an observed condition, not a competitive score.</p>
+    </div>
+
+    <div class="doc-section">
+      <h2 data-en="Learn more" data-fr="En savoir plus">Learn more</h2>
+      <div class="doc-links">
+        <a href="how-it-works.html" data-en="How It Works →" data-fr="Comment ça marche →">How It Works →</a>
+        <a href="https://github.com/neomundi-io/neomundi-ai-weather" target="_blank" rel="noopener" data-en="Source code →" data-fr="Code source →">Source code →</a>
+        <a href="contact.html" data-en="Contact →" data-fr="Contact →">Contact →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <img src="../assets/logo-controltower.png" alt="ControlTower AI">
+        <span>ControlTowerAI</span>
+      </div>
+      <p style="max-width:280px" data-en="AI Weather™: machine-readable JSON, hash &amp; signature verifiable. Powered by NeoMundi, Runtime AI Metrology." data-fr="La Météo des IA™ : JSON exploitable par machine, hash et signature vérifiables. Propulsé par NeoMundi, métrologie IA en temps réel.">AI Weather™: machine-readable JSON, hash &amp; signature verifiable. Powered by NeoMundi, Runtime AI Metrology.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Explore" data-fr="Explorer">Explore</h4>
+      <a href="today.html" data-en="Today's Weather" data-fr="Météo du jour">Today's Weather</a>
+      <a href="how-it-works.html" data-en="How It Works" data-fr="Comment ça marche">How It Works</a>
+      <a href="stations.html" data-en="Station USA" data-fr="Station USA">Station USA</a>
+      <a href="widgets.html" data-en="Widgets" data-fr="Widgets">Widgets</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Company" data-fr="Société">Company</h4>
+      <a href="about.html" data-en="About" data-fr="À propos">About</a>
+      <a href="index.html#instrument" data-en="NeoMundi Observatory" data-fr="Observatoire NeoMundi">NeoMundi Observatory</a>
+      <a href="for-media.html" data-en="For Media" data-fr="Pour les médias">For Media</a>
+      <a href="contact.html" data-en="Contact" data-fr="Contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Resources" data-fr="Ressources">Resources</h4>
+      <a href="daily-brief.html" data-en="Daily Brief" data-fr="Bulletin quotidien">Daily Brief</a>
+      <a href="https://neomundi.org/methodology" target="_blank" rel="noopener" data-en="Methodology" data-fr="Méthodologie">Methodology</a>
+      <a href="../weather.json" target="_blank" rel="noopener" data-en="Raw data" data-fr="Données brutes">Raw data</a>
+      <a href="https://github.com/neomundi-io/neomundi-ai-weather" target="_blank" rel="noopener" data-en="Source code" data-fr="Code source">Source code</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-en="AI Weather™ observes and measures behavioral signals. It does not certify, guarantee, or predict outcomes." data-fr="La Météo des IA™ observe et mesure des signaux comportementaux. Elle ne certifie, ne garantit ni ne prédit aucun résultat.">AI Weather™ observes and measures behavioral signals. It does not certify, guarantee, or predict outcomes.</span>
+    <span>© 2026 NeoMundi · ControlTower AI</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var LANGS = [
+    { code: "en", label: "English" }, { code: "fr", label: "Français" }, { code: "de", label: "Deutsch" },
+    { code: "es", label: "Español" }, { code: "it", label: "Italiano" }, { code: "pt", label: "Português" },
+    { code: "nl", label: "Nederlands" }, { code: "zh", label: "简体中文" }, { code: "ja", label: "日本語" },
+    { code: "ko", label: "한국어" }, { code: "hi", label: "हिन्दी" }, { code: "ar", label: "العربية" }, { code: "ru", label: "Русский" }
+  ];
+  var COPY_LANGS = ["en", "fr"];
+  var langButton = document.getElementById("lang-button");
+  var langMenu = document.getElementById("lang-menu");
+  langMenu.innerHTML = LANGS.map(function (l) {
+    return '<button class="lang-option' + (l.code === "en" ? " active" : "") + '" data-lang="' + l.code + '" type="button">' + l.label + "</button>";
+  }).join("");
+  function applyCopy(lang) {
+    var key = COPY_LANGS.indexOf(lang) !== -1 ? lang : "en";
+    document.querySelectorAll("[data-" + key + "]").forEach(function (el) { el.textContent = el.getAttribute("data-" + key); });
+  }
+  function selectLang(lang) {
+    langButton.textContent = lang.toUpperCase() + " ▾";
+    langMenu.querySelectorAll(".lang-option").forEach(function (opt) { opt.classList.toggle("active", opt.getAttribute("data-lang") === lang); });
+    applyCopy(lang);
+    langMenu.classList.remove("open");
+    langButton.setAttribute("aria-expanded", "false");
+  }
+  langButton.addEventListener("click", function () {
+    var willOpen = !langMenu.classList.contains("open");
+    langMenu.classList.toggle("open", willOpen);
+    langButton.setAttribute("aria-expanded", String(willOpen));
+  });
+  langMenu.addEventListener("click", function (e) {
+    var btn = e.target.closest(".lang-option");
+    if (btn) selectLang(btn.getAttribute("data-lang"));
+  });
+  document.addEventListener("click", function (e) {
+    if (!document.querySelector(".lang-select").contains(e.target)) {
+      langMenu.classList.remove("open");
+      langButton.setAttribute("aria-expanded", "false");
+    }
+  });
+  var navToggle = document.getElementById("nav-toggle");
+  var mobileNav = document.getElementById("mobile-nav");
+  navToggle.addEventListener("click", function () { mobileNav.classList.toggle("open"); });
+  mobileNav.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { mobileNav.classList.remove("open"); }); });
+})();
+</script>
+
+</body>
+</html>
