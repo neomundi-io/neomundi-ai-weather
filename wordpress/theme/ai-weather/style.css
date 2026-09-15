@@ -1,0 +1,15 @@
+/*
+Theme Name: AI Weather
+Description: Fidèle au redesign AI Weather, contenus Gutenberg et composants techniques protégés.
+Version: 0.1.0
+Requires at least: 6.6
+Requires PHP: 8.0
+Author: NeoMundi
+License: GPL-2.0-or-later
+Text Domain: ai-weather
+*/
+body.admin-bar .site-header,body.admin-bar .station-topbar{top:32px}
+@media(max-width:782px){body.admin-bar .site-header,body.admin-bar .station-topbar{top:46px}}
+/* Keep the original logo, language control and menu usable on narrow screens. */
+@media(max-width:640px){.site-header .header-actions>.btn{display:none}.site-header .header-inner{gap:12px}.site-header .header-actions{gap:10px}}
+.config-layout>*{min-width:0}

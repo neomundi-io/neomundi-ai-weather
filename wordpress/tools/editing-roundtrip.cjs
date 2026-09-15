@@ -1,0 +1,27 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');const catalog=require('../theme/ai-weather/inc/catalog.json');let pw;for(const f of fs.readdirSync(path.join(process.env.LOCALAPPDATA,'ms-playwright/.links'))){try{pw=require(fs.readFileSync(path.join(process.env.LOCALAPPDATA,'ms-playwright/.links',f),'utf8').trim());break;}catch{}}
+(async()=>{
+const browser=await pw.chromium.launch({headless:true});const c=await browser.newContext();await c.route('**/*',r=>['127.0.0.1','localhost'].includes(new URL(r.request().url()).hostname)?r.continue():r.abort());const p=await c.newPage();p.setDefaultNavigationTimeout(90000);await p.goto('http://127.0.0.1:9400/',{waitUntil:'networkidle'});const edit=await p.locator('#wp-admin-bar-edit a').getAttribute('href');await p.goto(edit,{waitUntil:'networkidle'});await p.waitForFunction(()=>window.wp?.data.select('core/block-editor').getBlocks().length);
+const title=catalog.home.fields.find(f=>f.kind==='heading'&&f.lang==='en'&&f.label.includes('h1'));
+const french=catalog.home.fields.find(f=>f.kind==='heading'&&f.lang==='fr'&&f.label.includes('h1'));
+const changes=[{key:title.key,value:'AI Weather — local edit verification'},{key:french.key,value:'Météo IA — vérification locale'},{key:catalog.home.seoDescription,value:'Local SEO edit verification'}];
+const saved=await p.evaluate(async changes=>{const wp=window.wp,blocks=wp.data.select('core/block-editor').getBlocks()[0].innerBlocks;const originals=[];for(const change of changes){const b=blocks.find(b=>b.attributes.awField===change.key);if(!b)throw Error('Missing editable field '+change.key);originals.push({id:b.clientId,attrs:b.attributes});wp.data.dispatch('core/block-editor').updateBlockAttributes(b.clientId,{content:change.value});}await wp.data.dispatch('core/editor').savePost();return originals;},changes);
+const check=await c.newPage();let result;
+try{
+ await check.goto('http://127.0.0.1:9400/',{waitUntil:'networkidle'});assert.equal(await check.locator('h1').innerText(),changes[0].value);assert.equal(await check.locator('meta[name=description]').getAttribute('content'),changes[2].value);
+ await check.locator('#lang-button').click();await check.locator('[data-lang=fr]').click();assert.equal(await check.locator('h1').innerText(),changes[1].value);
+ await p.reload({waitUntil:'networkidle'});const status=await p.evaluate(()=>{const all=wp.data.select('core/block-editor').getBlocks();return all.every(b=>b.isValid&&b.innerBlocks.every(c=>c.isValid));});assert(status);result={saved:true,english:true,french:true,seo:true,reloadValid:true};
+}finally{
+ // Reload creates fresh client IDs: restore by persisted field keys.
+ await p.evaluate(async originals=>{const blocks=wp.data.select('core/block-editor').getBlocks()[0].innerBlocks;for(const original of originals){const b=blocks.find(b=>b.attributes.awField===original.attrs.awField);wp.data.dispatch('core/block-editor').updateBlockAttributes(b.clientId,original.attrs);}await wp.data.dispatch('core/editor').savePost();},saved);
+}
+await check.reload({waitUntil:'networkidle'});assert.equal(await check.locator('h1').innerText(),title.value);result.restored=true;
+const shared=await p.evaluate(()=>wp.apiFetch({path:'/wp/v2/aw_shared?context=edit'}));assert.equal(shared.length,1);
+await p.goto('http://127.0.0.1:9400/wp-admin/post.php?post='+shared[0].id+'&action=edit',{waitUntil:'networkidle'});await p.waitForFunction(()=>window.wp?.data.select('core/block-editor').getBlocks().length);result.sharedValid=await p.evaluate(()=>wp.data.select('core/block-editor').getBlocks().every(b=>b.isValid&&b.innerBlocks.every(c=>c.isValid)));assert(result.sharedValid);
+const link=catalog.shared.fields.find(f=>f.kind==='url'&&f.value==='@@PAGE:today@@');
+const image=catalog.shared.fields.find(f=>f.kind==='image');
+const replacements=[{key:link.key,attrs:{url:'http://127.0.0.1:9400/today/?editor-check=1'}},{key:image.key,attrs:{url:'http://127.0.0.1:9400/wp-content/themes/ai-weather/runtime/assets/favicon-32.png'}}];
+const sharedOriginals=await p.evaluate(async replacements=>{const blocks=wp.data.select('core/block-editor').getBlocks()[0].innerBlocks;const old=[];for(const r of replacements){const b=blocks.find(b=>b.attributes.awField===r.key);old.push(b.attributes);wp.data.dispatch('core/block-editor').updateBlockAttributes(b.clientId,r.attrs);}await wp.data.dispatch('core/editor').savePost();return old;},replacements);
+try{await check.reload({waitUntil:'networkidle'});assert((await check.locator('.main-nav a').first().getAttribute('href')).includes('editor-check=1'));assert((await check.locator('.brand img').first().getAttribute('src')).endsWith('favicon-32.png'));result.sharedUrl=true;result.sharedImage=true;result.locked=await p.evaluate(()=>{const b=wp.data.select('core/block-editor').getBlocks()[0];return !wp.data.select('core/block-editor').canRemoveBlock(b.clientId)&&b.innerBlocks.every(x=>!wp.data.select('core/block-editor').canRemoveBlock(x.clientId));});assert(result.locked);
+}finally{await p.evaluate(async originals=>{const blocks=wp.data.select('core/block-editor').getBlocks()[0].innerBlocks;for(const attrs of originals){const b=blocks.find(b=>b.attributes.awField===attrs.awField);wp.data.dispatch('core/block-editor').updateBlockAttributes(b.clientId,attrs);}await wp.data.dispatch('core/editor').savePost();},sharedOriginals);}
+fs.writeFileSync('test-results/editing.json',JSON.stringify(result,null,2));console.log(result);await browser.close();
+})().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,0 +1,14 @@
+const fs=require('fs'),path=require('path'),http=require('http');let pw;for(const f of fs.readdirSync(path.join(process.env.LOCALAPPDATA,'ms-playwright/.links'))){try{pw=require(fs.readFileSync(path.join(process.env.LOCALAPPDATA,'ms-playwright/.links',f),'utf8').trim());break;}catch{}}
+const root=path.resolve(__dirname,'../source-public'),out=path.resolve(__dirname,'../test-results');
+const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.ico':'image/x-icon'};
+const server=http.createServer((req,res)=>{const name=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));if(!name.startsWith(root+path.sep)||!fs.existsSync(name)||!fs.statSync(name).isFile()){res.writeHead(404);return res.end();}let bytes=fs.readFileSync(name);if(name.endsWith('widgets.html'))bytes=Buffer.from(bytes.toString('utf8').replaceAll('https://weather.controltowerai.io/','http://127.0.0.1:9471/'));res.setHeader('Content-Type',types[path.extname(name)]||'application/octet-stream');res.end(bytes);});
+(async()=>{await new Promise(r=>server.listen(9471,'127.0.0.1',r));const browser=await pw.chromium.launch({headless:true});const c=await browser.newContext({viewport:{width:1440,height:1000}});await c.addCookies([{name:'playground_auto_login_already_happened',value:'1',url:'http://127.0.0.1:9400'}]);await c.route('**/*',r=>['127.0.0.1','localhost'].includes(new URL(r.request().url()).hostname)?r.continue():r.abort());const p=await c.newPage();const results=[];
+for(const key of ['index','today','how-it-works','stations','widgets']){
+ const pair={page:key};for(const kind of ['source','wordpress']){
+  const url=kind==='source'?'http://127.0.0.1:9471/controltowerai-wordpress-redesign/'+key+'.html':'http://127.0.0.1:9400/'+(key==='index'?'':key+'/');await p.goto(url,{waitUntil:'networkidle'});await p.waitForTimeout(300);
+  pair[kind]=await p.evaluate(()=>{const out={};for(const sel of ['h1','.site-header','footer']){const e=document.querySelector(sel);if(e){const r=e.getBoundingClientRect();out[sel]={x:r.x,y:r.y,width:r.width,height:r.height,text:e.textContent.trim().replace(/\s+/g,' ')};}}return out;});await p.screenshot({path:path.join(out,key+'-'+kind+'-comparison.png'),fullPage:true});
+ }
+ pair.geometryDifferences=[];for(const sel of Object.keys(pair.source)){for(const k of ['x','y','width','height'])if(Math.abs(pair.source[sel][k]-pair.wordpress[sel][k])>1)pair.geometryDifferences.push(sel+'.'+k+': '+pair.source[sel][k]+' -> '+pair.wordpress[sel][k]);}
+ results.push(pair);console.log(key,pair.geometryDifferences);
+}
+fs.writeFileSync(path.join(out,'visual-comparison.json'),JSON.stringify(results,null,2));await browser.close();server.close();})().catch(e=>{console.error(e);server.close();process.exitCode=1;});

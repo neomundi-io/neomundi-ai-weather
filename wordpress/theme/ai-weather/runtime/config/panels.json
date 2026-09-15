@@ -1,0 +1,6 @@
+{
+  "panels": {
+    "core": ["openai", "anthropic", "google", "xai", "mistral", "deepseek", "qwen", "moonshot"],
+    "full": ["openai", "anthropic", "google", "xai", "mistral", "deepseek", "qwen", "moonshot", "cohere", "meta", "infomaniak", "perplexity"]
+  }
+}

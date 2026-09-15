@@ -1,0 +1,175 @@
+{
+  "demo": true,
+  "generated_at": "2026-08-16T08:00:00+02:00",
+  "protocol": {
+    "id": "WEATHER-SENTINEL",
+    "version": "0.1",
+    "prompt_set": ["sentinel-v1"],
+    "iterations": 30,
+    "temperature": null
+  },
+  "global_condition": "variable",
+  "panel_summary": {
+    "systems_count": 12,
+    "total_observations": 360,
+    "last_measurement_at": "2026-08-16T08:00:00+02:00"
+  },
+  "systems": [
+    {
+      "id": "openai", "display_name": "OpenAI", "provider": "OpenAI",
+      "provider_slug": "openai", "provider_display": "OpenAI",
+      "model": "openai-model-placeholder", "model_public": null, "public_label": "SYSTEM-01",
+      "condition": "clear", "score": 90,
+      "observations": 30, "fully_scored": 30, "coverage": 1.0,
+      "metrics": { "normal": 0.90, "variation": 0.07, "factual_alert": 0.02, "incomplete": 0.01 },
+      "last_observed_at": "2026-08-16T08:00:00+02:00",
+      "detail": {
+        "regime_distribution": { "normal": 27, "variation": 2, "factual_alert": 1, "incomplete": 0 },
+        "prompt_set": "sentinel-v1", "previous_condition": "clear"
+      }
+    },
+    {
+      "id": "infomaniak-euria", "display_name": "Infomaniak Euria", "provider": "Infomaniak",
+      "provider_slug": "infomaniak", "provider_display": "Infomaniak",
+      "model": "Euria", "model_public": "Euria", "public_label": null,
+      "condition": "variable", "score": 74,
+      "observations": 30, "fully_scored": 29, "coverage": 0.97,
+      "metrics": { "normal": 0.72, "variation": 0.20, "factual_alert": 0.05, "incomplete": 0.03 },
+      "last_observed_at": "2026-08-16T08:00:00+02:00",
+      "detail": {
+        "regime_distribution": { "normal": 21, "variation": 6, "factual_alert": 1, "incomplete": 1 },
+        "prompt_set": "sentinel-v1", "previous_condition": "clear"
+      }
+    },
+    {
+      "id": "anthropic", "display_name": "Anthropic", "provider": "Anthropic",
+      "provider_slug": "anthropic", "provider_display": "Anthropic",
+      "model": "anthropic-model-placeholder", "model_public": null, "public_label": "SYSTEM-02",
+      "condition": "clear", "score": 92,
+      "observations": 30, "fully_scored": 30, "coverage": 1.0,
+      "metrics": { "normal": 0.93, "variation": 0.05, "factual_alert": 0.01, "incomplete": 0.01 },
+      "last_observed_at": "2026-08-16T08:00:00+02:00",
+      "detail": {
+        "regime_distribution": { "normal": 28, "variation": 1, "factual_alert": 1, "incomplete": 0 },
+        "prompt_set": "sentinel-v1", "previous_condition": "clear"
+      }
+    },
+    {
+      "id": "google", "display_name": "Google", "provider": "Google",
+      "provider_slug": "google", "provider_display": "Google",
+      "model": "google-model-placeholder", "model_public": null, "public_label": "SYSTEM-03",
+      "condition": "disrupted", "score": 42,
+      "observations": 30, "fully_scored": 26, "coverage": 0.87,
+      "metrics": { "normal": 0.55, "variation": 0.27, "factual_alert": 0.12, "incomplete": 0.06 },
+      "last_observed_at": "2026-08-16T08:00:00+02:00",
+      "detail": {
+        "regime_distribution": { "normal": 16, "variation": 8, "factual_alert": 4, "incomplete": 2 },
+        "prompt_set": "sentinel-v1", "previous_condition": "variable"
+      }
+    },
+    {
+      "id": "xai", "display_name": "xAI", "provider": "xAI",
+      "provider_slug": "xai", "provider_display": "xAI",
+      "model": "xai-model-placeholder", "model_public": null, "public_label": "SYSTEM-04",
+      "condition": "variable", "score": 78,
+      "observations": 30, "fully_scored": 30, "coverage": 1.0,
+      "metrics": { "normal": 0.78, "variation": 0.15, "factual_alert": 0.04, "incomplete": 0.03 },
+      "last_observed_at": "2026-08-16T08:00:00+02:00",
+      "detail": {
+        "regime_distribution": { "normal": 23, "variation": 5, "factual_alert": 1, "incomplete": 1 },
+        "prompt_set": "sentinel-v1", "previous_condition": "variable"
+      }
+    },
+    {
+      "id": "mistral", "display_name": "Mistral", "provider": "Mistral",
+      "provider_slug": "mistral", "provider_display": "Mistral",
+      "model": "mistral-model-placeholder", "model_public": null, "public_label": "SYSTEM-05",
+      "condition": "clear", "score": 91,
+      "observations": 30, "fully_scored": 30, "coverage": 1.0,
+      "metrics": { "normal": 0.91, "variation": 0.06, "factual_alert": 0.02, "incomplete": 0.01 },
+      "last_observed_at": "2026-08-16T08:00:00+02:00",
+      "detail": {
+        "regime_distribution": { "normal": 27, "variation": 2, "factual_alert": 1, "incomplete": 0 },
+        "prompt_set": "sentinel-v1", "previous_condition": "clear"
+      }
+    },
+    {
+      "id": "deepseek", "display_name": "DeepSeek", "provider": "DeepSeek",
+      "provider_slug": "deepseek", "provider_display": "DeepSeek",
+      "model": "deepseek-model-placeholder", "model_public": null, "public_label": "SYSTEM-06",
+      "condition": "disrupted", "score": 35,
+      "observations": 30, "fully_scored": 22, "coverage": 0.73,
+      "metrics": { "normal": 0.38, "variation": 0.29, "factual_alert": 0.21, "incomplete": 0.12 },
+      "last_observed_at": "2026-08-16T08:00:00+02:00",
+      "detail": {
+        "regime_distribution": { "normal": 11, "variation": 9, "factual_alert": 6, "incomplete": 4 },
+        "prompt_set": "sentinel-v1", "previous_condition": "disrupted"
+      }
+    },
+    {
+      "id": "qwen", "display_name": "Qwen", "provider": "Qwen",
+      "provider_slug": "qwen", "provider_display": "Qwen",
+      "model": "qwen-model-placeholder", "model_public": null, "public_label": "SYSTEM-07",
+      "condition": "clear", "score": 89,
+      "observations": 30, "fully_scored": 30, "coverage": 1.0,
+      "metrics": { "normal": 0.89, "variation": 0.08, "factual_alert": 0.02, "incomplete": 0.01 },
+      "last_observed_at": "2026-08-16T08:00:00+02:00",
+      "detail": {
+        "regime_distribution": { "normal": 27, "variation": 2, "factual_alert": 1, "incomplete": 0 },
+        "prompt_set": "sentinel-v1", "previous_condition": "clear"
+      }
+    },
+    {
+      "id": "moonshot", "display_name": "Moonshot / Kimi", "provider": "Moonshot / Kimi",
+      "provider_slug": "moonshot", "provider_display": "Moonshot / Kimi",
+      "model": "moonshot-model-placeholder", "model_public": null, "public_label": "SYSTEM-08",
+      "condition": "clear", "score": 87,
+      "observations": 30, "fully_scored": 30, "coverage": 1.0,
+      "metrics": { "normal": 0.87, "variation": 0.09, "factual_alert": 0.03, "incomplete": 0.01 },
+      "last_observed_at": "2026-08-16T08:00:00+02:00",
+      "detail": {
+        "regime_distribution": { "normal": 26, "variation": 3, "factual_alert": 1, "incomplete": 0 },
+        "prompt_set": "sentinel-v1", "previous_condition": "clear"
+      }
+    },
+    {
+      "id": "system-j", "display_name": "System J", "provider": "Provider J",
+      "provider_slug": "provider-j", "provider_display": "Provider J",
+      "model": "system-j-placeholder", "model_public": "system-j-placeholder", "public_label": null,
+      "condition": "variable", "score": 70,
+      "observations": 30, "fully_scored": 28, "coverage": 0.93,
+      "metrics": { "normal": 0.68, "variation": 0.22, "factual_alert": 0.06, "incomplete": 0.04 },
+      "last_observed_at": "2026-08-16T08:00:00+02:00",
+      "detail": {
+        "regime_distribution": { "normal": 20, "variation": 6, "factual_alert": 2, "incomplete": 2 },
+        "prompt_set": "sentinel-v1", "previous_condition": "clear"
+      }
+    },
+    {
+      "id": "system-k", "display_name": "System K", "provider": "Provider K",
+      "provider_slug": "provider-k", "provider_display": "Provider K",
+      "model": "system-k-placeholder", "model_public": "system-k-placeholder", "public_label": null,
+      "condition": "clear", "score": 93,
+      "observations": 30, "fully_scored": 30, "coverage": 1.0,
+      "metrics": { "normal": 0.94, "variation": 0.04, "factual_alert": 0.01, "incomplete": 0.01 },
+      "last_observed_at": "2026-08-16T08:00:00+02:00",
+      "detail": {
+        "regime_distribution": { "normal": 28, "variation": 1, "factual_alert": 1, "incomplete": 0 },
+        "prompt_set": "sentinel-v1", "previous_condition": "clear"
+      }
+    },
+    {
+      "id": "system-l", "display_name": "System L", "provider": "Provider L",
+      "provider_slug": "provider-l", "provider_display": "Provider L",
+      "model": "system-l-placeholder", "model_public": "system-l-placeholder", "public_label": null,
+      "condition": "disrupted", "score": 48,
+      "observations": 30, "fully_scored": 24, "coverage": 0.80,
+      "metrics": { "normal": 0.45, "variation": 0.28, "factual_alert": 0.17, "incomplete": 0.10 },
+      "last_observed_at": "2026-08-16T08:00:00+02:00",
+      "detail": {
+        "regime_distribution": { "normal": 13, "variation": 9, "factual_alert": 5, "incomplete": 3 },
+        "prompt_set": "sentinel-v1", "previous_condition": "variable"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "strategy": "Allowlist: only wordpress/theme/ai-weather enters the installable ZIP. Inspect every file and its contents before packaging.",
+  "forbiddenPathPatterns": ["(^|/)\\.git(/|$)", "AI_WEATHER_RUNNER", "(^|/)secrets?(/|\\.)", "secrets\\.weather\\.xml", "(^|/)raw(/|$)", "(^|/)results(/|$)", "(^|/)scored(/|$)", "(^|/)\\.backups(/|$)", "(^|/)node_modules(/|$)", "(^|/)\\.env", "\\.(pem|key|pfx|p12|bak|zip|log|tmp)$", "Free AI Weather Widgets", "_archive", "(^|/)CNAME$", "wp-config\\.php", "test-results", "source-public"],
+  "allowedExtensions": [".php", ".css", ".js", ".tpl", ".html", ".json", ".png", ".ico", ".md"],
+  "restoredDependencies": [
+    {"path":"runtime/topbar.html","source":"git show 7b7dcb2^:topbar.html"},
+    {"path":"runtime/sidebar.html","source":"git show f5d59d0^:sidebar.html"},
+    {"path":"runtime/weather-home-1180.html","source":"Missing tail from git show 0efb4fe:weather-home-1180.html; keeps current measurement timestamp logic and displays its measuredDateText."}
+  ]
+}

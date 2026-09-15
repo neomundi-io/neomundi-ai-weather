@@ -1,0 +1,196 @@
+
+
+<div class="station-chrome">
+  @@PART:us-station-header@@
+
+  <div class="station-intro">
+    <div class="station-intro-inner">
+      <p class="station-eyebrow" data-en="@@FIELD:us-station-92cb9830cd0e@@" data-fr="@@FIELD:us-station-54c130a03d11@@">@@FIELD:us-station-92cb9830cd0e@@</p>
+      <h1 data-en="@@FIELD:us-station-a5383f8afab5@@" data-fr="@@FIELD:us-station-4f7b33c2c98f@@">@@FIELD:us-station-a5383f8afab5@@</h1>
+      <p data-en="@@FIELD:us-station-dca89643a54b@@" data-fr="@@FIELD:us-station-e90369ed3ed3@@">@@FIELD:us-station-dca89643a54b@@</p>
+      <ul class="station-facts">
+        <li data-en="@@FIELD:us-station-45c7226919a6@@" data-fr="@@FIELD:us-station-df44caa855e5@@">@@FIELD:us-station-45c7226919a6@@</li>
+        <li data-en="@@FIELD:us-station-448185397607@@" data-fr="@@FIELD:us-station-28c3e1dc877b@@">@@FIELD:us-station-448185397607@@</li>
+        <li data-en="@@FIELD:us-station-cd88c5386c58@@" data-fr="@@FIELD:us-station-62e52eb61575@@">@@FIELD:us-station-cd88c5386c58@@</li>
+        <li data-en="@@FIELD:us-station-a37eef8ee23f@@" data-fr="@@FIELD:us-station-93c9de4bdfaf@@">@@FIELD:us-station-a37eef8ee23f@@</li>
+      </ul>
+      <p class="station-note" data-en="@@FIELD:us-station-d83eb6647516@@" data-fr="@@FIELD:us-station-4a12996b3366@@">@@FIELD:us-station-d83eb6647516@@</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     Below this line: the real "US Station Edition — OmarAGI × NeoMundi"
+     artwork markup, structure and credits, unmodified from the supplied
+     capture (only initial snapshot values were reset to neutral "—"
+     placeholders below, since no city is selected yet on load — the
+     real values are filled in live by us-station-bootstrap.js the
+     moment a city is picked).
+     ============================================================ -->
+<div class="us-noise" aria-hidden="true"></div>
+
+<main>
+  <section class="us-observatory" id="observatory" aria-label="NeoMundi live planetary observatory">
+    <h1 class="us-visually-hidden">US Station live globe</h1>
+    <div class="us-landing-signatures" aria-label="Edition and artist collaboration">
+      <p class="us-landing-edition">
+        <span>NeoMundi</span>
+        <strong>US Station Edition</strong>
+      </p>
+      <p class="us-landing-credit">
+        <span>Ben B</span>
+        <b aria-hidden="true">×</b>
+        <span class="us-collaborator-name">Sébastien FAVRE</span>
+      </p>
+    </div>
+    <div class="us-globe-column">
+      <div class="us-globe-stage">
+        <canvas id="us-globe" class="us-globe" tabindex="0" aria-label="Interactive Earth. Drag to rotate, scroll to zoom, then select a city point." width="1920" height="911"></canvas>
+        <canvas class="us-globe-markers" data-globe-markers="" aria-hidden="true" width="1920" height="911"></canvas>
+        <div class="us-hover-label" data-hover-label="" aria-live="polite">
+          <span></span><strong></strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="us-artwork" data-artwork="" role="dialog" aria-modal="true" aria-hidden="true" aria-label="City motion observation">
+    <div class="us-artwork-dialog" data-artwork-dialog="">
+      <header class="us-artwork-header">
+        <button class="us-back" type="button" data-back="" aria-label="Close the city artwork">
+          <span aria-hidden="true">@@FIELD:us-station-db389355ed09@@</span><span class="us-back-label">@@FIELD:us-station-c911925dcdd8@@</span>
+        </button>
+        <div class="us-artwork-title-block">
+          <p><span class="us-live-dot"></span><span data-artwork-mode-label="">@@FIELD:us-station-925df4e5a291@@</span></p>
+          <time data-city-time="">—</time>
+        </div>
+        <button class="us-next-state" type="button" data-next-state="" aria-label="Move to projected tomorrow state">
+          <span class="us-next-copy">
+            <small data-next-kicker="">@@FIELD:us-station-ca880810bbff@@</small>
+            <strong data-next-label="">@@FIELD:us-station-17c43e24d114@@</strong>
+          </span>
+          <span class="us-next-arrow" aria-hidden="true">@@FIELD:us-station-81161adbc761@@</span>
+        </button>
+      </header>
+
+      <div class="us-work-frame">
+        <div class="us-media" data-media="">
+          <div class="us-media-current" data-media-current="">
+            <iframe data-live-frame="" title="Selected city: live" loading="eager" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
+          <div class="us-city-simulation" data-city-simulation="" aria-label="Verified city-specific tomorrow render">
+            <video class="us-tomorrow-video" data-tomorrow-video="" muted="" loop="" autoplay="" playsinline="" preload="none"></video>
+          </div>
+          <div class="us-media-shade" aria-hidden="true"></div>
+          <div class="us-source-state" data-source-state="">
+            <span class="us-live-dot"></span>
+            <strong>@@FIELD:us-station-1a8de8f26b5e@@</strong>
+          </div>
+          <a class="us-source-link" data-source-link="" href="@@FIELD:us-station-9c6681eee3b2@@" target="_blank" rel="noopener noreferrer">@@FIELD:us-station-3096c0a38601@@</a>
+        </div>
+      </div>
+
+      <div class="us-work-information">
+        <header class="us-work-heading">
+          <p data-work-number="">@@FIELD:us-station-91d2577ba998@@</p>
+          <h2 id="artwork-title">
+            <span data-city-title="">@@FIELD:us-station-72bf32f2fb3e@@</span>
+            <em data-work-subtitle="">@@FIELD:us-station-57271ac9a97a@@</em>
+          </h2>
+        </header>
+
+        <details class="us-signal-ledger" open="">
+          <summary>
+            <span><small>@@FIELD:us-station-93b08b6c382f@@</small><strong>@@FIELD:us-station-93341d3066c0@@</strong></span>
+            <span aria-hidden="true">@@FIELD:us-station-caa544ea49b9@@</span>
+          </summary>
+          <dl data-metadata="">
+            <div><dt>@@FIELD:us-station-9567331bf79d@@</dt><dd data-meta-temperature="">@@FIELD:us-station-8b43e8349d68@@</dd></div>
+            <div><dt>@@FIELD:us-station-26945b6db22e@@</dt><dd data-meta-apparent="">@@FIELD:us-station-f48036f898f2@@</dd></div>
+            <div><dt>@@FIELD:us-station-3ef5f231ae21@@</dt><dd data-meta-precipitation="">@@FIELD:us-station-c356f2a162c2@@</dd></div>
+            <div><dt>@@FIELD:us-station-384bcf64d8ef@@</dt><dd data-meta-wind="">@@FIELD:us-station-afb09f8e2647@@</dd></div>
+            <div><dt>@@FIELD:us-station-ed957ff9b44b@@</dt><dd data-meta-cloud="">@@FIELD:us-station-7f85d5b24538@@</dd></div>
+            <div><dt>@@FIELD:us-station-f3f7cc4b6e90@@</dt><dd data-meta-condition="">@@FIELD:us-station-d928aaae5e56@@</dd></div>
+            <div><dt>@@FIELD:us-station-58248cf75463@@</dt><dd data-meta-demand="">@@FIELD:us-station-ffa86ca9c112@@</dd></div>
+            <div><dt>@@FIELD:us-station-e7040da4321b@@</dt><dd data-meta-visibility="">@@FIELD:us-station-029f81747838@@</dd></div>
+            <div><dt>@@FIELD:us-station-1abfe7ea9622@@</dt><dd data-meta-temporal="">@@FIELD:us-station-9037e5212837@@</dd></div>
+          </dl>
+        </details>
+
+        <div class="us-work-register">
+          <section class="us-work-metadata" aria-labelledby="metadata-title">
+            <p class="us-section-label" id="metadata-title">@@FIELD:us-station-9ce80d8ee127@@</p>
+            <dl class="us-catalogue-metadata">
+              <div><dt>@@FIELD:us-station-795148bb03c8@@</dt><dd data-meta-physical="">@@FIELD:us-station-d6ecc15d3c83@@</dd></div>
+              <div><dt>@@FIELD:us-station-bbda91e58177@@</dt><dd data-meta-stability="">@@FIELD:us-station-fdbcd05e61fc@@</dd></div>
+              <div><dt>@@FIELD:us-station-f2ff26eb1445@@</dt><dd data-meta-shift="">@@FIELD:us-station-5d4c496259b9@@</dd></div>
+              <div><dt>@@FIELD:us-station-c999baa5122d@@</dt><dd data-meta-density="">@@FIELD:us-station-7bd5f9b4bb00@@</dd></div>
+              <div><dt>@@FIELD:us-station-d83554d58b19@@</dt><dd data-meta-coherence="">@@FIELD:us-station-63c9c59447db@@</dd></div>
+              <div><dt>@@FIELD:us-station-e9692c33e87f@@</dt><dd data-meta-observed="">@@FIELD:us-station-37b160a86a7f@@</dd></div>
+              <div><dt>@@FIELD:us-station-e76fb56f33f8@@</dt><dd data-meta-protocol="">@@FIELD:us-station-b3bca020a6e5@@</dd></div>
+            </dl>
+          </section>
+
+          <section class="us-work-description" aria-labelledby="description-title">
+            <p class="us-section-label" id="description-title">@@FIELD:us-station-e24c2999a56e@@</p>
+            <div data-description=""><p>@@FIELD:us-station-b0beaf160d3e@@</p></div>
+          </section>
+        </div>
+
+        <details class="us-machine-layer" data-machine-layer="">
+          <summary>
+            <span><small>@@FIELD:us-station-08717b13022d@@</small><strong>@@FIELD:us-station-e4d2e34e8e28@@</strong></span>
+            <span aria-hidden="true">@@FIELD:us-station-37c9fdcd4137@@</span>
+          </summary>
+          <div>
+            <p data-machine-status="">@@FIELD:us-station-5bd95f9ec9c3@@</p>
+            <pre data-machine-json="" hidden=""></pre>
+            <small data-machine-provenance="">@@FIELD:us-station-a68d77ee7762@@</small>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="us-loading is-complete" data-loading="" role="status" aria-label="Receiving the current observation">
+  <span class="us-loading-ring" aria-hidden="true"></span>
+</div>
+
+<div class="station-chrome">
+  <div class="station-outro">
+    <div class="station-outro-grid">
+      <div>
+        <h4 data-en="@@FIELD:us-station-1b2d17d42a74@@" data-fr="@@FIELD:us-station-92833393d7dd@@">@@FIELD:us-station-1b2d17d42a74@@</h4>
+        <p data-en="@@FIELD:us-station-47cfb3021e8f@@" data-fr="@@FIELD:us-station-8f94a6de8623@@">@@FIELD:us-station-47cfb3021e8f@@</p>
+      </div>
+      <div>
+        <h4 data-en="@@FIELD:us-station-10c058b24bc7@@" data-fr="@@FIELD:us-station-1114b892c78b@@">@@FIELD:us-station-10c058b24bc7@@</h4>
+        <a href="@@FIELD:us-station-739a1a88f212@@" target="_blank" rel="noopener" data-en="@@FIELD:us-station-0fc517ecf03c@@" data-fr="@@FIELD:us-station-46b0e493e4fb@@">@@FIELD:us-station-0fc517ecf03c@@</a>
+        <a href="@@FIELD:us-station-4a7b787fd16d@@" target="_blank" rel="noopener" data-en="@@FIELD:us-station-8407cd29dec3@@" data-fr="@@FIELD:us-station-963a24b0f2d2@@">@@FIELD:us-station-8407cd29dec3@@</a>
+        <a href="@@FIELD:us-station-bd062a03da9a@@" target="_blank" rel="noopener" data-en="@@FIELD:us-station-15506078b705@@" data-fr="@@FIELD:us-station-552edce06d75@@">@@FIELD:us-station-15506078b705@@</a>
+      </div>
+      <div>
+        <h4 data-en="@@FIELD:us-station-2031aa2f84eb@@" data-fr="@@FIELD:us-station-f750be333d41@@">@@FIELD:us-station-2031aa2f84eb@@</h4>
+        <a href="@@FIELD:us-station-683eac77a020@@" data-en="@@FIELD:us-station-29de84b9a606@@" data-fr="@@FIELD:us-station-f3e35cd0f717@@">@@FIELD:us-station-29de84b9a606@@</a>
+        <a href="@@FIELD:us-station-6df8b9cbdb96@@" data-en="@@FIELD:us-station-217b33ee6166@@" data-fr="@@FIELD:us-station-97d0ecfa908c@@">@@FIELD:us-station-217b33ee6166@@</a>
+        <a href="@@FIELD:us-station-6b541808f722@@" data-en="@@FIELD:us-station-0d647ca9d0bb@@" data-fr="@@FIELD:us-station-438865cfbdfe@@">@@FIELD:us-station-0d647ca9d0bb@@</a>
+        <a href="@@FIELD:us-station-ec321f22cc98@@" target="_blank" rel="noopener">@@FIELD:us-station-096ec91560ad@@</a>
+      </div>
+    </div>
+    <p class="station-outro-bottom" data-en="@@FIELD:us-station-bd758f1dd599@@" data-fr="@@FIELD:us-station-e0eed7f0e0bf@@">@@FIELD:us-station-bd758f1dd599@@</p>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Wrapper chrome language toggle only. Never touches the real
+     artwork markup, data or scripts loaded above. External file
+     because this page's CSP is script-src 'self' (no inline scripts). -->
+
+
+
+

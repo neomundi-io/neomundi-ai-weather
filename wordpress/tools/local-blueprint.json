@@ -1,0 +1,8 @@
+{
+  "landingPage": "/",
+  "login": true,
+  "steps": [
+    {"step":"activateTheme","themeFolderName":"ai-weather"},
+    {"step":"runPHP","code":"<?php require '/wordpress/wp-load.php'; wp_set_current_user(1); update_option('permalink_structure','/%postname%/'); $r=aw_install_content(); if(is_wp_error($r))throw new Exception($r->get_error_message()); flush_rewrite_rules();"}
+  ]
+}

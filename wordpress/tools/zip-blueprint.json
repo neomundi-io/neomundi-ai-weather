@@ -1,0 +1,9 @@
+{
+  "preferredVersions":{"php":"8.3","wp":"6.6"},
+  "landingPage":"/",
+  "login":true,
+  "steps":[
+    {"step":"installTheme","themeZipFile":{"resource":"vfs","path":"/artifacts/ai-weather-0.1.0.zip"},"options":{"activate":true}},
+    {"step":"runPHP","code":"<?php require '/wordpress/wp-load.php'; wp_set_current_user(1); update_option('permalink_structure','/%postname%/'); $r=aw_install_content(); if(is_wp_error($r))throw new Exception($r->get_error_message()); flush_rewrite_rules();"}
+  ]
+}

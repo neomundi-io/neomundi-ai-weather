@@ -1,0 +1,21 @@
+              <span class="legend-item"><span class="legend-dot legend-alert"></span>${tOrFallback("judgment.j4", "Critical attention")}</span>
+            `;
+
+            block.innerHTML = `
+              <div class="block-strip-top"></div>
+              <div class="block-inner">
+                <div class="block-title">${tOrFallback("ui.ai_weather_title", "AI Weather")}</div>
+                <div class="legend">${legendHtml}</div>
+                <div class="strip">${cellsHtml}</div>
+              </div>
+            `;
+          });
+      })
+      .catch(() => {
+        document.getElementById("block").innerHTML =
+          '<div class="nm-state-msg">AI Weather data unavailable.</div>';
+      });
+  </script>
+
+</body>
+</html>

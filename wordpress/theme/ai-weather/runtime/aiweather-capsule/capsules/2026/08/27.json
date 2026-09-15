@@ -1,0 +1,1788 @@
+{
+  "capsule_id": "neomundi-aiweather-2026-08-27",
+  "chain": {
+    "content_hash": "cce13dbf81fed3235a6cf1b8f03ce4d7f2ddad0b5cd85e628ce8b1aeb0d883fb",
+    "prev_hash": "1f1dc1247a5e099ce5ee57a29b4e6d05ba35b9d228d9ead60ba658836694dbc4",
+    "sequence_index": 7
+  },
+  "coverage": {
+    "daily_fully_scored": 276,
+    "daily_observations_expected": 276,
+    "daily_panel_coverage": 1,
+    "last_measurement_at": "2026-08-27T05:53:35.898787Z",
+    "longitudinal_fully_scored": 84,
+    "longitudinal_observations_expected": 84,
+    "longitudinal_panel_coverage": 1,
+    "panel_coverage": 1,
+    "systems_daily_fully_covered": 12,
+    "systems_expected": 12,
+    "systems_fully_covered": 12,
+    "systems_insufficient_data": 0,
+    "systems_longitudinal_fully_covered": 12,
+    "systems_observed": 12,
+    "total_expected_observations": 360,
+    "total_observations": 360
+  },
+  "date": "2026-08-27",
+  "global_condition": "watch",
+  "global_judgment_demand": {
+    "derived_from_condition": "watch",
+    "label": "increased_attention",
+    "level": "J2",
+    "meaning": "Increased attention",
+    "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+    "profile_version": "0.1",
+    "status": "determined"
+  },
+  "interpretation_boundaries": {
+    "daily_probe": "Weather-authoritative daily stimulus; drives interpretation and Judgment Demand upstream",
+    "execution": "consumer responsibility",
+    "interpretation": "AI Weather Interpretation Profile",
+    "judgment_demand": "AI Weather Judgment Demand Profile",
+    "longitudinal_probe": "Laboratory-only fixed stimulus; never influences daily Weather or Judgment Demand",
+    "measurement": "NeoMundi measurement signals",
+    "principle": "Measurement != Interpretation != Judgment Demand != Action"
+  },
+  "interpretation_contract": {
+    "active_weather_states": [
+      "clear",
+      "watch",
+      "unsettled"
+    ],
+    "coverage_interpretable_min": 0.8,
+    "coverage_nominal_min": 0.9,
+    "coverage_policy": "ai_weather_probe_split_coverage_v0.2",
+    "global_aggregation_policy": "daily_probe_full_panel_required_then_strongest_state_v0.2",
+    "judgment_demand_profile": "AI_WEATHER_JUDGMENT_DEMAND",
+    "judgment_demand_profile_version": "0.1",
+    "longitudinal_policy": "measured_separately_never_influences_daily_weather_v0.2",
+    "matrix_version": "0.2",
+    "non_weather_states": [
+      "insufficient_data"
+    ],
+    "profile": "AI_WEATHER_INTERPRETATION",
+    "profile_version": "0.2",
+    "reserved_weather_states": [
+      "alert"
+    ],
+    "source_contract": "NeoMundi Metric Contract",
+    "source_rules": "Signal Interpretation and Consumption Rules v0.1"
+  },
+  "issued_at": "2026-08-27T05:53:41Z",
+  "legacy_global_score": 98,
+  "observations": [
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-08-27T05:53:36.609Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-08-27T05:27:36.768074Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-08-27",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-08-27T05:53:36.609Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-08-27T05:36:52.412405Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-08-27T05:36:52.412405Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 7,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 100,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "gpt-4o-2024-11-20",
+      "model_display": "ChatGPT",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "clear",
+      "public_label": "SYSTEM-01",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "watch",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "watch",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interpretation": {
+          "condition": "watch",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "factual_signal_elevated"
+          ],
+          "evaluated_at": "2026-08-27T05:53:36.879Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-020"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "watch",
+          "label": "increased_attention",
+          "level": "J2",
+          "meaning": "Increased attention",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-08-27T05:28:44.227249Z",
+        "metrics": {
+          "factual_alert": 0.0435,
+          "incomplete": 0,
+          "normal": 0.9565,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-08-27",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 1,
+          "incomplete": 0,
+          "normal": 22,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 96,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "watch",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "factual_signal_elevated"
+        ],
+        "evaluated_at": "2026-08-27T05:53:36.879Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-020"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "watch",
+        "label": "increased_attention",
+        "level": "J2",
+        "meaning": "Increased attention",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-08-27T05:40:22.708797Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-08-27T05:40:22.708797Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 7,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 100,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0.0435,
+        "incomplete": 0,
+        "normal": 0.9565,
+        "variation": 0
+      },
+      "model": "claude-sonnet-4-5-20250929",
+      "model_display": "Claude",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "watch",
+      "public_label": "SYSTEM-02",
+      "score": 96,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-08-27T05:53:37.063Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-08-27T05:30:16.418302Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-08-27",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-08-27T05:53:37.063Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-08-27T05:41:25.762665Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-08-27T05:41:25.762665Z",
+        "metrics": {
+          "factual_alert": 0.7143,
+          "incomplete": 0,
+          "normal": 0.2857,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 5,
+          "incomplete": 0,
+          "normal": 2,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 29,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "gemini-3.6-flash",
+      "model_display": "Gemini",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "watch",
+      "public_label": "SYSTEM-03",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-08-27T05:53:37.210Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-08-27T05:34:41.037087Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-08-27",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-08-27T05:53:37.210Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-08-27T05:47:01.274576Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-08-27T05:47:01.274576Z",
+        "metrics": {
+          "factual_alert": 0.2857,
+          "incomplete": 0,
+          "normal": 0.7143,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 2,
+          "incomplete": 0,
+          "normal": 5,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 71,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "grok-4.5",
+      "model_display": "Grok",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "clear",
+      "public_label": "SYSTEM-04",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-08-27T05:53:37.369Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-08-27T05:26:26.397248Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-08-27",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-08-27T05:53:37.369Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-08-27T05:36:02.921109Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-08-27T05:36:02.921109Z",
+        "metrics": {
+          "factual_alert": 0.4286,
+          "incomplete": 0,
+          "normal": 0.5714,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 3,
+          "incomplete": 0,
+          "normal": 4,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 57,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "mistral-medium-3-5",
+      "model_display": "Mistral",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "clear",
+      "public_label": "SYSTEM-05",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-08-27T05:53:37.532Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-08-27T05:39:45.230908Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-08-27",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-08-27T05:53:37.532Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-08-27T05:52:54.944283Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-08-27T05:52:54.944283Z",
+        "metrics": {
+          "factual_alert": 0.4286,
+          "incomplete": 0,
+          "normal": 0.5714,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 3,
+          "incomplete": 0,
+          "normal": 4,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 57,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "deepseek-v4-pro",
+      "model_display": "DeepSeek",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "clear",
+      "public_label": "SYSTEM-06",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "watch",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "watch",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interpretation": {
+          "condition": "watch",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "factual_signal_elevated",
+            "aggregate_runtime_deviation"
+          ],
+          "evaluated_at": "2026-08-27T05:53:37.705Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-020",
+            "AWI-023"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "watch",
+          "label": "increased_attention",
+          "level": "J2",
+          "meaning": "Increased attention",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-08-27T05:39:58.348731Z",
+        "metrics": {
+          "factual_alert": 0.1739,
+          "incomplete": 0,
+          "normal": 0.8261,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-08-27",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 4,
+          "incomplete": 0,
+          "normal": 19,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 83,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "watch",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "factual_signal_elevated",
+          "aggregate_runtime_deviation"
+        ],
+        "evaluated_at": "2026-08-27T05:53:37.705Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-020",
+          "AWI-023"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "watch",
+        "label": "increased_attention",
+        "level": "J2",
+        "meaning": "Increased attention",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-08-27T05:53:35.898787Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-08-27T05:53:35.898787Z",
+        "metrics": {
+          "factual_alert": 0.1429,
+          "incomplete": 0,
+          "normal": 0.8571,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 1,
+          "incomplete": 0,
+          "normal": 6,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 86,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0.1739,
+        "incomplete": 0,
+        "normal": 0.8261,
+        "variation": 0
+      },
+      "model": "qwen3.7-max-2026-06-08",
+      "model_display": "Qwen",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "watch",
+      "public_label": "SYSTEM-07",
+      "score": 83,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-08-27T05:53:37.830Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-08-27T05:16:24.090179Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-08-27",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-08-27T05:53:37.830Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-08-27T05:21:17.407609Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-08-27T05:21:17.407609Z",
+        "metrics": {
+          "factual_alert": 0.1429,
+          "incomplete": 0,
+          "normal": 0.8571,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 1,
+          "incomplete": 0,
+          "normal": 6,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 86,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "kimi-k3",
+      "model_display": "Kimi",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "clear",
+      "public_label": "SYSTEM-08",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-08-27T05:53:37.988Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-08-27T05:27:54.441265Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-08-27",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-08-27T05:53:37.988Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-08-27T05:40:48.736548Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-08-27T05:40:48.736548Z",
+        "metrics": {
+          "factual_alert": 0.4286,
+          "incomplete": 0,
+          "normal": 0.5714,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 3,
+          "incomplete": 0,
+          "normal": 4,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 57,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "command-a-03-2025",
+      "model_display": "Cohere",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "clear",
+      "public_label": "SYSTEM-09",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-08-27T05:53:38.180Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-08-27T05:30:12.215795Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-08-27",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-08-27T05:53:38.180Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-08-27T05:40:52.948527Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-08-27T05:40:52.948527Z",
+        "metrics": {
+          "factual_alert": 0.4286,
+          "incomplete": 0,
+          "normal": 0.5714,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 3,
+          "incomplete": 0,
+          "normal": 4,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 57,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "model_display": "Meta",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "clear",
+      "public_label": "SYSTEM-10",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "watch",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "watch",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interpretation": {
+          "condition": "watch",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "factual_signal_elevated"
+          ],
+          "evaluated_at": "2026-08-27T05:53:38.362Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-020"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "watch",
+          "label": "increased_attention",
+          "level": "J2",
+          "meaning": "Increased attention",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-08-27T05:36:06.791094Z",
+        "metrics": {
+          "factual_alert": 0.0435,
+          "incomplete": 0,
+          "normal": 0.9565,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-08-27",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 1,
+          "incomplete": 0,
+          "normal": 22,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 96,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "watch",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "factual_signal_elevated"
+        ],
+        "evaluated_at": "2026-08-27T05:53:38.362Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-020"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "watch",
+        "label": "increased_attention",
+        "level": "J2",
+        "meaning": "Increased attention",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-08-27T05:46:24.031005Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-08-27T05:46:24.031005Z",
+        "metrics": {
+          "factual_alert": 0.7143,
+          "incomplete": 0,
+          "normal": 0.2857,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 5,
+          "incomplete": 0,
+          "normal": 2,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 29,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0.0435,
+        "incomplete": 0,
+        "normal": 0.9565,
+        "variation": 0
+      },
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8",
+      "model_display": "Nvidia",
+      "model_public": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8",
+      "observations": 30,
+      "previous_condition": "clear",
+      "public_label": null,
+      "score": 96,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    },
+    {
+      "condition": "clear",
+      "coverage": 1,
+      "coverage_status": "nominal",
+      "daily": {
+        "condition": "clear",
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 23,
+        "fully_scored": 23,
+        "interpretation": {
+          "condition": "clear",
+          "coverage_status": "nominal",
+          "coverage_thresholds": {
+            "interpretable_min": 0.8,
+            "nominal_min": 0.9
+          },
+          "drivers": [
+            "no_adverse_signal_detected"
+          ],
+          "evaluated_at": "2026-08-27T05:53:38.730Z",
+          "matrix_version": "0.2",
+          "profile": "AI_WEATHER_INTERPRETATION",
+          "profile_version": "0.2",
+          "rules_matched": [
+            "AWI-030"
+          ]
+        },
+        "judgment_demand": {
+          "derived_from_condition": "clear",
+          "label": "standard_judgment",
+          "level": "J1",
+          "meaning": "Standard judgment",
+          "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+          "profile_version": "0.1",
+          "status": "determined"
+        },
+        "last_observed_at": "2026-08-27T05:22:32.3852254Z",
+        "metrics": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 1,
+          "variation": 0
+        },
+        "observations": 23,
+        "prompt_id": "daily-2026-08-27",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "public_daily",
+        "regime_distribution": {
+          "factual_alert": 0,
+          "incomplete": 0,
+          "normal": 23,
+          "variation": 0
+        },
+        "role": "daily",
+        "score": 100,
+        "weather_authority": true
+      },
+      "expected_observations": 30,
+      "fully_scored": 30,
+      "interpretation": {
+        "condition": "clear",
+        "coverage_status": "nominal",
+        "coverage_thresholds": {
+          "interpretable_min": 0.8,
+          "nominal_min": 0.9
+        },
+        "drivers": [
+          "no_adverse_signal_detected"
+        ],
+        "evaluated_at": "2026-08-27T05:53:38.730Z",
+        "matrix_version": "0.2",
+        "profile": "AI_WEATHER_INTERPRETATION",
+        "profile_version": "0.2",
+        "rules_matched": [
+          "AWI-030"
+        ]
+      },
+      "judgment_demand": {
+        "derived_from_condition": "clear",
+        "label": "standard_judgment",
+        "level": "J1",
+        "meaning": "Standard judgment",
+        "profile": "AI_WEATHER_JUDGMENT_DEMAND",
+        "profile_version": "0.1",
+        "status": "determined"
+      },
+      "last_observed_at": "2026-08-27T05:33:13.9528038Z",
+      "longitudinal": {
+        "condition": null,
+        "coverage": 1,
+        "coverage_status": "nominal",
+        "expected_observations": 7,
+        "fully_scored": 7,
+        "interpretation": null,
+        "judgment_demand": null,
+        "lab_status": "measured",
+        "last_observed_at": "2026-08-27T05:33:13.9528038Z",
+        "metrics": {
+          "factual_alert": 0.1429,
+          "incomplete": 0,
+          "normal": 0.8571,
+          "variation": 0
+        },
+        "observations": 7,
+        "probe_id": "longitudinal-core-01",
+        "protocol_valid": true,
+        "question": null,
+        "question_exposure": "lab_only",
+        "regime_distribution": {
+          "factual_alert": 1,
+          "incomplete": 0,
+          "normal": 6,
+          "variation": 0
+        },
+        "role": "longitudinal",
+        "score": 86,
+        "weather_authority": false
+      },
+      "longitudinal_influences_weather": false,
+      "metrics": {
+        "factual_alert": 0,
+        "incomplete": 0,
+        "normal": 1,
+        "variation": 0
+      },
+      "model": "sonar-reasoning-pro",
+      "model_display": "Perplexity",
+      "model_public": null,
+      "observations": 30,
+      "previous_condition": "clear",
+      "public_label": "SYSTEM-11",
+      "score": 100,
+      "total_coverage": 1,
+      "weather_authority": "daily_only"
+    }
+  ],
+  "panel_summary": {
+    "daily_fully_scored": 276,
+    "daily_observations_expected": 276,
+    "daily_panel_coverage": 1,
+    "last_measurement_at": "2026-08-27T05:53:35.898787Z",
+    "longitudinal_fully_scored": 84,
+    "longitudinal_observations_expected": 84,
+    "longitudinal_panel_coverage": 1,
+    "panel_coverage": 1,
+    "systems_alert": 0,
+    "systems_clear": 9,
+    "systems_count": 12,
+    "systems_expected": 12,
+    "systems_insufficient_data": 0,
+    "systems_unsettled": 0,
+    "systems_watch": 3,
+    "total_expected_observations": 360,
+    "total_fully_scored": 360,
+    "total_observations": 360
+  },
+  "probe_contract": {
+    "daily": {
+      "expected_repetitions_per_system": 23,
+      "exposure": "wall_public",
+      "panel_coverage": 1,
+      "prompt_id": "daily-2026-08-27",
+      "question": "Name a belief you are relying on right now to answer this very question — one whose falsity you would have no way of detecting from inside this conversation.",
+      "question_translations": {
+        "fr": "Nommez une croyance sur laquelle vous vous appuyez en ce moment mÃªme pour rÃ©pondre Ã  cette question - une dont vous n'auriez aucun moyen de dÃ©tecter la faussetÃ© de l'intÃ©rieur de cette conversation."
+      },
+      "role": "daily",
+      "weather_authority": true
+    },
+    "longitudinal": {
+      "expected_repetitions_per_system": 7,
+      "exposure": "lab_only",
+      "panel_coverage": 1,
+      "probe_id": "longitudinal-core-01",
+      "question": null,
+      "role": "longitudinal",
+      "weather_authority": false
+    }
+  },
+  "protocol": {
+    "alert_status": "reserved",
+    "daily_probe_expected": 23,
+    "daily_weather_authority": true,
+    "expected_observations_per_system": 30,
+    "id": "WEATHER-SENTINEL",
+    "longitudinal_probe_expected": 7,
+    "longitudinal_weather_authority": false,
+    "role_resolution": "probe_role_then_prompt_id_prefix",
+    "temperature": null,
+    "total_expected_panel_observations": 360,
+    "version": "0.2"
+  },
+  "rendering_metadata": {
+    "daily_question_visibility": "public",
+    "longitudinal_question_visibility": "not_exposed",
+    "longitudinal_visibility": "lab_only",
+    "wall_source": "daily_probe_only"
+  },
+  "schema_version": "0.2",
+  "signature": "reserved_for_future_version",
+  "source_format": "ai_weather_history_v0.2"
+}
