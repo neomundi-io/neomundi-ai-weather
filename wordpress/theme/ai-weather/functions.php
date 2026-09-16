@@ -2,6 +2,7 @@
 if (!defined('ABSPATH')) { exit; }
 require_once __DIR__ . '/inc/content.php';
 require_once __DIR__ . '/inc/setup.php';
+require_once __DIR__ . '/inc/readers.php';
 // The canonical page router overrides inherited page templates and never exposes
 // post_content. Gutenberg remains stored for a later, separately validated phase.
 add_filter('template_include',function($template){return aw_current_layout()?get_theme_file_path('index.php'):$template;},PHP_INT_MAX);

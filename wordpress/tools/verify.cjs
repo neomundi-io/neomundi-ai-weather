@@ -7,7 +7,7 @@ for(const p of files){const rel=path.relative(theme,p).replaceAll('\\','/');for(
  if(!/\.(png|ico)$/.test(rel)){const text=bytes.toString('utf8');assert(!/-----BEGIN [^-]*PRIVATE KEY-----|\bsk-[A-Za-z0-9_-]{24,}|\bgh[pousr]_[A-Za-z0-9]{30,}|\bAKIA[A-Z0-9]{16}\b/.test(text),'Credential pattern: '+rel);assert(!/https?:\/\/(localhost|127\.0\.0\.1)|C:\\\\Users\\\\/.test(text),'Local path/url: '+rel);if(rel.endsWith('.json'))JSON.parse(text.replace(/^\uFEFF/,''));if(rel.endsWith('.js')||rel.endsWith('.js.tpl'))new vm.Script(text,{filename:rel});}
 }
 const catalog=require('../theme/ai-weather/inc/catalog.json');assert.equal(Object.keys(catalog).length,12);const keys=new Set();for(const schema of Object.values(catalog))for(const f of schema.fields){assert(!keys.has(f.key),'Duplicate field');keys.add(f.key);}
-if(fs.readFileSync(path.join(theme,'style.css'),'utf8').includes('Version: 0.2.0')){
+if(/^Version:\s*0\.[2-9]\./m.test(fs.readFileSync(path.join(theme,'style.css'),'utf8'))){
  for(const file of files.filter(f=>/[/\\](templates|template-parts)[/\\]/.test(f)))assert(!fs.readFileSync(file,'utf8').includes('@@FIELD:'),'Editorial placeholder in canonical public template: '+file);
  assert(!fs.readFileSync(path.join(theme,'index.php'),'utf8').includes('the_content('),'Public template must not output Gutenberg content');
 }

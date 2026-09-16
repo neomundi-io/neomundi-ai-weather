@@ -1,0 +1,298 @@
+[
+  {
+    "image": "about-1440.png",
+    "before": [
+      1440,
+      1412
+    ],
+    "after": [
+      1440,
+      1412
+    ],
+    "first_changed_row": 1203,
+    "changed_pixels": 2203,
+    "unchanged_area_bottom": 1099,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "about-390.png",
+    "before": [
+      390,
+      2065
+    ],
+    "after": [
+      390,
+      2065
+    ],
+    "first_changed_row": 1809,
+    "changed_pixels": 2212,
+    "unchanged_area_bottom": 1451,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "contact-1440.png",
+    "before": [
+      1440,
+      1000
+    ],
+    "after": [
+      1440,
+      1000
+    ],
+    "first_changed_row": 391,
+    "changed_pixels": 11815
+  },
+  {
+    "image": "contact-390.png",
+    "before": [
+      390,
+      1607
+    ],
+    "after": [
+      390,
+      1607
+    ],
+    "first_changed_row": 638,
+    "changed_pixels": 11928
+  },
+  {
+    "image": "daily-brief-1440.png",
+    "before": [
+      1440,
+      1095
+    ],
+    "after": [
+      1440,
+      1095
+    ],
+    "first_changed_row": 886,
+    "changed_pixels": 2203,
+    "unchanged_area_bottom": 782,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "daily-brief-390.png",
+    "before": [
+      390,
+      1853
+    ],
+    "after": [
+      390,
+      1853
+    ],
+    "first_changed_row": 1597,
+    "changed_pixels": 2212,
+    "unchanged_area_bottom": 1245,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "home-1440.png",
+    "before": [
+      1440,
+      3926
+    ],
+    "after": [
+      1440,
+      3926
+    ],
+    "first_changed_row": 3717,
+    "changed_pixels": 2203,
+    "unchanged_area_bottom": 3612,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "home-390.png",
+    "before": [
+      390,
+      6687
+    ],
+    "after": [
+      390,
+      6687
+    ],
+    "first_changed_row": 6431,
+    "changed_pixels": 2212,
+    "unchanged_area_bottom": 6078,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "how-it-works-1440.png",
+    "before": [
+      1440,
+      3160
+    ],
+    "after": [
+      1440,
+      3812
+    ],
+    "first_changed_row": 2847,
+    "changed_pixels": 444789,
+    "unchanged_area_bottom": 2847,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "how-it-works-390.png",
+    "before": [
+      390,
+      5888
+    ],
+    "after": [
+      390,
+      7000
+    ],
+    "first_changed_row": 5280,
+    "changed_pixels": 233426,
+    "unchanged_area_bottom": 5280,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "quiz-1440.png",
+    "before": [
+      1440,
+      1042
+    ],
+    "after": [
+      1440,
+      1042
+    ],
+    "first_changed_row": 833,
+    "changed_pixels": 2203,
+    "unchanged_area_bottom": 729,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "quiz-390.png",
+    "before": [
+      390,
+      1314
+    ],
+    "after": [
+      390,
+      1314
+    ],
+    "first_changed_row": 1058,
+    "changed_pixels": 2212,
+    "unchanged_area_bottom": 705,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "stations-1440.png",
+    "before": [
+      1440,
+      1484
+    ],
+    "after": [
+      1440,
+      1484
+    ],
+    "first_changed_row": 1275,
+    "changed_pixels": 2203,
+    "unchanged_area_bottom": 1171,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "stations-390.png",
+    "before": [
+      390,
+      2393
+    ],
+    "after": [
+      390,
+      2393
+    ],
+    "first_changed_row": 2137,
+    "changed_pixels": 2212,
+    "unchanged_area_bottom": 1784,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "today-1440.png",
+    "before": [
+      1440,
+      4031
+    ],
+    "after": [
+      1440,
+      4031
+    ],
+    "first_changed_row": 3814,
+    "changed_pixels": 2203,
+    "unchanged_area_bottom": 3726,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "today-390.png",
+    "before": [
+      390,
+      6163
+    ],
+    "after": [
+      390,
+      6163
+    ],
+    "first_changed_row": 5908,
+    "changed_pixels": 1999,
+    "unchanged_area_bottom": 5571,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "us-station-1440.png",
+    "before": [
+      1440,
+      1877
+    ],
+    "after": [
+      1440,
+      1877
+    ],
+    "first_changed_row": 597,
+    "changed_pixels": 117361,
+    "unchanged_area_bottom": 1877,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "us-station-390.png",
+    "before": [
+      390,
+      2621
+    ],
+    "after": [
+      390,
+      2621
+    ],
+    "first_changed_row": 1208,
+    "changed_pixels": 8018,
+    "unchanged_area_bottom": 2621,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "widgets-1440.png",
+    "before": [
+      1440,
+      3053
+    ],
+    "after": [
+      1440,
+      3053
+    ],
+    "first_changed_row": 2844,
+    "changed_pixels": 2203,
+    "unchanged_area_bottom": 2739,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  },
+  {
+    "image": "widgets-390.png",
+    "before": [
+      390,
+      4808
+    ],
+    "after": [
+      390,
+      4808
+    ],
+    "first_changed_row": 4552,
+    "changed_pixels": 2212,
+    "unchanged_area_bottom": 4199,
+    "changed_pixels_outside_authorized_areas_and_animation": 0
+  }
+]

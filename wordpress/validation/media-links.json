@@ -1,0 +1,136 @@
+{
+  "redirects": [
+    {
+      "path": "/for-media/",
+      "status": 301,
+      "location": "https://neomundi.cloud/how-it-works/"
+    },
+    {
+      "path": "/for-media",
+      "status": 301,
+      "location": "https://neomundi.cloud/how-it-works/"
+    },
+    {
+      "path": "/for-media.html",
+      "status": 301,
+      "location": "https://neomundi.cloud/how-it-works/"
+    },
+    {
+      "path": "/fr/for-media/",
+      "status": 301,
+      "location": "https://neomundi.cloud/how-it-works/"
+    },
+    {
+      "path": "/?page_id=137",
+      "status": 301,
+      "location": "https://neomundi.cloud/how-it-works/"
+    }
+  ],
+  "internal": [
+    {
+      "url": "https://neomundi.cloud/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/today/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/how-it-works/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/stations/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/widgets/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/widgets/quiz-public/daily.html",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/weather.json",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/daily-brief/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/aiweather-capsule/latest.json",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/assets/logo-controltower.png",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/contact/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/embed-demo.html",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/index.html",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/core-panel.html",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/us-station/",
+      "status": 200
+    },
+    {
+      "url": "https://neomundi.cloud/quiz/",
+      "status": 200
+    }
+  ],
+  "external": [
+    {
+      "original": "https://neomundi.org",
+      "chain": [
+        {
+          "url": "https://neomundi.org",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "original": "https://neomundi.io",
+      "chain": [
+        {
+          "url": "https://neomundi.io",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "original": "https://controltower.neomundi.io",
+      "chain": [
+        {
+          "url": "https://controltower.neomundi.io",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "sitemaps": [
+    {
+      "url": "https://neomundi.cloud/wp-sitemap.xml",
+      "status": 404,
+      "containsRetiredURL": false
+    },
+    {
+      "url": "https://neomundi.cloud/wp-sitemap-posts-page-1.xml",
+      "status": 404,
+      "containsRetiredURL": false
+    }
+  ]
+}

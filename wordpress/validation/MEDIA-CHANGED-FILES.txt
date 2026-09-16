@@ -1,0 +1,16 @@
+ai-weather/functions.php
+ai-weather/inc/content.php
+ai-weather/inc/readers.php
+ai-weather/inc/setup.php
+ai-weather/style.css
+ai-weather/template-parts/about-footer.html
+ai-weather/template-parts/contact-footer.html
+ai-weather/template-parts/daily-brief-footer.html
+ai-weather/template-parts/for-media-footer.html
+ai-weather/template-parts/home-footer.html
+ai-weather/template-parts/how-it-works-footer.html
+ai-weather/template-parts/stations-footer.html
+ai-weather/template-parts/today-footer.html
+ai-weather/template-parts/widgets-footer.html
+ai-weather/templates/contact.html
+ai-weather/templates/how-it-works.html

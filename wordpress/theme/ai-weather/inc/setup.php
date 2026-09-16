@@ -3,6 +3,7 @@ if (!defined('ABSPATH')) { exit; }
 function aw_install_content(){
     if(!current_user_can('manage_options'))return new WP_Error('forbidden','Administrator required.');
     $ids=get_option('aw_page_ids',[]);
+    unset($ids['for-media']); // Retired page must never be recreated by the installer.
     foreach(aw_catalog() as $key=>$schema){if($key==='shared'||!empty($ids[$key]))continue;$existing=get_page_by_path($key);if($existing)return new WP_Error('collision','Page slug already exists: '.$key.'. Nothing was overwritten.');}
     // Create page IDs before content so internal links are real WordPress permalinks.
     foreach(aw_catalog() as $key=>$schema){

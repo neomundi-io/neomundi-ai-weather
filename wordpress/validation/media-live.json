@@ -1,0 +1,343 @@
+{
+  "pages": [
+    {
+      "page": "home-1440",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "AI Weather™ is the daily weather report for AI behavior.",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/home-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "today-1440",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "Today's AI Weather™",
+      "overflow": false,
+      "cards": 12,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/today-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "how-it-works-1440",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "How It Works",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/how-it-works-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "stations-1440",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "Station USA",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/stations-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "widgets-1440",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "Embed AI Weather™ on your site",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/widgets-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "quiz-1440",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "Spot the Drift",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/home-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "daily-brief-1440",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "Get the daily reading in your inbox",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/daily-brief-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "about-1440",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "About ControlTower AI",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/about-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "contact-1440",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "Contact",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/contact-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "us-station-1440",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "NeoMundi Experimental Station US",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/station/us-station.css?v=2&ver=0.2.1",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/station/station-chrome.css?ver=0.2.1",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "home-390",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "AI Weather™ is the daily weather report for AI behavior.",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/home-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "today-390",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "Today's AI Weather™",
+      "overflow": false,
+      "cards": 12,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/today-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "how-it-works-390",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "How It Works",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/how-it-works-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "stations-390",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "Station USA",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/stations-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "widgets-390",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "Embed AI Weather™ on your site",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/widgets-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "quiz-390",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "Spot the Drift",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/home-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "daily-brief-390",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "Get the daily reading in your inbox",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/daily-brief-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "about-390",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "About ControlTower AI",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/about-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "contact-390",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "Contact",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/pages/contact-0.css?ver=0.2.1",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    },
+    {
+      "page": "us-station-390",
+      "status": 200,
+      "raw": 0,
+      "header": true,
+      "h1": "NeoMundi Experimental Station US",
+      "overflow": false,
+      "cards": 0,
+      "css": [
+        "https://neomundi.cloud/wp-content/plugins/honeypot/includes/css/wpa.css?ver=2.4.02",
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/station/us-station.css?v=2&ver=0.2.1",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/assets/station/station-chrome.css?ver=0.2.1",
+        "https://neomundi.cloud/wp-content/themes/ai-weather/style.css?ver=0.2.1"
+      ]
+    }
+  ],
+  "errors": [],
+  "resources": [
+    {
+      "page": "widgets-1440",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/data/history/2026-09-16.json",
+      "status": 404
+    },
+    {
+      "page": "us-station-1440",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/assets/station/us-station-earth-topo.json",
+      "status": 404
+    },
+    {
+      "page": "widgets-390",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/runtime/data/history/2026-09-16.json",
+      "status": 404
+    },
+    {
+      "page": "us-station-390",
+      "url": "https://neomundi.cloud/wp-content/themes/ai-weather/assets/station/us-station-earth-topo.json",
+      "status": 404
+    }
+  ],
+  "telemetry": [
+    {
+      "status": 200,
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}",
+      "origin": "*"
+    },
+    {
+      "status": 200,
+      "body": "{\"widget_id\":\"weather_v1\",\"host_domain\":\"neomundi.cloud\",\"version\":\"1.0.0\",\"event\":\"load\"}",
+      "origin": "*"
+    }
+  ],
+  "cors": [],
+  "quiz": true
+}

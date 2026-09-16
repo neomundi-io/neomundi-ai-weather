@@ -32,3 +32,4 @@ if(!process.argv.includes('--home-widgets')){
 }
 fs.mkdirSync(path.join(base,'test-results/canonical'),{recursive:true});fs.writeFileSync(path.join(base,'test-results/canonical/source-map.json'),JSON.stringify(proof,null,2));
 console.log('Canonical HTML generated:',selected.join(', '));
+require('./merge-media.cjs');

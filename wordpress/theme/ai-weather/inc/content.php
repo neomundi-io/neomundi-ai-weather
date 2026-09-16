@@ -1,6 +1,6 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
-function aw_catalog(){static $data=null;if($data===null)$data=json_decode(file_get_contents(__DIR__.'/catalog.json'),true);return $data;}
+function aw_catalog(){static $data=null;if($data===null){$data=json_decode(file_get_contents(__DIR__.'/catalog.json'),true);unset($data['for-media']);}return $data;}
 function aw_current_layout(){
     if(is_admin())return '';
     $catalog=aw_catalog();$id=get_queried_object_id();
@@ -16,7 +16,7 @@ function aw_current_layout(){
     if($path!=='shared'&&isset($catalog[$path]))return $path;
     return '';
 }
-function aw_page_url($key){$ids=get_option('aw_page_ids',[]);return !empty($ids[$key])?get_permalink($ids[$key]):home_url($key==='home'?'/':'/'.$key.'/');}
+function aw_page_url($key){if($key==='for-media')$key='how-it-works';$ids=get_option('aw_page_ids',[]);return !empty($ids[$key])?get_permalink($ids[$key]):home_url($key==='home'?'/':'/'.$key.'/');}
 function aw_urls($html){
     $html=str_replace(['@@THEME@@','@@RUNTIME@@'],[untrailingslashit(get_template_directory_uri()),get_theme_file_uri('runtime')],$html);
     return preg_replace_callback('/@@PAGE:([a-z-]+)@@/',function($m){return aw_page_url($m[1]);},$html);
@@ -47,6 +47,7 @@ function aw_render_layout($key,$blocks){
     // used in public output. Canonical HTML is the only visual/content authority.
     $html=file_get_contents(get_theme_file_path('templates/'.$key.'.html'));
     $html=preg_replace_callback('/@@PART:([a-z-]+)@@/',function($m){$file=get_theme_file_path('template-parts/'.$m[1].'.html');return is_file($file)?file_get_contents($file):'';},$html);
+    if($key==='how-it-works')$html=str_replace('@@READERS@@',aw_readers_render(),$html);
     return aw_urls($html);
 }
 function aw_seed_content($key){

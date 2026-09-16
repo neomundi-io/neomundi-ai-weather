@@ -1,0 +1,252 @@
+[
+  {
+    "slug": "home",
+    "width": 1440,
+    "footer": {
+      "x": 0,
+      "y": 3612.59375,
+      "width": 1440,
+      "height": 312.953125
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "how-it-works",
+    "width": 1440,
+    "footer": {
+      "x": 0,
+      "y": 3499.21875,
+      "width": 1440,
+      "height": 312.953125
+    },
+    "block": {
+      "x": 0,
+      "y": 2847.296875,
+      "width": 1440,
+      "height": 651.921875
+    },
+    "animation": null
+  },
+  {
+    "slug": "widgets",
+    "width": 1440,
+    "footer": {
+      "x": 0,
+      "y": 2739.953125,
+      "width": 1440,
+      "height": 312.953125
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "today",
+    "width": 1440,
+    "footer": {
+      "x": 0,
+      "y": 3726.390625,
+      "width": 1440,
+      "height": 304.375
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "stations",
+    "width": 1440,
+    "footer": {
+      "x": 0,
+      "y": 1171.3125,
+      "width": 1440,
+      "height": 312.953125
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "daily-brief",
+    "width": 1440,
+    "footer": {
+      "x": 0,
+      "y": 782.34375,
+      "width": 1440,
+      "height": 312.953125
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "about",
+    "width": 1440,
+    "footer": {
+      "x": 0,
+      "y": 1099.21875,
+      "width": 1440,
+      "height": 312.953125
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "contact",
+    "width": 1440,
+    "footer": {
+      "x": 0,
+      "y": 678.890625,
+      "width": 1440,
+      "height": 312.953125
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "us-station",
+    "width": 1440,
+    "footer": null,
+    "block": null,
+    "animation": {
+      "x": 0,
+      "y": 540.546875,
+      "width": 1440,
+      "height": 1000
+    }
+  },
+  {
+    "slug": "quiz",
+    "width": 1440,
+    "footer": {
+      "x": 0,
+      "y": 729.3125,
+      "width": 1440,
+      "height": 312.953125
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "home",
+    "width": 390,
+    "footer": {
+      "x": 0,
+      "y": 6078.609375,
+      "width": 390,
+      "height": 608.109375
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "how-it-works",
+    "width": 390,
+    "footer": {
+      "x": 0,
+      "y": 6391.734375,
+      "width": 390,
+      "height": 608.109375
+    },
+    "block": {
+      "x": 0,
+      "y": 5280.34375,
+      "width": 390,
+      "height": 1111.390625
+    },
+    "animation": null
+  },
+  {
+    "slug": "widgets",
+    "width": 390,
+    "footer": {
+      "x": 0,
+      "y": 4199.59375,
+      "width": 390,
+      "height": 608.109375
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "today",
+    "width": 390,
+    "footer": {
+      "x": 0,
+      "y": 5571.21875,
+      "width": 390,
+      "height": 592.15625
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "stations",
+    "width": 390,
+    "footer": {
+      "x": 0,
+      "y": 1784.4375,
+      "width": 390,
+      "height": 608.109375
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "daily-brief",
+    "width": 390,
+    "footer": {
+      "x": 0,
+      "y": 1245.28125,
+      "width": 390,
+      "height": 608.109375
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "about",
+    "width": 390,
+    "footer": {
+      "x": 0,
+      "y": 1451.65625,
+      "width": 390,
+      "height": 613.6875
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "contact",
+    "width": 390,
+    "footer": {
+      "x": 0,
+      "y": 993.453125,
+      "width": 390,
+      "height": 613.6875
+    },
+    "block": null,
+    "animation": null
+  },
+  {
+    "slug": "us-station",
+    "width": 390,
+    "footer": null,
+    "block": null,
+    "animation": {
+      "x": 0,
+      "y": 879.09375,
+      "width": 390,
+      "height": 1000
+    }
+  },
+  {
+    "slug": "quiz",
+    "width": 390,
+    "footer": {
+      "x": 0,
+      "y": 705.546875,
+      "width": 390,
+      "height": 608.109375
+    },
+    "block": null,
+    "animation": null
+  }
+]
