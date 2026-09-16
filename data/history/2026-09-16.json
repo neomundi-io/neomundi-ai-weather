@@ -279,7 +279,71 @@
                                              "interpretation":  null,
                                              "judgment_demand":  null,
                                              "weather_authority":  false,
-                                             "lab_status":  "measured"
+                                             "lab_status":  "measured",
+                                             "usable":  true,
+                                             "repetition_count":  7,
+                                             "current_longitudinal_state":  {
+                                                                                "state":  "standard",
+                                                                                "deviation_index":  0,
+                                                                                "uncertainty":  {
+                                                                                                    "estimator":  "wilson_90pct_descriptive_only",
+                                                                                                    "low":  72.12,
+                                                                                                    "mid":  86.06,
+                                                                                                    "high":  100
+                                                                                                },
+                                                                                "as_of":  "2026-09-16"
+                                                                            },
+                                             "deviation_index":  0,
+                                             "baseline":  {
+                                                              "status":  "established",
+                                                              "window_start":  "2026-08-21",
+                                                              "window_end":  "2026-09-04",
+                                                              "window_days_used":  14,
+                                                              "window_days_target":  14,
+                                                              "dispersion_method":  "mad",
+                                                              "median":  100,
+                                                              "mad":  0,
+                                                              "mad_floor":  7.1428571428571432,
+                                                              "mad_floor_applied":  true,
+                                                              "effective_mad":  7.1428571428571432,
+                                                              "variation_fraction_median":  0
+                                                          },
+                                             "uncertainty":  {
+                                                                 "estimator":  "wilson_90pct_descriptive_only",
+                                                                 "low":  72.12,
+                                                                 "mid":  86.06,
+                                                                 "high":  100
+                                                             },
+                                             "detected_events":  [
+                                                                     {
+                                                                         "type":  "coverage_anomaly",
+                                                                         "date":  "2026-09-10",
+                                                                         "confidence":  "high_completeness_fact",
+                                                                         "evidence":  {
+                                                                                          "fully_scored":  0,
+                                                                                          "expected":  7,
+                                                                                          "coverage":  0
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "model_identity_unverified",
+                                                                         "date":  null,
+                                                                         "scope":  "system_wide",
+                                                                         "confidence":  "n_a_methodological_caveat",
+                                                                         "evidence":  {
+                                                                                          "identity_status":  "unknown",
+                                                                                          "model_requested":  "chat-latest",
+                                                                                          "model_declared":  "gpt-4o-2024-11-20"
+                                                                                      }
+                                                                     }
+                                                                 ],
+                                             "system_identity":  {
+                                                                     "model_declared":  "gpt-4o-2024-11-20",
+                                                                     "model_requested":  "chat-latest",
+                                                                     "model_returned":  null,
+                                                                     "model_pinned":  false,
+                                                                     "identity_status":  "unknown"
+                                                                 }
                                          },
                         "last_observed_at":  "2026-09-16T05:32:37.681433Z",
                         "detail":  {
@@ -464,7 +528,71 @@
                                              "interpretation":  null,
                                              "judgment_demand":  null,
                                              "weather_authority":  false,
-                                             "lab_status":  "measured"
+                                             "lab_status":  "measured",
+                                             "usable":  true,
+                                             "repetition_count":  7,
+                                             "current_longitudinal_state":  {
+                                                                                "state":  "standard",
+                                                                                "deviation_index":  0,
+                                                                                "uncertainty":  {
+                                                                                                    "estimator":  "wilson_90pct_descriptive_only",
+                                                                                                    "low":  72.12,
+                                                                                                    "mid":  86.06,
+                                                                                                    "high":  100
+                                                                                                },
+                                                                                "as_of":  "2026-09-16"
+                                                                            },
+                                             "deviation_index":  0,
+                                             "baseline":  {
+                                                              "status":  "established",
+                                                              "window_start":  "2026-08-21",
+                                                              "window_end":  "2026-09-04",
+                                                              "window_days_used":  14,
+                                                              "window_days_target":  14,
+                                                              "dispersion_method":  "mad",
+                                                              "median":  100,
+                                                              "mad":  0,
+                                                              "mad_floor":  7.1428571428571432,
+                                                              "mad_floor_applied":  true,
+                                                              "effective_mad":  7.1428571428571432,
+                                                              "variation_fraction_median":  0
+                                                          },
+                                             "uncertainty":  {
+                                                                 "estimator":  "wilson_90pct_descriptive_only",
+                                                                 "low":  72.12,
+                                                                 "mid":  86.06,
+                                                                 "high":  100
+                                                             },
+                                             "detected_events":  [
+                                                                     {
+                                                                         "type":  "coverage_anomaly",
+                                                                         "date":  "2026-09-10",
+                                                                         "confidence":  "high_completeness_fact",
+                                                                         "evidence":  {
+                                                                                          "fully_scored":  0,
+                                                                                          "expected":  7,
+                                                                                          "coverage":  0
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "model_identity_unverified",
+                                                                         "date":  null,
+                                                                         "scope":  "system_wide",
+                                                                         "confidence":  "n_a_methodological_caveat",
+                                                                         "evidence":  {
+                                                                                          "identity_status":  "declared",
+                                                                                          "model_requested":  "claude-sonnet-4-5-20250929",
+                                                                                          "model_declared":  "claude-sonnet-4-5-20250929"
+                                                                                      }
+                                                                     }
+                                                                 ],
+                                             "system_identity":  {
+                                                                     "model_declared":  "claude-sonnet-4-5-20250929",
+                                                                     "model_requested":  "claude-sonnet-4-5-20250929",
+                                                                     "model_returned":  null,
+                                                                     "model_pinned":  true,
+                                                                     "identity_status":  "declared"
+                                                                 }
                                          },
                         "last_observed_at":  "2026-09-16T05:34:31.169412Z",
                         "detail":  {
@@ -653,7 +781,110 @@
                                              "interpretation":  null,
                                              "judgment_demand":  null,
                                              "weather_authority":  false,
-                                             "lab_status":  "measured"
+                                             "lab_status":  "measured",
+                                             "usable":  true,
+                                             "repetition_count":  7,
+                                             "current_longitudinal_state":  {
+                                                                                "state":  "standard",
+                                                                                "deviation_index":  0,
+                                                                                "uncertainty":  {
+                                                                                                    "estimator":  "wilson_90pct_descriptive_only",
+                                                                                                    "low":  3.25,
+                                                                                                    "mid":  24.24,
+                                                                                                    "high":  45.23
+                                                                                                },
+                                                                                "as_of":  "2026-09-16"
+                                                                            },
+                                             "deviation_index":  0,
+                                             "baseline":  {
+                                                              "status":  "established",
+                                                              "window_start":  "2026-08-21",
+                                                              "window_end":  "2026-09-04",
+                                                              "window_days_used":  14,
+                                                              "window_days_target":  14,
+                                                              "dispersion_method":  "mad",
+                                                              "median":  14,
+                                                              "mad":  14,
+                                                              "mad_floor":  7.1428571428571432,
+                                                              "mad_floor_applied":  false,
+                                                              "effective_mad":  14,
+                                                              "variation_fraction_median":  0
+                                                          },
+                                             "uncertainty":  {
+                                                                 "estimator":  "wilson_90pct_descriptive_only",
+                                                                 "low":  3.25,
+                                                                 "mid":  24.24,
+                                                                 "high":  45.23
+                                                             },
+                                             "detected_events":  [
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-05",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  0,
+                                                                                          "baseline_median":  14,
+                                                                                          "baseline_mad":  14,
+                                                                                          "deviation_index":  -1
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "persistent_deviation",
+                                                                         "date":  "2026-09-06",
+                                                                         "tier":  "attention_accrue",
+                                                                         "confidence":  "medium_high",
+                                                                         "evidence":  {
+                                                                                          "streak_days":  2,
+                                                                                          "deviation_index":  -1
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "coverage_anomaly",
+                                                                         "date":  "2026-09-10",
+                                                                         "confidence":  "high_completeness_fact",
+                                                                         "evidence":  {
+                                                                                          "fully_scored":  0,
+                                                                                          "expected":  7,
+                                                                                          "coverage":  0
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "coverage_anomaly",
+                                                                         "date":  "2026-09-11",
+                                                                         "confidence":  "high_completeness_fact",
+                                                                         "evidence":  {
+                                                                                          "fully_scored":  0,
+                                                                                          "expected":  7,
+                                                                                          "coverage":  0
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "return_to_baseline",
+                                                                         "date":  "2026-09-16",
+                                                                         "confidence":  "medium_high",
+                                                                         "evidence":  {
+                                                                                          "deviation_index":  0
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "model_identity_unverified",
+                                                                         "date":  null,
+                                                                         "scope":  "system_wide",
+                                                                         "confidence":  "n_a_methodological_caveat",
+                                                                         "evidence":  {
+                                                                                          "identity_status":  "declared",
+                                                                                          "model_requested":  "gemini-3.6-flash",
+                                                                                          "model_declared":  "gemini-3.6-flash"
+                                                                                      }
+                                                                     }
+                                                                 ],
+                                             "system_identity":  {
+                                                                     "model_declared":  "gemini-3.6-flash",
+                                                                     "model_requested":  "gemini-3.6-flash",
+                                                                     "model_returned":  null,
+                                                                     "model_pinned":  true,
+                                                                     "identity_status":  "declared"
+                                                                 }
                                          },
                         "last_observed_at":  "2026-09-16T05:36:38.988891Z",
                         "detail":  {
@@ -840,7 +1071,101 @@
                                              "interpretation":  null,
                                              "judgment_demand":  null,
                                              "weather_authority":  false,
-                                             "lab_status":  "measured"
+                                             "lab_status":  "measured",
+                                             "usable":  true,
+                                             "repetition_count":  7,
+                                             "current_longitudinal_state":  {
+                                                                                "state":  "standard",
+                                                                                "deviation_index":  1.0344827586206897,
+                                                                                "uncertainty":  {
+                                                                                                    "estimator":  "wilson_90pct_descriptive_only",
+                                                                                                    "low":  54.77,
+                                                                                                    "mid":  75.76,
+                                                                                                    "high":  96.75
+                                                                                                },
+                                                                                "as_of":  "2026-09-16"
+                                                                            },
+                                             "deviation_index":  1.0344827586206897,
+                                             "baseline":  {
+                                                              "status":  "established",
+                                                              "window_start":  "2026-08-21",
+                                                              "window_end":  "2026-09-04",
+                                                              "window_days_used":  14,
+                                                              "window_days_target":  14,
+                                                              "dispersion_method":  "mad",
+                                                              "median":  71,
+                                                              "mad":  14.5,
+                                                              "mad_floor":  7.1428571428571432,
+                                                              "mad_floor_applied":  false,
+                                                              "effective_mad":  14.5,
+                                                              "variation_fraction_median":  0
+                                                          },
+                                             "uncertainty":  {
+                                                                 "estimator":  "wilson_90pct_descriptive_only",
+                                                                 "low":  54.77,
+                                                                 "mid":  75.76,
+                                                                 "high":  96.75
+                                                             },
+                                             "detected_events":  [
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-06",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  100,
+                                                                                          "baseline_median":  71,
+                                                                                          "baseline_mad":  14.5,
+                                                                                          "deviation_index":  2
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "persistent_deviation",
+                                                                         "date":  "2026-09-07",
+                                                                         "tier":  "attention_accrue",
+                                                                         "confidence":  "medium_high",
+                                                                         "evidence":  {
+                                                                                          "streak_days":  2,
+                                                                                          "deviation_index":  1.0344827586206897
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "return_to_baseline",
+                                                                         "date":  "2026-09-15",
+                                                                         "confidence":  "medium_high",
+                                                                         "evidence":  {
+                                                                                          "deviation_index":  0
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-16",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  86,
+                                                                                          "baseline_median":  71,
+                                                                                          "baseline_mad":  14.5,
+                                                                                          "deviation_index":  1.0344827586206897
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "model_identity_unverified",
+                                                                         "date":  null,
+                                                                         "scope":  "system_wide",
+                                                                         "confidence":  "n_a_methodological_caveat",
+                                                                         "evidence":  {
+                                                                                          "identity_status":  "declared",
+                                                                                          "model_requested":  "grok-4.5",
+                                                                                          "model_declared":  "grok-4.5"
+                                                                                      }
+                                                                     }
+                                                                 ],
+                                             "system_identity":  {
+                                                                     "model_declared":  "grok-4.5",
+                                                                     "model_requested":  "grok-4.5",
+                                                                     "model_returned":  null,
+                                                                     "model_pinned":  true,
+                                                                     "identity_status":  "declared"
+                                                                 }
                                          },
                         "last_observed_at":  "2026-09-16T05:35:17.284853Z",
                         "detail":  {
@@ -1029,7 +1354,111 @@
                                              "interpretation":  null,
                                              "judgment_demand":  null,
                                              "weather_authority":  false,
-                                             "lab_status":  "measured"
+                                             "lab_status":  "measured",
+                                             "usable":  true,
+                                             "repetition_count":  7,
+                                             "current_longitudinal_state":  {
+                                                                                "state":  "attention_accrue",
+                                                                                "deviation_index":  -1.0714285714285714,
+                                                                                "uncertainty":  {
+                                                                                                    "estimator":  "wilson_90pct_descriptive_only",
+                                                                                                    "low":  40.86,
+                                                                                                    "mid":  65.45,
+                                                                                                    "high":  90.04
+                                                                                                },
+                                                                                "as_of":  "2026-09-16"
+                                                                            },
+                                             "deviation_index":  -1.0714285714285714,
+                                             "baseline":  {
+                                                              "status":  "established",
+                                                              "window_start":  "2026-08-21",
+                                                              "window_end":  "2026-09-04",
+                                                              "window_days_used":  14,
+                                                              "window_days_target":  14,
+                                                              "dispersion_method":  "mad",
+                                                              "median":  86,
+                                                              "mad":  14,
+                                                              "mad_floor":  7.1428571428571432,
+                                                              "mad_floor_applied":  false,
+                                                              "effective_mad":  14,
+                                                              "variation_fraction_median":  0
+                                                          },
+                                             "uncertainty":  {
+                                                                 "estimator":  "wilson_90pct_descriptive_only",
+                                                                 "low":  40.86,
+                                                                 "mid":  65.45,
+                                                                 "high":  90.04
+                                                             },
+                                             "detected_events":  [
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-05",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  57,
+                                                                                          "baseline_median":  86,
+                                                                                          "baseline_mad":  14,
+                                                                                          "deviation_index":  -2.0714285714285716
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "persistent_deviation",
+                                                                         "date":  "2026-09-06",
+                                                                         "tier":  "attention_accrue",
+                                                                         "confidence":  "medium_high",
+                                                                         "evidence":  {
+                                                                                          "streak_days":  2,
+                                                                                          "deviation_index":  -1.0714285714285714
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "return_to_baseline",
+                                                                         "date":  "2026-09-11",
+                                                                         "confidence":  "medium_high",
+                                                                         "evidence":  {
+                                                                                          "deviation_index":  0
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-13",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  71,
+                                                                                          "baseline_median":  86,
+                                                                                          "baseline_mad":  14,
+                                                                                          "deviation_index":  -1.0714285714285714
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "persistent_deviation",
+                                                                         "date":  "2026-09-14",
+                                                                         "tier":  "attention_accrue",
+                                                                         "confidence":  "medium_high",
+                                                                         "evidence":  {
+                                                                                          "streak_days":  2,
+                                                                                          "deviation_index":  -1.0714285714285714
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "model_identity_unverified",
+                                                                         "date":  null,
+                                                                         "scope":  "system_wide",
+                                                                         "confidence":  "n_a_methodological_caveat",
+                                                                         "evidence":  {
+                                                                                          "identity_status":  "declared",
+                                                                                          "model_requested":  "mistral-medium-3-5",
+                                                                                          "model_declared":  "mistral-medium-3-5"
+                                                                                      }
+                                                                     }
+                                                                 ],
+                                             "system_identity":  {
+                                                                     "model_declared":  "mistral-medium-3-5",
+                                                                     "model_requested":  "mistral-medium-3-5",
+                                                                     "model_returned":  null,
+                                                                     "model_pinned":  true,
+                                                                     "identity_status":  "declared"
+                                                                 }
                                          },
                         "last_observed_at":  "2026-09-16T05:32:08.874593Z",
                         "detail":  {
@@ -1216,7 +1645,115 @@
                                              "interpretation":  null,
                                              "judgment_demand":  null,
                                              "weather_authority":  false,
-                                             "lab_status":  "measured"
+                                             "lab_status":  "measured",
+                                             "usable":  true,
+                                             "repetition_count":  7,
+                                             "current_longitudinal_state":  {
+                                                                                "state":  "standard",
+                                                                                "deviation_index":  -7,
+                                                                                "uncertainty":  {
+                                                                                                    "estimator":  "wilson_90pct_descriptive_only",
+                                                                                                    "low":  18.64,
+                                                                                                    "mid":  44.85,
+                                                                                                    "high":  71.05
+                                                                                                },
+                                                                                "as_of":  "2026-09-16"
+                                                                            },
+                                             "deviation_index":  -7,
+                                             "baseline":  {
+                                                              "status":  "established",
+                                                              "window_start":  "2026-08-21",
+                                                              "window_end":  "2026-09-05",
+                                                              "window_days_used":  14,
+                                                              "window_days_target":  14,
+                                                              "dispersion_method":  "mad",
+                                                              "median":  93,
+                                                              "mad":  7,
+                                                              "mad_floor":  7.1428571428571432,
+                                                              "mad_floor_applied":  true,
+                                                              "effective_mad":  7.1428571428571432,
+                                                              "variation_fraction_median":  0
+                                                          },
+                                             "uncertainty":  {
+                                                                 "estimator":  "wilson_90pct_descriptive_only",
+                                                                 "low":  18.64,
+                                                                 "mid":  44.85,
+                                                                 "high":  71.05
+                                                             },
+                                             "detected_events":  [
+                                                                     {
+                                                                         "type":  "coverage_anomaly",
+                                                                         "date":  "2026-09-02",
+                                                                         "confidence":  "high_completeness_fact",
+                                                                         "evidence":  {
+                                                                                          "fully_scored":  1,
+                                                                                          "expected":  7,
+                                                                                          "coverage":  0.1429
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-06",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  57,
+                                                                                          "baseline_median":  93,
+                                                                                          "baseline_mad":  7,
+                                                                                          "deviation_index":  -5.04
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-08",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  57,
+                                                                                          "baseline_median":  93,
+                                                                                          "baseline_mad":  7,
+                                                                                          "deviation_index":  -5.04
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-13",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  71,
+                                                                                          "baseline_median":  93,
+                                                                                          "baseline_mad":  7,
+                                                                                          "deviation_index":  -3.0799999999999996
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-16",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  43,
+                                                                                          "baseline_median":  93,
+                                                                                          "baseline_mad":  7,
+                                                                                          "deviation_index":  -7
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "model_identity_unverified",
+                                                                         "date":  null,
+                                                                         "scope":  "system_wide",
+                                                                         "confidence":  "n_a_methodological_caveat",
+                                                                         "evidence":  {
+                                                                                          "identity_status":  "declared",
+                                                                                          "model_requested":  "deepseek-v4-pro",
+                                                                                          "model_declared":  "deepseek-v4-pro"
+                                                                                      }
+                                                                     }
+                                                                 ],
+                                             "system_identity":  {
+                                                                     "model_declared":  "deepseek-v4-pro",
+                                                                     "model_requested":  "deepseek-v4-pro",
+                                                                     "model_returned":  null,
+                                                                     "model_pinned":  true,
+                                                                     "identity_status":  "declared"
+                                                                 }
                                          },
                         "last_observed_at":  "2026-09-16T05:36:18.308427Z",
                         "detail":  {
@@ -1405,7 +1942,72 @@
                                              "interpretation":  null,
                                              "judgment_demand":  null,
                                              "weather_authority":  false,
-                                             "lab_status":  "measured"
+                                             "lab_status":  "measured",
+                                             "usable":  true,
+                                             "repetition_count":  7,
+                                             "current_longitudinal_state":  {
+                                                                                "state":  "standard",
+                                                                                "deviation_index":  0,
+                                                                                "uncertainty":  {
+                                                                                                    "estimator":  "wilson_90pct_descriptive_only",
+                                                                                                    "low":  72.12,
+                                                                                                    "mid":  86.06,
+                                                                                                    "high":  100
+                                                                                                },
+                                                                                "as_of":  "2026-09-16"
+                                                                            },
+                                             "deviation_index":  0,
+                                             "baseline":  {
+                                                              "status":  "established",
+                                                              "window_start":  "2026-08-21",
+                                                              "window_end":  "2026-09-04",
+                                                              "window_days_used":  14,
+                                                              "window_days_target":  14,
+                                                              "dispersion_method":  "mad",
+                                                              "median":  100,
+                                                              "mad":  0,
+                                                              "mad_floor":  7.1428571428571432,
+                                                              "mad_floor_applied":  true,
+                                                              "effective_mad":  7.1428571428571432,
+                                                              "variation_fraction_median":  0
+                                                          },
+                                             "uncertainty":  {
+                                                                 "estimator":  "wilson_90pct_descriptive_only",
+                                                                 "low":  72.12,
+                                                                 "mid":  86.06,
+                                                                 "high":  100
+                                                             },
+                                             "detected_events":  [
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-05",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  86,
+                                                                                          "baseline_median":  100,
+                                                                                          "baseline_mad":  0,
+                                                                                          "deviation_index":  -1.96
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "model_identity_unverified",
+                                                                         "date":  null,
+                                                                         "scope":  "system_wide",
+                                                                         "confidence":  "n_a_methodological_caveat",
+                                                                         "evidence":  {
+                                                                                          "identity_status":  "declared",
+                                                                                          "model_requested":  "qwen3.7-max-2026-06-08",
+                                                                                          "model_declared":  "qwen3.7-max-2026-06-08"
+                                                                                      }
+                                                                     }
+                                                                 ],
+                                             "system_identity":  {
+                                                                     "model_declared":  "qwen3.7-max-2026-06-08",
+                                                                     "model_requested":  "qwen3.7-max-2026-06-08",
+                                                                     "model_returned":  null,
+                                                                     "model_pinned":  true,
+                                                                     "identity_status":  "declared"
+                                                                 }
                                          },
                         "last_observed_at":  "2026-09-16T05:45:56.467809Z",
                         "detail":  {
@@ -1590,7 +2192,112 @@
                                              "interpretation":  null,
                                              "judgment_demand":  null,
                                              "weather_authority":  false,
-                                             "lab_status":  "measured"
+                                             "lab_status":  "measured",
+                                             "usable":  true,
+                                             "repetition_count":  7,
+                                             "current_longitudinal_state":  {
+                                                                                "state":  "standard",
+                                                                                "deviation_index":  -3.0799999999999996,
+                                                                                "uncertainty":  {
+                                                                                                    "estimator":  "wilson_90pct_descriptive_only",
+                                                                                                    "low":  40.86,
+                                                                                                    "mid":  65.45,
+                                                                                                    "high":  90.04
+                                                                                                },
+                                                                                "as_of":  "2026-09-16"
+                                                                            },
+                                             "deviation_index":  -3.0799999999999996,
+                                             "baseline":  {
+                                                              "status":  "established",
+                                                              "window_start":  "2026-08-21",
+                                                              "window_end":  "2026-09-04",
+                                                              "window_days_used":  14,
+                                                              "window_days_target":  14,
+                                                              "dispersion_method":  "mad",
+                                                              "median":  93,
+                                                              "mad":  7,
+                                                              "mad_floor":  7.1428571428571432,
+                                                              "mad_floor_applied":  true,
+                                                              "effective_mad":  7.1428571428571432,
+                                                              "variation_fraction_median":  0
+                                                          },
+                                             "uncertainty":  {
+                                                                 "estimator":  "wilson_90pct_descriptive_only",
+                                                                 "low":  40.86,
+                                                                 "mid":  65.45,
+                                                                 "high":  90.04
+                                                             },
+                                             "detected_events":  [
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-07",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  71,
+                                                                                          "baseline_median":  93,
+                                                                                          "baseline_mad":  7,
+                                                                                          "deviation_index":  -3.0799999999999996
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "persistent_deviation",
+                                                                         "date":  "2026-09-08",
+                                                                         "tier":  "attention_accrue",
+                                                                         "confidence":  "medium_high",
+                                                                         "evidence":  {
+                                                                                          "streak_days":  2,
+                                                                                          "deviation_index":  -3.0799999999999996
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "return_to_baseline",
+                                                                         "date":  "2026-09-10",
+                                                                         "confidence":  "medium_high",
+                                                                         "evidence":  {
+                                                                                          "deviation_index":  -0.98
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-13",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  57,
+                                                                                          "baseline_median":  93,
+                                                                                          "baseline_mad":  7,
+                                                                                          "deviation_index":  -5.04
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-16",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  71,
+                                                                                          "baseline_median":  93,
+                                                                                          "baseline_mad":  7,
+                                                                                          "deviation_index":  -3.0799999999999996
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "model_identity_unverified",
+                                                                         "date":  null,
+                                                                         "scope":  "system_wide",
+                                                                         "confidence":  "n_a_methodological_caveat",
+                                                                         "evidence":  {
+                                                                                          "identity_status":  "declared",
+                                                                                          "model_requested":  "kimi-k3",
+                                                                                          "model_declared":  "kimi-k3"
+                                                                                      }
+                                                                     }
+                                                                 ],
+                                             "system_identity":  {
+                                                                     "model_declared":  "kimi-k3",
+                                                                     "model_requested":  "kimi-k3",
+                                                                     "model_returned":  null,
+                                                                     "model_pinned":  true,
+                                                                     "identity_status":  "declared"
+                                                                 }
                                          },
                         "last_observed_at":  "2026-09-16T05:18:58.461963Z",
                         "detail":  {
@@ -1777,7 +2484,115 @@
                                              "interpretation":  null,
                                              "judgment_demand":  null,
                                              "weather_authority":  false,
-                                             "lab_status":  "measured"
+                                             "lab_status":  "measured",
+                                             "usable":  true,
+                                             "repetition_count":  7,
+                                             "current_longitudinal_state":  {
+                                                                                "state":  "standard",
+                                                                                "deviation_index":  0.5,
+                                                                                "uncertainty":  {
+                                                                                                    "estimator":  "wilson_90pct_descriptive_only",
+                                                                                                    "low":  28.95,
+                                                                                                    "mid":  55.15,
+                                                                                                    "high":  81.36
+                                                                                                },
+                                                                                "as_of":  "2026-09-16"
+                                                                            },
+                                             "deviation_index":  0.5,
+                                             "baseline":  {
+                                                              "status":  "established",
+                                                              "window_start":  "2026-08-22",
+                                                              "window_end":  "2026-09-05",
+                                                              "window_days_used":  14,
+                                                              "window_days_target":  14,
+                                                              "dispersion_method":  "mad",
+                                                              "median":  43,
+                                                              "mad":  28,
+                                                              "mad_floor":  7.1428571428571432,
+                                                              "mad_floor_applied":  false,
+                                                              "effective_mad":  28,
+                                                              "variation_fraction_median":  0
+                                                          },
+                                             "uncertainty":  {
+                                                                 "estimator":  "wilson_90pct_descriptive_only",
+                                                                 "low":  28.95,
+                                                                 "mid":  55.15,
+                                                                 "high":  81.36
+                                                             },
+                                             "detected_events":  [
+                                                                     {
+                                                                         "type":  "coverage_anomaly",
+                                                                         "date":  "2026-08-21",
+                                                                         "confidence":  "high_completeness_fact",
+                                                                         "evidence":  {
+                                                                                          "fully_scored":  null,
+                                                                                          "expected":  null,
+                                                                                          "coverage":  null
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-06",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  71,
+                                                                                          "baseline_median":  43,
+                                                                                          "baseline_mad":  28,
+                                                                                          "deviation_index":  1
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-08",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  0,
+                                                                                          "baseline_median":  43,
+                                                                                          "baseline_mad":  28,
+                                                                                          "deviation_index":  -1.5357142857142858
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-10",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  0,
+                                                                                          "baseline_median":  43,
+                                                                                          "baseline_mad":  28,
+                                                                                          "deviation_index":  -1.5357142857142858
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-14",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  14,
+                                                                                          "baseline_median":  43,
+                                                                                          "baseline_mad":  28,
+                                                                                          "deviation_index":  -1.0357142857142858
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "model_identity_unverified",
+                                                                         "date":  null,
+                                                                         "scope":  "system_wide",
+                                                                         "confidence":  "n_a_methodological_caveat",
+                                                                         "evidence":  {
+                                                                                          "identity_status":  "declared",
+                                                                                          "model_requested":  "command-a-03-2025",
+                                                                                          "model_declared":  "command-a-03-2025"
+                                                                                      }
+                                                                     }
+                                                                 ],
+                                             "system_identity":  {
+                                                                     "model_declared":  "command-a-03-2025",
+                                                                     "model_requested":  "command-a-03-2025",
+                                                                     "model_returned":  null,
+                                                                     "model_pinned":  true,
+                                                                     "identity_status":  "declared"
+                                                                 }
                                          },
                         "last_observed_at":  "2026-09-16T05:33:57.581423Z",
                         "detail":  {
@@ -1966,7 +2781,82 @@
                                              "interpretation":  null,
                                              "judgment_demand":  null,
                                              "weather_authority":  false,
-                                             "lab_status":  "measured"
+                                             "lab_status":  "measured",
+                                             "usable":  true,
+                                             "repetition_count":  7,
+                                             "current_longitudinal_state":  {
+                                                                                "state":  "standard",
+                                                                                "deviation_index":  -4.06,
+                                                                                "uncertainty":  {
+                                                                                                    "estimator":  "wilson_90pct_descriptive_only",
+                                                                                                    "low":  40.86,
+                                                                                                    "mid":  65.45,
+                                                                                                    "high":  90.04
+                                                                                                },
+                                                                                "as_of":  "2026-09-16"
+                                                                            },
+                                             "deviation_index":  -4.06,
+                                             "baseline":  {
+                                                              "status":  "established",
+                                                              "window_start":  "2026-08-22",
+                                                              "window_end":  "2026-09-05",
+                                                              "window_days_used":  14,
+                                                              "window_days_target":  14,
+                                                              "dispersion_method":  "mad",
+                                                              "median":  100,
+                                                              "mad":  0,
+                                                              "mad_floor":  7.1428571428571432,
+                                                              "mad_floor_applied":  true,
+                                                              "effective_mad":  7.1428571428571432,
+                                                              "variation_fraction_median":  0
+                                                          },
+                                             "uncertainty":  {
+                                                                 "estimator":  "wilson_90pct_descriptive_only",
+                                                                 "low":  40.86,
+                                                                 "mid":  65.45,
+                                                                 "high":  90.04
+                                                             },
+                                             "detected_events":  [
+                                                                     {
+                                                                         "type":  "coverage_anomaly",
+                                                                         "date":  "2026-08-21",
+                                                                         "confidence":  "high_completeness_fact",
+                                                                         "evidence":  {
+                                                                                          "fully_scored":  null,
+                                                                                          "expected":  null,
+                                                                                          "coverage":  null
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-16",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  71,
+                                                                                          "baseline_median":  100,
+                                                                                          "baseline_mad":  0,
+                                                                                          "deviation_index":  -4.06
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "model_identity_unverified",
+                                                                         "date":  null,
+                                                                         "scope":  "system_wide",
+                                                                         "confidence":  "n_a_methodological_caveat",
+                                                                         "evidence":  {
+                                                                                          "identity_status":  "declared",
+                                                                                          "model_requested":  "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+                                                                                          "model_declared":  "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+                                                                                      }
+                                                                     }
+                                                                 ],
+                                             "system_identity":  {
+                                                                     "model_declared":  "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+                                                                     "model_requested":  "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+                                                                     "model_returned":  null,
+                                                                     "model_pinned":  true,
+                                                                     "identity_status":  "declared"
+                                                                 }
                                          },
                         "last_observed_at":  "2026-09-16T05:32:46.802793Z",
                         "detail":  {
@@ -2155,7 +3045,82 @@
                                              "interpretation":  null,
                                              "judgment_demand":  null,
                                              "weather_authority":  false,
-                                             "lab_status":  "measured"
+                                             "lab_status":  "measured",
+                                             "usable":  true,
+                                             "repetition_count":  7,
+                                             "current_longitudinal_state":  {
+                                                                                "state":  "attention_accrue",
+                                                                                "deviation_index":  0,
+                                                                                "uncertainty":  {
+                                                                                                    "estimator":  "wilson_90pct_descriptive_only",
+                                                                                                    "low":  9.96,
+                                                                                                    "mid":  34.55,
+                                                                                                    "high":  59.14
+                                                                                                },
+                                                                                "as_of":  "2026-09-16"
+                                                                            },
+                                             "deviation_index":  0,
+                                             "baseline":  {
+                                                              "status":  "established",
+                                                              "window_start":  "2026-08-21",
+                                                              "window_end":  "2026-09-04",
+                                                              "window_days_used":  14,
+                                                              "window_days_target":  14,
+                                                              "dispersion_method":  "mad",
+                                                              "median":  29,
+                                                              "mad":  14,
+                                                              "mad_floor":  7.1428571428571432,
+                                                              "mad_floor_applied":  false,
+                                                              "effective_mad":  14,
+                                                              "variation_fraction_median":  0
+                                                          },
+                                             "uncertainty":  {
+                                                                 "estimator":  "wilson_90pct_descriptive_only",
+                                                                 "low":  9.96,
+                                                                 "mid":  34.55,
+                                                                 "high":  59.14
+                                                             },
+                                             "detected_events":  [
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-05",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  14,
+                                                                                          "baseline_median":  29,
+                                                                                          "baseline_mad":  14,
+                                                                                          "deviation_index":  -1.0714285714285714
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "persistent_deviation",
+                                                                         "date":  "2026-09-06",
+                                                                         "tier":  "attention_accrue",
+                                                                         "confidence":  "medium_high",
+                                                                         "evidence":  {
+                                                                                          "streak_days":  2,
+                                                                                          "deviation_index":  -1.0714285714285714
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "model_identity_unverified",
+                                                                         "date":  null,
+                                                                         "scope":  "system_wide",
+                                                                         "confidence":  "n_a_methodological_caveat",
+                                                                         "evidence":  {
+                                                                                          "identity_status":  "declared",
+                                                                                          "model_requested":  "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8",
+                                                                                          "model_declared":  "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8"
+                                                                                      }
+                                                                     }
+                                                                 ],
+                                             "system_identity":  {
+                                                                     "model_declared":  "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8",
+                                                                     "model_requested":  "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8",
+                                                                     "model_returned":  null,
+                                                                     "model_pinned":  true,
+                                                                     "identity_status":  "declared"
+                                                                 }
                                          },
                         "last_observed_at":  "2026-09-16T05:41:41.295516Z",
                         "detail":  {
@@ -2344,7 +3309,102 @@
                                              "interpretation":  null,
                                              "judgment_demand":  null,
                                              "weather_authority":  false,
-                                             "lab_status":  "measured"
+                                             "lab_status":  "measured",
+                                             "usable":  true,
+                                             "repetition_count":  7,
+                                             "current_longitudinal_state":  {
+                                                                                "state":  "attention_renforcee",
+                                                                                "deviation_index":  -1.96,
+                                                                                "uncertainty":  {
+                                                                                                    "estimator":  "wilson_90pct_descriptive_only",
+                                                                                                    "low":  28.95,
+                                                                                                    "mid":  55.15,
+                                                                                                    "high":  81.36
+                                                                                                },
+                                                                                "as_of":  "2026-09-16"
+                                                                            },
+                                             "deviation_index":  -1.96,
+                                             "baseline":  {
+                                                              "status":  "established",
+                                                              "window_start":  "2026-08-22",
+                                                              "window_end":  "2026-09-05",
+                                                              "window_days_used":  14,
+                                                              "window_days_target":  14,
+                                                              "dispersion_method":  "mad",
+                                                              "median":  71,
+                                                              "mad":  0,
+                                                              "mad_floor":  7.1428571428571432,
+                                                              "mad_floor_applied":  true,
+                                                              "effective_mad":  7.1428571428571432,
+                                                              "variation_fraction_median":  0
+                                                          },
+                                             "uncertainty":  {
+                                                                 "estimator":  "wilson_90pct_descriptive_only",
+                                                                 "low":  28.95,
+                                                                 "mid":  55.15,
+                                                                 "high":  81.36
+                                                             },
+                                             "detected_events":  [
+                                                                     {
+                                                                         "type":  "coverage_anomaly",
+                                                                         "date":  "2026-08-21",
+                                                                         "confidence":  "high_completeness_fact",
+                                                                         "evidence":  {
+                                                                                          "fully_scored":  0,
+                                                                                          "expected":  7,
+                                                                                          "coverage":  0
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "behavioral_deviation_detected",
+                                                                         "date":  "2026-09-06",
+                                                                         "confidence":  "low_medium_unconfirmed",
+                                                                         "evidence":  {
+                                                                                          "score":  57,
+                                                                                          "baseline_median":  71,
+                                                                                          "baseline_mad":  0,
+                                                                                          "deviation_index":  -1.96
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "persistent_deviation",
+                                                                         "date":  "2026-09-07",
+                                                                         "tier":  "attention_accrue",
+                                                                         "confidence":  "medium_high",
+                                                                         "evidence":  {
+                                                                                          "streak_days":  2,
+                                                                                          "deviation_index":  2.1
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "persistent_deviation",
+                                                                         "date":  "2026-09-09",
+                                                                         "tier":  "attention_renforcee",
+                                                                         "confidence":  "medium_high",
+                                                                         "evidence":  {
+                                                                                          "streak_days":  3,
+                                                                                          "deviation_index":  2.1
+                                                                                      }
+                                                                     },
+                                                                     {
+                                                                         "type":  "model_identity_unverified",
+                                                                         "date":  null,
+                                                                         "scope":  "system_wide",
+                                                                         "confidence":  "n_a_methodological_caveat",
+                                                                         "evidence":  {
+                                                                                          "identity_status":  "declared",
+                                                                                          "model_requested":  "sonar-reasoning-pro",
+                                                                                          "model_declared":  "sonar-reasoning-pro"
+                                                                                      }
+                                                                     }
+                                                                 ],
+                                             "system_identity":  {
+                                                                     "model_declared":  "sonar-reasoning-pro",
+                                                                     "model_requested":  "sonar-reasoning-pro",
+                                                                     "model_returned":  null,
+                                                                     "model_pinned":  true,
+                                                                     "identity_status":  "declared"
+                                                                 }
                                          },
                         "last_observed_at":  "2026-09-16T06:19:20.9517307Z",
                         "detail":  {
@@ -2355,5 +3415,17 @@
                                        "longitudinal_influences_weather":  false
                                    }
                     }
-                ]
+                ],
+    "methodology_version":  {
+                                "id":  "AI_WEATHER_METHOD_V2_0",
+                                "protocol_version":  "0.2",
+                                "longitudinal_methodology_version":  "2.0",
+                                "baseline_method":  "median_mad_floored_fixed_window_v2",
+                                "uncertainty_estimator":  "wilson_90pct_descriptive_only",
+                                "thresholds_status":  "provisional_but_launch_frozen",
+                                "changed_at":  "2026-09-16",
+                                "_note":  "Fige pour le lancement du 21/09/2026. Toute evolution (ex. passage a N=14) cree une nouvelle valeur d\u0027id (AI_WEATHER_METHOD_V2_1) et une nouvelle baseline_config_version, jamais une modification retroactive de celle-ci - voir plan de lancement section 3."
+                            },
+    "baseline_config_version":  "v2.0-launch",
+    "repetition_count":  7
 }

@@ -271,7 +271,8 @@
       clear: "--clear",
       watch: "--watch",
       unsettled: "--unsettled",
-      alert: "--alert"
+      alert: "--alert",
+      insufficient: "--ink-faint"
     };
 
     // Literal weather icons, one per condition, inline SVG (stroke
@@ -282,7 +283,8 @@
       clear: `<circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.9" y1="4.9" x2="6.3" y2="6.3"></line><line x1="17.7" y1="17.7" x2="19.1" y2="19.1"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.9" y1="19.1" x2="6.3" y2="17.7"></line><line x1="17.7" y1="6.3" x2="19.1" y2="4.9"></line>`,
       watch: `<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>`,
       unsettled: `<path d="M8 19v1"></path><path d="M8 14v1"></path><path d="M16 19v1"></path><path d="M16 14v1"></path><path d="M12 21v1"></path><path d="M12 16v1"></path><path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path>`,
-      alert: `<path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"></path><polyline points="13 11 9 17 15 17 11 23"></polyline>`
+      alert: `<path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"></path><polyline points="13 11 9 17 15 17 11 23"></polyline>`,
+      insufficient: `<circle cx="12" cy="12" r="9" stroke-dasharray="3 3"></circle><line x1="12" y1="8" x2="12" y2="13"></line><circle cx="12" cy="16.5" r="0.8" fill="currentColor" stroke="none"></circle>`
     };
 
     function iconSvg(condition, cssClass) {
@@ -395,20 +397,22 @@
         const fullWeatherUrl = "https://controltowerai.io/ai-weather/";
         const tileCta = TILE_CTA[lang] || TILE_CTA.en;
         const measuredDateText = formatMeasuredDate(data, lang);
+        const todayIso = (data && data.generated_at) ? String(data.generated_at).slice(0, 10) : null;
 
         loadHistoryScores(ids)
           .catch(() => ({}))
           .then(scoresBySystem => {
             const cellsHtml = systems.map(system => {
               const identity = NMData.getPublicIdentity(system);
-              const conditionVar = CONDITION_VAR[system.condition] || "--ink-faint";
+              const displayCondition = NMData.getDisplayCondition(system, todayIso);
+              const conditionVar = CONDITION_VAR[displayCondition] || "--ink-faint";
               const scores = (scoresBySystem && scoresBySystem[system.id]) || [];
 
               return `
-                <a class="cell is-${system.condition}" href="${fullWeatherUrl}" target="_blank" rel="noopener"
+                <a class="cell is-${displayCondition}" href="${fullWeatherUrl}" target="_blank" rel="noopener"
                    aria-label="${identity.label} — ${tileCta}" title="${tileCta}">
                   <div class="cell-top">
-                    ${iconSvg(system.condition, "cell-icon")}
+                    ${iconSvg(displayCondition, "cell-icon")}
                     <span class="cell-name">${identity.label}</span>
                     ${logoTag(system.id)}
                   </div>
@@ -423,6 +427,7 @@
               <span class="legend-item">${iconSvg("watch", "legend-icon")}${legendPrefix} ${tOrFallback("judgment.j2", "Watch")}</span>
               <span class="legend-item">${iconSvg("unsettled", "legend-icon")}${legendPrefix} ${tOrFallback("judgment.j3", "Warning")}</span>
               <span class="legend-item">${iconSvg("alert", "legend-icon")}${legendPrefix} ${tOrFallback("judgment.j4", "Critical")}</span>
+              <span class="legend-item">${iconSvg("insufficient", "legend-icon")}${legendPrefix} ${tOrFallback("judgment.j5", "Insufficient data")}</span>
             `;
 
             block.innerHTML = `

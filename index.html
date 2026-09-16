@@ -358,6 +358,7 @@
     .legend-yellow { background: #facc15; }
     .legend-orange { background: #fb923c; }
     .legend-red    { background: #b91c1c; }
+    .legend-insufficient { background: #94a3b8; }
 
     .daily-question-section {
       margin-top: 18px;
@@ -547,6 +548,11 @@
       border-left-color: #b91c1c;
     }
 
+    /* V2 — insufficient longitudinal coverage: neutral grey, never a judgment color */
+    .card.is-insufficient {
+      border-left-color: #94a3b8;
+    }
+
     .card.deep-linked {
       outline: 2px solid #378ADD;
       outline-offset: 2px;
@@ -599,6 +605,14 @@
       box-shadow:
         0 0 0 1px rgba(185, 28, 28, 0.40),
         0 0 14px rgba(185, 28, 28, 0.48);
+    }
+
+    .is-insufficient .card-state-dot {
+      background: #94a3b8;
+      border-style: dashed;
+      box-shadow:
+        0 0 0 1px rgba(148, 163, 184, 0.35),
+        0 0 14px rgba(148, 163, 184, 0.40);
     }
 
     .card-model {
@@ -719,6 +733,10 @@
           <div class="legend-item">
             <span class="legend-dot legend-red" aria-hidden="true"></span>
             <span id="legend-red-label">Critical</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot legend-insufficient" aria-hidden="true"></span>
+            <span id="legend-insufficient-label">Insufficient data</span>
           </div>
         </div>
       </div>
@@ -858,6 +876,9 @@
 
       document.getElementById("legend-red-label").textContent =
         `${legendPrefix} ${translatedOrFallback("judgment.j4", "Critical")}`;
+
+      document.getElementById("legend-insufficient-label").textContent =
+        `${legendPrefix} ${translatedOrFallback("judgment.j5", "Insufficient data")}`;
     }
 
     function renderHeader() {
@@ -901,7 +922,8 @@
       clear: "#22c55e",
       watch: "#facc15",
       unsettled: "#fb923c",
-      alert: "#b91c1c"
+      alert: "#b91c1c",
+      insufficient: "#94a3b8"
     };
 
     const CONDITION_SEVERITY = { clear: 0, watch: 1, unsettled: 2, alert: 3 };
@@ -977,11 +999,17 @@
 
     function renderCard(system, historyMap) {
       const identity = NMData.getPublicIdentity(system);
-      const conditionLabel = conditionMeta(system.condition).label;
+      // V2 — the status shown is resolved via NMData.getDisplayCondition:
+      // the longitudinal reference when present, system.condition (legacy)
+      // otherwise. This is the single point where AI Weather's authority
+      // moved from the daily question to the longitudinal reference.
+      const todayIso = (DATA && DATA.generated_at) ? String(DATA.generated_at).slice(0, 10) : null;
+      const displayCondition = NMData.getDisplayCondition(system, todayIso);
+      const conditionLabel = conditionMeta(displayCondition).label;
       const history = NMData.getSystemHistory(historyMap, system.id);
 
       const card = document.createElement("div");
-      card.className = `card is-${system.condition}`;
+      card.className = `card is-${displayCondition}`;
       card.dataset.systemId = system.id;
       card.setAttribute("aria-label", `${identity.label} — ${conditionLabel}`);
 
@@ -1149,6 +1177,51 @@
         navigator.serviceWorker.register("./service-worker.js").catch(() => {});
       });
     }
+
+    // ---------- Auto-resize when embedded in an iframe ----------
+    // Reports this document's real rendered height to the parent page so
+    // it can size its iframe exactly, instead of the parent guessing a
+    // fixed height (which is what was causing the large blank gap below
+    // the footer on pages that embed this panel). No-op when this page is
+    // opened standalone (window.parent === window): it must keep working
+    // exactly as before in that case. Same contract/naming convention as
+    // widgets/quiz/quiz-engine.js's reportHeight()/"nm-quiz-resize".
+    (function () {
+      if (window.parent === window) return;
+
+      // Measures .container (the <main> element), not html/body: html and
+      // body carry "min-height: 100%" so that this page still fills the
+      // full viewport height when opened standalone in a browser tab.
+      // Inside an iframe, that same rule would otherwise make the
+      // reported height chase whatever height the parent last set — a
+      // feedback loop that can grow but never shrink back down (e.g.
+      // after collapsing "View original EN"). .container's own height is
+      // purely intrinsic to its content, so it isn't subject to that loop.
+      const measuredEl = document.querySelector(".container") || document.documentElement;
+
+      function reportHeight() {
+        const height = Math.ceil(measuredEl.getBoundingClientRect().height);
+        window.parent.postMessage({ type: "nm-panel-resize", height }, "*");
+      }
+
+      // Catches every layout change automatically: initial render, the
+      // daily question rendering, wall re-render, and — since toggling a
+      // <details> element changes document height — "View original EN"
+      // opening/closing too. Language and theme changes reload this page
+      // entirely (see renderLangMenu/renderThemeMenu above), so the fresh
+      // ResizeObserver set up on that reload already covers them as well.
+      const resizeObserver = new ResizeObserver(() => reportHeight());
+      resizeObserver.observe(measuredEl);
+
+      // Belt-and-suspenders: fonts/images can still shift layout slightly
+      // after the observer's first callback, and a width-only reflow from
+      // the host resizing its own layout (no height change signal yet)
+      // should also be re-measured.
+      window.addEventListener("load", reportHeight);
+      window.addEventListener("resize", () => requestAnimationFrame(reportHeight));
+
+      reportHeight();
+    })();
   </script>
 
 </body>

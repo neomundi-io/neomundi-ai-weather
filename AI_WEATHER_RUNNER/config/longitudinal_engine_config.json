@@ -1,0 +1,95 @@
+{
+  "_comment": "Configuration du moteur longitudinal V2.0 (lancement 2026-09-21). Toute valeur vit ici, jamais en dur dans longitudinal_engine.ps1. Voir AI_WEATHER_V2_LAUNCH_PLAN_2026-09-21.md section 1-3.",
+  "config_version": "v2.0-launch",
+  "methodology_version": {
+    "id": "AI_WEATHER_METHOD_V2_0",
+    "protocol_version": "0.2",
+    "longitudinal_methodology_version": "2.0",
+    "baseline_method": "median_mad_floored_fixed_window_v2",
+    "uncertainty_estimator": "wilson_90pct_descriptive_only",
+    "thresholds_status": "provisional_but_launch_frozen",
+    "changed_at": "2026-09-16",
+    "_note": "Fige pour le lancement du 21/09/2026. Toute evolution (ex. passage a N=14) cree une nouvelle valeur d'id (AI_WEATHER_METHOD_V2_1) et une nouvelle baseline_config_version, jamais une modification retroactive de celle-ci - voir plan de lancement section 3."
+  },
+  "baseline_config_version": "v2.0-launch",
+  "baseline": {
+    "window_days": 14,
+    "dispersion_method": "mad",
+    "start_date": "2026-08-21",
+    "_note": "start_date corrige par inspection directe des capsules 17/21/22 aout (Gate section 3.B) : 21/08 est le premier jour au protocole v0.2, pas 22/08 comme suppose precedemment."
+  },
+  "mad_floor": {
+    "enabled": true,
+    "value_formula": "100.0 / repetition_count / 2.0",
+    "_note": "Plancher de MAD introduit au lancement V2.0 pour corriger le cas Perplexity (saut direct a attention_critique sur une deviation modeste quand MAD=0-par-mode). Valeur derivee de la granularite de la grille de score (100/N), pas un reglage arbitraire. Pour N=7 : ~7.14. Remplace l'ancien epsilon=0.0001 (garde-fou anti-division-par-zero uniquement, insuffisant comme plancher statistique) pour le calcul du deviation_index et la classification en palier."
+  },
+  "uncertainty": {
+    "estimator": "wilson_score_interval",
+    "confidence_level": 0.90,
+    "z": 1.645,
+    "role": "descriptive_only",
+    "_note": "N'entre JAMAIS dans le calcul de current_longitudinal_state ni dans la detection d'evenements - purement informatif (affichage Model Detail / champ uncertainty du JSON). Voir AI_WEATHER_V2_LAUNCH_PLAN_2026-09-21.md section 2 et AI_WEATHER_V2_LIVE_EXPERIMENT_GATE.md (aucun niveau de confiance Wilson n'est valide comme regle de decision a ce jour)."
+  },
+  "deviation_thresholds": {
+    "attention_accrue": 1.0,
+    "attention_renforcee": 2.0,
+    "attention_critique": 3.0,
+    "_note": "multiplicateurs de MAD-plancher, non calibres finement mais desormais proteges contre la degenerescence MAD=0 (voir mad_floor) - a affiner en shadow mode post-lancement (Gate 2.3)"
+  },
+  "persistence_days": {
+    "attention_accrue": 2,
+    "attention_renforcee": 3,
+    "attention_critique": 3
+  },
+  "return_to_baseline_days": {
+    "attention_accrue": 2,
+    "attention_renforcee": 3,
+    "attention_critique": 3
+  },
+  "coverage": {
+    "longitudinal_expected_repetitions": 7,
+    "longitudinal_min_scored_repetitions": 5,
+    "_note": "5/7 ~= 0.7143, coherent avec COVERAGE_MIN_INTERPRETABLE=0.80 existant cote daily (Gate 2.5)"
+  },
+  "event_rules": {
+    "variability_increase_variation_fraction_delta": 0.15,
+    "coverage_anomaly_min_coverage": 0.7143
+  },
+  "known_data_exclusions": {
+    "_note": "Vide intentionnellement : les dates exactes du bug de panel Moonshot n'ont pas ete pinnees (Phase 0 non executee dans ce tour). Limitation documentee, pas un oubli."
+  },
+  "protocol_exclusions": {
+    "pre_split_dates": ["2026-08-16", "2026-08-17"],
+    "missing_calendar_days": ["2026-08-18", "2026-08-19", "2026-08-20"],
+    "_note": "16/08 exclu (demo:true, protocole v0.1, modeles placeholder - data/history/2026-08-16.json). 17/08 exclu structurellement (protocole v0.1 reel mais pre-scission daily/longitudinal, verifie par inspection directe). 18-20/08 absents de toute source. Bug corrige le 2026-09-16 : 16/08 avait ete omis de cette liste lors de la premiere execution du moteur."
+  },
+  "model_display_to_id": {
+    "ChatGPT": "openai",
+    "Claude": "anthropic",
+    "Gemini": "google",
+    "Grok": "xai",
+    "Mistral": "mistral",
+    "DeepSeek": "deepseek",
+    "Qwen": "qwen",
+    "Kimi": "moonshot",
+    "Cohere": "cohere",
+    "Meta": "meta",
+    "Nvidia": "infomaniak",
+    "Perplexity": "perplexity",
+    "_note": "Extrait de config/panel.yml (model_display -> id), utilise uniquement pour rattacher la capsule du 21/08 (qui ne porte pas de champ id) a un systeme."
+  },
+  "model_requested_known": {
+    "openai": { "value": "chat-latest", "pinned": false, "verified_in_session": true, "source": "run_weather_openai.ps1:40, confirme lors de l'audit du 2026-09-16" },
+    "anthropic": { "value": "claude-sonnet-4-5-20250929", "pinned": true, "verified_in_session": false, "source": "assume egal a config/panel.yml, non re-verifie ligne par ligne dans cette session" },
+    "google": { "value": "gemini-3.6-flash", "pinned": true, "verified_in_session": false, "source": "assume egal a config/panel.yml, non re-verifie ligne par ligne dans cette session" },
+    "xai": { "value": "grok-4.5", "pinned": true, "verified_in_session": false, "source": "assume egal a config/panel.yml, non re-verifie ligne par ligne dans cette session" },
+    "mistral": { "value": "mistral-medium-3-5", "pinned": true, "verified_in_session": false, "source": "assume egal a config/panel.yml, non re-verifie ligne par ligne dans cette session" },
+    "deepseek": { "value": "deepseek-v4-pro", "pinned": true, "verified_in_session": false, "source": "assume egal a config/panel.yml, non re-verifie ligne par ligne dans cette session" },
+    "qwen": { "value": "qwen3.7-max-2026-06-08", "pinned": true, "verified_in_session": false, "source": "assume egal a config/panel.yml, non re-verifie ligne par ligne dans cette session" },
+    "moonshot": { "value": "kimi-k3", "pinned": true, "verified_in_session": false, "source": "assume egal a config/panel.yml, non re-verifie ligne par ligne dans cette session" },
+    "cohere": { "value": "command-a-03-2025", "pinned": true, "verified_in_session": false, "source": "assume egal a config/panel.yml, non re-verifie ligne par ligne dans cette session" },
+    "meta": { "value": "meta-llama/Llama-3.3-70B-Instruct-Turbo", "pinned": true, "verified_in_session": false, "source": "assume egal a config/panel.yml, non re-verifie ligne par ligne dans cette session" },
+    "infomaniak": { "value": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8", "pinned": true, "verified_in_session": false, "source": "assume egal a config/panel.yml, non re-verifie ligne par ligne dans cette session" },
+    "perplexity": { "value": "sonar-reasoning-pro", "pinned": true, "verified_in_session": false, "source": "assume egal a config/panel.yml, non re-verifie ligne par ligne dans cette session ; grounding web actif en permanence (facteur de confusion documente, audit)" }
+  }
+}

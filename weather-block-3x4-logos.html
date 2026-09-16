@@ -171,6 +171,9 @@
     .tile.is-watch     .tile-dot { background: var(--watch);     box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.45), 0 0 9px rgba(250, 204, 21, 0.50); }
     .tile.is-unsettled .tile-dot { background: var(--unsettled); box-shadow: 0 0 0 1px rgba(251, 146, 60, 0.40), 0 0 9px rgba(251, 146, 60, 0.48); }
     .tile.is-alert     .tile-dot { background: var(--alert);     box-shadow: 0 0 0 1px rgba(185, 28, 28, 0.40),  0 0 9px rgba(185, 28, 28, 0.48); }
+    /* V2 — insufficient longitudinal coverage: neutral grey, dashed ring, never confused with a judgment color */
+    .tile.is-insufficient .tile-dot { background: #94a3b8; border-style: dashed; box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.35), 0 0 9px rgba(148, 163, 184, 0.40); }
+    .legend-insufficient { background: #94a3b8; }
 
     .tile-name {
       flex: 1;
@@ -330,12 +333,14 @@
         const fullWeatherUrl = "https://controltowerai.io/ai-weather/";
         const tileCta = TILE_CTA[lang] || TILE_CTA.en;
         const measuredDateText = formatMeasuredDate(data, lang);
+        const todayIso = (data && data.generated_at) ? String(data.generated_at).slice(0, 10) : null;
 
         const tilesHtml = systems.map(system => {
           const identity = NMData.getPublicIdentity(system);
+          const displayCondition = NMData.getDisplayCondition(system, todayIso);
 
           return `
-            <a class="tile is-${system.condition}" href="${fullWeatherUrl}" target="_blank" rel="noopener"
+            <a class="tile is-${displayCondition}" href="${fullWeatherUrl}" target="_blank" rel="noopener"
                aria-label="${identity.label} — ${tileCta}" title="${tileCta}">
               <div class="tile-top">
                 <span class="tile-dot" aria-hidden="true"></span>
@@ -353,6 +358,7 @@
           <span class="legend-item"><span class="legend-dot legend-watch"></span>${legendPrefix} ${tOrFallback("judgment.j2", "Watch")}</span>
           <span class="legend-item"><span class="legend-dot legend-unsettled"></span>${legendPrefix} ${tOrFallback("judgment.j3", "Warning")}</span>
           <span class="legend-item"><span class="legend-dot legend-alert"></span>${legendPrefix} ${tOrFallback("judgment.j4", "Critical")}</span>
+          <span class="legend-item"><span class="legend-dot legend-insufficient"></span>${legendPrefix} ${tOrFallback("judgment.j5", "Insufficient data")}</span>
         `;
 
         block.innerHTML = `

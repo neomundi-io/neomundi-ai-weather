@@ -159,8 +159,42 @@ __marimo__/
 # provider keys, internal model IDs, raw responses,
 # scored observations and publication staging.
 #
-# This directory MUST NEVER be committed to the public repo.
-/AI_WEATHER_RUNNER/
+# This directory MUST NEVER be committed to the public repo,
+# EXCEPT for a narrow, explicitly audited allowlist of AI Weather
+# V2 source files with zero secrets and zero machine-specific
+# paths (verified 2026-09-16, see AI_WEATHER_V2_REPRODUCIBILITY_AUDIT.md).
+# Everything else under AI_WEATHER_RUNNER/ -- including
+# secrets.weather.xml, the raw provider runners, ARCHIVES/,
+# results/, diagnostics/ -- stays ignored below. Never widen this
+# to `!/AI_WEATHER_RUNNER/` as a whole; add new files one at a time,
+# each re-audited for secrets/machine paths first.
+/AI_WEATHER_RUNNER/*
+
+# --- V2 source of truth (tracked; audited, no secrets) ---
+!/AI_WEATHER_RUNNER/longitudinal_engine.ps1
+!/AI_WEATHER_RUNNER/longitudinal_v2_bridge.ps1
+!/AI_WEATHER_RUNNER/aggregate_and_publish_weather.ps1
+
+!/AI_WEATHER_RUNNER/config/
+/AI_WEATHER_RUNNER/config/*
+!/AI_WEATHER_RUNNER/config/longitudinal_engine_config.json
+!/AI_WEATHER_RUNNER/config/provider_changelog.json
+
+!/AI_WEATHER_RUNNER/tests/
+/AI_WEATHER_RUNNER/tests/*
+!/AI_WEATHER_RUNNER/tests/test_longitudinal_engine.ps1
+!/AI_WEATHER_RUNNER/tests/test_longitudinal_v2_bridge.ps1
+
+!/AI_WEATHER_RUNNER/shadow/
+/AI_WEATHER_RUNNER/shadow/*
+!/AI_WEATHER_RUNNER/shadow/wilson_n14_experiment/
+/AI_WEATHER_RUNNER/shadow/wilson_n14_experiment/*
+!/AI_WEATHER_RUNNER/shadow/wilson_n14_experiment/compute_wilson_retrospective.ps1
+!/AI_WEATHER_RUNNER/shadow/wilson_n14_experiment/wilson_config.json
+!/AI_WEATHER_RUNNER/shadow/wilson_n14_experiment/tests/
+/AI_WEATHER_RUNNER/shadow/wilson_n14_experiment/tests/*
+!/AI_WEATHER_RUNNER/shadow/wilson_n14_experiment/tests/test_wilson.ps1
+
 # Extra safety in case secret files are accidentally moved
 # outside AI_WEATHER_RUNNER.
 secrets.weather.xml

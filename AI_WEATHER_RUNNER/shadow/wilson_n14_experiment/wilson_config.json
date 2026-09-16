@@ -1,0 +1,19 @@
+{
+  "_comment": "Config de l'experience shadow Wilson N=7 vs N=14. N'affecte aucun fichier de production. Voir AI_WEATHER_V2_ESTIMATOR_DESIGN.md section 9-12.",
+  "config_version": "wilson-experiment-v0.1",
+  "methodology_version": {
+    "estimator": "wilson_score_interval",
+    "confidence_level": 0.90,
+    "z": 1.645,
+    "baseline_score_formula": "current_v1 (100*normalCount/fullyScored), unchanged, kept for comparability"
+  },
+  "pilot_systems": ["mistral", "cohere", "openai", "perplexity"],
+  "watch_systems_stability_check": ["anthropic", "qwen"],
+  "watch_systems_true_rupture_check": ["meta"],
+  "experiment_start_date": null,
+  "experiment_planned_duration_days": 14,
+  "n7_is_strict_subset_of_n14": true,
+  "n14_requires_live_api_calls": true,
+  "n14_status": "NOT_LAUNCHED - awaiting explicit confirmation for real paid API spend",
+  "output_dir": "AI_WEATHER_RUNNER/shadow/wilson_n14_experiment/output"
+}

@@ -1,0 +1,4 @@
+{
+  "_comment": "Corroborations manuelles de changements de modele/version annonces publiquement par un fournisseur. Alimente identity_status=inferred et renforce la confiance de l'evenement known_model_version_change. Vide au depart - a completer manuellement par un humain quand un fournisseur annonce un changement.",
+  "entries": []
+}

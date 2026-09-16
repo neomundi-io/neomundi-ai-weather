@@ -38,19 +38,30 @@
    *
    * The timestamp query parameter prevents stale URL-level cache reuse.
    * cache: "no-store" asks the browser not to reuse a cached response.
+   *
+   * `sourceOverride` (optional) points load() at an alternate JSON file
+   * instead of the public weather.json — used only by dev/shadow test
+   * harnesses (e.g. a fixture merging V2 longitudinal states) to verify
+   * widget rendering ahead of any public data change. No production
+   * widget passes this argument, so this parameter has zero effect on
+   * any live embed: load() with no argument behaves exactly as before.
    */
-  async function load() {
-    if (cached) {
+  async function load(sourceOverride) {
+    if (cached && !sourceOverride) {
       return cached;
     }
 
-    const livePath = "./weather.json?v=" + Date.now();
+    const livePath = sourceOverride || ("./weather.json?v=" + Date.now());
 
-    cached = await fetchJson(livePath, {
+    const result = await fetchJson(livePath, {
       cache: "no-store"
     });
 
-    return cached;
+    if (!sourceOverride) {
+      cached = result;
+    }
+
+    return result;
   }
 
   /**
@@ -206,9 +217,12 @@
    *
    * Panel configuration changes less frequently than weather.json,
    * so normal browser caching is acceptable here.
+   *
+   * `sourceOverride` (optional), same purpose and same zero-effect-on-
+   * production guarantee as load()'s: dev/shadow test harnesses only.
    */
-  async function loadPanels() {
-    return fetchJson("./config/panels.json");
+  async function loadPanels(sourceOverride) {
+    return fetchJson(sourceOverride || "./config/panels.json");
   }
 
   /**
@@ -296,6 +310,110 @@
   }
 
   /**
+   * AI Weather V2 — longitudinal state resolution (additive, Bloc Samedi).
+   *
+   * Widgets historically colored themselves from system.condition, which
+   * reflects the DAILY question only. V2 makes the longitudinal reference
+   * (system.longitudinal.current_longitudinal_state) the sole source of
+   * authority for the status shown. This function is the single place
+   * that resolves which one a widget should actually display, so all 14
+   * widget formats read the same logic instead of re-implementing it.
+   *
+   * Today, public weather.json/data/current.json never carry
+   * system.longitudinal.current_longitudinal_state (that field only
+   * exists in the shadow V2 pipeline's own output, data/shadow/v2/*.json).
+   * So against real production data this function always falls through
+   * to the legacy branch below and returns exactly what system.condition
+   * already meant — this is what makes the widget migration provably
+   * zero-impact today, while making widgets ready the day the public
+   * source is actually switched over.
+   *
+   * Returns:
+   *   {
+   *     key: "standard" | "attention_accrue" | "attention_renforcee" |
+   *          "attention_critique" | "insufficient_data" | "baseline_window" |
+   *          "unknown",
+   *     source: "v2" | "legacy",
+   *     insufficientCoverage: boolean,
+   *     identityUncertain: boolean,
+   *     hasActiveEventToday: boolean
+   *   }
+   */
+  function getLongitudinalStateInfo(system, todayIso) {
+    const longitudinal = system && system.longitudinal;
+
+    // current_longitudinal_state is an object ({ state, deviation_index,
+    // uncertainty, as_of }), not a plain string — matches the real shape
+    // written by longitudinal_v2_bridge.ps1 into data/shadow/v2/*.json.
+    const stateObj = longitudinal && longitudinal.current_longitudinal_state;
+    const stateKey = stateObj && typeof stateObj === "object" ? stateObj.state : null;
+    const hasV2State = typeof stateKey === "string";
+
+    if (hasV2State) {
+      const events = Array.isArray(longitudinal.detected_events)
+        ? longitudinal.detected_events
+        : [];
+      const hasActiveEventToday =
+        !!todayIso &&
+        events.some(
+          (e) => e && e.date === todayIso && e.type !== "model_identity_unverified"
+        );
+
+      return {
+        key: stateKey,
+        source: "v2",
+        insufficientCoverage: stateKey === "insufficient_data",
+        identityUncertain: !!(
+          longitudinal.system_identity && longitudinal.system_identity.uncertain
+        ),
+        hasActiveEventToday
+      };
+    }
+
+    // Legacy fallback: system.condition is the only signal available.
+    // Mapped to the V2 vocabulary so callers never need two code paths.
+    const LEGACY_TO_V2 = {
+      clear: "standard",
+      watch: "attention_accrue",
+      unsettled: "attention_renforcee",
+      alert: "attention_critique"
+    };
+
+    return {
+      key: LEGACY_TO_V2[system && system.condition] || "unknown",
+      source: "legacy",
+      insufficientCoverage: false,
+      identityUncertain: false,
+      hasActiveEventToday: false
+    };
+  }
+
+  /**
+   * Convenience wrapper for widgets: resolves getLongitudinalStateInfo()
+   * straight down to the widget's existing 4-color CSS vocabulary
+   * (clear/watch/unsettled/alert), plus a 5th "insufficient" bucket for
+   * the coverage-insufficient case, which no legacy widget CSS had a
+   * class for. A widget that adds an ".is-insufficient" style is ready
+   * for that case; one that doesn't yet will simply render the dot
+   * without one of the four known colors rather than crash.
+   */
+  function getDisplayCondition(system, todayIso) {
+    const info = getLongitudinalStateInfo(system, todayIso);
+
+    const V2_TO_DISPLAY = {
+      standard: "clear",
+      attention_accrue: "watch",
+      attention_renforcee: "unsettled",
+      attention_critique: "alert",
+      insufficient_data: "insufficient",
+      baseline_window: "insufficient",
+      unknown: (system && system.condition) || "insufficient"
+    };
+
+    return V2_TO_DISPLAY[info.key] || (system && system.condition) || "insufficient";
+  }
+
+  /**
    * Public API exposed to the rest of the frontend.
    */
   window.NMData = {
@@ -307,6 +425,8 @@
     getPanelSystems,
     getPublicIdentity,
     loadHistory,
-    getSystemHistory
+    getSystemHistory,
+    getLongitudinalStateInfo,
+    getDisplayCondition
   };
 })(window);

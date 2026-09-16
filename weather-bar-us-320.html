@@ -198,6 +198,9 @@
     .cell.is-watch     .cell-dot { background: var(--watch);     box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.45), 0 0 8px rgba(250, 204, 21, 0.50); }
     .cell.is-unsettled .cell-dot { background: var(--unsettled); box-shadow: 0 0 0 1px rgba(251, 146, 60, 0.40), 0 0 8px rgba(251, 146, 60, 0.48); }
     .cell.is-alert     .cell-dot { background: var(--alert);     box-shadow: 0 0 0 1px rgba(185, 28, 28, 0.40),  0 0 8px rgba(185, 28, 28, 0.48); }
+    /* V2 — insufficient longitudinal coverage: neutral grey, dashed ring, never confused with a judgment color */
+    .cell.is-insufficient .cell-dot { background: #94a3b8; border-style: dashed; box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.35), 0 0 8px rgba(148, 163, 184, 0.40); }
+    .legend-insufficient { background: #94a3b8; }
 
     .cell-name {
       flex: 1;
@@ -299,7 +302,8 @@
       clear: "--clear",
       watch: "--watch",
       unsettled: "--unsettled",
-      alert: "--alert"
+      alert: "--alert",
+      insufficient: "--ink-faint"
     };
 
     function pad2(n) { return String(n).padStart(2, "0"); }
@@ -403,13 +407,15 @@
         const fullWeatherUrl = "https://controltowerai.io/ai-weather/";
         const tileCta = TILE_CTA[lang] || TILE_CTA.en;
         const measuredDateText = formatMeasuredDate(data, lang);
+        const todayIso = (data && data.generated_at) ? String(data.generated_at).slice(0, 10) : null;
 
         loadHistoryScores(AMERICAN_IDS)
           .catch(() => ({}))
           .then(scoresBySystem => {
             const cellsHtml = systems.map(system => {
               const identity = NMData.getPublicIdentity(system);
-              const conditionVar = CONDITION_VAR[system.condition] || "--ink-faint";
+              const displayCondition = NMData.getDisplayCondition(system, todayIso);
+              const conditionVar = CONDITION_VAR[displayCondition] || "--ink-faint";
               const scores = (scoresBySystem && scoresBySystem[system.id]) || [];
 
               return `
