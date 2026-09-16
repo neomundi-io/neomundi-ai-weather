@@ -1956,8 +1956,8 @@ if ($warnings.Count -gt 0) {
 
 
 # ------------------------------------------------------------
-# 16b. V2 longitudinal enrichment (fail-open, merged BEFORE the canonical
-# writes below)
+# 16b. Persist today's measured probes BEFORE the V2 engine reads history.
+# Public current files and capsule publication remain downstream of enrichment.
 #
 # Activated 2026-09-16 as part of the AI Weather V2 launch (see
 # AI_WEATHER_V2_FINAL_GO_NO_GO.md / AI_WEATHER_V2_LAUNCH_REPORT_2026-09-21.md).
@@ -1974,11 +1974,18 @@ if ($warnings.Count -gt 0) {
 # baseline/MAD/state/event/uncertainty logic.
 # ------------------------------------------------------------
 
+# This write is deliberately outside the fail-open enrichment catch: if today's
+# measurements cannot be persisted, do not publish a stale longitudinal result.
+# On engine failure the same legacy output still flows through section 17.
+New-Item -ItemType Directory -Force -Path $historyDir | Out-Null
+$output | ConvertTo-Json -Depth 40 |
+    Set-Content -LiteralPath $historyJsonPath -Encoding UTF8 -ErrorAction Stop
+
 try {
     $bridgePath = Join-Path $runnerRoot "longitudinal_v2_bridge.ps1"
     if (Test-Path -LiteralPath $bridgePath) {
         . $bridgePath
-        $v2Report = Get-LongitudinalV2Report -RunnerRoot $runnerRoot -RepoRoot $repoRoot -Date $Date
+        $v2Report = Get-LongitudinalV2Report -RunnerRoot $runnerRoot
         if ($v2Report) {
             $enriched = Merge-LongitudinalV2IntoHistory -LegacyOutput $output -V2Report $v2Report
             if ($enriched) {

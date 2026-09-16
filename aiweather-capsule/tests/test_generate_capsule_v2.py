@@ -121,7 +121,10 @@ class GenerateCapsuleV2Tests(unittest.TestCase):
         self.assertEqual(lr["current_longitudinal_state"]["state"], "attention_renforcee")
         self.assertEqual(lr["baseline"]["mad_floor_applied"], True)
         self.assertEqual(lr["uncertainty"]["estimator"], "wilson_90pct_descriptive_only")
-        self.assertFalse(lr["weather_authority"], "Coherent avec le protocole legacy encore fourni dans ce fixture (longitudinal_weather_authority=False)")
+        self.assertTrue(lr["weather_authority"], "Le nouveau bloc V2 est autoritatif, independamment du protocole legacy")
+        self.assertFalse(record["longitudinal"]["weather_authority"])
+        self.assertTrue(record["daily"]["weather_authority"])
+        self.assertEqual(capsule["protocol"], raw["protocol"])
 
     def test_daily_challenge_never_appears_inside_longitudinal_reference(self):
         """Structural non-regression: Today's Challenge can never determine the
@@ -153,6 +156,31 @@ class GenerateCapsuleV2Tests(unittest.TestCase):
         # Re-verify independently, exactly as verify_chain.py would.
         recomputed = subject.compute_content_hash(v2_capsule)
         self.assertEqual(recomputed, v2_capsule["chain"]["content_hash"])
+
+    def test_v2_authority_and_reference_ignore_daily_changes(self):
+        raw = v2_raw_from_legacy(minimal_legacy_raw())
+        before = copy.deepcopy(raw)
+        reference = subject.build_capsule(raw, "2026-09-17", None)["observations"][0]["longitudinal_reference"]
+        self.assertEqual(raw, before, "Projection must not mutate measured input")
+        for condition in ("clear", "watch", "unsettled", "alert"):
+            with self.subTest(condition=condition):
+                changed = copy.deepcopy(raw)
+                changed["systems"][0]["condition"] = condition
+                changed["systems"][0]["daily"].update(condition=condition, score=0, question="Different daily question")
+                record = subject.build_capsule(changed, "2026-09-17", None)["observations"][0]
+                self.assertEqual(record["longitudinal_reference"], reference)
+                self.assertTrue(record["longitudinal_reference"]["weather_authority"])
+                self.assertFalse(record["daily_challenge"]["weather_authority"])
+
+    def test_v2_cannot_overwrite_a_published_legacy_capsule(self):
+        legacy = subject.build_capsule(minimal_legacy_raw(), "2026-09-16", None)
+        v2 = subject.build_capsule(v2_raw_from_legacy(minimal_legacy_raw()), "2026-09-16", None)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = subject.write_capsule(legacy, Path(tmp))
+            original = path.read_bytes()
+            with self.assertRaises(FileExistsError):
+                subject.write_capsule(v2, Path(tmp))
+            self.assertEqual(path.read_bytes(), original)
 
     def test_real_production_file_regression(self):
         """Regenerate a capsule from a REAL, PAST, FROZEN data/history/*.json (read-only)

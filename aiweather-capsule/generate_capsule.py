@@ -129,7 +129,9 @@ def build_longitudinal_reference(longitudinal_block, weather_authority_value):
         return None
 
     return {
-        "weather_authority": weather_authority_value,
+        # This additive V2 block is the authoritative longitudinal reference.
+        # Legacy protocol/daily/longitudinal fields retain their original values.
+        "weather_authority": True,
         "repetition_count": longitudinal_block.get("repetition_count"),
         "current_longitudinal_state": longitudinal_block.get("current_longitudinal_state"),
         "score": longitudinal_block.get("score"),

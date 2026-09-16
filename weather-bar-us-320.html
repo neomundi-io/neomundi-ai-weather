@@ -419,7 +419,7 @@
               const scores = (scoresBySystem && scoresBySystem[system.id]) || [];
 
               return `
-                <a class="cell is-${system.condition}" href="${fullWeatherUrl}" target="_blank" rel="noopener"
+                <a class="cell is-${displayCondition}" href="${fullWeatherUrl}" target="_blank" rel="noopener"
                    aria-label="${identity.label} — ${tileCta}" title="${tileCta}">
                   <div class="cell-top">
                     <span class="cell-dot" aria-hidden="true"></span>
