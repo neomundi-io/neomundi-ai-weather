@@ -1,0 +1,92 @@
+/*
+ * AI Weather — Blocks Preview
+ * Scoped entirely under .aw-* classes — cannot affect any block, page, or
+ * theme style outside a page that actually uses these patterns. Every
+ * color below is a var(--wp--preset--color-*) reference back to the
+ * palette registered in inc/theme-support.php: no value is hardcoded here
+ * a second time.
+ */
+
+.aw-eyebrow {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wp--preset--color-accent-sky);
+}
+.aw-center,
+.aw-eyebrow.aw-center { text-align: center; }
+
+.aw-hero, .aw-levels, .aw-paths, .aw-newsletter {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 56px 24px;
+}
+
+.aw-alert {
+  border-left: 3px solid var(--wp--preset--color-judgment-orange);
+  padding-left: 16px;
+  font-weight: 600;
+}
+
+.aw-rigor-note, .aw-levels-note, .aw-newsletter-note, .aw-disclaimer {
+  color: var(--wp--preset--color-ink-dim);
+  font-size: 0.9rem;
+}
+
+.aw-levels-grid { margin-top: 32px; }
+.aw-level-card {
+  background: var(--wp--preset--color-surface-soft);
+  border: 1px solid #d6e2eb;
+  border-radius: 12px;
+  padding: 24px;
+  height: 100%;
+}
+.aw-dot { font-size: 1.4rem; line-height: 1; margin: 0 0 8px; }
+.aw-dot-green  { color: var(--wp--preset--color-judgment-green); }
+.aw-dot-yellow { color: var(--wp--preset--color-judgment-yellow); }
+.aw-dot-orange { color: var(--wp--preset--color-judgment-orange); }
+.aw-dot-red    { color: var(--wp--preset--color-judgment-red); }
+
+.aw-paths-grid { margin-top: 32px; }
+.aw-path-card {
+  border-top: 3px solid var(--aw-accent, var(--wp--preset--color-accent-sky));
+  padding: 20px 0 0;
+}
+.aw-path-num {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  color: var(--wp--preset--color-ink-dim);
+  margin: 0 0 4px;
+}
+.aw-path-blue   { --aw-accent: var(--wp--preset--color-path-blue); }
+.aw-path-cyan   { --aw-accent: var(--wp--preset--color-path-cyan); }
+.aw-path-violet { --aw-accent: var(--wp--preset--color-path-violet); }
+.aw-path-pink   { --aw-accent: var(--wp--preset--color-path-pink); }
+
+.aw-dark-section {
+  background: var(--wp--preset--color-navy-dark);
+  color: var(--wp--preset--color-navy-text);
+  padding: 64px 32px;
+}
+.aw-dark-section h2, .aw-dark-section h3, .aw-dark-section p { color: inherit; }
+.aw-dark-section .aw-eyebrow { color: var(--wp--preset--color-path-cyan); }
+.aw-instrument-table td { color: inherit; border-color: rgba(255, 255, 255, 0.15); }
+
+.aw-quiz-embed iframe {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border: 0;
+  border-radius: 12px;
+}
+.aw-quiz-fallback { font-size: 0.85rem; color: var(--wp--preset--color-ink-dim); }
+
+.aw-quiz-widget-placeholder {
+  border: 1px dashed var(--wp--preset--color-accent-sky);
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+}
+
+@media (max-width: 782px) {
+  .aw-levels-grid, .aw-paths-grid { row-gap: 24px; }
+}
