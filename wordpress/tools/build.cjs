@@ -26,7 +26,7 @@ if(!fs.readFileSync(heroPath,'utf8').includes('</html>')){
 }
 const stationDir=path.join(src,'controltowerai-wordpress-redesign/us-station-assets');
 for(const f of fs.readdirSync(stationDir)){
- if(f.endsWith('.css'))write('assets/station/'+f,fs.readFileSync(path.join(stationDir,f)));
+ if(f.endsWith('.css')||f.endsWith('.json'))write('assets/station/'+f,fs.readFileSync(path.join(stationDir,f)));
  // JavaScript is generated as URL-resolved script templates below. Remove only
  // redundant copies in this build-owned output directory, never source files.
  if(f.endsWith('.js')){const redundant=path.join(out,'assets/station',f);if(fs.existsSync(redundant))fs.unlinkSync(redundant);}
