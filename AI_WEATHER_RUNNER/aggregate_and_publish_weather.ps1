@@ -1730,6 +1730,72 @@ $dailyProbeMetadata = [PSCustomObject]@{
     panel_coverage = $dailyPanelCoverage
 }
 
+# LONGITUDINAL question.
+#
+# Same situation as the DAILY question above: provider result rows do not
+# preserve the source question text, so the selected execution panel is the
+# authoritative source. Resolved exactly like the daily one so that both
+# probes follow the same rule, then published in
+# probe_contract.longitudinal.question.
+#
+# The longitudinal probe is a deliberate false-premise probe: its wording is
+# published verbatim so readers can see the exact prompt the panel receives.
+$longitudinalQuestionFromPanel = $null
+
+if ($executionPanelRows) {
+    try {
+        $longitudinalPanelCandidates = @(
+            $executionPanelRows |
+            Where-Object {
+                [string](
+                    Get-PropertyValue $_ "prompt_id" ""
+                ) -match '^(?i:longitudinal)(?:[-_]|$)'
+            }
+        )
+
+        $matchingLongitudinalPanelRows = @(
+            if ($longitudinalPromptIds.Count -eq 1) {
+                $expectedLongitudinalPromptId =
+                    [string]$longitudinalPromptIds[0]
+
+                $longitudinalPanelCandidates |
+                Where-Object {
+                    [string](
+                        Get-PropertyValue $_ "prompt_id" ""
+                    ) -eq $expectedLongitudinalPromptId
+                }
+            }
+            elseif ($longitudinalPanelCandidates.Count -eq 1) {
+                $longitudinalPanelCandidates
+            }
+        )
+
+        if ($matchingLongitudinalPanelRows.Count -eq 1) {
+            $candidateLongitudinalQuestion = [string](
+                Get-PropertyValue `
+                    $matchingLongitudinalPanelRows[0] `
+                    "question" `
+                    ""
+            )
+
+            if (-not [string]::IsNullOrWhiteSpace(
+                $candidateLongitudinalQuestion
+            )) {
+                $longitudinalQuestionFromPanel =
+                    $candidateLongitudinalQuestion.Trim()
+            }
+        }
+    }
+    catch {
+        Write-Warning (
+            "Unable to read LONGITUDINAL question from " +
+            "'$executionPanelPath': $($_.Exception.Message)"
+        )
+    }
+}
+
+$resolvedLongitudinalQuestion = $longitudinalQuestionFromPanel
+
 $longitudinalProbeMetadata = [PSCustomObject]@{
     role = "longitudinal"
     weather_authority = $false
@@ -1743,8 +1809,8 @@ $longitudinalProbeMetadata = [PSCustomObject]@{
             $null
         }
     )
-    question = $null
-    exposure = "lab_only"
+    question = $resolvedLongitudinalQuestion
+    exposure = "wall_public"
     panel_coverage = $longitudinalPanelCoverage
 }
 
