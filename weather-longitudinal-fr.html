@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoMundi AI Weather — Jauge principale, météo longitudinale</title>
+
+  <style>
+    /*
+     * Jauge principale — Météo longitudinale.
+     *
+     * Extraction autonome du composant renderHeroAndWall() de la page
+     * publique /fr/today/. Aucune règle de mesure n'est ajoutée ici :
+     * le widget se contente d'afficher ce que weather.json publie.
+     *
+     * Configuration par URL, comme les autres widgets :
+     *   theme=  light (défaut) | dark
+     *
+     * SÉMANTIQUE IMPÉRATIVE
+     * ---------------------
+     * La condition globale vient EXCLUSIVEMENT de data.global_condition.
+     * Elle n'est jamais recalculée à partir des systèmes, jamais
+     * remplacée par la plus grave, jamais substituée par « clear » en
+     * l'absence de donnée. Si elle manque ou si le panel est déclaré
+     * en données insuffisantes, le widget le dit et n'affiche aucun
+     * niveau.
+     *
+     * Le canal « daily » (Today's Challenge, 23 répétitions, question
+     * différente chaque jour) n'est lu nulle part dans ce fichier.
+     * La question affichée est la question de RÉFÉRENCE, publiée dans
+     * probe_contract.longitudinal, répétée 7 fois par système.
+     *
+     * Les trajectoires par système viennent de
+     * systems[].longitudinal.current_longitudinal_state.state, relevé
+     * sur les fichiers data/history/<date>.json — pas de la condition
+     * quotidienne.
+     *
+     * Palette et structure reprises des widgets existants
+     * (weather-icons-320.html), pas réinventées.
+     */
+
+    :root {
+      --card-bg: linear-gradient(180deg, #dceefa 0%, #edf7fc 55%, #ffffff 100%);
+      --card-border: #cfe3f0;
+      --cell-divider: #d7e6f0;
+      --ink: #171b21;
+      --ink-dim: #5b6270;
+      --ink-faint: #9ba1ac;
+
+      --clear: #22c55e;
+      --watch: #facc15;
+      --unsettled: #fb923c;
+      --alert: #b91c1c;
+      --none: #94a3b8;
+    }
+
+    [data-theme="dark"] {
+      --card-bg: #1b1f26;
+      --card-border: #2a2f38;
+      --cell-divider: #333944;
+      --ink: #f1f2f4;
+      --ink-dim: #a6acb6;
+      --ink-faint: #6b7280;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: transparent;
+      color: var(--ink);
+      font-family: "Segoe UI", "Inter", Arial, Helvetica, sans-serif;
+    }
+
+    .panel {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px 16px 14px;
+      max-width: 100%;
+    }
+
+    .titre {
+      margin: 0 0 2px;
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+    .canal {
+      margin: 0 0 12px;
+      font-size: 11px;
+      color: var(--ink-faint);
+      letter-spacing: .04em;
+    }
+
+    /* --- Condition globale --- */
+    .cond { display: flex; align-items: center; gap: 10px; margin: 0 0 4px; }
+    .cond-pastille {
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--teinte, var(--none)); flex: 0 0 auto;
+    }
+    .cond-nom { font-size: 22px; font-weight: 800; letter-spacing: -.02em; }
+    .cond-absente { font-size: 14px; font-weight: 600; line-height: 1.45; color: var(--ink); }
+    .mesure { margin: 0 0 12px; font-size: 11.5px; color: var(--ink-dim); }
+
+    /* --- Quatre niveaux --- */
+    .niveaux {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 4px; margin: 0 0 12px;
+    }
+    .niveau {
+      text-align: center; padding: 5px 2px 4px;
+      border-radius: 6px; font-size: 10.5px; color: var(--ink-dim);
+      border: 1px solid transparent;
+    }
+    .niveau .barre { display: block; height: 3px; border-radius: 2px; margin-bottom: 4px; }
+    .niveau.actif {
+      border-color: var(--ink-faint);
+      color: var(--ink); font-weight: 700;
+    }
+    .niveau.actif::after {
+      content: "aujourd’hui"; display: block;
+      font-size: 8.5px; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--ink-dim); margin-top: 1px;
+    }
+
+    /* --- Chiffres du panel --- */
+    .chiffres {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 8px; margin: 0 0 12px;
+      border-top: 1px solid var(--cell-divider);
+      border-bottom: 1px solid var(--cell-divider);
+      padding: 9px 0;
+    }
+    .chiffre b { display: block; font-size: 15px; font-variant-numeric: tabular-nums; }
+    .chiffre span { display: block; font-size: 9.5px; color: var(--ink-faint); letter-spacing: .04em; }
+
+    /* --- Mur des systèmes --- */
+    .mur { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px 10px; margin: 0 0 12px; }
+    .sys { min-width: 0; }
+    .sys-tete { display: flex; align-items: center; gap: 5px; }
+    .sys-point { width: 7px; height: 7px; border-radius: 50%; background: var(--teinte, var(--none)); flex: 0 0 auto; }
+    .sys-nom {
+      font-size: 11px; color: var(--ink);
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .sys-etat { font-size: 9.5px; color: var(--ink-faint); margin-left: 12px; }
+    .spark { display: block; width: 100%; height: 18px; margin-top: 1px; }
+
+    /* --- Question de référence --- */
+    .question {
+      margin: 0 0 10px; padding: 9px 10px;
+      border: 1px solid var(--cell-divider); border-radius: 8px;
+      font-size: 11.5px; line-height: 1.5; color: var(--ink-dim);
+    }
+    .question b { display: block; font-size: 9.5px; letter-spacing: .06em;
+                  text-transform: uppercase; color: var(--ink-faint); margin-bottom: 3px; }
+
+    .signature { margin: 0; font-size: 9.5px; color: var(--ink-faint); }
+    .signature a { color: inherit; }
+
+    @media (max-width: 360px) {
+      .mur { grid-template-columns: 1fr; }
+      .chiffres { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="panel" id="panneau">
+    <p class="titre">La Météo des IA™ — jauge principale</p>
+    <p class="canal">Météo longitudinale · question de référence répétée 7 fois par système</p>
+    <div id="corps">
+      <p class="mesure">Chargement…</p>
+    </div>
+    <p class="signature">ControlTower by <strong>NeoMundi</strong> — mesure publiée, JSON vérifiable</p>
+  </div>
+
+<script>
+(function () {
+  "use strict";
+
+  var params = new URLSearchParams(window.location.search);
+  var THEME = params.get("theme") === "dark" ? "dark" : "light";
+  document.documentElement.setAttribute("data-theme", THEME);
+
+  /* Les quatre niveaux publiés par le champ global_condition. Ce sont
+     les libellés déjà utilisés par la page publique — repris tels
+     quels, pas redéfinis. */
+  var NIVEAUX = [
+    { id: "clear",     nom: "Normal",    couleur: "var(--clear)" },
+    { id: "watch",     nom: "Vigilance", couleur: "var(--watch)" },
+    { id: "unsettled", nom: "Alerte",    couleur: "var(--unsettled)" },
+    { id: "alert",     nom: "Critique",  couleur: "var(--alert)" }
+  ];
+  var PAR_ID = {};
+  NIVEAUX.forEach(function (n) { PAR_ID[n.id] = n; });
+
+  /* États du canal longitudinal, tels que publiés. Sert uniquement à
+     l'affichage par système : jamais à déduire la condition globale. */
+  var ETAT_LONG = {
+    standard:            { nom: "Standard",           couleur: "var(--clear)",     rang: 0 },
+    attention_accrue:    { nom: "Attention accrue",   couleur: "var(--watch)",     rang: 1 },
+    attention_renforcee: { nom: "Attention renforcée", couleur: "var(--unsettled)", rang: 2 },
+    attention_critique:  { nom: "Attention critique",  couleur: "var(--alert)",     rang: 3 }
+  };
+
+  var MOIS = ["janvier","février","mars","avril","mai","juin",
+              "juillet","août","septembre","octobre","novembre","décembre"];
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function dateUTC(iso) {
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) { return null; }
+    var p = function (n) { return String(n).padStart(2, "0"); };
+    return d.getUTCDate() + " " + MOIS[d.getUTCMonth()] + " " + d.getUTCFullYear() +
+           " à " + p(d.getUTCHours()) + ":" + p(d.getUTCMinutes()) + " UTC";
+  }
+
+  function jourISO(d) {
+    var p = function (n) { return String(n).padStart(2, "0"); };
+    return d.getUTCFullYear() + "-" + p(d.getUTCMonth() + 1) + "-" + p(d.getUTCDate());
+  }
+
+  /* Identité publique : même chaîne de repli que NMData.getPublicIdentity,
+     recopiée pour garder le widget sans dépendance. */
+  function libelle(sys) {
+    if (!sys) { return "—"; }
+    if (sys.model_display) { return sys.model_display; }
+    if (sys.model_public !== undefined && sys.model_public !== null) { return sys.model_public; }
+    if (sys.public_label) { return sys.public_label; }
+    if (sys.model) { return sys.model; }
+    return sys.id || "—";
+  }
+
+  function etatLongitudinal(sys) {
+    var L = (sys && sys.longitudinal) || {};
+    var brut = (L.current_longitudinal_state || {}).state;
+    return ETAT_LONG[brut] ? brut : null;
+  }
+
+  /* Trajectoire : l'état longitudinal jour après jour. On ne lit jamais
+     systems[].condition, qui relève de l'autre canal. */
+  function sparkline(points) {
+    if (!points || points.length < 2) { return ""; }
+    var W = 100, H = 18, PX = 2, PY = 3;
+    var pas = (W - PX * 2) / (points.length - 1);
+    var pts = [], ronds = "";
+    points.forEach(function (etat, i) {
+      var x = PX + pas * i;
+      var def = ETAT_LONG[etat];
+      var y = def ? PY + (def.rang / 3) * (H - PY * 2) : H / 2;
+      if (def) { pts.push(x.toFixed(1) + "," + y.toFixed(1)); }
+      ronds += '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="1.9" fill="' +
+               (def ? def.couleur : "var(--none)") + '" />';
+    });
+    var ligne = pts.length > 1
+      ? '<polyline points="' + pts.join(" ") + '" fill="none" stroke="currentColor" ' +
+        'stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.35" />'
+      : "";
+    return '<svg class="spark" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" aria-hidden="true">' +
+           ligne + ronds + '</svg>';
+  }
+
+  function insuffisant(message) {
+    document.getElementById("corps").innerHTML =
+      '<p class="cond-absente">' + esc(message) + '</p>';
+  }
+
+  function rendre(data, histo) {
+    var ps = data.panel_summary || {};
+
+    /* ---- Condition globale : lecture directe, sans calcul ---- */
+    var cond = data.global_condition;
+    var niveau = cond ? PAR_ID[cond] : null;
+    var insuffisance = cond === "insufficient_data" ||
+                       (ps.systems_insufficient_data && ps.systems_insufficient_data === ps.systems_count);
+
+    if (!niveau || insuffisance) {
+      insuffisant("Données insuffisantes pour établir la météo longitudinale du jour.");
+      return;
+    }
+
+    var h = "";
+
+    h += '<div class="cond"><span class="cond-pastille" style="--teinte:' + niveau.couleur + '"></span>' +
+         '<span class="cond-nom">' + esc(niveau.nom) + '</span></div>';
+
+    var quand = dateUTC(ps.last_measurement_at || data.generated_at);
+    h += '<p class="mesure">' + (quand ? "Mesuré le " + esc(quand) : "Date de mesure non publiée") + '</p>';
+
+    h += '<div class="niveaux" role="list">';
+    NIVEAUX.forEach(function (n) {
+      h += '<div class="niveau' + (n.id === cond ? " actif" : "") + '" role="listitem"' +
+           (n.id === cond ? ' aria-current="true"' : '') + '>' +
+           '<span class="barre" style="background:' + n.couleur + '"></span>' + esc(n.nom) + '</div>';
+    });
+    h += '</div>';
+
+    h += '<div class="chiffres">';
+    h += '<div class="chiffre"><b>' +
+         (typeof ps.systems_count === "number" ? ps.systems_count : "—") +
+         '</b><span>SYSTÈMES</span></div>';
+    h += '<div class="chiffre"><b>' +
+         (typeof ps.panel_coverage === "number" ? Math.round(ps.panel_coverage * 1000) / 10 + " %" : "—") +
+         '</b><span>COUVERTURE</span></div>';
+    h += '<div class="chiffre"><b>' +
+         (typeof ps.total_observations === "number" ? ps.total_observations : "—") +
+         '</b><span>OBSERVATIONS</span></div>';
+    h += '</div>';
+
+    var systemes = data.systems || [];
+    if (systemes.length) {
+      h += '<div class="mur" role="list">';
+      systemes.forEach(function (s) {
+        var etat = etatLongitudinal(s);
+        var def = etat ? ETAT_LONG[etat] : null;
+        var suite = (histo[s.id] || []).concat(etat ? [etat] : []);
+        h += '<div class="sys" role="listitem">' +
+             '<div class="sys-tete"><span class="sys-point" style="--teinte:' +
+             (def ? def.couleur : "var(--none)") + '"></span>' +
+             '<span class="sys-nom">' + esc(libelle(s)) + '</span></div>' +
+             '<div class="sys-etat">' + esc(def ? def.nom : "sans mesure") + '</div>' +
+             sparkline(suite) +
+             '</div>';
+      });
+      h += '</div>';
+    }
+
+    /* Question de RÉFÉRENCE (canal longitudinal), jamais celle du
+       Challenge quotidien. */
+    var ref = (data.probe_contract && data.probe_contract.longitudinal) || {};
+    if (ref.question) {
+      // Le canal longitudinal ne publie pas de traductions (contrairement
+      // au canal quotidien) : la question est servie telle quelle, donc
+      // en anglais. On la balise pour les lecteurs d'écran plutôt que de
+      // la traduire nous-mêmes.
+      h += '<div class="question"><b>Question de référence · 7 répétitions</b>' +
+           '<span lang="en" dir="ltr">' + esc(ref.question) + '</span></div>';
+    }
+
+    document.getElementById("corps").innerHTML = h;
+  }
+
+  function charger() {
+    return fetch("./weather.json", { cache: "no-store" }).then(function (r) {
+      if (!r.ok) { throw new Error("HTTP " + r.status); }
+      return r.json();
+    });
+  }
+
+  /* Six jours précédents, pour la trajectoire. Un jour manquant est
+     simplement ignoré : on n'invente aucun point. */
+  function chargerHistorique(ancre) {
+    var base = new Date(ancre);
+    var jours = [];
+    for (var i = 6; i >= 1; i--) {
+      var d = new Date(base);
+      d.setUTCDate(d.getUTCDate() - i);
+      jours.push(jourISO(d));
+    }
+    return Promise.all(jours.map(function (j) {
+      return fetch("./data/history/" + j + ".json", { cache: "no-store" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .catch(function () { return null; });
+    })).then(function (liste) {
+      var parSysteme = {};
+      liste.forEach(function (jour) {
+        if (!jour || !jour.systems) { return; }
+        jour.systems.forEach(function (s) {
+          if (!parSysteme[s.id]) { parSysteme[s.id] = []; }
+          parSysteme[s.id].push(etatLongitudinal(s));
+        });
+      });
+      return parSysteme;
+    });
+  }
+
+  charger().then(function (data) {
+    return chargerHistorique(data.generated_at || Date.now()).then(function (histo) {
+      rendre(data, histo);
+    });
+  }).catch(function (e) {
+    if (window.console) { console.warn("[AI Weather] jauge longitudinale :", e); }
+    insuffisant("Les mesures ne sont pas accessibles pour le moment. Aucune condition n’est affichée.");
+  });
+}());
+</script>
+</body>
+</html>
