@@ -394,7 +394,7 @@
         }
 
         const brandName = (wording.brand && wording.brand.name) || "ControlTower";
-        const fullWeatherUrl = "https://controltowerai.io/ai-weather/";
+        const fullWeatherUrl = "https://aiweather.controltowerai.io/en/";
         const tileCta = TILE_CTA[lang] || TILE_CTA.en;
         const measuredDateText = formatMeasuredDate(data, lang);
         const todayIso = (data && data.generated_at) ? String(data.generated_at).slice(0, 10) : null;

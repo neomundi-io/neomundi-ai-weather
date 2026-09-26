@@ -25,16 +25,17 @@
   const REAGI_FOOTER_HTML =
     'Cadre RÉAGI · <a href="https://doi.org/10.5281/zenodo.20259638" target="_blank" rel="noopener">doi.org/10.5281/zenodo.20259638</a>';
 
-  // controltowerai.io is the public hub; weather.controltowerai.io (where
-  // this quiz is hosted) is embedded inside it, not a standalone
-  // destination — visitors are never sent to the weather subdomain
-  // itself. Same URL, same field name (links.full_weather_url), and same
-  // fetch pattern (config/wording.json) as weather-bar-6.html already
-  // uses for its own "See the full AI Weather" CTA (there: brand.name).
+  // aiweather.controltowerai.io/en/ is the public destination;
+  // weather.controltowerai.io (where this quiz is hosted) serves the data
+  // and is embedded, not a standalone destination — visitors are never
+  // sent to the weather subdomain itself. Same URL, same field name
+  // (links.full_weather_url), and same fetch pattern
+  // (config/wording.json) as weather-bar-6.html already uses for its own
+  // "See the full AI Weather" CTA (there: brand.name).
   // The literal string here is only a fallback if that fetch fails; it
   // must stay byte-identical to weather-bar-6.html's own
   // fullWeatherUrl constant.
-  const FULL_WEATHER_URL_FALLBACK = "https://controltowerai.io/ai-weather/";
+  const FULL_WEATHER_URL_FALLBACK = "https://aiweather.controltowerai.io/en/";
   let fullWeatherUrl = FULL_WEATHER_URL_FALLBACK;
 
   function loadWordingConfig() {
