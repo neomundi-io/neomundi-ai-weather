@@ -1,0 +1,27 @@
+{
+  "_comment": "AI Weather -- SINGLE SOURCE OF TRUTH for the daily observation volume (number of executions per ACTIVE MODEL per DAY) and for the pacing of those executions inside the collection window. Read by build_daily_panel.ps1 (which writes data/panels/ai_weather_panel.csv consumed by the 12 run_weather_*.ps1 runners), by launch_ai_weather.ps1 (observation spacing) and by aggregate_and_publish_weather.ps1 (coverage denominators + published protocol contract). Nothing here is duplicated as a literal in those scripts. To change the volume: edit ONE entry below -- no code change anywhere.",
+
+  "config_version": "v1.1-volume-reduction-2026-10-09",
+
+  "statistical_robustness_min_n": 10,
+  "_statistical_robustness_min_n_note": "Minimum number of observations per system and per day below which the published daily regime shares are flagged robustness='indicative_only' in probe_contract.<probe>.statistical_basis. Purely a labelling rule for honest reading: it never enters any interpretation, threshold or event-detection computation. Set to 10 because below that the share granularity (100/N points) exceeds 10 points, which is already coarse relative to the CLEAR/VARIABLE thresholds (90/65).",
+
+  "schedule": [
+    {
+      "effective_from": "2026-08-21",
+      "profile_id": "WEATHER-SENTINEL-VOL-30",
+      "daily_repetitions": 23,
+      "longitudinal_repetitions": 7,
+      "inter_observation_spacing_ms": 0,
+      "note": "Original protocol v0.2 volume: 23 daily + 7 longitudinal = 30 observations per system per day, executed back to back from 07:00 Paris (each runner paced only by its own provider-specific DELAY_MS). First day of protocol v0.2 -- see config/longitudinal_engine_config.json baseline.start_date."
+    },
+    {
+      "effective_from": "2026-10-09",
+      "profile_id": "WEATHER-SENTINEL-VOL-10",
+      "daily_repetitions": 3,
+      "longitudinal_repetitions": 7,
+      "inter_observation_spacing_ms": 600000,
+      "note": "Volume reduction decided 2026-10-08, first applied on the Measure cycle of 2026-10-09 07:00 Paris: 3 daily (Today's Challenge) + 7 longitudinal (fixed probe) = 10 observations per system per day. Spacing 600000 ms = 10 min between two consecutive observations of the same system, so the 10 passes span 07:00 -> 08:30 Paris instead of a ~15 min burst, while leaving the full 13:30 measurement deadline and the 14:00 publication time untouched. Prompts, active models, generation parameters and evaluator configuration are UNCHANGED: the measuring instrument is identical, so measurement_version / methodology_version are deliberately NOT bumped. Longitudinal volume stays at 7, so the V2 longitudinal baseline (median/MAD over a 14-day window, MAD floor = 100/N/2) remains comparable across the change."
+    }
+  ]
+}

@@ -5,19 +5,26 @@
 # Protocol:
 #
 #   DAILY PROBE
-#       1 question/day x 23 repetitions/system
+#       1 question/day x N_daily repetitions/system
 #       -> drives AI Weather condition
 #       -> drives Judgment Demand
 #       -> intended for Wall/public rendering
 #
 #   LONGITUDINAL PROBE
-#       1 fixed probe x 7 repetitions/system
+#       1 fixed probe x N_long repetitions/system
 #       -> laboratory longitudinal signal
 #       -> NEVER influences daily Weather condition
 #       -> NEVER influences Judgment Demand
 #
-#   Total = 30 observations/system/day
-#   12 systems = 360 observations/day
+#   Total = (N_daily + N_long) observations/system/day
+#
+#   N_daily / N_long are NOT literals in this file. They are resolved
+#   FOR THE AGGREGATED DATE from the single, effective-dated source of
+#   truth config\protocol_volume.json (see lib\Get-ProtocolVolume.ps1),
+#   the same file build_daily_panel.ps1 uses to size the execution
+#   panel. Date-awareness matters here: re-aggregating an older day must
+#   keep that day's own volume as the coverage denominator, otherwise a
+#   complete historical day would start reporting as incomplete.
 #
 # Canonical boundary:
 #
@@ -279,10 +286,40 @@ function Get-DailyQuestionTranslations {
     return $translations
 }
 
-$DAILY_PROBE_EXPECTED = 23
-$LONGITUDINAL_PROBE_EXPECTED = 7
+# ------------------------------------------------------------
+# 0.2 Protocol observation volume (per active model, per day)
+#
+# Resolved for $Date from config\protocol_volume.json -- never a
+# literal here. These values are the coverage DENOMINATORS used
+# everywhere below, and the values published in protocol.* and
+# probe_contract.*.expected_repetitions_per_system.
+# ------------------------------------------------------------
+
+. (Join-Path $PSScriptRoot "lib\Get-ProtocolVolume.ps1")
+
+$PROTOCOL_VOLUME =
+    Resolve-ProtocolVolume `
+        -Date $Date `
+        -RunnerRoot $PSScriptRoot
+
+if ($PROTOCOL_VOLUME.resolved_before_first_entry) {
+    Write-Warning (
+        "No protocol volume profile declared on or before $Date; " +
+        "using the earliest one ('$($PROTOCOL_VOLUME.profile_id)', " +
+        "effective $($PROTOCOL_VOLUME.effective_from)) as the coverage " +
+        "denominator."
+    )
+}
+
+$DAILY_PROBE_EXPECTED = $PROTOCOL_VOLUME.daily_repetitions
+$LONGITUDINAL_PROBE_EXPECTED = $PROTOCOL_VOLUME.longitudinal_repetitions
 $EXPECTED_OBSERVATIONS_PER_SYSTEM =
     $DAILY_PROBE_EXPECTED + $LONGITUDINAL_PROBE_EXPECTED
+
+# Labelling rule only -- see Get-StatisticalBasis. Never enters any
+# interpretation, threshold or event-detection computation.
+$STATISTICAL_ROBUSTNESS_MIN_N =
+    $PROTOCOL_VOLUME.statistical_robustness_min_n
 
 
 # ------------------------------------------------------------
@@ -513,6 +550,91 @@ function Get-InteroperabilityContractPaths {
             }
         }
     )
+}
+
+
+# ------------------------------------------------------------
+# 2.1 Statistical reading basis of a probe
+#
+# Published so a reader never has to guess how many observations a
+# percentage was computed on. Regime shares are plain descriptive
+# fractions of N observations per system; with a small N a single
+# observation moves a share by 100/N points, which the share alone
+# does not convey. `robustness` is a LABEL derived from the real N
+# (config: statistical_robustness_min_n). It is not used by any
+# interpretation rule, threshold or event detector.
+#
+# No confidence interval is emitted for the daily probe: the existing
+# Wilson interval is a longitudinal-only, descriptive-only artefact
+# (config\longitudinal_engine_config.json, uncertainty.role =
+# descriptive_only), and inventing one for the daily probe would
+# suggest a decision basis that does not exist.
+# ------------------------------------------------------------
+
+function Get-StatisticalBasis {
+    param(
+        # Observations the protocol plans per system for this probe.
+        [int]$ExpectedN,
+        # Observations actually scored for ONE system. -1 = not applicable
+        # (protocol-contract level, where no single system is described).
+        [int]$ScoredN = -1,
+        [string]$Role
+    )
+
+    # The basis a reader must reason on is what was actually scored when
+    # that is known, and the planned volume otherwise.
+    $effectiveN =
+        if ($ScoredN -ge 0) { $ScoredN } else { $ExpectedN }
+
+    $granularity =
+        if ($effectiveN -gt 0) {
+            [math]::Round(100.0 / $effectiveN, 2)
+        }
+        else {
+            $null
+        }
+
+    $robustness =
+        if ($effectiveN -le 0) {
+            "no_observation"
+        }
+        elseif (
+            $STATISTICAL_ROBUSTNESS_MIN_N -gt 0 -and
+            $effectiveN -lt $STATISTICAL_ROBUSTNESS_MIN_N
+        ) {
+            "indicative_only"
+        }
+        else {
+            "descriptive"
+        }
+
+    $baseNote =
+        "Shares for the '$Role' probe are descriptive fractions of " +
+        "$effectiveN scored observation(s) per system. One observation " +
+        "moves a share by $granularity points."
+
+    $note =
+        if ($robustness -eq "indicative_only") {
+            $baseNote +
+            " Below $STATISTICAL_ROBUSTNESS_MIN_N observations this is an " +
+            "indication of runtime behaviour, not a statistically robust " +
+            "comparison between systems; no confidence interval is " +
+            "published because none would be a valid decision basis."
+        }
+        else {
+            $baseNote
+        }
+
+    return [PSCustomObject]@{
+        expected_n_per_system = $ExpectedN
+        scored_n_per_system = $(if ($ScoredN -ge 0) { $ScoredN } else { $null })
+        basis_n = $effectiveN
+        share_granularity_points = $granularity
+        robustness = $robustness
+        robustness_min_n = $STATISTICAL_ROBUSTNESS_MIN_N
+        interval_published = $false
+        note = $note
+    }
 }
 
 
@@ -873,6 +995,11 @@ function Get-ProbeAggregate {
             }
         )
         protocol_valid = $protocolValid
+        statistical_basis =
+            Get-StatisticalBasis `
+                -ExpectedN $ExpectedObservations `
+                -ScoredN $fullyScored `
+                -Role $Role
         prompt_id = $(
             if ($promptIds.Count -eq 1) {
                 $promptIds[0]
@@ -1716,6 +1843,10 @@ $dailyProbeMetadata = [PSCustomObject]@{
     weather_authority = $true
     expected_repetitions_per_system =
         $DAILY_PROBE_EXPECTED
+    statistical_basis =
+        Get-StatisticalBasis `
+            -ExpectedN $DAILY_PROBE_EXPECTED `
+            -Role "daily"
     prompt_id = $(
         if ($dailyPromptIds.Count -eq 1) {
             $dailyPromptIds[0]
@@ -1801,6 +1932,10 @@ $longitudinalProbeMetadata = [PSCustomObject]@{
     weather_authority = $false
     expected_repetitions_per_system =
         $LONGITUDINAL_PROBE_EXPECTED
+    statistical_basis =
+        Get-StatisticalBasis `
+            -ExpectedN $LONGITUDINAL_PROBE_EXPECTED `
+            -Role "longitudinal"
     probe_id = $(
         if ($longitudinalPromptIds.Count -eq 1) {
             $longitudinalPromptIds[0]
@@ -1851,6 +1986,43 @@ $output = [PSCustomObject]@{
         total_expected_panel_observations =
             $panel.Count *
             $EXPECTED_OBSERVATIONS_PER_SYSTEM
+
+        # Which observation-volume profile this day was measured under,
+        # and since when. This identifies a change of VOLUME (how many
+        # executions per model per day) without touching
+        # measurement_version / methodology_version: the measuring
+        # instrument, prompts, active models, generation parameters and
+        # evaluator configuration are unchanged by a volume change, so
+        # bumping those versions would wrongly signal a different
+        # instrument. Source: config\protocol_volume.json.
+        volume_profile = [PSCustomObject]@{
+            profile_id =
+                $PROTOCOL_VOLUME.profile_id
+
+            effective_from =
+                $PROTOCOL_VOLUME.effective_from
+
+            config_version =
+                $PROTOCOL_VOLUME.config_version
+
+            daily_repetitions_per_system =
+                $PROTOCOL_VOLUME.daily_repetitions
+
+            longitudinal_repetitions_per_system =
+                $PROTOCOL_VOLUME.longitudinal_repetitions
+
+            observations_per_system_per_day =
+                $PROTOCOL_VOLUME.total_repetitions
+
+            inter_observation_spacing_ms =
+                $PROTOCOL_VOLUME.inter_observation_spacing_ms
+
+            measurement_instrument_changed =
+                $false
+
+            note =
+                $PROTOCOL_VOLUME.note
+        }
 
         role_resolution =
             "probe_role_then_prompt_id_prefix"
@@ -2118,6 +2290,7 @@ Write-Host "Repo root                    : $repoRoot"
 Write-Host "Results dir                  : $resultsDir"
 Write-Host "Panel systems enabled        : $($panel.Count)"
 Write-Host ""
+Write-Host "VOLUME profile               : $($PROTOCOL_VOLUME.profile_id) (effective $($PROTOCOL_VOLUME.effective_from), config $($PROTOCOL_VOLUME.config_version))"
 Write-Host "DAILY expected / system      : $DAILY_PROBE_EXPECTED"
 Write-Host "LONGITUDINAL expected/system : $LONGITUDINAL_PROBE_EXPECTED"
 Write-Host "TOTAL expected / system      : $EXPECTED_OBSERVATIONS_PER_SYSTEM"

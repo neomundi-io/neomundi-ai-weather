@@ -179,11 +179,22 @@ __marimo__/
 /AI_WEATHER_RUNNER/config/*
 !/AI_WEATHER_RUNNER/config/longitudinal_engine_config.json
 !/AI_WEATHER_RUNNER/config/provider_changelog.json
+# Observation-volume source of truth. Tracked because the tracked
+# aggregate_and_publish_weather.ps1 reads it (and lib/Get-ProtocolVolume.ps1
+# below) to size its coverage denominators -- an untracked dependency would
+# make the published aggregator unusable from a clone. Re-audited: declares
+# repetition counts and pacing only, no secrets and no machine paths.
+!/AI_WEATHER_RUNNER/config/protocol_volume.json
+
+!/AI_WEATHER_RUNNER/lib/
+/AI_WEATHER_RUNNER/lib/*
+!/AI_WEATHER_RUNNER/lib/Get-ProtocolVolume.ps1
 
 !/AI_WEATHER_RUNNER/tests/
 /AI_WEATHER_RUNNER/tests/*
 !/AI_WEATHER_RUNNER/tests/test_longitudinal_engine.ps1
 !/AI_WEATHER_RUNNER/tests/test_longitudinal_v2_bridge.ps1
+!/AI_WEATHER_RUNNER/tests/test_protocol_volume.ps1
 
 !/AI_WEATHER_RUNNER/shadow/
 /AI_WEATHER_RUNNER/shadow/*
