@@ -98,7 +98,7 @@ Les tableaux et invariants ci-dessous sont corrigés en conséquence.
 | Propriété | Valeur |
 |---|---|
 | Stimulus | `daily-YYYY-MM-DD`, nouveau chaque jour |
-| Répétitions | 23 / système / jour |
+| Répétitions | 23 / système / jour — **valeur du protocole jusqu'au 2026-10-08 inclus.** Depuis le 2026-10-09, le volume est de 3 répétitions du Challenge du jour + 7 de la question de référence = 10 / système / jour (profil `WEATHER-SENTINEL-VOL-10`). Source unique et datée : `AI_WEATHER_RUNNER/config/protocol_volume.json`. |
 | Comparaison | transversale entre les 12 systèmes, pour l'édition du jour uniquement |
 | Sortie | condition du jour, score du jour, réponse publique — devient "Today's Challenge" en cible V2 |
 | Autorité sur le statut "AI Weather" principal | **Aujourd'hui : totale de fait** (c'est le seul canal calculé). **Cible V2 : aucune, définitivement** — Today's Challenge ne détermine jamais le statut AI Weather, ni directement ni indirectement, à aucun des trois états du tableau ci-dessus |

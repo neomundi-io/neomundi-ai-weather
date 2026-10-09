@@ -25,10 +25,17 @@
      * en données insuffisantes, le widget le dit et n'affiche aucun
      * niveau.
      *
-     * Le canal « daily » (Today's Challenge, 23 répétitions, question
-     * différente chaque jour) n'est lu nulle part dans ce fichier.
-     * La question affichée est la question de RÉFÉRENCE, publiée dans
-     * probe_contract.longitudinal, répétée 7 fois par système.
+     * Le canal « daily » (Today's Challenge, observation
+     * complémentaire, question différente chaque jour) n'est lu nulle
+     * part dans ce fichier. La question affichée est la question de
+     * RÉFÉRENCE, publiée dans probe_contract.longitudinal.
+     *
+     * Le nombre de répétitions n'est PAS écrit en dur : il est lu dans
+     * la mesure publiée (protocol.volume_profile, repli
+     * probe_contract.longitudinal.expected_repetitions_per_system).
+     * Il valait 7 au 2026-10-09 ; le canal quotidien est passé de 23 à
+     * 3 répétitions ce jour-là, et un nombre écrit en dur aurait
+     * survécu au changement.
      *
      * Les trajectoires par système viennent de
      * systems[].longitudinal.current_longitudinal_state.state, relevé
@@ -170,7 +177,7 @@
 <body>
   <div class="panel" id="panneau">
     <p class="titre">La Météo des IA™ — jauge principale</p>
-    <p class="canal">Météo longitudinale · question de référence répétée 7 fois par système</p>
+    <p class="canal" id="canal">Météo longitudinale · question de référence répétée <span id="canal-reps">7</span> fois par système</p>
     <div id="corps">
       <p class="mesure">Chargement…</p>
     </div>
@@ -276,6 +283,11 @@
   function rendre(data, histo) {
     var ps = data.panel_summary || {};
 
+    /* Sous-titre : nombre de répétitions du canal longitudinal, repris
+       de la mesure. Le 7 écrit dans le HTML n'est que le repli. */
+    var cibleReps = document.getElementById("canal-reps");
+    if (cibleReps) { cibleReps.textContent = String(repsLongitudinales(data)); }
+
     /* ---- Condition globale : lecture directe, sans calcul ---- */
     var cond = data.global_condition;
     var niveau = cond ? PAR_ID[cond] : null;
@@ -341,11 +353,31 @@
       // au canal quotidien) : la question est servie telle quelle, donc
       // en anglais. On la balise pour les lecteurs d'écran plutôt que de
       // la traduire nous-mêmes.
-      h += '<div class="question"><b>Question de référence · 7 répétitions</b>' +
+      h += '<div class="question"><b>Question de référence · ' + repsLongitudinales(data) + ' répétitions</b>' +
            '<span lang="en" dir="ltr">' + esc(ref.question) + '</span></div>';
     }
 
     document.getElementById("corps").innerHTML = h;
+  }
+
+  /* Repetitions du canal longitudinal, telles que la mesure du jour les
+     declare. Deux lectures, puis repli sur 7 : la valeur affichee doit
+     toujours etre celle avec laquelle la journee a ete mesuree, jamais
+     une constante figee dans ce fichier. */
+  function repsLongitudinales(data) {
+    var p  = (data && data.protocol) || {};
+    var vp = p.volume_profile || {};
+    var pc = (data && data.probe_contract && data.probe_contract.longitudinal) || {};
+    var candidats = [
+      vp.longitudinal_repetitions_per_system,
+      p.longitudinal_probe_expected,
+      pc.expected_repetitions_per_system
+    ];
+    for (var i = 0; i < candidats.length; i++) {
+      var v = candidats[i];
+      if (typeof v === "number" && isFinite(v) && v > 0 && v === Math.round(v)) { return v; }
+    }
+    return 7;
   }
 
   function charger() {
