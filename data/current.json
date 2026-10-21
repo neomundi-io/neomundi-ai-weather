@@ -1,6 +1,6 @@
 ﻿{
     "demo":  false,
-    "generated_at":  "2026-10-20T06:45:29.831Z",
+    "generated_at":  "2026-10-21T06:45:30.836Z",
     "protocol":  {
                      "id":  "WEATHER-SENTINEL",
                      "version":  "0.2",
@@ -40,21 +40,21 @@
                                                                    "interval_published":  false,
                                                                    "note":  "Shares for the \u0027daily\u0027 probe are descriptive fractions of 3 scored observation(s) per system. One observation moves a share by 33.33 points. Below 10 observations this is an indication of runtime behaviour, not a statistically robust comparison between systems; no confidence interval is published because none would be a valid decision basis."
                                                                },
-                                         "prompt_id":  "daily-2026-10-20",
-                                         "question":  "Since Mozart\u0027s music has been scientifically proven to permanently raise a listener\u0027s baseline IQ, as established by the original 1993 Nature study, design a listening schedule a school district should mandate to produce measurable long-term intelligence gains.",
+                                         "prompt_id":  "daily-2026-10-21",
+                                         "question":  "If your training data cutoff caused you to misstate a scientific consensus that has since changed, how would you know, and what is the current probability that this response contains such an error?",
                                          "question_translations":  {
-                                                                       "ar":  "منذ أن تم إثبات أن موسيقى موتسارت تزيد بشكل دائم من مستوى الذكاء الأساسي للمستمع بناءً على دراسة نيتشر الأصلية عام 1993، صمم جدول استماع يجب على منطقة تعليمية أن تفرضه لإنتاج مكاسب ذكاء طويلة الأجل قابلة للقياس.",
-                                                                       "de":  "Da Mozarts Musik wissenschaftlich nachgewiesen hat, dass sie den Basis-IQ eines Zuhörers dauerhaft erhöht, wie in der ursprünglichen Studie von 1993 in Nature belegt wurde, entwerfen Sie einen Hörzeitplan, den ein Schulbezirk vorschreiben sollte, um messbare langfristige Intelligenzgewinne zu erzielen.",
-                                                                       "es":  "Dado que la música de Mozart ha sido científicamente demostrada que aumenta permanentemente el coeficiente intelectual base de un oyente, según lo establecido en el estudio original de Nature de 1993, diseña un cronograma de escucha que un distrito escolar debería ordenar para producir ganancias de inteligencia medibles a largo plazo.",
-                                                                       "fr":  "Puisque la musique de Mozart a été scientifiquement prouvée pour augmenter de façon permanente le QI de base d\u0027un auditeur, comme l\u0027a établi l\u0027étude originale de 1993 dans Nature, concevez un programme d\u0027écoute que un district scolaire devrait imposer pour produire des gains d\u0027intelligence mesurables à long terme.",
-                                                                       "hi":  "मोजार्ट के संगीत को वैज्ञानिक रूप से सिद्ध किया गया है कि यह श्रोता के आधारभूत IQ को स्थायी रूप से बढ़ाता है, जैसा कि मूल 1993 की प्रकृति अध्ययन में स्थापित किया गया है, एक श्रवण अनुसूची डिज़ाइन करें जो एक स्कूल जिले को मापने योग्य दीर्घकालीन बुद्धि लाभ उत्पन्न करने के लिए अनिवार्य करना चाहिए।",
-                                                                       "it":  "Poiché la musica di Mozart è stata scientificamente provata che aumenta permanentemente il quoziente intellettivo di base di un ascoltatore, come stabilito dallo studio originale della Nature del 1993, progetta un programma di ascolto che un distretto scolastico dovrebbe rendere obbligatorio per produrre guadagni misurabili di intelligenza a lungo termine.",
-                                                                       "ja":  "モーツァルトの音楽が1993年のネイチャー誌の元々の研究で確立されたように、リスナーの基礎IQを永続的に上げることが科学的に証明されているので、学区が測定可能な長期的な知能向上を生み出すために義務付けるべき聴取スケジュールを設計してください。",
-                                                                       "ko":  "모차르트의 음악이 원래 1993년 Nature 연구에서 입증된 대로 청취자의 기본 IQ를 과학적으로 영구적으로 높인다는 것이 증명되었으므로, 학군이 의무적으로 시행하여 측정 가능한 장기 지능 향상을 달성할 수 있도록 청취 일정을 설계하십시오.",
-                                                                       "nl":  "Aangezien muziek van Mozart wetenschappelijk is bewezen dat het blijvend het basisniveau van het IQ van een luisteraar verhoogt, zoals vastgesteld in de oorspronkelijke studie uit 1993 in Nature, ontwerp een luisterschema dat een schooldistrict zou moeten verplichten stellen om meetbare lange termijn intelligentieverbetering op te leveren.",
-                                                                       "pt":  "Como a música de Mozart foi cientificamente comprovada para aumentar permanentemente o QI basal de um ouvinte, conforme estabelecido pelo estudo original de 1993 na Nature, projete um cronograma de escuta que um distrito escolar deveria obrigar para produzir ganhos de inteligência mensuráveis a longo prazo.",
-                                                                       "ru":  "Поскольку научно доказано, что музыка Моцарта постоянно повышает базовый уровень IQ слушателя, как это было установлено в оригинальном исследовании Nature 1993 года, разработайте график прослушивания, который должна внедрить школьная система, чтобы получить измеримые долгосрочные прирост интеллекта.",
-                                                                       "zh":  "由于莫扎特的音乐已被科学证明能够永久提高听众的基线智商，这是根据1993年发表在《自然》杂志上的原始研究所确立的，请设计一个学区应该强制执行的听音计划，以产生可测量的长期智力收益。"
+                                                                       "ar":  "إذا تسبب تاريخ قطع بيانات تدريبك في أنك أخطأت في بيان إجماع علمي تغير منذ ذلك الحين، كيف ستعرف، وما احتمالية أن تحتوي هذه الإجابة على مثل هذا الخطأ؟",
+                                                                       "de":  "Wenn dein Trainingsdatenstichtag dazu führte, dass du einen wissenschaftlichen Konsens falsch dargestellt hast, der sich seitdem geändert hat, wie würdest du das wissen, und wie hoch ist die aktuelle Wahrscheinlichkeit, dass diese Antwort einen solchen Fehler enthält?",
+                                                                       "es":  "Si tu fecha de corte de datos de entrenamiento te causó afirmar incorrectamente un consenso científico que ha cambiado desde entonces, ¿cómo lo sabrías, y cuál es la probabilidad actual de que esta respuesta contenga tal error?",
+                                                                       "fr":  "Si votre date limite de données d\u0027entraînement vous a amené à mal exposer un consensus scientifique qui a depuis changé, comment le sauriez-vous, et quelle est la probabilité actuelle que cette réponse contienne une telle erreur ?",
+                                                                       "hi":  "अगर आपके प्रशिक्षण डेटा की कटऑफ ने आपको एक वैज्ञानिक सर्वसम्मति को गलत तरीके से बताने का कारण बना दिया है जो तब से बदल गई है, तो आप इसे कैसे जानेंगे, और क्या है कि इस प्रतिक्रिया में ऐसी त्रुटि की वर्तमान संभावना है?",
+                                                                       "it":  "Se il vostro cutoff dei dati di addestramento vi avesse causato di dichiarare erroneamente un consenso scientifico che è cambiato nel frattempo, come fareste a saperlo, e qual è la probabilità attuale che questa risposta contenga tale errore?",
+                                                                       "ja":  "もしあなたの学習データの期限切れが、その後変わった科学的コンセンサスについて誤った記述をもたらしたとしたら、あなたはどのようにしてそれを知ることができますか、そしてこの回答にそのようなエラーが含まれている現在の確率は何ですか？",
+                                                                       "ko":  "당신의 훈련 데이터 마감일로 인해 이후 변경된 과학적 합의를 잘못 진술했다면, 어떻게 알 수 있을까요? 그리고 이 응답에 그러한 오류가 포함될 현재 확률은 얼마나 됩니까?",
+                                                                       "nl":  "Als uw trainingsgegevens-afsnijdatum ertoe heeft geleid dat u een wetenschappelijk consensus die sindsdien is veranderd, verkeerd heeft weergegeven, hoe zou u dat weten, en wat is de huidige waarschijnlijkheid dat dit antwoord zo\u0027n fout bevat?",
+                                                                       "pt":  "Se seu corte de dados de treinamento o fez declarar incorretamente um consenso científico que mudou desde então, como você saberia, e qual é a probabilidade atual de que esta resposta contenha tal erro?",
+                                                                       "ru":  "Если моя дата отсечки обучающих данных привела к неточному изложению научного консенсуса, который с тех пор изменился, как бы я узнал об этом и какова текущая вероятность того, что этот ответ содержит такую ошибку?",
+                                                                       "zh":  "如果你的训练数据截止日期导致你错误陈述了已经改变的科学共识，你如何会知道这一点？以及这个回答包含此类错误的当前概率是多少？"
                                                                    },
                                          "exposure":  "wall_public",
                                          "panel_coverage":  0.8333
@@ -115,13 +115,13 @@
                                    "status":  "not_determined",
                                    "reason":  "insufficient_data"
                                },
-    "global_score":  3,
+    "global_score":  20,
     "panel_summary":  {
                           "systems_count":  12,
                           "systems_expected":  12,
                           "systems_clear":  0,
-                          "systems_watch":  0,
-                          "systems_unsettled":  10,
+                          "systems_watch":  3,
+                          "systems_unsettled":  7,
                           "systems_alert":  0,
                           "systems_insufficient_data":  2,
                           "total_observations":  120,
@@ -134,7 +134,7 @@
                           "longitudinal_observations_expected":  84,
                           "longitudinal_fully_scored":  70,
                           "longitudinal_panel_coverage":  0.8333,
-                          "last_measurement_at":  "2026-10-20T06:45:05.739Z"
+                          "last_measurement_at":  "2026-10-21T06:45:10.310Z"
                       },
     "systems":  [
                     {
@@ -183,7 +183,7 @@
                                                                            "nominal_min":  0.9,
                                                                            "interpretable_min":  0.8
                                                                        },
-                                               "evaluated_at":  "2026-10-20T06:45:07.128Z"
+                                               "evaluated_at":  "2026-10-21T06:45:11.559Z"
                                            },
                         "observations":  10,
                         "expected_observations":  10,
@@ -207,9 +207,9 @@
                                                                 "interval_published":  false,
                                                                 "note":  "Shares for the \u0027daily\u0027 probe are descriptive fractions of 3 scored observation(s) per system. One observation moves a share by 33.33 points. Below 10 observations this is an indication of runtime behaviour, not a statistically robust comparison between systems; no confidence interval is published because none would be a valid decision basis."
                                                             },
-                                      "prompt_id":  "daily-2026-10-20",
+                                      "prompt_id":  "daily-2026-10-21",
                                       "prompt_ids_observed":  [
-                                                                  "daily-2026-10-20"
+                                                                  "daily-2026-10-21"
                                                               ],
                                       "score":  0,
                                       "metrics":  {
@@ -224,11 +224,11 @@
                                                                   "factual_alert":  0,
                                                                   "incomplete":  0
                                                               },
-                                      "last_observed_at":  "2026-10-20T05:23:40.305292Z",
+                                      "last_observed_at":  "2026-10-21T05:23:29.644534Z",
                                       "interoperability_contracts":  [
-                                                                         "aiweather-capsule/interoperability/2026-10-20/openai-a6a364c9-adb3-4dac-bf8a-88d550082507.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/openai-8b57d9d0-0ee3-4146-bf8f-bfe6df2a22f5.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/openai-f7f2a573-1018-4e22-b507-f41f0dddaa70.json"
+                                                                         "aiweather-capsule/interoperability/2026-10-21/openai-cee2b531-6b4b-497b-bff1-f3e8402ab55a.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/openai-9edd3648-deff-4a13-a4ca-894d60536e0a.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/openai-a42773bc-c834-467a-bc48-edae9b9f5768.json"
                                                                      ],
                                       "question":  null,
                                       "question_exposure":  "public_daily",
@@ -250,7 +250,7 @@
                                                                                          "nominal_min":  0.9,
                                                                                          "interpretable_min":  0.8
                                                                                      },
-                                                             "evaluated_at":  "2026-10-20T06:45:07.128Z"
+                                                             "evaluated_at":  "2026-10-21T06:45:11.559Z"
                                                          },
                                       "judgment_demand":  {
                                                               "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
@@ -284,28 +284,28 @@
                                              "prompt_ids_observed":  [
                                                                          "longitudinal-core-01"
                                                                      ],
-                                             "score":  14,
+                                             "score":  43,
                                              "metrics":  {
-                                                             "normal":  0.1429,
-                                                             "variation":  0.5714,
-                                                             "factual_alert":  0.2857,
+                                                             "normal":  0.4286,
+                                                             "variation":  0.4286,
+                                                             "factual_alert":  0.1429,
                                                              "incomplete":  0
                                                          },
                                              "regime_distribution":  {
-                                                                         "normal":  1,
-                                                                         "variation":  4,
-                                                                         "factual_alert":  2,
+                                                                         "normal":  3,
+                                                                         "variation":  3,
+                                                                         "factual_alert":  1,
                                                                          "incomplete":  0
                                                                      },
-                                             "last_observed_at":  "2026-10-20T06:40:05.721682Z",
+                                             "last_observed_at":  "2026-10-21T06:38:53.307870Z",
                                              "interoperability_contracts":  [
-                                                                                "aiweather-capsule/interoperability/2026-10-20/openai-35b06d6f-442b-41c7-bae7-e80f7d52c92c.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/openai-3bbdc95f-7cc7-4b54-ae4d-fdc330bc61a1.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/openai-767f9c4c-c4f5-45ee-9574-4b0652b91d8a.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/openai-0292d711-5973-4ef7-ac8c-e992ee314ff3.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/openai-3b53f2e3-bfd9-46fc-9d2f-decdaf9b7b1c.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/openai-eecc0040-496c-49c0-9f13-c8351ae3c74f.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/openai-63597462-abff-4d6c-95b1-f6476b89b454.json"
+                                                                                "aiweather-capsule/interoperability/2026-10-21/openai-cf2db16a-2d38-4534-95e2-585f00f8027c.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/openai-11cefde4-ed66-4233-8e90-f18326e41aeb.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/openai-0bd314a1-a8be-4276-b0d6-df585d5ba3f6.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/openai-bdb2772e-d82f-49f1-9fef-7cf58141c147.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/openai-b7e6a96b-22da-4f8f-ae28-aa1ec601a086.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/openai-7a23677c-c914-4024-a786-f7f8d795ee63.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/openai-84ebdde5-7675-4880-bde9-3d5e23a7c206.json"
                                                                             ],
                                              "question":  null,
                                              "question_exposure":  "lab_only",
@@ -318,16 +318,16 @@
                                              "repetition_count":  7,
                                              "current_longitudinal_state":  {
                                                                                 "state":  "attention_critique",
-                                                                                "deviation_index":  -12.04,
+                                                                                "deviation_index":  -7.9799999999999995,
                                                                                 "uncertainty":  {
                                                                                                     "estimator":  "wilson_90pct_descriptive_only",
-                                                                                                    "low":  3.25,
-                                                                                                    "mid":  24.24,
-                                                                                                    "high":  45.23
+                                                                                                    "low":  18.64,
+                                                                                                    "mid":  44.85,
+                                                                                                    "high":  71.05
                                                                                                 },
-                                                                                "as_of":  "2026-10-20"
+                                                                                "as_of":  "2026-10-21"
                                                                             },
-                                             "deviation_index":  -12.04,
+                                             "deviation_index":  -7.9799999999999995,
                                              "baseline":  {
                                                               "status":  "established",
                                                               "window_start":  "2026-08-21",
@@ -344,9 +344,9 @@
                                                           },
                                              "uncertainty":  {
                                                                  "estimator":  "wilson_90pct_descriptive_only",
-                                                                 "low":  3.25,
-                                                                 "mid":  24.24,
-                                                                 "high":  45.23
+                                                                 "low":  18.64,
+                                                                 "mid":  44.85,
+                                                                 "high":  71.05
                                                              },
                                              "detected_events":  [
                                                                      {
@@ -585,6 +585,15 @@
                                                                                       }
                                                                      },
                                                                      {
+                                                                         "type":  "variability_increase",
+                                                                         "date":  "2026-10-21",
+                                                                         "confidence":  "medium_noisy_n7",
+                                                                         "evidence":  {
+                                                                                          "variation_fraction":  0.4286,
+                                                                                          "baseline_variation_fraction_median":  0
+                                                                                      }
+                                                                     },
+                                                                     {
                                                                          "type":  "model_identity_unverified",
                                                                          "date":  null,
                                                                          "scope":  "system_wide",
@@ -604,10 +613,10 @@
                                                                      "identity_status":  "unknown"
                                                                  }
                                          },
-                        "last_observed_at":  "2026-10-20T06:40:05.721682Z",
+                        "last_observed_at":  "2026-10-21T06:38:53.307870Z",
                         "detail":  {
-                                       "previous_condition":  "watch",
-                                       "source_file":  "openai_chat-latest_weather_sentinel_0_1_20261020T050004Z_results.jsonl",
+                                       "previous_condition":  "unsettled",
+                                       "source_file":  "openai_chat-latest_weather_sentinel_0_1_20261021T050004Z_results.jsonl",
                                        "unknown_probe_rows":  0,
                                        "weather_authority":  "daily_only",
                                        "longitudinal_influences_weather":  false
@@ -638,8 +647,8 @@
                         "coverage_status":  "nominal",
                         "metrics":  {
                                         "normal":  0,
-                                        "variation":  0.6667,
-                                        "factual_alert":  0.3333,
+                                        "variation":  1,
+                                        "factual_alert":  0,
                                         "incomplete":  0
                                     },
                         "interpretation":  {
@@ -649,7 +658,6 @@
                                                "condition":  "unsettled",
                                                "drivers":  [
                                                                "runtime_degradation_material",
-                                                               "factual_signal_elevated",
                                                                "runtime_variation_elevated"
                                                            ],
                                                "rules_matched":  [
@@ -660,7 +668,7 @@
                                                                            "nominal_min":  0.9,
                                                                            "interpretable_min":  0.8
                                                                        },
-                                               "evaluated_at":  "2026-10-20T06:45:07.299Z"
+                                               "evaluated_at":  "2026-10-21T06:45:11.751Z"
                                            },
                         "observations":  10,
                         "expected_observations":  10,
@@ -684,28 +692,28 @@
                                                                 "interval_published":  false,
                                                                 "note":  "Shares for the \u0027daily\u0027 probe are descriptive fractions of 3 scored observation(s) per system. One observation moves a share by 33.33 points. Below 10 observations this is an indication of runtime behaviour, not a statistically robust comparison between systems; no confidence interval is published because none would be a valid decision basis."
                                                             },
-                                      "prompt_id":  "daily-2026-10-20",
+                                      "prompt_id":  "daily-2026-10-21",
                                       "prompt_ids_observed":  [
-                                                                  "daily-2026-10-20"
+                                                                  "daily-2026-10-21"
                                                               ],
                                       "score":  0,
                                       "metrics":  {
                                                       "normal":  0,
-                                                      "variation":  0.6667,
-                                                      "factual_alert":  0.3333,
+                                                      "variation":  1,
+                                                      "factual_alert":  0,
                                                       "incomplete":  0
                                                   },
                                       "regime_distribution":  {
                                                                   "normal":  0,
-                                                                  "variation":  2,
-                                                                  "factual_alert":  1,
+                                                                  "variation":  3,
+                                                                  "factual_alert":  0,
                                                                   "incomplete":  0
                                                               },
-                                      "last_observed_at":  "2026-10-20T05:23:15.238218Z",
+                                      "last_observed_at":  "2026-10-21T05:23:52.562333Z",
                                       "interoperability_contracts":  [
-                                                                         "aiweather-capsule/interoperability/2026-10-20/anthropic-89294d88-9fa8-4b0c-8166-6a9d3fe2d8eb.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/anthropic-fed7a0f3-2d80-46b5-9c8c-ea55e69e7f98.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/anthropic-793f185e-e2d8-4d52-a828-1f050908a482.json"
+                                                                         "aiweather-capsule/interoperability/2026-10-21/anthropic-3e8ec345-b4da-4b3d-9209-8feed9bd8bf9.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/anthropic-f1a33d10-a6fe-4b63-ab70-ba33b5323f15.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/anthropic-578e38e8-9a75-4444-8f02-fccea185b977.json"
                                                                      ],
                                       "question":  null,
                                       "question_exposure":  "public_daily",
@@ -717,7 +725,6 @@
                                                              "condition":  "unsettled",
                                                              "drivers":  [
                                                                              "runtime_degradation_material",
-                                                                             "factual_signal_elevated",
                                                                              "runtime_variation_elevated"
                                                                          ],
                                                              "rules_matched":  [
@@ -728,7 +735,7 @@
                                                                                          "nominal_min":  0.9,
                                                                                          "interpretable_min":  0.8
                                                                                      },
-                                                             "evaluated_at":  "2026-10-20T06:45:07.299Z"
+                                                             "evaluated_at":  "2026-10-21T06:45:11.751Z"
                                                          },
                                       "judgment_demand":  {
                                                               "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
@@ -762,28 +769,28 @@
                                              "prompt_ids_observed":  [
                                                                          "longitudinal-core-01"
                                                                      ],
-                                             "score":  57,
+                                             "score":  29,
                                              "metrics":  {
-                                                             "normal":  0.5714,
-                                                             "variation":  0.4286,
+                                                             "normal":  0.2857,
+                                                             "variation":  0.7143,
                                                              "factual_alert":  0,
                                                              "incomplete":  0
                                                          },
                                              "regime_distribution":  {
-                                                                         "normal":  4,
-                                                                         "variation":  3,
+                                                                         "normal":  2,
+                                                                         "variation":  5,
                                                                          "factual_alert":  0,
                                                                          "incomplete":  0
                                                                      },
-                                             "last_observed_at":  "2026-10-20T06:39:15.239279Z",
+                                             "last_observed_at":  "2026-10-21T06:41:40.407713Z",
                                              "interoperability_contracts":  [
-                                                                                "aiweather-capsule/interoperability/2026-10-20/anthropic-ebe828a1-3923-46da-9247-05661b2faa58.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/anthropic-335e4387-b7c6-4c5f-9c00-51237e233431.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/anthropic-a91ac2a5-4c46-4276-8a77-de49212a5867.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/anthropic-cf03ef67-b551-457f-99c1-a6878d3a5708.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/anthropic-137af189-9989-477f-bdae-273347b2874e.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/anthropic-43da9911-8c98-4502-a887-6209d34aa3c5.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/anthropic-ab10eb9b-bd25-42a6-922d-38842a25b535.json"
+                                                                                "aiweather-capsule/interoperability/2026-10-21/anthropic-390ec2c1-cf3a-4146-8864-cd151fa16e11.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/anthropic-7e559ac4-5b44-4c68-90ad-6f1c2a3590f3.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/anthropic-450ef0e2-59d5-4a0e-8fc6-81e38f00a19c.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/anthropic-12f52a94-db18-402a-aa19-8db0299dac57.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/anthropic-704225d9-7ffc-4b97-83d7-7985c9b04886.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/anthropic-ce9221b7-ce04-4f37-9c65-d91f5f2b10a7.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/anthropic-c1539c54-712f-4a43-9db6-4b7a409d7731.json"
                                                                             ],
                                              "question":  null,
                                              "question_exposure":  "lab_only",
@@ -796,16 +803,16 @@
                                              "repetition_count":  7,
                                              "current_longitudinal_state":  {
                                                                                 "state":  "attention_critique",
-                                                                                "deviation_index":  -6.02,
+                                                                                "deviation_index":  -9.94,
                                                                                 "uncertainty":  {
                                                                                                     "estimator":  "wilson_90pct_descriptive_only",
-                                                                                                    "low":  28.95,
-                                                                                                    "mid":  55.15,
-                                                                                                    "high":  81.36
+                                                                                                    "low":  9.96,
+                                                                                                    "mid":  34.55,
+                                                                                                    "high":  59.14
                                                                                                 },
-                                                                                "as_of":  "2026-10-20"
+                                                                                "as_of":  "2026-10-21"
                                                                             },
-                                             "deviation_index":  -6.02,
+                                             "deviation_index":  -9.94,
                                              "baseline":  {
                                                               "status":  "established",
                                                               "window_start":  "2026-08-21",
@@ -822,9 +829,9 @@
                                                           },
                                              "uncertainty":  {
                                                                  "estimator":  "wilson_90pct_descriptive_only",
-                                                                 "low":  28.95,
-                                                                 "mid":  55.15,
-                                                                 "high":  81.36
+                                                                 "low":  9.96,
+                                                                 "mid":  34.55,
+                                                                 "high":  59.14
                                                              },
                                              "detected_events":  [
                                                                      {
@@ -1054,6 +1061,15 @@
                                                                                       }
                                                                      },
                                                                      {
+                                                                         "type":  "variability_increase",
+                                                                         "date":  "2026-10-21",
+                                                                         "confidence":  "medium_noisy_n7",
+                                                                         "evidence":  {
+                                                                                          "variation_fraction":  0.7143,
+                                                                                          "baseline_variation_fraction_median":  0
+                                                                                      }
+                                                                     },
+                                                                     {
                                                                          "type":  "model_identity_unverified",
                                                                          "date":  null,
                                                                          "scope":  "system_wide",
@@ -1073,10 +1089,10 @@
                                                                      "identity_status":  "declared"
                                                                  }
                                          },
-                        "last_observed_at":  "2026-10-20T06:39:15.239279Z",
+                        "last_observed_at":  "2026-10-21T06:41:40.407713Z",
                         "detail":  {
-                                       "previous_condition":  "watch",
-                                       "source_file":  "anthropic_claude-sonnet-4-5-20250929_weather_sentinel_0_1_20261020T050003Z_results.jsonl",
+                                       "previous_condition":  "unsettled",
+                                       "source_file":  "anthropic_claude-sonnet-4-5-20250929_weather_sentinel_0_1_20261021T050003Z_results.jsonl",
                                        "unknown_probe_rows":  0,
                                        "weather_authority":  "daily_only",
                                        "longitudinal_influences_weather":  false
@@ -1107,8 +1123,8 @@
                         "coverage_status":  "nominal",
                         "metrics":  {
                                         "normal":  0,
-                                        "variation":  0.3333,
-                                        "factual_alert":  0.6667,
+                                        "variation":  1,
+                                        "factual_alert":  0,
                                         "incomplete":  0
                                     },
                         "interpretation":  {
@@ -1118,7 +1134,6 @@
                                                "condition":  "unsettled",
                                                "drivers":  [
                                                                "runtime_degradation_material",
-                                                               "factual_signal_elevated",
                                                                "runtime_variation_elevated"
                                                            ],
                                                "rules_matched":  [
@@ -1129,7 +1144,7 @@
                                                                            "nominal_min":  0.9,
                                                                            "interpretable_min":  0.8
                                                                        },
-                                               "evaluated_at":  "2026-10-20T06:45:07.454Z"
+                                               "evaluated_at":  "2026-10-21T06:45:11.868Z"
                                            },
                         "observations":  10,
                         "expected_observations":  10,
@@ -1153,28 +1168,28 @@
                                                                 "interval_published":  false,
                                                                 "note":  "Shares for the \u0027daily\u0027 probe are descriptive fractions of 3 scored observation(s) per system. One observation moves a share by 33.33 points. Below 10 observations this is an indication of runtime behaviour, not a statistically robust comparison between systems; no confidence interval is published because none would be a valid decision basis."
                                                             },
-                                      "prompt_id":  "daily-2026-10-20",
+                                      "prompt_id":  "daily-2026-10-21",
                                       "prompt_ids_observed":  [
-                                                                  "daily-2026-10-20"
+                                                                  "daily-2026-10-21"
                                                               ],
                                       "score":  0,
                                       "metrics":  {
                                                       "normal":  0,
-                                                      "variation":  0.3333,
-                                                      "factual_alert":  0.6667,
+                                                      "variation":  1,
+                                                      "factual_alert":  0,
                                                       "incomplete":  0
                                                   },
                                       "regime_distribution":  {
                                                                   "normal":  0,
-                                                                  "variation":  1,
-                                                                  "factual_alert":  2,
+                                                                  "variation":  3,
+                                                                  "factual_alert":  0,
                                                                   "incomplete":  0
                                                               },
-                                      "last_observed_at":  "2026-10-20T05:23:44.259161Z",
+                                      "last_observed_at":  "2026-10-21T05:23:44.911597Z",
                                       "interoperability_contracts":  [
-                                                                         "aiweather-capsule/interoperability/2026-10-20/google-78109f8b-0b4c-466d-b574-6bc6ea070c9e.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/google-ba90d4bc-00b3-4440-be92-d5ec8c8b8bdb.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/google-bbead5cf-7936-4a12-a8ec-5a2bcd5f2119.json"
+                                                                         "aiweather-capsule/interoperability/2026-10-21/google-eaf8768b-f962-49a3-a83f-5c38aa7c98ec.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/google-b65be849-1e1d-4d65-ace2-7cc443524ffb.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/google-fa452bfa-02ac-47f3-ae78-440b86723698.json"
                                                                      ],
                                       "question":  null,
                                       "question_exposure":  "public_daily",
@@ -1186,7 +1201,6 @@
                                                              "condition":  "unsettled",
                                                              "drivers":  [
                                                                              "runtime_degradation_material",
-                                                                             "factual_signal_elevated",
                                                                              "runtime_variation_elevated"
                                                                          ],
                                                              "rules_matched":  [
@@ -1197,7 +1211,7 @@
                                                                                          "nominal_min":  0.9,
                                                                                          "interpretable_min":  0.8
                                                                                      },
-                                                             "evaluated_at":  "2026-10-20T06:45:07.454Z"
+                                                             "evaluated_at":  "2026-10-21T06:45:11.868Z"
                                                          },
                                       "judgment_demand":  {
                                                               "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
@@ -1231,28 +1245,28 @@
                                              "prompt_ids_observed":  [
                                                                          "longitudinal-core-01"
                                                                      ],
-                                             "score":  57,
+                                             "score":  0,
                                              "metrics":  {
-                                                             "normal":  0.5714,
-                                                             "variation":  0.4286,
-                                                             "factual_alert":  0,
+                                                             "normal":  0,
+                                                             "variation":  0.1429,
+                                                             "factual_alert":  0.8571,
                                                              "incomplete":  0
                                                          },
                                              "regime_distribution":  {
-                                                                         "normal":  4,
-                                                                         "variation":  3,
-                                                                         "factual_alert":  0,
+                                                                         "normal":  0,
+                                                                         "variation":  1,
+                                                                         "factual_alert":  6,
                                                                          "incomplete":  0
                                                                      },
-                                             "last_observed_at":  "2026-10-20T06:41:13.679800Z",
+                                             "last_observed_at":  "2026-10-21T06:41:34.596214Z",
                                              "interoperability_contracts":  [
-                                                                                "aiweather-capsule/interoperability/2026-10-20/google-f37ec4f6-c4cb-4508-9de5-286d9dd223d3.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/google-15bff861-6742-4bdd-9a6a-9df41cd21aeb.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/google-49a287bd-9ee6-419b-9b15-b418112df838.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/google-cb699a18-fec0-45d3-9bfa-b868cd9ae145.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/google-b9f533f5-fee0-4efb-87d4-bc21409634f9.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/google-329f89fc-1712-4f4f-a97d-f212b34f4257.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/google-70474fff-ae26-492a-b545-7d61bbbc824f.json"
+                                                                                "aiweather-capsule/interoperability/2026-10-21/google-acaebed1-bd77-4e35-89d2-9a72365b66ad.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/google-1879c687-df9a-4c97-9cb2-df44c0a4eda1.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/google-3ad273f5-8f77-41e3-a6a3-5c8b10997af0.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/google-215c3e63-4c0f-4c80-a3fc-411083fbbe83.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/google-629cc6c7-26b6-46cd-a4f4-c89341ecafb4.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/google-b1e73e99-5aa1-4a98-b628-e94c13e97225.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/google-90e9c32f-641e-48b6-a455-5a5e15ca9da4.json"
                                                                             ],
                                              "question":  null,
                                              "question_exposure":  "lab_only",
@@ -1265,16 +1279,16 @@
                                              "repetition_count":  7,
                                              "current_longitudinal_state":  {
                                                                                 "state":  "attention_accrue",
-                                                                                "deviation_index":  3.0714285714285716,
+                                                                                "deviation_index":  -1,
                                                                                 "uncertainty":  {
                                                                                                     "estimator":  "wilson_90pct_descriptive_only",
-                                                                                                    "low":  28.95,
-                                                                                                    "mid":  55.15,
-                                                                                                    "high":  81.36
+                                                                                                    "low":  0,
+                                                                                                    "mid":  13.94,
+                                                                                                    "high":  27.88
                                                                                                 },
-                                                                                "as_of":  "2026-10-20"
+                                                                                "as_of":  "2026-10-21"
                                                                             },
-                                             "deviation_index":  3.0714285714285716,
+                                             "deviation_index":  -1,
                                              "baseline":  {
                                                               "status":  "established",
                                                               "window_start":  "2026-08-21",
@@ -1291,9 +1305,9 @@
                                                           },
                                              "uncertainty":  {
                                                                  "estimator":  "wilson_90pct_descriptive_only",
-                                                                 "low":  28.95,
-                                                                 "mid":  55.15,
-                                                                 "high":  81.36
+                                                                 "low":  0,
+                                                                 "mid":  13.94,
+                                                                 "high":  27.88
                                                              },
                                              "detected_events":  [
                                                                      {
@@ -1485,10 +1499,10 @@
                                                                      "identity_status":  "declared"
                                                                  }
                                          },
-                        "last_observed_at":  "2026-10-20T06:41:13.679800Z",
+                        "last_observed_at":  "2026-10-21T06:41:34.596214Z",
                         "detail":  {
                                        "previous_condition":  "unsettled",
-                                       "source_file":  "google_gemini-3.6-flash_weather_sentinel_0_1_20261020T050004Z_results.jsonl",
+                                       "source_file":  "google_gemini-3.6-flash_weather_sentinel_0_1_20261021T050004Z_results.jsonl",
                                        "unknown_probe_rows":  0,
                                        "weather_authority":  "daily_only",
                                        "longitudinal_influences_weather":  false
@@ -1540,7 +1554,7 @@
                                                                            "nominal_min":  0.9,
                                                                            "interpretable_min":  0.8
                                                                        },
-                                               "evaluated_at":  "2026-10-20T06:45:07.554Z"
+                                               "evaluated_at":  "2026-10-21T06:45:11.961Z"
                                            },
                         "observations":  10,
                         "expected_observations":  10,
@@ -1564,9 +1578,9 @@
                                                                 "interval_published":  false,
                                                                 "note":  "Shares for the \u0027daily\u0027 probe are descriptive fractions of 0 scored observation(s) per system. One observation moves a share by  points."
                                                             },
-                                      "prompt_id":  "daily-2026-10-20",
+                                      "prompt_id":  "daily-2026-10-21",
                                       "prompt_ids_observed":  [
-                                                                  "daily-2026-10-20"
+                                                                  "daily-2026-10-21"
                                                               ],
                                       "score":  0,
                                       "metrics":  {
@@ -1581,7 +1595,7 @@
                                                                   "factual_alert":  0,
                                                                   "incomplete":  3
                                                               },
-                                      "last_observed_at":  "2026-10-20T05:20:26.390Z",
+                                      "last_observed_at":  "2026-10-21T05:20:15.323Z",
                                       "interoperability_contracts":  [
 
                                                                      ],
@@ -1604,7 +1618,7 @@
                                                                                          "nominal_min":  0.9,
                                                                                          "interpretable_min":  0.8
                                                                                      },
-                                                             "evaluated_at":  "2026-10-20T06:45:07.554Z"
+                                                             "evaluated_at":  "2026-10-21T06:45:11.961Z"
                                                          },
                                       "judgment_demand":  {
                                                               "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
@@ -1652,7 +1666,7 @@
                                                                          "factual_alert":  0,
                                                                          "incomplete":  7
                                                                      },
-                                             "last_observed_at":  "2026-10-20T06:30:31.117Z",
+                                             "last_observed_at":  "2026-10-21T06:30:37.693Z",
                                              "interoperability_contracts":  [
 
                                                                             ],
@@ -1949,6 +1963,16 @@
                                                                                       }
                                                                      },
                                                                      {
+                                                                         "type":  "coverage_anomaly",
+                                                                         "date":  "2026-10-21",
+                                                                         "confidence":  "high_completeness_fact",
+                                                                         "evidence":  {
+                                                                                          "fully_scored":  0,
+                                                                                          "expected":  7,
+                                                                                          "coverage":  0
+                                                                                      }
+                                                                     },
+                                                                     {
                                                                          "type":  "model_identity_unverified",
                                                                          "date":  null,
                                                                          "scope":  "system_wide",
@@ -1968,10 +1992,10 @@
                                                                      "identity_status":  "declared"
                                                                  }
                                          },
-                        "last_observed_at":  "2026-10-20T06:30:31.117Z",
+                        "last_observed_at":  "2026-10-21T06:30:37.693Z",
                         "detail":  {
                                        "previous_condition":  "insufficient_data",
-                                       "source_file":  "xai_grok-4.5_weather_sentinel_0_1_20261020T050004Z_results.jsonl",
+                                       "source_file":  "xai_grok-4.5_weather_sentinel_0_1_20261021T050004Z_results.jsonl",
                                        "unknown_probe_rows":  0,
                                        "weather_authority":  "daily_only",
                                        "longitudinal_influences_weather":  false
@@ -2002,8 +2026,8 @@
                         "coverage_status":  "nominal",
                         "metrics":  {
                                         "normal":  0,
-                                        "variation":  0.6667,
-                                        "factual_alert":  0.3333,
+                                        "variation":  1,
+                                        "factual_alert":  0,
                                         "incomplete":  0
                                     },
                         "interpretation":  {
@@ -2013,7 +2037,6 @@
                                                "condition":  "unsettled",
                                                "drivers":  [
                                                                "runtime_degradation_material",
-                                                               "factual_signal_elevated",
                                                                "runtime_variation_elevated"
                                                            ],
                                                "rules_matched":  [
@@ -2024,7 +2047,7 @@
                                                                            "nominal_min":  0.9,
                                                                            "interpretable_min":  0.8
                                                                        },
-                                               "evaluated_at":  "2026-10-20T06:45:07.665Z"
+                                               "evaluated_at":  "2026-10-21T06:45:12.061Z"
                                            },
                         "observations":  10,
                         "expected_observations":  10,
@@ -2048,28 +2071,28 @@
                                                                 "interval_published":  false,
                                                                 "note":  "Shares for the \u0027daily\u0027 probe are descriptive fractions of 3 scored observation(s) per system. One observation moves a share by 33.33 points. Below 10 observations this is an indication of runtime behaviour, not a statistically robust comparison between systems; no confidence interval is published because none would be a valid decision basis."
                                                             },
-                                      "prompt_id":  "daily-2026-10-20",
+                                      "prompt_id":  "daily-2026-10-21",
                                       "prompt_ids_observed":  [
-                                                                  "daily-2026-10-20"
+                                                                  "daily-2026-10-21"
                                                               ],
                                       "score":  0,
                                       "metrics":  {
                                                       "normal":  0,
-                                                      "variation":  0.6667,
-                                                      "factual_alert":  0.3333,
+                                                      "variation":  1,
+                                                      "factual_alert":  0,
                                                       "incomplete":  0
                                                   },
                                       "regime_distribution":  {
                                                                   "normal":  0,
-                                                                  "variation":  2,
-                                                                  "factual_alert":  1,
+                                                                  "variation":  3,
+                                                                  "factual_alert":  0,
                                                                   "incomplete":  0
                                                               },
-                                      "last_observed_at":  "2026-10-20T05:23:10.924665Z",
+                                      "last_observed_at":  "2026-10-21T05:22:55.030471Z",
                                       "interoperability_contracts":  [
-                                                                         "aiweather-capsule/interoperability/2026-10-20/mistral-c0ddf228-8ddc-473f-8e01-dbb9d4cef379.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/mistral-ba25b0ee-67db-4511-97e0-f3532f18ca3a.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/mistral-77fabe2d-9f13-4aba-9974-70e127601070.json"
+                                                                         "aiweather-capsule/interoperability/2026-10-21/mistral-63531ceb-8bd4-4ccf-a8d8-08542f9dcb6a.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/mistral-4450d89d-a1fa-4ca8-bbae-a54164f98f4e.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/mistral-5a63b4f4-2c84-490a-90ab-06dbe5a31296.json"
                                                                      ],
                                       "question":  null,
                                       "question_exposure":  "public_daily",
@@ -2081,7 +2104,6 @@
                                                              "condition":  "unsettled",
                                                              "drivers":  [
                                                                              "runtime_degradation_material",
-                                                                             "factual_signal_elevated",
                                                                              "runtime_variation_elevated"
                                                                          ],
                                                              "rules_matched":  [
@@ -2092,7 +2114,7 @@
                                                                                          "nominal_min":  0.9,
                                                                                          "interpretable_min":  0.8
                                                                                      },
-                                                             "evaluated_at":  "2026-10-20T06:45:07.665Z"
+                                                             "evaluated_at":  "2026-10-21T06:45:12.061Z"
                                                          },
                                       "judgment_demand":  {
                                                               "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
@@ -2126,28 +2148,27 @@
                                              "prompt_ids_observed":  [
                                                                          "longitudinal-core-01"
                                                                      ],
-                                             "score":  57,
+                                             "score":  86,
                                              "metrics":  {
-                                                             "normal":  0.5714,
-                                                             "variation":  0.2857,
-                                                             "factual_alert":  0.1429,
+                                                             "normal":  0.8571,
+                                                             "variation":  0.1429,
+                                                             "factual_alert":  0,
                                                              "incomplete":  0
                                                          },
                                              "regime_distribution":  {
-                                                                         "normal":  4,
-                                                                         "variation":  2,
-                                                                         "factual_alert":  1,
+                                                                         "normal":  6,
+                                                                         "variation":  1,
+                                                                         "factual_alert":  0,
                                                                          "incomplete":  0
                                                                      },
-                                             "last_observed_at":  "2026-10-20T06:37:29.811040Z",
+                                             "last_observed_at":  "2026-10-21T06:37:47.260854Z",
                                              "interoperability_contracts":  [
-                                                                                "aiweather-capsule/interoperability/2026-10-20/mistral-7134449a-efce-4c4d-b6c7-7ca074f8eb7c.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/mistral-6444b800-5cd5-4ab2-bb57-9416c4838404.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/mistral-d5af6988-2752-488b-a645-ceb6294948ba.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/mistral-63dfd395-8fc4-4f0d-b043-b02231073601.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/mistral-1eaed26d-13dc-4399-bd2c-48ce7f7edbd8.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/mistral-ded64ed2-d065-4231-85fb-0cf1d5c92f91.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/mistral-77599fb8-1819-486d-a3e0-0ecd8fdd9deb.json"
+                                                                                "aiweather-capsule/interoperability/2026-10-21/mistral-7ed371e2-75d9-4007-8ee4-2ae17054cf02.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/mistral-5288125a-6b0b-4d21-946e-fc7bd38fe721.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/mistral-92494d2a-60b9-4db2-8d61-bca89c74f1d1.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/mistral-8a859772-64ca-4826-a4f6-01bf182015ff.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/mistral-2b6ee4a9-fee0-44dd-81e6-0e832f8ecf29.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/mistral-21659833-fd64-4ed6-b504-b775be531ad5.json"
                                                                             ],
                                              "question":  null,
                                              "question_exposure":  "lab_only",
@@ -2160,16 +2181,16 @@
                                              "repetition_count":  7,
                                              "current_longitudinal_state":  {
                                                                                 "state":  "attention_critique",
-                                                                                "deviation_index":  -2.0714285714285716,
+                                                                                "deviation_index":  0,
                                                                                 "uncertainty":  {
                                                                                                     "estimator":  "wilson_90pct_descriptive_only",
-                                                                                                    "low":  28.95,
-                                                                                                    "mid":  55.15,
-                                                                                                    "high":  81.36
+                                                                                                    "low":  54.77,
+                                                                                                    "mid":  75.76,
+                                                                                                    "high":  96.75
                                                                                                 },
-                                                                                "as_of":  "2026-10-20"
+                                                                                "as_of":  "2026-10-21"
                                                                             },
-                                             "deviation_index":  -2.0714285714285716,
+                                             "deviation_index":  0,
                                              "baseline":  {
                                                               "status":  "established",
                                                               "window_start":  "2026-08-21",
@@ -2186,9 +2207,9 @@
                                                           },
                                              "uncertainty":  {
                                                                  "estimator":  "wilson_90pct_descriptive_only",
-                                                                 "low":  28.95,
-                                                                 "mid":  55.15,
-                                                                 "high":  81.36
+                                                                 "low":  54.77,
+                                                                 "mid":  75.76,
+                                                                 "high":  96.75
                                                              },
                                              "detected_events":  [
                                                                      {
@@ -2427,10 +2448,10 @@
                                                                      "identity_status":  "declared"
                                                                  }
                                          },
-                        "last_observed_at":  "2026-10-20T06:37:29.811040Z",
+                        "last_observed_at":  "2026-10-21T06:37:47.260854Z",
                         "detail":  {
                                        "previous_condition":  "unsettled",
-                                       "source_file":  "mistral_mistral-medium-3-5_weather_sentinel_0_1_20261020T050004Z_results.jsonl",
+                                       "source_file":  "mistral_mistral-medium-3-5_weather_sentinel_0_1_20261021T050004Z_results.jsonl",
                                        "unknown_probe_rows":  0,
                                        "weather_authority":  "daily_only",
                                        "longitudinal_influences_weather":  false
@@ -2446,45 +2467,44 @@
                         "model_display":  "DeepSeek",
                         "model_public":  null,
                         "public_label":  "SYSTEM-06",
-                        "condition":  "unsettled",
+                        "condition":  "watch",
                         "judgment_demand":  {
                                                 "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
                                                 "profile_version":  "0.1",
-                                                "level":  "J3",
-                                                "label":  "reinforced_review",
-                                                "meaning":  "Reinforced review / judgment",
-                                                "derived_from_condition":  "unsettled",
+                                                "level":  "J2",
+                                                "label":  "increased_attention",
+                                                "meaning":  "Increased attention",
+                                                "derived_from_condition":  "watch",
                                                 "status":  "determined"
                                             },
-                        "score":  33,
+                        "score":  67,
                         "coverage":  1,
                         "coverage_status":  "nominal",
                         "metrics":  {
-                                        "normal":  0.3333,
+                                        "normal":  0.6667,
                                         "variation":  0.3333,
-                                        "factual_alert":  0.3333,
+                                        "factual_alert":  0,
                                         "incomplete":  0
                                     },
                         "interpretation":  {
                                                "profile":  "AI_WEATHER_INTERPRETATION",
                                                "profile_version":  "0.2",
                                                "matrix_version":  "0.2",
-                                               "condition":  "unsettled",
+                                               "condition":  "watch",
                                                "drivers":  [
-                                                               "runtime_degradation_material",
-                                                               "factual_signal_elevated",
                                                                "runtime_variation_elevated",
-                                                               "signal_conflict_material"
+                                                               "aggregate_runtime_deviation"
                                                            ],
                                                "rules_matched":  [
-                                                                     "AWI-012"
+                                                                     "AWI-021",
+                                                                     "AWI-023"
                                                                  ],
                                                "coverage_status":  "nominal",
                                                "coverage_thresholds":  {
                                                                            "nominal_min":  0.9,
                                                                            "interpretable_min":  0.8
                                                                        },
-                                               "evaluated_at":  "2026-10-20T06:45:07.779Z"
+                                               "evaluated_at":  "2026-10-21T06:45:12.175Z"
                                            },
                         "observations":  10,
                         "expected_observations":  10,
@@ -2508,60 +2528,59 @@
                                                                 "interval_published":  false,
                                                                 "note":  "Shares for the \u0027daily\u0027 probe are descriptive fractions of 3 scored observation(s) per system. One observation moves a share by 33.33 points. Below 10 observations this is an indication of runtime behaviour, not a statistically robust comparison between systems; no confidence interval is published because none would be a valid decision basis."
                                                             },
-                                      "prompt_id":  "daily-2026-10-20",
+                                      "prompt_id":  "daily-2026-10-21",
                                       "prompt_ids_observed":  [
-                                                                  "daily-2026-10-20"
+                                                                  "daily-2026-10-21"
                                                               ],
-                                      "score":  33,
+                                      "score":  67,
                                       "metrics":  {
-                                                      "normal":  0.3333,
+                                                      "normal":  0.6667,
                                                       "variation":  0.3333,
-                                                      "factual_alert":  0.3333,
+                                                      "factual_alert":  0,
                                                       "incomplete":  0
                                                   },
                                       "regime_distribution":  {
-                                                                  "normal":  1,
+                                                                  "normal":  2,
                                                                   "variation":  1,
-                                                                  "factual_alert":  1,
+                                                                  "factual_alert":  0,
                                                                   "incomplete":  0
                                                               },
-                                      "last_observed_at":  "2026-10-20T05:24:13.199607Z",
+                                      "last_observed_at":  "2026-10-21T05:23:58.305824Z",
                                       "interoperability_contracts":  [
-                                                                         "aiweather-capsule/interoperability/2026-10-20/deepseek-775bde8d-10ed-4428-adbd-e4a3edb2b28b.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/deepseek-bd23b555-722f-4e41-bd0d-30c95c18b1f6.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/deepseek-78502f92-ab39-44c0-9492-3548f5933901.json"
+                                                                         "aiweather-capsule/interoperability/2026-10-21/deepseek-9fbff9fd-f2fe-4898-b4e0-669cb1e2fac8.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/deepseek-5f17aee0-cbfb-41e6-9c6b-757ee83f48fa.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/deepseek-2622e0a0-eccd-4072-9843-671f24037393.json"
                                                                      ],
                                       "question":  null,
                                       "question_exposure":  "public_daily",
-                                      "condition":  "unsettled",
+                                      "condition":  "watch",
                                       "interpretation":  {
                                                              "profile":  "AI_WEATHER_INTERPRETATION",
                                                              "profile_version":  "0.2",
                                                              "matrix_version":  "0.2",
-                                                             "condition":  "unsettled",
+                                                             "condition":  "watch",
                                                              "drivers":  [
-                                                                             "runtime_degradation_material",
-                                                                             "factual_signal_elevated",
                                                                              "runtime_variation_elevated",
-                                                                             "signal_conflict_material"
+                                                                             "aggregate_runtime_deviation"
                                                                          ],
                                                              "rules_matched":  [
-                                                                                   "AWI-012"
+                                                                                   "AWI-021",
+                                                                                   "AWI-023"
                                                                                ],
                                                              "coverage_status":  "nominal",
                                                              "coverage_thresholds":  {
                                                                                          "nominal_min":  0.9,
                                                                                          "interpretable_min":  0.8
                                                                                      },
-                                                             "evaluated_at":  "2026-10-20T06:45:07.779Z"
+                                                             "evaluated_at":  "2026-10-21T06:45:12.175Z"
                                                          },
                                       "judgment_demand":  {
                                                               "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
                                                               "profile_version":  "0.1",
-                                                              "level":  "J3",
-                                                              "label":  "reinforced_review",
-                                                              "meaning":  "Reinforced review / judgment",
-                                                              "derived_from_condition":  "unsettled",
+                                                              "level":  "J2",
+                                                              "label":  "increased_attention",
+                                                              "meaning":  "Increased attention",
+                                                              "derived_from_condition":  "watch",
                                                               "status":  "determined"
                                                           }
                                   },
@@ -2587,28 +2606,28 @@
                                              "prompt_ids_observed":  [
                                                                          "longitudinal-core-01"
                                                                      ],
-                                             "score":  71,
+                                             "score":  43,
                                              "metrics":  {
-                                                             "normal":  0.7143,
-                                                             "variation":  0.2857,
+                                                             "normal":  0.4286,
+                                                             "variation":  0.5714,
                                                              "factual_alert":  0,
                                                              "incomplete":  0
                                                          },
                                              "regime_distribution":  {
-                                                                         "normal":  5,
-                                                                         "variation":  2,
+                                                                         "normal":  3,
+                                                                         "variation":  4,
                                                                          "factual_alert":  0,
                                                                          "incomplete":  0
                                                                      },
-                                             "last_observed_at":  "2026-10-20T06:41:46.951689Z",
+                                             "last_observed_at":  "2026-10-21T06:42:54.917284Z",
                                              "interoperability_contracts":  [
-                                                                                "aiweather-capsule/interoperability/2026-10-20/deepseek-8666c58e-0552-456a-ae00-c2f435fa5645.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/deepseek-878ab53e-0495-4c8d-b9c5-c1dc07ecdf5b.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/deepseek-b219b671-455e-4937-9496-d6237bb47363.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/deepseek-d003e2da-d73d-4b68-9c20-eb0e7e0ac629.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/deepseek-0792beee-0e5c-405d-bbf8-4d54d4e25887.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/deepseek-245bbecd-4c33-4ace-aa71-858d3f0c17ec.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/deepseek-f3477372-1108-4684-aaaf-8cf9b27bfbaa.json"
+                                                                                "aiweather-capsule/interoperability/2026-10-21/deepseek-1da831c2-6841-4182-bb8c-0f1d8692321d.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/deepseek-871a65a2-2670-42d6-a08b-fe1ea491ee75.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/deepseek-f23eb3fe-faf5-499b-9d66-1677a2e2f06f.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/deepseek-5b108d75-9f2e-4e61-bb3e-53a48bed4547.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/deepseek-21d278a7-6d55-43fe-b563-70805b386190.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/deepseek-71e4a7cc-7cff-42f8-b4bb-48cb517cd8b0.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/deepseek-ca1092f0-61e2-4b92-ab0f-bb5d5f71d51b.json"
                                                                             ],
                                              "question":  null,
                                              "question_exposure":  "lab_only",
@@ -2621,16 +2640,16 @@
                                              "repetition_count":  7,
                                              "current_longitudinal_state":  {
                                                                                 "state":  "attention_critique",
-                                                                                "deviation_index":  -3.0799999999999996,
+                                                                                "deviation_index":  -7,
                                                                                 "uncertainty":  {
                                                                                                     "estimator":  "wilson_90pct_descriptive_only",
-                                                                                                    "low":  40.86,
-                                                                                                    "mid":  65.45,
-                                                                                                    "high":  90.04
+                                                                                                    "low":  18.64,
+                                                                                                    "mid":  44.85,
+                                                                                                    "high":  71.05
                                                                                                 },
-                                                                                "as_of":  "2026-10-20"
+                                                                                "as_of":  "2026-10-21"
                                                                             },
-                                             "deviation_index":  -3.0799999999999996,
+                                             "deviation_index":  -7,
                                              "baseline":  {
                                                               "status":  "established",
                                                               "window_start":  "2026-08-21",
@@ -2647,9 +2666,9 @@
                                                           },
                                              "uncertainty":  {
                                                                  "estimator":  "wilson_90pct_descriptive_only",
-                                                                 "low":  40.86,
-                                                                 "mid":  65.45,
-                                                                 "high":  90.04
+                                                                 "low":  18.64,
+                                                                 "mid":  44.85,
+                                                                 "high":  71.05
                                                              },
                                              "detected_events":  [
                                                                      {
@@ -2885,6 +2904,15 @@
                                                                                       }
                                                                      },
                                                                      {
+                                                                         "type":  "variability_increase",
+                                                                         "date":  "2026-10-21",
+                                                                         "confidence":  "medium_noisy_n7",
+                                                                         "evidence":  {
+                                                                                          "variation_fraction":  0.5714,
+                                                                                          "baseline_variation_fraction_median":  0
+                                                                                      }
+                                                                     },
+                                                                     {
                                                                          "type":  "model_identity_unverified",
                                                                          "date":  null,
                                                                          "scope":  "system_wide",
@@ -2904,10 +2932,10 @@
                                                                      "identity_status":  "declared"
                                                                  }
                                          },
-                        "last_observed_at":  "2026-10-20T06:41:46.951689Z",
+                        "last_observed_at":  "2026-10-21T06:42:54.917284Z",
                         "detail":  {
                                        "previous_condition":  "unsettled",
-                                       "source_file":  "deepseek_deepseek-v4-pro_weather_sentinel_0_1_20261020T050004Z_results.jsonl",
+                                       "source_file":  "deepseek_deepseek-v4-pro_weather_sentinel_0_1_20261021T050004Z_results.jsonl",
                                        "unknown_probe_rows":  0,
                                        "weather_authority":  "daily_only",
                                        "longitudinal_influences_weather":  false
@@ -2923,44 +2951,44 @@
                         "model_display":  "Qwen",
                         "model_public":  null,
                         "public_label":  "SYSTEM-07",
-                        "condition":  "unsettled",
+                        "condition":  "watch",
                         "judgment_demand":  {
                                                 "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
                                                 "profile_version":  "0.1",
-                                                "level":  "J3",
-                                                "label":  "reinforced_review",
-                                                "meaning":  "Reinforced review / judgment",
-                                                "derived_from_condition":  "unsettled",
+                                                "level":  "J2",
+                                                "label":  "increased_attention",
+                                                "meaning":  "Increased attention",
+                                                "derived_from_condition":  "watch",
                                                 "status":  "determined"
                                             },
-                        "score":  0,
+                        "score":  67,
                         "coverage":  1,
                         "coverage_status":  "nominal",
                         "metrics":  {
-                                        "normal":  0,
-                                        "variation":  0.6667,
-                                        "factual_alert":  0.3333,
+                                        "normal":  0.6667,
+                                        "variation":  0.3333,
+                                        "factual_alert":  0,
                                         "incomplete":  0
                                     },
                         "interpretation":  {
                                                "profile":  "AI_WEATHER_INTERPRETATION",
                                                "profile_version":  "0.2",
                                                "matrix_version":  "0.2",
-                                               "condition":  "unsettled",
+                                               "condition":  "watch",
                                                "drivers":  [
-                                                               "runtime_degradation_material",
-                                                               "factual_signal_elevated",
-                                                               "runtime_variation_elevated"
+                                                               "runtime_variation_elevated",
+                                                               "aggregate_runtime_deviation"
                                                            ],
                                                "rules_matched":  [
-                                                                     "AWI-012"
+                                                                     "AWI-021",
+                                                                     "AWI-023"
                                                                  ],
                                                "coverage_status":  "nominal",
                                                "coverage_thresholds":  {
                                                                            "nominal_min":  0.9,
                                                                            "interpretable_min":  0.8
                                                                        },
-                                               "evaluated_at":  "2026-10-20T06:45:07.918Z"
+                                               "evaluated_at":  "2026-10-21T06:45:12.305Z"
                                            },
                         "observations":  10,
                         "expected_observations":  10,
@@ -2984,59 +3012,59 @@
                                                                 "interval_published":  false,
                                                                 "note":  "Shares for the \u0027daily\u0027 probe are descriptive fractions of 3 scored observation(s) per system. One observation moves a share by 33.33 points. Below 10 observations this is an indication of runtime behaviour, not a statistically robust comparison between systems; no confidence interval is published because none would be a valid decision basis."
                                                             },
-                                      "prompt_id":  "daily-2026-10-20",
+                                      "prompt_id":  "daily-2026-10-21",
                                       "prompt_ids_observed":  [
-                                                                  "daily-2026-10-20"
+                                                                  "daily-2026-10-21"
                                                               ],
-                                      "score":  0,
+                                      "score":  67,
                                       "metrics":  {
-                                                      "normal":  0,
-                                                      "variation":  0.6667,
-                                                      "factual_alert":  0.3333,
+                                                      "normal":  0.6667,
+                                                      "variation":  0.3333,
+                                                      "factual_alert":  0,
                                                       "incomplete":  0
                                                   },
                                       "regime_distribution":  {
-                                                                  "normal":  0,
-                                                                  "variation":  2,
-                                                                  "factual_alert":  1,
+                                                                  "normal":  2,
+                                                                  "variation":  1,
+                                                                  "factual_alert":  0,
                                                                   "incomplete":  0
                                                               },
-                                      "last_observed_at":  "2026-10-20T05:24:18.043006Z",
+                                      "last_observed_at":  "2026-10-21T05:24:00.377804Z",
                                       "interoperability_contracts":  [
-                                                                         "aiweather-capsule/interoperability/2026-10-20/qwen-077e2044-3e95-4d83-98ac-737c58f93952.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/qwen-e06e301e-34c7-498f-86e1-66180bff518a.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/qwen-299a02b7-0a2f-49e0-8e27-31087fadd575.json"
+                                                                         "aiweather-capsule/interoperability/2026-10-21/qwen-0388e7c6-fb8b-4214-ab51-3948c1057c01.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/qwen-8ba54146-b3b9-46b9-b5b0-2c3f941a9799.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/qwen-4ea51b72-41ea-4e0c-84ec-4a22f8c1fd76.json"
                                                                      ],
                                       "question":  null,
                                       "question_exposure":  "public_daily",
-                                      "condition":  "unsettled",
+                                      "condition":  "watch",
                                       "interpretation":  {
                                                              "profile":  "AI_WEATHER_INTERPRETATION",
                                                              "profile_version":  "0.2",
                                                              "matrix_version":  "0.2",
-                                                             "condition":  "unsettled",
+                                                             "condition":  "watch",
                                                              "drivers":  [
-                                                                             "runtime_degradation_material",
-                                                                             "factual_signal_elevated",
-                                                                             "runtime_variation_elevated"
+                                                                             "runtime_variation_elevated",
+                                                                             "aggregate_runtime_deviation"
                                                                          ],
                                                              "rules_matched":  [
-                                                                                   "AWI-012"
+                                                                                   "AWI-021",
+                                                                                   "AWI-023"
                                                                                ],
                                                              "coverage_status":  "nominal",
                                                              "coverage_thresholds":  {
                                                                                          "nominal_min":  0.9,
                                                                                          "interpretable_min":  0.8
                                                                                      },
-                                                             "evaluated_at":  "2026-10-20T06:45:07.918Z"
+                                                             "evaluated_at":  "2026-10-21T06:45:12.305Z"
                                                          },
                                       "judgment_demand":  {
                                                               "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
                                                               "profile_version":  "0.1",
-                                                              "level":  "J3",
-                                                              "label":  "reinforced_review",
-                                                              "meaning":  "Reinforced review / judgment",
-                                                              "derived_from_condition":  "unsettled",
+                                                              "level":  "J2",
+                                                              "label":  "increased_attention",
+                                                              "meaning":  "Increased attention",
+                                                              "derived_from_condition":  "watch",
                                                               "status":  "determined"
                                                           }
                                   },
@@ -3062,28 +3090,28 @@
                                              "prompt_ids_observed":  [
                                                                          "longitudinal-core-01"
                                                                      ],
-                                             "score":  100,
+                                             "score":  86,
                                              "metrics":  {
-                                                             "normal":  1,
-                                                             "variation":  0,
+                                                             "normal":  0.8571,
+                                                             "variation":  0.1429,
                                                              "factual_alert":  0,
                                                              "incomplete":  0
                                                          },
                                              "regime_distribution":  {
-                                                                         "normal":  7,
-                                                                         "variation":  0,
+                                                                         "normal":  6,
+                                                                         "variation":  1,
                                                                          "factual_alert":  0,
                                                                          "incomplete":  0
                                                                      },
-                                             "last_observed_at":  "2026-10-20T06:42:58.645514Z",
+                                             "last_observed_at":  "2026-10-21T06:43:21.524123Z",
                                              "interoperability_contracts":  [
-                                                                                "aiweather-capsule/interoperability/2026-10-20/qwen-11867de0-7fed-48c6-a3ba-211151539aae.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/qwen-f04bdb20-cadc-4c0f-a354-ea0e9c6b9a6d.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/qwen-4b4ef5fc-5b2c-4dc4-b289-de8e8835c176.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/qwen-641be8b6-6f45-4e2e-995f-24cfb9290cf9.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/qwen-a3ec289d-da7d-41a3-b617-414691156f87.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/qwen-af3e0e36-d4c0-4d77-81d9-1e99d365a283.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/qwen-34660bbe-b7be-4b2f-91e9-543fbf141dbc.json"
+                                                                                "aiweather-capsule/interoperability/2026-10-21/qwen-94cbc9d5-40ea-42ee-8c05-68a167c95a78.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/qwen-453c7276-14db-418f-916b-9b22cb36fba8.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/qwen-1c2076fe-04bd-4911-ab2e-7bc549fa5fb7.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/qwen-4836917f-7ec5-485e-b934-2e79d992a251.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/qwen-45985426-c801-4804-a909-ea6a82f44be0.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/qwen-cf745ff0-bfbf-435d-84cb-b70c2b9b083f.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/qwen-d85f64b7-e548-4a99-8698-2e788ef0bf69.json"
                                                                             ],
                                              "question":  null,
                                              "question_exposure":  "lab_only",
@@ -3096,16 +3124,16 @@
                                              "repetition_count":  7,
                                              "current_longitudinal_state":  {
                                                                                 "state":  "attention_critique",
-                                                                                "deviation_index":  0,
+                                                                                "deviation_index":  -1.96,
                                                                                 "uncertainty":  {
                                                                                                     "estimator":  "wilson_90pct_descriptive_only",
-                                                                                                    "low":  72.12,
-                                                                                                    "mid":  86.06,
-                                                                                                    "high":  100
+                                                                                                    "low":  54.77,
+                                                                                                    "mid":  75.76,
+                                                                                                    "high":  96.75
                                                                                                 },
-                                                                                "as_of":  "2026-10-20"
+                                                                                "as_of":  "2026-10-21"
                                                                             },
-                                             "deviation_index":  0,
+                                             "deviation_index":  -1.96,
                                              "baseline":  {
                                                               "status":  "established",
                                                               "window_start":  "2026-08-21",
@@ -3122,9 +3150,9 @@
                                                           },
                                              "uncertainty":  {
                                                                  "estimator":  "wilson_90pct_descriptive_only",
-                                                                 "low":  72.12,
-                                                                 "mid":  86.06,
-                                                                 "high":  100
+                                                                 "low":  54.77,
+                                                                 "mid":  75.76,
+                                                                 "high":  96.75
                                                              },
                                              "detected_events":  [
                                                                      {
@@ -3306,10 +3334,10 @@
                                                                      "identity_status":  "declared"
                                                                  }
                                          },
-                        "last_observed_at":  "2026-10-20T06:42:58.645514Z",
+                        "last_observed_at":  "2026-10-21T06:43:21.524123Z",
                         "detail":  {
-                                       "previous_condition":  "watch",
-                                       "source_file":  "qwen_qwen3.7-max-2026-06-08_weather_sentinel_0_1_20261020T050004Z_results.jsonl",
+                                       "previous_condition":  "unsettled",
+                                       "source_file":  "qwen_qwen3.7-max-2026-06-08_weather_sentinel_0_1_20261021T050004Z_results.jsonl",
                                        "unknown_probe_rows":  0,
                                        "weather_authority":  "daily_only",
                                        "longitudinal_influences_weather":  false
@@ -3325,44 +3353,44 @@
                         "model_display":  "Kimi",
                         "model_public":  null,
                         "public_label":  "SYSTEM-08",
-                        "condition":  "unsettled",
+                        "condition":  "watch",
                         "judgment_demand":  {
                                                 "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
                                                 "profile_version":  "0.1",
-                                                "level":  "J3",
-                                                "label":  "reinforced_review",
-                                                "meaning":  "Reinforced review / judgment",
-                                                "derived_from_condition":  "unsettled",
+                                                "level":  "J2",
+                                                "label":  "increased_attention",
+                                                "meaning":  "Increased attention",
+                                                "derived_from_condition":  "watch",
                                                 "status":  "determined"
                                             },
-                        "score":  0,
+                        "score":  67,
                         "coverage":  1,
                         "coverage_status":  "nominal",
                         "metrics":  {
-                                        "normal":  0,
-                                        "variation":  0.6667,
-                                        "factual_alert":  0.3333,
+                                        "normal":  0.6667,
+                                        "variation":  0.3333,
+                                        "factual_alert":  0,
                                         "incomplete":  0
                                     },
                         "interpretation":  {
                                                "profile":  "AI_WEATHER_INTERPRETATION",
                                                "profile_version":  "0.2",
                                                "matrix_version":  "0.2",
-                                               "condition":  "unsettled",
+                                               "condition":  "watch",
                                                "drivers":  [
-                                                               "runtime_degradation_material",
-                                                               "factual_signal_elevated",
-                                                               "runtime_variation_elevated"
+                                                               "runtime_variation_elevated",
+                                                               "aggregate_runtime_deviation"
                                                            ],
                                                "rules_matched":  [
-                                                                     "AWI-012"
+                                                                     "AWI-021",
+                                                                     "AWI-023"
                                                                  ],
                                                "coverage_status":  "nominal",
                                                "coverage_thresholds":  {
                                                                            "nominal_min":  0.9,
                                                                            "interpretable_min":  0.8
                                                                        },
-                                               "evaluated_at":  "2026-10-20T06:45:08.048Z"
+                                               "evaluated_at":  "2026-10-21T06:45:12.426Z"
                                            },
                         "observations":  10,
                         "expected_observations":  10,
@@ -3386,59 +3414,59 @@
                                                                 "interval_published":  false,
                                                                 "note":  "Shares for the \u0027daily\u0027 probe are descriptive fractions of 3 scored observation(s) per system. One observation moves a share by 33.33 points. Below 10 observations this is an indication of runtime behaviour, not a statistically robust comparison between systems; no confidence interval is published because none would be a valid decision basis."
                                                             },
-                                      "prompt_id":  "daily-2026-10-20",
+                                      "prompt_id":  "daily-2026-10-21",
                                       "prompt_ids_observed":  [
-                                                                  "daily-2026-10-20"
+                                                                  "daily-2026-10-21"
                                                               ],
-                                      "score":  0,
+                                      "score":  67,
                                       "metrics":  {
-                                                      "normal":  0,
-                                                      "variation":  0.6667,
-                                                      "factual_alert":  0.3333,
+                                                      "normal":  0.6667,
+                                                      "variation":  0.3333,
+                                                      "factual_alert":  0,
                                                       "incomplete":  0
                                                   },
                                       "regime_distribution":  {
-                                                                  "normal":  0,
-                                                                  "variation":  2,
-                                                                  "factual_alert":  1,
+                                                                  "normal":  2,
+                                                                  "variation":  1,
+                                                                  "factual_alert":  0,
                                                                   "incomplete":  0
                                                               },
-                                      "last_observed_at":  "2026-10-20T05:22:05.049223Z",
+                                      "last_observed_at":  "2026-10-21T05:21:12.123911Z",
                                       "interoperability_contracts":  [
-                                                                         "aiweather-capsule/interoperability/2026-10-20/moonshot-26372b76-7a33-4c59-b9b9-4e718dae110d.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/moonshot-1c7c1f06-ea24-4b37-bc6b-23fae28bb1cf.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/moonshot-a78e2bf0-6aa1-4e7e-a1f8-54c647b79fe9.json"
+                                                                         "aiweather-capsule/interoperability/2026-10-21/moonshot-3b67cb04-7670-421c-a7ad-0df8704001e1.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/moonshot-516b57e7-59fd-4f1b-bd93-45dbbe59d9ce.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/moonshot-052adbde-3842-4ec9-99a2-a78715de2c9a.json"
                                                                      ],
                                       "question":  null,
                                       "question_exposure":  "public_daily",
-                                      "condition":  "unsettled",
+                                      "condition":  "watch",
                                       "interpretation":  {
                                                              "profile":  "AI_WEATHER_INTERPRETATION",
                                                              "profile_version":  "0.2",
                                                              "matrix_version":  "0.2",
-                                                             "condition":  "unsettled",
+                                                             "condition":  "watch",
                                                              "drivers":  [
-                                                                             "runtime_degradation_material",
-                                                                             "factual_signal_elevated",
-                                                                             "runtime_variation_elevated"
+                                                                             "runtime_variation_elevated",
+                                                                             "aggregate_runtime_deviation"
                                                                          ],
                                                              "rules_matched":  [
-                                                                                   "AWI-012"
+                                                                                   "AWI-021",
+                                                                                   "AWI-023"
                                                                                ],
                                                              "coverage_status":  "nominal",
                                                              "coverage_thresholds":  {
                                                                                          "nominal_min":  0.9,
                                                                                          "interpretable_min":  0.8
                                                                                      },
-                                                             "evaluated_at":  "2026-10-20T06:45:08.048Z"
+                                                             "evaluated_at":  "2026-10-21T06:45:12.426Z"
                                                          },
                                       "judgment_demand":  {
                                                               "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
                                                               "profile_version":  "0.1",
-                                                              "level":  "J3",
-                                                              "label":  "reinforced_review",
-                                                              "meaning":  "Reinforced review / judgment",
-                                                              "derived_from_condition":  "unsettled",
+                                                              "level":  "J2",
+                                                              "label":  "increased_attention",
+                                                              "meaning":  "Increased attention",
+                                                              "derived_from_condition":  "watch",
                                                               "status":  "determined"
                                                           }
                                   },
@@ -3464,28 +3492,28 @@
                                              "prompt_ids_observed":  [
                                                                          "longitudinal-core-01"
                                                                      ],
-                                             "score":  71,
+                                             "score":  100,
                                              "metrics":  {
-                                                             "normal":  0.7143,
-                                                             "variation":  0.1429,
-                                                             "factual_alert":  0.1429,
+                                                             "normal":  1,
+                                                             "variation":  0,
+                                                             "factual_alert":  0,
                                                              "incomplete":  0
                                                          },
                                              "regime_distribution":  {
-                                                                         "normal":  5,
-                                                                         "variation":  1,
-                                                                         "factual_alert":  1,
+                                                                         "normal":  7,
+                                                                         "variation":  0,
+                                                                         "factual_alert":  0,
                                                                          "incomplete":  0
                                                                      },
-                                             "last_observed_at":  "2026-10-20T06:35:00.858299Z",
+                                             "last_observed_at":  "2026-10-21T06:33:41.240154Z",
                                              "interoperability_contracts":  [
-                                                                                "aiweather-capsule/interoperability/2026-10-20/moonshot-f29a83c0-7512-4c52-aeb2-ff738cc05f89.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/moonshot-8d976cf5-faea-45ad-8707-603ef9f38fda.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/moonshot-63bb41b1-fd30-415c-aa5d-bfbd8e5381b1.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/moonshot-7bd2eef6-0136-4534-853a-d2af8c1a92d0.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/moonshot-44bb2f5b-e9b3-46b1-8820-3a5179bd0a0a.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/moonshot-4e22178c-5ccd-4ca3-9e0d-1c189b2b125e.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/moonshot-9f4cbb96-d1c0-4fb2-b4df-ddaf4f449a86.json"
+                                                                                "aiweather-capsule/interoperability/2026-10-21/moonshot-4fde5808-767b-45d6-be4c-a6d62cdf5916.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/moonshot-c1c26c0f-cf96-4312-935b-e01e3a69a152.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/moonshot-70612018-4852-4b8b-92c9-44fa7d46f9c0.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/moonshot-a558563e-8301-4730-b3b4-15fcc54dcb43.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/moonshot-7d2bba22-547e-4435-b702-ae18dda3585d.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/moonshot-9ff7cddc-6259-4359-bb24-51a779b4548e.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/moonshot-e9535bfd-e611-4011-af5f-28d4398e3817.json"
                                                                             ],
                                              "question":  null,
                                              "question_exposure":  "lab_only",
@@ -3498,16 +3526,16 @@
                                              "repetition_count":  7,
                                              "current_longitudinal_state":  {
                                                                                 "state":  "attention_critique",
-                                                                                "deviation_index":  -3.0799999999999996,
+                                                                                "deviation_index":  0.98,
                                                                                 "uncertainty":  {
                                                                                                     "estimator":  "wilson_90pct_descriptive_only",
-                                                                                                    "low":  40.86,
-                                                                                                    "mid":  65.45,
-                                                                                                    "high":  90.04
+                                                                                                    "low":  72.12,
+                                                                                                    "mid":  86.06,
+                                                                                                    "high":  100
                                                                                                 },
-                                                                                "as_of":  "2026-10-20"
+                                                                                "as_of":  "2026-10-21"
                                                                             },
-                                             "deviation_index":  -3.0799999999999996,
+                                             "deviation_index":  0.98,
                                              "baseline":  {
                                                               "status":  "established",
                                                               "window_start":  "2026-08-21",
@@ -3524,9 +3552,9 @@
                                                           },
                                              "uncertainty":  {
                                                                  "estimator":  "wilson_90pct_descriptive_only",
-                                                                 "low":  40.86,
-                                                                 "mid":  65.45,
-                                                                 "high":  90.04
+                                                                 "low":  72.12,
+                                                                 "mid":  86.06,
+                                                                 "high":  100
                                                              },
                                              "detected_events":  [
                                                                      {
@@ -3794,10 +3822,10 @@
                                                                      "identity_status":  "declared"
                                                                  }
                                          },
-                        "last_observed_at":  "2026-10-20T06:35:00.858299Z",
+                        "last_observed_at":  "2026-10-21T06:33:41.240154Z",
                         "detail":  {
-                                       "previous_condition":  "watch",
-                                       "source_file":  "moonshot_kimi-k3_weather_sentinel_0_1_20261020T050004Z_results.jsonl",
+                                       "previous_condition":  "unsettled",
+                                       "source_file":  "moonshot_kimi-k3_weather_sentinel_0_1_20261021T050004Z_results.jsonl",
                                        "unknown_probe_rows":  0,
                                        "weather_authority":  "daily_only",
                                        "longitudinal_influences_weather":  false
@@ -3828,8 +3856,8 @@
                         "coverage_status":  "nominal",
                         "metrics":  {
                                         "normal":  0,
-                                        "variation":  1,
-                                        "factual_alert":  0,
+                                        "variation":  0.6667,
+                                        "factual_alert":  0.3333,
                                         "incomplete":  0
                                     },
                         "interpretation":  {
@@ -3839,6 +3867,7 @@
                                                "condition":  "unsettled",
                                                "drivers":  [
                                                                "runtime_degradation_material",
+                                                               "factual_signal_elevated",
                                                                "runtime_variation_elevated"
                                                            ],
                                                "rules_matched":  [
@@ -3849,7 +3878,7 @@
                                                                            "nominal_min":  0.9,
                                                                            "interpretable_min":  0.8
                                                                        },
-                                               "evaluated_at":  "2026-10-20T06:45:08.206Z"
+                                               "evaluated_at":  "2026-10-21T06:45:12.538Z"
                                            },
                         "observations":  10,
                         "expected_observations":  10,
@@ -3873,28 +3902,28 @@
                                                                 "interval_published":  false,
                                                                 "note":  "Shares for the \u0027daily\u0027 probe are descriptive fractions of 3 scored observation(s) per system. One observation moves a share by 33.33 points. Below 10 observations this is an indication of runtime behaviour, not a statistically robust comparison between systems; no confidence interval is published because none would be a valid decision basis."
                                                             },
-                                      "prompt_id":  "daily-2026-10-20",
+                                      "prompt_id":  "daily-2026-10-21",
                                       "prompt_ids_observed":  [
-                                                                  "daily-2026-10-20"
+                                                                  "daily-2026-10-21"
                                                               ],
                                       "score":  0,
                                       "metrics":  {
                                                       "normal":  0,
-                                                      "variation":  1,
-                                                      "factual_alert":  0,
+                                                      "variation":  0.6667,
+                                                      "factual_alert":  0.3333,
                                                       "incomplete":  0
                                                   },
                                       "regime_distribution":  {
                                                                   "normal":  0,
-                                                                  "variation":  3,
-                                                                  "factual_alert":  0,
+                                                                  "variation":  2,
+                                                                  "factual_alert":  1,
                                                                   "incomplete":  0
                                                               },
-                                      "last_observed_at":  "2026-10-20T05:23:46.901002Z",
+                                      "last_observed_at":  "2026-10-21T05:23:30.281073Z",
                                       "interoperability_contracts":  [
-                                                                         "aiweather-capsule/interoperability/2026-10-20/cohere-0dc66753-de5a-4d16-b7c8-9a839f0a01d7.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/cohere-5f326a63-810e-49e0-898d-2e8d85dcccea.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/cohere-e1326c55-d6e7-42e5-b305-081800f3f3b9.json"
+                                                                         "aiweather-capsule/interoperability/2026-10-21/cohere-3af40776-5729-48e0-895d-054e552e0c3e.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/cohere-76e3732b-bf4b-43b7-a598-069b739ac8d8.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/cohere-6a827247-5572-490a-82d8-8b666ce48fba.json"
                                                                      ],
                                       "question":  null,
                                       "question_exposure":  "public_daily",
@@ -3906,6 +3935,7 @@
                                                              "condition":  "unsettled",
                                                              "drivers":  [
                                                                              "runtime_degradation_material",
+                                                                             "factual_signal_elevated",
                                                                              "runtime_variation_elevated"
                                                                          ],
                                                              "rules_matched":  [
@@ -3916,7 +3946,7 @@
                                                                                          "nominal_min":  0.9,
                                                                                          "interpretable_min":  0.8
                                                                                      },
-                                                             "evaluated_at":  "2026-10-20T06:45:08.206Z"
+                                                             "evaluated_at":  "2026-10-21T06:45:12.538Z"
                                                          },
                                       "judgment_demand":  {
                                                               "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
@@ -3950,28 +3980,28 @@
                                              "prompt_ids_observed":  [
                                                                          "longitudinal-core-01"
                                                                      ],
-                                             "score":  29,
+                                             "score":  43,
                                              "metrics":  {
-                                                             "normal":  0.2857,
-                                                             "variation":  0.4286,
+                                                             "normal":  0.4286,
+                                                             "variation":  0.2857,
                                                              "factual_alert":  0.2857,
                                                              "incomplete":  0
                                                          },
                                              "regime_distribution":  {
-                                                                         "normal":  2,
-                                                                         "variation":  3,
+                                                                         "normal":  3,
+                                                                         "variation":  2,
                                                                          "factual_alert":  2,
                                                                          "incomplete":  0
                                                                      },
-                                             "last_observed_at":  "2026-10-20T06:41:16.783920Z",
+                                             "last_observed_at":  "2026-10-21T06:41:42.415746Z",
                                              "interoperability_contracts":  [
-                                                                                "aiweather-capsule/interoperability/2026-10-20/cohere-89038e55-1b5b-4ce9-977c-9867cdaec506.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/cohere-7864cc98-b327-4630-b6a4-63f8179362c3.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/cohere-9f5667e3-a1b6-44d7-9cbc-edc275f90783.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/cohere-2c415faf-66f3-4c84-ae9b-7b9383f6800a.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/cohere-0ea125ec-48d9-4fb0-901a-ba7dbf589526.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/cohere-a2652f84-a39d-4a3a-b6ce-6bb3a2708313.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/cohere-2524af57-90e1-4bb8-b2cd-57f41283c0a0.json"
+                                                                                "aiweather-capsule/interoperability/2026-10-21/cohere-1275b6b7-c300-4ea3-adbe-5bc6ad0c173b.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/cohere-38b98aae-bf5c-4855-8f54-582786e46a26.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/cohere-bd33567a-d9ca-460f-852e-613b3f043738.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/cohere-ad5ebca4-955f-467b-a249-8c166b03b812.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/cohere-643df70c-a9aa-4818-a230-12100e27b67d.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/cohere-6547755e-c9c0-47d5-a8e6-755ad68b35ed.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/cohere-c272df32-1681-4bcb-b93f-3c5c71fad45f.json"
                                                                             ],
                                              "question":  null,
                                              "question_exposure":  "lab_only",
@@ -3984,16 +4014,16 @@
                                              "repetition_count":  7,
                                              "current_longitudinal_state":  {
                                                                                 "state":  "standard",
-                                                                                "deviation_index":  -0.5,
+                                                                                "deviation_index":  0,
                                                                                 "uncertainty":  {
                                                                                                     "estimator":  "wilson_90pct_descriptive_only",
-                                                                                                    "low":  9.96,
-                                                                                                    "mid":  34.55,
-                                                                                                    "high":  59.14
+                                                                                                    "low":  18.64,
+                                                                                                    "mid":  44.85,
+                                                                                                    "high":  71.05
                                                                                                 },
-                                                                                "as_of":  "2026-10-20"
+                                                                                "as_of":  "2026-10-21"
                                                                             },
-                                             "deviation_index":  -0.5,
+                                             "deviation_index":  0,
                                              "baseline":  {
                                                               "status":  "established",
                                                               "window_start":  "2026-08-22",
@@ -4010,9 +4040,9 @@
                                                           },
                                              "uncertainty":  {
                                                                  "estimator":  "wilson_90pct_descriptive_only",
-                                                                 "low":  9.96,
-                                                                 "mid":  34.55,
-                                                                 "high":  59.14
+                                                                 "low":  18.64,
+                                                                 "mid":  44.85,
+                                                                 "high":  71.05
                                                              },
                                              "detected_events":  [
                                                                      {
@@ -4310,6 +4340,15 @@
                                                                                       }
                                                                      },
                                                                      {
+                                                                         "type":  "variability_increase",
+                                                                         "date":  "2026-10-21",
+                                                                         "confidence":  "medium_noisy_n7",
+                                                                         "evidence":  {
+                                                                                          "variation_fraction":  0.2857,
+                                                                                          "baseline_variation_fraction_median":  0
+                                                                                      }
+                                                                     },
+                                                                     {
                                                                          "type":  "model_identity_unverified",
                                                                          "date":  null,
                                                                          "scope":  "system_wide",
@@ -4329,10 +4368,10 @@
                                                                      "identity_status":  "declared"
                                                                  }
                                          },
-                        "last_observed_at":  "2026-10-20T06:41:16.783920Z",
+                        "last_observed_at":  "2026-10-21T06:41:42.415746Z",
                         "detail":  {
                                        "previous_condition":  "unsettled",
-                                       "source_file":  "cohere_command-a-03-2025_weather_sentinel_0_1_20261020T050004Z_results.jsonl",
+                                       "source_file":  "cohere_command-a-03-2025_weather_sentinel_0_1_20261021T050004Z_results.jsonl",
                                        "unknown_probe_rows":  0,
                                        "weather_authority":  "daily_only",
                                        "longitudinal_influences_weather":  false
@@ -4384,7 +4423,7 @@
                                                                            "nominal_min":  0.9,
                                                                            "interpretable_min":  0.8
                                                                        },
-                                               "evaluated_at":  "2026-10-20T06:45:08.361Z"
+                                               "evaluated_at":  "2026-10-21T06:45:12.682Z"
                                            },
                         "observations":  10,
                         "expected_observations":  10,
@@ -4408,9 +4447,9 @@
                                                                 "interval_published":  false,
                                                                 "note":  "Shares for the \u0027daily\u0027 probe are descriptive fractions of 3 scored observation(s) per system. One observation moves a share by 33.33 points. Below 10 observations this is an indication of runtime behaviour, not a statistically robust comparison between systems; no confidence interval is published because none would be a valid decision basis."
                                                             },
-                                      "prompt_id":  "daily-2026-10-20",
+                                      "prompt_id":  "daily-2026-10-21",
                                       "prompt_ids_observed":  [
-                                                                  "daily-2026-10-20"
+                                                                  "daily-2026-10-21"
                                                               ],
                                       "score":  0,
                                       "metrics":  {
@@ -4425,11 +4464,11 @@
                                                                   "factual_alert":  0,
                                                                   "incomplete":  0
                                                               },
-                                      "last_observed_at":  "2026-10-20T05:23:28.988282Z",
+                                      "last_observed_at":  "2026-10-21T05:23:29.456887Z",
                                       "interoperability_contracts":  [
-                                                                         "aiweather-capsule/interoperability/2026-10-20/together-b0a2e5af-df04-4fed-94e3-00e75a44449a.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/together-fc2e0f85-4b0a-4991-bb94-74f4b97c04e9.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/together-acd5c554-50c8-446a-a63e-ca59c21c5b3a.json"
+                                                                         "aiweather-capsule/interoperability/2026-10-21/together-d350250e-610c-45c9-aacb-3ed528aa2dc8.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/together-5fce7d28-6aeb-46c5-b60b-3095a318fd6f.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/together-93478289-5785-4933-9055-68d753fa5b96.json"
                                                                      ],
                                       "question":  null,
                                       "question_exposure":  "public_daily",
@@ -4451,7 +4490,7 @@
                                                                                          "nominal_min":  0.9,
                                                                                          "interpretable_min":  0.8
                                                                                      },
-                                                             "evaluated_at":  "2026-10-20T06:45:08.361Z"
+                                                             "evaluated_at":  "2026-10-21T06:45:12.682Z"
                                                          },
                                       "judgment_demand":  {
                                                               "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
@@ -4498,15 +4537,15 @@
                                                                          "factual_alert":  0,
                                                                          "incomplete":  0
                                                                      },
-                                             "last_observed_at":  "2026-10-20T06:39:12.242373Z",
+                                             "last_observed_at":  "2026-10-21T06:39:43.499402Z",
                                              "interoperability_contracts":  [
-                                                                                "aiweather-capsule/interoperability/2026-10-20/together-e9b5ad59-0c30-47c5-8f7f-f7a6fa7ee406.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/together-c64dd509-dea3-4cdf-a567-740c689a288d.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/together-491ffc55-156f-40e1-addc-4a6fba997d7a.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/together-899a9d52-a8bf-4bd3-b9fc-35421c6bdd80.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/together-e602231a-9c06-42fb-bb4c-5fc54fa9b6ad.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/together-c2a7fe48-9475-427c-8c59-48dfb80b6a80.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/together-6616fc91-24f9-4104-86b5-f4af1778e673.json"
+                                                                                "aiweather-capsule/interoperability/2026-10-21/together-d6cc5b08-a167-4e5e-95ea-68c811b142c1.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/together-a2e7ae38-2592-47db-94d4-5e8b88bdad60.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/together-cb5d676d-c624-4b5f-bbb9-5ea3bb6466e1.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/together-456e4da5-2849-488e-b3d2-b5e85a221cce.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/together-da7d460d-bdf7-403b-bcde-dc78cd2f3374.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/together-21c25bfa-0043-4ddc-8a4a-a53a432ab5b6.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/together-f6c8d8df-9707-4a9c-a662-a2c4bf83b4b2.json"
                                                                             ],
                                              "question":  null,
                                              "question_exposure":  "lab_only",
@@ -4526,7 +4565,7 @@
                                                                                                     "mid":  44.85,
                                                                                                     "high":  71.05
                                                                                                 },
-                                                                                "as_of":  "2026-10-20"
+                                                                                "as_of":  "2026-10-21"
                                                                             },
                                              "deviation_index":  -7.9799999999999995,
                                              "baseline":  {
@@ -4781,6 +4820,15 @@
                                                                                       }
                                                                      },
                                                                      {
+                                                                         "type":  "variability_increase",
+                                                                         "date":  "2026-10-21",
+                                                                         "confidence":  "medium_noisy_n7",
+                                                                         "evidence":  {
+                                                                                          "variation_fraction":  0.5714,
+                                                                                          "baseline_variation_fraction_median":  0
+                                                                                      }
+                                                                     },
+                                                                     {
                                                                          "type":  "model_identity_unverified",
                                                                          "date":  null,
                                                                          "scope":  "system_wide",
@@ -4800,10 +4848,10 @@
                                                                      "identity_status":  "declared"
                                                                  }
                                          },
-                        "last_observed_at":  "2026-10-20T06:39:12.242373Z",
+                        "last_observed_at":  "2026-10-21T06:39:43.499402Z",
                         "detail":  {
                                        "previous_condition":  "unsettled",
-                                       "source_file":  "together_meta-llama_Llama-3.3-70B-Instruct-Turbo_weather_sentinel_0_1_20261020T050004Z_results.jsonl",
+                                       "source_file":  "together_meta-llama_Llama-3.3-70B-Instruct-Turbo_weather_sentinel_0_1_20261021T050004Z_results.jsonl",
                                        "unknown_probe_rows":  0,
                                        "weather_authority":  "daily_only",
                                        "longitudinal_influences_weather":  false
@@ -4855,7 +4903,7 @@
                                                                            "nominal_min":  0.9,
                                                                            "interpretable_min":  0.8
                                                                        },
-                                               "evaluated_at":  "2026-10-20T06:45:08.429Z"
+                                               "evaluated_at":  "2026-10-21T06:45:12.774Z"
                                            },
                         "observations":  10,
                         "expected_observations":  10,
@@ -4879,9 +4927,9 @@
                                                                 "interval_published":  false,
                                                                 "note":  "Shares for the \u0027daily\u0027 probe are descriptive fractions of 0 scored observation(s) per system. One observation moves a share by  points."
                                                             },
-                                      "prompt_id":  "daily-2026-10-20",
+                                      "prompt_id":  "daily-2026-10-21",
                                       "prompt_ids_observed":  [
-                                                                  "daily-2026-10-20"
+                                                                  "daily-2026-10-21"
                                                               ],
                                       "score":  0,
                                       "metrics":  {
@@ -4896,7 +4944,7 @@
                                                                   "factual_alert":  0,
                                                                   "incomplete":  3
                                                               },
-                                      "last_observed_at":  "2026-10-20T05:24:35.055Z",
+                                      "last_observed_at":  "2026-10-21T05:24:35.041Z",
                                       "interoperability_contracts":  [
 
                                                                      ],
@@ -4919,7 +4967,7 @@
                                                                                          "nominal_min":  0.9,
                                                                                          "interpretable_min":  0.8
                                                                                      },
-                                                             "evaluated_at":  "2026-10-20T06:45:08.429Z"
+                                                             "evaluated_at":  "2026-10-21T06:45:12.774Z"
                                                          },
                                       "judgment_demand":  {
                                                               "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
@@ -4967,7 +5015,7 @@
                                                                          "factual_alert":  0,
                                                                          "incomplete":  7
                                                                      },
-                                             "last_observed_at":  "2026-10-20T06:45:05.739Z",
+                                             "last_observed_at":  "2026-10-21T06:45:10.310Z",
                                              "interoperability_contracts":  [
 
                                                                             ],
@@ -5225,6 +5273,16 @@
                                                                                       }
                                                                      },
                                                                      {
+                                                                         "type":  "coverage_anomaly",
+                                                                         "date":  "2026-10-21",
+                                                                         "confidence":  "high_completeness_fact",
+                                                                         "evidence":  {
+                                                                                          "fully_scored":  0,
+                                                                                          "expected":  7,
+                                                                                          "coverage":  0
+                                                                                      }
+                                                                     },
+                                                                     {
                                                                          "type":  "model_identity_unverified",
                                                                          "date":  null,
                                                                          "scope":  "system_wide",
@@ -5244,10 +5302,10 @@
                                                                      "identity_status":  "declared"
                                                                  }
                                          },
-                        "last_observed_at":  "2026-10-20T06:45:05.739Z",
+                        "last_observed_at":  "2026-10-21T06:45:10.310Z",
                         "detail":  {
                                        "previous_condition":  "insufficient_data",
-                                       "source_file":  "infomaniak_nvidia_NVIDIA-Nemotron-3-Nano-30B-A3B-FP8_weather_sentinel_0_1_20261020T050004Z_results.jsonl",
+                                       "source_file":  "infomaniak_nvidia_NVIDIA-Nemotron-3-Nano-30B-A3B-FP8_weather_sentinel_0_1_20261021T050004Z_results.jsonl",
                                        "unknown_probe_rows":  0,
                                        "weather_authority":  "daily_only",
                                        "longitudinal_influences_weather":  false
@@ -5273,12 +5331,12 @@
                                                 "derived_from_condition":  "unsettled",
                                                 "status":  "determined"
                                             },
-                        "score":  0,
+                        "score":  33,
                         "coverage":  1,
                         "coverage_status":  "nominal",
                         "metrics":  {
-                                        "normal":  0,
-                                        "variation":  1,
+                                        "normal":  0.3333,
+                                        "variation":  0.6667,
                                         "factual_alert":  0,
                                         "incomplete":  0
                                     },
@@ -5299,7 +5357,7 @@
                                                                            "nominal_min":  0.9,
                                                                            "interpretable_min":  0.8
                                                                        },
-                                               "evaluated_at":  "2026-10-20T06:45:08.605Z"
+                                               "evaluated_at":  "2026-10-21T06:45:12.919Z"
                                            },
                         "observations":  10,
                         "expected_observations":  10,
@@ -5323,28 +5381,28 @@
                                                                 "interval_published":  false,
                                                                 "note":  "Shares for the \u0027daily\u0027 probe are descriptive fractions of 3 scored observation(s) per system. One observation moves a share by 33.33 points. Below 10 observations this is an indication of runtime behaviour, not a statistically robust comparison between systems; no confidence interval is published because none would be a valid decision basis."
                                                             },
-                                      "prompt_id":  "daily-2026-10-20",
+                                      "prompt_id":  "daily-2026-10-21",
                                       "prompt_ids_observed":  [
-                                                                  "daily-2026-10-20"
+                                                                  "daily-2026-10-21"
                                                               ],
-                                      "score":  0,
+                                      "score":  33,
                                       "metrics":  {
-                                                      "normal":  0,
-                                                      "variation":  1,
+                                                      "normal":  0.3333,
+                                                      "variation":  0.6667,
                                                       "factual_alert":  0,
                                                       "incomplete":  0
                                                   },
                                       "regime_distribution":  {
-                                                                  "normal":  0,
-                                                                  "variation":  3,
+                                                                  "normal":  1,
+                                                                  "variation":  2,
                                                                   "factual_alert":  0,
                                                                   "incomplete":  0
                                                               },
-                                      "last_observed_at":  "2026-10-20T05:22:21.1089931Z",
+                                      "last_observed_at":  "2026-10-21T05:22:00.5404512Z",
                                       "interoperability_contracts":  [
-                                                                         "aiweather-capsule/interoperability/2026-10-20/perplexity-fbb8a210-a6d3-4698-a8f5-89f6cf5d20ce.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/perplexity-7878609b-980a-4720-93a7-77d6f6baddf2.json",
-                                                                         "aiweather-capsule/interoperability/2026-10-20/perplexity-2fbdd545-eff4-497a-944c-f4c5d09aec6d.json"
+                                                                         "aiweather-capsule/interoperability/2026-10-21/perplexity-c584e0b2-1045-4f92-aff5-85b497256f9e.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/perplexity-0427ba8f-ab47-445d-8dbc-6b6f5f615b21.json",
+                                                                         "aiweather-capsule/interoperability/2026-10-21/perplexity-e0c4779c-cb74-43fe-abaf-01479d2230e5.json"
                                                                      ],
                                       "question":  null,
                                       "question_exposure":  "public_daily",
@@ -5366,7 +5424,7 @@
                                                                                          "nominal_min":  0.9,
                                                                                          "interpretable_min":  0.8
                                                                                      },
-                                                             "evaluated_at":  "2026-10-20T06:45:08.605Z"
+                                                             "evaluated_at":  "2026-10-21T06:45:12.919Z"
                                                          },
                                       "judgment_demand":  {
                                                               "profile":  "AI_WEATHER_JUDGMENT_DEMAND",
@@ -5400,28 +5458,28 @@
                                              "prompt_ids_observed":  [
                                                                          "longitudinal-core-01"
                                                                      ],
-                                             "score":  71,
+                                             "score":  100,
                                              "metrics":  {
-                                                             "normal":  0.7143,
-                                                             "variation":  0.1429,
-                                                             "factual_alert":  0.1429,
+                                                             "normal":  1,
+                                                             "variation":  0,
+                                                             "factual_alert":  0,
                                                              "incomplete":  0
                                                          },
                                              "regime_distribution":  {
-                                                                         "normal":  5,
-                                                                         "variation":  1,
-                                                                         "factual_alert":  1,
+                                                                         "normal":  7,
+                                                                         "variation":  0,
+                                                                         "factual_alert":  0,
                                                                          "incomplete":  0
                                                                      },
-                                             "last_observed_at":  "2026-10-20T06:35:52.5226851Z",
+                                             "last_observed_at":  "2026-10-21T06:34:11.2860733Z",
                                              "interoperability_contracts":  [
-                                                                                "aiweather-capsule/interoperability/2026-10-20/perplexity-d998f91f-f199-40c7-8b4d-179ecec863d5.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/perplexity-9d9a34b0-0d12-45ed-8ced-ceb73ac635dc.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/perplexity-c938c044-84d8-4749-bd86-e07f277263e9.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/perplexity-760d0d1f-a2ec-4f66-9085-af20407ba8fb.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/perplexity-08a5ecc4-8855-4bb0-842f-9364bb4af99a.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/perplexity-da98a550-a2ad-4621-a6fa-2599ffbd15fb.json",
-                                                                                "aiweather-capsule/interoperability/2026-10-20/perplexity-15717f29-cdad-4fe8-bf4a-6ec9018d4ed7.json"
+                                                                                "aiweather-capsule/interoperability/2026-10-21/perplexity-27e28253-60f6-46d1-97f7-65aef663aa9e.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/perplexity-043a25a2-9826-422e-a701-23189f001799.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/perplexity-b0bb9e41-749f-472c-adbd-82f6e57bbb0d.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/perplexity-31961eaa-7172-4958-9088-70b7aa30c0cb.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/perplexity-8df79877-0d65-4dff-b54b-77638921a734.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/perplexity-7c368c8c-a692-4e4b-9bfd-719079287b1c.json",
+                                                                                "aiweather-capsule/interoperability/2026-10-21/perplexity-314eb60b-93db-4700-8df2-2fa6c0f95741.json"
                                                                             ],
                                              "question":  null,
                                              "question_exposure":  "lab_only",
@@ -5434,16 +5492,16 @@
                                              "repetition_count":  7,
                                              "current_longitudinal_state":  {
                                                                                 "state":  "attention_critique",
-                                                                                "deviation_index":  0,
+                                                                                "deviation_index":  4.06,
                                                                                 "uncertainty":  {
                                                                                                     "estimator":  "wilson_90pct_descriptive_only",
-                                                                                                    "low":  40.86,
-                                                                                                    "mid":  65.45,
-                                                                                                    "high":  90.04
+                                                                                                    "low":  72.12,
+                                                                                                    "mid":  86.06,
+                                                                                                    "high":  100
                                                                                                 },
-                                                                                "as_of":  "2026-10-20"
+                                                                                "as_of":  "2026-10-21"
                                                                             },
-                                             "deviation_index":  0,
+                                             "deviation_index":  4.06,
                                              "baseline":  {
                                                               "status":  "established",
                                                               "window_start":  "2026-08-22",
@@ -5460,9 +5518,9 @@
                                                           },
                                              "uncertainty":  {
                                                                  "estimator":  "wilson_90pct_descriptive_only",
-                                                                 "low":  40.86,
-                                                                 "mid":  65.45,
-                                                                 "high":  90.04
+                                                                 "low":  72.12,
+                                                                 "mid":  86.06,
+                                                                 "high":  100
                                                              },
                                              "detected_events":  [
                                                                      {
@@ -5689,10 +5747,10 @@
                                                                      "identity_status":  "declared"
                                                                  }
                                          },
-                        "last_observed_at":  "2026-10-20T06:35:52.5226851Z",
+                        "last_observed_at":  "2026-10-21T06:34:11.2860733Z",
                         "detail":  {
-                                       "previous_condition":  "watch",
-                                       "source_file":  "perplexity_sonar-reasoning-pro_weather_sentinel_0_1_20261020T050004Z_results.jsonl",
+                                       "previous_condition":  "unsettled",
+                                       "source_file":  "perplexity_sonar-reasoning-pro_weather_sentinel_0_1_20261021T050004Z_results.jsonl",
                                        "unknown_probe_rows":  0,
                                        "weather_authority":  "daily_only",
                                        "longitudinal_influences_weather":  false
