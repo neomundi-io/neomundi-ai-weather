@@ -1,14 +1,38 @@
+<div align="center">
+
 # NeoMundi AI Weather
+
+### One observation. Every surface.
 
 **Measure once. Publish everywhere.**
 
-An open-source embed kit for runtime AI behavioral observation. One daily
-measurement source, published as a full observation wall and as several
-lightweight embeddable widgets — all reading the same data.
+*A shared observation dataset powering a full AI weather wall and embeddable displays.*
 
-**This is not a leaderboard.** It does not rank AI systems, determine
-which one is "best", or judge whether individual responses are true or
-false. Every view shows an *observed condition*, not a competitive score.
+[![English](https://img.shields.io/badge/EN-English-2563eb?style=flat-square)](README.md) · [![Français](https://img.shields.io/badge/FR-Fran%C3%A7ais-2563eb?style=flat-square)](README_FR.md)
+
+![Project](https://img.shields.io/badge/project-embed%20kit-64748b?style=flat-square) ![Languages](https://img.shields.io/badge/interface-5%20languages-0f766e?style=flat-square) ![Views](https://img.shields.io/badge/data-one%20shared%20source-2563eb?style=flat-square)
+
+**[NeoMundi Observatory](https://neomundi.org/)** · **[Current observation Station](https://station.neomundi.org/)**
+
+**[Formats](#formats)** · **[Architecture](#architecture)** · **[Installation & embedding](#embedding--absolute-urls-required)**
+
+</div>
+
+---
+
+## One source. Multiple ways to observe.
+
+```mermaid
+flowchart LR
+    A["Daily observations"] --> B["Shared weather.json"]
+    B --> C["Full observation wall"]
+    B --> D["Panels and widgets"]
+    B --> E["Embedded partner views"]
+```
+
+This repository documents the **AI Weather embed kit and its historical architecture**. For the Observatory's current programmes and observation surfaces, use [neomundi.org](https://neomundi.org/) and [station.neomundi.org](https://station.neomundi.org/). The existence of this kit does not imply that its historical daily pipeline is the current Station pipeline.
+
+**This is not a leaderboard.** It does not rank AI systems, determine which one is "best", or judge whether individual responses are true or false. Every view shows an *observed condition*, not a competitive score.
 
 For micro-widgets specifically: **color is the signal. The model is the
 identity.** Everything else belongs to the detail (the full wall, one
